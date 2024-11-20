@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:jlpt_app/db/db_hive.dart';
 import 'package:jlpt_app/domain/act.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
 import 'package:jlpt_app/domain/level.dart';
@@ -29,6 +30,8 @@ void main() async{
   Hive.registerAdapter(ActAdapter());
   Hive.registerAdapter(JapanWordBoxAdapter());
 
+  // Box 열기
+  await Hive.openBox(DBHive.JAPAN_WORDS_BOX);
 
   runApp(const ProviderScope(child: MyApp()));
 }

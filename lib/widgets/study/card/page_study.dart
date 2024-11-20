@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jlpt_app/db/db_hive.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/timer.dart';
 import 'package:jlpt_app/domain/word.dart';
-import 'package:jlpt_app/notifier/word_notifier.dart';
+import 'package:jlpt_app/notifier/today_notifier.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
 import 'package:jlpt_app/widgets/study/card/widget_word_card.dart';
@@ -27,6 +28,7 @@ class StudyPage extends ConsumerStatefulWidget {
 
 class _StudyPageState extends ConsumerState<StudyPage> {
 
+  final Set<int> readWordIndexList = {};
   // 초기 진입 시의 상태를 저장할 변수 추가
   late bool isInitiallyCompleted;
 
@@ -103,6 +105,15 @@ class _StudyPageState extends ConsumerState<StudyPage> {
     });
   }
 
+  _selectOK(int id) {
+    readWordIndexList.add(id);
+
+    innerWords.firstWhere((e) => e.id == id).isRead = true;
+    setState(() {
+
+    });
+  }
+
 
   @override
   void initState() {
@@ -111,8 +122,13 @@ class _StudyPageState extends ConsumerState<StudyPage> {
     super.initState();
   }
 
+
+  beforeDispose() async {
+    await DBHive.instance.updateWordsIsReadTrue(readWordIndexList.toList());
+  }
   @override
   void dispose() {
+    beforeDispose();
     super.dispose();
   }
 
@@ -156,7 +172,6 @@ class _StudyPageState extends ConsumerState<StudyPage> {
               height: 60,
               child: Consumer(
                 builder: (context, ref, child) {
-                  ref.watch(wordNotifier);
                   int current = widget.words.where((element) => element.isRead,).length;
                   return CustomProgressBar(
                     topWidget: (current, total, percent) {
@@ -239,8 +254,9 @@ class _StudyPageState extends ConsumerState<StudyPage> {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    ref.read(wordNotifier.notifier).read(ref, widget.level, innerWords[currentIndex]);
+                    _selectOK(innerWords[currentIndex].id);
                     _showNextWord(readWord: innerWords[currentIndex]);
+                    ref.read(todayNotifier.notifier).plusWordCnt();
                   },
                   child: CustomContainer(
                     height: 50,

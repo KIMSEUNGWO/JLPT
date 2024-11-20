@@ -1,5 +1,6 @@
 
 
+import 'package:flutter_riverpod/src/consumer.dart';
 import 'package:hive/hive.dart';
 import 'package:jlpt_app/db/db_chinese_char_entity.dart';
 import 'package:jlpt_app/db/db_japanese_words_entity.dart';
@@ -8,6 +9,7 @@ import 'package:jlpt_app/domain/chinese_char.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/domain/word_collection.dart';
+import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 
 class DBHive {
 
@@ -41,7 +43,6 @@ class DBHive {
   }
 
   Future<Map<Level, List<Word>>> loadJapanWords(JapanWordsEntity fromJson) async {
-    await Hive.openBox(JAPAN_WORDS_BOX);
     Box box = Hive.box(JAPAN_WORDS_BOX);
 
     bool isRequireUpdate = await VersionController.instance.isJapanWordsRequireUpdate(fromJson.version);
@@ -77,6 +78,71 @@ class DBHive {
     VersionController.instance.versionUpdate(VersionController.JAPAN_WORD_VERSION, fromJson.version);
 
     return mergedWords;
+  }
+
+  updateWordsIsReadTrue(List<int> wordIds) async {
+    if (wordIds.isEmpty) return;
+
+    Box box = Hive.box(JAPAN_WORDS_BOX);
+    JapanWordBox? boxData = box.get('words');
+
+    if (boxData == null) return;
+
+    // 깊은 복사를 통해 새로운 Map 생성
+    Map<Level, List<Word>> updatedWords = Map.from(boxData.words);
+
+    for (var entry in updatedWords.entries) {
+      var updatedList = entry.value.map((word) {
+        if (!wordIds.contains(word.id)) return word;
+
+        return Word(
+          id: word.id,
+          level: word.level,
+          act: word.act,
+          word: word.word,
+          hiragana: word.hiragana,
+          korean: word.korean,
+          isRead: true,
+          wrongCnt: word.wrongCnt
+        );
+      }).toList();
+
+      updatedWords[entry.key] = updatedList;
+    }
+    // 저장
+    await box.put('words', JapanWordBox(words: updatedWords));
+  }
+
+  void initialWords(WidgetRef ref, Level level) async {
+    Box box = Hive.box(JAPAN_WORDS_BOX);
+    JapanWordBox? boxData = box.get('words');
+
+    if (boxData == null) return;
+
+    // 깊은 복사를 통해 새로운 Map 생성
+    Map<Level, List<Word>> updatedWords = Map.from(boxData.words);
+
+    List<Word> updatedWord = updatedWords[level] ?? [];
+
+    for (var e in updatedWord) {
+      e.isRead = false;
+    }
+
+    updatedWords[level] = updatedWord;
+
+    await box.put('words', JapanWordBox(words: updatedWords));
+
+    ref.read(studyCycleNotifier.notifier).cyclePlus(level);
+  }
+
+  List<Word> getLevelWords(Level level) {
+    Box box = Hive.box(JAPAN_WORDS_BOX);
+    JapanWordBox? boxData = box.get('words');
+
+    if (boxData == null) return [];
+
+    // 깊은 복사를 통해 새로운 Map 생성
+    return Map.from(boxData.words)[level] ?? [];
   }
 }
 

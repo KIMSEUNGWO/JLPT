@@ -1,13 +1,17 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:jlpt_app/db/db_hive.dart';
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/word.dart';
+import 'package:jlpt_app/domain/word_collection.dart';
 import 'package:jlpt_app/notifier/entity/today.dart';
 import 'package:jlpt_app/notifier/recently_view_notifier.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 import 'package:jlpt_app/notifier/timer_notifier.dart';
 import 'package:jlpt_app/notifier/today_notifier.dart';
-import 'package:jlpt_app/notifier/word_notifier.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
 import 'package:jlpt_app/widgets/component/record_component.dart';
@@ -82,105 +86,112 @@ class _MainPageState extends ConsumerState<MainPage> {
 
                 const SizedBox(height: 28,),
 
-                ..._levels.expand((level) => [
-                  Consumer(
-                    builder: (context, ref, child) {
-                      var recentlyView = ref.watch(recentlyViewNotifier).level == level;
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) {
-                            return StudyListPage(level: level);
-                          },));
-                        },
-                        child: CustomContainer(
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                          border: recentlyView ? Border.all(
-                              color: Theme.of(context).colorScheme.primary,
-                              width: 2
-                          ) : null,
-                          radius: const BorderRadius.only(
-                            topLeft: Radius.circular(12),
-                            topRight: Radius.circular(28),
-                            bottomLeft: Radius.circular(12),
-                            bottomRight: Radius.circular(12),
-                          ),
-                          child: Consumer(
-                            builder: (context, ref, child) {
+                ValueListenableBuilder(
+                  valueListenable: Hive.box(DBHive.JAPAN_WORDS_BOX).listenable(),
+                  builder: (context, value, child) {
+                    JapanWordBox? boxData = value.get('words');
+                    Map<Level, List<Word>> dbState = boxData?.words ?? {};
+                    return Column(
+                      children: _levels.expand((level) => [
+                        Consumer(
+                          builder: (context, ref, child) {
+                            var recentlyView = ref.watch(recentlyViewNotifier).level == level;
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                  return StudyListPage(
+                                    level: level,
+                                    words: dbState[level] ?? [],
+                                  );
+                                },));
+                              },
+                              child: CustomContainer(
+                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                                border: recentlyView ? Border.all(
+                                    color: Theme.of(context).colorScheme.primary,
+                                    width: 2
+                                ) : null,
+                                radius: const BorderRadius.only(
+                                  topLeft: Radius.circular(12),
+                                  topRight: Radius.circular(28),
+                                  bottomLeft: Radius.circular(12),
+                                  bottomRight: Radius.circular(12),
+                                ),
+                                child: Consumer(
+                                  builder: (context, ref, child) {
 
-                              var studyCycle = ref.watch(studyCycleNotifier);
-                              int timer = ref.watch(timerNotifier)[level] ?? 0;
+                                    var studyCycle = ref.watch(studyCycleNotifier);
+                                    int timer = ref.watch(timerNotifier)[level] ?? 0;
 
-                              return Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text('JLPT ${level.name}',
-                                            style: TextStyle(
-                                                color: Theme.of(context).colorScheme.onPrimary,
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: Theme.of(context).textTheme.displaySmall!.fontSize
+                                    return Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text('JLPT ${level.name}',
+                                                  style: TextStyle(
+                                                    color: Theme.of(context).colorScheme.onPrimary,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: Theme.of(context).textTheme.displaySmall!.fontSize,
+                                                  ),
+                                                ),
+                                                const SizedBox(width: 6,),
+                                                Text('${studyCycle[level]}회독'),
+                                              ],
                                             ),
-                                          ),
-                                          const SizedBox(width: 6,),
-                                          Text('${studyCycle[level]}회독'),
-                                        ],
-                                      ),
-                                      if (recentlyView)
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                                          decoration: BoxDecoration(
-                                              color: Theme.of(context).colorScheme.primary,
-                                              borderRadius: BorderRadius.circular(12)
-                                          ),
-                                          child: Text('최근 학습',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: Theme.of(context).textTheme.bodySmall!.fontSize
-                                            ),
-                                          ),
-                                        )
-                                    ],
-                                  ),
-                                  const SizedBox(height: 6,),
-
-                                  Row(
-                                    children: [
-                                      Icon(Icons.access_time,
-                                        size: Theme.of(context).textTheme.bodySmall!.fontSize,
-                                        color: Theme.of(context).colorScheme.onSurface,
-                                      ),
-                                      const SizedBox(width: 4,),
-                                      Text('학습시간 ${TodayData.formatTimeToHours(timer)}',
-                                        style: TextStyle(
-                                            fontSize: Theme.of(context).textTheme.bodySmall!.fontSize
+                                            if (recentlyView)
+                                              Container(
+                                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                                decoration: BoxDecoration(
+                                                    color: Theme.of(context).colorScheme.primary,
+                                                    borderRadius: BorderRadius.circular(12)
+                                                ),
+                                                child: Text('최근 학습',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: Theme.of(context).textTheme.bodySmall!.fontSize
+                                                  ),
+                                                ),
+                                              )
+                                          ],
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 16,),
-                                  Consumer(
-                                    builder: (context, ref, child) {
-                                      var watch = ref.watch(wordNotifier);
-                                      var completeCnt = watch[level]?.where((word) => word.isRead).length ?? 0;
-                                      return CustomProgressBar(
-                                        current: completeCnt,
-                                        total: watch[level] == null || watch[level]!.isEmpty ? 100 : watch[level]!.length // TODO 일단 100으로 해놓긴함
-                                      );
-                                    },
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
+                                        const SizedBox(height: 6,),
+
+                                        Row(
+                                          children: [
+                                            Icon(Icons.access_time,
+                                              size: Theme.of(context).textTheme.bodySmall!.fontSize,
+                                              color: Theme.of(context).colorScheme.onSurface,
+                                            ),
+                                            const SizedBox(width: 4,),
+                                            Text('학습시간 ${TodayData.formatTimeToHours(timer)}',
+                                              style: TextStyle(
+                                                  fontSize: Theme.of(context).textTheme.bodySmall!.fontSize
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(height: 16,),
+
+                                        CustomProgressBar(
+                                          current: dbState[level]?.where((e) => e.isRead).length ?? 0,
+                                          total: dbState[level] == null || dbState[level]!.isEmpty ? 100 : dbState[level]!.length, // TODO 일단 100으로 해놓긴함
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
-                  if (level != _levels.last) const SizedBox(height: 16,),
-                ]),
+                        if (level != _levels.last) const SizedBox(height: 16,),
+                      ]).toList(),
+                    );
+                  },
+                ),
 
               ],
             ),

@@ -23,9 +23,9 @@ class WordAdapter extends TypeAdapter<Word> {
       word: fields[3] as String,
       hiragana: fields[4] as String,
       korean: fields[5] as String,
-    )
-      ..isRead = fields[6] as bool
-      ..wrongCnt = fields[7] as int;
+      isRead: fields[6] as bool,
+      wrongCnt: fields[7] as int,
+    );
   }
 
   @override

@@ -35,7 +35,7 @@ class Word extends HiveObject {
   @override
   int get hashCode => id.hashCode;
 
-  Word({required this.id, required this.level, required this.act, required this.word, required this.hiragana, required this.korean});
+  Word({required this.id, required this.level, required this.act, required this.word, required this.hiragana, required this.korean, required this.isRead, required this.wrongCnt});
 
   Word.fromJson(Map<String, dynamic> json):
         id = json['id'],

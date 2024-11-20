@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:jlpt_app/db/db_hive.dart';
 import 'package:jlpt_app/domain/constant.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/type.dart';
@@ -8,7 +10,6 @@ import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/notifier/recently_view_notifier.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 import 'package:jlpt_app/notifier/timer_notifier.dart';
-import 'package:jlpt_app/notifier/word_notifier.dart';
 import 'package:jlpt_app/widgets/modal/congratulationsModal.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
@@ -19,8 +20,10 @@ import 'package:jlpt_app/widgets/study/card/page_study.dart';
 class StudyListPage extends ConsumerStatefulWidget {
   
   final Level level;
+  final List<Word> words;
 
-  const StudyListPage({super.key, required this.level});
+
+  const StudyListPage({super.key, required this.level, required this.words});
 
   @override
   createState() => _StudyListPageState();
@@ -29,27 +32,26 @@ class StudyListPage extends ConsumerStatefulWidget {
 class _StudyListPageState extends ConsumerState<StudyListPage> {
 
   late final PageController _pageController;
-  late final List<Word> words;
 
   int _currentPage = 0;
 
   getSeconds(int seconds) {
     ref.read(timerNotifier.notifier).setTimer(ref, widget.level, seconds);
 
-    var allRead = words.every((element) => element.isRead,);
+    var allRead = widget.words.every((element) => element.isRead,);
     if (allRead) {
       showDialog(context: context,
         builder: (context) => CongratulationsModal(
           level: widget.level,
-          wordsLearned: words.length,
+          wordsLearned: widget.words.length,
           studyTime: ref.read(timerNotifier.notifier).getLevelTime(widget.level),
           onNextLevelTap: () {
             Navigator.of(context).pop();
-            ref.read(wordNotifier.notifier).initial(ref, widget.level);
+            DBHive.instance.initialWords(ref, widget.level);
           },
           onViewTestTap: () {
             Navigator.of(context).pop();
-            ref.read(wordNotifier.notifier).initial(ref, widget.level);
+            DBHive.instance.initialWords(ref, widget.level);
           },
         ),
       );
@@ -65,12 +67,8 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
     _pageController.jumpToPage(_currentPage);
   }
 
-  initWords() {
-    words = ref.read(wordNotifier)[widget.level] ?? [];
-  }
   @override
   void initState() {
-    initWords();
     _pageController = PageController(initialPage: _currentPage);
     super.initState();
   }
@@ -81,6 +79,11 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
     super.dispose();
   }
 
+  int getPercent() {
+    final double progress = widget.words.where((element) => element.isRead,).length / widget.words.length;
+    return (progress * 100).toInt();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,26 +92,19 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
         centerTitle: false,
         backgroundColor: Colors.white,
         actions: [
-          Consumer(
-            builder: (context, ref, child) {
-              var watch = ref.watch(wordNotifier)[widget.level] ?? [];
-              final double progress = watch.where((element) => element.isRead,).length / watch.length;
-              final percentage = (progress * 100).toInt();
-              return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFF1F3F5),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text('전체진도 $percentage%',
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.w500,
-                      fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize
-                  ),
-                ),
-              );
-            },
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF1F3F5),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text('전체진도 ${getPercent()}%',
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.w500,
+                  fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize
+              ),
+            ),
           ),
           const SizedBox(width: 8,),
           Consumer(
@@ -197,17 +193,16 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
           children: [
             ListView.separated(
               separatorBuilder: (context, index) => const SizedBox(height: 16,),
-              itemCount: (words.length / Constant.GROUP_SIZE).ceil(),
+              itemCount: (widget.words.length / Constant.GROUP_SIZE).ceil(),
               itemBuilder: (context, index) {
 
                 int start = index * Constant.GROUP_SIZE;
-                int end = min((index + 1) * Constant.GROUP_SIZE, words.length);
+                int end = min((index + 1) * Constant.GROUP_SIZE, widget.words.length);
 
-                List<Word> innerWords = words.sublist(start, end).toList();
+                List<Word> innerWords = widget.words.sublist(start, end).toList();
 
                 return Consumer(
                   builder: (context, ref, child) {
-                    ref.watch(wordNotifier);
 
                     var recentlyViewData = ref.watch(recentlyViewNotifier);
                     bool isType =
@@ -282,9 +277,14 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
                               ],
                             ),
                             const SizedBox(height: 12,),
-                            CustomProgressBar(
-                              current: innerWords.where((word) => word.isRead).length,
-                              total: innerWords.length,
+                            ValueListenableBuilder(
+                              valueListenable: Hive.box(DBHive.JAPAN_WORDS_BOX).listenable(),
+                              builder: (context, value, child) {
+                                return CustomProgressBar(
+                                  current: innerWords.where((word) => word.isRead).length,
+                                  total: innerWords.length,
+                                );
+                              },
                             )
                           ],
                         ),
