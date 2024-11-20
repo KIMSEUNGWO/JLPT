@@ -1,10 +1,20 @@
 
+import 'package:hive/hive.dart';
+
+part 'level.g.dart';
+
+@HiveType(typeId: 3)
 enum Level {
 
+  @HiveField(0)
   N5,
+  @HiveField(1)
   N4,
+  @HiveField(2)
   N3,
+  @HiveField(3)
   N2,
+  @HiveField(4)
   N1,
   ;
 

@@ -167,7 +167,7 @@ class _MainPageState extends ConsumerState<MainPage> {
                                       var completeCnt = watch[level]?.where((word) => word.isRead).length ?? 0;
                                       return CustomProgressBar(
                                         current: completeCnt,
-                                        total: watch[level]?.length ?? 100, // TODO 일단 100으로 해놓긴함
+                                        total: watch[level] == null || watch[level]!.isEmpty ? 100 : watch[level]!.length // TODO 일단 100으로 해놓긴함
                                       );
                                     },
                                   ),

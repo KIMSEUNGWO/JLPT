@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:jlpt_app/domain/constant.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/type.dart';
-import 'package:jlpt_app/domain/word_extra.dart';
+import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/notifier/recently_view_notifier.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 import 'package:jlpt_app/notifier/timer_notifier.dart';
@@ -29,7 +29,7 @@ class StudyListPage extends ConsumerStatefulWidget {
 class _StudyListPageState extends ConsumerState<StudyListPage> {
 
   late final PageController _pageController;
-  late final List<WordExtra> words;
+  late final List<Word> words;
 
   int _currentPage = 0;
 
@@ -203,7 +203,7 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
                 int start = index * Constant.GROUP_SIZE;
                 int end = min((index + 1) * Constant.GROUP_SIZE, words.length);
 
-                List<WordExtra> innerWords = words.sublist(start, end).toList();
+                List<Word> innerWords = words.sublist(start, end).toList();
 
                 return Consumer(
                   builder: (context, ref, child) {

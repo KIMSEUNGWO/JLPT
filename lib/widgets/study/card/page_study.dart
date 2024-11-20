@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/timer.dart';
-import 'package:jlpt_app/domain/word_extra.dart';
+import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/notifier/word_notifier.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
@@ -13,7 +13,7 @@ class StudyPage extends ConsumerStatefulWidget {
 
   final Level level;
 
-  final List<WordExtra> words;
+  final List<Word> words;
   final int startIndex;
   final int endIndex;
   final Function(int seconds) getSeconds;
@@ -30,7 +30,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
   // 초기 진입 시의 상태를 저장할 변수 추가
   late bool isInitiallyCompleted;
 
-  late List<WordExtra> innerWords;
+  late List<Word> innerWords;
   int currentIndex = 0;
 
   /// widget.words 는 1-50 단위로 read 여부와 관계없이 모두 데이터를 불러온다. 즉 데이터 변경이 일어나서는 안된다.
@@ -51,7 +51,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
   /// 머물기를 원한다면 innerWords 에는 read 여부와 관계없이 모든 데이터가 로드된다.
   /// 이는 모든 단어카드가 read되고 다시 해당 챕터에 들어왔을 때도 동일하게 작동되어야 한다.
   ///
-  void _showNextWord({WordExtra? readWord}) {
+  void _showNextWord({Word? readWord}) {
     // 모든 단어의 현재 read 상태 확인
     bool allWordsRead = widget.words.every((word) => word.isRead);
 

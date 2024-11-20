@@ -1,9 +1,52 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:jlpt_app/domain/act.dart';
+import 'package:jlpt_app/domain/chinese_char.dart';
+import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/word.dart';
+import 'package:jlpt_app/domain/word_collection.dart';
 import 'package:jlpt_app/initdata/init.dart';
 
-void main() {
+import 'package:path_provider/path_provider.dart' as path_provider;
+
+
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Hive 초기화 전에 기존 데이터 삭제
+  // await clearHiveData();
+
+  await Hive.initFlutter(); // NoSQL init
+
+  Hive.registerAdapter(ChineseCharAdapter());
+  Hive.registerAdapter(WordAdapter());
+  Hive.registerAdapter(LevelAdapter());
+  Hive.registerAdapter(ActAdapter());
+  Hive.registerAdapter(JapanWordBoxAdapter());
+
+
   runApp(const ProviderScope(child: MyApp()));
+}
+
+Future<void> clearHiveData() async {
+  // 모든 박스 닫기
+  await Hive.close();
+
+  // Hive 디렉토리 가져오기
+  final directory = await path_provider.getApplicationDocumentsDirectory();
+  final path = directory.path;
+
+  // Hive 파일들 삭제
+  Directory(path).listSync().forEach((file) {
+    if (file.path.contains('.hive')) {
+      file.deleteSync();
+    }
+  });
 }
 
 class MyApp extends StatelessWidget {

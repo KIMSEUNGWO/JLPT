@@ -1,4 +1,5 @@
 {
+  "version" : "20241119",
   "words": [
     {
       "id": 1,
@@ -5595,14 +5596,6 @@
     {
       "id": 700,
       "level": "N4",
-      "word": "着く",
-      "hiragana": "つく",
-      "korean": "도착하다",
-      "act": "V"
-    },
-    {
-      "id": 701,
-      "level": "N3",
       "word": "着く",
       "hiragana": "つく",
       "korean": "도착하다",

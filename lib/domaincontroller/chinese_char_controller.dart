@@ -9,9 +9,9 @@ class ChineseCharController {
 
   static final Map<String, ChineseChar> _map = {};
 
-  putWord(Map<String, dynamic> json) {
+  putWord(List<ChineseChar> chars) {
     _map.addAll({
-      for (var char in List<ChineseChar>.from(json['chars'].map((char) => ChineseChar.fromJson(char))))
+      for (var char in chars)
         (char).char : char
     });
   }

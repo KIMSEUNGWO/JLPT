@@ -1,35 +1,33 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jlpt_app/component/json_reader.dart';
 import 'package:jlpt_app/component/local_storage.dart';
-import 'package:jlpt_app/domain/constant.dart';
+import 'package:jlpt_app/db/db_hive.dart';
+import 'package:jlpt_app/db/db_japanese_words_entity.dart';
 import 'package:jlpt_app/domain/level.dart';
-import 'package:jlpt_app/domain/word_extra.dart';
+import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 import 'package:jlpt_app/notifier/today_notifier.dart';
 
-class WordNotifier extends StateNotifier<Map<Level, List<WordExtra>>> {
+class WordNotifier extends StateNotifier<Map<Level, List<Word>>> {
 
   WordNotifier() : super({});
 
   init() async {
     var loadJson = await JsonReader.loadJson('japanese_words');
-    var readWordIdList = LocalStorage.instance.getReadWordIdList();
 
-    (loadJson['words'] as List).map((w) => WordExtra.fromJson(w))
-        .forEach((word) {
-      state.putIfAbsent(word.level, () => []).add(word);
-      if (readWordIdList.contains(word.id)) word.isRead = true;
-    });
+    var japanWordsEntity = JapanWordsEntity.fromJson(loadJson);
+
+    state = await DBHive.instance.loadJapanWords(japanWordsEntity);
   }
 
-  List<WordExtra> getLevelWords(Level level) => state[level] ?? [];
+  List<Word> getLevelWords(Level level) => state[level] ?? [];
 
   int getLevelSize(Level level) => state[level]?.length ?? 0;
   int getOnlyReadSize(Level level) {
     return state[level]?.where((word) => word.isRead).length ?? 0;
   }
 
-  void read(WidgetRef ref, Level level, WordExtra wordExtra) {
+  void read(WidgetRef ref, Level level, Word wordExtra) {
     // 이미 이해하고 넘어간 단어는 리턴
     if (wordExtra.isRead) return;
 
@@ -58,4 +56,4 @@ class WordNotifier extends StateNotifier<Map<Level, List<WordExtra>>> {
 
 }
 
-final wordNotifier = StateNotifierProvider<WordNotifier, Map<Level, List<WordExtra>>>((ref) => WordNotifier());
+final wordNotifier = StateNotifierProvider<WordNotifier, Map<Level, List<Word>>>((ref) => WordNotifier());
