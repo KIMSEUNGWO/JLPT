@@ -13,7 +13,7 @@ import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
 import 'package:jlpt_app/widgets/component/record_component.dart';
 import 'package:jlpt_app/widgets/component/record_row.dart';
 import 'package:jlpt_app/widgets/component/title_and_widget.dart';
-import 'package:jlpt_app/widgets/study_list_page.dart';
+import 'package:jlpt_app/widgets/study/page_study_list.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

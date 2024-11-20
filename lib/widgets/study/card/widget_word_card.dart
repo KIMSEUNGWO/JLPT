@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/widgets/component/audio_button.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
-import 'package:jlpt_app/widgets/component/word_card_detail.dart';
+import 'package:jlpt_app/widgets/study/card/widget_word_card_detail.dart';
 
 class WordCardWidget extends StatefulWidget {
 

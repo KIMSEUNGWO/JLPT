@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/domaincontroller/chinese_char_controller.dart';
-import 'package:jlpt_app/widgets/component/chinese_char_widget.dart';
+import 'package:jlpt_app/widgets/study/card/widget_chinese_char.dart';
 
 class WordCardDetailWidget extends StatefulWidget {
 

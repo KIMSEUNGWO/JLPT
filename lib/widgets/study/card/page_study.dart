@@ -4,10 +4,9 @@ import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/timer.dart';
 import 'package:jlpt_app/domain/word_extra.dart';
 import 'package:jlpt_app/notifier/word_notifier.dart';
-import 'package:jlpt_app/widgets/modal/congratulationsModal.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
-import 'package:jlpt_app/widgets/component/word_card_widget.dart';
+import 'package:jlpt_app/widgets/study/card/widget_word_card.dart';
 import 'package:jlpt_app/widgets/modal/next_modal.dart';
 
 class StudyPage extends ConsumerStatefulWidget {
@@ -157,7 +156,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
               height: 60,
               child: Consumer(
                 builder: (context, ref, child) {
-                  var watch = ref.watch(wordNotifier);
+                  ref.watch(wordNotifier);
                   int current = widget.words.where((element) => element.isRead,).length;
                   return CustomProgressBar(
                     topWidget: (current, total, percent) {

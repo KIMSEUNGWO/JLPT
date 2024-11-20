@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jlpt_app/component/json/json_reader.dart';
+import 'package:jlpt_app/component/json_reader.dart';
 import 'package:jlpt_app/component/local_storage.dart';
 import 'package:jlpt_app/domain/constant.dart';
 import 'package:jlpt_app/domain/level.dart';

@@ -1,5 +1,5 @@
 
-import 'package:jlpt_app/domain/Act.dart';
+import 'package:jlpt_app/domain/act.dart';
 import 'package:jlpt_app/domain/level.dart';
 
 class Word {

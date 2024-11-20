@@ -7,7 +7,7 @@ import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 import 'package:jlpt_app/notifier/timer_notifier.dart';
 import 'package:jlpt_app/notifier/today_notifier.dart';
 import 'package:jlpt_app/notifier/word_notifier.dart';
-import 'package:jlpt_app/widgets/main_page.dart';
+import 'package:jlpt_app/widgets/page_main.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

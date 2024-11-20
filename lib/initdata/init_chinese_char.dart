@@ -1,5 +1,5 @@
 
-import 'package:jlpt_app/component/json/json_reader.dart';
+import 'package:jlpt_app/component/json_reader.dart';
 import 'package:jlpt_app/domaincontroller/chinese_char_controller.dart';
 
 class InitChineseCharHelper {

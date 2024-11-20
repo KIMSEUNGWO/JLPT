@@ -12,9 +12,9 @@ import 'package:jlpt_app/notifier/word_notifier.dart';
 import 'package:jlpt_app/widgets/modal/congratulationsModal.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
-import 'package:jlpt_app/widgets/study_page.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jlpt_app/widgets/study/card/page_study.dart';
 
 class StudyListPage extends ConsumerStatefulWidget {
   
