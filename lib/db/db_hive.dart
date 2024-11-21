@@ -21,7 +21,6 @@ class DBHive {
   static const String JAPAN_WORDS_BOX = 'japanWords';
 
   Future<void> loadChineseChar(ChineseCharEntity fromJson) async {
-    await Hive.openBox(CHINESE_CHAR_BOX);
     Box box = Hive.box(CHINESE_CHAR_BOX);
 
     bool isRequireUpdate = await VersionController.instance.isChineseCharRequireUpdate(fromJson.version);

@@ -34,6 +34,7 @@ void main() async{
 
   // Box 열기
   await Hive.openBox(DBHive.JAPAN_WORDS_BOX);
+  await Hive.openBox(DBHive.CHINESE_CHAR_BOX);
 
   runApp(const ProviderScope(child: MyApp()));
 }

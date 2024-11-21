@@ -12,19 +12,18 @@ class VersionController {
   static const String JAPAN_WORD_VERSION = 'japan_words_version';
 
   
-  Future<bool> isChineseCharRequireUpdate(String version) async {
-    String? chineseCharVersion = await _openVersion(CHINESE_CHAR_VERSION);
+  bool isChineseCharRequireUpdate(String version) {
+    String? chineseCharVersion = _openVersion(CHINESE_CHAR_VERSION);
     print('dbVersion : $chineseCharVersion, afterVersion : $version');
     return chineseCharVersion != version;
   }
-  Future<bool> isJapanWordsRequireUpdate(String version) async {
-    String? japanWordsVersion = await _openVersion(JAPAN_WORD_VERSION);
+  bool isJapanWordsRequireUpdate(String version) {
+    String? japanWordsVersion = _openVersion(JAPAN_WORD_VERSION);
     print('dbVersion : $japanWordsVersion, afterVersion : $version');
     return japanWordsVersion != version;
   }
 
-  Future<String?> _openVersion(String boxKey) async {
-    await Hive.openBox(_VERSION_BOX);
+  String? _openVersion(String boxKey) {
     return Hive.box(_VERSION_BOX).get(boxKey);
   }
   void versionUpdate(String boxKey, String version) async {
