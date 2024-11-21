@@ -1,33 +1,32 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'word_collection.dart';
+part of 'chinese_char_box.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class JapanWordBoxAdapter extends TypeAdapter<JapanWordBox> {
+class ChineseCharBoxAdapter extends TypeAdapter<ChineseCharBox> {
   @override
-  final int typeId = 5;
+  final int typeId = 6;
 
   @override
-  JapanWordBox read(BinaryReader reader) {
+  ChineseCharBox read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return JapanWordBox(
-      words: (fields[0] as Map).map((dynamic k, dynamic v) =>
-          MapEntry(k as Level, (v as List).cast<Word>())),
+    return ChineseCharBox(
+      chars: (fields[0] as Map).cast<String, ChineseChar>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, JapanWordBox obj) {
+  void write(BinaryWriter writer, ChineseCharBox obj) {
     writer
       ..writeByte(1)
       ..writeByte(0)
-      ..write(obj.words);
+      ..write(obj.chars);
   }
 
   @override
@@ -36,7 +35,7 @@ class JapanWordBoxAdapter extends TypeAdapter<JapanWordBox> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is JapanWordBoxAdapter &&
+      other is ChineseCharBoxAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

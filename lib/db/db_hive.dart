@@ -5,10 +5,11 @@ import 'package:hive/hive.dart';
 import 'package:jlpt_app/db/db_chinese_char_entity.dart';
 import 'package:jlpt_app/db/db_japanese_words_entity.dart';
 import 'package:jlpt_app/db/db_version_container.dart';
+import 'package:jlpt_app/domain/box/chinese_char_box.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/word.dart';
-import 'package:jlpt_app/domain/word_collection.dart';
+import 'package:jlpt_app/domain/box/japan_word_box.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 
 class DBHive {
@@ -19,30 +20,39 @@ class DBHive {
   static const String CHINESE_CHAR_BOX = 'chineseChar';
   static const String JAPAN_WORDS_BOX = 'japanWords';
 
-  Future<List<ChineseChar>> loadChineseChar(ChineseCharEntity fromJson) async {
+  Future<void> loadChineseChar(ChineseCharEntity fromJson) async {
     await Hive.openBox(CHINESE_CHAR_BOX);
     Box box = Hive.box(CHINESE_CHAR_BOX);
 
     bool isRequireUpdate = await VersionController.instance.isChineseCharRequireUpdate(fromJson.version);
 
+    // box에서 데이터 가져오기
+    ChineseCharBox? boxData = box.get('chars');
+
+    Map<String, ChineseChar> dbState = boxData?.chars ?? {};
+
     // 업데이트가 필요없으면 Box에서 데이터를 바로 반환
     if (!isRequireUpdate) {
-      print('Not Required ChineseChars');
-      return box.values.map((e) => e as ChineseChar).toList();
+      print('Not Required Update ChineseChars');
+      return;
     }
 
     // 업데이트 로직
-    var values = {...box.values.map((e) => e as ChineseChar), ...fromJson.chars }.toList();
-    await box.clear();
-    await box.addAll(values);
+    dbState.addAll({
+      for (var char in fromJson.chars)
+        char.char : char
+    });
+
+    box.clear();
+    // 새로운 JapanWordBox 객체 생성하여 저장
+    box.put('chars', ChineseCharBox(chars: dbState));
 
     // 버전 최신화
     VersionController.instance.versionUpdate(VersionController.CHINESE_CHAR_VERSION, fromJson.version);
 
-    return values;
   }
 
-  Future<Map<Level, List<Word>>> loadJapanWords(JapanWordsEntity fromJson) async {
+  Future<void> loadJapanWords(JapanWordsEntity fromJson) async {
     Box box = Hive.box(JAPAN_WORDS_BOX);
 
     bool isRequireUpdate = await VersionController.instance.isJapanWordsRequireUpdate(fromJson.version);
@@ -54,8 +64,8 @@ class DBHive {
 
     // 업데이트가 필요없으면 Box에서 데이터를 바로 반환
     if (!isRequireUpdate) {
-      print('Not Required JapanWords');
-      return dbState;
+      print('Not Required Update JapanWords');
+      return;
     }
 
     Map<Level, List<Word>> state = {};
@@ -67,7 +77,7 @@ class DBHive {
     Map<Level, List<Word>> mergedWords = {};
 
     for (Level level in Level.values) {
-      mergedWords[level] = {...?dbState[level], ...?state[level]}.toList();
+      mergedWords[level] = { ...?state[level], ...?dbState[level] }.toList();
     }
 
     box.clear();
@@ -76,8 +86,6 @@ class DBHive {
 
     // 버전 최신화
     VersionController.instance.versionUpdate(VersionController.JAPAN_WORD_VERSION, fromJson.version);
-
-    return mergedWords;
   }
 
   updateWordsIsReadTrue(List<int> wordIds) async {
@@ -143,6 +151,12 @@ class DBHive {
 
     // 깊은 복사를 통해 새로운 Map 생성
     return Map.from(boxData.words)[level] ?? [];
+  }
+
+  Map<String, ChineseChar> getChineseChars() {
+    Box box = Hive.box(CHINESE_CHAR_BOX);
+    ChineseCharBox? boxData = box.get('chars');
+    return boxData?.chars ?? {};
   }
 }
 

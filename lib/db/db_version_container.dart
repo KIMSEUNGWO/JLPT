@@ -14,10 +14,12 @@ class VersionController {
   
   Future<bool> isChineseCharRequireUpdate(String version) async {
     String? chineseCharVersion = await _openVersion(CHINESE_CHAR_VERSION);
+    print('dbVersion : $chineseCharVersion, afterVersion : $version');
     return chineseCharVersion != version;
   }
   Future<bool> isJapanWordsRequireUpdate(String version) async {
     String? japanWordsVersion = await _openVersion(JAPAN_WORD_VERSION);
+    print('dbVersion : $japanWordsVersion, afterVersion : $version');
     return japanWordsVersion != version;
   }
 

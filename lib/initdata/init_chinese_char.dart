@@ -9,12 +9,16 @@ class InitChineseCharHelper {
 
 
   init() async {
-    var loadJson = await JsonReader.loadJson('chinese_chars');
+    try {
+      // var loadJson = await JsonReader.loadJson('chinese_chars');
+      var loadJson = await JsonReader.loadJsonFromUrl('https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/assets/json/chinese_chars.json');
 
-    var chineseCharEntity = ChineseCharEntity.fromJson(loadJson);
+      var chineseCharEntity = ChineseCharEntity.fromJson(loadJson);
 
-    List<ChineseChar> loadChineseChar = await DBHive.instance.loadChineseChar(chineseCharEntity);
-
-    ChineseCharController.instance.putWord(loadChineseChar);
+      await DBHive.instance.loadChineseChar(chineseCharEntity);
+    } catch (e) {
+      print('Chinese Char Internet Access Exception');
+    }
+    ChineseCharController.instance.init();
   }
 }

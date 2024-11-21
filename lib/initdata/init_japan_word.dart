@@ -7,10 +7,15 @@ class InitJapanWordHelper {
 
 
   init() async {
-    var loadJson = await JsonReader.loadJson('japanese_words');
+    try {
+      // var loadJson = await JsonReader.loadJson('japanese_words');
+      var loadJson = await JsonReader.loadJsonFromUrl('https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/assets/json/japanese_words.json');
 
-    var japanWordsEntity = JapanWordsEntity.fromJson(loadJson);
+      var japanWordsEntity = JapanWordsEntity.fromJson(loadJson);
 
-    await DBHive.instance.loadJapanWords(japanWordsEntity);
+      await DBHive.instance.loadJapanWords(japanWordsEntity);
+    } catch (e) {
+      print('Japan Word Internet Access Exception');
+    }
   }
 }

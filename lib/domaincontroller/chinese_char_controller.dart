@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:jlpt_app/db/db_hive.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
 
 class ChineseCharController {
@@ -9,11 +10,8 @@ class ChineseCharController {
 
   static final Map<String, ChineseChar> _map = {};
 
-  putWord(List<ChineseChar> chars) {
-    _map.addAll({
-      for (var char in chars)
-        (char).char : char
-    });
+  init() {
+    _map.addAll(DBHive.instance.getChineseChars());
   }
 
   List<Widget> toWidget(List<ChineseChar> chars, Widget Function(ChineseChar char) map) {

@@ -80,7 +80,7 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
   }
 
   int getPercent() {
-    final double progress = widget.words.where((element) => element.isRead,).length / widget.words.length;
+    final double progress = widget.words.where((element) => element.isRead,).length / (widget.words.isEmpty ? 1 : widget.words.length);
     return (progress * 100).toInt();
   }
 
