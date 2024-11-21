@@ -39,10 +39,6 @@ migrate_working_dir/
 
 /ios/**
 !/ios/Runner
-/android/**
-!**/AndroidManifest.xml
-!/android/app/src/main/res/**
-
 !**/Podfile
 !**/Podfile.lock
 !**/Info.plist
@@ -58,3 +54,10 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+/android/**
+!/android/
+!/android/app/
+!/android/app/src/
+!/android/app/src/main/
+!/android/app/src/main/AndroidManifest.xml
