@@ -24,7 +24,9 @@ class _AudioWaveAnimationState extends State<AudioWaveAnimation> with SingleTick
       isPlaying = true;
       _controller.repeat();
     });
-    await _audioPlayer.play(AssetSource('audio/${widget.audioLink}'));
+    // TODO 음성파일은 어떻게 할지 고민좀 해봐야함.
+    // await _audioPlayer.play(AssetSource('audio/${widget.audioLink}'));
+    await _audioPlayer.play(UrlSource('https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/assets/audio/23487.mp3'));
     return await _audioPlayer.getDuration();
   }
 
