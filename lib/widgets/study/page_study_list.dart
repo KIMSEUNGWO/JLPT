@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:jlpt_app/component/snack_bar.dart';
 import 'package:jlpt_app/db/db_hive.dart';
 import 'package:jlpt_app/domain/constant.dart';
 import 'package:jlpt_app/domain/level.dart';
@@ -61,6 +62,10 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
   _onChangePage(int page) {
     if (page == _currentPage) return;
 
+    if (page != 0) {
+      CustomSnackBar.instance.message(context, '준비중입니다.');
+      return;
+    }
     setState(() {
       _currentPage = page;
     });
