@@ -6,6 +6,7 @@ class JapanWordsEntity {
 
   final String version;
   final List<Word> words;
+  // final List<Word> words;
 
   JapanWordsEntity({required this.version, required this.words});
 

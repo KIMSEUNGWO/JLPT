@@ -23,7 +23,7 @@ class DBHive {
   Future<void> loadChineseChar(ChineseCharEntity fromJson) async {
     Box box = Hive.box(CHINESE_CHAR_BOX);
 
-    bool isRequireUpdate = await VersionController.instance.isChineseCharRequireUpdate(fromJson.version);
+    bool isRequireUpdate = VersionController.instance.isChineseCharRequireUpdate(fromJson.version);
 
     // box에서 데이터 가져오기
     ChineseCharBox? boxData = box.get('chars');
@@ -42,9 +42,9 @@ class DBHive {
         char.char : char
     });
 
-    box.clear();
+    await box.clear();
     // 새로운 JapanWordBox 객체 생성하여 저장
-    box.put('chars', ChineseCharBox(chars: dbState));
+    await box.put('chars', ChineseCharBox(chars: dbState));
 
     // 버전 최신화
     VersionController.instance.versionUpdate(VersionController.CHINESE_CHAR_VERSION, fromJson.version);
@@ -54,7 +54,7 @@ class DBHive {
   Future<void> loadJapanWords(JapanWordsEntity fromJson) async {
     Box box = Hive.box(JAPAN_WORDS_BOX);
 
-    bool isRequireUpdate = await VersionController.instance.isJapanWordsRequireUpdate(fromJson.version);
+    bool isRequireUpdate = VersionController.instance.isJapanWordsRequireUpdate(fromJson.version);
 
     // box에서 데이터 가져오기
     JapanWordBox? boxData = box.get('words');
@@ -79,9 +79,9 @@ class DBHive {
       mergedWords[level] = { ...?state[level], ...?dbState[level] }.toList();
     }
 
-    box.clear();
+    await box.clear();
     // 새로운 JapanWordBox 객체 생성하여 저장
-    box.put('words', JapanWordBox(words: mergedWords));
+    await box.put('words', JapanWordBox(words: mergedWords));
 
     // 버전 최신화
     VersionController.instance.versionUpdate(VersionController.JAPAN_WORD_VERSION, fromJson.version);

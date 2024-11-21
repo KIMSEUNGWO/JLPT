@@ -5,6 +5,7 @@ import 'package:jlpt_app/domain/chinese_char.dart';
 class ChineseCharEntity {
 
   final String version;
+  // final List<ChineseChar> chars;
   final List<ChineseChar> chars;
 
   ChineseCharEntity({required this.version, required this.chars});

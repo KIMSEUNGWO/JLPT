@@ -37,7 +37,7 @@ class _WordCardDetailWidgetState extends State<WordCardDetailWidget> {
       ),
       child: Column(
         children: [
-          if (chineseChars.isNotEmpty)
+          (chineseChars.isNotEmpty) ?
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -50,7 +50,8 @@ class _WordCardDetailWidgetState extends State<WordCardDetailWidget> {
                 const SizedBox(height: 12,),
                 ...ChineseCharController.instance.toWidget(chineseChars, (char) => ChineseCharWidget(char: char),),
               ],
-            )
+            ) :
+            Text('한자 정보가 없습니다.'),
         ],
       ),
     );

@@ -88,8 +88,8 @@ class _MainPageState extends ConsumerState<MainPage> {
 
                 ValueListenableBuilder(
                   valueListenable: Hive.box(DBHive.JAPAN_WORDS_BOX).listenable(),
-                  builder: (context, value, child) {
-                    JapanWordBox? boxData = value.get('words');
+                  builder: (context, box, child) {
+                    var boxData = box.get('words');
                     Map<Level, List<Word>> dbState = boxData?.words ?? {};
                     return Column(
                       children: _levels.expand((level) => [

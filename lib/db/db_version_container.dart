@@ -7,7 +7,7 @@ class VersionController {
   static const VersionController instance = VersionController();
   const VersionController();
   
-  static const String _VERSION_BOX = 'version_box';
+  static const String VERSION_BOX = 'version_box';
   static const String CHINESE_CHAR_VERSION = 'chinese_char_version';
   static const String JAPAN_WORD_VERSION = 'japan_words_version';
 
@@ -24,12 +24,10 @@ class VersionController {
   }
 
   String? _openVersion(String boxKey) {
-    return Hive.box(_VERSION_BOX).get(boxKey);
+    return Hive.box(VERSION_BOX).get(boxKey);
   }
-  void versionUpdate(String boxKey, String version) async {
-    Hive.openBox(_VERSION_BOX);
-    var box = Hive.box(_VERSION_BOX);
-    print(box.values);
-    await box.put(boxKey, version);
+  void versionUpdate(String boxKey, String version) {
+    var box = Hive.box(VERSION_BOX);
+    box.put(boxKey, version);
   }
 }

@@ -30,14 +30,9 @@ class _InitWidgetState extends ConsumerState<InitWidget> {
     ref.read(studyCycleNotifier.notifier).init(); // 레벨별 사이클 init
 
   }
-  initData() {
-    InitChineseCharHelper().init(); // 한자 정보 로드
-    InitJapanWordHelper().init();
-  }
-
-  initHive() async {
-
-
+  initData() async {
+    await InitChineseCharHelper().init(); // 한자 정보 로드
+    await InitJapanWordHelper().init();
   }
 
   @override

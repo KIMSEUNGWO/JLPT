@@ -73,7 +73,7 @@ class _WordCardWidgetState extends State<WordCardWidget> with TickerProviderStat
                     ),
                     const SizedBox(height: 26,),
                     const AudioWaveAnimation(audioLink: '23487.mp3', title: '발음 듣기',),
-                    _isOpen ? const SizedBox(height: 31,) : const SizedBox(),
+                    _isOpen ? const SizedBox(height: 31,) : const SizedBox(height: 10,),
                     _isOpen ? WordCardDetailWidget(word: widget.word) : const SizedBox(),
                   ],
                 ),
@@ -90,6 +90,7 @@ class _WordCardWidgetState extends State<WordCardWidget> with TickerProviderStat
                       });
                     },
                     child: Container(
+                      width: 60,
                       decoration: const BoxDecoration(),
                       child: Icon(_isOpen ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_outlined,
                         color: Theme.of(context).colorScheme.onTertiary,
