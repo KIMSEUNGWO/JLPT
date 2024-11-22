@@ -77,6 +77,7 @@ class DBHive {
 
     for (Level level in Level.values) {
       mergedWords[level] = { ...?state[level], ...?dbState[level] }.toList();
+      mergedWords[level]?.sort((a, b) => a.id - b.id,);
     }
 
     await box.clear();
