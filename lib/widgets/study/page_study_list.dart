@@ -34,25 +34,37 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
 
   late final PageController _pageController;
 
+  late final List<Word> _stateWords;
+
   int _currentPage = 0;
+
+  void _wordsInitial() {
+    setState(() {
+      for (var e in _stateWords) {
+        e.isRead = false;
+      }
+    });
+  }
 
   getSeconds(int seconds) {
     ref.read(timerNotifier.notifier).setTimer(ref, widget.level, seconds);
 
-    var allRead = widget.words.every((element) => element.isRead,);
+    var allRead = _stateWords.every((element) => element.isRead,);
     if (allRead) {
       showDialog(context: context,
         builder: (context) => CongratulationsModal(
           level: widget.level,
-          wordsLearned: widget.words.length,
+          wordsLearned: _stateWords.length,
           studyTime: ref.read(timerNotifier.notifier).getLevelTime(widget.level),
-          onNextLevelTap: () {
+          onNextLevelTap: () async {
             Navigator.of(context).pop();
-            DBHive.instance.initialWords(ref, widget.level);
+            _wordsInitial();
+            await DBHive.instance.initialWords(ref, widget.level);
           },
-          onViewTestTap: () {
+          onViewTestTap: () async {
             Navigator.of(context).pop();
-            DBHive.instance.initialWords(ref, widget.level);
+            _wordsInitial();
+            await DBHive.instance.initialWords(ref, widget.level);
           },
         ),
       );
@@ -74,6 +86,7 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
 
   @override
   void initState() {
+    _stateWords = widget.words;
     _pageController = PageController(initialPage: _currentPage);
     super.initState();
   }
@@ -85,7 +98,7 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
   }
 
   int getPercent() {
-    final double progress = widget.words.where((element) => element.isRead,).length / (widget.words.isEmpty ? 1 : widget.words.length);
+    final double progress = _stateWords.where((element) => element.isRead,).length / (_stateWords.isEmpty ? 1 : _stateWords.length);
     return (progress * 100).toInt();
   }
 
@@ -198,13 +211,13 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
           children: [
             ListView.separated(
               separatorBuilder: (context, index) => const SizedBox(height: 16,),
-              itemCount: (widget.words.length / Constant.GROUP_SIZE).ceil(),
+              itemCount: (_stateWords.length / Constant.GROUP_SIZE).ceil(),
               itemBuilder: (context, index) {
 
                 int start = index * Constant.GROUP_SIZE;
-                int end = min((index + 1) * Constant.GROUP_SIZE, widget.words.length);
+                int end = min((index + 1) * Constant.GROUP_SIZE, _stateWords.length);
 
-                List<Word> innerWords = widget.words.sublist(start, end).toList();
+                List<Word> innerWords = _stateWords.sublist(start, end).toList();
 
                 return Consumer(
                   builder: (context, ref, child) {

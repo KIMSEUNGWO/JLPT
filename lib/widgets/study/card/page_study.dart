@@ -219,7 +219,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.all(20),
           child: Row(
             children: [
               Expanded(

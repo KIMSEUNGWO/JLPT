@@ -121,7 +121,7 @@ class DBHive {
     await box.put('words', JapanWordBox(words: updatedWords));
   }
 
-  void initialWords(WidgetRef ref, Level level) async {
+  Future<void> initialWords(WidgetRef ref, Level level) async {
     Box box = Hive.box(JAPAN_WORDS_BOX);
     JapanWordBox? boxData = box.get('words');
 
