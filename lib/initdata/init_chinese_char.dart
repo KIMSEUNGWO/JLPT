@@ -11,7 +11,7 @@ class InitChineseCharHelper {
   init() async {
     try {
       // var loadJson = await JsonReader.loadJson('chinese_chars');
-      var loadJson = await JsonReader.loadJsonFromUrl('https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/assets/json/chinese_chars.json');
+      var loadJson = await JsonReader.loadJsonFromUrl('https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/json/chinese_chars.json');
 
       var chineseCharEntity = ChineseCharEntity.fromJson(loadJson);
 

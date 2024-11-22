@@ -9,7 +9,7 @@ class InitJapanWordHelper {
   init() async {
     try {
       // var loadJson = await JsonReader.loadJson('japanese_words');
-      var loadJson = await JsonReader.loadJsonFromUrl('https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/assets/json/japanese_words.json');
+      var loadJson = await JsonReader.loadJsonFromUrl('https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/json/japanese_words.json');
 
       var japanWordsEntity = JapanWordsEntity.fromJson(loadJson);
 
