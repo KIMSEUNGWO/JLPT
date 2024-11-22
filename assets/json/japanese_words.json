@@ -188,7 +188,7 @@
     {
       "id": 24,
       "level": "N5",
-      "act": "V",
+      "act": "N",
       "word": "交番",
       "hiragana": "こうばん",
       "korean": "파출소"
@@ -245,2161 +245,2161 @@
       "id": 31,
       "level": "N5",
       "act": "N",
-      "word": "仕事",
-      "hiragana": "しごと",
-      "korean": "일, 직업"
+      "word": "手",
+      "hiragana": "て",
+      "korean": "손"
     },
     {
       "id": 32,
       "level": "N5",
-      "act": "V",
-      "word": "財布",
-      "hiragana": "さいふ",
-      "korean": "지갑"
+      "act": "N",
+      "word": "塩",
+      "hiragana": "しお",
+      "korean": "소금"
     },
     {
       "id": 33,
       "level": "N5",
-      "act": "V",
-      "word": "ミルク",
-      "hiragana": "みるく",
-      "korean": "우유"
+      "act": "N",
+      "word": "千",
+      "hiragana": "せん",
+      "korean": "천"
     },
     {
       "id": 34,
       "level": "N5",
       "act": "N",
-      "word": "右",
-      "hiragana": "みぎ",
-      "korean": "오른쪽"
+      "word": "外国",
+      "hiragana": "がいこく",
+      "korean": "외국"
     },
     {
       "id": 35,
       "level": "N5",
-      "act": "V",
-      "word": "病院",
-      "hiragana": "びょういん",
-      "korean": "병원"
+      "act": "N",
+      "word": "食べ物",
+      "hiragana": "たべもの",
+      "korean": "음식"
     },
     {
       "id": 36,
       "level": "N5",
-      "act": "V",
-      "word": "午後",
-      "hiragana": "ごご",
-      "korean": "오후"
+      "act": "N",
+      "word": "兄",
+      "hiragana": "あに",
+      "korean": "형"
     },
     {
       "id": 37,
       "level": "N5",
-      "act": "N",
-      "word": "話す",
-      "hiragana": "はなす",
-      "korean": "이야기하다"
+      "act": "V",
+      "word": "降る",
+      "hiragana": "ふる",
+      "korean": "(비가)내리다"
     },
     {
       "id": 38,
       "level": "N5",
-      "act": "V",
-      "word": "電話",
-      "hiragana": "でんわ",
-      "korean": "전화"
+      "act": "N",
+      "word": "時計",
+      "hiragana": "とけい",
+      "korean": "시계"
     },
     {
       "id": 39,
       "level": "N5",
-      "act": "V",
-      "word": "手紙",
-      "hiragana": "てがみ",
-      "korean": "편지"
+      "act": "N",
+      "word": "パソコン",
+      "hiragana": "パソコン",
+      "korean": "컴퓨터"
     },
     {
       "id": 40,
       "level": "N5",
       "act": "N",
-      "word": "学校",
-      "hiragana": "がっこう",
-      "korean": "학교"
+      "word": "川",
+      "hiragana": "かわ",
+      "korean": "강"
     },
     {
       "id": 41,
       "level": "N5",
-      "act": "V",
-      "word": "銀行",
-      "hiragana": "ぎんこう",
-      "korean": "은행"
+      "act": "ADV",
+      "word": "一番",
+      "hiragana": "いちばん",
+      "korean": "가장, 최상"
     },
     {
       "id": 42,
       "level": "N5",
-      "act": "V",
-      "word": "悪い",
-      "hiragana": "わるい",
-      "korean": "나쁘다"
+      "act": "N",
+      "word": "一人",
+      "hiragana": "ひとり",
+      "korean": "한 명"
     },
     {
       "id": 43,
       "level": "N5",
       "act": "N",
-      "word": "広い",
-      "hiragana": "ひろい",
-      "korean": "넓다"
+      "word": "番号",
+      "hiragana": "ばんごう",
+      "korean": "번호"
     },
     {
       "id": 44,
       "level": "N5",
-      "act": "V",
-      "word": "住む",
-      "hiragana": "すむ",
-      "korean": "살다"
+      "act": "N",
+      "word": "今週",
+      "hiragana": "こんしゅう",
+      "korean": "이번주"
     },
     {
       "id": 45,
       "level": "N5",
       "act": "V",
-      "word": "押す",
-      "hiragana": "おす",
-      "korean": "밀다"
+      "word": "降りる",
+      "hiragana": "おりる",
+      "korean": "내리다"
     },
     {
       "id": 46,
       "level": "N5",
-      "act": "N",
-      "word": "物",
-      "hiragana": "もの",
-      "korean": "물건"
+      "act": "V",
+      "word": "洗う",
+      "hiragana": "あらう",
+      "korean": "씻다, 닦다"
     },
     {
       "id": 47,
       "level": "N5",
-      "act": "V",
-      "word": "辞書",
-      "hiragana": "じしょ",
-      "korean": "사전"
+      "act": "N",
+      "word": "音楽",
+      "hiragana": "おんがく",
+      "korean": "음악"
     },
     {
       "id": 48,
       "level": "N5",
-      "act": "V",
-      "word": "宿題",
-      "hiragana": "しゅくだい",
-      "korean": "숙제"
+      "act": "N",
+      "word": "一つ",
+      "hiragana": "ひとつ",
+      "korean": "한개"
     },
     {
       "id": 49,
       "level": "N5",
       "act": "N",
-      "word": "答える",
-      "hiragana": "こたえる",
-      "korean": "대답하다"
+      "word": "エレベーター",
+      "hiragana": "エレベーター",
+      "korean": "엘리베이터"
     },
     {
       "id": 50,
       "level": "N5",
-      "act": "V",
-      "word": "電気",
-      "hiragana": "でんき",
-      "korean": "전기"
+      "act": "N",
+      "word": "午前",
+      "hiragana": "ごぜん",
+      "korean": "오전"
     },
     {
       "id": 51,
       "level": "N5",
-      "act": "V",
-      "word": "大人",
-      "hiragana": "おとな",
-      "korean": "어른"
+      "act": "N",
+      "word": "動物",
+      "hiragana": "どうぶつ",
+      "korean": "동물"
     },
     {
       "id": 52,
       "level": "N5",
       "act": "N",
-      "word": "低い",
-      "hiragana": "ひくい",
-      "korean": "낮다"
+      "word": "靴",
+      "hiragana": "くつ",
+      "korean": "신발"
     },
     {
       "id": 53,
       "level": "N5",
-      "act": "V",
-      "word": "夏",
-      "hiragana": "なつ",
-      "korean": "여름"
+      "act": "ADJ",
+      "word": "高い",
+      "hiragana": "たかい",
+      "korean": "높다"
     },
     {
       "id": 54,
       "level": "N5",
-      "act": "V",
-      "word": "交番",
-      "hiragana": "こうばん",
-      "korean": "파출소"
+      "act": "N",
+      "word": "教室",
+      "hiragana": "きょうしつ",
+      "korean": "교실"
     },
     {
       "id": 55,
       "level": "N5",
       "act": "N",
-      "word": "出口",
-      "hiragana": "でぐち",
-      "korean": "출구"
+      "word": "本",
+      "hiragana": "ほん",
+      "korean": "책"
     },
     {
       "id": 56,
       "level": "N5",
-      "act": "V",
-      "word": "明るい",
-      "hiragana": "あかるい",
-      "korean": "밝다"
+      "act": "N",
+      "word": "デパート",
+      "hiragana": "デパート",
+      "korean": "백화점"
     },
     {
       "id": 57,
       "level": "N5",
       "act": "V",
-      "word": "ポケット",
-      "hiragana": "ぽけっと",
-      "korean": "주머니"
+      "word": "生まれる",
+      "hiragana": "うまれる",
+      "korean": "태어나다"
     },
     {
       "id": 58,
       "level": "N5",
       "act": "N",
-      "word": "年",
-      "hiragana": "とし",
-      "korean": "나이"
+      "word": "傘",
+      "hiragana": "かさ",
+      "korean": "우산"
     },
     {
       "id": 59,
       "level": "N5",
-      "act": "V",
-      "word": "去年",
-      "hiragana": "きょねん",
-      "korean": "작년"
+      "act": "ADJ",
+      "word": "危ない",
+      "hiragana": "あぶない",
+      "korean": "위험하다"
     },
     {
       "id": 60,
       "level": "N5",
-      "act": "V",
-      "word": "寝る",
-      "hiragana": "ねる",
-      "korean": "자다"
+      "act": "N",
+      "word": "新聞",
+      "hiragana": "しんぶん",
+      "korean": "신문"
     },
     {
       "id": 61,
       "level": "N5",
       "act": "N",
-      "word": "仕事",
-      "hiragana": "しごと",
-      "korean": "일, 직업"
+      "word": "西",
+      "hiragana": "にし",
+      "korean": "서"
     },
     {
       "id": 62,
       "level": "N5",
-      "act": "V",
-      "word": "財布",
-      "hiragana": "さいふ",
-      "korean": "지갑"
+      "act": "ADJ",
+      "word": "暑い",
+      "hiragana": "あつい",
+      "korean": "덥다"
     },
     {
       "id": 63,
       "level": "N5",
-      "act": "V",
-      "word": "ミルク",
-      "hiragana": "みるく",
-      "korean": "우유"
+      "act": "N",
+      "word": "お茶",
+      "hiragana": "おちゃ",
+      "korean": "차"
     },
     {
       "id": 64,
       "level": "N5",
       "act": "N",
-      "word": "右",
-      "hiragana": "みぎ",
-      "korean": "오른쪽"
+      "word": "話",
+      "hiragana": "はなし",
+      "korean": "말(이야기)"
     },
     {
       "id": 65,
       "level": "N5",
-      "act": "V",
-      "word": "病院",
-      "hiragana": "びょういん",
-      "korean": "병원"
+      "act": "N",
+      "word": "休み",
+      "hiragana": "やすみ",
+      "korean": "쉬는날, 방학"
     },
     {
       "id": 66,
       "level": "N5",
-      "act": "V",
-      "word": "午後",
-      "hiragana": "ごご",
-      "korean": "오후"
+      "act": "ADJ",
+      "word": "大きい",
+      "hiragana": "おおきい",
+      "korean": "크다"
     },
     {
       "id": 67,
       "level": "N5",
-      "act": "N",
-      "word": "話す",
-      "hiragana": "はなす",
-      "korean": "이야기하다"
+      "act": "V",
+      "word": "遊ぶ",
+      "hiragana": "あそぶ",
+      "korean": "놀다"
     },
     {
       "id": 68,
       "level": "N5",
-      "act": "V",
-      "word": "電話",
-      "hiragana": "でんわ",
-      "korean": "전화"
+      "act": "N",
+      "word": "今月",
+      "hiragana": "こんげつ",
+      "korean": "이번달"
     },
     {
       "id": 69,
       "level": "N5",
-      "act": "V",
-      "word": "手紙",
-      "hiragana": "てがみ",
-      "korean": "편지"
+      "act": "N",
+      "word": "机",
+      "hiragana": "つくえ",
+      "korean": "책상"
     },
     {
       "id": 70,
       "level": "N5",
       "act": "N",
-      "word": "学校",
-      "hiragana": "がっこう",
-      "korean": "학교"
+      "word": "入り口",
+      "hiragana": "いりぐち",
+      "korean": "입구"
     },
     {
       "id": 71,
       "level": "N5",
-      "act": "V",
-      "word": "銀行",
-      "hiragana": "ぎんこう",
-      "korean": "은행"
+      "act": "N",
+      "word": "東西南北",
+      "hiragana": "とうざいなんぼく",
+      "korean": "동서남북"
     },
     {
       "id": 72,
       "level": "N5",
       "act": "V",
-      "word": "悪い",
-      "hiragana": "わるい",
-      "korean": "나쁘다"
+      "word": "食べる",
+      "hiragana": "たべる",
+      "korean": "먹다"
     },
     {
       "id": 73,
       "level": "N5",
-      "act": "N",
-      "word": "広い",
-      "hiragana": "ひろい",
-      "korean": "넓다"
+      "act": "V",
+      "word": "来る",
+      "hiragana": "くる",
+      "korean": "오다"
     },
     {
       "id": 74,
       "level": "N5",
-      "act": "V",
-      "word": "住む",
-      "hiragana": "すむ",
-      "korean": "살다"
+      "act": "N",
+      "word": "ボタン",
+      "hiragana": "ボタン",
+      "korean": "버튼"
     },
     {
       "id": 75,
       "level": "N5",
-      "act": "V",
-      "word": "押す",
-      "hiragana": "おす",
-      "korean": "밀다"
+      "act": "ADJ",
+      "word": "静かな",
+      "hiragana": "しずかな",
+      "korean": "조용한"
     },
     {
       "id": 76,
       "level": "N5",
       "act": "N",
-      "word": "物",
-      "hiragana": "もの",
-      "korean": "물건"
+      "word": "時間",
+      "hiragana": "じかん",
+      "korean": "시간"
     },
     {
       "id": 77,
       "level": "N5",
-      "act": "V",
-      "word": "辞書",
-      "hiragana": "じしょ",
-      "korean": "사전"
+      "act": "N",
+      "word": "紙",
+      "hiragana": "かみ",
+      "korean": "종이"
     },
     {
       "id": 78,
       "level": "N5",
-      "act": "V",
-      "word": "宿題",
-      "hiragana": "しゅくだい",
-      "korean": "숙제"
+      "act": "ADJ",
+      "word": "黒い",
+      "hiragana": "くろい",
+      "korean": "까맣다"
     },
     {
       "id": 79,
       "level": "N5",
       "act": "N",
-      "word": "答える",
-      "hiragana": "こたえる",
-      "korean": "대답하다"
+      "word": "友達",
+      "hiragana": "ともだち",
+      "korean": "친구"
     },
     {
       "id": 80,
       "level": "N5",
-      "act": "V",
-      "word": "電気",
-      "hiragana": "でんき",
-      "korean": "전기"
+      "act": "N",
+      "word": "母",
+      "hiragana": "はは",
+      "korean": "엄마"
     },
     {
       "id": 81,
       "level": "N5",
-      "act": "V",
-      "word": "大人",
-      "hiragana": "おとな",
-      "korean": "어른"
+      "act": "ADJ",
+      "word": "赤い",
+      "hiragana": "あかい",
+      "korean": "빨갛다"
     },
     {
       "id": 82,
       "level": "N5",
       "act": "N",
-      "word": "低い",
-      "hiragana": "ひくい",
-      "korean": "낮다"
+      "word": "万",
+      "hiragana": "まん",
+      "korean": "1만"
     },
     {
       "id": 83,
       "level": "N5",
-      "act": "V",
-      "word": "夏",
-      "hiragana": "なつ",
-      "korean": "여름"
+      "act": "N",
+      "word": "コーヒー",
+      "hiragana": "コーヒー",
+      "korean": "커피"
     },
     {
       "id": 84,
       "level": "N5",
-      "act": "V",
-      "word": "交番",
-      "hiragana": "こうばん",
-      "korean": "파출소"
+      "act": "N",
+      "word": "ノート",
+      "hiragana": "ノート",
+      "korean": "노트"
     },
     {
       "id": 85,
       "level": "N5",
-      "act": "N",
-      "word": "出口",
-      "hiragana": "でぐち",
-      "korean": "출구"
+      "act": "ADJ",
+      "word": "新しい",
+      "hiragana": "あたらしい",
+      "korean": "새롭다"
     },
     {
       "id": 86,
       "level": "N5",
-      "act": "V",
-      "word": "明るい",
-      "hiragana": "あかるい",
-      "korean": "밝다"
+      "act": "N",
+      "word": "かばん",
+      "hiragana": "かばん",
+      "korean": "가방"
     },
     {
       "id": 87,
       "level": "N5",
-      "act": "V",
-      "word": "ポケット",
-      "hiragana": "ぽけっと",
-      "korean": "주머니"
+      "act": "N",
+      "word": "海",
+      "hiragana": "うみ",
+      "korean": "바다"
     },
     {
       "id": 88,
       "level": "N5",
       "act": "N",
-      "word": "年",
-      "hiragana": "とし",
-      "korean": "나이"
+      "word": "先生",
+      "hiragana": "せんせい",
+      "korean": "선생님"
     },
     {
       "id": 89,
       "level": "N5",
-      "act": "V",
-      "word": "去年",
-      "hiragana": "きょねん",
-      "korean": "작년"
+      "act": "N",
+      "word": "中学校",
+      "hiragana": "ちゅうがっこう",
+      "korean": "중학교"
     },
     {
       "id": 90,
       "level": "N5",
-      "act": "V",
-      "word": "寝る",
-      "hiragana": "ねる",
-      "korean": "자다"
+      "act": "ADJ",
+      "word": "遅い",
+      "hiragana": "おそい",
+      "korean": "늦다"
     },
     {
       "id": 91,
       "level": "N5",
-      "act": "N",
-      "word": "仕事",
-      "hiragana": "しごと",
-      "korean": "일, 직업"
+      "act": "V",
+      "word": "言う",
+      "hiragana": "いう",
+      "korean": "말하다"
     },
     {
       "id": 92,
       "level": "N5",
-      "act": "V",
-      "word": "財布",
-      "hiragana": "さいふ",
-      "korean": "지갑"
+      "act": "N",
+      "word": "北",
+      "hiragana": "きた",
+      "korean": "북"
     },
     {
       "id": 93,
       "level": "N5",
-      "act": "V",
-      "word": "ミルク",
-      "hiragana": "みるく",
-      "korean": "우유"
+      "act": "N",
+      "word": "春",
+      "hiragana": "はる",
+      "korean": "봄"
     },
     {
       "id": 94,
       "level": "N5",
-      "act": "N",
-      "word": "右",
-      "hiragana": "みぎ",
-      "korean": "오른쪽"
+      "act": "ADJ",
+      "word": "寒い",
+      "hiragana": "さむい",
+      "korean": "춥다"
     },
     {
       "id": 95,
       "level": "N5",
-      "act": "V",
-      "word": "病院",
-      "hiragana": "びょういん",
-      "korean": "병원"
+      "act": "ADJ",
+      "word": "速い",
+      "hiragana": "はやい",
+      "korean": "빠르다"
     },
     {
       "id": 96,
       "level": "N5",
-      "act": "V",
-      "word": "午後",
-      "hiragana": "ごご",
-      "korean": "오후"
+      "act": "N",
+      "word": "山",
+      "hiragana": "やま",
+      "korean": "산"
     },
     {
       "id": 97,
       "level": "N5",
-      "act": "N",
-      "word": "話す",
-      "hiragana": "はなす",
-      "korean": "이야기하다"
+      "act": "ADJ",
+      "word": "多い",
+      "hiragana": "おおい",
+      "korean": "많다"
     },
     {
       "id": 98,
       "level": "N5",
       "act": "V",
-      "word": "電話",
-      "hiragana": "でんわ",
-      "korean": "전화"
+      "word": "入る",
+      "hiragana": "はいる",
+      "korean": "들어가다"
     },
     {
       "id": 99,
       "level": "N5",
-      "act": "V",
-      "word": "手紙",
-      "hiragana": "てがみ",
-      "korean": "편지"
+      "act": "N",
+      "word": "水",
+      "hiragana": "みず",
+      "korean": "물"
     },
     {
       "id": 100,
       "level": "N5",
       "act": "N",
-      "word": "学校",
-      "hiragana": "がっこう",
-      "korean": "학교"
+      "word": "今年",
+      "hiragana": "ことし",
+      "korean": "올해"
     },
     {
       "id": 101,
       "level": "N5",
-      "act": "V",
-      "word": "銀行",
-      "hiragana": "ぎんこう",
-      "korean": "은행"
+      "act": "N",
+      "word": "パン",
+      "hiragana": "パン",
+      "korean": "빵"
     },
     {
       "id": 102,
       "level": "N5",
       "act": "V",
-      "word": "悪い",
-      "hiragana": "わるい",
-      "korean": "나쁘다"
+      "word": "下がる",
+      "hiragana": "さがる",
+      "korean": "내려가다"
     },
     {
       "id": 103,
       "level": "N5",
       "act": "N",
-      "word": "広い",
-      "hiragana": "ひろい",
-      "korean": "넓다"
+      "word": "来年",
+      "hiragana": "らいねん",
+      "korean": "내년"
     },
     {
       "id": 104,
       "level": "N5",
-      "act": "V",
-      "word": "住む",
-      "hiragana": "すむ",
-      "korean": "살다"
+      "act": "N",
+      "word": "犬",
+      "hiragana": "いぬ",
+      "korean": "개"
     },
     {
       "id": 105,
       "level": "N5",
-      "act": "V",
-      "word": "押す",
-      "hiragana": "おす",
-      "korean": "밀다"
+      "act": "ADJ",
+      "word": "小さい",
+      "hiragana": "ちいさい",
+      "korean": "작다"
     },
     {
       "id": 106,
       "level": "N5",
       "act": "N",
-      "word": "物",
-      "hiragana": "もの",
-      "korean": "물건"
+      "word": "ジャンパー",
+      "hiragana": "ジャンパー",
+      "korean": "점퍼"
     },
     {
       "id": 107,
       "level": "N5",
-      "act": "V",
-      "word": "辞書",
-      "hiragana": "じしょ",
-      "korean": "사전"
+      "act": "N",
+      "word": "スカート",
+      "hiragana": "スカート",
+      "korean": "치마"
     },
     {
       "id": 108,
       "level": "N5",
-      "act": "V",
-      "word": "宿題",
-      "hiragana": "しゅくだい",
-      "korean": "숙제"
+      "act": "N",
+      "word": "弟",
+      "hiragana": "おとうと",
+      "korean": "남동생"
     },
     {
       "id": 109,
       "level": "N5",
       "act": "N",
-      "word": "答える",
-      "hiragana": "こたえる",
-      "korean": "대답하다"
+      "word": "勉強",
+      "hiragana": "べんきょう",
+      "korean": "공부"
     },
     {
       "id": 110,
       "level": "N5",
-      "act": "V",
-      "word": "電気",
-      "hiragana": "でんき",
-      "korean": "전기"
+      "act": "N",
+      "word": "学生",
+      "hiragana": "がくせい",
+      "korean": "학생"
     },
     {
       "id": 111,
       "level": "N5",
-      "act": "V",
-      "word": "大人",
-      "hiragana": "おとな",
-      "korean": "어른"
+      "act": "N",
+      "word": "魚",
+      "hiragana": "さかな",
+      "korean": "물고기"
     },
     {
       "id": 112,
       "level": "N5",
       "act": "N",
-      "word": "低い",
-      "hiragana": "ひくい",
-      "korean": "낮다"
+      "word": "お腹",
+      "hiragana": "おなか",
+      "korean": "배"
     },
     {
       "id": 113,
       "level": "N5",
       "act": "V",
-      "word": "夏",
-      "hiragana": "なつ",
-      "korean": "여름"
+      "word": "分かる",
+      "hiragana": "わかる",
+      "korean": "이해하다 (알다)"
     },
     {
       "id": 114,
       "level": "N5",
-      "act": "V",
-      "word": "交番",
-      "hiragana": "こうばん",
-      "korean": "파출소"
+      "act": "ADJ",
+      "word": "弱い",
+      "hiragana": "よわい",
+      "korean": "약하다"
     },
     {
       "id": 115,
       "level": "N5",
       "act": "N",
-      "word": "出口",
-      "hiragana": "でぐち",
-      "korean": "출구"
+      "word": "一時",
+      "hiragana": "いちじ",
+      "korean": "1시"
     },
     {
       "id": 116,
       "level": "N5",
       "act": "V",
-      "word": "明るい",
-      "hiragana": "あかるい",
-      "korean": "밝다"
+      "word": "歩く",
+      "hiragana": "あるく",
+      "korean": "걷다"
     },
     {
       "id": 117,
       "level": "N5",
       "act": "V",
-      "word": "ポケット",
-      "hiragana": "ぽけっと",
-      "korean": "주머니"
+      "word": "返す",
+      "hiragana": "かえす",
+      "korean": "돌려주다"
     },
     {
       "id": 118,
       "level": "N5",
       "act": "N",
-      "word": "年",
-      "hiragana": "とし",
-      "korean": "나이"
+      "word": "豚",
+      "hiragana": "ぶた",
+      "korean": "돼지"
     },
     {
       "id": 119,
       "level": "N5",
-      "act": "V",
-      "word": "去年",
-      "hiragana": "きょねん",
-      "korean": "작년"
+      "act": "ADJ",
+      "word": "楽しい",
+      "hiragana": "たのしい",
+      "korean": "즐겁다"
     },
     {
       "id": 120,
       "level": "N5",
       "act": "V",
-      "word": "寝る",
-      "hiragana": "ねる",
-      "korean": "자다"
+      "word": "掛かる",
+      "hiragana": "かかる",
+      "korean": "걸리다"
     },
     {
       "id": 121,
       "level": "N5",
       "act": "N",
-      "word": "仕事",
-      "hiragana": "しごと",
-      "korean": "일, 직업"
+      "word": "鉛筆",
+      "hiragana": "えんぴつ",
+      "korean": "연필"
     },
     {
       "id": 122,
       "level": "N5",
-      "act": "V",
-      "word": "財布",
-      "hiragana": "さいふ",
-      "korean": "지갑"
+      "act": "ADJ",
+      "word": "丈夫な",
+      "hiragana": "じょうぶな",
+      "korean": "튼튼한"
     },
     {
       "id": 123,
       "level": "N5",
-      "act": "V",
-      "word": "ミルク",
-      "hiragana": "みるく",
-      "korean": "우유"
+      "act": "N",
+      "word": "馬",
+      "hiragana": "うま",
+      "korean": "말"
     },
     {
       "id": 124,
       "level": "N5",
-      "act": "N",
-      "word": "右",
-      "hiragana": "みぎ",
-      "korean": "오른쪽"
+      "act": "V",
+      "word": "泳ぐ",
+      "hiragana": "およぐ",
+      "korean": "수영하다"
     },
     {
       "id": 125,
       "level": "N5",
-      "act": "V",
-      "word": "病院",
-      "hiragana": "びょういん",
-      "korean": "병원"
+      "act": "N",
+      "word": "秋",
+      "hiragana": "あき",
+      "korean": "가을"
     },
     {
       "id": 126,
       "level": "N5",
-      "act": "V",
-      "word": "午後",
-      "hiragana": "ごご",
-      "korean": "오후"
+      "act": "N",
+      "word": "左",
+      "hiragana": "ひだり",
+      "korean": "왼(쪽)"
     },
     {
       "id": 127,
       "level": "N5",
-      "act": "N",
-      "word": "話す",
-      "hiragana": "はなす",
-      "korean": "이야기하다"
+      "act": "V",
+      "word": "吸う",
+      "hiragana": "すう",
+      "korean": "들이마시다, 피우다"
     },
     {
       "id": 128,
       "level": "N5",
-      "act": "V",
-      "word": "電話",
-      "hiragana": "でんわ",
-      "korean": "전화"
+      "act": "N",
+      "word": "留学生",
+      "hiragana": "りゅうがくせい",
+      "korean": "유학생"
     },
     {
       "id": 129,
       "level": "N5",
       "act": "V",
-      "word": "手紙",
-      "hiragana": "てがみ",
-      "korean": "편지"
+      "word": "書く",
+      "hiragana": "かく",
+      "korean": "쓰다"
     },
     {
       "id": 130,
       "level": "N5",
       "act": "N",
-      "word": "学校",
-      "hiragana": "がっこう",
-      "korean": "학교"
+      "word": "高校",
+      "hiragana": "こうこう",
+      "korean": "고교 (고등학교)"
     },
     {
       "id": 131,
       "level": "N5",
-      "act": "V",
-      "word": "銀行",
-      "hiragana": "ぎんこう",
-      "korean": "은행"
+      "act": "ADJ",
+      "word": "狭い",
+      "hiragana": "せまい",
+      "korean": "좁다"
     },
     {
       "id": 132,
       "level": "N5",
-      "act": "V",
-      "word": "悪い",
-      "hiragana": "わるい",
-      "korean": "나쁘다"
+      "act": "N",
+      "word": "コップ",
+      "hiragana": "コップ",
+      "korean": "컵"
     },
     {
       "id": 133,
       "level": "N5",
-      "act": "N",
-      "word": "広い",
-      "hiragana": "ひろい",
-      "korean": "넓다"
+      "act": "V",
+      "word": "読む",
+      "hiragana": "よむ",
+      "korean": "읽다"
     },
     {
       "id": 134,
       "level": "N5",
       "act": "V",
-      "word": "住む",
-      "hiragana": "すむ",
-      "korean": "살다"
+      "word": "休む",
+      "hiragana": "やすむ",
+      "korean": "쉬다"
     },
     {
       "id": 135,
       "level": "N5",
       "act": "V",
-      "word": "押す",
-      "hiragana": "おす",
-      "korean": "밀다"
+      "word": "待つ",
+      "hiragana": "まつ",
+      "korean": "기다리다"
     },
     {
       "id": 136,
       "level": "N5",
       "act": "N",
-      "word": "物",
-      "hiragana": "もの",
-      "korean": "물건"
+      "word": "お母さん",
+      "hiragana": "おかあさん",
+      "korean": "어머니"
     },
     {
       "id": 137,
       "level": "N5",
-      "act": "V",
-      "word": "辞書",
-      "hiragana": "じしょ",
-      "korean": "사전"
+      "act": "N",
+      "word": "十",
+      "hiragana": "じゅう",
+      "korean": "십"
     },
     {
       "id": 138,
       "level": "N5",
-      "act": "V",
-      "word": "宿題",
-      "hiragana": "しゅくだい",
-      "korean": "숙제"
+      "act": "N",
+      "word": "台所",
+      "hiragana": "だいどころ",
+      "korean": "부엌"
     },
     {
       "id": 139,
       "level": "N5",
-      "act": "N",
-      "word": "答える",
-      "hiragana": "こたえる",
-      "korean": "대답하다"
+      "act": "V",
+      "word": "会う",
+      "hiragana": "あう",
+      "korean": "만나다"
     },
     {
       "id": 140,
       "level": "N5",
-      "act": "V",
-      "word": "電気",
-      "hiragana": "でんき",
-      "korean": "전기"
+      "act": "N",
+      "word": "南",
+      "hiragana": "みなみ",
+      "korean": "남"
     },
     {
       "id": 141,
       "level": "N5",
-      "act": "V",
-      "word": "大人",
-      "hiragana": "おとな",
-      "korean": "어른"
+      "act": "N",
+      "word": "飛行機",
+      "hiragana": "ひこうき",
+      "korean": "비행기"
     },
     {
       "id": 142,
       "level": "N5",
       "act": "N",
-      "word": "低い",
-      "hiragana": "ひくい",
-      "korean": "낮다"
+      "word": "写真",
+      "hiragana": "しゃしん",
+      "korean": "사진"
     },
     {
       "id": 143,
       "level": "N5",
-      "act": "V",
-      "word": "夏",
-      "hiragana": "なつ",
-      "korean": "여름"
+      "act": "N",
+      "word": "前",
+      "hiragana": "まえ",
+      "korean": "앞"
     },
     {
       "id": 144,
       "level": "N5",
       "act": "V",
-      "word": "交番",
-      "hiragana": "こうばん",
-      "korean": "파출소"
+      "word": "作る",
+      "hiragana": "つくる",
+      "korean": "만들다"
     },
     {
       "id": 145,
       "level": "N5",
       "act": "N",
-      "word": "出口",
-      "hiragana": "でぐち",
-      "korean": "출구"
+      "word": "ご飯",
+      "hiragana": "ごはん",
+      "korean": "밥"
     },
     {
       "id": 146,
       "level": "N5",
       "act": "V",
-      "word": "明るい",
-      "hiragana": "あかるい",
-      "korean": "밝다"
+      "word": "聞く",
+      "hiragana": "きく",
+      "korean": "듣다"
     },
     {
       "id": 147,
       "level": "N5",
-      "act": "V",
-      "word": "ポケット",
-      "hiragana": "ぽけっと",
-      "korean": "주머니"
+      "act": "ADJ",
+      "word": "白い",
+      "hiragana": "しろい",
+      "korean": "하얗다"
     },
     {
       "id": 148,
       "level": "N5",
       "act": "N",
-      "word": "年",
-      "hiragana": "とし",
-      "korean": "나이"
+      "word": "絵",
+      "hiragana": "え",
+      "korean": "그림"
     },
     {
       "id": 149,
       "level": "N5",
-      "act": "V",
-      "word": "去年",
-      "hiragana": "きょねん",
-      "korean": "작년"
+      "act": "N",
+      "word": "ドア",
+      "hiragana": "ドア",
+      "korean": "문"
     },
     {
       "id": 150,
       "level": "N5",
-      "act": "V",
-      "word": "寝る",
-      "hiragana": "ねる",
-      "korean": "자다"
+      "act": "ADJ",
+      "word": "同じ",
+      "hiragana": "おなじ",
+      "korean": "같다"
     },
     {
       "id": 151,
       "level": "N5",
       "act": "N",
-      "word": "仕事",
-      "hiragana": "しごと",
-      "korean": "일, 직업"
+      "word": "上",
+      "hiragana": "うえ",
+      "korean": "위 (방향)"
     },
     {
       "id": 152,
       "level": "N5",
-      "act": "V",
-      "word": "財布",
-      "hiragana": "さいふ",
-      "korean": "지갑"
+      "act": "N",
+      "word": "靴下",
+      "hiragana": "くつした",
+      "korean": "양말"
     },
     {
       "id": 153,
       "level": "N5",
-      "act": "V",
-      "word": "ミルク",
-      "hiragana": "みるく",
-      "korean": "우유"
+      "act": "N",
+      "word": "レストラン",
+      "hiragana": "レストラン",
+      "korean": "레스토랑, 식당"
     },
     {
       "id": 154,
       "level": "N5",
       "act": "N",
-      "word": "右",
-      "hiragana": "みぎ",
-      "korean": "오른쪽"
+      "word": "雪",
+      "hiragana": "ゆき",
+      "korean": "눈"
     },
     {
       "id": 155,
       "level": "N5",
-      "act": "V",
-      "word": "病院",
-      "hiragana": "びょういん",
-      "korean": "병원"
+      "act": "N",
+      "word": "公園",
+      "hiragana": "こうえん",
+      "korean": "공원"
     },
     {
       "id": 156,
       "level": "N5",
-      "act": "V",
-      "word": "午後",
-      "hiragana": "ごご",
-      "korean": "오후"
+      "act": "ADJ",
+      "word": "大変",
+      "hiragana": "たいへん",
+      "korean": "굉장히, 몹시"
     },
     {
       "id": 157,
       "level": "N5",
       "act": "N",
-      "word": "話す",
-      "hiragana": "はなす",
-      "korean": "이야기하다"
+      "word": "セーター",
+      "hiragana": "セーター",
+      "korean": "스웨터"
     },
     {
       "id": 158,
       "level": "N5",
-      "act": "V",
-      "word": "電話",
-      "hiragana": "でんわ",
-      "korean": "전화"
+      "act": "N",
+      "word": "父",
+      "hiragana": "ちち",
+      "korean": "아빠"
     },
     {
       "id": 159,
       "level": "N5",
-      "act": "V",
-      "word": "手紙",
-      "hiragana": "てがみ",
-      "korean": "편지"
+      "act": "N",
+      "word": "買い物",
+      "hiragana": "かいもの",
+      "korean": "장보기"
     },
     {
       "id": 160,
       "level": "N5",
       "act": "N",
-      "word": "学校",
-      "hiragana": "がっこう",
-      "korean": "학교"
+      "word": "お金",
+      "hiragana": "おかね",
+      "korean": "돈"
     },
     {
       "id": 161,
       "level": "N5",
-      "act": "V",
-      "word": "銀行",
-      "hiragana": "ぎんこう",
-      "korean": "은행"
+      "act": "N",
+      "word": "ナイフ",
+      "hiragana": "ナイフ",
+      "korean": "칼"
     },
     {
       "id": 162,
       "level": "N5",
-      "act": "V",
-      "word": "悪い",
-      "hiragana": "わるい",
-      "korean": "나쁘다"
+      "act": "ADJ",
+      "word": "短い",
+      "hiragana": "みじかい",
+      "korean": "짧다"
     },
     {
       "id": 163,
       "level": "N5",
       "act": "N",
-      "word": "広い",
-      "hiragana": "ひろい",
-      "korean": "넓다"
+      "word": "外",
+      "hiragana": "そと",
+      "korean": "밖, 바깥"
     },
     {
       "id": 164,
       "level": "N5",
-      "act": "V",
-      "word": "住む",
-      "hiragana": "すむ",
-      "korean": "살다"
+      "act": "N",
+      "word": "眼鏡",
+      "hiragana": "めがね",
+      "korean": "안경"
     },
     {
       "id": 165,
       "level": "N5",
-      "act": "V",
-      "word": "押す",
-      "hiragana": "おす",
-      "korean": "밀다"
+      "act": "N",
+      "word": "国",
+      "hiragana": "くに",
+      "korean": "나라"
     },
     {
       "id": 166,
       "level": "N5",
-      "act": "N",
-      "word": "物",
-      "hiragana": "もの",
-      "korean": "물건"
+      "act": "V",
+      "word": "知る",
+      "hiragana": "しる",
+      "korean": "알다"
     },
     {
       "id": 167,
       "level": "N5",
-      "act": "V",
-      "word": "辞書",
-      "hiragana": "じしょ",
-      "korean": "사전"
+      "act": "ADJ",
+      "word": "安い",
+      "hiragana": "やすい",
+      "korean": "싸다"
     },
     {
       "id": 168,
       "level": "N5",
-      "act": "V",
-      "word": "宿題",
-      "hiragana": "しゅくだい",
-      "korean": "숙제"
+      "act": "ADJ",
+      "word": "青い",
+      "hiragana": "あおい",
+      "korean": "파랗다"
     },
     {
       "id": 169,
       "level": "N5",
-      "act": "N",
-      "word": "答える",
-      "hiragana": "こたえる",
-      "korean": "대답하다"
+      "act": "V",
+      "word": "教える",
+      "hiragana": "おしえる",
+      "korean": "가르치다"
     },
     {
       "id": 170,
       "level": "N5",
-      "act": "V",
-      "word": "電気",
-      "hiragana": "でんき",
-      "korean": "전기"
+      "act": "N",
+      "word": "木",
+      "hiragana": "き",
+      "korean": "나무"
     },
     {
       "id": 171,
       "level": "N5",
-      "act": "V",
-      "word": "大人",
-      "hiragana": "おとな",
-      "korean": "어른"
+      "act": "ADJ",
+      "word": "痛い",
+      "hiragana": "いたい",
+      "korean": "아프다"
     },
     {
       "id": 172,
       "level": "N5",
       "act": "N",
-      "word": "低い",
-      "hiragana": "ひくい",
-      "korean": "낮다"
+      "word": "電車",
+      "hiragana": "でんしゃ",
+      "korean": "전차(전철)"
     },
     {
       "id": 173,
       "level": "N5",
-      "act": "V",
-      "word": "夏",
-      "hiragana": "なつ",
-      "korean": "여름"
+      "act": "ADJ",
+      "word": "重い",
+      "hiragana": "おもい",
+      "korean": "무겁다"
     },
     {
       "id": 174,
       "level": "N5",
       "act": "V",
-      "word": "交番",
-      "hiragana": "こうばん",
-      "korean": "파출소"
+      "word": "行く",
+      "hiragana": "いく",
+      "korean": "가다"
     },
     {
       "id": 175,
       "level": "N5",
       "act": "N",
-      "word": "出口",
-      "hiragana": "でぐち",
-      "korean": "출구"
+      "word": "子供",
+      "hiragana": "こども",
+      "korean": "아이"
     },
     {
       "id": 176,
       "level": "N5",
-      "act": "V",
-      "word": "明るい",
-      "hiragana": "あかるい",
-      "korean": "밝다"
+      "act": "N",
+      "word": "切符",
+      "hiragana": "きっぷ",
+      "korean": "표"
     },
     {
       "id": 177,
       "level": "N5",
-      "act": "V",
-      "word": "ポケット",
-      "hiragana": "ぽけっと",
-      "korean": "주머니"
+      "act": "N",
+      "word": "私",
+      "hiragana": "わたし",
+      "korean": "나, 저"
     },
     {
       "id": 178,
       "level": "N5",
       "act": "N",
-      "word": "年",
-      "hiragana": "とし",
-      "korean": "나이"
+      "word": "散歩",
+      "hiragana": "さんぽ",
+      "korean": "산책"
     },
     {
       "id": 179,
       "level": "N5",
-      "act": "V",
-      "word": "去年",
-      "hiragana": "きょねん",
-      "korean": "작년"
+      "act": "N",
+      "word": "雨",
+      "hiragana": "あめ",
+      "korean": "비"
     },
     {
       "id": 180,
       "level": "N5",
-      "act": "V",
-      "word": "寝る",
-      "hiragana": "ねる",
-      "korean": "자다"
+      "act": "N",
+      "word": "椅子",
+      "hiragana": "いす",
+      "korean": "의자"
     },
     {
       "id": 181,
       "level": "N5",
       "act": "N",
-      "word": "仕事",
-      "hiragana": "しごと",
-      "korean": "일, 직업"
+      "word": "食堂",
+      "hiragana": "しょくどう",
+      "korean": "식당"
     },
     {
       "id": 182,
       "level": "N5",
-      "act": "V",
-      "word": "財布",
-      "hiragana": "さいふ",
-      "korean": "지갑"
+      "act": "ADJ",
+      "word": "軽い",
+      "hiragana": "かるい",
+      "korean": "가볍다"
     },
     {
       "id": 183,
       "level": "N5",
-      "act": "V",
-      "word": "ミルク",
-      "hiragana": "みるく",
-      "korean": "우유"
+      "act": "N",
+      "word": "果物",
+      "hiragana": "くだもの",
+      "korean": "과일"
     },
     {
       "id": 184,
       "level": "N5",
-      "act": "N",
-      "word": "右",
-      "hiragana": "みぎ",
-      "korean": "오른쪽"
+      "act": "ADJ",
+      "word": "忙しい",
+      "hiragana": "いそがしい",
+      "korean": "바쁘다"
     },
     {
       "id": 185,
       "level": "N5",
       "act": "V",
-      "word": "病院",
-      "hiragana": "びょういん",
-      "korean": "병원"
+      "word": "出る",
+      "hiragana": "でる",
+      "korean": "나가다"
     },
     {
       "id": 186,
       "level": "N5",
-      "act": "V",
-      "word": "午後",
-      "hiragana": "ごご",
-      "korean": "오후"
+      "act": "N",
+      "word": "車",
+      "hiragana": "くるま",
+      "korean": "차"
     },
     {
       "id": 187,
       "level": "N5",
       "act": "N",
-      "word": "話す",
-      "hiragana": "はなす",
-      "korean": "이야기하다"
+      "word": "小学生",
+      "hiragana": "しょうがくせい",
+      "korean": "초등학생"
     },
     {
       "id": 188,
       "level": "N5",
-      "act": "V",
-      "word": "電話",
-      "hiragana": "でんわ",
-      "korean": "전화"
+      "act": "ADJ",
+      "word": "近い",
+      "hiragana": "ちかい",
+      "korean": "가깝다"
     },
     {
       "id": 189,
       "level": "N5",
-      "act": "V",
-      "word": "手紙",
-      "hiragana": "てがみ",
-      "korean": "편지"
+      "act": "N",
+      "word": "足",
+      "hiragana": "あし",
+      "korean": "발"
     },
     {
       "id": 190,
       "level": "N5",
       "act": "N",
-      "word": "学校",
-      "hiragana": "がっこう",
-      "korean": "학교"
+      "word": "朝",
+      "hiragana": "あさ",
+      "korean": "아침"
     },
     {
       "id": 191,
       "level": "N5",
-      "act": "V",
-      "word": "銀行",
-      "hiragana": "ぎんこう",
-      "korean": "은행"
+      "act": "N",
+      "word": "ネクタイ",
+      "hiragana": "ネクタイ",
+      "korean": "넥타이"
     },
     {
       "id": 192,
       "level": "N5",
-      "act": "V",
-      "word": "悪い",
-      "hiragana": "わるい",
-      "korean": "나쁘다"
+      "act": "N",
+      "word": "花",
+      "hiragana": "はな",
+      "korean": "꽃"
     },
     {
       "id": 193,
       "level": "N5",
       "act": "N",
-      "word": "広い",
-      "hiragana": "ひろい",
-      "korean": "넓다"
+      "word": "結婚",
+      "hiragana": "けっこん",
+      "korean": "결혼"
     },
     {
       "id": 194,
       "level": "N5",
-      "act": "V",
-      "word": "住む",
-      "hiragana": "すむ",
-      "korean": "살다"
+      "act": "N",
+      "word": "顔",
+      "hiragana": "かお",
+      "korean": "얼굴"
     },
     {
       "id": 195,
       "level": "N5",
-      "act": "V",
-      "word": "押す",
-      "hiragana": "おす",
-      "korean": "밀다"
+      "act": "N",
+      "word": "東",
+      "hiragana": "ひがし",
+      "korean": "동"
     },
     {
       "id": 196,
       "level": "N5",
       "act": "N",
-      "word": "物",
-      "hiragana": "もの",
-      "korean": "물건"
+      "word": "天気",
+      "hiragana": "てんき",
+      "korean": "날씨"
     },
     {
       "id": 197,
       "level": "N5",
-      "act": "V",
-      "word": "辞書",
-      "hiragana": "じしょ",
-      "korean": "사전"
+      "act": "N",
+      "word": "2位",
+      "hiragana": "にい",
+      "korean": "2위"
     },
     {
       "id": 198,
       "level": "N5",
-      "act": "V",
-      "word": "宿題",
-      "hiragana": "しゅくだい",
-      "korean": "숙제"
+      "act": "ADJ",
+      "word": "上手",
+      "hiragana": "じょうず",
+      "korean": "능숙함"
     },
     {
       "id": 199,
       "level": "N5",
       "act": "N",
-      "word": "答える",
-      "hiragana": "こたえる",
-      "korean": "대답하다"
+      "word": "冬",
+      "hiragana": "ふゆ",
+      "korean": "겨울"
     },
     {
       "id": 200,
       "level": "N5",
-      "act": "V",
-      "word": "電気",
-      "hiragana": "でんき",
-      "korean": "전기"
+      "act": "ADJ",
+      "word": "遠い",
+      "hiragana": "とおい",
+      "korean": "멀다"
     },
     {
       "id": 201,
       "level": "N5",
-      "act": "V",
-      "word": "大人",
-      "hiragana": "おとな",
-      "korean": "어른"
+      "act": "ADJ",
+      "word": "少ない",
+      "hiragana": "すくない",
+      "korean": "적다"
     },
     {
       "id": 202,
       "level": "N5",
-      "act": "N",
-      "word": "低い",
-      "hiragana": "ひくい",
-      "korean": "낮다"
+      "act": "ADJ",
+      "word": "辛い",
+      "hiragana": "からい",
+      "korean": "맵다"
     },
     {
       "id": 203,
       "level": "N5",
-      "act": "V",
-      "word": "夏",
-      "hiragana": "なつ",
-      "korean": "여름"
+      "act": "ADJ",
+      "word": "美味しい",
+      "hiragana": "おいしい",
+      "korean": "맛있다"
     },
     {
       "id": 204,
       "level": "N5",
-      "act": "V",
-      "word": "交番",
-      "hiragana": "こうばん",
-      "korean": "파출소"
+      "act": "N",
+      "word": "駅",
+      "hiragana": "えき",
+      "korean": "역"
     },
     {
       "id": 205,
       "level": "N5",
       "act": "N",
-      "word": "出口",
-      "hiragana": "でぐち",
-      "korean": "출구"
+      "word": "何時",
+      "hiragana": "なんじ",
+      "korean": "몇시"
     },
     {
       "id": 206,
       "level": "N5",
-      "act": "V",
-      "word": "明るい",
-      "hiragana": "あかるい",
-      "korean": "밝다"
+      "act": "ADJ",
+      "word": "長い",
+      "hiragana": "ながい",
+      "korean": "길다"
     },
     {
       "id": 207,
       "level": "N5",
       "act": "V",
-      "word": "ポケット",
-      "hiragana": "ぽけっと",
-      "korean": "주머니"
+      "word": "売る",
+      "hiragana": "うる",
+      "korean": "팔다"
     },
     {
       "id": 208,
       "level": "N5",
-      "act": "N",
-      "word": "年",
-      "hiragana": "とし",
-      "korean": "나이"
+      "act": "V",
+      "word": "困る",
+      "hiragana": "こまる",
+      "korean": "곤란하다"
     },
     {
       "id": 209,
       "level": "N5",
-      "act": "V",
-      "word": "去年",
-      "hiragana": "きょねん",
-      "korean": "작년"
+      "act": "ADV",
+      "word": "時々",
+      "hiragana": "ときどき",
+      "korean": "때때로, 가끔씩"
     },
     {
       "id": 210,
       "level": "N5",
-      "act": "V",
-      "word": "寝る",
-      "hiragana": "ねる",
-      "korean": "자다"
+      "act": "N",
+      "word": "建物",
+      "hiragana": "たてもの",
+      "korean": "건물"
     },
     {
       "id": 211,
       "level": "N5",
       "act": "N",
-      "word": "仕事",
-      "hiragana": "しごと",
-      "korean": "일, 직업"
+      "word": "誕生日",
+      "hiragana": "たんじょうび",
+      "korean": "생일 (탄생일)"
     },
     {
       "id": 212,
       "level": "N5",
-      "act": "V",
-      "word": "財布",
-      "hiragana": "さいふ",
-      "korean": "지갑"
+      "act": "N",
+      "word": "医者",
+      "hiragana": "いしゃ",
+      "korean": "의사"
     },
     {
       "id": 213,
       "level": "N5",
-      "act": "V",
-      "word": "ミルク",
-      "hiragana": "みるく",
-      "korean": "우유"
+      "act": "N",
+      "word": "ばか",
+      "hiragana": "ばか",
+      "korean": "바보"
     },
     {
       "id": 214,
       "level": "N5",
-      "act": "N",
-      "word": "右",
-      "hiragana": "みぎ",
-      "korean": "오른쪽"
+      "act": "ADV",
+      "word": "先に",
+      "hiragana": "さきに",
+      "korean": "먼저"
     },
     {
       "id": 215,
       "level": "N5",
-      "act": "V",
-      "word": "病院",
-      "hiragana": "びょういん",
-      "korean": "병원"
+      "act": "ADJ",
+      "word": "難しい",
+      "hiragana": "むずかしい",
+      "korean": "어렵다"
     },
     {
       "id": 216,
       "level": "N5",
-      "act": "V",
-      "word": "午後",
-      "hiragana": "ごご",
-      "korean": "오후"
+      "act": "N",
+      "word": "ビール",
+      "hiragana": "ビール",
+      "korean": "맥주"
     },
     {
       "id": 217,
       "level": "N5",
       "act": "N",
-      "word": "話す",
-      "hiragana": "はなす",
-      "korean": "이야기하다"
+      "word": "シャワー",
+      "hiragana": "シャワー",
+      "korean": "샤워"
     },
     {
       "id": 218,
       "level": "N5",
-      "act": "V",
-      "word": "電話",
-      "hiragana": "でんわ",
-      "korean": "전화"
+      "act": "N",
+      "word": "鳥",
+      "hiragana": "とり",
+      "korean": "새"
     },
     {
       "id": 219,
       "level": "N5",
-      "act": "V",
-      "word": "手紙",
-      "hiragana": "てがみ",
-      "korean": "편지"
+      "act": "ADJ",
+      "word": "嫌い",
+      "hiragana": "きらい",
+      "korean": "싫다"
     },
     {
       "id": 220,
       "level": "N5",
       "act": "N",
-      "word": "学校",
-      "hiragana": "がっこう",
-      "korean": "학교"
+      "word": "窓",
+      "hiragana": "まど",
+      "korean": "창문"
     },
     {
       "id": 221,
       "level": "N5",
-      "act": "V",
-      "word": "銀行",
-      "hiragana": "ぎんこう",
-      "korean": "은행"
+      "act": "ADJ",
+      "word": "強い",
+      "hiragana": "つよい",
+      "korean": "강하다"
     },
     {
       "id": 222,
       "level": "N5",
-      "act": "V",
-      "word": "悪い",
-      "hiragana": "わるい",
-      "korean": "나쁘다"
+      "act": "N",
+      "word": "頭",
+      "hiragana": "あたま",
+      "korean": "머리"
     },
     {
       "id": 223,
       "level": "N5",
-      "act": "N",
-      "word": "広い",
-      "hiragana": "ひろい",
-      "korean": "넓다"
+      "act": "V",
+      "word": "見せる",
+      "hiragana": "みせる",
+      "korean": "보여주다"
     },
     {
       "id": 224,
       "level": "N5",
-      "act": "V",
-      "word": "住む",
-      "hiragana": "すむ",
-      "korean": "살다"
+      "act": "N",
+      "word": "毎月",
+      "hiragana": "まいつき",
+      "korean": "매월"
     },
     {
       "id": 225,
       "level": "N5",
-      "act": "V",
-      "word": "押す",
-      "hiragana": "おす",
-      "korean": "밀다"
+      "act": "N",
+      "word": "妹",
+      "hiragana": "いもうと",
+      "korean": "여동생"
     },
     {
       "id": 226,
       "level": "N5",
       "act": "N",
-      "word": "物",
-      "hiragana": "もの",
-      "korean": "물건"
+      "word": "スプーン",
+      "hiragana": "スプーン",
+      "korean": "숟가락"
     },
     {
       "id": 227,
       "level": "N5",
-      "act": "V",
-      "word": "辞書",
-      "hiragana": "じしょ",
-      "korean": "사전"
+      "act": "N",
+      "word": "鍵",
+      "hiragana": "かぎ",
+      "korean": "열쇠"
     },
     {
       "id": 228,
       "level": "N5",
       "act": "V",
-      "word": "宿題",
-      "hiragana": "しゅくだい",
-      "korean": "숙제"
+      "word": "歌う",
+      "hiragana": "うたう",
+      "korean": "노래하다"
     },
     {
       "id": 229,
       "level": "N5",
       "act": "N",
-      "word": "答える",
-      "hiragana": "こたえる",
-      "korean": "대답하다"
+      "word": "町",
+      "hiragana": "まち",
+      "korean": "마을"
     },
     {
       "id": 230,
       "level": "N5",
       "act": "V",
-      "word": "電気",
-      "hiragana": "でんき",
-      "korean": "전기"
+      "word": "見る",
+      "hiragana": "みる",
+      "korean": "보다"
     },
     {
       "id": 231,
       "level": "N5",
       "act": "V",
-      "word": "大人",
-      "hiragana": "おとな",
-      "korean": "어른"
+      "word": "呼ぶ",
+      "hiragana": "よぶ",
+      "korean": "부르다"
     },
     {
       "id": 232,
       "level": "N5",
       "act": "N",
-      "word": "低い",
-      "hiragana": "ひくい",
-      "korean": "낮다"
+      "word": "お父さん",
+      "hiragana": "おとうさん",
+      "korean": "아버지"
     },
     {
       "id": 233,
       "level": "N5",
-      "act": "V",
-      "word": "夏",
-      "hiragana": "なつ",
-      "korean": "여름"
+      "act": "N",
+      "word": "声",
+      "hiragana": "こえ",
+      "korean": "목소리"
     },
     {
       "id": 234,
       "level": "N5",
-      "act": "V",
-      "word": "交番",
-      "hiragana": "こうばん",
-      "korean": "파출소"
+      "act": "N",
+      "word": "毎年",
+      "hiragana": "まいとし",
+      "korean": "매년"
     },
     {
       "id": 235,
       "level": "N5",
       "act": "N",
-      "word": "出口",
-      "hiragana": "でぐち",
-      "korean": "출구"
+      "word": "高校生",
+      "hiragana": "こうこうせい",
+      "korean": "고교생 (고등학생)"
     },
     {
       "id": 236,
       "level": "N5",
-      "act": "V",
-      "word": "明るい",
-      "hiragana": "あかるい",
-      "korean": "밝다"
+      "act": "N",
+      "word": "カレンダー",
+      "hiragana": "カレンダー",
+      "korean": "달력"
     },
     {
       "id": 237,
       "level": "N5",
-      "act": "V",
-      "word": "ポケット",
-      "hiragana": "ぽけっと",
-      "korean": "주머니"
+      "act": "N",
+      "word": "牛乳",
+      "hiragana": "ぎゅうにゅう",
+      "korean": "우유"
     },
     {
       "id": 238,
       "level": "N5",
       "act": "N",
-      "word": "年",
-      "hiragana": "とし",
-      "korean": "나이"
+      "word": "後ろ",
+      "hiragana": "うしろ",
+      "korean": "뒤"
     },
     {
       "id": 239,
       "level": "N5",
-      "act": "V",
-      "word": "去年",
-      "hiragana": "きょねん",
-      "korean": "작년"
+      "act": "N",
+      "word": "地下鉄",
+      "hiragana": "ちかてつ",
+      "korean": "지하철"
     },
     {
       "id": 240,
       "level": "N5",
       "act": "V",
-      "word": "寝る",
-      "hiragana": "ねる",
-      "korean": "자다"
+      "word": "開ける",
+      "hiragana": "あける",
+      "korean": "열다"
     },
     {
       "id": 241,
       "level": "N5",
       "act": "N",
-      "word": "仕事",
-      "hiragana": "しごと",
-      "korean": "일, 직업"
+      "word": "体",
+      "hiragana": "からだ",
+      "korean": "몸"
     },
     {
       "id": 242,
       "level": "N5",
       "act": "V",
-      "word": "財布",
-      "hiragana": "さいふ",
-      "korean": "지갑"
+      "word": "出す",
+      "hiragana": "だす",
+      "korean": "내다 (꺼내다)"
     },
     {
       "id": 243,
       "level": "N5",
-      "act": "V",
-      "word": "ミルク",
-      "hiragana": "みるく",
-      "korean": "우유"
+      "act": "N",
+      "word": "料理",
+      "hiragana": "りょうり",
+      "korean": "요리"
     },
     {
       "id": 244,
       "level": "N5",
-      "act": "N",
-      "word": "右",
-      "hiragana": "みぎ",
-      "korean": "오른쪽"
+      "act": "V",
+      "word": "死ぬ",
+      "hiragana": "しぬ",
+      "korean": "죽다"
     },
     {
       "id": 245,
       "level": "N5",
       "act": "V",
-      "word": "病院",
-      "hiragana": "びょういん",
-      "korean": "병원"
+      "word": "座る",
+      "hiragana": "すわる",
+      "korean": "앉다"
     },
     {
       "id": 246,
       "level": "N5",
-      "act": "V",
-      "word": "午後",
-      "hiragana": "ごご",
-      "korean": "오후"
+      "act": "N",
+      "word": "大学生",
+      "hiragana": "だいがくせい",
+      "korean": "대학생"
     },
     {
       "id": 247,
       "level": "N5",
-      "act": "N",
-      "word": "話す",
-      "hiragana": "はなす",
-      "korean": "이야기하다"
+      "act": "V",
+      "word": "乗る",
+      "hiragana": "のる",
+      "korean": "타다"
     },
     {
       "id": 248,
       "level": "N5",
-      "act": "V",
-      "word": "電話",
-      "hiragana": "でんわ",
-      "korean": "전화"
+      "act": "N",
+      "word": "兄弟",
+      "hiragana": "きょうだい",
+      "korean": "형제"
     },
     {
       "id": 249,
       "level": "N5",
-      "act": "V",
-      "word": "手紙",
-      "hiragana": "てがみ",
-      "korean": "편지"
+      "act": "N",
+      "word": "目",
+      "hiragana": "め",
+      "korean": "눈"
     },
     {
       "id": 250,
       "level": "N5",
-      "act": "N",
-      "word": "学校",
-      "hiragana": "がっこう",
-      "korean": "학교"
+      "act": "ADJ",
+      "word": "暗い",
+      "hiragana": "くらい",
+      "korean": "어둡다"
     },
     {
       "id": 251,
       "level": "N5",
-      "act": "V",
-      "word": "銀行",
-      "hiragana": "ぎんこう",
-      "korean": "은행"
+      "act": "N",
+      "word": "八百屋",
+      "hiragana": "やおや",
+      "korean": "야채가게"
     },
     {
       "id": 252,
       "level": "N5",
-      "act": "V",
-      "word": "悪い",
-      "hiragana": "わるい",
-      "korean": "나쁘다"
+      "act": "N",
+      "word": "女",
+      "hiragana": "おんな",
+      "korean": "여자"
     },
     {
       "id": 253,
       "level": "N5",
       "act": "N",
-      "word": "広い",
-      "hiragana": "ひろい",
-      "korean": "넓다"
+      "word": "意味",
+      "hiragana": "いみ",
+      "korean": "의미"
     },
     {
       "id": 254,
       "level": "N5",
       "act": "V",
-      "word": "住む",
-      "hiragana": "すむ",
-      "korean": "살다"
+      "word": "下げる",
+      "hiragana": "さげる",
+      "korean": "내리다"
     },
     {
       "id": 255,
       "level": "N5",
-      "act": "V",
-      "word": "押す",
-      "hiragana": "おす",
-      "korean": "밀다"
+      "act": "N",
+      "word": "先月",
+      "hiragana": "せんげつ",
+      "korean": "지난달"
     },
     {
       "id": 256,
       "level": "N5",
       "act": "N",
-      "word": "物",
-      "hiragana": "もの",
-      "korean": "물건"
+      "word": "店",
+      "hiragana": "みせ",
+      "korean": "가게"
     },
     {
       "id": 257,
       "level": "N5",
-      "act": "V",
-      "word": "辞書",
-      "hiragana": "じしょ",
-      "korean": "사전"
+      "act": "ADJ",
+      "word": "可愛い",
+      "hiragana": "かわいい",
+      "korean": "귀엽다"
     },
     {
       "id": 258,
       "level": "N5",
-      "act": "V",
-      "word": "宿題",
-      "hiragana": "しゅくだい",
-      "korean": "숙제"
+      "act": "N",
+      "word": "大学",
+      "hiragana": "だいがく",
+      "korean": "대학"
     },
     {
       "id": 259,
       "level": "N5",
       "act": "N",
-      "word": "答える",
-      "hiragana": "こたえる",
-      "korean": "대답하다"
+      "word": "空",
+      "hiragana": "そら",
+      "korean": "하늘"
     },
     {
       "id": 260,
       "level": "N5",
-      "act": "V",
-      "word": "電気",
-      "hiragana": "でんき",
-      "korean": "전기"
+      "act": "N",
+      "word": "前",
+      "hiragana": "まえ",
+      "korean": "앞"
     },
     {
       "id": 261,
       "level": "N5",
-      "act": "V",
-      "word": "大人",
-      "hiragana": "おとな",
-      "korean": "어른"
+      "act": "N",
+      "word": "来月",
+      "hiragana": "らいげつ",
+      "korean": "다음달"
     },
     {
       "id": 262,
       "level": "N5",
       "act": "N",
-      "word": "低い",
-      "hiragana": "ひくい",
-      "korean": "낮다"
+      "word": "男",
+      "hiragana": "おとこ",
+      "korean": "남자"
     },
     {
       "id": 263,
       "level": "N5",
-      "act": "V",
-      "word": "夏",
-      "hiragana": "なつ",
-      "korean": "여름"
+      "act": "N",
+      "word": "図書館",
+      "hiragana": "としょかん",
+      "korean": "도서관"
     },
     {
       "id": 264,
       "level": "N5",
-      "act": "V",
-      "word": "交番",
-      "hiragana": "こうばん",
-      "korean": "파출소"
+      "act": "N",
+      "word": "漢字",
+      "hiragana": "かんじ",
+      "korean": "한자"
     },
     {
       "id": 265,
       "level": "N5",
       "act": "N",
-      "word": "出口",
-      "hiragana": "でぐち",
-      "korean": "출구"
+      "word": "今晩",
+      "hiragana": "こんばん",
+      "korean": "오늘밤"
     },
     {
       "id": 266,
       "level": "N5",
       "act": "V",
-      "word": "明るい",
-      "hiragana": "あかるい",
-      "korean": "밝다"
+      "word": "消す",
+      "hiragana": "けす",
+      "korean": "끄다"
     },
     {
       "id": 267,
       "level": "N5",
-      "act": "V",
-      "word": "ポケット",
-      "hiragana": "ぽけっと",
-      "korean": "주머니"
+      "act": "N",
+      "word": "百",
+      "hiragana": "ひゃく",
+      "korean": "백"
     },
     {
       "id": 268,
       "level": "N5",
       "act": "N",
-      "word": "年",
-      "hiragana": "とし",
-      "korean": "나이"
+      "word": "ペン",
+      "hiragana": "ペン",
+      "korean": "펜"
     },
     {
       "id": 269,
       "level": "N5",
-      "act": "V",
-      "word": "去年",
-      "hiragana": "きょねん",
-      "korean": "작년"
+      "act": "N",
+      "word": "姉",
+      "hiragana": "あね",
+      "korean": "누나"
     },
     {
       "id": 270,
       "level": "N5",
-      "act": "V",
-      "word": "寝る",
-      "hiragana": "ねる",
-      "korean": "자다"
+      "act": "N",
+      "word": "中",
+      "hiragana": "なか",
+      "korean": "가운데"
     },
     {
       "id": 271,
       "level": "N5",
       "act": "N",
-      "word": "仕事",
-      "hiragana": "しごと",
-      "korean": "일, 직업"
+      "word": "猫",
+      "hiragana": "ねこ",
+      "korean": "고양이"
     },
     {
       "id": 272,
       "level": "N5",
-      "act": "V",
-      "word": "財布",
-      "hiragana": "さいふ",
-      "korean": "지갑"
+      "act": "ADJ",
+      "word": "汚い",
+      "hiragana": "きたない",
+      "korean": "더럽다"
     },
     {
       "id": 273,
       "level": "N5",
       "act": "V",
-      "word": "ミルク",
-      "hiragana": "みるく",
-      "korean": "우유"
+      "word": "借りる",
+      "hiragana": "かりる",
+      "korean": "빌리다"
     },
     {
       "id": 274,
       "level": "N5",
       "act": "N",
-      "word": "右",
-      "hiragana": "みぎ",
-      "korean": "오른쪽"
+      "word": "アパート",
+      "hiragana": "アパート",
+      "korean": "아파트"
     },
     {
       "id": 275,
       "level": "N5",
-      "act": "V",
-      "word": "病院",
-      "hiragana": "びょういん",
-      "korean": "병원"
+      "act": "N",
+      "word": "テーブル",
+      "hiragana": "テーブル",
+      "korean": "테이블"
     },
     {
       "id": 276,
       "level": "N5",
-      "act": "V",
-      "word": "午後",
-      "hiragana": "ごご",
-      "korean": "오후"
+      "act": "N",
+      "word": "円",
+      "hiragana": "えん",
+      "korean": "엔 (엔화)"
     },
     {
       "id": 277,
       "level": "N5",
       "act": "N",
-      "word": "話す",
-      "hiragana": "はなす",
-      "korean": "이야기하다"
+      "word": "名前",
+      "hiragana": "なまえ",
+      "korean": "이름"
     },
     {
       "id": 278,
       "level": "N5",
       "act": "V",
-      "word": "電話",
-      "hiragana": "でんわ",
-      "korean": "전화"
+      "word": "起きる",
+      "hiragana": "おきる",
+      "korean": "일어나다"
     },
     {
       "id": 279,
       "level": "N5",
       "act": "V",
-      "word": "手紙",
-      "hiragana": "てがみ",
-      "korean": "편지"
+      "word": "上げる",
+      "hiragana": "あげる",
+      "korean": "올리다"
     },
     {
       "id": 280,
       "level": "N5",
       "act": "N",
-      "word": "学校",
-      "hiragana": "がっこう",
-      "korean": "학교"
+      "word": "ホテル",
+      "hiragana": "ホテル",
+      "korean": "호텔"
     },
     {
       "id": 281,
       "level": "N5",
-      "act": "V",
-      "word": "銀行",
-      "hiragana": "ぎんこう",
-      "korean": "은행"
+      "act": "N",
+      "word": "コピー",
+      "hiragana": "コピー",
+      "korean": "복사"
     },
     {
       "id": 282,
       "level": "N5",
-      "act": "V",
-      "word": "悪い",
-      "hiragana": "わるい",
-      "korean": "나쁘다"
+      "act": "N",
+      "word": "牛",
+      "hiragana": "うし",
+      "korean": "소"
     },
     {
       "id": 283,
       "level": "N5",
       "act": "N",
-      "word": "広い",
-      "hiragana": "ひろい",
-      "korean": "넓다"
+      "word": "卵",
+      "hiragana": "たまご",
+      "korean": "계란"
     },
     {
       "id": 284,
       "level": "N5",
-      "act": "V",
-      "word": "住む",
-      "hiragana": "すむ",
-      "korean": "살다"
+      "act": "N",
+      "word": "会社",
+      "hiragana": "かいしゃ",
+      "korean": "회사"
     },
     {
       "id": 285,
       "level": "N5",
-      "act": "V",
-      "word": "押す",
-      "hiragana": "おす",
-      "korean": "밀다"
+      "act": "N",
+      "word": "人",
+      "hiragana": "ひと",
+      "korean": "사람"
     },
     {
       "id": 286,
       "level": "N5",
       "act": "N",
-      "word": "物",
-      "hiragana": "もの",
-      "korean": "물건"
+      "word": "タクシー",
+      "hiragana": "タクシー",
+      "korean": "택시"
     },
     {
       "id": 287,
       "level": "N5",
-      "act": "V",
-      "word": "辞書",
-      "hiragana": "じしょ",
-      "korean": "사전"
+      "act": "N",
+      "word": "作文",
+      "hiragana": "さくぶん",
+      "korean": "작문"
     },
     {
       "id": 288,
       "level": "N5",
-      "act": "V",
-      "word": "宿題",
-      "hiragana": "しゅくだい",
-      "korean": "숙제"
+      "act": "ADJ",
+      "word": "古い",
+      "hiragana": "ふるい",
+      "korean": "오래되다"
     },
     {
       "id": 289,
       "level": "N5",
       "act": "N",
-      "word": "答える",
-      "hiragana": "こたえる",
-      "korean": "대답하다"
+      "word": "誰",
+      "hiragana": "だれ",
+      "korean": "누구"
     },
     {
       "id": 290,
       "level": "N5",
-      "act": "V",
-      "word": "電気",
-      "hiragana": "でんき",
-      "korean": "전기"
+      "act": "N",
+      "word": "色",
+      "hiragana": "いろ",
+      "korean": "색"
     },
     {
       "id": 291,
       "level": "N5",
-      "act": "V",
-      "word": "大人",
-      "hiragana": "おとな",
-      "korean": "어른"
+      "act": "N",
+      "word": "池",
+      "hiragana": "いけ",
+      "korean": "연못"
     },
     {
       "id": 292,
       "level": "N5",
       "act": "N",
-      "word": "低い",
-      "hiragana": "ひくい",
-      "korean": "낮다"
+      "word": "薬",
+      "hiragana": "くすり",
+      "korean": "약"
     },
     {
       "id": 293,
       "level": "N5",
-      "act": "V",
-      "word": "夏",
-      "hiragana": "なつ",
-      "korean": "여름"
+      "act": "N",
+      "word": "耳",
+      "hiragana": "みみ",
+      "korean": "귀"
     },
     {
       "id": 294,
       "level": "N5",
       "act": "V",
-      "word": "交番",
-      "hiragana": "こうばん",
-      "korean": "파출소"
+      "word": "入れる",
+      "hiragana": "いれる",
+      "korean": "넣다"
     },
     {
       "id": 295,
       "level": "N5",
       "act": "N",
-      "word": "出口",
-      "hiragana": "でぐち",
-      "korean": "출구"
+      "word": "今日",
+      "hiragana": "きょう",
+      "korean": "오늘"
     },
     {
       "id": 296,
       "level": "N5",
-      "act": "V",
-      "word": "明るい",
-      "hiragana": "あかるい",
-      "korean": "밝다"
+      "act": "N",
+      "word": "毎日",
+      "hiragana": "まいにち",
+      "korean": "매일"
     },
     {
       "id": 297,
       "level": "N5",
       "act": "V",
-      "word": "ポケット",
-      "hiragana": "ぽけっと",
-      "korean": "주머니"
+      "word": "上がる",
+      "hiragana": "あがる",
+      "korean": "오르다"
     },
     {
       "id": 298,
       "level": "N5",
       "act": "N",
-      "word": "年",
-      "hiragana": "とし",
-      "korean": "나이"
+      "word": "トイレ",
+      "hiragana": "トイレ",
+      "korean": "화장실"
     },
     {
       "id": 299,
       "level": "N5",
-      "act": "V",
-      "word": "去年",
-      "hiragana": "きょねん",
-      "korean": "작년"
+      "act": "N",
+      "word": "一人",
+      "hiragana": "ひとり",
+      "korean": "1명"
     },
     {
       "id": 300,
       "level": "N5",
-      "act": "V",
-      "word": "寝る",
-      "hiragana": "ねる",
-      "korean": "자다"
+      "act": "N",
+      "word": "下",
+      "hiragana": "した",
+      "korean": "아래(방향)"
     },
     {
       "id": 301,
@@ -16800,10 +16800,5605 @@
       "word": "地味だ",
       "hiragana": "じみだ",
       "korean": "수수하다"
+    },
+    {
+      "id": 2101,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "重要だ",
+      "hiragana": "じゅうようだ",
+      "korean": "중요하다"
+    },
+    {
+      "id": 2102,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "正直だ",
+      "hiragana": "しょうじきだ",
+      "korean": "정직하다"
+    },
+    {
+      "id": 2103,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "深刻だ",
+      "hiragana": "しんこくだ",
+      "korean": "심각하다"
+    },
+    {
+      "id": 2104,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "慎重だ",
+      "hiragana": "しんちょうだ",
+      "korean": "신중하다"
+    },
+    {
+      "id": 2105,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "素直だ",
+      "hiragana": "すなおだ",
+      "korean": "고분고분하다, 순하다, 솔직하다"
+    },
+    {
+      "id": 2106,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "清潔だ",
+      "hiragana": "せいけつだ",
+      "korean": "청결하다"
+    },
+    {
+      "id": 2107,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "率直だ",
+      "hiragana": "そっちょくだ",
+      "korean": "솔직하다"
+    },
+    {
+      "id": 2108,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "粗末だ",
+      "hiragana": "そまつだ",
+      "korean": "허술하다"
+    },
+    {
+      "id": 2109,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "退屈だ",
+      "hiragana": "たいくつだ",
+      "korean": "지루하다"
+    },
+    {
+      "id": 2110,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "対等だ",
+      "hiragana": "たいとうだ",
+      "korean": "대등하다"
+    },
+    {
+      "id": 2111,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "平だ",
+      "hiragana": "たいらだ",
+      "korean": "평평하다"
+    },
+    {
+      "id": 2112,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "確かだ",
+      "hiragana": "たしかだ",
+      "korean": "확실하다"
+    },
+    {
+      "id": 2113,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "多大だ",
+      "hiragana": "ただいだ",
+      "korean": "많고 크다"
+    },
+    {
+      "id": 2114,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "多様だ",
+      "hiragana": "たようだ",
+      "korean": "다양하다"
+    },
+    {
+      "id": 2115,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "丁寧だ",
+      "hiragana": "ていねいだ",
+      "korean": "정중하다"
+    },
+    {
+      "id": 2116,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "適切だ",
+      "hiragana": "てきせつだ",
+      "korean": "적절하다"
+    },
+    {
+      "id": 2117,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "同様だ",
+      "hiragana": "どうようだ",
+      "korean": "다름없다, 마찬가지다"
+    },
+    {
+      "id": 2118,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "得意だ",
+      "hiragana": "とくいだ",
+      "korean": "잘하다, 자신 있다"
+    },
+    {
+      "id": 2119,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "苦手だ",
+      "hiragana": "にがてだ",
+      "korean": "못하다, 싫어하다"
+    },
+    {
+      "id": 2120,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "賑やかだ",
+      "hiragana": "にぎやかだ",
+      "korean": "번화하다"
+    },
+    {
+      "id": 2121,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "派手だ",
+      "hiragana": "はでだ",
+      "korean": "화려하다"
+    },
+    {
+      "id": 2122,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "複雑だ",
+      "hiragana": "ふくざつだ",
+      "korean": "복잡하다"
+    },
+    {
+      "id": 2123,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "不思議だ",
+      "hiragana": "ふしぎだ",
+      "korean": "이상하다, 불가사의하다"
+    },
+    {
+      "id": 2124,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "不調だ",
+      "hiragana": "ふちょうだ",
+      "korean": "상태가 나쁘다, 부진하다"
+    },
+    {
+      "id": 2125,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "物騒だ",
+      "hiragana": "ぶっそうだ",
+      "korean": "어수선하다, 뒤숭숭하다"
+    },
+    {
+      "id": 2126,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "平気だ",
+      "hiragana": "へいきだ",
+      "korean": "태연하다, 아무렇지 않다"
+    },
+    {
+      "id": 2127,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "平凡だ",
+      "hiragana": "へいぼんだ",
+      "korean": "평범하다"
+    },
+    {
+      "id": 2128,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "豊富だ",
+      "hiragana": "ほうふだ",
+      "korean": "풍부하다"
+    },
+    {
+      "id": 2129,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "見事だ",
+      "hiragana": "みごとだ",
+      "korean": "훌륭하다"
+    },
+    {
+      "id": 2130,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "妙だ",
+      "hiragana": "みょうだ",
+      "korean": "묘하다"
+    },
+    {
+      "id": 2131,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "無駄だ",
+      "hiragana": "むだだ",
+      "korean": "쓸데없다, 허비하다"
+    },
+    {
+      "id": 2132,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "迷惑だ",
+      "hiragana": "めいわくだ",
+      "korean": "민폐이다"
+    },
+    {
+      "id": 2133,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "面倒だ",
+      "hiragana": "めんどうだ",
+      "korean": "귀찮다"
+    },
+    {
+      "id": 2134,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "豊かだ",
+      "hiragana": "ゆたかだ",
+      "korean": "풍족하다, 풍부하다"
+    },
+    {
+      "id": 2135,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "余計だ",
+      "hiragana": "よけいだ",
+      "korean": "쓸데없다"
+    },
+    {
+      "id": 2136,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "利口だ",
+      "hiragana": "りこうだ",
+      "korean": "영리하다"
+    },
+    {
+      "id": 2137,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "立派だ",
+      "hiragana": "りっぱだ",
+      "korean": "훌륭하다"
+    },
+    {
+      "id": 2138,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "冷静だ",
+      "hiragana": "れいせいだ",
+      "korean": "냉철하다, 이성적이다"
+    },
+    {
+      "id": 2139,
+      "level": "N2",
+      "act": "N",
+      "word": "愛用",
+      "hiragana": "あいよう",
+      "korean": "애용"
+    },
+    {
+      "id": 2140,
+      "level": "N2",
+      "act": "N",
+      "word": "印象",
+      "hiragana": "いんしょう",
+      "korean": "인상"
+    },
+    {
+      "id": 2141,
+      "level": "N2",
+      "act": "N",
+      "word": "引用",
+      "hiragana": "いんよう",
+      "korean": "인용"
+    },
+    {
+      "id": 2142,
+      "level": "N2",
+      "act": "N",
+      "word": "売上",
+      "hiragana": "うりあげ",
+      "korean": "매상"
+    },
+    {
+      "id": 2143,
+      "level": "N2",
+      "act": "N",
+      "word": "遠慮",
+      "hiragana": "えんりょ",
+      "korean": "사양, 삼가"
+    },
+    {
+      "id": 2144,
+      "level": "N2",
+      "act": "N",
+      "word": "温暖",
+      "hiragana": "おんだん",
+      "korean": "온난"
+    },
+    {
+      "id": 2145,
+      "level": "N2",
+      "act": "N",
+      "word": "解決",
+      "hiragana": "かいけつ",
+      "korean": "해결"
+    },
+    {
+      "id": 2146,
+      "level": "N2",
+      "act": "N",
+      "word": "解消",
+      "hiragana": "かいしょう",
+      "korean": "해소"
+    },
+    {
+      "id": 2147,
+      "level": "N2",
+      "act": "N",
+      "word": "拡充",
+      "hiragana": "かくじゅう",
+      "korean": "확충"
+    },
+    {
+      "id": 2148,
+      "level": "N2",
+      "act": "N",
+      "word": "確認",
+      "hiragana": "かくにん",
+      "korean": "확인"
+    },
+    {
+      "id": 2149,
+      "level": "N2",
+      "act": "N",
+      "word": "価値",
+      "hiragana": "かち",
+      "korean": "가치"
+    },
+    {
+      "id": 2150,
+      "level": "N2",
+      "act": "N",
+      "word": "活発",
+      "hiragana": "かっぱつ",
+      "korean": "활발"
+    },
+    {
+      "id": 2151,
+      "level": "N2",
+      "act": "N",
+      "word": "活躍",
+      "hiragana": "かつやく",
+      "korean": "활약"
+    },
+    {
+      "id": 2152,
+      "level": "N2",
+      "act": "N",
+      "word": "勧誘",
+      "hiragana": "かんゆう",
+      "korean": "권유"
+    },
+    {
+      "id": 2153,
+      "level": "N2",
+      "act": "N",
+      "word": "簡略",
+      "hiragana": "かんりゃく",
+      "korean": "간략"
+    },
+    {
+      "id": 2154,
+      "level": "N2",
+      "act": "N",
+      "word": "規格",
+      "hiragana": "きかく",
+      "korean": "규격"
+    },
+    {
+      "id": 2155,
+      "level": "N2",
+      "act": "N",
+      "word": "企業",
+      "hiragana": "きぎょう",
+      "korean": "기업"
+    },
+    {
+      "id": 2156,
+      "level": "N2",
+      "act": "N",
+      "word": "技術",
+      "hiragana": "ぎじゅつ",
+      "korean": "기술"
+    },
+    {
+      "id": 2157,
+      "level": "N2",
+      "act": "N",
+      "word": "議論",
+      "hiragana": "ぎろん",
+      "korean": "논의"
+    },
+    {
+      "id": 2158,
+      "level": "N2",
+      "act": "N",
+      "word": "緊張",
+      "hiragana": "きんちょう",
+      "korean": "긴장"
+    },
+    {
+      "id": 2159,
+      "level": "N2",
+      "act": "N",
+      "word": "傾向",
+      "hiragana": "けいこう",
+      "korean": "경향"
+    },
+    {
+      "id": 2160,
+      "level": "N2",
+      "act": "N",
+      "word": "現状",
+      "hiragana": "げんじょう",
+      "korean": "현상"
+    },
+    {
+      "id": 2161,
+      "level": "N2",
+      "act": "N",
+      "word": "講義",
+      "hiragana": "こうぎ",
+      "korean": "강의"
+    },
+    {
+      "id": 2162,
+      "level": "N2",
+      "act": "N",
+      "word": "購入",
+      "hiragana": "こうにゅう",
+      "korean": "구입"
+    },
+    {
+      "id": 2163,
+      "level": "N2",
+      "act": "N",
+      "word": "好評",
+      "hiragana": "こうひょう",
+      "korean": "호평"
+    },
+    {
+      "id": 2164,
+      "level": "N2",
+      "act": "N",
+      "word": "採用",
+      "hiragana": "さいよう",
+      "korean": "채용"
+    },
+    {
+      "id": 2165,
+      "level": "N2",
+      "act": "N",
+      "word": "資源",
+      "hiragana": "しげん",
+      "korean": "자원"
+    },
+    {
+      "id": 2166,
+      "level": "N2",
+      "act": "N",
+      "word": "姿勢",
+      "hiragana": "しせい",
+      "korean": "자세"
+    },
+    {
+      "id": 2167,
+      "level": "N2",
+      "act": "N",
+      "word": "指導",
+      "hiragana": "しどう",
+      "korean": "지도"
+    },
+    {
+      "id": 2168,
+      "level": "N2",
+      "act": "N",
+      "word": "地元",
+      "hiragana": "じもと",
+      "korean": "그 고장, 그 지방"
+    },
+    {
+      "id": 2169,
+      "level": "N2",
+      "act": "N",
+      "word": "循環",
+      "hiragana": "じゅんかん",
+      "korean": "순환"
+    },
+    {
+      "id": 2170,
+      "level": "N2",
+      "act": "N",
+      "word": "状況",
+      "hiragana": "じょうきょう",
+      "korean": "상황"
+    },
+    {
+      "id": 2171,
+      "level": "N2",
+      "act": "N",
+      "word": "条件",
+      "hiragana": "じょうけん",
+      "korean": "조건"
+    },
+    {
+      "id": 2172,
+      "level": "N2",
+      "act": "N",
+      "word": "証拠",
+      "hiragana": "しょうこ",
+      "korean": "증거"
+    },
+    {
+      "id": 2173,
+      "level": "N2",
+      "act": "N",
+      "word": "詳細",
+      "hiragana": "しょうさい",
+      "korean": "상세"
+    },
+    {
+      "id": 2174,
+      "level": "N2",
+      "act": "N",
+      "word": "象徴",
+      "hiragana": "しょうちょう",
+      "korean": "상징"
+    },
+    {
+      "id": 2175,
+      "level": "N2",
+      "act": "N",
+      "word": "診断",
+      "hiragana": "しんだん",
+      "korean": "진단"
+    },
+    {
+      "id": 2176,
+      "level": "N2",
+      "act": "N",
+      "word": "進歩",
+      "hiragana": "しんぽ",
+      "korean": "진보"
+    },
+    {
+      "id": 2177,
+      "level": "N2",
+      "act": "N",
+      "word": "信頼",
+      "hiragana": "しんらい",
+      "korean": "신뢰"
+    },
+    {
+      "id": 2178,
+      "level": "N2",
+      "act": "N",
+      "word": "製造",
+      "hiragana": "せいぞう",
+      "korean": "제조"
+    },
+    {
+      "id": 2179,
+      "level": "N2",
+      "act": "N",
+      "word": "制約",
+      "hiragana": "せいやく",
+      "korean": "제약"
+    },
+    {
+      "id": 2180,
+      "level": "N2",
+      "act": "N",
+      "word": "責任",
+      "hiragana": "せきにん",
+      "korean": "책임"
+    },
+    {
+      "id": 2181,
+      "level": "N2",
+      "act": "N",
+      "word": "設置",
+      "hiragana": "せっち",
+      "korean": "설치"
+    },
+    {
+      "id": 2182,
+      "level": "N2",
+      "act": "N",
+      "word": "宣伝",
+      "hiragana": "せんでん",
+      "korean": "선전"
+    },
+    {
+      "id": 2183,
+      "level": "N2",
+      "act": "N",
+      "word": "専念",
+      "hiragana": "せんねん",
+      "korean": "전념"
+    },
+    {
+      "id": 2184,
+      "level": "N2",
+      "act": "N",
+      "word": "増加",
+      "hiragana": "ぞうか",
+      "korean": "증가"
+    },
+    {
+      "id": 2185,
+      "level": "N2",
+      "act": "N",
+      "word": "態度",
+      "hiragana": "たいど",
+      "korean": "태도"
+    },
+    {
+      "id": 2186,
+      "level": "N2",
+      "act": "N",
+      "word": "担当",
+      "hiragana": "たんとう",
+      "korean": "담당"
+    },
+    {
+      "id": 2187,
+      "level": "N2",
+      "act": "N",
+      "word": "長所",
+      "hiragana": "ちょうしょ",
+      "korean": "장점"
+    },
+    {
+      "id": 2188,
+      "level": "N2",
+      "act": "N",
+      "word": "調節",
+      "hiragana": "ちょうせつ",
+      "korean": "조절"
+    },
+    {
+      "id": 2189,
+      "level": "N2",
+      "act": "N",
+      "word": "特徴",
+      "hiragana": "とくちょう",
+      "korean": "특징"
+    },
+    {
+      "id": 2190,
+      "level": "N2",
+      "act": "N",
+      "word": "特定",
+      "hiragana": "とくてい",
+      "korean": "특정"
+    },
+    {
+      "id": 2191,
+      "level": "N2",
+      "act": "N",
+      "word": "特別",
+      "hiragana": "とくべつ",
+      "korean": "특별"
+    },
+    {
+      "id": 2192,
+      "level": "N2",
+      "act": "N",
+      "word": "土地",
+      "hiragana": "とち",
+      "korean": "토지"
+    },
+    {
+      "id": 2193,
+      "level": "N2",
+      "act": "N",
+      "word": "波",
+      "hiragana": "なみ",
+      "korean": "파도"
+    },
+    {
+      "id": 2194,
+      "level": "N2",
+      "act": "N",
+      "word": "涙",
+      "hiragana": "なみだ",
+      "korean": "눈물"
+    },
+    {
+      "id": 2195,
+      "level": "N2",
+      "act": "N",
+      "word": "温もり",
+      "hiragana": "ぬくもり",
+      "korean": "온기, 따스함, 체온"
+    },
+    {
+      "id": 2196,
+      "level": "N2",
+      "act": "N",
+      "word": "値段",
+      "hiragana": "ねだん",
+      "korean": "가격"
+    },
+    {
+      "id": 2197,
+      "level": "N2",
+      "act": "N",
+      "word": "農産物",
+      "hiragana": "のうさんぶつ",
+      "korean": "농산물"
+    },
+    {
+      "id": 2198,
+      "level": "N2",
+      "act": "N",
+      "word": "能率",
+      "hiragana": "のうりつ",
+      "korean": "능률"
+    },
+    {
+      "id": 2199,
+      "level": "N2",
+      "act": "N",
+      "word": "把握",
+      "hiragana": "はあく",
+      "korean": "파악"
+    },
+    {
+      "id": 2200,
+      "level": "N2",
+      "act": "N",
+      "word": "配達",
+      "hiragana": "はいたつ",
+      "korean": "배달"
+    },
+    {
+      "id": 2201,
+      "level": "N2",
+      "act": "N",
+      "word": "俳優",
+      "hiragana": "はいゆう",
+      "korean": "배우"
+    },
+    {
+      "id": 2202,
+      "level": "N2",
+      "act": "N",
+      "word": "配慮",
+      "hiragana": "はいりょ",
+      "korean": "배려"
+    },
+    {
+      "id": 2203,
+      "level": "N2",
+      "act": "N",
+      "word": "破壊",
+      "hiragana": "はかい",
+      "korean": "파괴"
+    },
+    {
+      "id": 2204,
+      "level": "N2",
+      "act": "N",
+      "word": "肌",
+      "hiragana": "はだ",
+      "korean": "피부"
+    },
+    {
+      "id": 2205,
+      "level": "N2",
+      "act": "N",
+      "word": "発揮",
+      "hiragana": "はっき",
+      "korean": "발휘"
+    },
+    {
+      "id": 2206,
+      "level": "N2",
+      "act": "N",
+      "word": "発行",
+      "hiragana": "はっこう",
+      "korean": "발행"
+    },
+    {
+      "id": 2207,
+      "level": "N2",
+      "act": "N",
+      "word": "発送",
+      "hiragana": "はっそう",
+      "korean": "발송"
+    },
+    {
+      "id": 2208,
+      "level": "N2",
+      "act": "N",
+      "word": "発売",
+      "hiragana": "はつばい",
+      "korean": "발매"
+    },
+    {
+      "id": 2209,
+      "level": "N2",
+      "act": "N",
+      "word": "幅",
+      "hiragana": "はば",
+      "korean": "폭"
+    },
+    {
+      "id": 2210,
+      "level": "N2",
+      "act": "N",
+      "word": "範囲",
+      "hiragana": "はんい",
+      "korean": "범위"
+    },
+    {
+      "id": 2211,
+      "level": "N2",
+      "act": "N",
+      "word": "反映",
+      "hiragana": "はんえい",
+      "korean": "반영"
+    },
+    {
+      "id": 2212,
+      "level": "N2",
+      "act": "N",
+      "word": "半額",
+      "hiragana": "はんがく",
+      "korean": "반액"
+    },
+    {
+      "id": 2213,
+      "level": "N2",
+      "act": "N",
+      "word": "半減",
+      "hiragana": "はんげん",
+      "korean": "반감"
+    },
+    {
+      "id": 2214,
+      "level": "N2",
+      "act": "N",
+      "word": "判断",
+      "hiragana": "はんだん",
+      "korean": "판단"
+    },
+    {
+      "id": 2215,
+      "level": "N2",
+      "act": "N",
+      "word": "反応",
+      "hiragana": "はんのう",
+      "korean": "반응"
+    },
+    {
+      "id": 2216,
+      "level": "N2",
+      "act": "N",
+      "word": "販売",
+      "hiragana": "はんばい",
+      "korean": "판매"
+    },
+    {
+      "id": 2217,
+      "level": "N2",
+      "act": "N",
+      "word": "筆者",
+      "hiragana": "ひっしゃ",
+      "korean": "필자"
+    },
+    {
+      "id": 2218,
+      "level": "N2",
+      "act": "N",
+      "word": "飛躍的",
+      "hiragana": "ひやくてき",
+      "korean": "비약적"
+    },
+    {
+      "id": 2219,
+      "level": "N2",
+      "act": "N",
+      "word": "費用",
+      "hiragana": "ひよう",
+      "korean": "비용"
+    },
+    {
+      "id": 2220,
+      "level": "N2",
+      "act": "N",
+      "word": "評価",
+      "hiragana": "ひょうか",
+      "korean": "평가"
+    },
+    {
+      "id": 2221,
+      "level": "N2",
+      "act": "N",
+      "word": "風景",
+      "hiragana": "ふうけい",
+      "korean": "풍경"
+    },
+    {
+      "id": 2222,
+      "level": "N2",
+      "act": "N",
+      "word": "不可欠",
+      "hiragana": "ふかけつ",
+      "korean": "불가결"
+    },
+    {
+      "id": 2223,
+      "level": "N2",
+      "act": "N",
+      "word": "不足",
+      "hiragana": "ふそく",
+      "korean": "부족"
+    },
+    {
+      "id": 2224,
+      "level": "N2",
+      "act": "N",
+      "word": "負担",
+      "hiragana": "ふたん",
+      "korean": "부담"
+    },
+    {
+      "id": 2225,
+      "level": "N2",
+      "act": "N",
+      "word": "普遍的",
+      "hiragana": "ふへんてき",
+      "korean": "보편적"
+    },
+    {
+      "id": 2226,
+      "level": "N2",
+      "act": "N",
+      "word": "不良品",
+      "hiragana": "ふりょうひん",
+      "korean": "불량품"
+    },
+    {
+      "id": 2227,
+      "level": "N2",
+      "act": "N",
+      "word": "分析",
+      "hiragana": "ぶんせき",
+      "korean": "분석"
+    },
+    {
+      "id": 2228,
+      "level": "N2",
+      "act": "N",
+      "word": "弊社",
+      "hiragana": "へいしゃ",
+      "korean": "자기 회사의 겸칭"
+    },
+    {
+      "id": 2229,
+      "level": "N2",
+      "act": "N",
+      "word": "平和",
+      "hiragana": "へいわ",
+      "korean": "평화"
+    },
+    {
+      "id": 2230,
+      "level": "N2",
+      "act": "N",
+      "word": "変換",
+      "hiragana": "へんかん",
+      "korean": "변환"
+    },
+    {
+      "id": 2231,
+      "level": "N2",
+      "act": "N",
+      "word": "変更",
+      "hiragana": "へんこう",
+      "korean": "변경"
+    },
+    {
+      "id": 2232,
+      "level": "N2",
+      "act": "N",
+      "word": "法律",
+      "hiragana": "ほうりつ",
+      "korean": "법률"
+    },
+    {
+      "id": 2233,
+      "level": "N2",
+      "act": "N",
+      "word": "保護者",
+      "hiragana": "ほごしゃ",
+      "korean": "보호자"
+    },
+    {
+      "id": 2234,
+      "level": "N2",
+      "act": "N",
+      "word": "募集",
+      "hiragana": "ぼしゅう",
+      "korean": "모집"
+    },
+    {
+      "id": 2235,
+      "level": "N2",
+      "act": "N",
+      "word": "本質",
+      "hiragana": "ほんしつ",
+      "korean": "본질"
+    },
+    {
+      "id": 2236,
+      "level": "N2",
+      "act": "N",
+      "word": "本物",
+      "hiragana": "ほんもの",
+      "korean": "진짜, 실물, 전문가"
+    },
+    {
+      "id": 2237,
+      "level": "N2",
+      "act": "N",
+      "word": "見た目",
+      "hiragana": "みため",
+      "korean": "겉모습"
+    },
+    {
+      "id": 2238,
+      "level": "N2",
+      "act": "N",
+      "word": "魅力",
+      "hiragana": "みりょく",
+      "korean": "매력"
+    },
+    {
+      "id": 2239,
+      "level": "N2",
+      "act": "N",
+      "word": "名刺",
+      "hiragana": "めいし",
+      "korean": "명함"
+    },
+    {
+      "id": 2240,
+      "level": "N2",
+      "act": "N",
+      "word": "模型",
+      "hiragana": "もけい",
+      "korean": "모형"
+    },
+    {
+      "id": 2241,
+      "level": "N2",
+      "act": "N",
+      "word": "模範",
+      "hiragana": "もはん",
+      "korean": "모범"
+    },
+    {
+      "id": 2242,
+      "level": "N2",
+      "act": "N",
+      "word": "遊園地",
+      "hiragana": "ゆうえんち",
+      "korean": "유원지"
+    },
+    {
+      "id": 2243,
+      "level": "N2",
+      "act": "N",
+      "word": "有効",
+      "hiragana": "ゆうこう",
+      "korean": "유효"
+    },
+    {
+      "id": 2244,
+      "level": "N2",
+      "act": "N",
+      "word": "優勝",
+      "hiragana": "ゆうしょう",
+      "korean": "우승"
+    },
+    {
+      "id": 2245,
+      "level": "N2",
+      "act": "N",
+      "word": "夢",
+      "hiragana": "ゆめ",
+      "korean": "꿈"
+    },
+    {
+      "id": 2246,
+      "level": "N2",
+      "act": "N",
+      "word": "要求",
+      "hiragana": "ようきゅう",
+      "korean": "요구"
+    },
+    {
+      "id": 2247,
+      "level": "N2",
+      "act": "N",
+      "word": "様子",
+      "hiragana": "ようす",
+      "korean": "모습, 모양"
+    },
+    {
+      "id": 2248,
+      "level": "N2",
+      "act": "N",
+      "word": "世の中",
+      "hiragana": "よのなか",
+      "korean": "세상"
+    },
+    {
+      "id": 2249,
+      "level": "N2",
+      "act": "N",
+      "word": "余裕",
+      "hiragana": "よゆう",
+      "korean": "여유"
+    },
+    {
+      "id": 2250,
+      "level": "N2",
+      "act": "ADJ",
+      "word": "楽天的",
+      "hiragana": "らくてんてき",
+      "korean": "낙천적"
+    },
+    {
+      "id": 2251,
+      "level": "N2",
+      "act": "N",
+      "word": "利益",
+      "hiragana": "りえき",
+      "korean": "이익"
+    },
+    {
+      "id": 2252,
+      "level": "N2",
+      "act": "N",
+      "word": "利点",
+      "hiragana": "りてん",
+      "korean": "이점"
+    },
+    {
+      "id": 2253,
+      "level": "N2",
+      "act": "N",
+      "word": "歴史",
+      "hiragana": "れきし",
+      "korean": "역사"
+    },
+    {
+      "id": 2254,
+      "level": "N2",
+      "act": "N",
+      "word": "割引",
+      "hiragana": "わりびき",
+      "korean": "할인"
+    },
+    {
+      "id": 2255,
+      "level": "N2",
+      "act": "ADV",
+      "word": "相変わらず",
+      "hiragana": "あいかわらず",
+      "korean": "변함없이"
+    },
+    {
+      "id": 2256,
+      "level": "N2",
+      "act": "ADV",
+      "word": "相次いで",
+      "hiragana": "あいついで",
+      "korean": "잇따라"
+    },
+    {
+      "id": 2257,
+      "level": "N2",
+      "act": "ADV",
+      "word": "改めて",
+      "hiragana": "あらためて",
+      "korean": "다시, 재차"
+    },
+    {
+      "id": 2258,
+      "level": "N2",
+      "act": "ADV",
+      "word": "案外",
+      "hiragana": "あんがい",
+      "korean": "의외로"
+    },
+    {
+      "id": 2259,
+      "level": "N2",
+      "act": "ADV",
+      "word": "生き生き",
+      "hiragana": "いきいき",
+      "korean": "생생한 모양, 활기찬 모양"
+    },
+    {
+      "id": 2260,
+      "level": "N2",
+      "act": "ADV",
+      "word": "一応",
+      "hiragana": "いちおう",
+      "korean": "일단"
+    },
+    {
+      "id": 2261,
+      "level": "N2",
+      "act": "ADV",
+      "word": "一斉に",
+      "hiragana": "いっせいに",
+      "korean": "일제히"
+    },
+    {
+      "id": 2262,
+      "level": "N2",
+      "act": "ADV",
+      "word": "一体",
+      "hiragana": "いったい",
+      "korean": "대체"
+    },
+    {
+      "id": 2263,
+      "level": "N2",
+      "act": "ADV",
+      "word": "今にも",
+      "hiragana": "いまにも",
+      "korean": "금방이라도"
+    },
+    {
+      "id": 2264,
+      "level": "N2",
+      "act": "ADV",
+      "word": "大いに",
+      "hiragana": "おおいに",
+      "korean": "크게, 매우"
+    },
+    {
+      "id": 2265,
+      "level": "N2",
+      "act": "ADV",
+      "word": "各々",
+      "hiragana": "おのおの",
+      "korean": "각각"
+    },
+    {
+      "id": 2266,
+      "level": "N2",
+      "act": "ADV",
+      "word": "思わず",
+      "hiragana": "おもわず",
+      "korean": "무심코"
+    },
+    {
+      "id": 2267,
+      "level": "N2",
+      "act": "ADV",
+      "word": "必ず",
+      "hiragana": "かならず",
+      "korean": "반드시, 꼭"
+    },
+    {
+      "id": 2268,
+      "level": "N2",
+      "act": "ADV",
+      "word": "必ずしも",
+      "hiragana": "かならずしも",
+      "korean": "반드시 ~인 것은 아니다"
+    },
+    {
+      "id": 2269,
+      "level": "N2",
+      "act": "ADV",
+      "word": "偶然",
+      "hiragana": "ぐうぜん",
+      "korean": "우연히"
+    },
+    {
+      "id": 2270,
+      "level": "N2",
+      "act": "ADV",
+      "word": "幸いに",
+      "hiragana": "さいわいに",
+      "korean": "다행히"
+    },
+    {
+      "id": 2271,
+      "level": "N2",
+      "act": "ADV",
+      "word": "先ほど",
+      "hiragana": "さきほど",
+      "korean": "아까, 먼저"
+    },
+    {
+      "id": 2272,
+      "level": "N2",
+      "act": "ADV",
+      "word": "早速",
+      "hiragana": "さっそく",
+      "korean": "즉시, 조속히"
+    },
+    {
+      "id": 2273,
+      "level": "N2",
+      "act": "ADV",
+      "word": "様々",
+      "hiragana": "さまざま",
+      "korean": "여러 가지"
+    },
+    {
+      "id": 2274,
+      "level": "N2",
+      "act": "ADV",
+      "word": "強いて",
+      "hiragana": "しいて",
+      "korean": "굳이, 구태여"
+    },
+    {
+      "id": 2275,
+      "level": "N2",
+      "act": "ADV",
+      "word": "直に",
+      "hiragana": "じかに",
+      "korean": "직접"
+    },
+    {
+      "id": 2276,
+      "level": "N2",
+      "act": "ADV",
+      "word": "次第に",
+      "hiragana": "しだいに",
+      "korean": "점점, 순차적으로"
+    },
+    {
+      "id": 2277,
+      "level": "N2",
+      "act": "ADV",
+      "word": "実に",
+      "hiragana": "じつに",
+      "korean": "실제로"
+    },
+    {
+      "id": 2278,
+      "level": "N2",
+      "act": "ADV",
+      "word": "十分",
+      "hiragana": "じゅうぶん",
+      "korean": "충분"
+    },
+    {
+      "id": 2279,
+      "level": "N2",
+      "act": "ADV",
+      "word": "徐々に",
+      "hiragana": "じょじょに",
+      "korean": "서서히"
+    },
+    {
+      "id": 2280,
+      "level": "N2",
+      "act": "ADV",
+      "word": "少なくとも",
+      "hiragana": "すくなくとも",
+      "korean": "적어도"
+    },
+    {
+      "id": 2281,
+      "level": "N2",
+      "act": "ADV",
+      "word": "絶対に",
+      "hiragana": "ぜったいに",
+      "korean": "절대로"
+    },
+    {
+      "id": 2282,
+      "level": "N2",
+      "act": "ADV",
+      "word": "相当",
+      "hiragana": "そうとう",
+      "korean": "상당히"
+    },
+    {
+      "id": 2283,
+      "level": "N2",
+      "act": "ADV",
+      "word": "続々",
+      "hiragana": "ぞくぞく",
+      "korean": "속속, 계속해서"
+    },
+    {
+      "id": 2284,
+      "level": "N2",
+      "act": "ADV",
+      "word": "大抵",
+      "hiragana": "たいてい",
+      "korean": "대체로"
+    },
+    {
+      "id": 2285,
+      "level": "N2",
+      "act": "ADV",
+      "word": "絶えず",
+      "hiragana": "たえず",
+      "korean": "끊임없이"
+    },
+    {
+      "id": 2286,
+      "level": "N2",
+      "act": "ADV",
+      "word": "多少",
+      "hiragana": "たしょう",
+      "korean": "다소"
+    },
+    {
+      "id": 2287,
+      "level": "N2",
+      "act": "ADV",
+      "word": "直ちに",
+      "hiragana": "ただちに",
+      "korean": "금새"
+    },
+    {
+      "id": 2288,
+      "level": "N2",
+      "act": "ADV",
+      "word": "単なる",
+      "hiragana": "たんなる",
+      "korean": "단순한"
+    },
+    {
+      "id": 2289,
+      "level": "N2",
+      "act": "ADV",
+      "word": "着々",
+      "hiragana": "ちゃくちゃく",
+      "korean": "착착"
+    },
+    {
+      "id": 2290,
+      "level": "N2",
+      "act": "ADV",
+      "word": "常に",
+      "hiragana": "つねに",
+      "korean": "항상, 언제나"
+    },
+    {
+      "id": 2291,
+      "level": "N2",
+      "act": "ADV",
+      "word": "突然",
+      "hiragana": "とつぜん",
+      "korean": "돌연, 갑자기"
+    },
+    {
+      "id": 2292,
+      "level": "N2",
+      "act": "ADV",
+      "word": "何しろ",
+      "hiragana": "なにしろ",
+      "korean": "아무튼, 어쨌든"
+    },
+    {
+      "id": 2293,
+      "level": "N2",
+      "act": "ADV",
+      "word": "何とか",
+      "hiragana": "なんとか",
+      "korean": "뭐라고, 어떻게든"
+    },
+    {
+      "id": 2294,
+      "level": "N2",
+      "act": "ADV",
+      "word": "果たして",
+      "hiragana": "はたして",
+      "korean": "과연"
+    },
+    {
+      "id": 2295,
+      "level": "N2",
+      "act": "ADV",
+      "word": "再び",
+      "hiragana": "ふたたび",
+      "korean": "다시, 재차"
+    },
+    {
+      "id": 2296,
+      "level": "N2",
+      "act": "ADV",
+      "word": "別々",
+      "hiragana": "べつべつ",
+      "korean": "따로따로"
+    },
+    {
+      "id": 2297,
+      "level": "N2",
+      "act": "ADV",
+      "word": "全く",
+      "hiragana": "まったく",
+      "korean": "전혀"
+    },
+    {
+      "id": 2298,
+      "level": "N2",
+      "act": "ADV",
+      "word": "最も",
+      "hiragana": "もっとも",
+      "korean": "가장"
+    },
+    {
+      "id": 2299,
+      "level": "N2",
+      "act": "ADV",
+      "word": "元々",
+      "hiragana": "もともと",
+      "korean": "원래"
+    },
+    {
+      "id": 2300,
+      "level": "N2",
+      "act": "ADV",
+      "word": "余計",
+      "hiragana": "よけい",
+      "korean": "한층 더, 더욱"
+    },
+    {
+      "id": 2301,
+      "level": "N1",
+      "act": "V",
+      "word": "明かす",
+      "hiragana": "あかす",
+      "korean": "밝히다, 털어놓다"
+    },
+    {
+      "id": 2302,
+      "level": "N1",
+      "act": "V",
+      "word": "商う",
+      "hiragana": "あきなう",
+      "korean": "장사하다"
+    },
+    {
+      "id": 2303,
+      "level": "N1",
+      "act": "V",
+      "word": "値する",
+      "hiragana": "あたいする",
+      "korean": "가치가 있다"
+    },
+    {
+      "id": 2304,
+      "level": "N1",
+      "act": "V",
+      "word": "歩む",
+      "hiragana": "あゆむ",
+      "korean": "걷다, 나아가다"
+    },
+    {
+      "id": 2305,
+      "level": "N1",
+      "act": "V",
+      "word": "言い張る",
+      "hiragana": "いいはる",
+      "korean": "우겨대다, 주장하다"
+    },
+    {
+      "id": 2306,
+      "level": "N1",
+      "act": "V",
+      "word": "労る",
+      "hiragana": "いたわる",
+      "korean": "위로하다, 노고를 치하하다"
+    },
+    {
+      "id": 2307,
+      "level": "N1",
+      "act": "V",
+      "word": "挑む",
+      "hiragana": "いどむ",
+      "korean": "도전하다"
+    },
+    {
+      "id": 2308,
+      "level": "N1",
+      "act": "V",
+      "word": "否む",
+      "hiragana": "いなむ",
+      "korean": "부정하다, 거부하다"
+    },
+    {
+      "id": 2309,
+      "level": "N1",
+      "act": "V",
+      "word": "威張る",
+      "hiragana": "いばる",
+      "korean": "뽐내다, 으스대다"
+    },
+    {
+      "id": 2310,
+      "level": "N1",
+      "act": "V",
+      "word": "戒める",
+      "hiragana": "いましめる",
+      "korean": "훈계하다, 경고하다"
+    },
+    {
+      "id": 2311,
+      "level": "N1",
+      "act": "V",
+      "word": "浮かれる",
+      "hiragana": "うかれる",
+      "korean": "들뜨다, 신나다"
+    },
+    {
+      "id": 2312,
+      "level": "N1",
+      "act": "V",
+      "word": "打ち切る",
+      "hiragana": "うちきる",
+      "korean": "중지하다"
+    },
+    {
+      "id": 2313,
+      "level": "N1",
+      "act": "V",
+      "word": "打ち込む",
+      "hiragana": "うちこむ",
+      "korean": "몰두하다, 몰입하다"
+    },
+    {
+      "id": 2314,
+      "level": "N1",
+      "act": "V",
+      "word": "訴える",
+      "hiragana": "うったえる",
+      "korean": "호소하다"
+    },
+    {
+      "id": 2315,
+      "level": "N1",
+      "act": "V",
+      "word": "促す",
+      "hiragana": "うながす",
+      "korean": "촉구하다, 재촉하다"
+    },
+    {
+      "id": 2316,
+      "level": "N1",
+      "act": "V",
+      "word": "敬う",
+      "hiragana": "うやまう",
+      "korean": "공경하다"
+    },
+    {
+      "id": 2317,
+      "level": "N1",
+      "act": "V",
+      "word": "恨む",
+      "hiragana": "うらむ",
+      "korean": "원망하다"
+    },
+    {
+      "id": 2318,
+      "level": "N1",
+      "act": "V",
+      "word": "潤う",
+      "hiragana": "うるおう",
+      "korean": "축축해지다, 윤택해지다"
+    },
+    {
+      "id": 2319,
+      "level": "N1",
+      "act": "V",
+      "word": "拝む",
+      "hiragana": "おがむ",
+      "korean": "절하다, 경배하다"
+    },
+    {
+      "id": 2320,
+      "level": "N1",
+      "act": "V",
+      "word": "怠る",
+      "hiragana": "おこたる",
+      "korean": "게을리하다, 소홀히 하다"
+    },
+    {
+      "id": 2321,
+      "level": "N1",
+      "act": "V",
+      "word": "襲う",
+      "hiragana": "おそう",
+      "korean": "덮치다, 습격하다"
+    },
+    {
+      "id": 2322,
+      "level": "N1",
+      "act": "V",
+      "word": "陥る",
+      "hiragana": "おちいる",
+      "korean": "나쁜 상황에 빠지다"
+    },
+    {
+      "id": 2323,
+      "level": "N1",
+      "act": "V",
+      "word": "劣る",
+      "hiragana": "おとる",
+      "korean": "뒤떨어지다, 뒤지다"
+    },
+    {
+      "id": 2324,
+      "level": "N1",
+      "act": "V",
+      "word": "衰える",
+      "hiragana": "おとろえる",
+      "korean": "쇠약해지다"
+    },
+    {
+      "id": 2325,
+      "level": "N1",
+      "act": "V",
+      "word": "帯びる",
+      "hiragana": "おびる",
+      "korean": "(띠)를 띠다, (성질, 경향)을 띠다"
+    },
+    {
+      "id": 2326,
+      "level": "N1",
+      "act": "V",
+      "word": "思い返す",
+      "hiragana": "おもいかえす",
+      "korean": "돌아보다"
+    },
+    {
+      "id": 2327,
+      "level": "N1",
+      "act": "V",
+      "word": "思い詰める",
+      "hiragana": "おもいつめる",
+      "korean": "골몰하다"
+    },
+    {
+      "id": 2328,
+      "level": "N1",
+      "act": "V",
+      "word": "及ぼす",
+      "hiragana": "およぼす",
+      "korean": "영향을 미치다"
+    },
+    {
+      "id": 2329,
+      "level": "N1",
+      "act": "V",
+      "word": "顧みる",
+      "hiragana": "かえりみる",
+      "korean": "돌아보다, 회고하다"
+    },
+    {
+      "id": 2330,
+      "level": "N1",
+      "act": "V",
+      "word": "省みる",
+      "hiragana": "かえりみる",
+      "korean": "반성하다"
+    },
+    {
+      "id": 2331,
+      "level": "N1",
+      "act": "V",
+      "word": "掲げる",
+      "hiragana": "かかげる",
+      "korean": "내걸다, 내세우다"
+    },
+    {
+      "id": 2332,
+      "level": "N1",
+      "act": "V",
+      "word": "稼ぐ",
+      "hiragana": "かせぐ",
+      "korean": "돈벌이하다, (시간을) 벌다"
+    },
+    {
+      "id": 2333,
+      "level": "N1",
+      "act": "V",
+      "word": "偏る",
+      "hiragana": "かたよる",
+      "korean": "치우치다, 편중되다"
+    },
+    {
+      "id": 2334,
+      "level": "N1",
+      "act": "V",
+      "word": "絡む",
+      "hiragana": "からむ",
+      "korean": "휘감기다, 관련되다"
+    },
+    {
+      "id": 2335,
+      "level": "N1",
+      "act": "V",
+      "word": "築く",
+      "hiragana": "きずく",
+      "korean": "쌓다, 구축하다"
+    },
+    {
+      "id": 2336,
+      "level": "N1",
+      "act": "V",
+      "word": "切り出す",
+      "hiragana": "きりだす",
+      "korean": "말을 꺼내다"
+    },
+    {
+      "id": 2337,
+      "level": "N1",
+      "act": "V",
+      "word": "食い違う",
+      "hiragana": "くいちがう",
+      "korean": "(의견)이 엇갈리다"
+    },
+    {
+      "id": 2338,
+      "level": "N1",
+      "act": "V",
+      "word": "食い止める",
+      "hiragana": "くいとめる",
+      "korean": "저지하다, 막다"
+    },
+    {
+      "id": 2339,
+      "level": "N1",
+      "act": "V",
+      "word": "崩す",
+      "hiragana": "くずす",
+      "korean": "무너뜨리다, 흩뜨리다"
+    },
+    {
+      "id": 2340,
+      "level": "N1",
+      "act": "V",
+      "word": "覆す",
+      "hiragana": "くつがえす",
+      "korean": "뒤집어엎다"
+    },
+    {
+      "id": 2341,
+      "level": "N1",
+      "act": "V",
+      "word": "拘る",
+      "hiragana": "こだわる",
+      "korean": "집착하다, 세세하게 신경을 쓰다"
+    },
+    {
+      "id": 2342,
+      "level": "N1",
+      "act": "V",
+      "word": "拒む",
+      "hiragana": "こばむ",
+      "korean": "거부하다, 저지하다"
+    },
+    {
+      "id": 2343,
+      "level": "N1",
+      "act": "V",
+      "word": "遮る",
+      "hiragana": "さえぎる",
+      "korean": "차단하다"
+    },
+    {
+      "id": 2344,
+      "level": "N1",
+      "act": "V",
+      "word": "逆らう",
+      "hiragana": "さからう",
+      "korean": "거스르다, 거역하다"
+    },
+    {
+      "id": 2345,
+      "level": "N1",
+      "act": "V",
+      "word": "差し引く",
+      "hiragana": "さしひく",
+      "korean": "공제하다, 차감하다"
+    },
+    {
+      "id": 2346,
+      "level": "N1",
+      "act": "V",
+      "word": "授ける",
+      "hiragana": "さずける",
+      "korean": "수여하다, 하사하다"
+    },
+    {
+      "id": 2347,
+      "level": "N1",
+      "act": "V",
+      "word": "察する",
+      "hiragana": "さっする",
+      "korean": "헤아리다"
+    },
+    {
+      "id": 2348,
+      "level": "N1",
+      "act": "V",
+      "word": "悟る",
+      "hiragana": "さとる",
+      "korean": "깨닫다"
+    },
+    {
+      "id": 2349,
+      "level": "N1",
+      "act": "V",
+      "word": "妨げる",
+      "hiragana": "さまたげる",
+      "korean": "방해하다"
+    },
+    {
+      "id": 2350,
+      "level": "N1",
+      "act": "V",
+      "word": "障る",
+      "hiragana": "さわる",
+      "korean": "방해가 되다, 지장이 있다"
+    },
+    {
+      "id": 2351,
+      "level": "N1",
+      "act": "V",
+      "word": "仕上がる",
+      "hiragana": "しあがる",
+      "korean": "마무리되다, 완성되다"
+    },
+    {
+      "id": 2352,
+      "level": "N1",
+      "act": "V",
+      "word": "慕う",
+      "hiragana": "したう",
+      "korean": "사모하다, 추앙하다"
+    },
+    {
+      "id": 2353,
+      "level": "N1",
+      "act": "V",
+      "word": "忍ぶ",
+      "hiragana": "しのぶ",
+      "korean": "숨다, 견디다"
+    },
+    {
+      "id": 2354,
+      "level": "N1",
+      "act": "V",
+      "word": "退く",
+      "hiragana": "しりぞく",
+      "korean": "물러나다, 후퇴하다"
+    },
+    {
+      "id": 2355,
+      "level": "N1",
+      "act": "V",
+      "word": "廃れる",
+      "hiragana": "すたれる",
+      "korean": "쇠퇴하다"
+    },
+    {
+      "id": 2356,
+      "level": "N1",
+      "act": "V",
+      "word": "急かす",
+      "hiragana": "せかす",
+      "korean": "재촉하다"
+    },
+    {
+      "id": 2357,
+      "level": "N1",
+      "act": "V",
+      "word": "迫る",
+      "hiragana": "せまる",
+      "korean": "<자동사> 다가오다 <타동사> 강요하다"
+    },
+    {
+      "id": 2358,
+      "level": "N1",
+      "act": "V",
+      "word": "損なう",
+      "hiragana": "そこなう",
+      "korean": "파손하다, 손상시키다"
+    },
+    {
+      "id": 2359,
+      "level": "N1",
+      "act": "V",
+      "word": "逸れる",
+      "hiragana": "それる",
+      "korean": "빗나가다, 벗어나다"
+    },
+    {
+      "id": 2360,
+      "level": "N1",
+      "act": "V",
+      "word": "託す",
+      "hiragana": "たくす",
+      "korean": "맡기다, 부탁하다"
+    },
+    {
+      "id": 2361,
+      "level": "N1",
+      "act": "V",
+      "word": "蓄える",
+      "hiragana": "たくわえる",
+      "korean": "저축하다, 비축하다"
+    },
+    {
+      "id": 2362,
+      "level": "N1",
+      "act": "V",
+      "word": "携わる",
+      "hiragana": "たずさわる",
+      "korean": "종사하다"
+    },
+    {
+      "id": 2363,
+      "level": "N1",
+      "act": "V",
+      "word": "漂う",
+      "hiragana": "ただよう",
+      "korean": "떠돌다, 감돌다"
+    },
+    {
+      "id": 2364,
+      "level": "N1",
+      "act": "V",
+      "word": "立て替える",
+      "hiragana": "たてかえる",
+      "korean": "대신하여 지불하다"
+    },
+    {
+      "id": 2365,
+      "level": "N1",
+      "act": "V",
+      "word": "費やす",
+      "hiragana": "ついやす",
+      "korean": "사용하다, 다 소비하다"
+    },
+    {
+      "id": 2366,
+      "level": "N1",
+      "act": "V",
+      "word": "突き止める",
+      "hiragana": "つきとめる",
+      "korean": "밝혀내다, 알아내다"
+    },
+    {
+      "id": 2367,
+      "level": "N1",
+      "act": "V",
+      "word": "尽くす",
+      "hiragana": "つくす",
+      "korean": "애쓰다, 있는 힘을 다하다"
+    },
+    {
+      "id": 2368,
+      "level": "N1",
+      "act": "V",
+      "word": "償う",
+      "hiragana": "つぐなう",
+      "korean": "보상하다"
+    },
+    {
+      "id": 2369,
+      "level": "N1",
+      "act": "V",
+      "word": "告げる",
+      "hiragana": "つげる",
+      "korean": "고하다, 알리다"
+    },
+    {
+      "id": 2370,
+      "level": "N1",
+      "act": "V",
+      "word": "培う",
+      "hiragana": "つちかう",
+      "korean": "기르다, 배양하다"
+    },
+    {
+      "id": 2371,
+      "level": "N1",
+      "act": "V",
+      "word": "慎む",
+      "hiragana": "つつしむ",
+      "korean": "삼가다"
+    },
+    {
+      "id": 2372,
+      "level": "N1",
+      "act": "V",
+      "word": "集う",
+      "hiragana": "つどう",
+      "korean": "모이다"
+    },
+    {
+      "id": 2373,
+      "level": "N1",
+      "act": "V",
+      "word": "募る",
+      "hiragana": "つのる",
+      "korean": "<자동사> 점점 강해지다 <타동사> 모집하다"
+    },
+    {
+      "id": 2374,
+      "level": "N1",
+      "act": "V",
+      "word": "積み立てる",
+      "hiragana": "つみたてる",
+      "korean": "적립하다"
+    },
+    {
+      "id": 2375,
+      "level": "N1",
+      "act": "V",
+      "word": "貫く",
+      "hiragana": "つらぬく",
+      "korean": "관철하다"
+    },
+    {
+      "id": 2376,
+      "level": "N1",
+      "act": "V",
+      "word": "遠ざける",
+      "hiragana": "とおざける",
+      "korean": "멀리하다"
+    },
+    {
+      "id": 2377,
+      "level": "N1",
+      "act": "V",
+      "word": "説く",
+      "hiragana": "とく",
+      "korean": "설명하다, 설득하다"
+    },
+    {
+      "id": 2378,
+      "level": "N1",
+      "act": "V",
+      "word": "遂げる",
+      "hiragana": "とげる",
+      "korean": "이루다, 완수하다"
+    },
+    {
+      "id": 2379,
+      "level": "N1",
+      "act": "V",
+      "word": "滞る",
+      "hiragana": "とどこおる",
+      "korean": "막히다, 밀리다"
+    },
+    {
+      "id": 2380,
+      "level": "N1",
+      "act": "V",
+      "word": "唱える",
+      "hiragana": "となえる",
+      "korean": "외치다, 주장하다"
+    },
+    {
+      "id": 2381,
+      "level": "N1",
+      "act": "V",
+      "word": "戸惑う",
+      "hiragana": "とまどう",
+      "korean": "어리둥절해 하다, 당황하다"
+    },
+    {
+      "id": 2382,
+      "level": "N1",
+      "act": "V",
+      "word": "取り組む",
+      "hiragana": "とりくむ",
+      "korean": "몰두하다"
+    },
+    {
+      "id": 2383,
+      "level": "N1",
+      "act": "V",
+      "word": "取り締まる",
+      "hiragana": "とりしまる",
+      "korean": "단속하다"
+    },
+    {
+      "id": 2384,
+      "level": "N1",
+      "act": "V",
+      "word": "取り戻す",
+      "hiragana": "とりもどす",
+      "korean": "되찾다, 회복하다"
+    },
+    {
+      "id": 2385,
+      "level": "N1",
+      "act": "V",
+      "word": "賑わう",
+      "hiragana": "にぎわう",
+      "korean": "활기차다, 번화하다"
+    },
+    {
+      "id": 2386,
+      "level": "N1",
+      "act": "V",
+      "word": "担う",
+      "hiragana": "になう",
+      "korean": "짊어지다, 떠맡다"
+    },
+    {
+      "id": 2387,
+      "level": "N1",
+      "act": "V",
+      "word": "鈍る",
+      "hiragana": "にぶる",
+      "korean": "둔해지다, 무디어지다"
+    },
+    {
+      "id": 2388,
+      "level": "N1",
+      "act": "V",
+      "word": "逃れる",
+      "hiragana": "のがれる",
+      "korean": "벗어나다, 피하다"
+    },
+    {
+      "id": 2389,
+      "level": "N1",
+      "act": "V",
+      "word": "臨む",
+      "hiragana": "のぞむ",
+      "korean": "임하다, 상황에 직면하다"
+    },
+    {
+      "id": 2390,
+      "level": "N1",
+      "act": "V",
+      "word": "乗り出す",
+      "hiragana": "のりだす",
+      "korean": "시작하다"
+    },
+    {
+      "id": 2391,
+      "level": "N1",
+      "act": "V",
+      "word": "剥がす",
+      "hiragana": "はがす",
+      "korean": "벗기다, 떼다"
+    },
+    {
+      "id": 2392,
+      "level": "N1",
+      "act": "V",
+      "word": "捗る",
+      "hiragana": "はかどる",
+      "korean": "진척되다"
+    },
+    {
+      "id": 2393,
+      "level": "N1",
+      "act": "V",
+      "word": "励む",
+      "hiragana": "はげむ",
+      "korean": "힘쓰다"
+    },
+    {
+      "id": 2394,
+      "level": "N1",
+      "act": "V",
+      "word": "弾む",
+      "hiragana": "はずむ",
+      "korean": "튀다, 들뜨다"
+    },
+    {
+      "id": 2395,
+      "level": "N1",
+      "act": "V",
+      "word": "阻む",
+      "hiragana": "はばむ",
+      "korean": "저지하다, 가로막다"
+    },
+    {
+      "id": 2396,
+      "level": "N1",
+      "act": "V",
+      "word": "張り合う",
+      "hiragana": "はりあう",
+      "korean": "겨루다, 경쟁하다"
+    },
+    {
+      "id": 2397,
+      "level": "N1",
+      "act": "V",
+      "word": "張り切る",
+      "hiragana": "はりきる",
+      "korean": "기운이 넘치다, 팽팽하다"
+    },
+    {
+      "id": 2398,
+      "level": "N1",
+      "act": "V",
+      "word": "控える",
+      "hiragana": "ひかえる",
+      "korean": "삼가다, 앞두다, 기록하다"
+    },
+    {
+      "id": 2399,
+      "level": "N1",
+      "act": "V",
+      "word": "率いる",
+      "hiragana": "ひきいる",
+      "korean": "이끌다, 인솔하다"
+    },
+    {
+      "id": 2400,
+      "level": "N1",
+      "act": "V",
+      "word": "引き落とす",
+      "hiragana": "ひきおとす",
+      "korean": "당겨서 떨어뜨리다, 자동납부하다"
+    },
+    {
+      "id": 2401,
+      "level": "N1",
+      "act": "V",
+      "word": "引き寄せる",
+      "hiragana": "ひきよせる",
+      "korean": "끌어당기다"
+    },
+    {
+      "id": 2402,
+      "level": "N1",
+      "act": "V",
+      "word": "響く",
+      "hiragana": "ひびく",
+      "korean": "울리다"
+    },
+    {
+      "id": 2403,
+      "level": "N1",
+      "act": "V",
+      "word": "秘める",
+      "hiragana": "ひめる",
+      "korean": "숨기다, 감추다"
+    },
+    {
+      "id": 2404,
+      "level": "N1",
+      "act": "V",
+      "word": "翻す",
+      "hiragana": "ひるがえす",
+      "korean": "뒤집다, 번복하다"
+    },
+    {
+      "id": 2405,
+      "level": "N1",
+      "act": "V",
+      "word": "隔てる",
+      "hiragana": "へだてる",
+      "korean": "멀리하다, 사이에 두다"
+    },
+    {
+      "id": 2406,
+      "level": "N1",
+      "act": "V",
+      "word": "解ける",
+      "hiragana": "ほどける",
+      "korean": "(매듭, 끈)이 풀리다"
+    },
+    {
+      "id": 2407,
+      "level": "N1",
+      "act": "V",
+      "word": "施す",
+      "hiragana": "ほどこす",
+      "korean": "베풀다, 행하다"
+    },
+    {
+      "id": 2408,
+      "level": "N1",
+      "act": "V",
+      "word": "滅びる",
+      "hiragana": "ほろびる",
+      "korean": "멸망하다"
+    },
+    {
+      "id": 2409,
+      "level": "N1",
+      "act": "V",
+      "word": "紛れる",
+      "hiragana": "まぎれる",
+      "korean": "뒤섞이다"
+    },
+    {
+      "id": 2410,
+      "level": "N1",
+      "act": "V",
+      "word": "惑わす",
+      "hiragana": "まどわす",
+      "korean": "혼란시키다, 현혹시키다"
+    },
+    {
+      "id": 2411,
+      "level": "N1",
+      "act": "V",
+      "word": "免れる",
+      "hiragana": "まぬかれる",
+      "korean": "면하다, 모면하다"
+    },
+    {
+      "id": 2412,
+      "level": "N1",
+      "act": "V",
+      "word": "見合わせる",
+      "hiragana": "みあわせる",
+      "korean": "보류하다"
+    },
+    {
+      "id": 2413,
+      "level": "N1",
+      "act": "V",
+      "word": "見失う",
+      "hiragana": "みうしなう",
+      "korean": "시야에서 놓치다"
+    },
+    {
+      "id": 2414,
+      "level": "N1",
+      "act": "V",
+      "word": "見落とす",
+      "hiragana": "みおとす",
+      "korean": "간과하다"
+    },
+    {
+      "id": 2415,
+      "level": "N1",
+      "act": "V",
+      "word": "設ける",
+      "hiragana": "もうける",
+      "korean": "마련하다, 설치하다"
+    },
+    {
+      "id": 2416,
+      "level": "N1",
+      "act": "V",
+      "word": "催す",
+      "hiragana": "もよおす",
+      "korean": "개최하다"
+    },
+    {
+      "id": 2417,
+      "level": "N1",
+      "act": "V",
+      "word": "養う",
+      "hiragana": "やしなう",
+      "korean": "기르다, 부양하다"
+    },
+    {
+      "id": 2418,
+      "level": "N1",
+      "act": "V",
+      "word": "安らぐ",
+      "hiragana": "やすらぐ",
+      "korean": "평온해지다"
+    },
+    {
+      "id": 2419,
+      "level": "N1",
+      "act": "V",
+      "word": "和らぐ",
+      "hiragana": "やわらぐ",
+      "korean": "누그러지다"
+    },
+    {
+      "id": 2420,
+      "level": "N1",
+      "act": "V",
+      "word": "揺らぐ",
+      "hiragana": "ゆらぐ",
+      "korean": "흔들리다"
+    },
+    {
+      "id": 2421,
+      "level": "N1",
+      "act": "V",
+      "word": "揺るがす",
+      "hiragana": "ゆるがす",
+      "korean": "뒤흔들다"
+    },
+    {
+      "id": 2422,
+      "level": "N1",
+      "act": "V",
+      "word": "緩める",
+      "hiragana": "ゆるめる",
+      "korean": "완화하다, 느슨하게 하다"
+    },
+    {
+      "id": 2423,
+      "level": "N1",
+      "act": "V",
+      "word": "装う",
+      "hiragana": "よそおう",
+      "korean": "꾸미다, 치장하다"
+    },
+    {
+      "id": 2424,
+      "level": "N1",
+      "act": "V",
+      "word": "詫びる",
+      "hiragana": "わびる",
+      "korean": "사과하다"
+    },
+    {
+      "id": 2425,
+      "level": "N1",
+      "act": "V",
+      "word": "割り込む",
+      "hiragana": "わりこむ",
+      "korean": "끼어들다, 새치기하다"
+    },
+    {
+      "id": 2426,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "淡い",
+      "hiragana": "あわい",
+      "korean": "연하다, 흐리다"
+    },
+    {
+      "id": 2427,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "潔い",
+      "hiragana": "いさぎよい",
+      "korean": "깨끗하다, 후련하다"
+    },
+    {
+      "id": 2428,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "薄暗い",
+      "hiragana": "うすぐらい",
+      "korean": "어둑어둑하다, 침침하다"
+    },
+    {
+      "id": 2429,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "疑わしい",
+      "hiragana": "うたがわしい",
+      "korean": "의심스럽다"
+    },
+    {
+      "id": 2430,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "重々しい",
+      "hiragana": "おもおもしい",
+      "korean": "엄숙하다, 위엄이 있다"
+    },
+    {
+      "id": 2431,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "清い",
+      "hiragana": "きよい",
+      "korean": "맑다, 깨끗하다"
+    },
+    {
+      "id": 2432,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "心地よい",
+      "hiragana": "ここちよい",
+      "korean": "기분 좋다, 상쾌하다"
+    },
+    {
+      "id": 2433,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "心無い",
+      "hiragana": "こころない",
+      "korean": "철이 없다, 매정하다"
+    },
+    {
+      "id": 2434,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "快い",
+      "hiragana": "こころよい",
+      "korean": "기분 좋다"
+    },
+    {
+      "id": 2435,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "騒々しい",
+      "hiragana": "そうぞうしい",
+      "korean": "시끄럽다, 소란스럽다"
+    },
+    {
+      "id": 2436,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "容易い",
+      "hiragana": "たやすい",
+      "korean": "쉽다, 용이하다"
+    },
+    {
+      "id": 2437,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "注意深い",
+      "hiragana": "ちゅういぶかい",
+      "korean": "주의 깊다, 신중하다"
+    },
+    {
+      "id": 2438,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "粘り強い",
+      "hiragana": "ねばりづよい",
+      "korean": "끈기 있다"
+    },
+    {
+      "id": 2439,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "望ましい",
+      "hiragana": "のぞましい",
+      "korean": "바람직하다"
+    },
+    {
+      "id": 2440,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "甚だしい",
+      "hiragana": "はなはだしい",
+      "korean": "심하다"
+    },
+    {
+      "id": 2441,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "華々しい",
+      "hiragana": "はなばなしい",
+      "korean": "화려하다"
+    },
+    {
+      "id": 2442,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "幅広い",
+      "hiragana": "はばひろい",
+      "korean": "폭넓다"
+    },
+    {
+      "id": 2443,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "分厚い",
+      "hiragana": "ぶあつい",
+      "korean": "두툼하다, 두껍다"
+    },
+    {
+      "id": 2444,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "紛らわしい",
+      "hiragana": "まぎらわしい",
+      "korean": "헷갈리다, 혼란스럽다"
+    },
+    {
+      "id": 2445,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "目覚ましい",
+      "hiragana": "めざましい",
+      "korean": "눈부시다, 주목할 만하다"
+    },
+    {
+      "id": 2446,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "物々しい",
+      "hiragana": "ものものしい",
+      "korean": "삼엄하다"
+    },
+    {
+      "id": 2447,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "煩わしい",
+      "hiragana": "わずらわしい",
+      "korean": "성가시다, 번거롭다"
+    },
+    {
+      "id": 2448,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "円滑な",
+      "hiragana": "えんかつな",
+      "korean": "원활한"
+    },
+    {
+      "id": 2449,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "厳かな",
+      "hiragana": "おごそかな",
+      "korean": "엄숙한"
+    },
+    {
+      "id": 2450,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "愚かな",
+      "hiragana": "おろかな",
+      "korean": "어리석은"
+    },
+    {
+      "id": 2451,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "疎かな",
+      "hiragana": "おろそかな",
+      "korean": "소홀한"
+    },
+    {
+      "id": 2452,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "画一的な",
+      "hiragana": "かくいつてきな",
+      "korean": "획일적인"
+    },
+    {
+      "id": 2453,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "頑なな",
+      "hiragana": "かたくなな",
+      "korean": "완고한"
+    },
+    {
+      "id": 2454,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "画期的な",
+      "hiragana": "かっきてきな",
+      "korean": "획기적인"
+    },
+    {
+      "id": 2455,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "頑固な",
+      "hiragana": "がんこな",
+      "korean": "완고한"
+    },
+    {
+      "id": 2456,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "頑丈な",
+      "hiragana": "がんじょうな",
+      "korean": "튼튼한"
+    },
+    {
+      "id": 2457,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "肝心な",
+      "hiragana": "かんじんな",
+      "korean": "중요한"
+    },
+    {
+      "id": 2458,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "閑静な",
+      "hiragana": "かんせいな",
+      "korean": "한적한, 조용한"
+    },
+    {
+      "id": 2459,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "完璧な",
+      "hiragana": "かんぺきな",
+      "korean": "완벽한"
+    },
+    {
+      "id": 2460,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "寛容な",
+      "hiragana": "かんような",
+      "korean": "너그러운"
+    },
+    {
+      "id": 2461,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "窮屈な",
+      "hiragana": "きゅうくつな",
+      "korean": "비좁은, 답답한"
+    },
+    {
+      "id": 2462,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "強硬な",
+      "hiragana": "きょうこうな",
+      "korean": "강경한"
+    },
+    {
+      "id": 2463,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "強大な",
+      "hiragana": "きょうだいな",
+      "korean": "강대한, 막강한"
+    },
+    {
+      "id": 2464,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "極端な",
+      "hiragana": "きょくたんな",
+      "korean": "극단적인"
+    },
+    {
+      "id": 2465,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "緊密な",
+      "hiragana": "きんみつな",
+      "korean": "긴밀한"
+    },
+    {
+      "id": 2466,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "堅実な",
+      "hiragana": "けんじつな",
+      "korean": "견실한, 탄탄한"
+    },
+    {
+      "id": 2467,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "厳正な",
+      "hiragana": "げんせいな",
+      "korean": "엄정한"
+    },
+    {
+      "id": 2468,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "顕著な",
+      "hiragana": "けんちょな",
+      "korean": "현저한"
+    },
+    {
+      "id": 2469,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "高尚な",
+      "hiragana": "こうしょうな",
+      "korean": "고상한"
+    },
+    {
+      "id": 2470,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "巧妙な",
+      "hiragana": "こうみょうな",
+      "korean": "교묘한"
+    },
+    {
+      "id": 2471,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "克明な",
+      "hiragana": "こくめいな",
+      "korean": "극명한, 매우 세밀한"
+    },
+    {
+      "id": 2472,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "質素な",
+      "hiragana": "しっそな",
+      "korean": "검소한, 소탈한"
+    },
+    {
+      "id": 2473,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "柔軟な",
+      "hiragana": "じゅうなんな",
+      "korean": "유연한"
+    },
+    {
+      "id": 2474,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "迅速な",
+      "hiragana": "じんそくな",
+      "korean": "신속한"
+    },
+    {
+      "id": 2475,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "健やかな",
+      "hiragana": "すこやかな",
+      "korean": "건강한"
+    },
+    {
+      "id": 2476,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "速やかな",
+      "hiragana": "すみやかな",
+      "korean": "신속한"
+    },
+    {
+      "id": 2477,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "性急な",
+      "hiragana": "せいきゅうな",
+      "korean": "성급한"
+    },
+    {
+      "id": 2478,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "精巧な",
+      "hiragana": "せいこうな",
+      "korean": "정교한"
+    },
+    {
+      "id": 2479,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "切実な",
+      "hiragana": "せつじつな",
+      "korean": "절실한"
+    },
+    {
+      "id": 2480,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "繊細な",
+      "hiragana": "せんさいな",
+      "korean": "섬세한"
+    },
+    {
+      "id": 2481,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "巧みな",
+      "hiragana": "たくみな",
+      "korean": "교묘한, 기교 있는"
+    },
+    {
+      "id": 2482,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "丹念な",
+      "hiragana": "たんねんな",
+      "korean": "정성스런, 꼼꼼한"
+    },
+    {
+      "id": 2483,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "手薄な",
+      "hiragana": "てうすな",
+      "korean": "허술한, 불충분한"
+    },
+    {
+      "id": 2484,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "的確な",
+      "hiragana": "てきかくな",
+      "korean": "정확한"
+    },
+    {
+      "id": 2485,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "入念な",
+      "hiragana": "にゅうねんな",
+      "korean": "꼼꼼한, 정성스런"
+    },
+    {
+      "id": 2486,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "煩雑な",
+      "hiragana": "はんざつな",
+      "korean": "번잡한"
+    },
+    {
+      "id": 2487,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "密かな",
+      "hiragana": "ひそかな",
+      "korean": "은밀한"
+    },
+    {
+      "id": 2488,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "頻繁な",
+      "hiragana": "ひんぱんな",
+      "korean": "빈번한"
+    },
+    {
+      "id": 2489,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "不用意な",
+      "hiragana": "ふよういな",
+      "korean": "부주의한"
+    },
+    {
+      "id": 2490,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "膨大な",
+      "hiragana": "ぼうだいな",
+      "korean": "방대한"
+    },
+    {
+      "id": 2491,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "無残な",
+      "hiragana": "むざんな",
+      "korean": "무참한, 잔인한"
+    },
+    {
+      "id": 2492,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "無邪気な",
+      "hiragana": "むじゃきな",
+      "korean": "순진한"
+    },
+    {
+      "id": 2493,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "無謀な",
+      "hiragana": "むぼうな",
+      "korean": "무모한, 천진난만한"
+    },
+    {
+      "id": 2494,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "綿密な",
+      "hiragana": "めんみつな",
+      "korean": "면밀한"
+    },
+    {
+      "id": 2495,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "愉快な",
+      "hiragana": "ゆかいな",
+      "korean": "유쾌한"
+    },
+    {
+      "id": 2496,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "緩やかな",
+      "hiragana": "ゆるやかな",
+      "korean": "완만한"
+    },
+    {
+      "id": 2497,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "幼稚な",
+      "hiragana": "ようちな",
+      "korean": "유치한"
+    },
+    {
+      "id": 2498,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "冷淡な",
+      "hiragana": "れいたんな",
+      "korean": "냉담한"
+    },
+    {
+      "id": 2499,
+      "level": "N1",
+      "act": "ADJ",
+      "word": "露骨な",
+      "hiragana": "ろこつな",
+      "korean": "노골적인"
+    },
+    {
+      "id": 2500,
+      "level": "N1",
+      "act": "N",
+      "word": "圧迫",
+      "hiragana": "あっぱく",
+      "korean": "압박"
+    },
+    {
+      "id": 2501,
+      "level": "N1",
+      "act": "N",
+      "word": "跡地",
+      "hiragana": "あとち",
+      "korean": "철거 부지, 철거 후 공터"
+    },
+    {
+      "id": 2502,
+      "level": "N1",
+      "act": "N",
+      "word": "安静",
+      "hiragana": "あんせい",
+      "korean": "안정(평온)"
+    },
+    {
+      "id": 2503,
+      "level": "N1",
+      "act": "N",
+      "word": "安堵",
+      "hiragana": "あんど",
+      "korean": "안도, 안심"
+    },
+    {
+      "id": 2504,
+      "level": "N1",
+      "act": "N",
+      "word": "意気込み",
+      "hiragana": "いきごみ",
+      "korean": "패기, 의욕"
+    },
+    {
+      "id": 2505,
+      "level": "N1",
+      "act": "N",
+      "word": "憤り",
+      "hiragana": "いきどおり",
+      "korean": "분노"
+    },
+    {
+      "id": 2506,
+      "level": "N1",
+      "act": "N",
+      "word": "憩い",
+      "hiragana": "いこい",
+      "korean": "휴식"
+    },
+    {
+      "id": 2507,
+      "level": "N1",
+      "act": "N",
+      "word": "意地",
+      "hiragana": "いじ",
+      "korean": "고집"
+    },
+    {
+      "id": 2508,
+      "level": "N1",
+      "act": "N",
+      "word": "異色",
+      "hiragana": "いしょく",
+      "korean": "이색, 매우 특색 있음"
+    },
+    {
+      "id": 2509,
+      "level": "N1",
+      "act": "N",
+      "word": "委託",
+      "hiragana": "いたく",
+      "korean": "위탁"
+    },
+    {
+      "id": 2510,
+      "level": "N1",
+      "act": "N",
+      "word": "一環",
+      "hiragana": "いっかん",
+      "korean": "일환"
+    },
+    {
+      "id": 2511,
+      "level": "N1",
+      "act": "N",
+      "word": "逸材",
+      "hiragana": "いつざい",
+      "korean": "일재, 뛰어난 인재"
+    },
+    {
+      "id": 2512,
+      "level": "N1",
+      "act": "N",
+      "word": "一掃",
+      "hiragana": "いっそう",
+      "korean": "일소, 소탕"
+    },
+    {
+      "id": 2513,
+      "level": "N1",
+      "act": "N",
+      "word": "偽り",
+      "hiragana": "いつわり",
+      "korean": "허위"
+    },
+    {
+      "id": 2514,
+      "level": "N1",
+      "act": "N",
+      "word": "糸口",
+      "hiragana": "いとぐち",
+      "korean": "단서, 실마리"
+    },
+    {
+      "id": 2515,
+      "level": "N1",
+      "act": "N",
+      "word": "嫌み",
+      "hiragana": "いやみ",
+      "korean": "불쾌한 언행"
+    },
+    {
+      "id": 2516,
+      "level": "N1",
+      "act": "N",
+      "word": "依頼",
+      "hiragana": "いらい",
+      "korean": "의뢰"
+    },
+    {
+      "id": 2517,
+      "level": "N1",
+      "act": "N",
+      "word": "印鑑",
+      "hiragana": "いんかん",
+      "korean": "인감"
+    },
+    {
+      "id": 2518,
+      "level": "N1",
+      "act": "N",
+      "word": "内訳",
+      "hiragana": "うちわけ",
+      "korean": "내역"
+    },
+    {
+      "id": 2519,
+      "level": "N1",
+      "act": "N",
+      "word": "器",
+      "hiragana": "うつわ",
+      "korean": "그릇"
+    },
+    {
+      "id": 2520,
+      "level": "N1",
+      "act": "N",
+      "word": "裏付け",
+      "hiragana": "うらづけ",
+      "korean": "뒷받침, 증거"
+    },
+    {
+      "id": 2521,
+      "level": "N1",
+      "act": "N",
+      "word": "裏腹",
+      "hiragana": "うらはら",
+      "korean": "정반대, 모순"
+    },
+    {
+      "id": 2522,
+      "level": "N1",
+      "act": "N",
+      "word": "影響",
+      "hiragana": "えいきょう",
+      "korean": "영향"
+    },
+    {
+      "id": 2523,
+      "level": "N1",
+      "act": "N",
+      "word": "閲覧",
+      "hiragana": "えつらん",
+      "korean": "열람"
+    },
+    {
+      "id": 2524,
+      "level": "N1",
+      "act": "N",
+      "word": "獲物",
+      "hiragana": "えもの",
+      "korean": "사냥감"
+    },
+    {
+      "id": 2525,
+      "level": "N1",
+      "act": "N",
+      "word": "遠隔",
+      "hiragana": "えんかく",
+      "korean": "원격"
+    },
+    {
+      "id": 2526,
+      "level": "N1",
+      "act": "N",
+      "word": "大筋",
+      "hiragana": "おおすじ",
+      "korean": "요점, 대강"
+    },
+    {
+      "id": 2527,
+      "level": "N1",
+      "act": "N",
+      "word": "改革",
+      "hiragana": "かいかく",
+      "korean": "개혁"
+    },
+    {
+      "id": 2528,
+      "level": "N1",
+      "act": "N",
+      "word": "回顧",
+      "hiragana": "かいこ",
+      "korean": "회고"
+    },
+    {
+      "id": 2529,
+      "level": "N1",
+      "act": "N",
+      "word": "会心",
+      "hiragana": "かいしん",
+      "korean": "회심, 만족스러움"
+    },
+    {
+      "id": 2530,
+      "level": "N1",
+      "act": "N",
+      "word": "該当",
+      "hiragana": "がいとう",
+      "korean": "해당"
+    },
+    {
+      "id": 2531,
+      "level": "N1",
+      "act": "N",
+      "word": "概略",
+      "hiragana": "がいりゃく",
+      "korean": "개략"
+    },
+    {
+      "id": 2532,
+      "level": "N1",
+      "act": "N",
+      "word": "核心",
+      "hiragana": "かくしん",
+      "korean": "핵심"
+    },
+    {
+      "id": 2533,
+      "level": "N1",
+      "act": "N",
+      "word": "革新",
+      "hiragana": "かくしん",
+      "korean": "혁신"
+    },
+    {
+      "id": 2534,
+      "level": "N1",
+      "act": "N",
+      "word": "格段",
+      "hiragana": "かくだん",
+      "korean": "현격함, 차이가 큼"
+    },
+    {
+      "id": 2535,
+      "level": "N1",
+      "act": "N",
+      "word": "過疎",
+      "hiragana": "かそ",
+      "korean": "과소, 지나치게 드묾"
+    },
+    {
+      "id": 2536,
+      "level": "N1",
+      "act": "N",
+      "word": "合致",
+      "hiragana": "がっち",
+      "korean": "합치, 일치"
+    },
+    {
+      "id": 2537,
+      "level": "N1",
+      "act": "N",
+      "word": "合併",
+      "hiragana": "がっぺい",
+      "korean": "합병"
+    },
+    {
+      "id": 2538,
+      "level": "N1",
+      "act": "N",
+      "word": "活躍",
+      "hiragana": "かつやく",
+      "korean": "활약"
+    },
+    {
+      "id": 2539,
+      "level": "N1",
+      "act": "N",
+      "word": "稼働",
+      "hiragana": "かどう",
+      "korean": "가동"
+    },
+    {
+      "id": 2540,
+      "level": "N1",
+      "act": "N",
+      "word": "過密",
+      "hiragana": "かみつ",
+      "korean": "과밀"
+    },
+    {
+      "id": 2541,
+      "level": "N1",
+      "act": "N",
+      "word": "歓迎",
+      "hiragana": "かんげい",
+      "korean": "환영"
+    },
+    {
+      "id": 2542,
+      "level": "N1",
+      "act": "N",
+      "word": "完結",
+      "hiragana": "かんけつ",
+      "korean": "완결"
+    },
+    {
+      "id": 2543,
+      "level": "N1",
+      "act": "N",
+      "word": "還元",
+      "hiragana": "かんげん",
+      "korean": "환원"
+    },
+    {
+      "id": 2544,
+      "level": "N1",
+      "act": "N",
+      "word": "感染",
+      "hiragana": "かんせん",
+      "korean": "감염"
+    },
+    {
+      "id": 2545,
+      "level": "N1",
+      "act": "N",
+      "word": "勘違い",
+      "hiragana": "かんちがい",
+      "korean": "착각"
+    },
+    {
+      "id": 2546,
+      "level": "N1",
+      "act": "N",
+      "word": "鑑定",
+      "hiragana": "かんてい",
+      "korean": "감정(판정)"
+    },
+    {
+      "id": 2547,
+      "level": "N1",
+      "act": "N",
+      "word": "慣例",
+      "hiragana": "かんれい",
+      "korean": "관례"
+    },
+    {
+      "id": 2548,
+      "level": "N1",
+      "act": "N",
+      "word": "緩和",
+      "hiragana": "かんわ",
+      "korean": "완화"
+    },
+    {
+      "id": 2549,
+      "level": "N1",
+      "act": "N",
+      "word": "記載",
+      "hiragana": "きさい",
+      "korean": "기재"
+    },
+    {
+      "id": 2550,
+      "level": "N1",
+      "act": "N",
+      "word": "兆し",
+      "hiragana": "きざし",
+      "korean": "조짐, 징조"
+    },
+    {
+      "id": 2551,
+      "level": "N1",
+      "act": "N",
+      "word": "儀式",
+      "hiragana": "ぎしき",
+      "korean": "의식"
+    },
+    {
+      "id": 2552,
+      "level": "N1",
+      "act": "N",
+      "word": "偽造",
+      "hiragana": "ぎぞう",
+      "korean": "위조"
+    },
+    {
+      "id": 2553,
+      "level": "N1",
+      "act": "N",
+      "word": "軌道",
+      "hiragana": "きどう",
+      "korean": "궤도"
+    },
+    {
+      "id": 2554,
+      "level": "N1",
+      "act": "N",
+      "word": "起動",
+      "hiragana": "きどう",
+      "korean": "기동, 시동"
+    },
+    {
+      "id": 2555,
+      "level": "N1",
+      "act": "N",
+      "word": "基盤",
+      "hiragana": "きばん",
+      "korean": "기반"
+    },
+    {
+      "id": 2556,
+      "level": "N1",
+      "act": "N",
+      "word": "起伏",
+      "hiragana": "きふく",
+      "korean": "기복"
+    },
+    {
+      "id": 2557,
+      "level": "N1",
+      "act": "N",
+      "word": "規模",
+      "hiragana": "きぼ",
+      "korean": "규모"
+    },
+    {
+      "id": 2558,
+      "level": "N1",
+      "act": "N",
+      "word": "脚本",
+      "hiragana": "きゃくほん",
+      "korean": "각본"
+    },
+    {
+      "id": 2559,
+      "level": "N1",
+      "act": "N",
+      "word": "救援",
+      "hiragana": "きゅうえん",
+      "korean": "구원"
+    },
+    {
+      "id": 2560,
+      "level": "N1",
+      "act": "N",
+      "word": "究明",
+      "hiragana": "きゅうめい",
+      "korean": "규명, 밝혀냄"
+    },
+    {
+      "id": 2561,
+      "level": "N1",
+      "act": "N",
+      "word": "丘陵",
+      "hiragana": "きゅうりょう",
+      "korean": "구릉, 언덕"
+    },
+    {
+      "id": 2562,
+      "level": "N1",
+      "act": "N",
+      "word": "寄与",
+      "hiragana": "きよ",
+      "korean": "기여"
+    },
+    {
+      "id": 2563,
+      "level": "N1",
+      "act": "N",
+      "word": "教訓",
+      "hiragana": "きょうくん",
+      "korean": "교훈"
+    },
+    {
+      "id": 2564,
+      "level": "N1",
+      "act": "N",
+      "word": "享受",
+      "hiragana": "きょうじゅ",
+      "korean": "향유(누리는 것)"
+    },
+    {
+      "id": 2565,
+      "level": "N1",
+      "act": "N",
+      "word": "凝縮",
+      "hiragana": "ぎょうしゅく",
+      "korean": "응축"
+    },
+    {
+      "id": 2566,
+      "level": "N1",
+      "act": "N",
+      "word": "仰天",
+      "hiragana": "ぎょうてん",
+      "korean": "경악, 몹시 놀람"
+    },
+    {
+      "id": 2567,
+      "level": "N1",
+      "act": "N",
+      "word": "供与",
+      "hiragana": "きょうよ",
+      "korean": "공여, 제공"
+    },
+    {
+      "id": 2568,
+      "level": "N1",
+      "act": "N",
+      "word": "郷里",
+      "hiragana": "きょうり",
+      "korean": "고향"
+    },
+    {
+      "id": 2569,
+      "level": "N1",
+      "act": "N",
+      "word": "巨匠",
+      "hiragana": "きょしょう",
+      "korean": "거장"
+    },
+    {
+      "id": 2570,
+      "level": "N1",
+      "act": "N",
+      "word": "近接",
+      "hiragana": "きんせつ",
+      "korean": "근접"
+    },
+    {
+      "id": 2571,
+      "level": "N1",
+      "act": "N",
+      "word": "苦境",
+      "hiragana": "くきょう",
+      "korean": "곤경"
+    },
+    {
+      "id": 2572,
+      "level": "N1",
+      "act": "N",
+      "word": "駆使",
+      "hiragana": "くし",
+      "korean": "구사, 능숙하게 사용함"
+    },
+    {
+      "id": 2573,
+      "level": "N1",
+      "act": "N",
+      "word": "苦情",
+      "hiragana": "くじょう",
+      "korean": "클레임, 불만"
+    },
+    {
+      "id": 2574,
+      "level": "N1",
+      "act": "N",
+      "word": "工面",
+      "hiragana": "くめん",
+      "korean": "자금 마련"
+    },
+    {
+      "id": 2575,
+      "level": "N1",
+      "act": "N",
+      "word": "暗闇",
+      "hiragana": "くらやみ",
+      "korean": "어둠"
+    },
+    {
+      "id": 2576,
+      "level": "N1",
+      "act": "N",
+      "word": "群衆",
+      "hiragana": "ぐんしゅう",
+      "korean": "군중"
+    },
+    {
+      "id": 2577,
+      "level": "N1",
+      "act": "N",
+      "word": "傾斜",
+      "hiragana": "けいしゃ",
+      "korean": "경사, 기울기"
+    },
+    {
+      "id": 2578,
+      "level": "N1",
+      "act": "N",
+      "word": "刑罰",
+      "hiragana": "けいばつ",
+      "korean": "형벌"
+    },
+    {
+      "id": 2579,
+      "level": "N1",
+      "act": "N",
+      "word": "欠陥",
+      "hiragana": "けっかん",
+      "korean": "결함"
+    },
+    {
+      "id": 2580,
+      "level": "N1",
+      "act": "N",
+      "word": "欠如",
+      "hiragana": "けつじょ",
+      "korean": "결여"
+    },
+    {
+      "id": 2581,
+      "level": "N1",
+      "act": "N",
+      "word": "結束",
+      "hiragana": "けっそく",
+      "korean": "결속"
+    },
+    {
+      "id": 2582,
+      "level": "N1",
+      "act": "N",
+      "word": "気配",
+      "hiragana": "けはい",
+      "korean": "기미, 기색"
+    },
+    {
+      "id": 2583,
+      "level": "N1",
+      "act": "N",
+      "word": "権威",
+      "hiragana": "けんい",
+      "korean": "권위"
+    },
+    {
+      "id": 2584,
+      "level": "N1",
+      "act": "N",
+      "word": "嫌悪感",
+      "hiragana": "けんおかん",
+      "korean": "혐오감"
+    },
+    {
+      "id": 2585,
+      "level": "N1",
+      "act": "N",
+      "word": "後援",
+      "hiragana": "こうえん",
+      "korean": "후원"
+    },
+    {
+      "id": 2586,
+      "level": "N1",
+      "act": "N",
+      "word": "航海",
+      "hiragana": "こうかい",
+      "korean": "항해"
+    },
+    {
+      "id": 2587,
+      "level": "N1",
+      "act": "N",
+      "word": "抗議",
+      "hiragana": "こうぎ",
+      "korean": "항의"
+    },
+    {
+      "id": 2588,
+      "level": "N1",
+      "act": "N",
+      "word": "貢献",
+      "hiragana": "こうけん",
+      "korean": "공헌"
+    },
+    {
+      "id": 2589,
+      "level": "N1",
+      "act": "N",
+      "word": "交渉",
+      "hiragana": "こうしょう",
+      "korean": "협상"
+    },
+    {
+      "id": 2590,
+      "level": "N1",
+      "act": "N",
+      "word": "高低",
+      "hiragana": "こうてい",
+      "korean": "고저, 높낮이"
+    },
+    {
+      "id": 2591,
+      "level": "N1",
+      "act": "N",
+      "word": "購読",
+      "hiragana": "こうどく",
+      "korean": "구독"
+    },
+    {
+      "id": 2592,
+      "level": "N1",
+      "act": "N",
+      "word": "興奮",
+      "hiragana": "こうふん",
+      "korean": "흥분"
+    },
+    {
+      "id": 2593,
+      "level": "N1",
+      "act": "N",
+      "word": "互角",
+      "hiragana": "ごかく",
+      "korean": "호각, 백중세"
+    },
+    {
+      "id": 2594,
+      "level": "N1",
+      "act": "N",
+      "word": "心構え",
+      "hiragana": "こころがまえ",
+      "korean": "마음가짐"
+    },
+    {
+      "id": 2595,
+      "level": "N1",
+      "act": "N",
+      "word": "誤差",
+      "hiragana": "ごさ",
+      "korean": "오차"
+    },
+    {
+      "id": 2596,
+      "level": "N1",
+      "act": "N",
+      "word": "誇張",
+      "hiragana": "こちょう",
+      "korean": "과장"
+    },
+    {
+      "id": 2597,
+      "level": "N1",
+      "act": "N",
+      "word": "孤立",
+      "hiragana": "こりつ",
+      "korean": "고립"
+    },
+    {
+      "id": 2598,
+      "level": "N1",
+      "act": "N",
+      "word": "根拠",
+      "hiragana": "こんきょ",
+      "korean": "근거"
+    },
+    {
+      "id": 2599,
+      "level": "N1",
+      "act": "N",
+      "word": "根源",
+      "hiragana": "こんげん",
+      "korean": "근원"
+    },
+    {
+      "id": 2600,
+      "level": "N1",
+      "act": "N",
+      "word": "献立",
+      "hiragana": "こんだて",
+      "korean": "식단, 메뉴"
+    },
+    {
+      "id": 2601,
+      "level": "N1",
+      "act": "N",
+      "word": "在庫",
+      "hiragana": "ざいこ",
+      "korean": "재고"
+    },
+    {
+      "id": 2602,
+      "level": "N1",
+      "act": "N",
+      "word": "採算",
+      "hiragana": "さいさん",
+      "korean": "채산"
+    },
+    {
+      "id": 2603,
+      "level": "N1",
+      "act": "N",
+      "word": "採取",
+      "hiragana": "さいしゅ",
+      "korean": "채취"
+    },
+    {
+      "id": 2604,
+      "level": "N1",
+      "act": "N",
+      "word": "細心",
+      "hiragana": "さいしん",
+      "korean": "세심함, 빈틈이 없음"
+    },
+    {
+      "id": 2605,
+      "level": "N1",
+      "act": "N",
+      "word": "催促",
+      "hiragana": "さいそく",
+      "korean": "재촉"
+    },
+    {
+      "id": 2606,
+      "level": "N1",
+      "act": "N",
+      "word": "栽培",
+      "hiragana": "さいばい",
+      "korean": "재배"
+    },
+    {
+      "id": 2607,
+      "level": "N1",
+      "act": "N",
+      "word": "錯誤",
+      "hiragana": "さくご",
+      "korean": "착오"
+    },
+    {
+      "id": 2608,
+      "level": "N1",
+      "act": "N",
+      "word": "錯覚",
+      "hiragana": "さっかく",
+      "korean": "착각"
+    },
+    {
+      "id": 2609,
+      "level": "N1",
+      "act": "N",
+      "word": "殺菌",
+      "hiragana": "さっきん",
+      "korean": "살균"
+    },
+    {
+      "id": 2610,
+      "level": "N1",
+      "act": "N",
+      "word": "察知",
+      "hiragana": "さっち",
+      "korean": "감지, 탐지"
+    },
+    {
+      "id": 2611,
+      "level": "N1",
+      "act": "N",
+      "word": "殺到",
+      "hiragana": "さっとう",
+      "korean": "쇄도(세차게 몰려듦)"
+    },
+    {
+      "id": 2612,
+      "level": "N1",
+      "act": "N",
+      "word": "雑踏",
+      "hiragana": "ざっとう",
+      "korean": "혼잡"
+    },
+    {
+      "id": 2613,
+      "level": "N1",
+      "act": "N",
+      "word": "砂糖",
+      "hiragana": "さとう",
+      "korean": "설탕"
+    },
+    {
+      "id": 2614,
+      "level": "N1",
+      "act": "N",
+      "word": "砂漠",
+      "hiragana": "さばく",
+      "korean": "사막"
+    },
+    {
+      "id": 2615,
+      "level": "N1",
+      "act": "N",
+      "word": "山岳",
+      "hiragana": "さんがく",
+      "korean": "산악"
+    },
+    {
+      "id": 2616,
+      "level": "N1",
+      "act": "N",
+      "word": "飼育",
+      "hiragana": "しいく",
+      "korean": "사육"
+    },
+    {
+      "id": 2617,
+      "level": "N1",
+      "act": "N",
+      "word": "支援",
+      "hiragana": "しえん",
+      "korean": "지원"
+    },
+    {
+      "id": 2618,
+      "level": "N1",
+      "act": "N",
+      "word": "色彩",
+      "hiragana": "しきさい",
+      "korean": "색채"
+    },
+    {
+      "id": 2619,
+      "level": "N1",
+      "act": "N",
+      "word": "仕組み",
+      "hiragana": "しくみ",
+      "korean": "구조, 원리"
+    },
+    {
+      "id": 2620,
+      "level": "N1",
+      "act": "N",
+      "word": "刺激",
+      "hiragana": "しげき",
+      "korean": "자극"
+    },
+    {
+      "id": 2621,
+      "level": "N1",
+      "act": "N",
+      "word": "自粛",
+      "hiragana": "じしゅく",
+      "korean": "자숙, 자제"
+    },
+    {
+      "id": 2622,
+      "level": "N1",
+      "act": "N",
+      "word": "支障",
+      "hiragana": "ししょう",
+      "korean": "지장"
+    },
+    {
+      "id": 2623,
+      "level": "N1",
+      "act": "N",
+      "word": "姿勢",
+      "hiragana": "しせい",
+      "korean": "자세"
+    },
+    {
+      "id": 2624,
+      "level": "N1",
+      "act": "N",
+      "word": "自尊心",
+      "hiragana": "じそんしん",
+      "korean": "자존심"
+    },
+    {
+      "id": 2625,
+      "level": "N1",
+      "act": "N",
+      "word": "実権",
+      "hiragana": "じっけん",
+      "korean": "실권"
+    },
+    {
+      "id": 2626,
+      "level": "N1",
+      "act": "N",
+      "word": "実情",
+      "hiragana": "じつじょう",
+      "korean": "실정, 실제 사정"
+    },
+    {
+      "id": 2627,
+      "level": "N1",
+      "act": "N",
+      "word": "実態",
+      "hiragana": "じったい",
+      "korean": "실태"
+    },
+    {
+      "id": 2628,
+      "level": "N1",
+      "act": "N",
+      "word": "実費",
+      "hiragana": "じっぴ",
+      "korean": "실비(실제 비용)"
+    },
+    {
+      "id": 2629,
+      "level": "N1",
+      "act": "N",
+      "word": "執筆",
+      "hiragana": "しっぴつ",
+      "korean": "집필"
+    },
+    {
+      "id": 2630,
+      "level": "N1",
+      "act": "N",
+      "word": "紙幣",
+      "hiragana": "しへい",
+      "korean": "지폐"
+    },
+    {
+      "id": 2631,
+      "level": "N1",
+      "act": "N",
+      "word": "志望",
+      "hiragana": "しぼう",
+      "korean": "지망"
+    },
+    {
+      "id": 2632,
+      "level": "N1",
+      "act": "N",
+      "word": "釈明",
+      "hiragana": "しゃくめい",
+      "korean": "석명, 해명"
+    },
+    {
+      "id": 2633,
+      "level": "N1",
+      "act": "N",
+      "word": "遮断",
+      "hiragana": "しゃだん",
+      "korean": "차단"
+    },
+    {
+      "id": 2634,
+      "level": "N1",
+      "act": "N",
+      "word": "収穫",
+      "hiragana": "しゅうかく",
+      "korean": "수확"
+    },
+    {
+      "id": 2635,
+      "level": "N1",
+      "act": "N",
+      "word": "修飾",
+      "hiragana": "しゅうしょく",
+      "korean": "수식"
+    },
+    {
+      "id": 2636,
+      "level": "N1",
+      "act": "N",
+      "word": "収束",
+      "hiragana": "しゅうそく",
+      "korean": "수습, 해결"
+    },
+    {
+      "id": 2637,
+      "level": "N1",
+      "act": "N",
+      "word": "従属",
+      "hiragana": "じゅうぞく",
+      "korean": "종속"
+    },
+    {
+      "id": 2638,
+      "level": "N1",
+      "act": "N",
+      "word": "渋滞",
+      "hiragana": "じゅうたい",
+      "korean": "정체(흐름이 밀림)"
+    },
+    {
+      "id": 2639,
+      "level": "N1",
+      "act": "N",
+      "word": "修復",
+      "hiragana": "しゅうふく",
+      "korean": "수복, 복원"
+    },
+    {
+      "id": 2640,
+      "level": "N1",
+      "act": "N",
+      "word": "従来",
+      "hiragana": "じゅうらい",
+      "korean": "종래, 기존"
+    },
+    {
+      "id": 2641,
+      "level": "N1",
+      "act": "N",
+      "word": "主催",
+      "hiragana": "しゅさい",
+      "korean": "주최"
+    },
+    {
+      "id": 2642,
+      "level": "N1",
+      "act": "N",
+      "word": "趣旨",
+      "hiragana": "しゅし",
+      "korean": "취지"
+    },
+    {
+      "id": 2643,
+      "level": "N1",
+      "act": "N",
+      "word": "受賞",
+      "hiragana": "じゅしょう",
+      "korean": "수상"
+    },
+    {
+      "id": 2644,
+      "level": "N1",
+      "act": "N",
+      "word": "出没",
+      "hiragana": "しゅつぼつ",
+      "korean": "출몰"
+    },
+    {
+      "id": 2645,
+      "level": "N1",
+      "act": "N",
+      "word": "樹木",
+      "hiragana": "じゅもく",
+      "korean": "수목(큰 나무)"
+    },
+    {
+      "id": 2646,
+      "level": "N1",
+      "act": "N",
+      "word": "需要",
+      "hiragana": "じゅよう",
+      "korean": "수요"
+    },
+    {
+      "id": 2647,
+      "level": "N1",
+      "act": "N",
+      "word": "順応",
+      "hiragana": "じゅんのう",
+      "korean": "순응"
+    },
+    {
+      "id": 2648,
+      "level": "N1",
+      "act": "N",
+      "word": "照会",
+      "hiragana": "しょうかい",
+      "korean": "조회, 확인"
+    },
+    {
+      "id": 2649,
+      "level": "N1",
+      "act": "N",
+      "word": "衝撃",
+      "hiragana": "しょうげき",
+      "korean": "충격"
+    },
+    {
+      "id": 2650,
+      "level": "N1",
+      "act": "N",
+      "word": "証拠",
+      "hiragana": "しょうこ",
+      "korean": "증거"
+    },
+    "id": 2651,
+    "level": "N1",
+    "act": "N",
+    "word": "承諾",
+    "hiragana": "しょうだく",
+    "korean": "승낙"
+    },
+    {
+      "id": 2652,
+      "level": "N1",
+      "act": "N",
+      "word": "冗談",
+      "hiragana": "じょうだん",
+      "korean": "농담"
+    },
+    {
+      "id": 2653,
+      "level": "N1",
+      "act": "N",
+      "word": "承認",
+      "hiragana": "しょうにん",
+      "korean": "승인"
+    },
+    {
+      "id": 2654,
+      "level": "N1",
+      "act": "N",
+      "word": "蒸発",
+      "hiragana": "じょうはつ",
+      "korean": "증발"
+    },
+    {
+      "id": 2655,
+      "level": "N1",
+      "act": "N",
+      "word": "奨励",
+      "hiragana": "しょうれい",
+      "korean": "장려"
+    },
+    {
+      "id": 2656,
+      "level": "N1",
+      "act": "N",
+      "word": "触発",
+      "hiragana": "しょくはつ",
+      "korean": "촉발"
+    },
+    {
+      "id": 2657,
+      "level": "N1",
+      "act": "N",
+      "word": "処置",
+      "hiragana": "しょち",
+      "korean": "처치, 조치"
+    },
+    {
+      "id": 2658,
+      "level": "N1",
+      "act": "N",
+      "word": "署名",
+      "hiragana": "しょめい",
+      "korean": "서명"
+    },
+    {
+      "id": 2659,
+      "level": "N1",
+      "act": "N",
+      "word": "親善",
+      "hiragana": "しんぜん",
+      "korean": "친선"
+    },
+    {
+      "id": 2660,
+      "level": "N1",
+      "act": "N",
+      "word": "進呈",
+      "hiragana": "しんてい",
+      "korean": "증정"
+    },
+    {
+      "id": 2661,
+      "level": "N1",
+      "act": "N",
+      "word": "辛抱",
+      "hiragana": "しんぼう",
+      "korean": "인내"
+    },
+    {
+      "id": 2662,
+      "level": "N1",
+      "act": "N",
+      "word": "人脈",
+      "hiragana": "じんみゃく",
+      "korean": "인맥"
+    },
+    {
+      "id": 2663,
+      "level": "N1",
+      "act": "N",
+      "word": "遂行",
+      "hiragana": "すいこう",
+      "korean": "수행, 완수"
+    },
+    {
+      "id": 2664,
+      "level": "N1",
+      "act": "N",
+      "word": "衰退",
+      "hiragana": "すいたい",
+      "korean": "쇠퇴"
+    },
+    {
+      "id": 2665,
+      "level": "N1",
+      "act": "N",
+      "word": "推理",
+      "hiragana": "すいり",
+      "korean": "추리"
+    },
+    {
+      "id": 2666,
+      "level": "N1",
+      "act": "N",
+      "word": "術",
+      "hiragana": "すべ",
+      "korean": "방법"
+    },
+    {
+      "id": 2667,
+      "level": "N1",
+      "act": "N",
+      "word": "摂取",
+      "hiragana": "せっしゅ",
+      "korean": "섭취"
+    },
+    {
+      "id": 2668,
+      "level": "N1",
+      "act": "N",
+      "word": "選出",
+      "hiragana": "せんしゅつ",
+      "korean": "선출"
+    },
+    {
+      "id": 2669,
+      "level": "N1",
+      "act": "N",
+      "word": "先方",
+      "hiragana": "せんぽう",
+      "korean": "상대, 상대방"
+    },
+    {
+      "id": 2670,
+      "level": "N1",
+      "act": "N",
+      "word": "全滅",
+      "hiragana": "ぜんめつ",
+      "korean": "전멸"
+    },
+    {
+      "id": 2671,
+      "level": "N1",
+      "act": "N",
+      "word": "装飾",
+      "hiragana": "そうしょく",
+      "korean": "장식"
+    },
+    {
+      "id": 2672,
+      "level": "N1",
+      "act": "N",
+      "word": "相場",
+      "hiragana": "そうば",
+      "korean": "시세, 가격의 추세"
+    },
+    {
+      "id": 2673,
+      "level": "N1",
+      "act": "N",
+      "word": "束縛",
+      "hiragana": "そくばく",
+      "korean": "속박"
+    },
+    {
+      "id": 2674,
+      "level": "N1",
+      "act": "N",
+      "word": "素質",
+      "hiragana": "そしつ",
+      "korean": "소질"
+    },
+    {
+      "id": 2675,
+      "level": "N1",
+      "act": "N",
+      "word": "素振り",
+      "hiragana": "そぶり",
+      "korean": "거동, 기색"
+    },
+    {
+      "id": 2676,
+      "level": "N1",
+      "act": "N",
+      "word": "大家",
+      "hiragana": "たいか",
+      "korean": "대가, 권위자"
+    },
+    {
+      "id": 2677,
+      "level": "N1",
+      "act": "N",
+      "word": "対比",
+      "hiragana": "たいひ",
+      "korean": "대비"
+    },
+    {
+      "id": 2678,
+      "level": "N1",
+      "act": "N",
+      "word": "対面",
+      "hiragana": "たいめん",
+      "korean": "대면"
+    },
+    {
+      "id": 2679,
+      "level": "N1",
+      "act": "N",
+      "word": "打開",
+      "hiragana": "だかい",
+      "korean": "타개"
+    },
+    {
+      "id": 2680,
+      "level": "N1",
+      "act": "N",
+      "word": "多岐",
+      "hiragana": "たき",
+      "korean": "다기, 다방면"
+    },
+    {
+      "id": 2681,
+      "level": "N1",
+      "act": "N",
+      "word": "妥協",
+      "hiragana": "だきょう",
+      "korean": "타협"
+    },
+    {
+      "id": 2682,
+      "level": "N1",
+      "act": "N",
+      "word": "魂",
+      "hiragana": "たましい",
+      "korean": "영혼"
+    },
+    {
+      "id": 2683,
+      "level": "N1",
+      "act": "N",
+      "word": "探知",
+      "hiragana": "たんち",
+      "korean": "탐지"
+    },
+    {
+      "id": 2684,
+      "level": "N1",
+      "act": "N",
+      "word": "断念",
+      "hiragana": "だんねん",
+      "korean": "단념"
+    },
+    {
+      "id": 2685,
+      "level": "N1",
+      "act": "N",
+      "word": "蓄積",
+      "hiragana": "ちくせき",
+      "korean": "축적"
+    },
+    {
+      "id": 2686,
+      "level": "N1",
+      "act": "N",
+      "word": "中枢",
+      "hiragana": "ちゅうすう",
+      "korean": "중추, 핵심"
+    },
+    {
+      "id": 2687,
+      "level": "N1",
+      "act": "N",
+      "word": "抽選",
+      "hiragana": "ちゅうせん",
+      "korean": "추첨"
+    },
+    {
+      "id": 2688,
+      "level": "N1",
+      "act": "N",
+      "word": "重宝",
+      "hiragana": "ちょうほう",
+      "korean": "애용"
+    },
+    {
+      "id": 2689,
+      "level": "N1",
+      "act": "N",
+      "word": "陳列",
+      "hiragana": "ちんれつ",
+      "korean": "진열"
+    },
+    {
+      "id": 2690,
+      "level": "N1",
+      "act": "N",
+      "word": "痛感",
+      "hiragana": "つうかん",
+      "korean": "통감"
+    },
+    {
+      "id": 2691,
+      "level": "N1",
+      "act": "N",
+      "word": "提起",
+      "hiragana": "ていき",
+      "korean": "제기"
+    },
+    {
+      "id": 2692,
+      "level": "N1",
+      "act": "N",
+      "word": "停滞",
+      "hiragana": "ていたい",
+      "korean": "정체, 진행이 더딤"
+    },
+    {
+      "id": 2693,
+      "level": "N1",
+      "act": "N",
+      "word": "手際",
+      "hiragana": "てぎわ",
+      "korean": "일처리 솜씨, 수완"
+    },
+    {
+      "id": 2694,
+      "level": "N1",
+      "act": "N",
+      "word": "手間",
+      "hiragana": "てま",
+      "korean": "수고"
+    },
+    {
+      "id": 2695,
+      "level": "N1",
+      "act": "N",
+      "word": "手分け",
+      "hiragana": "てわけ",
+      "korean": "분담"
+    },
+    {
+      "id": 2696,
+      "level": "N1",
+      "act": "N",
+      "word": "展開",
+      "hiragana": "てんかい",
+      "korean": "전개"
+    },
+    {
+      "id": 2697,
+      "level": "N1",
+      "act": "N",
+      "word": "転換",
+      "hiragana": "てんかん",
+      "korean": "전환"
+    },
+    {
+      "id": 2698,
+      "level": "N1",
+      "act": "N",
+      "word": "添付",
+      "hiragana": "てんぷ",
+      "korean": "첨부"
+    },
+    {
+      "id": 2699,
+      "level": "N1",
+      "act": "N",
+      "word": "踏襲",
+      "hiragana": "とうしゅう",
+      "korean": "답습"
+    },
+    {
+      "id": 2700,
+      "level": "N1",
+      "act": "N",
+      "word": "同調",
+      "hiragana": "どうちょう",
+      "korean": "동조"
+    },
+    {
+      "id": 2701,
+      "level": "N1",
+      "act": "N",
+      "word": "同伴",
+      "hiragana": "どうはん",
+      "korean": "동반"
+    },
+    {
+      "id": 2702,
+      "level": "N1",
+      "act": "N",
+      "word": "当面",
+      "hiragana": "とうめん",
+      "korean": "당면, 당분간"
+    },
+    {
+      "id": 2703,
+      "level": "N1",
+      "act": "N",
+      "word": "督促",
+      "hiragana": "とくそく",
+      "korean": "독촉"
+    },
+    {
+      "id": 2704,
+      "level": "N1",
+      "act": "N",
+      "word": "難点",
+      "hiragana": "なんてん",
+      "korean": "곤란한 점"
+    },
+    {
+      "id": 2705,
+      "level": "N1",
+      "act": "N",
+      "word": "日夜",
+      "hiragana": "にちや",
+      "korean": "밤낮, 늘"
+    },
+    {
+      "id": 2706,
+      "level": "N1",
+      "act": "N",
+      "word": "念願",
+      "hiragana": "ねんがん",
+      "korean": "염원"
+    },
+    {
+      "id": 2707,
+      "level": "N1",
+      "act": "N",
+      "word": "念頭",
+      "hiragana": "ねんとう",
+      "korean": "염두, 마음속"
+    },
+    {
+      "id": 2708,
+      "level": "N1",
+      "act": "N",
+      "word": "把握",
+      "hiragana": "はあく",
+      "korean": "파악"
+    },
+    {
+      "id": 2709,
+      "level": "N1",
+      "act": "N",
+      "word": "配属",
+      "hiragana": "はいぞく",
+      "korean": "배속"
+    },
+    {
+      "id": 2710,
+      "level": "N1",
+      "act": "N",
+      "word": "波及",
+      "hiragana": "はきゅう",
+      "korean": "파급"
+    },
+    {
+      "id": 2711,
+      "level": "N1",
+      "act": "N",
+      "word": "暴露",
+      "hiragana": "ばくろ",
+      "korean": "폭로"
+    },
+    {
+      "id": 2712,
+      "level": "N1",
+      "act": "N",
+      "word": "破損",
+      "hiragana": "はそん",
+      "korean": "파손"
+    },
+    {
+      "id": 2713,
+      "level": "N1",
+      "act": "N",
+      "word": "発掘",
+      "hiragana": "はっくつ",
+      "korean": "발굴"
+    },
+    {
+      "id": 2714,
+      "level": "N1",
+      "act": "N",
+      "word": "抜群",
+      "hiragana": "ばつぐん",
+      "korean": "발군, 매우 뛰어남"
+    },
+    {
+      "id": 2715,
+      "level": "N1",
+      "act": "N",
+      "word": "抜粋",
+      "hiragana": "ばっすい",
+      "korean": "발췌"
+    },
+    {
+      "id": 2716,
+      "level": "N1",
+      "act": "N",
+      "word": "繁盛",
+      "hiragana": "はんじょう",
+      "korean": "번창"
+    },
+    {
+      "id": 2717,
+      "level": "N1",
+      "act": "N",
+      "word": "判別",
+      "hiragana": "はんべつ",
+      "korean": "판별"
+    },
+    {
+      "id": 2718,
+      "level": "N1",
+      "act": "N",
+      "word": "人込み",
+      "hiragana": "ひとごみ",
+      "korean": "혼잡, 북새통"
+    },
+    {
+      "id": 2719,
+      "level": "N1",
+      "act": "N",
+      "word": "人質",
+      "hiragana": "ひとじち",
+      "korean": "인질"
+    },
+    {
+      "id": 2720,
+      "level": "N1",
+      "act": "N",
+      "word": "人手",
+      "hiragana": "ひとで",
+      "korean": "일손, 노동력"
+    },
+    {
+      "id": 2721,
+      "level": "N1",
+      "act": "N",
+      "word": "人出",
+      "hiragana": "ひとで",
+      "korean": "인파, 밖으로 나온 사람들"
+    },
+    {
+      "id": 2722,
+      "level": "N1",
+      "act": "N",
+      "word": "人波",
+      "hiragana": "ひとなみ",
+      "korean": "인파"
+    },
+    {
+      "id": 2723,
+      "level": "N1",
+      "act": "N",
+      "word": "皮肉",
+      "hiragana": "ひにく",
+      "korean": "비꼼, 빈정거림"
+    },
+    {
+      "id": 2724,
+      "level": "N1",
+      "act": "N",
+      "word": "貧富",
+      "hiragana": "ひんぷ",
+      "korean": "빈부"
+    },
+    {
+      "id": 2725,
+      "level": "N1",
+      "act": "N",
+      "word": "普及",
+      "hiragana": "ふきゅう",
+      "korean": "보급"
+    },
+    {
+      "id": 2726,
+      "level": "N1",
+      "act": "N",
+      "word": "不況",
+      "hiragana": "ふきょう",
+      "korean": "불황"
+    },
+    {
+      "id": 2727,
+      "level": "N1",
+      "act": "N",
+      "word": "富豪",
+      "hiragana": "ふごう",
+      "korean": "부호"
+    },
+    {
+      "id": 2728,
+      "level": "N1",
+      "act": "N",
+      "word": "不順",
+      "hiragana": "ふじゅん",
+      "korean": "불순, 순탄치 못함"
+    },
+    {
+      "id": 2729,
+      "level": "N1",
+      "act": "N",
+      "word": "侮辱",
+      "hiragana": "ぶじょく",
+      "korean": "모욕"
+    },
+    {
+      "id": 2730,
+      "level": "N1",
+      "act": "N",
+      "word": "復旧",
+      "hiragana": "ふっきゅう",
+      "korean": "복구"
+    },
+    {
+      "id": 2731,
+      "level": "N1",
+      "act": "N",
+      "word": "復興",
+      "hiragana": "ふっこう",
+      "korean": "부흥"
+    },
+    {
+      "id": 2732,
+      "level": "N1",
+      "act": "N",
+      "word": "赴任",
+      "hiragana": "ふにん",
+      "korean": "부임"
+    },
+    {
+      "id": 2733,
+      "level": "N1",
+      "act": "N",
+      "word": "不備",
+      "hiragana": "ふび",
+      "korean": "미비, 불충분함"
+    },
+    {
+      "id": 2734,
+      "level": "N1",
+      "act": "N",
+      "word": "憤慨",
+      "hiragana": "ふんがい",
+      "korean": "분개"
+    },
+    {
+      "id": 2735,
+      "level": "N1",
+      "act": "N",
+      "word": "分担",
+      "hiragana": "ぶんたん",
+      "korean": "분담"
+    },
+    {
+      "id": 2736,
+      "level": "N1",
+      "act": "N",
+      "word": "弁解",
+      "hiragana": "べんかい",
+      "korean": "변명"
+    },
+    {
+      "id": 2737,
+      "level": "N1",
+      "act": "N",
+      "word": "便宜",
+      "hiragana": "べんぎ",
+      "korean": "편의"
+    },
+    {
+      "id": 2738,
+      "level": "N1",
+      "act": "N",
+      "word": "変遷",
+      "hiragana": "へんせん",
+      "korean": "변천"
+    },
+    {
+      "id": 2739,
+      "level": "N1",
+      "act": "N",
+      "word": "妨害",
+      "hiragana": "ぼうがい",
+      "korean": "방해"
+    },
+    {
+      "id": 2740,
+      "level": "N1",
+      "act": "N",
+      "word": "発足",
+      "hiragana": "ほっそく",
+      "korean": "발족, 출범"
+    },
+    {
+      "id": 2741,
+      "level": "N1",
+      "act": "N",
+      "word": "発端",
+      "hiragana": "ほったん",
+      "korean": "발단"
+    },
+    {
+      "id": 2742,
+      "level": "N1",
+      "act": "N",
+      "word": "没頭",
+      "hiragana": "ぼっとう",
+      "korean": "몰두"
+    },
+    {
+      "id": 2743,
+      "level": "N1",
+      "act": "N",
+      "word": "本筋",
+      "hiragana": "ほんすじ",
+      "korean": "본론, 본줄거리"
+    },
+    {
+      "id": 2744,
+      "level": "N1",
+      "act": "N",
+      "word": "本音",
+      "hiragana": "ほんね",
+      "korean": "본심, 속내"
+    },
+    {
+      "id": 2745,
+      "level": "N1",
+      "act": "N",
+      "word": "摩擦",
+      "hiragana": "まさつ",
+      "korean": "마찰"
+    },
+    {
+      "id": 2746,
+      "level": "N1",
+      "act": "N",
+      "word": "満喫",
+      "hiragana": "まんきつ",
+      "korean": "만끽"
+    },
+    {
+      "id": 2747,
+      "level": "N1",
+      "act": "N",
+      "word": "見込み",
+      "hiragana": "みこみ",
+      "korean": "예상, 전망"
+    },
+    {
+      "id": 2748,
+      "level": "N1",
+      "act": "N",
+      "word": "密集",
+      "hiragana": "みっしゅう",
+      "korean": "밀집"
+    },
+    {
+      "id": 2749,
+      "level": "N1",
+      "act": "N",
+      "word": "見通し",
+      "hiragana": "みとおし",
+      "korean": "전망"
+    },
+    {
+      "id": 2750,
+      "level": "N1",
+      "act": "N",
+      "word": "無実",
+      "hiragana": "むじつ",
+      "korean": "억울함, 무고함"
+    },
+    {
+      "id": 2751,
+      "level": "N1",
+      "act": "N",
+      "word": "矛盾",
+      "hiragana": "むじゅん",
+      "korean": "모순"
+    },
+    {
+      "id": 2752,
+      "level": "N1",
+      "act": "N",
+      "word": "無償",
+      "hiragana": "むしょう",
+      "korean": "무상, 무료"
+    },
+    {
+      "id": 2753,
+      "level": "N1",
+      "act": "N",
+      "word": "無念",
+      "hiragana": "むねん",
+      "korean": "원통함, 분함"
+    },
+    {
+      "id": 2754,
+      "level": "N1",
+      "act": "N",
+      "word": "明暗",
+      "hiragana": "めいあん",
+      "korean": "명암"
+    },
+    {
+      "id": 2755,
+      "level": "N1",
+      "act": "N",
+      "word": "名誉",
+      "hiragana": "めいよ",
+      "korean": "명예"
+    },
+    {
+      "id": 2756,
+      "level": "N1",
+      "act": "N",
+      "word": "目先",
+      "hiragana": "めさき",
+      "korean": "눈앞, 당장"
+    },
+    {
+      "id": 2757,
+      "level": "N1",
+      "act": "N",
+      "word": "面識",
+      "hiragana": "めんしき",
+      "korean": "면식, 안면"
+    },
+    {
+      "id": 2758,
+      "level": "N1",
+      "act": "N",
+      "word": "免除",
+      "hiragana": "めんじょ",
+      "korean": "면제"
+    },
+    {
+      "id": 2759,
+      "level": "N1",
+      "act": "N",
+      "word": "猛反対",
+      "hiragana": "もうはんたい",
+      "korean": "맹렬한 반대"
+    },
+    {
+      "id": 2760,
+      "level": "N1",
+      "act": "N",
+      "word": "網羅",
+      "hiragana": "もうら",
+      "korean": "망라(모두 포함)"
+    },
+    {
+      "id": 2761,
+      "level": "N1",
+      "act": "N",
+      "word": "躍進",
+      "hiragana": "やくしん",
+      "korean": "약진"
+    },
+    {
+      "id": 2762,
+      "level": "N1",
+      "act": "N",
+      "word": "由緒",
+      "hiragana": "ゆいしょ",
+      "korean": "유서, 내력"
+    },
+    {
+      "id": 2763,
+      "level": "N1",
+      "act": "N",
+      "word": "優位",
+      "hiragana": "ゆうい",
+      "korean": "우위"
+    },
+    {
+      "id": 2764,
+      "level": "N1",
+      "act": "N",
+      "word": "融合",
+      "hiragana": "ゆうごう",
+      "korean": "융합"
+    },
+    {
+      "id": 2765,
+      "level": "N1",
+      "act": "N",
+      "word": "有数",
+      "hiragana": "ゆうすう",
+      "korean": "유수, 굴지, 손꼽음"
+    },
+    {
+      "id": 2766,
+      "level": "N1",
+      "act": "N",
+      "word": "融通",
+      "hiragana": "ゆうずう",
+      "korean": "융통"
+    },
+    {
+      "id": 2767,
+      "level": "N1",
+      "act": "N",
+      "word": "油断",
+      "hiragana": "ゆだん",
+      "korean": "방심"
+    },
+    {
+      "id": 2768,
+      "level": "N1",
+      "act": "N",
+      "word": "抑制",
+      "hiragana": "よくせい",
+      "korean": "억제"
+    },
+    {
+      "id": 2769,
+      "level": "N1",
+      "act": "N",
+      "word": "予断",
+      "hiragana": "よだん",
+      "korean": "예단, 예측"
+    },
+    {
+      "id": 2770,
+      "level": "N1",
+      "act": "N",
+      "word": "落胆",
+      "hiragana": "らくたん",
+      "korean": "낙담"
+    },
+    {
+      "id": 2771,
+      "level": "N1",
+      "act": "N",
+      "word": "酪農",
+      "hiragana": "らくのう",
+      "korean": "낙농"
+    },
+    {
+      "id": 2772,
+      "level": "N1",
+      "act": "N",
+      "word": "濫用",
+      "hiragana": "らんよう",
+      "korean": "남용"
+    },
+    {
+      "id": 2773,
+      "level": "N1",
+      "act": "N",
+      "word": "隣接",
+      "hiragana": "りんせつ",
+      "korean": "인접"
+    },
+    {
+      "id": 2774,
+      "level": "N1",
+      "act": "N",
+      "word": "連携",
+      "hiragana": "れんけい",
+      "korean": "연계, 제휴"
+    },
+    {
+      "id": 2775,
+      "level": "N1",
+      "act": "N",
+      "word": "朗報",
+      "hiragana": "ろうほう",
+      "korean": "낭보, 희소식"
+    },
+    {
+      "id": 2776,
+      "level": "N1",
+      "act": "N",
+      "word": "和解",
+      "hiragana": "わかい",
+      "korean": "화해"
+    },
+    {
+      "id": 2777,
+      "level": "N1",
+      "act": "N",
+      "word": "枠",
+      "hiragana": "わく",
+      "korean": "틀, 테두리"
+    },
+    {
+      "id": 2778,
+      "level": "N1",
+      "act": "ADV",
+      "word": "予め",
+      "hiragana": "あらかじめ",
+      "korean": "미리"
+    },
+    {
+      "id": 2779,
+      "level": "N1",
+      "act": "ADV",
+      "word": "改めて",
+      "hiragana": "あらためて",
+      "korean": "다시, 새삼스럽게"
+    },
+    {
+      "id": 2780,
+      "level": "N1",
+      "act": "ADV",
+      "word": "案の定",
+      "hiragana": "あんのじょう",
+      "korean": "역시, 예상대로"
+    },
+    {
+      "id": 2781,
+      "level": "N1",
+      "act": "ADV",
+      "word": "生き生き",
+      "hiragana": "いきいき",
+      "korean": "생기가 넘치는 모양"
+    },
+    {
+      "id": 2782,
+      "level": "N1",
+      "act": "ADV",
+      "word": "一律に",
+      "hiragana": "いちりつに",
+      "korean": "일률적으로"
+    },
+    {
+      "id": 2783,
+      "level": "N1",
+      "act": "ADV",
+      "word": "今更",
+      "hiragana": "いまさら",
+      "korean": "이제 와서, 새삼스럽게"
+    },
+    {
+      "id": 2784,
+      "level": "N1",
+      "act": "ADV",
+      "word": "急遽",
+      "hiragana": "きゅうきょ",
+      "korean": "급거, 갑작스럽게"
+    },
+    {
+      "id": 2785,
+      "level": "N1",
+      "act": "ADV",
+      "word": "極力",
+      "hiragana": "きょくりょく",
+      "korean": "극력, 힘껏"
+    },
+    {
+      "id": 2786,
+      "level": "N1",
+      "act": "ADV",
+      "word": "極めて",
+      "hiragana": "きわめて",
+      "korean": "매우, 지극히"
+    },
+    {
+      "id": 2787,
+      "level": "N1",
+      "act": "ADV",
+      "word": "殊に",
+      "hiragana": "ことに",
+      "korean": "특히"
+    },
+    {
+      "id": 2788,
+      "level": "N1",
+      "act": "ADV",
+      "word": "早急に",
+      "hiragana": "さっきゅうに",
+      "korean": "조속히"
+    },
+    {
+      "id": 2789,
+      "level": "N1",
+      "act": "ADV",
+      "word": "強いて",
+      "hiragana": "しいて",
+      "korean": "억지로, 무리해서"
+    },
+    {
+      "id": 2790,
+      "level": "N1",
+      "act": "ADV",
+      "word": "随時",
+      "hiragana": "ずいじ",
+      "korean": "수시로, 그때그때"
+    },
+    {
+      "id": 2791,
+      "level": "N1",
+      "act": "ADV",
+      "word": "総じて",
+      "hiragana": "そうじて",
+      "korean": "대체로, 전반적으로"
+    },
+    {
+      "id": 2792,
+      "level": "N1",
+      "act": "ADV",
+      "word": "即刻",
+      "hiragana": "そっこく",
+      "korean": "즉각, 즉시"
+    },
+    {
+      "id": 2793,
+      "level": "N1",
+      "act": "ADV",
+      "word": "到底",
+      "hiragana": "とうてい",
+      "korean": "도저히"
+    },
+    {
+      "id": 2794,
+      "level": "N1",
+      "act": "ADV",
+      "word": "取り分け",
+      "hiragana": "とりわけ",
+      "korean": "특히"
+    },
+    {
+      "id": 2795,
+      "level": "N1",
+      "act": "ADV",
+      "word": "漠然と",
+      "hiragana": "ばくぜんと",
+      "korean": "막연하게"
+    },
+    {
+      "id": 2796,
+      "level": "N1",
+      "act": "ADV",
+      "word": "人一倍",
+      "hiragana": "ひといちばい",
+      "korean": "남달리, 남보다 갑절"
+    },
+    {
+      "id": 2797,
+      "level": "N1",
+      "act": "ADV",
+      "word": "不意に",
+      "hiragana": "ふいに",
+      "korean": "갑자기"
+    },
+    {
+      "id": 2798,
+      "level": "N1",
+      "act": "ADV",
+      "word": "無性に",
+      "hiragana": "むしょうに",
+      "korean": "몹시, 공연히, 까닭 없이"
+    },
+    {
+      "id": 2799,
+      "level": "N1",
+      "act": "ADV",
+      "word": "専ら",
+      "hiragana": "もっぱら",
+      "korean": "오로지, 한결같이"
+    },
+    {
+      "id": 2800,
+      "level": "N1",
+      "act": "ADV",
+      "word": "歴然と",
+      "hiragana": "れきぜんと",
+      "korean": "역연히, 또렷하게"
     }
-
-
-
-
   ]
 }
