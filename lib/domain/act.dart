@@ -15,6 +15,10 @@ enum Act{
   @HiveField(3)
   ADV;
 
+  static Act getRandomAct(Act? excludeAct) {
+    return (Act.values.where((x) => x != excludeAct).toList()..shuffle())[0];
+  }
+
   static Act valueOf(String json) {
     return switch (json) {
       "V" => Act.V,
