@@ -6,9 +6,10 @@ import 'package:flutter/material.dart';
 
 class CustomTimer extends StatefulWidget {
 
+  final TimerController? controller;
   final Function(int seconds) getSeconds;
 
-  const CustomTimer({super.key, required this.getSeconds});
+  const CustomTimer({super.key, required this.getSeconds, this.controller});
 
   @override
   State<CustomTimer> createState() => _CustomTimerState();
@@ -16,16 +17,28 @@ class CustomTimer extends StatefulWidget {
 
 class _CustomTimerState extends State<CustomTimer> {
 
-  late final Timer _timer;
+  late Timer _timer;
   int _seconds = 0;
 
-  @override
-  void initState() {
+  void start() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         _seconds++;
       });
     },);
+  }
+  void timerStop() {
+    _timer.cancel();
+  }
+  void restart() {
+    start();
+  }
+
+  @override
+  void initState() {
+    start();
+    widget.controller?.stop = timerStop;
+    widget.controller?.restart = restart;
     super.initState();
   }
 
@@ -54,4 +67,10 @@ String formatTime(int second) {
   int seconds = second % 60;
   if (hours == 0) return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
   return '${hours.toString()}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+}
+
+class TimerController {
+
+  late void Function() stop;
+  late void Function() restart;
 }

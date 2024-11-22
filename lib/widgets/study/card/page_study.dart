@@ -28,6 +28,7 @@ class StudyPage extends ConsumerStatefulWidget {
 
 class _StudyPageState extends ConsumerState<StudyPage> {
 
+  final TimerController _timerController = TimerController();
   final Set<int> readWordIndexList = {};
   // 초기 진입 시의 상태를 저장할 변수 추가
   late bool isInitiallyCompleted;
@@ -61,6 +62,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
     if (currentIndex >= innerWords.length - 1) {
       // 처음 진입 시 이미 100%가 아니었고, 지금 모든 단어를 읽은 경우
       if (!isInitiallyCompleted && allWordsRead) {
+        _timerController.stop();
         // 축하 모달 표시
         showDialog(
           context: context,
@@ -73,6 +75,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
               Navigator.of(context).pop(); // StudyPage 닫기
             },
             onViewTestTap: () {
+              _timerController.restart();
               Navigator.of(context).pop(); // 모달 닫기
               setState(() {
                 isInitiallyCompleted = true; // 남아서 계속 단어카드를 보는 경우 더이상 모달창이 뜨지않도록 변경
@@ -153,7 +156,10 @@ class _StudyPageState extends ConsumerState<StudyPage> {
                   size: 12,
                 ),
                 const SizedBox(width: 4,),
-                CustomTimer(getSeconds: widget.getSeconds),
+                CustomTimer(
+                  controller: _timerController,
+                  getSeconds: widget.getSeconds,
+                ),
               ],
             ),
           ),
