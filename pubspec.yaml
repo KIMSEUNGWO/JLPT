@@ -14,7 +14,7 @@ dependencies:
   audioplayers: ^6.1.0 # 오디오 플레이어
   flutter_riverpod: ^2.6.1 # 전역 저장소
   shared_preferences: ^2.3.3 # 휴대폰 저장공간 사용
-  flutter_svg: ^2.0.10+1 # SVG 파일 열기
+  flutter_svg: ^2.0.15 # SVG 파일 열기
   hive: ^2.2.3 # NoSQL
   hive_flutter: ^1.1.0 # NoSQL 확장 패키지
 
@@ -24,7 +24,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
   build_runner: ^2.4.7 # Hive 객체사용
   hive_generator: ^2.0.1 # Hive 객체사용
 

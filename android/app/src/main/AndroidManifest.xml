@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:label="주르네 개발노트"
+        android:label="JLPT 연습장"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
