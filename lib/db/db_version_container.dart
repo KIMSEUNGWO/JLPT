@@ -1,6 +1,7 @@
 
 
 import 'package:hive/hive.dart';
+import 'package:jlpt_app/initdata/update/VersionInfo.dart';
 
 class VersionController {
   
@@ -8,26 +9,20 @@ class VersionController {
   const VersionController();
   
   static const String VERSION_BOX = 'version_box';
-  static const String CHINESE_CHAR_VERSION = 'chinese_char_version';
-  static const String JAPAN_WORD_VERSION = 'japan_words_version';
+  static const String VERSION = 'version';
 
-  
-  bool isChineseCharRequireUpdate(String version) {
-    String? chineseCharVersion = _openVersion(CHINESE_CHAR_VERSION);
-    print('dbVersion : $chineseCharVersion, afterVersion : $version');
-    return chineseCharVersion != version;
-  }
-  bool isJapanWordsRequireUpdate(String version) {
-    String? japanWordsVersion = _openVersion(JAPAN_WORD_VERSION);
-    print('dbVersion : $japanWordsVersion, afterVersion : $version');
-    return japanWordsVersion != version;
+
+  bool isRequireUpdate(VersionInfo info) {
+    String? version = _openVersion(VERSION);
+    print('dbVersion : $version, afterVersion : ${info.version}');
+    return version != info.version;
   }
 
   String? _openVersion(String boxKey) {
     return Hive.box(VERSION_BOX).get(boxKey);
   }
-  void versionUpdate(String boxKey, String version) {
+  void versionUpdate(String boxKey, VersionInfo version) {
     var box = Hive.box(VERSION_BOX);
-    box.put(boxKey, version);
+    box.put(boxKey, version.version);
   }
 }

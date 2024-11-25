@@ -1,13 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:jlpt_app/component/local_storage.dart';
-import 'package:jlpt_app/initdata/init_chinese_char.dart';
-import 'package:jlpt_app/initdata/init_japan_word.dart';
+import 'package:jlpt_app/initdata/update/UpdateChecker.dart';
 import 'package:jlpt_app/notifier/recently_view_notifier.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 import 'package:jlpt_app/notifier/timer_notifier.dart';
 import 'package:jlpt_app/notifier/today_notifier.dart';
-import 'package:jlpt_app/widgets/page_main.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -30,19 +28,14 @@ class _InitWidgetState extends ConsumerState<InitWidget> {
     ref.read(studyCycleNotifier.notifier).init(); // 레벨별 사이클 init
 
   }
-  initData() async {
-    await InitChineseCharHelper().init(); // 한자 정보 로드
-    await InitJapanWordHelper().init();
-  }
 
   @override
   void initState() {
     initNotifier();
-    initData();
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
-    return const MainPage();
+    return const UpdateChecker();
   }
 }

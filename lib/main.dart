@@ -22,7 +22,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
   // Hive 초기화 전에 기존 데이터 삭제
-  // await clearHiveData();
+  await clearHiveData();
 
   await Hive.initFlutter(); // NoSQL init
 

@@ -10,6 +10,7 @@ import 'package:jlpt_app/domain/chinese_char.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/domain/box/japan_word_box.dart';
+import 'package:jlpt_app/initdata/update/VersionInfo.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 
 class DBHive {
@@ -20,21 +21,14 @@ class DBHive {
   static const String CHINESE_CHAR_BOX = 'chineseChar';
   static const String JAPAN_WORDS_BOX = 'japanWords';
 
-  Future<void> loadChineseChar(ChineseCharEntity fromJson) async {
+  Future<void> loadChineseChar(VersionInfo version, ChineseCharEntity fromJson) async {
     Box box = Hive.box(CHINESE_CHAR_BOX);
-
-    bool isRequireUpdate = VersionController.instance.isChineseCharRequireUpdate(fromJson.version);
 
     // box에서 데이터 가져오기
     ChineseCharBox? boxData = box.get('chars');
 
     Map<String, ChineseChar> dbState = boxData?.chars ?? {};
 
-    // 업데이트가 필요없으면 Box에서 데이터를 바로 반환
-    if (!isRequireUpdate) {
-      print('Not Required Update ChineseChars');
-      return;
-    }
 
     // 업데이트 로직
     dbState.addAll({
@@ -46,26 +40,15 @@ class DBHive {
     // 새로운 JapanWordBox 객체 생성하여 저장
     await box.put('chars', ChineseCharBox(chars: dbState));
 
-    // 버전 최신화
-    VersionController.instance.versionUpdate(VersionController.CHINESE_CHAR_VERSION, fromJson.version);
-
   }
 
-  Future<void> loadJapanWords(JapanWordsEntity fromJson) async {
+  Future<void> loadJapanWords(VersionInfo version, JapanWordsEntity fromJson) async {
     Box box = Hive.box(JAPAN_WORDS_BOX);
-
-    bool isRequireUpdate = VersionController.instance.isJapanWordsRequireUpdate(fromJson.version);
 
     // box에서 데이터 가져오기
     JapanWordBox? boxData = box.get('words');
 
     Map<Level, List<Word>> dbState = boxData?.words ?? {};
-
-    // 업데이트가 필요없으면 Box에서 데이터를 바로 반환
-    if (!isRequireUpdate) {
-      print('Not Required Update JapanWords');
-      return;
-    }
 
     Map<Level, List<Word>> state = {};
     for (var e in fromJson.words) {
@@ -84,8 +67,6 @@ class DBHive {
     // 새로운 JapanWordBox 객체 생성하여 저장
     await box.put('words', JapanWordBox(words: mergedWords));
 
-    // 버전 최신화
-    VersionController.instance.versionUpdate(VersionController.JAPAN_WORD_VERSION, fromJson.version);
   }
 
   updateWordsIsReadTrue(List<int> wordIds) async {
