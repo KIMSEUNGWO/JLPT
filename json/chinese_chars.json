@@ -7601,6 +7601,18 @@
       "soundReading": ["きゅう"],
       "meanReading": [],
       "koreanChar": "笈 (책상자 급)"
+    },
+    {
+      "char": "𠮟",
+      "soundReading": ["しかる"],
+      "meanReading": [],
+      "koreanChar": "𠮟 (꾸짖을 질)"
+    },
+    {
+      "char": "瘦",
+      "soundReading": ["そう"],
+      "meanReading": ["やせる"],
+      "koreanChar": "瘦 (여윌 수)"
     }
   ]
 

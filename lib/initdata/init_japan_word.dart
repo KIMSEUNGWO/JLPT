@@ -2,16 +2,16 @@
 import 'package:jlpt_app/component/json_reader.dart';
 import 'package:jlpt_app/db/db_hive.dart';
 import 'package:jlpt_app/db/db_japanese_words_entity.dart';
-import 'package:jlpt_app/initdata/update/VersionInfo.dart';
 
 class InitJapanWordHelper {
 
 
   init(bool isUpdated) async {
-    if (!isUpdated) return;
+    // 혹시라도 데이터가 없으면 가져와야함
+    var hasJapanWordsData = DBHive.instance.hasJapanWordsData();
+    if (!isUpdated && hasJapanWordsData) return;
 
     try {
-      // var loadJson = await JsonReader.loadJson('japanese_words');
       var loadJson = await JsonReader.loadJson('japanese_words');
       var japanWordsEntity = JapanWordsEntity.fromJson(loadJson);
 

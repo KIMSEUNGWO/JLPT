@@ -159,5 +159,17 @@ class DBHive {
     ChineseCharBox? boxData = box.get('chars');
     return boxData?.chars ?? {};
   }
+
+  bool hasJapanWordsData() {
+    Box box = Hive.box(JAPAN_WORDS_BOX);
+    JapanWordBox? boxData = box.get('words');
+    return boxData != null;
+  }
+
+  hasChineseCharsData() {
+    Box box = Hive.box(CHINESE_CHAR_BOX);
+    ChineseCharBox? boxData = box.get('chars');
+    return boxData != null;
+  }
 }
 

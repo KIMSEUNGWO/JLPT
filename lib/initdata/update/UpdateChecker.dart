@@ -1,6 +1,3 @@
-
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:jlpt_app/component/json_reader.dart';
 import 'package:jlpt_app/domain/constant.dart';
@@ -42,6 +39,7 @@ class _UpdateCheckerState extends State<UpdateChecker> {
   checkUpdates() async {
     bool isRequire = await isRequireUpdate();
     if (!isRequire) {
+      print('이미 최신버전 입니다');
       await initData(false);
       return;
     }

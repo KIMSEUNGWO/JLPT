@@ -47,7 +47,7 @@ class Word extends HiveObject {
 
   @override
   String toString() {
-    return 'id: $id, level: $level, act: $act, word: $word';
+    return 'id: $id\nlevel: $level\nact: $act\nword: $word';
   }
 
 }

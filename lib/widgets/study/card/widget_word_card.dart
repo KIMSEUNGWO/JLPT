@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/widgets/component/audio_button.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
+import 'package:jlpt_app/widgets/modal/report_problem.dart';
 import 'package:jlpt_app/widgets/study/card/widget_word_card_detail.dart';
 
 class WordCardWidget extends StatefulWidget {
@@ -76,6 +77,34 @@ class _WordCardWidgetState extends State<WordCardWidget> with TickerProviderStat
                     _isOpen ? const SizedBox(height: 31,) : const SizedBox(height: 10,),
                     _isOpen ? WordCardDetailWidget(word: widget.word) : const SizedBox(),
                   ],
+                ),
+              ),
+              Positioned(
+                top: 10,
+                right: 10,
+                child: GestureDetector(
+                  onTap: () {
+                    showDialog(context: context, builder: (context) {
+                      return ReportProblemModal(
+                        word: widget.word,
+                      );
+                    },);
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.report_problem_outlined,
+                        color: Theme.of(context).colorScheme.onTertiary,
+                        size: 14,
+                      ),
+                      const SizedBox(width: 4,),
+                      Text('오류신고',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onTertiary,
+                          fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               Positioned(

@@ -48,7 +48,6 @@ class _UpdateModalState extends State<UpdateModal> {
 
   // 다운로드 진행 상태 업데이트
   void _updateProgress(double progress, double total) {
-    print('downloadSize : $_downloadedSize, progress : $progress, total : $total');
     setState(() {
       _downloadedSize = progress;
       _downloadedTotal = total;
@@ -235,7 +234,7 @@ class _UpdateModalState extends State<UpdateModal> {
 }
 
 class _BonceIcon extends StatefulWidget {
-  const _BonceIcon({super.key});
+  const _BonceIcon();
 
   @override
   State<_BonceIcon> createState() => _BonceIconState();
@@ -259,10 +258,7 @@ class _BonceIconState extends State<_BonceIcon> with SingleTickerProviderStateMi
     _iconAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: const Interval(0.3, 0.8, curve: Curves.elasticOut),
-    ));
+    ).animate(curvedAnimation);
 
     _controller.forward();
 
