@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/src/consumer.dart';
 import 'package:hive/hive.dart';
 import 'package:jlpt_app/db/db_chinese_char_entity.dart';
 import 'package:jlpt_app/db/db_japanese_words_entity.dart';
-import 'package:jlpt_app/db/db_version_container.dart';
 import 'package:jlpt_app/domain/box/chinese_char_box.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
 import 'package:jlpt_app/domain/level.dart';
@@ -21,7 +20,7 @@ class DBHive {
   static const String CHINESE_CHAR_BOX = 'chineseChar';
   static const String JAPAN_WORDS_BOX = 'japanWords';
 
-  Future<void> loadChineseChar(VersionInfo version, ChineseCharEntity fromJson) async {
+  Future<void> loadChineseChar(ChineseCharEntity fromJson) async {
     Box box = Hive.box(CHINESE_CHAR_BOX);
 
     // box에서 데이터 가져오기
@@ -42,7 +41,7 @@ class DBHive {
 
   }
 
-  Future<void> loadJapanWords(VersionInfo version, JapanWordsEntity fromJson) async {
+  Future<void> loadJapanWords(JapanWordsEntity fromJson) async {
     Box box = Hive.box(JAPAN_WORDS_BOX);
 
     // box에서 데이터 가져오기
@@ -50,22 +49,43 @@ class DBHive {
 
     Map<Level, List<Word>> dbState = boxData?.words ?? {};
 
-    Map<Level, List<Word>> state = {};
+    Map<Level, List<Word>> updateState = {};
     for (var e in fromJson.words) {
-      state.putIfAbsent(e.level, () => [],).add(e);
+      updateState.putIfAbsent(e.level, () => [],).add(e);
     }
 
-    // 결과를 저장할 Map
-    Map<Level, List<Word>> mergedWords = {};
 
     for (Level level in Level.values) {
-      mergedWords[level] = { ...?state[level], ...?dbState[level] }.toList();
-      mergedWords[level]?.sort((a, b) => a.id - b.id,);
+      List<Word?> list =  dbState[level]?.cast<Word?>() ?? [];
+      for (var newWord in updateState[level] ?? []) {
+        Word? existingWord = list.firstWhere(
+          (e) => e?.id == newWord.id,
+          orElse: () => null
+        );
+        if (existingWord != null) {
+          existingWord.word = newWord.word;
+          existingWord.hiragana = newWord.hiragana;
+          existingWord.korean = newWord.korean;
+          existingWord.act = newWord.act;
+        } else {
+          // 새로운 단어는 리스트에 추가
+          dbState.putIfAbsent(level, () => []).add(Word(
+            id: newWord.id,
+            level: newWord.level,
+            act: newWord.act,
+            word: newWord.word,
+            hiragana: newWord.hiragana,
+            korean: newWord.korean,
+            isRead: false,    // 새 단어는 기본값으로 초기화
+            wrongCnt: 0,      // 새 단어는 기본값으로 초기화
+          ));
+        }
+      }
     }
 
     await box.clear();
     // 새로운 JapanWordBox 객체 생성하여 저장
-    await box.put('words', JapanWordBox(words: mergedWords));
+    await box.put('words', JapanWordBox(words: dbState));
 
   }
 

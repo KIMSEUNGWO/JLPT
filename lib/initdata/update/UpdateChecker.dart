@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:jlpt_app/component/json_reader.dart';
-import 'package:jlpt_app/db/db_version_container.dart';
+import 'package:jlpt_app/domain/constant.dart';
 import 'package:jlpt_app/initdata/init_chinese_char.dart';
 import 'package:jlpt_app/initdata/init_japan_word.dart';
 import 'package:jlpt_app/initdata/update/VersionInfo.dart';
@@ -19,48 +19,57 @@ class UpdateChecker extends StatefulWidget {
 
 class _UpdateCheckerState extends State<UpdateChecker> {
 
-  double _progress = 0.8;
-  String _fileSize = '';
-  String _downloadedSize = '';
-
-  initData() async {
-    await InitChineseCharHelper().init(); // 한자 정보 로드
-    await InitJapanWordHelper().init();
+  initData(bool isUpdated) async {
+    await InitChineseCharHelper().init(isUpdated); // 한자 정보 로드
+    await InitJapanWordHelper().init(isUpdated);
   }
 
-  showModal(VersionInfo versionInfo) {
+  updateComplete() async {
+    await initData(true);
+  }
+
+  showModal() {
     showDialog(
       context: context,
       builder: (context) {
         return UpdateModal(
-            version: versionInfo
+          updateComplete: updateComplete,
         );
       },
     );
   }
 
   checkUpdates() async {
-    var loadJson = await getVersion();
-    if (loadJson == null) return;
+    bool isRequire = await isRequireUpdate();
+    if (!isRequire) {
+      await initData(false);
+      return;
+    }
+    showModal();
 
-    // VersionInfo versionInfo = VersionInfo.fromJson(loadJson);
-
-    showModal(VersionInfo(version: '0.0.1', description: '오타수정', lastUpdated: DateTime.now()));
-    // bool isRequireUpdate = VersionController.instance.isRequireUpdate(versionInfo);
-    // if (isRequireUpdate) {
-    //   showModal(versionInfo);
-    // }
   }
 
-  Future<Map<String, dynamic>?> getVersion() async {
+  Future<bool> isRequireUpdate() async {
     try {
-      var loadJson = await JsonReader.loadJsonFromUrl('https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/json/dataVersion.json');
-      return loadJson;
+      var loadJson = await JsonReader.loadJson('dataVersion');
+      VersionInfo beforeVersion = VersionInfo.fromJson(loadJson);
+      try {
+        var internetVersion = await JsonReader.loadJsonFromUrl(Constant.VERSION_LINK);
+        VersionInfo afterVersion = VersionInfo.fromJson(internetVersion);
+        // 업데이트버전과 현재버전이 일치하지 않으면 업데이트가 필요함
+        return beforeVersion.version != afterVersion.version;
+      } catch (a) {
+        // 인터넷 연결에 실패한 경우
+        print('버전 체크 실패, 인터넷 연결에 실패함 : $a');
+        return false;
+      }
     } catch (e) {
-      print('버전 체크 실패: $e');
-      return null;
+      // 내부에 데이터가 존재하지 않는경우
+      print('버전 체크 실패, 내부데이터가 존재하지 않음: $e');
+      return true;
     }
   }
+
   @override
   void initState() {
     checkUpdates();

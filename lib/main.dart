@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:jlpt_app/db/db_hive.dart';
-import 'package:jlpt_app/db/db_version_container.dart';
 import 'package:jlpt_app/domain/act.dart';
 import 'package:jlpt_app/domain/box/chinese_char_box.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
@@ -22,7 +21,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
   // Hive 초기화 전에 기존 데이터 삭제
-  await clearHiveData();
+  // await clearHiveData();
 
   await Hive.initFlutter(); // NoSQL init
 
@@ -36,7 +35,6 @@ void main() async{
   // Box 열기
   await Hive.openBox(DBHive.JAPAN_WORDS_BOX);
   await Hive.openBox(DBHive.CHINESE_CHAR_BOX);
-  await Hive.openBox(VersionController.VERSION_BOX);
 
   runApp(const ProviderScope(child: MyApp()));
 }

@@ -9,15 +9,14 @@ import 'package:jlpt_app/initdata/update/VersionInfo.dart';
 class InitChineseCharHelper {
 
 
-  init({VersionInfo? version}) async {
-    if (version != null) {
+  init(bool isUpdated) async {
+    if (isUpdated) {
       try {
-        // var loadJson = await JsonReader.loadJson('chinese_chars');
-        var loadJson = await JsonReader.loadJsonFromUrl('https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/json/chinese_chars.json');
+        var loadJson = await JsonReader.loadJson('chinese_chars');
 
         var chineseCharEntity = ChineseCharEntity.fromJson(loadJson);
 
-        await DBHive.instance.loadChineseChar(version, chineseCharEntity);
+        await DBHive.instance.loadChineseChar(chineseCharEntity);
       } catch (e) {
         print('Chinese Char Internet Access Exception');
       }

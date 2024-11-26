@@ -11,15 +11,15 @@ class Word extends HiveObject {
   @HiveField(0)
   final int id;
   @HiveField(1)
-  final Level level;
+  Level level;
   @HiveField(2)
-  final Act act;
+  Act act;
   @HiveField(3)
-  final String word;
+  String word;
   @HiveField(4)
-  final String hiragana;
+  String hiragana;
   @HiveField(5)
-  final String korean;
+  String korean;
 
   @HiveField(6)
   bool isRead = false;
