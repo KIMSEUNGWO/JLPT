@@ -8,6 +8,7 @@ import 'package:jlpt_app/notifier/timer_notifier.dart';
 import 'package:jlpt_app/notifier/today_notifier.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class InitWidget extends ConsumerStatefulWidget {
   const InitWidget({super.key});
@@ -29,9 +30,14 @@ class _InitWidgetState extends ConsumerState<InitWidget> {
 
   }
 
+  _adsInit() async {
+    await MobileAds.instance.initialize();
+  }
+
   @override
   void initState() {
     initNotifier();
+    _adsInit();
     super.initState();
   }
   @override

@@ -49,5 +49,7 @@
 		<string>Need microphone access for audio playback</string>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>GADApplicationIdentifier</key>
+        <string>ca-app-pub-4674997915275371~6848696601</string>
 	</dict>
 </plist>

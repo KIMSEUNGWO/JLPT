@@ -18,6 +18,7 @@ dependencies:
   hive: ^2.2.3 # NoSQL
   hive_flutter: ^1.1.0 # NoSQL 확장 패키지
   flutter_native_splash: ^2.4.3 # 스플래쉬
+  google_mobile_ads: ^5.2.0 # 구글 광고
 
   cupertino_icons: ^1.0.8
 

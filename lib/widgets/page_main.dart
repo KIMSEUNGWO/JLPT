@@ -6,12 +6,12 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:jlpt_app/db/db_hive.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/word.dart';
-import 'package:jlpt_app/domain/box/japan_word_box.dart';
 import 'package:jlpt_app/notifier/entity/today.dart';
 import 'package:jlpt_app/notifier/recently_view_notifier.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 import 'package:jlpt_app/notifier/timer_notifier.dart';
 import 'package:jlpt_app/notifier/today_notifier.dart';
+import 'package:jlpt_app/widgets/component/ads_banner.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
 import 'package:jlpt_app/widgets/component/record_component.dart';
@@ -37,7 +37,10 @@ class _MainPageState extends ConsumerState<MainPage> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 36),
+          padding: const EdgeInsets.only(
+            left: 20, right: 20,
+            top: 36, bottom: 12
+          ),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -198,6 +201,7 @@ class _MainPageState extends ConsumerState<MainPage> {
           ),
         ),
       ),
+      bottomNavigationBar: SimpleBannerAd(height: 100,),
     );
   }
 }

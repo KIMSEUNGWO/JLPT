@@ -5,6 +5,7 @@ import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/timer.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/notifier/today_notifier.dart';
+import 'package:jlpt_app/widgets/component/ads_banner.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
 import 'package:jlpt_app/widgets/study/card/widget_word_card.dart';
@@ -213,73 +214,77 @@ class _StudyPageState extends ConsumerState<StudyPage> {
         },
         child: WordCardWidget(word: innerWords[currentIndex], key: ValueKey<int>(currentIndex)),
       ),
-      bottomNavigationBar: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Row(
-            children: [
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    _showNextWord();
-                  },
-                  child: CustomContainer(
-                    height: 50,
-                    backgroundColor: Colors.white,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.close,
-                          color: Theme.of(context).colorScheme.primary,
-                          size: 15,
-                        ),
-                        const SizedBox(width: 8,),
-                        Text('잘 모르겠음',
-                          style: TextStyle(
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      _showNextWord();
+                    },
+                    child: CustomContainer(
+                      height: 50,
+                      backgroundColor: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.close,
                             color: Theme.of(context).colorScheme.primary,
-                            fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                            fontWeight: FontWeight.w500
+                            size: 15,
                           ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 21,),
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    _selectOK(innerWords[currentIndex].id);
-                    _showNextWord(readWord: innerWords[currentIndex]);
-                    ref.read(todayNotifier.notifier).plusWordCnt();
-                  },
-                  child: CustomContainer(
-                    height: 50,
-                    backgroundColor: Theme.of(context).colorScheme.primary,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.check,
-                          color: Colors.white,
-                          size: 15,
-                        ),
-                        const SizedBox(width: 8,),
-                        Text('이해했음',
-                          style: TextStyle(
-                              color: Colors.white,
+                          const SizedBox(width: 8,),
+                          Text('잘 모르겠음',
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary,
                               fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
                               fontWeight: FontWeight.w500
-                          ),
-                        )
-                      ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(width: 21,),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      _selectOK(innerWords[currentIndex].id);
+                      _showNextWord(readWord: innerWords[currentIndex]);
+                      ref.read(todayNotifier.notifier).plusWordCnt();
+                    },
+                    child: CustomContainer(
+                      height: 50,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.check,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          const SizedBox(width: 8,),
+                          Text('이해했음',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
+                                fontWeight: FontWeight.w500
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+          SimpleBannerAd(width: double.infinity, height: 100,)
+        ],
       ),
     );
   }
