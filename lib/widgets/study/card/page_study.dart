@@ -29,7 +29,6 @@ class StudyPage extends ConsumerStatefulWidget {
 class _StudyPageState extends ConsumerState<StudyPage> {
 
   final TimerController _timerController = TimerController();
-  final Set<int> readWordIndexList = {};
   // 초기 진입 시의 상태를 저장할 변수 추가
   late bool isInitiallyCompleted;
 
@@ -108,8 +107,9 @@ class _StudyPageState extends ConsumerState<StudyPage> {
     });
   }
 
-  _selectOK(int id) {
-    readWordIndexList.add(id);
+  _selectOK(int id) async {
+
+    await DBHive.instance.updateWordIsReadTrue(widget.level, id);
 
     innerWords.firstWhere((e) => e.id == id).isRead = true;
     setState(() {
@@ -123,16 +123,6 @@ class _StudyPageState extends ConsumerState<StudyPage> {
     isInitiallyCompleted = widget.words.every((word) => word.isRead);
     removeIsReadWord();
     super.initState();
-  }
-
-
-  beforeDispose() async {
-    await DBHive.instance.updateWordsIsReadTrue(readWordIndexList.toList());
-  }
-  @override
-  void dispose() {
-    beforeDispose();
-    super.dispose();
   }
 
   @override

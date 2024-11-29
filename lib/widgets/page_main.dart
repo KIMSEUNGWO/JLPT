@@ -76,7 +76,7 @@ class _MainPageState extends ConsumerState<MainPage> {
                           dataList: [
                             RecordData(title: '학습시간', value: TodayData.formatTimeToHours(watch.hours)),
                             RecordData(title: '학습단어', value: '${watch.wordCnt}'),
-                            RecordData(title: '학습문법', value: '${watch.grammarCnt}'),
+                            // RecordData(title: '학습문법', value: '${watch.grammarCnt}'),
                           ],
                         );
                       },

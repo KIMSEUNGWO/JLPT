@@ -73,7 +73,7 @@ class _WordCardWidgetState extends State<WordCardWidget> with TickerProviderStat
                       ),
                     ),
                     const SizedBox(height: 26,),
-                    const AudioWaveAnimation(audioLink: '23487.mp3', title: '발음 듣기',),
+                    // const AudioWaveAnimation(audioLink: '23487.mp3', title: '발음 듣기',),
                     _isOpen ? const SizedBox(height: 31,) : const SizedBox(height: 10,),
                     _isOpen ? WordCardDetailWidget(word: widget.word) : const SizedBox(),
                   ],

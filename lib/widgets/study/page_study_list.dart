@@ -152,57 +152,57 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
             bottomRight: Radius.circular(14),
           ),
         ),
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(65),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-            height: 65,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    _onChangePage(0);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                    decoration: BoxDecoration(
-                      color: _currentPage == 0 ? Theme.of(context).colorScheme.primary : null,
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    child: Text('단어',
-                      style: TextStyle(
-                        color: _currentPage == 0 ? Colors.white : null,
-                        fontWeight: FontWeight.w500,
-                        fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 8,),
-                GestureDetector(
-                  onTap: () {
-                    _onChangePage(1);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                    decoration: BoxDecoration(
-                      color: _currentPage == 1 ? Theme.of(context).colorScheme.primary : null,
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    child: Text('문법',
-                      style: TextStyle(
-                        color: _currentPage == 1 ? Colors.white : null,
-                        fontWeight: FontWeight.w500,
-                        fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ),
-        ),
+        // bottom: PreferredSize(
+        //   preferredSize: const Size.fromHeight(65),
+        //   child: Container(
+        //     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        //     height: 65,
+        //     child: ListView(
+        //       scrollDirection: Axis.horizontal,
+        //       children: [
+        //         GestureDetector(
+        //           onTap: () {
+        //             _onChangePage(0);
+        //           },
+        //           child: Container(
+        //             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        //             decoration: BoxDecoration(
+        //               color: _currentPage == 0 ? Theme.of(context).colorScheme.primary : null,
+        //               borderRadius: BorderRadius.circular(14),
+        //             ),
+        //             child: Text('단어',
+        //               style: TextStyle(
+        //                 color: _currentPage == 0 ? Colors.white : null,
+        //                 fontWeight: FontWeight.w500,
+        //                 fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
+        //               ),
+        //             ),
+        //           ),
+        //         ),
+        //         const SizedBox(width: 8,),
+        //         GestureDetector(
+        //           onTap: () {
+        //             _onChangePage(1);
+        //           },
+        //           child: Container(
+        //             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        //             decoration: BoxDecoration(
+        //               color: _currentPage == 1 ? Theme.of(context).colorScheme.primary : null,
+        //               borderRadius: BorderRadius.circular(14),
+        //             ),
+        //             child: Text('문법',
+        //               style: TextStyle(
+        //                 color: _currentPage == 1 ? Colors.white : null,
+        //                 fontWeight: FontWeight.w500,
+        //                 fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
+        //               ),
+        //             ),
+        //           ),
+        //         ),
+        //       ],
+        //     )
+        //   ),
+        // ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 21),
@@ -279,21 +279,21 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
                                   )
                               ],
                             ),
-                            const SizedBox(height: 6,),
-                            Row(
-                              children: [
-                                Icon(Icons.check_circle,
-                                  size: Theme.of(context).textTheme.bodySmall!.fontSize,
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
-                                const SizedBox(width: 4,),
-                                Text('정답률 90%',
-                                  style: TextStyle(
-                                      fontSize: Theme.of(context).textTheme.bodySmall!.fontSize
-                                  ),
-                                ),
-                              ],
-                            ),
+                            // const SizedBox(height: 6,),
+                            // Row(
+                            //   children: [
+                            //     Icon(Icons.check_circle,
+                            //       size: Theme.of(context).textTheme.bodySmall!.fontSize,
+                            //       color: Theme.of(context).colorScheme.primary,
+                            //     ),
+                            //     const SizedBox(width: 4,),
+                            //     Text('정답률 90%',
+                            //       style: TextStyle(
+                            //           fontSize: Theme.of(context).textTheme.bodySmall!.fontSize
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
                             const SizedBox(height: 12,),
                             ValueListenableBuilder(
                               valueListenable: Hive.box(DBHive.JAPAN_WORDS_BOX).listenable(),

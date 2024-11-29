@@ -122,6 +122,28 @@ class DBHive {
     await box.put('words', JapanWordBox(words: updatedWords));
   }
 
+  updateWordIsReadTrue(Level level, int id) async {
+    Box box = Hive.box(JAPAN_WORDS_BOX);
+    JapanWordBox? boxData = box.get('words');
+
+    if (boxData == null) return;
+
+    // 깊은 복사를 통해 새로운 Map 생성
+    Map<Level, List<Word>> boxMap = Map.from(boxData.words);
+
+    List<Word> list =  boxMap[level] ?? [];
+
+    for (var o in list) {
+      if (o.id == id) {
+        o.isRead = true;
+        break;
+      }
+    }
+
+    await box.put('words', boxData);
+  }
+
+
   Future<void> initialWords(WidgetRef ref, Level level) async {
     Box box = Hive.box(JAPAN_WORDS_BOX);
     JapanWordBox? boxData = box.get('words');
@@ -171,5 +193,6 @@ class DBHive {
     ChineseCharBox? boxData = box.get('chars');
     return boxData != null;
   }
+
 }
 
