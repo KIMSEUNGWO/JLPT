@@ -11,6 +11,7 @@ import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/notifier/recently_view_notifier.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 import 'package:jlpt_app/notifier/timer_notifier.dart';
+import 'package:jlpt_app/widgets/component/test_stat_widget.dart';
 import 'package:jlpt_app/widgets/modal/congratulationsModal.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
@@ -211,9 +212,12 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
           children: [
             ListView.separated(
               separatorBuilder: (context, index) => const SizedBox(height: 16,),
-              itemCount: (_stateWords.length / Constant.GROUP_SIZE).ceil(),
+              itemCount: (_stateWords.length / Constant.GROUP_SIZE).ceil() + 1,
               itemBuilder: (context, index) {
 
+                if ((_stateWords.length / Constant.GROUP_SIZE).ceil() == index) {
+                  return TestStatWidget(level: widget.level,);
+                }
                 int start = index * Constant.GROUP_SIZE;
                 int end = min((index + 1) * Constant.GROUP_SIZE, _stateWords.length);
 

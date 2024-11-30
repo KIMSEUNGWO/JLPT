@@ -20,6 +20,7 @@ import 'package:jlpt_app/widgets/component/title_and_widget.dart';
 import 'package:jlpt_app/widgets/study/page_study_list.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jlpt_app/widgets/study/test/result/test_result_page.dart';
 
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({super.key});
@@ -35,12 +36,24 @@ class _MainPageState extends ConsumerState<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return TestResultPage();
+              },));
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: Text('테스트 기록'),
+            ),
+          )
+        ],
+      ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(
-            left: 20, right: 20,
-            top: 36, bottom: 12
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12,),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

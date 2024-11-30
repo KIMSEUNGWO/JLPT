@@ -7,8 +7,11 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:jlpt_app/db/db_hive.dart';
 import 'package:jlpt_app/domain/act.dart';
 import 'package:jlpt_app/domain/box/chinese_char_box.dart';
+import 'package:jlpt_app/domain/box/question_entity_box.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/question.dart';
+import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/domain/box/japan_word_box.dart';
 import 'package:jlpt_app/initdata/init.dart';
@@ -29,12 +32,16 @@ void main() async{
   Hive.registerAdapter(WordAdapter());
   Hive.registerAdapter(LevelAdapter());
   Hive.registerAdapter(ActAdapter());
+  Hive.registerAdapter(PracticeTypeAdapter());
   Hive.registerAdapter(JapanWordBoxAdapter());
   Hive.registerAdapter(ChineseCharBoxAdapter());
+  Hive.registerAdapter(QuestionEntityBoxAdapter());
+  Hive.registerAdapter(QuestionAdapter());
 
   // Box 열기
   await Hive.openBox(DBHive.JAPAN_WORDS_BOX);
   await Hive.openBox(DBHive.CHINESE_CHAR_BOX);
+  await Hive.openBox(DBHive.TEST_BOX);
 
   runApp(const ProviderScope(child: MyApp()));
 }

@@ -12,7 +12,7 @@ class QuestionCreator {
   const QuestionCreator();
 
 
-  List<Question<Word>> createWordQuestions({required List<Word> totalWords, required List<Word> questionWords}) {
+  List<Question> createWordQuestions({required List<Word> totalWords, required List<Word> questionWords}) {
 
     Map<Act, List<Word>> actMap = {};
     for (var e in totalWords) {
@@ -22,12 +22,12 @@ class QuestionCreator {
     return questionWords.map((word) => _select(word, actMap)).toList();
   }
 
-  Question<Word> _select(Word word, Map<Act, List<Word>> actMap) {
+  Question _select(Word word, Map<Act, List<Word>> actMap) {
     List<Word> actList = _getActWordList(word, actMap);
-    var question = QuestionBox.wrap(word);
+    var question = word;
     return Question.create(
       question: question,
-      examples: [ question , ...actList.map((x) => QuestionBox.wrap(x))]..shuffle(),
+      examples: [ question , ...actList]..shuffle(),
     );
   }
 

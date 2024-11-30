@@ -18,6 +18,7 @@ class InitJapanWordHelper {
       await DBHive.instance.loadJapanWords(japanWordsEntity);
     } catch (e) {
       print('Japan Word Internet Access Exception');
+      print(e);
     }
   }
 }

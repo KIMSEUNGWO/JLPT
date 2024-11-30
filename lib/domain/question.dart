@@ -1,15 +1,25 @@
 
+import 'package:hive/hive.dart';
 import 'package:jlpt_app/domain/question_box.dart';
 
-class Question<T> {
+part 'question.g.dart';
 
-  final QuestionBox<T> question;
-  final List<QuestionBox<T>> examples;
-  QuestionBox<T>? myAnswer;
+@HiveType(typeId: 7)
+class Question extends HiveObject {
 
+  @HiveField(0)
+  final QuestionBox question;
+  @HiveField(1)
+  final List<QuestionBox> examples;
+  @HiveField(2)
+  QuestionBox? myAnswer;
+  @HiveField(3)
+  bool reverse = false;
+
+  Question({required this.question, required this.examples, this.myAnswer, this.reverse = false});
 
   Question.create(
       {required this.question,
-      required this.examples});
+        required this.examples});
 
 }
