@@ -37,6 +37,12 @@ class _SimpleBannerAdState extends State<SimpleBannerAd> {
     ).load();
     super.initState();
   }
+
+  @override
+  void dispose() {
+    _bannerAd?.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return _bannerAd == null ? SizedBox() :
