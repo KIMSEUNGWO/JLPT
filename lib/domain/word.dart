@@ -2,11 +2,12 @@
 import 'package:hive/hive.dart';
 import 'package:jlpt_app/domain/act.dart';
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/question_box.dart';
 
 part 'word.g.dart';
 
 @HiveType(typeId: 2)
-class Word extends HiveObject {
+class Word extends HiveObject implements QuestionBox {
 
   @HiveField(0)
   final int id;
@@ -48,6 +49,16 @@ class Word extends HiveObject {
   @override
   String toString() {
     return 'id: $id\nlevel: $level\nact: $act\nword: $word';
+  }
+
+  @override
+  String getJapanese() {
+    return word;
+  }
+
+  @override
+  String getKorean() {
+    return korean;
   }
 
 }

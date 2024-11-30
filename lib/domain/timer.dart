@@ -33,12 +33,16 @@ class _CustomTimerState extends State<CustomTimer> {
   void restart() {
     start();
   }
+  int getTime() {
+    return _seconds;
+  }
 
   @override
   void initState() {
     start();
     widget.controller?.stop = timerStop;
     widget.controller?.restart = restart;
+    widget.controller?.getTime = getTime;
     super.initState();
   }
 
@@ -68,9 +72,28 @@ String formatTime(int second) {
   if (hours == 0) return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
   return '${hours.toString()}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
 }
+String formatSeconds(int seconds) {
+  final duration = Duration(seconds: seconds);
+
+  final hours = duration.inHours;
+  final minutes = duration.inMinutes.remainder(60);
+  final remainingSeconds = duration.inSeconds.remainder(60);
+
+  // 시간이 있는 경우
+  if (hours > 0) {
+    return '$hours시간 $minutes분 $remainingSeconds초';
+  }
+  // 분이 있는 경우
+  if (minutes > 0) {
+    return '$minutes분 $remainingSeconds초';
+  }
+  // 초만 있는 경우
+  return '$remainingSeconds초';
+}
 
 class TimerController {
 
   late void Function() stop;
   late void Function() restart;
+  late int Function() getTime;
 }
