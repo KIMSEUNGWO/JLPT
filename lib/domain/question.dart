@@ -15,11 +15,18 @@ class Question extends HiveObject {
   QuestionBox? myAnswer;
   @HiveField(3)
   bool reverse = false;
+  @HiveField(4)
+  bool isCorrect = false;
 
   Question({required this.question, required this.examples, this.myAnswer, this.reverse = false});
 
   Question.create(
       {required this.question,
         required this.examples});
+
+
+  void checkCorrect() {
+    isCorrect = question.getJapanese() == myAnswer?.getJapanese();
+  }
 
 }

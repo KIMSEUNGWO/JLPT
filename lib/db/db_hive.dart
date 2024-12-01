@@ -204,6 +204,7 @@ class DBHive {
 
     for (var i = 0; i < result.length; ++i) {
       result[i].reverse = reverses[i];
+      result[i].checkCorrect();
     }
 
     result.removeWhere((e) => e.myAnswer == null);
