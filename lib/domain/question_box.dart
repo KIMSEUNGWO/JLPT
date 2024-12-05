@@ -2,9 +2,9 @@
 
 import 'package:jlpt_app/domain/question.dart';
 
-class QuestionBox<T> {
+abstract class QuestionBox {
 
-  final T question;
+  String getJapanese();
+  String getKorean();
 
-  QuestionBox.wrap(this.question);
 }

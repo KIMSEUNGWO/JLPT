@@ -5,8 +5,11 @@ import 'package:hive/hive.dart';
 import 'package:jlpt_app/db/db_chinese_char_entity.dart';
 import 'package:jlpt_app/db/db_japanese_words_entity.dart';
 import 'package:jlpt_app/domain/box/chinese_char_box.dart';
+import 'package:jlpt_app/domain/box/question_entity_box.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/question.dart';
+import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/domain/box/japan_word_box.dart';
 import 'package:jlpt_app/initdata/update/VersionInfo.dart';
@@ -19,6 +22,7 @@ class DBHive {
 
   static const String CHINESE_CHAR_BOX = 'chineseChar';
   static const String JAPAN_WORDS_BOX = 'japanWords';
+  static const String TEST_BOX = 'testBox';
 
   Future<void> loadChineseChar(ChineseCharEntity fromJson) async {
     Box box = Hive.box(CHINESE_CHAR_BOX);
@@ -57,7 +61,7 @@ class DBHive {
 
     for (Level level in Level.values) {
       List<Word?> list =  dbState[level]?.cast<Word?>() ?? [];
-      for (var newWord in updateState[level] ?? []) {
+      for (Word newWord in updateState[level] ?? []) {
         Word? existingWord = list.firstWhere(
           (e) => e?.id == newWord.id,
           orElse: () => null
@@ -192,6 +196,33 @@ class DBHive {
     Box box = Hive.box(CHINESE_CHAR_BOX);
     ChineseCharBox? boxData = box.get('chars');
     return boxData != null;
+  }
+
+
+  saveTestResult({Level? level, required PracticeType type, required List<Question> result, required int time, required List<bool> reverses}) async {
+    Box box = Hive.box(TEST_BOX);
+
+    for (var i = 0; i < result.length; ++i) {
+      result[i].reverse = reverses[i];
+      result[i].checkCorrect();
+    }
+
+    result.removeWhere((e) => e.myAnswer == null);
+
+    int size = box.values.length;
+    await box.add(QuestionEntityBox(
+      id: size + 1,
+      level: level,
+      type: type,
+      dateTime: DateTime.now(),
+      question: result,
+      time: time,
+    ));
+  }
+
+  List<QuestionEntityBox> getTestResults() {
+    Box box = Hive.box(TEST_BOX);
+    return box.values.cast<QuestionEntityBox>().toList();
   }
 
 }
