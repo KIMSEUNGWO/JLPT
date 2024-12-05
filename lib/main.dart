@@ -71,6 +71,7 @@ class MyApp extends StatelessWidget {
       title: 'JLPT GO',
       theme: themeData(),
       home: const InitWidget(),
+      debugShowCheckedModeBanner: false
     );
   }
 }

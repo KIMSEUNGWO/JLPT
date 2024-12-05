@@ -127,9 +127,7 @@ class _TestResultPageState extends State<TestResultPage> {
           },
           itemCount: levels.length,
           itemBuilder: (context, index) {
-            List<QuestionEntityBox> list = levels[index] == null
-                ? _results
-                : _results.where((e) => (e.level == levels[index])).toList();
+            List<QuestionEntityBox> list = _results.where((e) => (e.level == levels[index])).toList();
             return ListView.separated(
               separatorBuilder: (context, index) => const SizedBox(height: 16,),
               itemCount: list.length,

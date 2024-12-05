@@ -11,6 +11,31 @@ import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/record_component.dart';
 import 'package:jlpt_app/widgets/component/record_row.dart';
 
+
+enum PrintTestResult {
+
+  EXCELLENT('완벽한 실력입니다!'),  // 90%+ (완벽한 실력!)
+  GREAT('합격 수준입니다!'),      // 80%+ (합격 수준!)
+  GOOD('조금 더 노력이 필요합니다!'),       // 70%+ (조금만 더!)
+  FAIR('연습이 필요합니다!'),       // 60%+ (연습 필요!)
+  RETRY('다시 도전해보세요!')       // 60% 미만 (다시 도전!)
+  ;
+  final String text;
+
+  const PrintTestResult(this.text);
+
+  static String getText(int total, int correctCnt) {
+    double percent = (correctCnt.toDouble() / total.toDouble()) * 100;
+    return switch(percent) {
+      >= 90 => PrintTestResult.EXCELLENT,
+      >= 80 => PrintTestResult.GREAT,
+      >= 70 => PrintTestResult.GOOD,
+      >= 60 => PrintTestResult.FAIR,
+      _ => PrintTestResult.RETRY
+    }.text;
+  }
+
+}
 class TestResultDetailPage extends StatefulWidget {
   final QuestionEntityBox question;
 
@@ -116,7 +141,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          Text('합격 수준입니다!',
+                          Text(PrintTestResult.getText(totalCnt, correctCnt),
                             style: TextStyle(
                               color: Theme.of(context).colorScheme.primary,
                               fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,

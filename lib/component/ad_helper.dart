@@ -4,10 +4,10 @@ class AdHelper {
 
   static String get bannerAdUnitId {
     if (Platform.isAndroid) {
-      return 'ca-app-pub-3940256099942544/2435281174'; // 테스트 배너
+      // return 'ca-app-pub-3940256099942544/2435281174'; // 테스트 배너
       return 'ca-app-pub-4674997915275371/7220130067';
     } else if (Platform.isIOS) {
-      return 'ca-app-pub-3940256099942544/2435281174'; // 테스트 배너
+      // return 'ca-app-pub-3940256099942544/2435281174'; // 테스트 배너
       return 'ca-app-pub-4674997915275371/7168260801';
     } else {
       throw UnsupportedError('Unsupported platform');
