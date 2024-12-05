@@ -113,6 +113,7 @@ class _UpdateModalState extends State<UpdateModal> {
   }
 
   init() async {
+    widget.updateComplete();
     var loadJson = await JsonReader.loadJsonFromUrl(Constant.VERSION_LINK);
     double? versionSize = await JsonReader.getFileSize(Constant.VERSION_LINK);
     double? chineseCharsSize = await JsonReader.getFileSize(Constant.CHINESE_CHARS_LINK);

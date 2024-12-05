@@ -1,6 +1,7 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
@@ -10,12 +11,23 @@ class JsonReader {
     final directory = await getApplicationDocumentsDirectory();
     final file = File('${directory.path}/json/$asset.json');
 
-    if (!await file.exists()) {
-      throw Exception('File not found: $asset.json');
+    late String jsonString;
+    if (await file.exists()) {
+      jsonString = await file.readAsString();
+    } else {
+      jsonString = await readAssetsJson(asset);
     }
 
-    final jsonString = await file.readAsString();
     return json.decode(jsonString);
+  }
+
+  static Future<String> readAssetsJson(String asset) async {
+    try {
+      final String response = await rootBundle.loadString('assets/json/$asset.json');
+      return response;
+    } catch (e) {
+      throw Exception('Error reading JSON file: $asset.json => $e');
+    }
   }
 
   static Future<Map<String, dynamic>> loadJsonFromUrl(String url) async {
