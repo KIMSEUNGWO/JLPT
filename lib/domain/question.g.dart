@@ -21,13 +21,13 @@ class QuestionAdapter extends TypeAdapter<Question> {
       examples: (fields[1] as List).cast<QuestionBox>(),
       myAnswer: fields[2] as QuestionBox?,
       reverse: fields[3] as bool,
-    );
+    )..isCorrect = fields[4] as bool;
   }
 
   @override
   void write(BinaryWriter writer, Question obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.question)
       ..writeByte(1)
@@ -35,7 +35,9 @@ class QuestionAdapter extends TypeAdapter<Question> {
       ..writeByte(2)
       ..write(obj.myAnswer)
       ..writeByte(3)
-      ..write(obj.reverse);
+      ..write(obj.reverse)
+      ..writeByte(4)
+      ..write(obj.isCorrect);
   }
 
   @override

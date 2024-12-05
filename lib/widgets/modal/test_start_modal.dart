@@ -48,6 +48,7 @@ class _TestStartModalState extends State<TestStartModal> {
                       return TestPage<Word>(
                         type: widget.type,
                         level: widget.level,
+                        count: 10,
                       );
                     },));
                   },

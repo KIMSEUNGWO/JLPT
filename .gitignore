@@ -61,3 +61,9 @@ app.*.map.json
 !/android/app/src/
 !/android/app/src/main/
 !/android/app/src/main/AndroidManifest.xml
+
+!/android/gradle/
+!/android/gradle/wrapper/
+!/android/gradle/wrapper/gradle-wrapper.properties
+
+!/android/settings.gradle

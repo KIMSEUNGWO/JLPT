@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:jlpt_app/component/chart/Data.dart';
-import 'package:jlpt_app/component/chart/NPieChart2.dart';
 import 'package:jlpt_app/component/chart/PieChart.dart';
 import 'package:jlpt_app/domain/box/question_entity_box.dart';
 import 'package:jlpt_app/domain/question.dart';
@@ -37,7 +35,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
     _onlyIncorrect = !_onlyIncorrect;
 
     if (_onlyIncorrect) {
-      _question = widget.question.question.where((e) => e.question.getJapanese() != e.myAnswer?.getJapanese()).toList();
+      _question = widget.question.question.where((e) => !e.isCorrect).toList();
     } else {
       _question = widget.question.question;
     }
@@ -54,7 +52,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-  int correctCnt = widget.question.question.where((e) => e.question.getJapanese() == e.myAnswer?.getJapanese()).length;
+  int correctCnt = widget.question.question.where((e) => e.isCorrect).length;
   int totalCnt = widget.question.question.length;
   
     return Scaffold(
@@ -193,7 +191,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
 
             ..._question.map((e) {
 
-              bool isCorrect = e.question.getJapanese() == e.myAnswer?.getJapanese();
+              bool isCorrect = e.isCorrect;
 
               return CustomContainer(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),

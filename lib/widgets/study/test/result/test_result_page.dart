@@ -139,9 +139,7 @@ class _TestResultPageState extends State<TestResultPage> {
                 var question = result.question;
 
                 int totalCnt = question.length;
-                int correctCnt = question.where((e) =>
-                  e.question.getJapanese() == e.myAnswer?.getJapanese()
-                ).length;
+                int correctCnt = question.where((e) => e.isCorrect).length;
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) {
