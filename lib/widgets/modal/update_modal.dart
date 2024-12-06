@@ -115,13 +115,13 @@ class _UpdateModalState extends State<UpdateModal> {
   init() async {
     widget.updateComplete();
     var loadJson = await JsonReader.loadJsonFromUrl(Constant.VERSION_LINK);
-    double? versionSize = await JsonReader.getFileSize(Constant.VERSION_LINK);
-    double? chineseCharsSize = await JsonReader.getFileSize(Constant.CHINESE_CHARS_LINK);
-    double? japaneseWordsSize = await JsonReader.getFileSize(Constant.JAPANESE_WORDS_LINK);
+    double versionSize = await JsonReader.getFileSize(Constant.VERSION_LINK);
+    double chineseCharsSize = await JsonReader.getFileSize(Constant.CHINESE_CHARS_LINK);
+    double japaneseWordsSize = await JsonReader.getFileSize(Constant.JAPANESE_WORDS_LINK);
 
     _version = VersionInfo.fromJson(loadJson);
     setState(() {
-      fileSize = (versionSize ?? 0) + (chineseCharsSize ?? 0) + (japaneseWordsSize ?? 0);
+      fileSize = versionSize + chineseCharsSize + japaneseWordsSize;
       _isLoading = false;
     });
   }

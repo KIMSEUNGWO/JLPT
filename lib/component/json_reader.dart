@@ -44,17 +44,17 @@ class JsonReader {
     }
   }
 
-  static Future<double?> getFileSize(String url) async {
+  static Future<double> getFileSize(String url) async {
     try {
       final response = await http.head(Uri.parse(url));
       if (response.statusCode == 200) {
         // 'content-length' 헤더에서 파일 크기를 가져옴
-        return double.tryParse(response.headers['content-length'] ?? '');
+        return double.tryParse(response.headers['content-length'] ?? '') ?? 0;
       }
-      return null;
+      return 0;
     } catch (e) {
       print('파일 크기 확인 실패: $e');
-      return null;
+      return 0;
     }
   }
 
