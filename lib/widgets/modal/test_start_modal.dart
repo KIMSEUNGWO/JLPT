@@ -10,7 +10,7 @@ import 'package:jlpt_app/widgets/study/test/test_page.dart';
 class TestStartModal extends StatefulWidget {
 
   final PracticeType type;
-  final Level level;
+  final Level? level;
   const TestStartModal({
     super.key,
     required this.type,

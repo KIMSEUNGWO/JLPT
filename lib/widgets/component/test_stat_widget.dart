@@ -12,7 +12,7 @@ import 'package:jlpt_app/widgets/modal/test_start_modal.dart';
 
 class TestStatWidget extends StatefulWidget {
 
-  final Level level;
+  final Level? level;
   const TestStatWidget({super.key, required this.level});
 
   @override
@@ -46,7 +46,7 @@ class _TestStatWidgetState extends State<TestStatWidget> {
 
   @override
   void initState() {
-    list = DBHive.instance.getTestResults();
+    list = DBHive.instance.getTestResults().where((e) => e.level == widget.level).toList();
     super.initState();
   }
   @override
@@ -88,7 +88,7 @@ class _TestStatWidgetState extends State<TestStatWidget> {
                   borderRadius: BorderRadius.circular(100),
                 )
               ),
-              child: Text('${widget.level.name} 단어 테스트 시작',
+              child: Text('${widget.level == null ? '통합' : widget.level!.name} 단어 테스트 시작',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w500,
