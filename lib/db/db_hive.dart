@@ -126,7 +126,7 @@ class DBHive {
     await box.put('words', JapanWordBox(words: updatedWords));
   }
 
-  updateWordIsReadTrue(Level level, int id) async {
+  updateWordIsReadTrue(Level level, Word word) async {
     Box box = Hive.box(JAPAN_WORDS_BOX);
     JapanWordBox? boxData = box.get('words');
 
@@ -138,7 +138,7 @@ class DBHive {
     List<Word> list =  boxMap[level] ?? [];
 
     for (var o in list) {
-      if (o.id == id) {
+      if (o.id == word.id) {
         o.isRead = true;
         break;
       }

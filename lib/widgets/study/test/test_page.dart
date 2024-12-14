@@ -219,11 +219,13 @@ class _TestPageState<T> extends State<TestPage<T>> {
             child: child,
           );
         },
-        child: TestCardWidget(
-          data: _questionList[_currentIndex],
-          reverse: _reverseIndexList[_currentIndex],
-          key: ValueKey<int>(_currentIndex),
-          selectAnswer: _selectAnswer,
+        child: SingleChildScrollView(
+          child: TestCardWidget(
+            data: _questionList[_currentIndex],
+            reverse: _reverseIndexList[_currentIndex],
+            key: ValueKey<int>(_currentIndex),
+            selectAnswer: _selectAnswer,
+          ),
         ),
       ),
       bottomNavigationBar: Column(
