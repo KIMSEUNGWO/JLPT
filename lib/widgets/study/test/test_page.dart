@@ -19,12 +19,12 @@ class TestPage<T> extends StatefulWidget {
 
   final PracticeType type;
   final Level? level;
-  final int count;
+  final int mount;
 
   const TestPage({super.key,
     required this.type,
     required this.level,
-    this.count = 100,
+    this.mount = 100,
   });
 
 
@@ -112,7 +112,7 @@ class _TestPageState<T> extends State<TestPage<T>> {
   _setQuestion() {
     _questionList = TestExaminer.instance.getQuestions<T>(
       level: widget.level,
-      count: widget.count
+      count: widget.mount
     );
     _questionFormShuffle();
     setState(() {
@@ -228,40 +228,43 @@ class _TestPageState<T> extends State<TestPage<T>> {
           ),
         ),
       ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: GestureDetector(
-              onTap: () {
-                _next();
-              },
-              child: CustomContainer(
-                height: 50,
-                backgroundColor: _nextBtnDisabled ? Colors.white : Theme.of(context).colorScheme.primary,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.check,
-                      color: Colors.white,
-                      size: 15,
-                    ),
-                    const SizedBox(width: 8,),
-                    Text('다음',
-                      style: TextStyle(
-                        color: _nextBtnDisabled ? Theme.of(context).colorScheme.primary : Colors.white,
-                        fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                        fontWeight: FontWeight.w500,
+      bottomNavigationBar: SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: GestureDetector(
+                onTap: () {
+                  _next();
+                },
+                child: CustomContainer(
+                  height: 50,
+                  backgroundColor: _nextBtnDisabled ? Colors.white : Theme.of(context).colorScheme.primary,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.check,
+                        color: Colors.white,
+                        size: 15,
                       ),
-                    )
-                  ],
+                      const SizedBox(width: 8,),
+                      Text('다음',
+                        style: TextStyle(
+                          color: _nextBtnDisabled ? Theme.of(context).colorScheme.primary : Colors.white,
+                          fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          SimpleBannerAd(width: double.infinity, height: 100,)
-        ],
+            SizedBox(height: 10,),
+            SimpleBannerAd(width: double.infinity, height: 100,)
+          ],
+        ),
       ),
     );
   }

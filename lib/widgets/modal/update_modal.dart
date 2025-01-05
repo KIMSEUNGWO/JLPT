@@ -144,14 +144,14 @@ class _UpdateModalState extends State<UpdateModal> {
         child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('데이터 업데이트 v${_version.version}',
+              Text('업데이트',
                 style: TextStyle(
                   fontSize: Theme.of(context).textTheme.displayMedium!.fontSize,
                   fontWeight: FontWeight.w500,
-                  color: Theme.of(context).colorScheme.onPrimary,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
-              const SizedBox(height: 38),
+              const SizedBox(height: 31),
 
               PieChart(
                 radius: 60,
