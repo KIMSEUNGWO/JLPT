@@ -54,13 +54,24 @@ class _PieChartState extends State<PieChart> with SingleTickerProviderStateMixin
     }
   }
 
+  Duration _calculateDuration() {
+
+    int maxAnimation = 1000;
+    // 백분율 계산 (0.0 ~ 1.0)
+    double percentage = widget.currentSize / widget.totalSize;
+
+    // 1000ms를 기준으로 duration 계산
+    int duration = (percentage * maxAnimation).round();
+
+    // 최소값과 최대값 제한
+    return Duration(milliseconds: duration.clamp(500, maxAnimation));
+  }
   @override
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 100)
+      duration: _calculateDuration()
     );
-
 
     final total = widget.totalSize / 360;
     _current = Tween<double>(

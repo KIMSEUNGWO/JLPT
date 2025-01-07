@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 
-import 'package:audioplayers/audioplayers.dart';
+import 'package:jlpt_app/widgets/component/speaker.dart';
+import 'package:jlpt_app/widgets/component/speaker_tts.dart';
 
 class AudioWaveAnimation extends StatefulWidget {
   final String? title;
-  final String audioLink;
-  const AudioWaveAnimation({super.key, this.title, required this.audioLink});
+  final String word;
+  const AudioWaveAnimation({super.key, this.title, required this.word});
 
   @override
   State<AudioWaveAnimation> createState() => _AudioWaveAnimationState();
@@ -15,24 +16,31 @@ class AudioWaveAnimation extends StatefulWidget {
 class _AudioWaveAnimationState extends State<AudioWaveAnimation> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late List<Animation<double>> _animations;
+
   bool isPlaying = false;
+  final Speaker _speaker = SpeakerTTS();
 
-  final AudioPlayer _audioPlayer = AudioPlayer();
-
-  playAudio() async {
-    setState(() {
-      isPlaying = true;
-      _controller.repeat();
-    });
-    // TODO 음성파일은 어떻게 할지 고민좀 해봐야함.
-    // await _audioPlayer.play(AssetSource('audio/${widget.audioLink}'));
-    await _audioPlayer.play(UrlSource('https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/assets/audio/23488.mp3'));
-    return await _audioPlayer.getDuration();
+  play() async {
+    if (isPlaying) return;
+    setState(() => isPlaying = true);
+    _controller.repeat();
+    await _speaker.speak(widget.word);
   }
 
+  void init() async {
+    await _speaker.init(completionHandler: () {
+      Future.delayed(Duration(milliseconds: 500), () {
+        if (mounted) {
+          setState(() => isPlaying = false);
+          _controller.reset();
+        }
+      },);
+    },);
+  }
   @override
   void initState() {
     super.initState();
+    init();
     _controller = AnimationController(
       duration: const Duration(seconds: 1, milliseconds: 500),
       vsync: this,
@@ -68,27 +76,13 @@ class _AudioWaveAnimationState extends State<AudioWaveAnimation> with SingleTick
   @override
   void dispose() {
     _controller.dispose();
-    _audioPlayer.dispose();
     super.dispose();
-  }
-
-  void togglePlaying() async {
-    Duration? duration = await playAudio();
-    if (duration != null) {
-      Future.delayed(duration, () {
-        setState(() {
-          isPlaying = false;
-          _controller.stop();
-          _controller.reset();
-        });
-      });
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: togglePlaying,
+      onTap: play,
       child: AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {

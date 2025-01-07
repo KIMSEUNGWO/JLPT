@@ -195,7 +195,7 @@ class _MainPageState extends ConsumerState<MainPage> {
 
                                           CustomProgressBar(
                                             current: dbState[level]?.where((e) => e.isRead).length ?? 0,
-                                            total: dbState[level] == null || dbState[level]!.isEmpty ? 100 : dbState[level]!.length, // TODO 일단 100으로 해놓긴함
+                                            total: dbState[level] == null || dbState[level]!.isEmpty ? 100 : dbState[level]!.length,
                                           ),
                                         ],
                                       );
@@ -214,6 +214,7 @@ class _MainPageState extends ConsumerState<MainPage> {
                   },
                 ),
 
+                const SizedBox(height: 28,),
               ],
             ),
           ),

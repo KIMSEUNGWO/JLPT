@@ -24,7 +24,7 @@ class TestPage<T> extends StatefulWidget {
   const TestPage({super.key,
     required this.type,
     required this.level,
-    this.mount = 100,
+    required this.mount,
   });
 
 
@@ -76,7 +76,7 @@ class _TestPageState<T> extends State<TestPage<T>> {
             count: _questionList.length,
             time: _timerController.getTime(),
             onGoToResultPage: () async {
-              await DBHive.instance.saveTestResult(
+              final testResult = await DBHive.instance.saveTestResult(
                 level: widget.level,
                 type: widget.type,
                 result: _questionList,
@@ -86,7 +86,9 @@ class _TestPageState<T> extends State<TestPage<T>> {
               Navigator.pop(context); // 모달창 닫기
               Navigator.pop(context); // 테스트창 닫기
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return TestResultPage();
+                return TestResultPage(
+                  result: testResult,
+                );
               },));
             },
             onBack: () {

@@ -46,7 +46,7 @@ class _TestStatWidgetState extends State<TestStatWidget> {
 
   @override
   void initState() {
-    list = DBHive.instance.getTestResults().where((e) => e.level == widget.level).toList();
+    list = DBHive.instance.getTestResults().toList();
     super.initState();
   }
   @override
@@ -55,7 +55,7 @@ class _TestStatWidgetState extends State<TestStatWidget> {
       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 35),
       child: Column(
         children: [
-          Text('무작위로 선정된 100개의 단어로 테스트가 진행됩니다.',
+          Text('무작위로 선정된 단어로 테스트가 진행됩니다.',
             style: TextStyle(
               fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
               fontWeight: FontWeight.w400

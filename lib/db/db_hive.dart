@@ -210,14 +210,16 @@ class DBHive {
     result.removeWhere((e) => e.myAnswer == null);
 
     int size = box.values.length;
-    await box.add(QuestionEntityBox(
+    QuestionEntityBox entity = QuestionEntityBox(
       id: size + 1,
       level: level,
       type: type,
       dateTime: DateTime.now(),
       question: result,
       time: time,
-    ));
+    );
+    await box.add(entity);
+    return entity;
   }
 
   List<QuestionEntityBox> getTestResults() {

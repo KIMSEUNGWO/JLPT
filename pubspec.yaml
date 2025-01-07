@@ -14,6 +14,7 @@ dependencies:
   intl: ^0.20.1
   audioplayers: ^6.1.0 # 오디오 플레이어
   flutter_riverpod: ^2.6.1 # 전역 저장소
+  flutter_tts: ^4.2.1 # Text To Speech (TTS)
   shared_preferences: ^2.3.3 # 휴대폰 저장공간 사용
   flutter_svg: ^2.0.15 # SVG 파일 열기
   hive: ^2.2.3 # NoSQL

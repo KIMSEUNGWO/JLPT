@@ -10,7 +10,9 @@ import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/study/test/result/test_result_detail_page.dart';
 
 class TestResultPage extends StatefulWidget {
-  const TestResultPage({super.key});
+
+  final QuestionEntityBox? result;
+  const TestResultPage({super.key, this.result});
 
   @override
   State<TestResultPage> createState() => _TestResultPageState();
@@ -53,12 +55,25 @@ class _TestResultPageState extends State<TestResultPage> {
     return '$percentage%';
   }
 
+  _fastMove() {
+    if (widget.result == null) return;
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      int page = levels.indexOf(widget.result!.level);
+      _onChangePage(page);
+
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return TestResultDetailPage(question: widget.result!);
+      },));
+    },);
+  }
+
   @override
   void initState() {
     _pageController = PageController(
       initialPage: _currentPage
     );
     _loadData();
+    _fastMove();
     super.initState();
   }
 

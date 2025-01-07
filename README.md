@@ -1,17 +1,19 @@
-# jlpt_app
+# JLPT GO
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## UPDATE NOTE
 
-A few resources to get you started if this is your first Flutter project:
+### 0.1.0
+- TTS로 발음듣기 구현
+- 테스트 결과 차트 애니메이션 시간 조정
+- 테스트 시작 모달 GridView -> Column 변경
+- 테스트 종료 시 모달에서 결과화면으로 바로 이동하도록 변경
+- 최근 테스트 점수, 테스트 횟수 통합해서 보여지도록 변경
+- 
+### 0.0.2
+- 단어 테스트 수를 조절할 수 있도록 개선
+- 하단 버튼의 위치를 잘 보이는곳으로 조정
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# JLPT
+### 0.0.1
+- 최초 배포

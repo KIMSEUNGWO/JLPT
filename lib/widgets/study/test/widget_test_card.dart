@@ -67,9 +67,9 @@ class _TestCardWidgetState extends State<TestCardWidget> with TickerProviderStat
               mainAxisSpacing: 16, // 세로 간격
               mainAxisExtent: 50, // 각 항목의 높이
             ),
-            itemCount: 4,
+            itemCount: widget.data.examples.length,
             itemBuilder: (context, index) {
-              var answer = widget.data.examples[index];
+              final answer = widget.data.examples[index];
               return GestureDetector(
                 onTap: () {
                   _selectAnswer(answer);
@@ -92,7 +92,7 @@ class _TestCardWidgetState extends State<TestCardWidget> with TickerProviderStat
                 ),
               );
             },
-          )
+          ),
         ],
       ),
     );
