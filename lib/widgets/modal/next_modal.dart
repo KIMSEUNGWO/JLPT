@@ -1,3 +1,4 @@
+import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:jlpt_app/component/svg_icon.dart';
 import 'package:jlpt_app/widgets/component/record_component.dart';
@@ -116,7 +117,7 @@ class _NextModalState extends State<NextModal> with SingleTickerProviderStateMix
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF8F9FD),
+                      color: AppColors.surface,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: RecordRow(
@@ -159,7 +160,7 @@ class _NextModalState extends State<NextModal> with SingleTickerProviderStateMix
                         widget.onViewTestTap();
                       },
                       style: TextButton.styleFrom(
-                        backgroundColor: const Color(0xFFF1F3F5),
+                        backgroundColor: AppColors.background,
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),

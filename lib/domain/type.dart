@@ -1,32 +1,14 @@
-
-import 'package:hive/hive.dart';
-
-part 'type.g.dart';
-
-@HiveType(typeId: 9)
 enum PracticeType {
+  WORD('단어'),
+  GRAMMAR('문법');
 
-  @HiveField(0)
-  WORD(0, '단어'),
-  @HiveField(1)
-  GRAMMAR(1, '문법')
-  ;
-
-
-  final int pageIndex;
   final String title;
 
-  const PracticeType(this.pageIndex, this.title);
+  const PracticeType(this.title);
 
-  static PracticeType valueOf(String json) {
-    return switch (json) {
-      'WORD' => PracticeType.WORD,
-      'GRAMMAR' => PracticeType.GRAMMAR,
-      String() => throw UnimplementedError(),
-    };
-  }
-
-  static PracticeType valueOfIndex(int index) {
-    return PracticeType.values.firstWhere((element) => element.pageIndex == index);
-  }
+  static PracticeType valueOf(String json) => switch (json) {
+        'WORD' => PracticeType.WORD,
+        'GRAMMAR' => PracticeType.GRAMMAR,
+        _ => throw ArgumentError('Unknown PracticeType: $json'),
+      };
 }

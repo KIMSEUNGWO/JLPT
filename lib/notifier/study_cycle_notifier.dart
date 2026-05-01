@@ -1,34 +1,18 @@
-
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jlpt_app/component/local_storage.dart';
 import 'package:jlpt_app/domain/level.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class StudyCycleNotifier extends StateNotifier<Map<Level, int>> {
+part 'study_cycle_notifier.g.dart';
 
-  StudyCycleNotifier() : super(Map.fromEntries(
-    Level.values.map((level) => MapEntry(level, 0))
-  ));
+@riverpod
+class StudyCycleNotifier extends _$StudyCycleNotifier {
+  @override
+  Map<Level, int> build() => LocalStorage.instance.getStudyCycle();
 
-  init() {
-    state = LocalStorage.instance.getStudyCycle();
-  }
-
-  _save() {
+  void cyclePlus(Level level) {
+    state = {...state, level: (state[level] ?? 0) + 1};
     LocalStorage.instance.saveStudyCycle(state);
   }
 
-  int getCurrentCycle(Level level) {
-    return state[level] ?? 0;
-  }
-
-  void cyclePlus(Level level) {
-    state[level] = (state[level] ?? 0) + 1;
-
-    state = { ...state };
-
-    _save();
-  }
-
+  int getCurrentCycle(Level level) => state[level] ?? 0;
 }
-
-final studyCycleNotifier = StateNotifierProvider<StudyCycleNotifier, Map<Level, int>>((ref) => StudyCycleNotifier());

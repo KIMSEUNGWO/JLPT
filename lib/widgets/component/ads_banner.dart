@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:jlpt_app/component/ad_helper.dart';
 
 class SimpleBannerAd extends StatefulWidget {
 
@@ -19,22 +18,6 @@ class _SimpleBannerAdState extends State<SimpleBannerAd> {
 
   @override
   void initState() {
-    // BannerAd(
-    //   adUnitId: AdHelper.bannerAdUnitId,
-    //   request: AdRequest(),
-    //   size: AdSize.banner,
-    //   listener: BannerAdListener(
-    //     onAdLoaded: (ad) {
-    //       setState(() {
-    //         _bannerAd = ad as BannerAd;
-    //       });
-    //     },
-    //     onAdFailedToLoad: (ad, err) {
-    //       print('Failed to load a banner ad: ${err.message}');
-    //       ad.dispose();
-    //     },
-    //   ),
-    // ).load();
     super.initState();
   }
 

@@ -1,6 +1,8 @@
+import 'package:jlpt_app/core/app_utils.dart';
+import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jlpt_app/db/db_hive.dart';
+import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/timer.dart';
 import 'package:jlpt_app/domain/word.dart';
@@ -86,10 +88,10 @@ class _StudyPageState extends ConsumerState<StudyPage> {
   }
 
   _select(Word selectWord) async {
-    await DBHive.instance.updateWordIsReadTrue(widget.level, selectWord);
+    await ref.read(wordRepositoryProvider).markRead(selectWord.id);
     selectWord.isRead = true;
     _showNextWord();
-    ref.read(todayNotifier.notifier).plusWordCnt();
+    ref.read(todayProvider.notifier).plusWordCnt();
   }
 
   bool _hasAllRead() {
@@ -114,7 +116,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             decoration: BoxDecoration(
-              color: const Color(0xFFF1F3F5),
+              color: AppColors.background,
               borderRadius: BorderRadius.circular(20)
             ),
             child: Row(
@@ -133,12 +135,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
           ),
           const SizedBox(width: 20,),
         ],
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(14),
-            bottomRight: Radius.circular(14),
-          ),
-        ),
+        shape: kAppBarShape,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(60),
           child: Container(

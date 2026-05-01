@@ -1,26 +1,27 @@
-
 import 'package:jlpt_app/component/json_reader.dart';
-import 'package:jlpt_app/db/db_chinese_char_entity.dart';
-import 'package:jlpt_app/db/db_hive.dart';
-import 'package:jlpt_app/domaincontroller/chinese_char_controller.dart';
+import 'package:jlpt_app/data/repositories/chinese_char_repository.dart';
+import 'package:jlpt_app/domain/chinese_char.dart';
+import 'package:jlpt_app/initdata/init_data_helper.dart';
 
-class InitChineseCharHelper {
+class InitChineseCharHelper extends InitDataHelper<ChineseChar> {
+  final ChineseCharRepository _repo;
 
+  InitChineseCharHelper(this._repo);
 
-  init(bool isUpdated) async {
-    var hasChineseCharsData = DBHive.instance.hasChineseCharsData();
+  @override
+  String get logTag => 'Chinese Char';
 
-    if (isUpdated || !hasChineseCharsData) {
-      try {
-        var loadJson = await JsonReader.loadJson('chinese_chars');
+  @override
+  Future<bool> hasData() => _repo.hasChars();
 
-        var chineseCharEntity = ChineseCharEntity.fromJson(loadJson);
-
-        await DBHive.instance.loadChineseChar(chineseCharEntity);
-      } catch (e) {
-        print('Chinese Char Internet Access Exception');
-      }
-    }
-    ChineseCharController.instance.init();
+  @override
+  Future<List<ChineseChar>> load() async {
+    final json = await JsonReader.loadJson('chinese_chars');
+    return (json['chars'] as List)
+        .map((e) => ChineseChar.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
+
+  @override
+  Future<void> sync(List<ChineseChar> items) => _repo.syncAll(items);
 }

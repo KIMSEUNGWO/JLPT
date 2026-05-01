@@ -1,8 +1,9 @@
+import 'package:jlpt_app/core/theme/app_colors.dart';
 
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:jlpt_app/component/chart/PieChart.dart';
+import 'package:jlpt_app/component/chart/pie_chart.dart';
 import 'package:jlpt_app/domain/box/question_entity_box.dart';
 import 'package:jlpt_app/domain/question.dart';
 import 'package:jlpt_app/domain/timer.dart';
@@ -50,10 +51,10 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
   late List<Question> _question;
   bool _onlyIncorrect = false;
 
-  final Color _correctColor = Color(0xFF2E7D32);
-  final Color _correctBackgroundColor = Color(0xFFE8F5E9);
-  final Color _incorrectColor = Color(0xFFC62828);
-  final Color _incorrectBackgroundColor = Color(0xFFFFEBEE);
+  final Color _correctColor = AppColors.correctText;
+  final Color _correctBackgroundColor = AppColors.correctBackground;
+  final Color _incorrectColor = AppColors.incorrectText;
+  final Color _incorrectBackgroundColor = AppColors.incorrectBackground;
 
 
   _toggleOnlyIncorrect() {
@@ -156,12 +157,12 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                     width: double.infinity,
                     height: 1,
                     margin: EdgeInsets.symmetric(vertical: 21),
-                    color: const Color(0xFFE9ECEF),
+                    color: AppColors.divider,
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF8F9FD),
+                      color: AppColors.surface,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: RecordRow(dataList: [
@@ -383,22 +384,6 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
     );
   }
 
-  Widget _gridWidget({required Color backgroundColor, required Color textColor, required String title}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 4),
-          child: Text('선택한 답',
-            style: TextStyle(
-              color: textColor,
-
-            ),
-          ),
-        )
-      ],
-    );
-  }
 }
 
 

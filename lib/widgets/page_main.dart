@@ -1,11 +1,10 @@
-
-
+import 'package:jlpt_app/widgets/component/recently_viewed_badge.dart';
+import 'package:jlpt_app/app/app_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:jlpt_app/db/db_hive.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
-import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/notifier/entity/today.dart';
 import 'package:jlpt_app/notifier/recently_view_notifier.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
@@ -18,43 +17,36 @@ import 'package:jlpt_app/widgets/component/record_component.dart';
 import 'package:jlpt_app/widgets/component/record_row.dart';
 import 'package:jlpt_app/widgets/component/test_stat_widget.dart';
 import 'package:jlpt_app/widgets/component/title_and_widget.dart';
-import 'package:jlpt_app/widgets/study/page_study_list.dart';
-
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jlpt_app/widgets/study/test/result/test_result_page.dart';
 
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({super.key});
 
   @override
-  createState() => _MainPageState();
+  ConsumerState<MainPage> createState() => _MainPageState();
 }
 
 class _MainPageState extends ConsumerState<MainPage> {
-
   final List<Level> _levels = Level.values;
 
   @override
   Widget build(BuildContext context) {
+    final wordsAsync = ref.watch(wordsByLevelProvider);
+
     return Scaffold(
       appBar: AppBar(
         actions: [
           GestureDetector(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return TestResultPage();
-              },));
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20),
+            onTap: () => context.push(AppRoutes.testResults),
+            child: const Padding(
+              padding: EdgeInsets.only(right: 20),
               child: Text('테스트 기록'),
             ),
-          )
+          ),
         ],
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12,),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,165 +54,171 @@ class _MainPageState extends ConsumerState<MainPage> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('안녕하세요',
+                    Text(
+                      '안녕하세요',
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onPrimary,
                         fontWeight: FontWeight.w600,
-                        fontSize: Theme.of(context).textTheme.displayMedium!.fontSize
+                        fontSize:
+                            Theme.of(context).textTheme.displayMedium!.fontSize,
                       ),
                     ),
-                    const SizedBox(height: 4,),
-                    Text('오늘도 열심히 공부해볼까요?',
+                    const SizedBox(height: 4),
+                    Text(
+                      '오늘도 열심히 공부해볼까요?',
                       style: TextStyle(
-                          color: Theme.of(context).colorScheme.onSurface,
-                          fontWeight: FontWeight.w500,
-                          fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize
+                        color: Theme.of(context).colorScheme.onSurface,
+                        fontWeight: FontWeight.w500,
+                        fontSize:
+                            Theme.of(context).textTheme.bodyLarge!.fontSize,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 36,),
+                const SizedBox(height: 36),
 
                 TitleAndWidget(
                   title: '오늘의 학습',
                   child: CustomContainer(
-                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15, vertical: 10),
                     child: Consumer(
-                      builder: (context, ref, child) {
-                        var watch = ref.watch(todayNotifier);
-
-                        return RecordRow(
-                          dataList: [
-                            RecordData(title: '학습시간', value: TodayData.formatTimeToHours(watch.hours)),
-                            RecordData(title: '학습단어', value: '${watch.wordCnt}'),
-                            // RecordData(title: '학습문법', value: '${watch.grammarCnt}'),
-                          ],
-                        );
+                      builder: (context, ref, _) {
+                        final today = ref.watch(todayProvider);
+                        return RecordRow(dataList: [
+                          RecordData(
+                              title: '학습시간',
+                              value: TodayData.formatTimeToHours(today.hours)),
+                          RecordData(
+                              title: '학습단어',
+                              value: '${today.wordCnt}'),
+                        ]);
                       },
                     ),
                   ),
                 ),
 
-                const SizedBox(height: 28,),
+                const SizedBox(height: 28),
 
-                ValueListenableBuilder(
-                  valueListenable: Hive.box(DBHive.JAPAN_WORDS_BOX).listenable(),
-                  builder: (context, box, child) {
-                    var boxData = box.get('words');
-                    Map<Level, List<Word>> dbState = boxData?.words ?? {};
-                    return Column(
-                      children: [
-                        ..._levels.expand((level) => [
-                          Consumer(
-                            builder: (context, ref, child) {
-                              var recentlyView = ref.watch(recentlyViewNotifier).level == level;
-                              return GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                    return StudyListPage(
-                                      level: level,
-                                      words: dbState[level] ?? [],
-                                    );
-                                  },));
-                                },
-                                child: CustomContainer(
-                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                                  border: recentlyView ? Border.all(
-                                      color: Theme.of(context).colorScheme.primary,
-                                      width: 2
-                                  ) : null,
-                                  radius: const BorderRadius.only(
-                                    topLeft: Radius.circular(12),
-                                    topRight: Radius.circular(28),
-                                    bottomLeft: Radius.circular(12),
-                                    bottomRight: Radius.circular(12),
+                wordsAsync.when(
+                  loading: () => const SizedBox.shrink(),
+                  error: (_, __) => const SizedBox.shrink(),
+                  data: (wordsByLevel) => Column(
+                    children: [
+                      ..._levels.expand((level) => [
+                            Consumer(
+                              builder: (context, ref, _) {
+                                final recentlyView = ref
+                                        .watch(recentlyViewProvider)
+                                        .level ==
+                                    level;
+                                final studyCycle =
+                                    ref.watch(studyCycleProvider);
+                                final timer =
+                                    ref.watch(timerProvider)[level] ?? 0;
+                                final levelWords = wordsByLevel[level] ?? [];
+
+                                return GestureDetector(
+                                  onTap: () => context.push(
+                                    AppRoutes.study(level.name),
+                                    extra: levelWords,
                                   ),
-                                  child: Consumer(
-                                    builder: (context, ref, child) {
-
-                                      var studyCycle = ref.watch(studyCycleNotifier);
-                                      int timer = ref.watch(timerNotifier)[level] ?? 0;
-
-                                      return Column(
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Text('JLPT ${level.name}',
-                                                    style: TextStyle(
-                                                      color: Theme.of(context).colorScheme.onPrimary,
-                                                      fontWeight: FontWeight.w600,
-                                                      fontSize: Theme.of(context).textTheme.displaySmall!.fontSize,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(width: 6,),
-                                                  Text('${studyCycle[level]}회독'),
-                                                ],
-                                              ),
-                                              if (recentlyView)
-                                                Container(
-                                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                                                  decoration: BoxDecoration(
-                                                      color: Theme.of(context).colorScheme.primary,
-                                                      borderRadius: BorderRadius.circular(12)
-                                                  ),
-                                                  child: Text('최근 학습',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: Theme.of(context).textTheme.bodySmall!.fontSize
-                                                    ),
-                                                  ),
-                                                )
-                                            ],
-                                          ),
-                                          const SizedBox(height: 6,),
-
-                                          Row(
-                                            children: [
-                                              Icon(Icons.access_time,
-                                                size: Theme.of(context).textTheme.bodySmall!.fontSize,
-                                                color: Theme.of(context).colorScheme.onSurface,
-                                              ),
-                                              const SizedBox(width: 4,),
-                                              Text('학습시간 ${TodayData.formatTimeToHours(timer)}',
+                                  child: CustomContainer(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 15),
+                                    border: recentlyView
+                                        ? Border.all(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                            width: 2)
+                                        : null,
+                                    radius: const BorderRadius.only(
+                                      topLeft: Radius.circular(12),
+                                      topRight: Radius.circular(28),
+                                      bottomLeft: Radius.circular(12),
+                                      bottomRight: Radius.circular(12),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(children: [
+                                              Text(
+                                                'JLPT ${level.name}',
                                                 style: TextStyle(
-                                                    fontSize: Theme.of(context).textTheme.bodySmall!.fontSize
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .onPrimary,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: Theme.of(context)
+                                                      .textTheme
+                                                      .displaySmall!
+                                                      .fontSize,
                                                 ),
                                               ),
-                                            ],
+                                              const SizedBox(width: 6),
+                                              Text('${studyCycle[level]}회독'),
+                                            ]),
+                                            if (recentlyView)
+                                              const RecentlyViewedBadge(),
+                                          ],
+                                        ),
+                                        const SizedBox(height: 6),
+                                        Row(children: [
+                                          Icon(
+                                            Icons.access_time,
+                                            size: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall!
+                                                .fontSize,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onSurface,
                                           ),
-                                          const SizedBox(height: 16,),
-
-                                          CustomProgressBar(
-                                            current: dbState[level]?.where((e) => e.isRead).length ?? 0,
-                                            total: dbState[level] == null || dbState[level]!.isEmpty ? 100 : dbState[level]!.length,
+                                          const SizedBox(width: 4),
+                                          Text(
+                                            '학습시간 ${TodayData.formatTimeToHours(timer)}',
+                                            style: TextStyle(
+                                              fontSize: Theme.of(context)
+                                                  .textTheme
+                                                  .bodySmall!
+                                                  .fontSize,
+                                            ),
                                           ),
-                                        ],
-                                      );
-                                    },
+                                        ]),
+                                        const SizedBox(height: 16),
+                                        CustomProgressBar(
+                                          current: levelWords
+                                              .where((e) => e.isRead)
+                                              .length,
+                                          total: levelWords.isEmpty
+                                              ? 100
+                                              : levelWords.length,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
-                          ),
-                          if (level != _levels.last) const SizedBox(height: 16,),
-                        ]),
-                        const SizedBox(height: 16,),
-                        TestStatWidget(level: null),
-                      ]
-                    );
-                  },
+                                );
+                              },
+                            ),
+                            if (level != _levels.last)
+                              const SizedBox(height: 16),
+                          ]),
+                      const SizedBox(height: 16),
+                      TestStatWidget(level: null),
+                    ],
+                  ),
                 ),
-
-                const SizedBox(height: 28,),
+                const SizedBox(height: 28),
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: SimpleBannerAd(height: 100,),
+      bottomNavigationBar: const SimpleBannerAd(height: 100),
     );
   }
 }

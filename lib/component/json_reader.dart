@@ -1,8 +1,8 @@
-
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:jlpt_app/component/app_logger.dart';
 import 'package:path_provider/path_provider.dart';
 
 class JsonReader {
@@ -53,7 +53,7 @@ class JsonReader {
       }
       return 0;
     } catch (e) {
-      print('파일 크기 확인 실패: $e');
+      appLogger.w('파일 크기 확인 실패: $e');
       return 0;
     }
   }
@@ -72,9 +72,7 @@ class JsonReader {
         await jsonDir.create(recursive: true);
       }
 
-      // jsonFileName에 .json 확장자 추가
       final filePath = '${jsonDir.path}/$jsonFileName.json';
-      // print('저장 경로: $filePath');  // 저장 경로 확인
 
       final file = File(filePath);
 
@@ -105,7 +103,7 @@ class JsonReader {
       await sink.flush();
       await sink.close();
     } catch (e) {
-      print('Error downloading JSON: $e');
+      appLogger.e('Error downloading JSON: $e');
       rethrow;
     }
   }

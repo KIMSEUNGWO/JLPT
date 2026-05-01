@@ -1,3 +1,4 @@
+import 'package:jlpt_app/core/theme/app_colors.dart';
 
 import 'package:flutter/material.dart';
 import 'package:jlpt_app/domain/question.dart';
@@ -21,7 +22,7 @@ class TestCardWidget extends StatefulWidget {
 
 class _TestCardWidgetState extends State<TestCardWidget> with TickerProviderStateMixin {
 
-  QuestionBox? _myAnswer = null;
+  QuestionBox? _myAnswer;
 
   _selectAnswer(QuestionBox answer) {
     if (answer == _myAnswer) return;
@@ -75,7 +76,7 @@ class _TestCardWidgetState extends State<TestCardWidget> with TickerProviderStat
                   _selectAnswer(answer);
                 },
                 child: CustomContainer(
-                  backgroundColor: _myAnswer == answer ? Color(0xFFEAEAFF) : Colors.white,
+                  backgroundColor: _myAnswer == answer ? AppColors.primaryTint : Colors.white,
                   border: _myAnswer == answer ? Border.all(
                     color: Theme.of(context).colorScheme.primary
                   ) : null,

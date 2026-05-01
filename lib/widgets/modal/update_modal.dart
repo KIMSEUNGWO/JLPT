@@ -1,12 +1,13 @@
+import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jlpt_app/component/chart/PieChart.dart';
+import 'package:jlpt_app/component/chart/pie_chart.dart';
 import 'package:jlpt_app/component/json_reader.dart';
 import 'package:jlpt_app/component/snack_bar.dart';
 import 'package:jlpt_app/domain/constant.dart';
-import 'package:jlpt_app/initdata/update/VersionInfo.dart';
+import 'package:jlpt_app/initdata/update/version_info.dart';
 
 class UpdateModal extends StatefulWidget {
 
@@ -113,7 +114,6 @@ class _UpdateModalState extends State<UpdateModal> {
   }
 
   init() async {
-    widget.updateComplete();
     var loadJson = await JsonReader.loadJsonFromUrl(Constant.VERSION_LINK);
     double versionSize = await JsonReader.getFileSize(Constant.VERSION_LINK);
     double chineseCharsSize = await JsonReader.getFileSize(Constant.CHINESE_CHARS_LINK);
@@ -213,7 +213,7 @@ class _UpdateModalState extends State<UpdateModal> {
                     Navigator.pop(context);
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor: const Color(0xFFF1F3F5),
+                    backgroundColor: AppColors.background,
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),

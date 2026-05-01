@@ -21,8 +21,19 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    # SCREAMING_CAPS enum 값 (WORD, GRAMMAR, N1 … 등) 허용
+    constant_identifier_names: false
+    # codegen/Hive 레거시 파일의 return type 어노테이션 요구 억제
+    strict_top_level_inference: false
+    # Drift/Riverpod 생성 코드 및 lambda 파라미터 패턴 허용
+    unnecessary_underscores: false
+    no_leading_underscores_for_local_identifiers: false
+
+analyzer:
+  exclude:
+    - lib/data/database/app_database.g.dart
+  plugins:
+    - custom_lint
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

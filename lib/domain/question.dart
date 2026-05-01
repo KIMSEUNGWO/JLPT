@@ -1,32 +1,25 @@
-
-import 'package:hive/hive.dart';
 import 'package:jlpt_app/domain/question_box.dart';
 
-part 'question.g.dart';
-
-@HiveType(typeId: 7)
-class Question extends HiveObject {
-
-  @HiveField(0)
+class Question {
   final QuestionBox question;
-  @HiveField(1)
   final List<QuestionBox> examples;
-  @HiveField(2)
   QuestionBox? myAnswer;
-  @HiveField(3)
-  bool reverse = false;
-  @HiveField(4)
-  bool isCorrect = false;
+  bool reverse;
+  bool isCorrect;
 
-  Question({required this.question, required this.examples, this.myAnswer, this.reverse = false});
+  Question({
+    required this.question,
+    required this.examples,
+    this.myAnswer,
+    this.reverse = false,
+    this.isCorrect = false,
+  });
 
-  Question.create(
-      {required this.question,
-        required this.examples});
-
+  Question.create({required this.question, required this.examples})
+      : reverse = false,
+        isCorrect = false;
 
   void checkCorrect() {
     isCorrect = question.getJapanese() == myAnswer?.getJapanese();
   }
-
 }

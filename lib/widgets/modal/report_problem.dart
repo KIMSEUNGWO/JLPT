@@ -1,6 +1,8 @@
+import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:jlpt_app/component/app_logger.dart';
 import 'package:jlpt_app/component/snack_bar.dart';
 import 'package:jlpt_app/domain/word.dart';
 
@@ -52,15 +54,14 @@ class _ReportProblemModalState extends State<ReportProblemModal> {
       );
 
       if (response.statusCode == 200) {
-        // 성공적으로 제출됨
-        print('오류 신고가 성공적으로 제출되었습니다');
+        appLogger.d('오류 신고 제출 성공');
         _complete();
       } else {
-        print('오류 신고 제출에 실패했습니다: ${response.statusCode}');
+        appLogger.w('오류 신고 제출 실패: ${response.statusCode}');
         _fail(response.statusCode);
       }
     } catch (e) {
-      print('오류 발생: $e');
+      appLogger.e('오류 신고 제출 예외: $e');
       _fail(500);
     }
     setState(() {
@@ -99,7 +100,7 @@ class _ReportProblemModalState extends State<ReportProblemModal> {
                   padding: EdgeInsets.all(10),
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF8F9FD),
+                    color: AppColors.surface,
                     borderRadius: BorderRadius.circular(12)
                   ),
                   child: Column(
@@ -145,7 +146,7 @@ class _ReportProblemModalState extends State<ReportProblemModal> {
                     border: _inputBorder,
                     focusedBorder: _inputBorder,
                     enabledBorder: _inputBorder,
-                    fillColor: Color(0xFFF8F9FD),
+                    fillColor: AppColors.surface,
                     filled: true,
                     hintText: '잘못된 내용을 적어주세요.',
                     hintStyle: TextStyle(
@@ -168,7 +169,7 @@ class _ReportProblemModalState extends State<ReportProblemModal> {
                   child: TextButton(
                     onPressed: _send,
                     style: TextButton.styleFrom(
-                      backgroundColor: (_sending) ? const Color(0xFFF1F3F5) : Theme.of(context).colorScheme.primary,
+                      backgroundColor: (_sending) ? AppColors.background : Theme.of(context).colorScheme.primary,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -195,6 +196,6 @@ class _ReportProblemModalState extends State<ReportProblemModal> {
 final OutlineInputBorder _inputBorder = OutlineInputBorder(
   borderRadius: BorderRadius.circular(10),
   borderSide: BorderSide(
-    color: Color(0xFFF8F9FD)
+    color: AppColors.surface
   ),
 );

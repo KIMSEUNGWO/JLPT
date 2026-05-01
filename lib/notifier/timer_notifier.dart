@@ -1,32 +1,20 @@
-
-
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jlpt_app/component/local_storage.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/notifier/today_notifier.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class TimerNotifier extends StateNotifier<Map<Level, int>> {
+part 'timer_notifier.g.dart';
 
-  TimerNotifier() : super({});
+@riverpod
+class TimerNotifier extends _$TimerNotifier {
+  @override
+  Map<Level, int> build() => LocalStorage.instance.getTimerNotifier();
 
-  init() {
-    state = LocalStorage.instance.getTimerNotifier();
-  }
-
-  void setTimer(WidgetRef ref, Level level, int seconds) {
-    state[level] = (state[level] ?? 0) + seconds;
-    state = { ...state };
-
+  void setTimer(Level level, int seconds) {
+    state = {...state, level: (state[level] ?? 0) + seconds};
     LocalStorage.instance.saveLevelTimer(level, state[level]!);
-
-    ref.read(todayNotifier.notifier).plusHours(seconds);
+    ref.read(todayProvider.notifier).plusHours(seconds);
   }
 
-  int getLevelTime(Level level) {
-    return state[level] ?? 0;
-  }
-
-
+  int getLevelTime(Level level) => state[level] ?? 0;
 }
-
-final timerNotifier = StateNotifierProvider<TimerNotifier, Map<Level, int>>((ref) => TimerNotifier());

@@ -1,32 +1,25 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
 import 'package:jlpt_app/domain/word.dart';
-import 'package:jlpt_app/domaincontroller/chinese_char_controller.dart';
 import 'package:jlpt_app/widgets/study/card/widget_chinese_char.dart';
 
-class WordCardDetailWidget extends StatefulWidget {
-
+class WordCardDetailWidget extends ConsumerWidget {
   final Word word;
 
   const WordCardDetailWidget({super.key, required this.word});
 
-  @override
-  State<WordCardDetailWidget> createState() => _WordCardDetailWidgetState();
-}
-
-class _WordCardDetailWidgetState extends State<WordCardDetailWidget> {
-
-  late final List<ChineseChar> chineseChars;
+  List<ChineseChar> _findChars(Map<String, ChineseChar> map, String text) =>
+      text.characters
+          .map((c) => map[c])
+          .whereType<ChineseChar>()
+          .toList();
 
   @override
-  void initState() {
-    chineseChars = ChineseCharController.instance.findChars(widget.word.word);
-    super.initState();
-  }
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cacheAsync = ref.watch(chineseCharCacheProvider);
 
-  @override
-  Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 21),
@@ -35,24 +28,34 @@ class _WordCardDetailWidgetState extends State<WordCardDetailWidget> {
         borderRadius: BorderRadius.circular(12),
         color: Theme.of(context).colorScheme.secondary,
       ),
-      child: Column(
-        children: [
-          (chineseChars.isNotEmpty) ?
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('한자 정보',
+      child: cacheAsync.when(
+        loading: () => const SizedBox.shrink(),
+        error: (_, __) => const Text('한자 정보를 불러올 수 없습니다.'),
+        data: (charMap) {
+          final chars = _findChars(charMap, word.word);
+          if (chars.isEmpty) return const Text('한자 정보가 없습니다.');
+
+          final widgets = <Widget>[];
+          for (int i = 0; i < chars.length; i++) {
+            widgets.add(ChineseCharWidget(char: chars[i]));
+            if (i < chars.length - 1) {
+              widgets.add(const SizedBox(height: 10));
+            }
+          }
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('한자 정보',
                   style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize
-                  ),
-                ),
-                const SizedBox(height: 12,),
-                ...ChineseCharController.instance.toWidget(chineseChars, (char) => ChineseCharWidget(char: char),),
-              ],
-            ) :
-            Text('한자 정보가 없습니다.'),
-        ],
+                      fontWeight: FontWeight.w500,
+                      fontSize:
+                          Theme.of(context).textTheme.bodyMedium!.fontSize)),
+              const SizedBox(height: 12),
+              ...widgets,
+            ],
+          );
+        },
       ),
     );
   }

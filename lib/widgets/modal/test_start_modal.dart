@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:jlpt_app/app/app_routes.dart';
+import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:jlpt_app/component/snack_bar.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/type.dart';
-import 'package:jlpt_app/domain/word.dart';
-import 'package:jlpt_app/widgets/study/test/test_page.dart';
 
 class TestStartModal extends StatefulWidget {
 
@@ -23,7 +21,6 @@ class TestStartModal extends StatefulWidget {
 
 class _TestStartModalState extends State<TestStartModal> {
 
-  bool _loading = false;
   final List<int> _mounts = [
     25, 50, 75, 100
   ];
@@ -61,8 +58,8 @@ class _TestStartModalState extends State<TestStartModal> {
                     },
                     style: TextButton.styleFrom(
                       backgroundColor: _currentMount == mount
-                          ? Color(0xFFEAEAFF)
-                          : Color(0xFFF9FAFD),
+                          ? AppColors.primaryTint
+                          : AppColors.surfaceAlt,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -83,14 +80,12 @@ class _TestStartModalState extends State<TestStartModal> {
                 width: double.infinity,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pop(context);
-                    Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return TestPage<Word>(
-                        type: widget.type,
-                        level: widget.level,
-                        mount: _currentMount,
-                      );
-                    },));
+                    Navigator.pop(context); // 모달 닫기
+                    context.push(AppRoutes.test, extra: {
+                      'type': widget.type,
+                      'level': widget.level,
+                      'mount': _currentMount,
+                    });
                   },
                   style: TextButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,
@@ -99,14 +94,12 @@ class _TestStartModalState extends State<TestStartModal> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: (_loading)
-                    ? CupertinoActivityIndicator()
-                    : Text('테스트 시작',
-                      style: TextStyle(
-                        fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                        color: Colors.white,
-                      ),
+                  child: Text('테스트 시작',
+                    style: TextStyle(
+                      fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
+                      color: Colors.white,
                     ),
+                  ),
                 ),
               ),
             ],

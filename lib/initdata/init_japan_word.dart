@@ -1,24 +1,27 @@
-
 import 'package:jlpt_app/component/json_reader.dart';
-import 'package:jlpt_app/db/db_hive.dart';
-import 'package:jlpt_app/db/db_japanese_words_entity.dart';
+import 'package:jlpt_app/data/repositories/word_repository.dart';
+import 'package:jlpt_app/domain/word.dart';
+import 'package:jlpt_app/initdata/init_data_helper.dart';
 
-class InitJapanWordHelper {
+class InitJapanWordHelper extends InitDataHelper<Word> {
+  final WordRepository _repo;
 
+  InitJapanWordHelper(this._repo);
 
-  init(bool isUpdated) async {
-    // 혹시라도 데이터가 없으면 가져와야함
-    var hasJapanWordsData = DBHive.instance.hasJapanWordsData();
-    if (!isUpdated && hasJapanWordsData) return;
+  @override
+  String get logTag => 'Japan Word';
 
-    try {
-      var loadJson = await JsonReader.loadJson('japanese_words');
-      var japanWordsEntity = JapanWordsEntity.fromJson(loadJson);
+  @override
+  Future<bool> hasData() => _repo.hasWords();
 
-      await DBHive.instance.loadJapanWords(japanWordsEntity);
-    } catch (e) {
-      print('Japan Word Internet Access Exception');
-      print(e);
-    }
+  @override
+  Future<List<Word>> load() async {
+    final json = await JsonReader.loadJson('japanese_words');
+    return (json['words'] as List)
+        .map((e) => Word.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
+
+  @override
+  Future<void> sync(List<Word> items) => _repo.syncAll(items);
 }

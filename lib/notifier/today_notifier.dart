@@ -1,48 +1,35 @@
-
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jlpt_app/component/local_storage.dart';
 import 'package:jlpt_app/notifier/entity/today.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class TodayNotifier extends StateNotifier<TodayData> {
+part 'today_notifier.g.dart';
 
-  TodayNotifier() : super(TodayData());
+@riverpod
+class TodayNotifier extends _$TodayNotifier {
+  @override
+  TodayData build() => LocalStorage.instance.getTodayData();
 
-  void init() {
-    final savedData = LocalStorage.instance.getTodayData();
-
-    // 날짜가 다르면 데이터 초기화
-    if (dateToInt(DateTime.now()) != savedData.date) {
-      state = TodayData(); // 새로운 날짜의 빈 데이터
-    } else {
-      state = savedData;
-    }
-  }
-
-  // yyyyMMdd 형식으로 날짜를 정수 변환
-  int dateToInt(DateTime date) {
-    return date.year * 10000 + date.month * 100 + date.day;
-  }
-  _save() {
+  void _save() {
     LocalStorage.instance.saveTodayData(state);
-    state = TodayData.load(hours: state.hours, wordCnt: state.wordCnt, grammarCnt: state.grammarCnt);
+    state = TodayData.load(
+      hours: state.hours,
+      wordCnt: state.wordCnt,
+      grammarCnt: state.grammarCnt,
+    );
   }
 
-  plusHours(int time) {
+  void plusHours(int time) {
     state.hours += time;
     _save();
   }
-  plusWordCnt() {
+
+  void plusWordCnt() {
     state.wordCnt++;
     _save();
   }
-  plusGrammarCnt(int grammarCnt) {
+
+  void plusGrammarCnt(int grammarCnt) {
     state.grammarCnt += grammarCnt;
     _save();
   }
-
-
-
-
 }
-
-final todayNotifier = StateNotifierProvider<TodayNotifier, TodayData>((ref) => TodayNotifier());
