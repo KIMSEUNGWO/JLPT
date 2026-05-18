@@ -25,7 +25,7 @@ class SpeakerTTS extends Speaker {
     }
 
     await flutterTts.setLanguage("ja-JP");
-    await flutterTts.setSpeechRate(0.5);
+    // 발음 속도는 플랫폼/시스템 기본값 사용 (이전 0.5 는 너무 빠르게 들렸음).
     await flutterTts.setVolume(1.0);
     await flutterTts.setPitch(1.0);
 

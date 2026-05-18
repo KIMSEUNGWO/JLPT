@@ -131,7 +131,46 @@ void main() {
           reason: '메타 버전도 유지되어야 한다');
     });
 
-    test('중복 id 는 파싱 실패로 처리된다', () async {
+    test('동일 내용 중복 id 는 skip 되고 sync 성공', () async {
+      // 같은 id + 정확히 같은 내용 = 무해한 데이터 중복.
+      final payload = <String, dynamic>{
+        'words': [
+          {
+            'id': 1,
+            'level': 'N5',
+            'act': 'N',
+            'word': 'same',
+            'hiragana': 'same',
+            'korean': 'same',
+          },
+          {
+            'id': 1,
+            'level': 'N5',
+            'act': 'N',
+            'word': 'same',
+            'hiragana': 'same',
+            'korean': 'same',
+          },
+          {
+            'id': 2,
+            'level': 'N5',
+            'act': 'N',
+            'word': 'other',
+            'hiragana': 'other',
+            'korean': 'other',
+          },
+        ],
+      };
+      await syncer.syncFrom(
+        source: _InMemorySource({'japanese_words': payload}),
+        version: v1,
+      );
+      expect(await repo.countWords(), 2,
+          reason: '동일 내용 중복은 dedupe 되어야 한다');
+    });
+
+    test('내용이 다른 중복 id 는 파싱 실패로 처리된다', () async {
+      // 같은 id + 다른 내용 = 진짜 충돌. 어느 게 진짜인지 모르므로 거부.
       final bad = <String, dynamic>{
         'words': [
           {

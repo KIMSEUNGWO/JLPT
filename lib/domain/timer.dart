@@ -1,11 +1,8 @@
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-
 class CustomTimer extends StatefulWidget {
-
   final TimerController? controller;
   final Function(int seconds) getSeconds;
 
@@ -16,25 +13,35 @@ class CustomTimer extends StatefulWidget {
 }
 
 class _CustomTimerState extends State<CustomTimer> {
-
   late Timer _timer;
   int _seconds = 0;
+  bool _reported = false;
 
   void start() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         _seconds++;
       });
-    },);
+    });
   }
+
   void timerStop() {
     _timer.cancel();
+    _reportSeconds();
   }
+
   void restart() {
     start();
   }
+
   int getTime() {
     return _seconds;
+  }
+
+  void _reportSeconds() {
+    if (_reported) return;
+    _reported = true;
+    widget.getSeconds(_seconds);
   }
 
   @override
@@ -49,17 +56,17 @@ class _CustomTimerState extends State<CustomTimer> {
   @override
   void dispose() {
     _timer.cancel();
-    Future(() => widget.getSeconds(_seconds) );
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Text(formatTime(_seconds),
+    return Text(
+      formatTime(_seconds),
       style: TextStyle(
-          color: Theme.of(context).colorScheme.primary,
-          fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
-          fontWeight: FontWeight.w500
+        color: Theme.of(context).colorScheme.primary,
+        fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+        fontWeight: FontWeight.w500,
       ),
     );
   }
@@ -69,9 +76,12 @@ String formatTime(int second) {
   int hours = second ~/ 3600;
   int minutes = (second % 3600) ~/ 60;
   int seconds = second % 60;
-  if (hours == 0) return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+  if (hours == 0) {
+    return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+  }
   return '${hours.toString()}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
 }
+
 String formatSeconds(int seconds) {
   final duration = Duration(seconds: seconds);
 
@@ -92,7 +102,6 @@ String formatSeconds(int seconds) {
 }
 
 class TimerController {
-
   late void Function() stop;
   late void Function() restart;
   late int Function() getTime;
