@@ -41,7 +41,7 @@ final class TodayNotifierProvider
   }
 }
 
-String _$todayNotifierHash() => r'6d7c82e8d7b5fb13231366373f6c1f74f9bf60f5';
+String _$todayNotifierHash() => r'd7cf991e01b361ae54b8e3457cf0e97d20b4cf3e';
 
 abstract class _$TodayNotifier extends $Notifier<TodayData> {
   TodayData build();

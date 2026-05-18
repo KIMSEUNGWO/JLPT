@@ -1,25 +1,43 @@
+/// 한자 정보. **immutable**.
 class ChineseChar {
-  final String char;
-  final List<String> soundReading; // 음독
-  final List<String> meanReading;  // 훈독
-  final String koreanChar;
-
-  ChineseChar({
+  const ChineseChar({
     required this.char,
+    required this.koreanChar,
     required this.soundReading,
     required this.meanReading,
-    required this.koreanChar,
   });
 
-  ChineseChar.fromJson(Map<String, dynamic> json)
-      : char = json['char'],
-        soundReading = json['soundReading'] == null
-            ? []
-            : List<String>.from(json['soundReading'].map((x) => x.toString())),
-        meanReading = json['meanReading'] == null
-            ? []
-            : List<String>.from(json['meanReading'].map((x) => x.toString())),
-        koreanChar = json['koreanChar'];
+  final String char;
+  final String koreanChar;
+  final List<String> soundReading; // 음독
+  final List<String> meanReading;  // 훈독
+
+  factory ChineseChar.fromJson(Map<String, dynamic> json) {
+    final char = json['char'];
+    if (char is! String || char.isEmpty) {
+      throw const FormatException("ChineseChar: 'char' must be non-empty String");
+    }
+    final korean = json['koreanChar'];
+    if (korean is! String) {
+      throw FormatException(
+        "ChineseChar(char=$char): 'koreanChar' must be String",
+      );
+    }
+    return ChineseChar(
+      char: char,
+      koreanChar: korean,
+      soundReading: _stringList(json['soundReading']),
+      meanReading: _stringList(json['meanReading']),
+    );
+  }
+
+  static List<String> _stringList(Object? v) {
+    if (v == null) return const [];
+    if (v is! List) {
+      throw const FormatException('expected list of strings');
+    }
+    return v.map((e) => e.toString()).toList(growable: false);
+  }
 
   @override
   bool operator ==(Object other) =>

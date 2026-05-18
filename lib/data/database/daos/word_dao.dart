@@ -36,4 +36,11 @@ class WordDao extends DatabaseAccessor<AppDatabase> with _$WordDaoMixin {
     final result = await (selectOnly(words)..addColumns([words.id])).get();
     return result.isNotEmpty;
   }
+
+  /// row count. Phase 0 정합성 검증에 사용.
+  Future<int> countWords() async {
+    final c = countAll();
+    final row = await (selectOnly(words)..addColumns([c])).getSingle();
+    return row.read(c) ?? 0;
+  }
 }

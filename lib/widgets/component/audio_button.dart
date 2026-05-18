@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 
@@ -20,16 +22,16 @@ class _AudioWaveAnimationState extends State<AudioWaveAnimation> with SingleTick
   bool isPlaying = false;
   final Speaker _speaker = SpeakerTTS();
 
-  play() async {
+  Future<void> play() async {
     if (isPlaying) return;
     setState(() => isPlaying = true);
-    _controller.repeat();
+    unawaited(_controller.repeat());
     await _speaker.speak(widget.word);
   }
 
   void init() async {
     await _speaker.init(completionHandler: () {
-      Future.delayed(Duration(milliseconds: 500), () {
+      Future.delayed(const Duration(milliseconds: 500), () {
         if (mounted) {
           setState(() => isPlaying = false);
           _controller.reset();

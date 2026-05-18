@@ -42,7 +42,7 @@ final class StudyCycleNotifierProvider
 }
 
 String _$studyCycleNotifierHash() =>
-    r'c7c2a80d7495c45efa6a5cfd65a364dd9ad0606c';
+    r'891dc9f56f0a1dffda98f1c7198610527560465a';
 
 abstract class _$StudyCycleNotifier extends $Notifier<Map<Level, int>> {
   Map<Level, int> build();

@@ -1,4 +1,5 @@
 import 'package:jlpt_app/app/app_routes.dart';
+import 'package:jlpt_app/app/route_args.dart';
 import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -47,7 +48,7 @@ class _TestStartModalState extends State<TestStartModal> {
         child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('단어 테스트를 시작하시겠습니까?'),
+              const Text('단어 테스트를 시작하시겠습니까?'),
               const SizedBox(height: 12),
               ..._mounts.map((mount) {
                 return SizedBox(
@@ -81,11 +82,14 @@ class _TestStartModalState extends State<TestStartModal> {
                 child: TextButton(
                   onPressed: () {
                     Navigator.pop(context); // 모달 닫기
-                    context.push(AppRoutes.test, extra: {
-                      'type': widget.type,
-                      'level': widget.level,
-                      'mount': _currentMount,
-                    });
+                    context.push(
+                      AppRoutes.test,
+                      extra: TestArgs(
+                        type: widget.type,
+                        level: widget.level,
+                        mount: _currentMount,
+                      ),
+                    );
                   },
                   style: TextButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,

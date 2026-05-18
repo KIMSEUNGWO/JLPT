@@ -28,10 +28,17 @@ linter:
     # Drift/Riverpod 생성 코드 및 lambda 파라미터 패턴 허용
     unnecessary_underscores: false
     no_leading_underscores_for_local_identifiers: false
+    # 누락된 await 잡기 — LocalStorage.setInt 등의 fire-and-forget 방지
+    unawaited_futures: true
+    # 안전성 향상
+    avoid_dynamic_calls: false
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
 
 analyzer:
   exclude:
     - lib/data/database/app_database.g.dart
+    - "**/*.g.dart"
   plugins:
     - custom_lint
 

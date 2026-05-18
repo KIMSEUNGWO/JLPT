@@ -28,7 +28,7 @@ class _SimpleBannerAdState extends State<SimpleBannerAd> {
   }
   @override
   Widget build(BuildContext context) {
-    return _bannerAd == null ? SizedBox() :
+    return _bannerAd == null ? const SizedBox() :
     SizedBox(
       width: widget.width ?? _bannerAd!.size.width.toDouble(),
       height: widget.height ?? _bannerAd!.size.height.toDouble(),

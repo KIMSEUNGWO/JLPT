@@ -20,4 +20,11 @@ class ChineseCharDao extends DatabaseAccessor<AppDatabase>
         await (selectOnly(chineseChars)..addColumns([chineseChars.char])).get();
     return result.isNotEmpty;
   }
+
+  Future<int> countChars() async {
+    final c = countAll();
+    final row =
+        await (selectOnly(chineseChars)..addColumns([c])).getSingle();
+    return row.read(c) ?? 0;
+  }
 }

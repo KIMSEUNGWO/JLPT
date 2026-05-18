@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:jlpt_app/component/local_storage.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/type.dart';
@@ -17,6 +19,6 @@ class RecentlyViewNotifier extends _$RecentlyViewNotifier {
     required int index,
   }) {
     state = ViewData.load(level: level, type: type, index: index);
-    LocalStorage.instance.saveRecentlyViewData(state);
+    unawaited(LocalStorage.instance.saveRecentlyViewData(state));
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:jlpt_app/component/local_storage.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -11,7 +13,7 @@ class StudyCycleNotifier extends _$StudyCycleNotifier {
 
   void cyclePlus(Level level) {
     state = {...state, level: (state[level] ?? 0) + 1};
-    LocalStorage.instance.saveStudyCycle(state);
+    unawaited(LocalStorage.instance.saveStudyCycle(state));
   }
 
   int getCurrentCycle(Level level) => state[level] ?? 0;

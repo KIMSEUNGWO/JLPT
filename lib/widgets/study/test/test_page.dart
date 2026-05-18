@@ -1,5 +1,6 @@
 import 'package:jlpt_app/core/app_utils.dart';
 import 'package:jlpt_app/app/app_routes.dart';
+import 'package:jlpt_app/app/route_args.dart';
 import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:go_router/go_router.dart';
 
@@ -8,11 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jlpt_app/component/test_examiner.dart';
 import 'package:jlpt_app/data/providers.dart';
-import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/question.dart';
 import 'package:jlpt_app/domain/question_box.dart';
 import 'package:jlpt_app/domain/timer.dart';
-import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/widgets/component/ads_banner.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
@@ -20,16 +19,9 @@ import 'package:jlpt_app/widgets/modal/test_complete_modal.dart';
 import 'package:jlpt_app/widgets/study/test/widget_test_card.dart';
 
 class TestPage extends ConsumerStatefulWidget {
-  final PracticeType type;
-  final Level? level;
-  final int mount;
+  final TestArgs args;
 
-  const TestPage({
-    super.key,
-    required this.type,
-    required this.level,
-    required this.mount,
-  });
+  const TestPage({super.key, required this.args});
 
   @override
   ConsumerState<TestPage> createState() => _TestPageState();
@@ -65,7 +57,7 @@ class _TestPageState extends ConsumerState<TestPage> {
 
     if (_currentIndex >= _questionList.length - 1) {
       _timerController.stop();
-      showDialog(
+      await showDialog<void>(
         context: context,
         barrierDismissible: false,
         builder: (context) => TestCompleteModal(
@@ -75,8 +67,8 @@ class _TestPageState extends ConsumerState<TestPage> {
             final router = GoRouter.of(context);
             final testResult =
                 await ref.read(testResultRepositoryProvider).save(
-                      level: widget.level,
-                      type: widget.type,
+                      level: widget.args.level,
+                      type: widget.args.type,
                       questions: _questionList,
                       reverses: _reverseIndexList,
                       time: _timerController.getTime(),
@@ -84,7 +76,10 @@ class _TestPageState extends ConsumerState<TestPage> {
             if (!mounted) return;
             router.pop(); // 모달 닫기
             router.pop(); // 테스트 페이지 닫기
-            router.push(AppRoutes.testResults, extra: testResult);
+            await router.push(
+              AppRoutes.testResults,
+              extra: TestResultsArgs(result: testResult),
+            );
           },
           onBack: () {
             context.pop(); // 모달 닫기
@@ -101,8 +96,8 @@ class _TestPageState extends ConsumerState<TestPage> {
     final wordsByLevel = await ref.read(wordRepositoryProvider).getAllByLevel();
     final questions = TestExaminer.instance.getWordQuestions(
       wordsByLevel: wordsByLevel,
-      level: widget.level,
-      count: widget.mount,
+      level: widget.args.level,
+      count: widget.args.mount,
     );
     _reverseIndexList = List<bool>.generate(questions.length, (_) => false);
     final half = (questions.length / 2).floor();
@@ -127,7 +122,7 @@ class _TestPageState extends ConsumerState<TestPage> {
     if (_loading) return const CupertinoActivityIndicator();
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.level?.name ?? '통합'} ${widget.type.title} 테스트'),
+        title: Text('${widget.args.level?.name ?? '통합'} ${widget.args.type.title} 테스트'),
         centerTitle: false,
         backgroundColor: Colors.white,
         actions: [

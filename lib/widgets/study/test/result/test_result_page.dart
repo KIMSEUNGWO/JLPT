@@ -1,4 +1,5 @@
 import 'package:jlpt_app/app/app_routes.dart';
+import 'package:jlpt_app/app/route_args.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,10 @@ class _TestResultPageState extends ConsumerState<TestResultPage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final page = levels.indexOf(widget.result!.level);
       _onChangePage(page);
-      context.push('${AppRoutes.testResults}/${AppRoutes.testResultDetail}', extra: widget.result!);
+      context.push(
+        '${AppRoutes.testResults}/${AppRoutes.testResultDetail}',
+        extra: TestResultDetailArgs(question: widget.result!),
+      );
     });
   }
 
@@ -133,7 +137,10 @@ class _TestResultPageState extends ConsumerState<TestResultPage> {
                     final correct =
                         r.question.where((q) => q.isCorrect).length;
                     return GestureDetector(
-                      onTap: () => context.push('${AppRoutes.testResults}/${AppRoutes.testResultDetail}', extra: r),
+                      onTap: () => context.push(
+                        '${AppRoutes.testResults}/${AppRoutes.testResultDetail}',
+                        extra: TestResultDetailArgs(question: r),
+                      ),
                       child: CustomContainer(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 15),

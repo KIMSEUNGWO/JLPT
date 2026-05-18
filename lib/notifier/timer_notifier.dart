@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:jlpt_app/component/local_storage.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/notifier/today_notifier.dart';
@@ -12,7 +14,7 @@ class TimerNotifier extends _$TimerNotifier {
 
   void setTimer(Level level, int seconds) {
     state = {...state, level: (state[level] ?? 0) + seconds};
-    LocalStorage.instance.saveLevelTimer(level, state[level]!);
+    unawaited(LocalStorage.instance.saveLevelTimer(level, state[level]!));
     ref.read(todayProvider.notifier).plusHours(seconds);
   }
 

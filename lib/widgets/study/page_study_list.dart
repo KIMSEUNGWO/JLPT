@@ -1,12 +1,12 @@
-import 'package:jlpt_app/widgets/component/recently_viewed_badge.dart';
-import 'package:jlpt_app/core/app_utils.dart';
-import 'package:jlpt_app/app/app_routes.dart';
-import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'dart:math';
-import 'package:go_router/go_router.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:jlpt_app/app/app_routes.dart';
+import 'package:jlpt_app/app/route_args.dart';
+import 'package:jlpt_app/core/app_utils.dart';
+import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/constant.dart';
 import 'package:jlpt_app/domain/level.dart';
@@ -14,112 +14,54 @@ import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/notifier/recently_view_notifier.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
+import 'package:jlpt_app/notifier/study_session_notifier.dart';
 import 'package:jlpt_app/notifier/timer_notifier.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
+import 'package:jlpt_app/widgets/component/recently_viewed_badge.dart';
 import 'package:jlpt_app/widgets/component/test_stat_widget.dart';
 import 'package:jlpt_app/widgets/modal/congratulations_modal.dart';
 
-class StudyListPage extends ConsumerStatefulWidget {
+class StudyListPage extends ConsumerWidget {
   final Level level;
-  final List<Word> words;
 
-  const StudyListPage({super.key, required this.level, required this.words});
-
-  @override
-  createState() => _StudyListPageState();
-}
-
-class _StudyListPageState extends ConsumerState<StudyListPage> {
-  late final List<Word> _stateWords;
-
-  void _wordsInitial() {
-    setState(() {
-      for (var e in _stateWords) {
-        e.isRead = false;
-      }
-    });
-  }
-
-  void getSeconds(int seconds) {
-    ref.read(timerProvider.notifier).setTimer(widget.level, seconds);
-
-    final allRead = _stateWords.every((element) => element.isRead);
-    if (allRead) {
-      showDialog(
-        context: context,
-        builder: (context) => CongratulationsModal(
-          level: widget.level,
-          wordsLearned: _stateWords.length,
-          studyTime: ref.read(timerProvider.notifier).getLevelTime(widget.level),
-          onNextLevelTap: () async {
-            Navigator.of(context).pop();
-            _wordsInitial();
-            await ref.read(wordRepositoryProvider).resetReadFor(widget.level);
-            ref.read(studyCycleProvider.notifier).cyclePlus(widget.level);
-          },
-          onViewTestTap: () async {
-            Navigator.of(context).pop();
-            _wordsInitial();
-            await ref.read(wordRepositoryProvider).resetReadFor(widget.level);
-            ref.read(studyCycleProvider.notifier).cyclePlus(widget.level);
-          },
-        ),
-      );
-    }
-  }
+  const StudyListPage({super.key, required this.level});
 
   @override
-  void initState() {
-    _stateWords = widget.words;
-    super.initState();
-  }
+  Widget build(BuildContext context, WidgetRef ref) {
+    final wordsAsync = ref.watch(wordsByLevelProvider);
 
-  int _getPercent() {
-    final double progress = _stateWords.where((e) => e.isRead).length /
-        (_stateWords.isEmpty ? 1 : _stateWords.length);
-    return (progress * 100).toInt();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('JLPT ${widget.level.name}'),
+        title: Text('JLPT ${level.name}'),
         centerTitle: false,
         backgroundColor: Colors.white,
         actions: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            decoration: BoxDecoration(
-              color: AppColors.background,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Text(
-              '전체진도 ${_getPercent()}%',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-                fontWeight: FontWeight.w500,
-                fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
-              ),
-            ),
+          wordsAsync.maybeWhen(
+            data: (map) {
+              final words = map[level] ?? const <Word>[];
+              return _ProgressBadge(percent: _percent(words));
+            },
+            orElse: () => const SizedBox.shrink(),
           ),
           const SizedBox(width: 8),
           Consumer(
-            builder: (context, ref, child) {
+            builder: (context, ref, _) {
               final cycle = ref.watch(studyCycleProvider);
               return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primary,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  '${cycle[widget.level]}회독',
+                  '${cycle[level]}회독',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,
-                    fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+                    fontSize:
+                        Theme.of(context).textTheme.bodyMedium!.fontSize,
                   ),
                 ),
               );
@@ -129,80 +71,168 @@ class _StudyListPageState extends ConsumerState<StudyListPage> {
         ],
         shape: kAppBarShape,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 21),
-        child: ListView.separated(
-          separatorBuilder: (context, index) => const SizedBox(height: 16),
-          itemCount: (_stateWords.length / Constant.GROUP_SIZE).ceil() + 1,
-          itemBuilder: (context, index) {
-            if ((_stateWords.length / Constant.GROUP_SIZE).ceil() == index) {
-              return TestStatWidget(level: widget.level);
-            }
+      body: wordsAsync.when(
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (e, _) => Center(child: Text('오류: $e')),
+        data: (map) {
+          final words = map[level] ?? const <Word>[];
+          if (words.isEmpty) {
+            return const Center(child: Text('단어가 없습니다'));
+          }
+          return _StudyList(level: level, words: words);
+        },
+      ),
+    );
+  }
 
-            final int start = index * Constant.GROUP_SIZE;
-            final int end = min((index + 1) * Constant.GROUP_SIZE, _stateWords.length);
-            final List<Word> innerWords = _stateWords.sublist(start, end);
+  int _percent(List<Word> words) {
+    if (words.isEmpty) return 0;
+    final read = words.where((w) => w.isRead).length;
+    return (read / words.length * 100).round();
+  }
+}
 
-            return Consumer(
-              builder: (context, ref, child) {
-                final recentlyViewData = ref.watch(recentlyViewProvider);
-                final isRecentlyView = recentlyViewData.level == widget.level &&
-                    recentlyViewData.type == PracticeType.WORD &&
-                    recentlyViewData.index == index;
+class _StudyList extends ConsumerStatefulWidget {
+  const _StudyList({required this.level, required this.words});
+  final Level level;
+  final List<Word> words;
 
-                return GestureDetector(
-                  onTap: () {
-                    context.push(AppRoutes.studyGroupFull(widget.level.name), extra: {
-                      'level': widget.level,
-                      'words': innerWords,
-                      'startIndex': start,
-                      'endIndex': end,
-                      'getSeconds': getSeconds,
-                    });
-                    ref.read(recentlyViewProvider.notifier).view(
+  @override
+  ConsumerState<_StudyList> createState() => _StudyListState();
+}
+
+class _StudyListState extends ConsumerState<_StudyList> {
+  void _onCardReturned() {
+    final allRead = widget.words.every((w) => w.isRead);
+    if (!allRead) return;
+    final session = ref.read(studySessionProvider.notifier);
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => CongratulationsModal(
+        level: widget.level,
+        wordsLearned: widget.words.length,
+        studyTime:
+            ref.read(timerProvider.notifier).getLevelTime(widget.level),
+        onNextLevelTap: () async {
+          Navigator.of(ctx).pop();
+          await session.completeCycle(widget.level);
+        },
+        onViewTestTap: () async {
+          Navigator.of(ctx).pop();
+          await session.completeCycle(widget.level);
+        },
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final words = widget.words;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 21),
+      child: ListView.separated(
+        separatorBuilder: (_, __) => const SizedBox(height: 16),
+        itemCount: (words.length / Constant.GROUP_SIZE).ceil() + 1,
+        itemBuilder: (context, index) {
+          if ((words.length / Constant.GROUP_SIZE).ceil() == index) {
+            return TestStatWidget(level: widget.level);
+          }
+          final start = index * Constant.GROUP_SIZE;
+          final end = min((index + 1) * Constant.GROUP_SIZE, words.length);
+          final innerWords = words.sublist(start, end);
+
+          return Consumer(
+            builder: (context, ref, _) {
+              final view = ref.watch(recentlyViewProvider);
+              final isRecent = view.level == widget.level &&
+                  view.type == PracticeType.WORD &&
+                  view.index == index;
+
+              return GestureDetector(
+                onTap: () async {
+                  ref.read(recentlyViewProvider.notifier).view(
+                        level: widget.level,
+                        type: PracticeType.WORD,
+                        index: index,
+                      );
+                  await context.push(
+                    AppRoutes.studyGroupFull(widget.level.name),
+                    extra: StudyGroupArgs(
                       level: widget.level,
-                      type: PracticeType.WORD,
-                      index: index,
-                    );
-                  },
-                  child: CustomContainer(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                    radius: BorderRadius.circular(12),
-                    border: isRecentlyView
-                        ? Border.all(
-                            color: Theme.of(context).colorScheme.primary,
-                            width: 2,
-                          )
-                        : null,
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '단어 ${start + 1}-$end',
-                              style: TextStyle(
-                                color: Theme.of(context).colorScheme.onPrimary,
-                                fontWeight: FontWeight.w600,
-                                fontSize: Theme.of(context).textTheme.displaySmall!.fontSize,
-                              ),
-                            ),
-                            if (isRecentlyView)
-                              const RecentlyViewedBadge(),
-                          ],
-                        ),
-                        const SizedBox(height: 12),
-                        CustomProgressBar(
-                          current: innerWords.where((w) => w.isRead).length,
-                          total: innerWords.length,
-                        ),
-                      ],
+                      startIndex: start,
+                      endIndex: end,
                     ),
+                  );
+                  if (mounted) _onCardReturned();
+                },
+                child: CustomContainer(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 15,
                   ),
-                );
-              },
-            );
-          },
+                  radius: BorderRadius.circular(12),
+                  border: isRecent
+                      ? Border.all(
+                          color: Theme.of(context).colorScheme.primary,
+                          width: 2,
+                        )
+                      : null,
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '단어 ${start + 1}-$end',
+                            style: TextStyle(
+                              color:
+                                  Theme.of(context).colorScheme.onPrimary,
+                              fontWeight: FontWeight.w600,
+                              fontSize: Theme.of(context)
+                                  .textTheme
+                                  .displaySmall!
+                                  .fontSize,
+                            ),
+                          ),
+                          if (isRecent) const RecentlyViewedBadge(),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      CustomProgressBar(
+                        current:
+                            innerWords.where((w) => w.isRead).length,
+                        total: innerWords.length,
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _ProgressBadge extends StatelessWidget {
+  const _ProgressBadge({required this.percent});
+  final int percent;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: AppColors.background,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Text(
+        '전체진도 $percent%',
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.primary,
+          fontWeight: FontWeight.w500,
+          fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
         ),
       ),
     );

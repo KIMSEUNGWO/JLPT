@@ -97,7 +97,7 @@ class _ReportProblemModalState extends State<ReportProblemModal> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: AppColors.surface,
@@ -158,7 +158,7 @@ class _ReportProblemModalState extends State<ReportProblemModal> {
                 ),
                 const SizedBox(height: 16),
 
-                Text('1인 개발자로서 부족한점이 많습니다.\n도움을 주셔서 감사합니다.',
+                const Text('1인 개발자로서 부족한점이 많습니다.\n도움을 주셔서 감사합니다.',
                   textAlign: TextAlign.center,
                 ),
 
@@ -176,7 +176,7 @@ class _ReportProblemModalState extends State<ReportProblemModal> {
                       ),
                     ),
                     child: (_sending)
-                      ? CupertinoActivityIndicator()
+                      ? const CupertinoActivityIndicator()
                       : Text('보내기',
                         style: TextStyle(
                           fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
@@ -195,7 +195,7 @@ class _ReportProblemModalState extends State<ReportProblemModal> {
 
 final OutlineInputBorder _inputBorder = OutlineInputBorder(
   borderRadius: BorderRadius.circular(10),
-  borderSide: BorderSide(
+  borderSide: const BorderSide(
     color: AppColors.surface
   ),
 );

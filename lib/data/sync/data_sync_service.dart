@@ -1,0 +1,159 @@
+import 'package:jlpt_app/component/app_logger.dart';
+import 'package:jlpt_app/data/remote/json_data_source.dart';
+import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
+import 'package:jlpt_app/data/sync/chinese_char_syncer.dart';
+import 'package:jlpt_app/data/sync/word_syncer.dart';
+import 'package:jlpt_app/initdata/update/version_info.dart';
+import 'package:pub_semver/pub_semver.dart';
+
+/// 부팅 / 업데이트 시 단어·한자 데이터 동기화를 오케스트레이션.
+///
+/// 책임:
+/// 1. 번들 + 캐시의 버전을 읽어 "현재 사용 가능한 최신 source 버전" 결정
+/// 2. DB 메타가 기록한 sync 완료 버전과 비교해 sync 여부 판정
+/// 3. 필요하면 [AssetJsonDataSource] 또는 [LocalJsonCacheSource] 로부터 sync
+/// 4. 원격 신버전 확인 (네트워크 가능 시) — 실제 다운로드는 [UpdateService] 가 담당
+class DataSyncService {
+  DataSyncService({
+    required this.bundle,
+    required this.cache,
+    required this.remote,
+    required this.wordSyncer,
+    required this.charSyncer,
+    required this.metaRepository,
+  });
+
+  final AssetJsonDataSource bundle;
+  final LocalJsonCacheSource cache;
+  final RemoteJsonDataSource remote;
+  final WordSyncer wordSyncer;
+  final ChineseCharSyncer charSyncer;
+  final AppMetaRepository metaRepository;
+
+  /// 앱 부팅 시 호출되는 메인 엔트리.
+  ///
+  /// 절대 throw 하지 않는다 — 실패해도 앱은 (구버전이라도) 켜져야 한다.
+  /// 진단을 위해 메타 테이블의 `last_sync_error` 에 메시지를 남긴다.
+  Future<SyncReport> ensureSynced() async {
+    try {
+      final sourceVersion = await _resolveSourceVersion();
+
+      final wordSyncedBefore = await wordSyncer.isUpToDate(sourceVersion);
+      final charSyncedBefore = await charSyncer.isUpToDate(sourceVersion);
+
+      if (wordSyncedBefore && charSyncedBefore) {
+        appLogger.d('[sync] up-to-date @ $sourceVersion');
+        return SyncReport.upToDate(sourceVersion);
+      }
+
+      final source = await _pickSource(sourceVersion);
+      if (!wordSyncedBefore) {
+        appLogger.i('[sync] words → $sourceVersion (source=${source.label})');
+        await wordSyncer.syncFrom(
+          source: source.delegate,
+          version: sourceVersion,
+        );
+      }
+      if (!charSyncedBefore) {
+        appLogger.i('[sync] chars → $sourceVersion (source=${source.label})');
+        await charSyncer.syncFrom(
+          source: source.delegate,
+          version: sourceVersion,
+        );
+      }
+      return SyncReport.synced(sourceVersion);
+    } catch (e, st) {
+      appLogger.e('[sync] failed: $e\n$st');
+      // 진단용 흔적. 다음 부팅에서 "왜 데이터가 비어 보이는가" 추적 가능.
+      try {
+        await metaRepository.recordSyncError(e);
+      } catch (_) {
+        // 메타 기록조차 실패하면 무시한다. 본 로직은 throw 하지 않는다.
+      }
+      return SyncReport.failed(e);
+    }
+  }
+
+  /// 원격 신버전이 있는지 확인. 네트워크 실패 시 null 반환.
+  Future<Version?> probeRemoteVersion() async {
+    try {
+      final json = await remote.read('dataVersion');
+      return VersionInfo.fromJson(json).version;
+    } catch (e) {
+      appLogger.w('[sync] remote version probe failed: $e');
+      return null;
+    }
+  }
+
+  /// 현재 로컬에서 sync 가능한 최신 source 버전 — `max(번들, 캐시)`.
+  Future<Version> _resolveSourceVersion() async {
+    final bundled = await _readVersion(bundle);
+    final cached = await _readVersionFromCache();
+    if (bundled == null && cached == null) {
+      throw StateError('No bundled dataVersion available');
+    }
+    if (cached == null) return bundled!;
+    if (bundled == null) return cached;
+    return cached > bundled ? cached : bundled;
+  }
+
+  Future<Version?> _readVersion(JsonDataSource source) async {
+    try {
+      final json = await source.read('dataVersion');
+      return VersionInfo.fromJson(json).version;
+    } catch (e) {
+      appLogger.w('[sync] failed to read version from source: $e');
+      return null;
+    }
+  }
+
+  Future<Version?> _readVersionFromCache() async {
+    if (!await cache.exists('dataVersion')) return null;
+    return _readVersion(cache);
+  }
+
+  /// 결정된 sourceVersion 과 일치하는 source 선택.
+  ///
+  /// 캐시 버전이 더 높으면 캐시, 아니면 번들.
+  Future<_PickedSource> _pickSource(Version sourceVersion) async {
+    final cached = await _readVersionFromCache();
+    if (cached != null && cached == sourceVersion) {
+      return _PickedSource(cache, 'cache');
+    }
+    return _PickedSource(bundle, 'bundle');
+  }
+}
+
+class _PickedSource {
+  _PickedSource(this.delegate, this.label);
+  final JsonDataSource delegate;
+  final String label;
+}
+
+/// 부팅 sync 결과. UI 게이트가 이걸 보고 분기.
+sealed class SyncReport {
+  const SyncReport();
+  factory SyncReport.upToDate(Version v) = SyncReportUpToDate;
+  factory SyncReport.synced(Version v) = SyncReportSynced;
+  factory SyncReport.failed(Object error) = SyncReportFailed;
+
+  bool get isOk => switch (this) {
+        SyncReportUpToDate() || SyncReportSynced() => true,
+        SyncReportFailed() => false,
+      };
+}
+
+final class SyncReportUpToDate extends SyncReport {
+  const SyncReportUpToDate(this.version);
+  final Version version;
+}
+
+final class SyncReportSynced extends SyncReport {
+  const SyncReportSynced(this.version);
+  final Version version;
+}
+
+final class SyncReportFailed extends SyncReport {
+  const SyncReportFailed(this.error);
+  final Object error;
+}

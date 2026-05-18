@@ -4,8 +4,11 @@ import 'package:jlpt_app/notifier/entity/today.dart';
 import 'package:jlpt_app/notifier/entity/view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// SharedPreferences 싱글톤 래퍼.
+///
+/// 모든 mutation 메서드는 `Future<void>` 를 반환해서 호출 측에서 await 할 수 있도록 한다.
+/// (구버전에서 fire-and-forget `setInt` 를 호출해 마지막 save 가 유실되던 버그 방지)
 class LocalStorage {
-
   final SharedPreferences _storage;
 
   static late LocalStorage instance;
@@ -17,111 +20,130 @@ class LocalStorage {
     return instance;
   }
 
-  TodayData getTodayData() {
-    int beforeDay =_storage.getInt(StorageKey.TODAY.name) ?? 0;
+  // ───────── 오늘의 학습 ─────────
 
-    // 날짜가 달라지면 0으로 초기화
+  TodayData getTodayData() {
+    final beforeDay = _storage.getInt(StorageKey.TODAY.name) ?? 0;
     if (beforeDay != dateToInt(DateTime.now())) {
-      return TodayData.load(
-        hours: 0,
-        wordCnt: 0,
-        grammarCnt: 0,
-      );
+      return TodayData.load(hours: 0, wordCnt: 0, grammarCnt: 0);
     }
-    int hours = _storage.getInt(StorageKey.TODAY_HOURS.name) ?? 0;
-    int words = _storage.getInt(StorageKey.TODAY_WORDS.name) ?? 0;
-    int grammars = _storage.getInt(StorageKey.TODAY_GRAMMARS.name) ?? 0;
     return TodayData.load(
-      hours: hours,
-      wordCnt: words,
-      grammarCnt: grammars
+      hours: _storage.getInt(StorageKey.TODAY_HOURS.name) ?? 0,
+      wordCnt: _storage.getInt(StorageKey.TODAY_WORDS.name) ?? 0,
+      grammarCnt: _storage.getInt(StorageKey.TODAY_GRAMMARS.name) ?? 0,
     );
   }
 
-  void saveTodayData(TodayData data) {
-    _storage.setInt(StorageKey.TODAY.name, data.date);
-    _storage.setInt(StorageKey.TODAY_HOURS.name, data.hours);
-    _storage.setInt(StorageKey.TODAY_WORDS.name, data.wordCnt);
-    _storage.setInt(StorageKey.TODAY_GRAMMARS.name, data.grammarCnt);
+  Future<void> saveTodayData(TodayData data) async {
+    await _storage.setInt(StorageKey.TODAY.name, data.date);
+    await _storage.setInt(StorageKey.TODAY_HOURS.name, data.hours);
+    await _storage.setInt(StorageKey.TODAY_WORDS.name, data.wordCnt);
+    await _storage.setInt(StorageKey.TODAY_GRAMMARS.name, data.grammarCnt);
   }
 
   static int dateToInt(DateTime date) {
     return date.year * 10000 + date.month * 100 + date.day;
   }
 
+  // ───────── 학습 회독 ─────────
+
   Map<Level, int> getStudyCycle() {
-    return Map.fromEntries(Level.values.map((level) =>
-        MapEntry(level, _storage.getInt(level.name) ?? 0))
+    return {
+      for (final level in Level.values)
+        level: _storage.getInt(level.name) ?? 0,
+    };
+  }
+
+  Future<void> saveStudyCycle(Map<Level, int> data) async {
+    for (final entry in data.entries) {
+      await _storage.setInt(entry.key.name, entry.value);
+    }
+  }
+
+  // ───────── 학습한 단어 ID ─────────
+
+  List<int> getReadWordIdList() {
+    return _storage
+            .getStringList(StorageKey.READ_WORD_ID_LIST.name)
+            ?.map(int.parse)
+            .toList() ??
+        const [];
+  }
+
+  Future<void> saveReadWordIdList(List<int> idList) async {
+    await _storage.setStringList(
+      StorageKey.READ_WORD_ID_LIST.name,
+      idList.map((e) => e.toString()).toList(growable: false),
     );
   }
 
-  saveStudyCycle(Map<Level, int> data) {
-    data.forEach((key, value) => _storage.setInt(key.name, value),);
-  }
-
-  List<int> getReadWordIdList() {
-    return _storage.getStringList(StorageKey.READ_WORD_ID_LIST.name)?.map((e) => int.parse(e)).toList() ?? [];
-  }
-  saveReadWordIdList(List<int> idList) {
-    var list = idList.map((e) => e.toString()).toList();
-    _storage.setStringList(StorageKey.READ_WORD_ID_LIST.name, list);
-  }
+  // ───────── 최근 학습 ─────────
 
   ViewData getRecentlyViewData() {
-    String? levelStr = _storage.getString(StorageKey.RECENTLY_VIEW_LEVEL.name);
-    String? typeStr = _storage.getString(StorageKey.RECENTLY_VIEW_TYPE.name);
-    int? indexStr = _storage.getInt(StorageKey.RECENTLY_VIEW_INDEX.name);
+    final levelStr = _storage.getString(StorageKey.RECENTLY_VIEW_LEVEL.name);
+    final typeStr = _storage.getString(StorageKey.RECENTLY_VIEW_TYPE.name);
+    final indexStr = _storage.getInt(StorageKey.RECENTLY_VIEW_INDEX.name);
 
-    if (levelStr == null || typeStr == null || indexStr == null) return ViewData();
+    if (levelStr == null || typeStr == null || indexStr == null) {
+      return ViewData();
+    }
     return ViewData.load(
       level: Level.valueOf(levelStr),
       type: PracticeType.valueOf(typeStr),
-      index: indexStr
+      index: indexStr,
     );
   }
 
-  void saveRecentlyViewData(ViewData viewData) {
-    if (viewData.level == null || viewData.type == null || viewData.index == null) return;
-
-    _storage.setString(StorageKey.RECENTLY_VIEW_LEVEL.name, viewData.level!.name);
-    _storage.setString(StorageKey.RECENTLY_VIEW_TYPE.name, viewData.type!.name);
-    _storage.setInt(StorageKey.RECENTLY_VIEW_INDEX.name, viewData.index!);
+  Future<void> saveRecentlyViewData(ViewData viewData) async {
+    if (viewData.level == null ||
+        viewData.type == null ||
+        viewData.index == null) {
+      return;
+    }
+    await _storage.setString(
+      StorageKey.RECENTLY_VIEW_LEVEL.name,
+      viewData.level!.name,
+    );
+    await _storage.setString(
+      StorageKey.RECENTLY_VIEW_TYPE.name,
+      viewData.type!.name,
+    );
+    await _storage.setInt(
+      StorageKey.RECENTLY_VIEW_INDEX.name,
+      viewData.index!,
+    );
   }
+
+  // ───────── 레벨별 학습 타이머 ─────────
 
   Map<Level, int> getTimerNotifier() {
-    return { for (var e in Level.values) e : _storage.getInt(_timerCombineName(e)) ?? 0 };
+    return {
+      for (final e in Level.values)
+        e: _storage.getInt(_timerKey(e)) ?? 0,
+    };
   }
 
-  saveTimerNotifier(Map<Level, int> data) {
-    for (var o in data.entries) {
-      _storage.setInt(_timerCombineName(o.key), o.value);
+  Future<void> saveTimerNotifier(Map<Level, int> data) async {
+    for (final entry in data.entries) {
+      await _storage.setInt(_timerKey(entry.key), entry.value);
     }
   }
-  void saveLevelTimer(Level level, int seconds) {
-    _storage.setInt(_timerCombineName(level), seconds);
+
+  Future<void> saveLevelTimer(Level level, int seconds) async {
+    await _storage.setInt(_timerKey(level), seconds);
   }
 
-  String _timerCombineName(Level level) {
-    return '${StorageKey.TIMER.name}_${level.name}';
-  }
-
-
-
+  String _timerKey(Level level) => '${StorageKey.TIMER.name}_${level.name}';
 }
 
 enum StorageKey {
-
   TODAY,
   TODAY_HOURS,
   TODAY_WORDS,
   TODAY_GRAMMARS,
-
   RECENTLY_VIEW_LEVEL,
   RECENTLY_VIEW_TYPE,
   RECENTLY_VIEW_INDEX,
-
   TIMER,
-
-  READ_WORD_ID_LIST;
-
+  READ_WORD_ID_LIST,
 }

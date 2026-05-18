@@ -43,7 +43,7 @@ class _TestCardWidgetState extends State<TestCardWidget> with TickerProviderStat
           CustomContainer(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 32),
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               minHeight: 200,
               maxHeight: 240
             ),

@@ -2,30 +2,45 @@ import 'dart:convert';
 
 import 'package:drift/drift.dart';
 import 'package:jlpt_app/data/database/app_database.dart';
+import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
+import 'package:pub_semver/pub_semver.dart';
 
 class ChineseCharRepository {
   final AppDatabase _db;
+  final AppMetaRepository _meta;
 
-  ChineseCharRepository(this._db);
+  ChineseCharRepository(this._db, this._meta);
 
   Future<Map<String, ChineseChar>> getAll() async {
     final rows = await _db.chineseCharDao.getAll();
     return {for (final r in rows) r.char: _toEntity(r)};
   }
 
-  Future<void> syncAll(List<ChineseChar> chars) async {
-    final companions = chars.map((c) => ChineseCharsCompanion(
-          char: Value(c.char),
-          koreanChar: Value(c.koreanChar),
-          soundReading: Value(jsonEncode(c.soundReading)),
-          meanReading: Value(jsonEncode(c.meanReading)),
-        ));
-    await _db.chineseCharDao
-        .upsertAll(companions.toList());
+  Future<void> syncAll(
+    List<ChineseChar> chars, {
+    required Version version,
+  }) async {
+    final companions = chars
+        .map(
+          (c) => ChineseCharsCompanion(
+            char: Value(c.char),
+            koreanChar: Value(c.koreanChar),
+            soundReading: Value(jsonEncode(c.soundReading)),
+            meanReading: Value(jsonEncode(c.meanReading)),
+          ),
+        )
+        .toList(growable: false);
+
+    await _db.transaction(() async {
+      await _db.chineseCharDao.upsertAll(companions);
+      await _meta.markCharsSynced(version);
+    });
   }
 
   Future<bool> hasChars() => _db.chineseCharDao.hasChars();
+
+  Future<int> countChars() => _db.chineseCharDao.countChars();
 
   ChineseChar _toEntity(ChineseCharData row) => ChineseChar(
         char: row.char,

@@ -1,193 +1,200 @@
-import 'package:jlpt_app/core/app_utils.dart';
-import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jlpt_app/app/route_args.dart';
+import 'package:jlpt_app/core/app_utils.dart';
+import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:jlpt_app/data/providers.dart';
-import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/timer.dart';
 import 'package:jlpt_app/domain/word.dart';
-import 'package:jlpt_app/notifier/today_notifier.dart';
+import 'package:jlpt_app/notifier/study_session_notifier.dart';
 import 'package:jlpt_app/widgets/component/ads_banner.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
-import 'package:jlpt_app/widgets/study/card/widget_word_card.dart';
 import 'package:jlpt_app/widgets/modal/next_modal.dart';
+import 'package:jlpt_app/widgets/study/card/widget_word_card.dart';
 
 class StudyPage extends ConsumerStatefulWidget {
-
-  final Level level;
-
-  final List<Word> words;
-  final int startIndex;
-  final int endIndex;
-  final Function(int seconds) getSeconds;
-
-  const StudyPage({super.key, required this.level, required this.words, required this.startIndex, required this.endIndex, required this.getSeconds});
-
+  const StudyPage({super.key, required this.args});
+  final StudyGroupArgs args;
 
   @override
-  createState() => _StudyPageState();
+  ConsumerState<StudyPage> createState() => _StudyPageState();
 }
 
 class _StudyPageState extends ConsumerState<StudyPage> {
-
   final TimerController _timerController = TimerController();
 
-  late final bool isInitiallyCompleted;
-  late List<Word> innerWords;
-  int currentIndex = 0;
+  late List<Word> _allWords;        // 이 그룹 전체 단어 (불변)
+  late List<Word> _innerWords;       // 현재 라운드에 보여줄 셔플된 단어
+  final Set<int> _readIds = {};      // 이번 페이지 진입 후 읽음 처리한 id들
+  late bool _initiallyCompleted;
+  int _currentIndex = 0;
 
-  void _showNextWord() {
-    // 마지막 카드가 아닌 경우 다음 카드로 이동
-    if (currentIndex < innerWords.length - 1) {
-      setState(() => currentIndex++);
+  @override
+  void initState() {
+    super.initState();
+    final all = ref.read(wordsByLevelProvider).maybeWhen(
+          data: (m) => m[widget.args.level] ?? const <Word>[],
+          orElse: () => const <Word>[],
+        );
+    _allWords = all.sublist(
+      widget.args.startIndex,
+      widget.args.endIndex.clamp(0, all.length),
+    );
+    _initiallyCompleted = _allWords.every((w) => w.isRead);
+    _innerWords = _pickUnread();
+  }
+
+  List<Word> _pickUnread() {
+    final unread =
+        _allWords.where((w) => !_isRead(w)).toList();
+    final pool = unread.isEmpty ? _allWords : unread;
+    return [...pool]..shuffle();
+  }
+
+  bool _isRead(Word w) => w.isRead || _readIds.contains(w.id);
+
+  bool _hasAllRead() => _allWords.every(_isRead);
+
+  Future<void> _select(Word word) async {
+    setState(() => _readIds.add(word.id));
+    await ref.read(studySessionProvider.notifier).markWordRead(word.id);
+    _showNextCard();
+  }
+
+  void _showNextCard() {
+    if (_currentIndex < _innerWords.length - 1) {
+      setState(() => _currentIndex++);
       return;
     }
-
-    // 처음진입 시 100%이거나 지금 모든 단어를 읽지 않은 경우
-    if (isInitiallyCompleted || !_hasAllRead()) {
-      removeIsReadWord();
-      setState(() => currentIndex = 0);
+    if (_initiallyCompleted || !_hasAllRead()) {
+      setState(() {
+        _innerWords = _pickUnread();
+        _currentIndex = 0;
+      });
       return;
     }
-
-    // 모든 단어를 읽은 경우
     _timerController.stop();
-    // 축하 모달 표시
-    showDialog(
+    showDialog<void>(
       context: context,
       barrierDismissible: false,
-      builder: (context) => NextModal(
-        wordsLearned: widget.words.length,
+      builder: (ctx) => NextModal(
+        wordsLearned: _allWords.length,
         studyHours: 2.5,
         onNextLevelTap: () {
-          Navigator.of(context).pop(); // 모달 닫기
-          Navigator.of(context).pop(); // StudyPage 닫기
+          Navigator.of(ctx).pop();
+          Navigator.of(context).pop();
         },
         onViewTestTap: () {
           _timerController.restart();
-          Navigator.of(context).pop(); // 모달 닫기
+          Navigator.of(ctx).pop();
           setState(() {
-            isInitiallyCompleted = true; // 남아서 계속 단어카드를 보는 경우 더이상 모달창이 뜨지않도록 변경
-            innerWords = [...widget.words];
-            innerWords.shuffle();
-            currentIndex = 0;
+            _initiallyCompleted = true;
+            _innerWords = [..._allWords]..shuffle();
+            _currentIndex = 0;
           });
         },
       ),
     );
   }
 
-  void removeIsReadWord() {
-    var unreadWords = widget.words.where((word) => !word.isRead).toList();
-    setState(() {
-      // 읽지 않은 단어가 없으면 모든 단어를 로드, 있으면 읽지 않은 단어만 로드
-      innerWords = unreadWords.isEmpty ? widget.words : unreadWords;
-      innerWords.shuffle();
-    });
-  }
-
-  _select(Word selectWord) async {
-    await ref.read(wordRepositoryProvider).markRead(selectWord.id);
-    selectWord.isRead = true;
-    _showNextWord();
-    ref.read(todayProvider.notifier).plusWordCnt();
-  }
-
-  bool _hasAllRead() {
-    return widget.words.every((word) => word.isRead);
-  }
-
   @override
-  void initState() {
-    isInitiallyCompleted = _hasAllRead();
-    removeIsReadWord();
-    super.initState();
+  void dispose() {
+    // 데이터 sync (DB 의 isRead 변동) 를 홈 화면이 즉시 반영하도록.
+    ref.invalidate(wordsByLevelProvider);
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final readCount = _allWords.where(_isRead).length;
     return Scaffold(
       appBar: AppBar(
-        title: Text('JLPT ${widget.level.name} 단어 ${widget.startIndex + 1}-${widget.endIndex}'),
+        title: Text(
+          'JLPT ${widget.args.level.name} 단어 '
+          '${widget.args.startIndex + 1}-${widget.args.endIndex}',
+        ),
         centerTitle: false,
         backgroundColor: Colors.white,
         actions: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             decoration: BoxDecoration(
               color: AppColors.background,
-              borderRadius: BorderRadius.circular(20)
+              borderRadius: BorderRadius.circular(20),
             ),
             child: Row(
               children: [
-                Icon(Icons.access_time,
+                Icon(
+                  Icons.access_time,
                   color: Theme.of(context).colorScheme.primary,
                   size: 12,
                 ),
-                const SizedBox(width: 4,),
+                const SizedBox(width: 4),
                 CustomTimer(
                   controller: _timerController,
-                  getSeconds: widget.getSeconds,
+                  getSeconds: (s) => ref
+                      .read(studySessionProvider.notifier)
+                      .recordSeconds(widget.args.level, s),
                 ),
               ],
             ),
           ),
-          const SizedBox(width: 20,),
+          const SizedBox(width: 20),
         ],
         shape: kAppBarShape,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(60),
           child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-              height: 60,
-              child: Consumer(
-                builder: (context, ref, child) {
-                  int current = widget.words.where((element) => element.isRead,).length;
-                  return CustomProgressBar(
-                    topWidget: (current, total, percent) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '진행률',
-                            style: TextStyle(
-                              fontSize: Theme.of(context).textTheme.bodySmall!.fontSize,
-                              color: Theme.of(context).colorScheme.onTertiary,
-                            ),
-                          ),
-                          Text(
-                            '$current/$total',
-                            style: TextStyle(
-                                fontSize: Theme.of(context).textTheme.bodySmall!.fontSize,
-                                color: Theme.of(context).colorScheme.primary,
-                                fontWeight: FontWeight.w500
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                    current: current,
-                    total: widget.words.length,
-                  );
-                },
+            padding:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            height: 60,
+            child: CustomProgressBar(
+              topWidget: (current, total, percent) => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '진행률',
+                    style: TextStyle(
+                      fontSize:
+                          Theme.of(context).textTheme.bodySmall!.fontSize,
+                      color: Theme.of(context).colorScheme.onTertiary,
+                    ),
+                  ),
+                  Text(
+                    '$current/$total',
+                    style: TextStyle(
+                      fontSize:
+                          Theme.of(context).textTheme.bodySmall!.fontSize,
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
               ),
+              current: readCount,
+              total: _allWords.length,
+            ),
           ),
         ),
       ),
       body: SingleChildScrollView(
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 400),
-          transitionBuilder: (Widget child, Animation<double> animation) {
-            return SlideTransition(
-              position: Tween<Offset>(
-                begin: const Offset(0.0, 2.0),
-                end: Offset.zero,
-              ).animate(animation),
-              child: child,
-            );
-          },
-          child: WordCardWidget(word: innerWords[currentIndex], key: ValueKey<int>(currentIndex)),
+          transitionBuilder: (child, animation) => SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0, 2),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          ),
+          child: _innerWords.isEmpty
+              ? const SizedBox.shrink()
+              : WordCardWidget(
+                  key: ValueKey<int>(_currentIndex),
+                  word: _innerWords[_currentIndex],
+                ),
         ),
       ),
       bottomNavigationBar: SafeArea(
@@ -195,59 +202,73 @@ class _StudyPageState extends ConsumerState<StudyPage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Row(
                 children: [
                   Expanded(
                     child: GestureDetector(
-                      onTap: () {
-                        _showNextWord();
-                      },
+                      onTap: _showNextCard,
                       child: CustomContainer(
                         height: 50,
                         backgroundColor: Colors.white,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.close,
-                              color: Theme.of(context).colorScheme.primary,
+                            Icon(
+                              Icons.close,
+                              color:
+                                  Theme.of(context).colorScheme.primary,
                               size: 15,
                             ),
-                            const SizedBox(width: 8,),
-                            Text('잘 모르겠음',
+                            const SizedBox(width: 8),
+                            Text(
+                              '잘 모르겠음',
                               style: TextStyle(
-                                color: Theme.of(context).colorScheme.primary,
-                                fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                                fontWeight: FontWeight.w500
+                                color:
+                                    Theme.of(context).colorScheme.primary,
+                                fontSize: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .fontSize,
+                                fontWeight: FontWeight.w500,
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(width: 21,),
+                  const SizedBox(width: 21),
                   Expanded(
                     child: GestureDetector(
-                      onTap: () => _select(innerWords[currentIndex]),
+                      onTap: () => _innerWords.isEmpty
+                          ? null
+                          : _select(_innerWords[_currentIndex]),
                       child: CustomContainer(
                         height: 50,
-                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        backgroundColor:
+                            Theme.of(context).colorScheme.primary,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Icon(Icons.check,
+                            const Icon(
+                              Icons.check,
                               color: Colors.white,
                               size: 15,
                             ),
-                            const SizedBox(width: 8,),
-                            Text('이해했음',
+                            const SizedBox(width: 8),
+                            Text(
+                              '이해했음',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
+                                fontSize: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .fontSize,
                                 fontWeight: FontWeight.w500,
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -256,11 +277,10 @@ class _StudyPageState extends ConsumerState<StudyPage> {
                 ],
               ),
             ),
-            SimpleBannerAd(width: double.infinity, height: 100,)
+            const SimpleBannerAd(width: double.infinity, height: 100),
           ],
         ),
       ),
     );
   }
 }
-

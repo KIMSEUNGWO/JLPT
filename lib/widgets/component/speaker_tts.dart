@@ -36,7 +36,7 @@ class SpeakerTTS extends Speaker {
 
   @override
   Future<void> speak(String word) async {
-    stopped();
+    await stopped();
     await flutterTts.speak(word);
   }
 

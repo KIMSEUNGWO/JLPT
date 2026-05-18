@@ -92,7 +92,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
           children: [
             CustomContainer(
               width: double.infinity,
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -156,11 +156,11 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                   Container(
                     width: double.infinity,
                     height: 1,
-                    margin: EdgeInsets.symmetric(vertical: 21),
+                    margin: const EdgeInsets.symmetric(vertical: 21),
                     color: AppColors.divider,
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(
                       color: AppColors.surface,
                       borderRadius: BorderRadius.circular(12),
@@ -177,7 +177,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
             const SizedBox(height: 26,),
 
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -191,7 +191,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                   GestureDetector(
                     onTap: _toggleOnlyIncorrect,
                     child: CustomContainer(
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                       backgroundColor: _onlyIncorrect ? Theme.of(context).colorScheme.primary : Colors.white,
                       child: Row(
                         children: [
@@ -267,7 +267,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                               ),
                               const SizedBox(height: 8,),
                               Container(
-                                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                                 width: double.infinity,
                                 alignment: Alignment.centerLeft,
                                 decoration: BoxDecoration(
@@ -302,7 +302,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                                 ),
                                 const SizedBox(height: 8,),
                                 Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                                   width: double.infinity,
                                   alignment: Alignment.centerLeft,
                                   decoration: BoxDecoration(
