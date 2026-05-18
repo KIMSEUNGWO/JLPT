@@ -28,6 +28,7 @@ class TestResultPage extends ConsumerStatefulWidget {
 class _TestResultPageState extends ConsumerState<TestResultPage> {
   late final PageController _pageController;
   int _currentPage = 0;
+  bool _openedInitialResult = false;
 
   final List<Level?> levels = [null, ...Level.values];
 
@@ -37,9 +38,11 @@ class _TestResultPageState extends ConsumerState<TestResultPage> {
     _pageController.jumpToPage(_currentPage);
   }
 
-  void _fastMove(List<QuestionEntityBox> results) {
-    if (widget.result == null) return;
+  void _fastMove() {
+    if (widget.result == null || _openedInitialResult) return;
+    _openedInitialResult = true;
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
       final page = levels.indexOf(widget.result!.level);
       _onChangePage(page);
       context.push(
@@ -112,11 +115,7 @@ class _TestResultPageState extends ConsumerState<TestResultPage> {
         loading: () => const Center(child: CupertinoActivityIndicator()),
         error: (_, __) => const Center(child: Text('데이터를 불러올 수 없습니다')),
         data: (results) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (widget.result != null && _currentPage == 0) {
-              _fastMove(results);
-            }
-          });
+          _fastMove();
           return Padding(
             padding: const EdgeInsets.all(20),
             child: PageView.builder(

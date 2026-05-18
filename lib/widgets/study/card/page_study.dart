@@ -99,13 +99,6 @@ class _StudyPageState extends ConsumerState<StudyPage> {
   }
 
   @override
-  void dispose() {
-    // 데이터 sync (DB 의 isRead 변동) 를 홈 화면이 즉시 반영하도록.
-    ref.invalidate(wordsByLevelProvider);
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final readCount = _allWords.where(_isRead).length;
     return Scaffold(

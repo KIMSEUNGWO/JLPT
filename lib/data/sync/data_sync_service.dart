@@ -37,31 +37,23 @@ class DataSyncService {
   Future<SyncReport> ensureSynced() async {
     try {
       final sourceVersion = await _resolveSourceVersion();
-
-      final wordSyncedBefore = await wordSyncer.isUpToDate(sourceVersion);
-      final charSyncedBefore = await charSyncer.isUpToDate(sourceVersion);
-
-      if (wordSyncedBefore && charSyncedBefore) {
-        appLogger.d('[sync] up-to-date @ $sourceVersion');
-        return SyncReport.upToDate(sourceVersion);
-      }
-
       final source = await _pickSource(sourceVersion);
-      if (!wordSyncedBefore) {
-        appLogger.i('[sync] words → $sourceVersion (source=${source.label})');
-        await wordSyncer.syncFrom(
-          source: source.delegate,
-          version: sourceVersion,
+      try {
+        return await _syncFromPickedSource(source, sourceVersion);
+      } catch (e) {
+        if (source.delegate != cache) rethrow;
+
+        // A stale/corrupt cache must not make the app unusable when bundled
+        // data is available. Fall back to the bundled dataset and let the next
+        // successful remote update replace the cache.
+        appLogger.w('[sync] cache sync failed, falling back to bundle: $e');
+        final bundledVersion = await _readVersion(bundle);
+        if (bundledVersion == null) rethrow;
+        return _syncFromPickedSource(
+          _PickedSource(bundle, 'bundle-fallback'),
+          bundledVersion,
         );
       }
-      if (!charSyncedBefore) {
-        appLogger.i('[sync] chars → $sourceVersion (source=${source.label})');
-        await charSyncer.syncFrom(
-          source: source.delegate,
-          version: sourceVersion,
-        );
-      }
-      return SyncReport.synced(sourceVersion);
     } catch (e, st) {
       appLogger.e('[sync] failed: $e\n$st');
       // 진단용 흔적. 다음 부팅에서 "왜 데이터가 비어 보이는가" 추적 가능.
@@ -72,6 +64,35 @@ class DataSyncService {
       }
       return SyncReport.failed(e);
     }
+  }
+
+  Future<SyncReport> _syncFromPickedSource(
+    _PickedSource source,
+    Version sourceVersion,
+  ) async {
+    final wordSyncedBefore = await wordSyncer.isUpToDate(sourceVersion);
+    final charSyncedBefore = await charSyncer.isUpToDate(sourceVersion);
+
+    if (wordSyncedBefore && charSyncedBefore) {
+      appLogger.d('[sync] up-to-date @ $sourceVersion');
+      return SyncReport.upToDate(sourceVersion);
+    }
+
+    if (!wordSyncedBefore) {
+      appLogger.i('[sync] words → $sourceVersion (source=${source.label})');
+      await wordSyncer.syncFrom(
+        source: source.delegate,
+        version: sourceVersion,
+      );
+    }
+    if (!charSyncedBefore) {
+      appLogger.i('[sync] chars → $sourceVersion (source=${source.label})');
+      await charSyncer.syncFrom(
+        source: source.delegate,
+        version: sourceVersion,
+      );
+    }
+    return SyncReport.synced(sourceVersion);
   }
 
   /// 원격 신버전이 있는지 확인. 네트워크 실패 시 null 반환.

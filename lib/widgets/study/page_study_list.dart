@@ -102,15 +102,20 @@ class _StudyList extends ConsumerStatefulWidget {
 }
 
 class _StudyListState extends ConsumerState<_StudyList> {
-  void _onCardReturned() {
-    final allRead = widget.words.every((w) => w.isRead);
+  Future<void> _onCardReturned() async {
+    ref.invalidate(wordsByLevelProvider);
+    final latestWords =
+        await ref.read(wordRepositoryProvider).getByLevel(widget.level);
+    if (!mounted) return;
+
+    final allRead = latestWords.every((w) => w.isRead);
     if (!allRead) return;
     final session = ref.read(studySessionProvider.notifier);
-    showDialog<void>(
+    await showDialog<void>(
       context: context,
       builder: (ctx) => CongratulationsModal(
         level: widget.level,
-        wordsLearned: widget.words.length,
+        wordsLearned: latestWords.length,
         studyTime:
             ref.read(timerProvider.notifier).getLevelTime(widget.level),
         onNextLevelTap: () async {
@@ -163,7 +168,7 @@ class _StudyListState extends ConsumerState<_StudyList> {
                       endIndex: end,
                     ),
                   );
-                  if (mounted) _onCardReturned();
+                  if (mounted) await _onCardReturned();
                 },
                 child: CustomContainer(
                   padding: const EdgeInsets.symmetric(
