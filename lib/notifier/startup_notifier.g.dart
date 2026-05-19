@@ -51,7 +51,7 @@ final class StartupProvider
   Startup create() => Startup();
 }
 
-String _$startupHash() => r'15bfb5248ff1445d3057497a322a67cc122015b0';
+String _$startupHash() => r'1290c94bb6c997614c7bd3cfba828968aed75a2e';
 
 /// 앱 부팅 게이트.
 ///

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:jlpt_app/component/app_logger.dart';
@@ -40,6 +41,7 @@ class Startup extends _$Startup {
   }
 
   Future<void> _initAds() async {
+    if (!Platform.isAndroid && !Platform.isIOS) return;
     try {
       await MobileAds.instance.initialize();
     } catch (e) {

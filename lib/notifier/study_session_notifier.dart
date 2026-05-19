@@ -57,12 +57,15 @@ class StudySession extends _$StudySession {
     ];
     if (futures.isEmpty) return;
     unawaited(
-      Future.wait(futures).then<void>((_) {
-        ref.invalidate(weeklyStatsProvider);
-        ref.invalidate(studyStreakProvider);
-      }).catchError((Object e, StackTrace st) {
-        appLogger.w('[stats] write failed: $e\n$st');
-      }),
+      Future.wait(futures)
+          .then<void>((_) {
+            if (!ref.mounted) return;
+            ref.invalidate(weeklyStatsProvider);
+            ref.invalidate(studyStreakProvider);
+          })
+          .catchError((Object e, StackTrace st) {
+            appLogger.w('[stats] write failed: $e\n$st');
+          }),
     );
   }
 }

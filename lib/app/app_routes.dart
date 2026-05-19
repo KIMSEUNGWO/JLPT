@@ -6,6 +6,7 @@ abstract class AppRoutes {
   static const test = '/test';
   static const testResults = '/test/results';
   static const testResultDetail = 'detail'; // /test/results/detail
+  static const settings = '/settings';
 
   static String study(String level) => '/study/$level';
   static String studyGroupFull(String level) => '/study/$level/group';

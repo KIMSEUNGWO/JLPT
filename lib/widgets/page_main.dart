@@ -34,10 +34,16 @@ class MainPage extends ConsumerWidget {
           GestureDetector(
             onTap: () => context.push(AppRoutes.testResults),
             child: const Padding(
-              padding: EdgeInsets.only(right: 20),
-              child: Text('테스트 기록'),
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: Center(child: Text('테스트 기록')),
             ),
           ),
+          IconButton(
+            tooltip: '환경설정',
+            icon: const Icon(Icons.settings_outlined),
+            onPressed: () => context.push(AppRoutes.settings),
+          ),
+          const SizedBox(width: 8),
         ],
       ),
       body: SafeArea(

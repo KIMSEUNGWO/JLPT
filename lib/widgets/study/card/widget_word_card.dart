@@ -44,7 +44,9 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
     final opts = ref.read(studyOptionsProvider);
     if (opts.autoPlayPronunciation) {
       WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await Future.delayed(const Duration(milliseconds: 200));
+        // StudyPage 의 AnimatedSwitcher 전환(400ms)이 끝난 뒤 재생한다.
+        // 이전 카드 dispose 의 TTS stop 이 새 카드 자동 발음을 끊는 것을 방지.
+        await Future.delayed(const Duration(milliseconds: 500));
         if (!mounted || widget.word.id != _capturedWordId) return;
         await _speaker.speak(widget.word.word);
       });
@@ -87,8 +89,9 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                     Text(
                       opts.showHiragana ? widget.word.hiragana : '',
                       style: TextStyle(
-                        fontSize:
-                            Theme.of(context).textTheme.displaySmall!.fontSize,
+                        fontSize: Theme.of(
+                          context,
+                        ).textTheme.displaySmall!.fontSize,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -96,8 +99,9 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                     Text(
                       opts.showKorean ? widget.word.korean : '',
                       style: TextStyle(
-                        fontSize:
-                            Theme.of(context).textTheme.displaySmall!.fontSize,
+                        fontSize: Theme.of(
+                          context,
+                        ).textTheme.displaySmall!.fontSize,
                         fontWeight: FontWeight.w500,
                         color: Theme.of(context).colorScheme.onPrimary,
                       ),
@@ -141,10 +145,9 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                         '오류신고',
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.onTertiary,
-                          fontSize: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .fontSize,
+                          fontSize: Theme.of(
+                            context,
+                          ).textTheme.bodyMedium!.fontSize,
                         ),
                       ),
                     ],
@@ -179,6 +182,9 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
             ],
           ),
           const SizedBox(height: 16),
+          // 한국어/히라가나 토글 — 환경설정의 `studyOptionsProvider` 와 같은
+          // state 를 공유한다. 카드에서 누르면 설정 페이지에서도, 다른 카드
+          // 에서도 즉시 반영. 자동 발음 토글은 설정 페이지에만 둔다.
           Row(
             children: [
               Expanded(
@@ -188,20 +194,12 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                   onTap: optsNotifier.toggleKorean,
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: 21),
               Expanded(
                 child: _OptionToggle(
                   label: '히라가나',
                   isOn: opts.showHiragana,
                   onTap: optsNotifier.toggleHiragana,
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: _OptionToggle(
-                  label: '🔊 자동',
-                  isOn: opts.autoPlayPronunciation,
-                  onTap: optsNotifier.toggleAutoPlay,
                 ),
               ),
             ],
@@ -228,8 +226,9 @@ class _OptionToggle extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: CustomContainer(
-        backgroundColor:
-            isOn ? Theme.of(context).colorScheme.primary : Colors.white,
+        backgroundColor: isOn
+            ? Theme.of(context).colorScheme.primary
+            : Colors.white,
         child: Text(
           label,
           textAlign: TextAlign.center,

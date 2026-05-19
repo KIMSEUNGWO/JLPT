@@ -3,6 +3,7 @@ import 'package:jlpt_app/app/app_routes.dart';
 import 'package:jlpt_app/app/route_args.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/widgets/page_main.dart';
+import 'package:jlpt_app/widgets/page_settings.dart';
 import 'package:jlpt_app/widgets/startup_gate.dart';
 import 'package:jlpt_app/widgets/study/card/page_study.dart';
 import 'package:jlpt_app/widgets/study/page_study_list.dart';
@@ -43,6 +44,10 @@ final appRouter = GoRouter(
         final args = state.extra as TestArgs;
         return TestPage(args: args);
       },
+    ),
+    GoRoute(
+      path: AppRoutes.settings,
+      builder: (context, state) => const SettingsPage(),
     ),
     GoRoute(
       path: AppRoutes.testResults,
