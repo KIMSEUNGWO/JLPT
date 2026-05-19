@@ -9,7 +9,7 @@ class TestCompleteModal extends StatefulWidget {
 
   final int count;
   final int time;
-  final VoidCallback onGoToResultPage;
+  final Future<void> Function() onGoToResultPage;
   final VoidCallback onBack;
 
   const TestCompleteModal({
@@ -142,11 +142,11 @@ class _TestCompleteModalState extends State<TestCompleteModal> with SingleTicker
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () async {
-                        widget.onGoToResultPage();
+                        await widget.onGoToResultPage();
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Theme.of(context).colorScheme.primary,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -169,7 +169,7 @@ class _TestCompleteModalState extends State<TestCompleteModal> with SingleTicker
                       },
                       style: TextButton.styleFrom(
                         backgroundColor: AppColors.background,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),

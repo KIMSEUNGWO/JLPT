@@ -142,7 +142,7 @@ final wordsByLevelProvider = FutureProvider<Map<Level, List<Word>>>(
 typedef TestStats = ({int count, String recentScore});
 
 final testStatsByLevelProvider =
-    FutureProvider.family<TestStats, Level?>((ref, level) async {
+    FutureProvider.autoDispose.family<TestStats, Level?>((ref, level) async {
   final results = await ref.read(testResultRepositoryProvider).getAll();
   final relevant = results.where((r) => r.level == level).toList();
   final count = relevant.length;

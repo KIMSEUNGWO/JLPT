@@ -12,7 +12,7 @@ import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/timer.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 
-final _testResultsProvider = FutureProvider<List<QuestionEntityBox>>((ref) {
+final _testResultsProvider = FutureProvider.autoDispose<List<QuestionEntityBox>>((ref) {
   return ref.read(testResultRepositoryProvider).getAll();
 });
 
