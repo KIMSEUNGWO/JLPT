@@ -1,6 +1,7 @@
 import 'package:jlpt_app/component/app_logger.dart';
 import 'package:jlpt_app/data/remote/json_data_source.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
+import 'package:jlpt_app/data/repositories/daily_stats_repository.dart';
 import 'package:jlpt_app/data/sync/chinese_char_syncer.dart';
 import 'package:jlpt_app/data/sync/word_syncer.dart';
 import 'package:jlpt_app/initdata/update/version_info.dart';
@@ -21,6 +22,7 @@ class DataSyncService {
     required this.wordSyncer,
     required this.charSyncer,
     required this.metaRepository,
+    required this.dailyStatsRepository,
   });
 
   final AssetJsonDataSource bundle;
@@ -29,17 +31,19 @@ class DataSyncService {
   final WordSyncer wordSyncer;
   final ChineseCharSyncer charSyncer;
   final AppMetaRepository metaRepository;
+  final DailyStatsRepository dailyStatsRepository;
 
   /// 앱 부팅 시 호출되는 메인 엔트리.
   ///
   /// 절대 throw 하지 않는다 — 실패해도 앱은 (구버전이라도) 켜져야 한다.
   /// 진단을 위해 메타 테이블의 `last_sync_error` 에 메시지를 남긴다.
   Future<SyncReport> ensureSynced() async {
+    SyncReport result;
     try {
       final sourceVersion = await _resolveSourceVersion();
       final source = await _pickSource(sourceVersion);
       try {
-        return await _syncFromPickedSource(source, sourceVersion);
+        result = await _syncFromPickedSource(source, sourceVersion);
       } catch (e) {
         if (source.delegate != cache) rethrow;
 
@@ -49,7 +53,7 @@ class DataSyncService {
         appLogger.w('[sync] cache sync failed, falling back to bundle: $e');
         final bundledVersion = await _readVersion(bundle);
         if (bundledVersion == null) rethrow;
-        return _syncFromPickedSource(
+        result = await _syncFromPickedSource(
           _PickedSource(bundle, 'bundle-fallback'),
           bundledVersion,
         );
@@ -64,6 +68,15 @@ class DataSyncService {
       }
       return SyncReport.failed(e);
     }
+
+    // 신규 DailyStats 테이블이 v3 마이그레이션으로 생성된 직후, 기존 사용자의
+    // SharedPreferences 오늘치를 1회 백필. marker 로 idempotent 보장.
+    try {
+      await dailyStatsRepository.bootstrapFromLocalStorage();
+    } catch (e, st) {
+      appLogger.w('[stats] backfill failed: $e\n$st');
+    }
+    return result;
   }
 
   Future<SyncReport> _syncFromPickedSource(

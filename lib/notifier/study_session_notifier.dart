@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:jlpt_app/component/app_logger.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
@@ -7,7 +10,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'study_session_notifier.g.dart';
 
-/// 학습 세션의 부수효과 (시간 누적, 회독 증가, 읽음 초기화) 를 단일 진입점으로 모은다.
+/// 학습 세션의 부수효과 (시간 누적, 회독 증가, 읽음 초기화, 통계 기록)
+/// 를 단일 진입점으로 모은다.
 ///
 /// 라우팅 시 `Function`을 extra 로 전달하던 패턴을 제거하기 위한 notifier.
 ///
@@ -22,12 +26,14 @@ class StudySession extends _$StudySession {
   void recordSeconds(Level level, int seconds) {
     if (seconds <= 0) return;
     ref.read(timerProvider.notifier).setTimer(level, seconds);
+    _recordStats(seconds: seconds);
   }
 
   /// 단어를 "이해함" 으로 표시하고 오늘의 학습 단어 카운터 증가.
   Future<void> markWordRead(int wordId) async {
     await ref.read(wordRepositoryProvider).markRead(wordId);
     ref.read(todayProvider.notifier).plusWordCnt();
+    _recordStats(words: 1);
   }
 
   /// 한 cycle 완주 — 모든 isRead reset + cycle++.
@@ -35,5 +41,28 @@ class StudySession extends _$StudySession {
     await ref.read(wordRepositoryProvider).resetReadFor(level);
     ref.read(studyCycleProvider.notifier).cyclePlus(level);
     ref.invalidate(wordsByLevelProvider);
+  }
+
+  /// `DailyStats` 갱신 + 파생 provider invalidate.
+  ///
+  /// fire-and-forget — UI 지연 없음. 실패해도 SharedPreferences 의 TodayData 가
+  /// source of truth 로 남아있고 진단을 위해 로그를 남긴다.
+  /// `TodayNotifier`/`TimerNotifier` 에 DB 의존성을 섞지 않고 use-case 계층인
+  /// 본 notifier 에서만 통계 갱신을 책임진다.
+  void _recordStats({int seconds = 0, int words = 0}) {
+    final repo = ref.read(dailyStatsRepositoryProvider);
+    final futures = <Future<void>>[
+      if (seconds > 0) repo.recordSeconds(seconds),
+      if (words > 0) repo.recordWord(),
+    ];
+    if (futures.isEmpty) return;
+    unawaited(
+      Future.wait(futures).then<void>((_) {
+        ref.invalidate(weeklyStatsProvider);
+        ref.invalidate(studyStreakProvider);
+      }).catchError((Object e, StackTrace st) {
+        appLogger.w('[stats] write failed: $e\n$st');
+      }),
+    );
   }
 }

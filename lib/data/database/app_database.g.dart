@@ -1853,6 +1853,475 @@ class AppMetaCompanion extends UpdateCompanion<AppMetaData> {
   }
 }
 
+class $DailyStatsTable extends DailyStats
+    with TableInfo<$DailyStatsTable, DailyStatData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DailyStatsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _dateMeta = const VerificationMeta('date');
+  @override
+  late final GeneratedColumn<int> date = GeneratedColumn<int>(
+    'date',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _studySecondsMeta = const VerificationMeta(
+    'studySeconds',
+  );
+  @override
+  late final GeneratedColumn<int> studySeconds = GeneratedColumn<int>(
+    'study_seconds',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _wordsLearnedMeta = const VerificationMeta(
+    'wordsLearned',
+  );
+  @override
+  late final GeneratedColumn<int> wordsLearned = GeneratedColumn<int>(
+    'words_learned',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _grammarsLearnedMeta = const VerificationMeta(
+    'grammarsLearned',
+  );
+  @override
+  late final GeneratedColumn<int> grammarsLearned = GeneratedColumn<int>(
+    'grammars_learned',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _testsTakenMeta = const VerificationMeta(
+    'testsTaken',
+  );
+  @override
+  late final GeneratedColumn<int> testsTaken = GeneratedColumn<int>(
+    'tests_taken',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _correctAnswersMeta = const VerificationMeta(
+    'correctAnswers',
+  );
+  @override
+  late final GeneratedColumn<int> correctAnswers = GeneratedColumn<int>(
+    'correct_answers',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _totalAnswersMeta = const VerificationMeta(
+    'totalAnswers',
+  );
+  @override
+  late final GeneratedColumn<int> totalAnswers = GeneratedColumn<int>(
+    'total_answers',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    date,
+    studySeconds,
+    wordsLearned,
+    grammarsLearned,
+    testsTaken,
+    correctAnswers,
+    totalAnswers,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'daily_stats';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<DailyStatData> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('date')) {
+      context.handle(
+        _dateMeta,
+        date.isAcceptableOrUnknown(data['date']!, _dateMeta),
+      );
+    }
+    if (data.containsKey('study_seconds')) {
+      context.handle(
+        _studySecondsMeta,
+        studySeconds.isAcceptableOrUnknown(
+          data['study_seconds']!,
+          _studySecondsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('words_learned')) {
+      context.handle(
+        _wordsLearnedMeta,
+        wordsLearned.isAcceptableOrUnknown(
+          data['words_learned']!,
+          _wordsLearnedMeta,
+        ),
+      );
+    }
+    if (data.containsKey('grammars_learned')) {
+      context.handle(
+        _grammarsLearnedMeta,
+        grammarsLearned.isAcceptableOrUnknown(
+          data['grammars_learned']!,
+          _grammarsLearnedMeta,
+        ),
+      );
+    }
+    if (data.containsKey('tests_taken')) {
+      context.handle(
+        _testsTakenMeta,
+        testsTaken.isAcceptableOrUnknown(data['tests_taken']!, _testsTakenMeta),
+      );
+    }
+    if (data.containsKey('correct_answers')) {
+      context.handle(
+        _correctAnswersMeta,
+        correctAnswers.isAcceptableOrUnknown(
+          data['correct_answers']!,
+          _correctAnswersMeta,
+        ),
+      );
+    }
+    if (data.containsKey('total_answers')) {
+      context.handle(
+        _totalAnswersMeta,
+        totalAnswers.isAcceptableOrUnknown(
+          data['total_answers']!,
+          _totalAnswersMeta,
+        ),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {date};
+  @override
+  DailyStatData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DailyStatData(
+      date: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}date'],
+      )!,
+      studySeconds: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}study_seconds'],
+      )!,
+      wordsLearned: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}words_learned'],
+      )!,
+      grammarsLearned: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}grammars_learned'],
+      )!,
+      testsTaken: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}tests_taken'],
+      )!,
+      correctAnswers: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}correct_answers'],
+      )!,
+      totalAnswers: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}total_answers'],
+      )!,
+    );
+  }
+
+  @override
+  $DailyStatsTable createAlias(String alias) {
+    return $DailyStatsTable(attachedDatabase, alias);
+  }
+}
+
+class DailyStatData extends DataClass implements Insertable<DailyStatData> {
+  final int date;
+  final int studySeconds;
+  final int wordsLearned;
+  final int grammarsLearned;
+  final int testsTaken;
+  final int correctAnswers;
+  final int totalAnswers;
+  const DailyStatData({
+    required this.date,
+    required this.studySeconds,
+    required this.wordsLearned,
+    required this.grammarsLearned,
+    required this.testsTaken,
+    required this.correctAnswers,
+    required this.totalAnswers,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['date'] = Variable<int>(date);
+    map['study_seconds'] = Variable<int>(studySeconds);
+    map['words_learned'] = Variable<int>(wordsLearned);
+    map['grammars_learned'] = Variable<int>(grammarsLearned);
+    map['tests_taken'] = Variable<int>(testsTaken);
+    map['correct_answers'] = Variable<int>(correctAnswers);
+    map['total_answers'] = Variable<int>(totalAnswers);
+    return map;
+  }
+
+  DailyStatsCompanion toCompanion(bool nullToAbsent) {
+    return DailyStatsCompanion(
+      date: Value(date),
+      studySeconds: Value(studySeconds),
+      wordsLearned: Value(wordsLearned),
+      grammarsLearned: Value(grammarsLearned),
+      testsTaken: Value(testsTaken),
+      correctAnswers: Value(correctAnswers),
+      totalAnswers: Value(totalAnswers),
+    );
+  }
+
+  factory DailyStatData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return DailyStatData(
+      date: serializer.fromJson<int>(json['date']),
+      studySeconds: serializer.fromJson<int>(json['studySeconds']),
+      wordsLearned: serializer.fromJson<int>(json['wordsLearned']),
+      grammarsLearned: serializer.fromJson<int>(json['grammarsLearned']),
+      testsTaken: serializer.fromJson<int>(json['testsTaken']),
+      correctAnswers: serializer.fromJson<int>(json['correctAnswers']),
+      totalAnswers: serializer.fromJson<int>(json['totalAnswers']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'date': serializer.toJson<int>(date),
+      'studySeconds': serializer.toJson<int>(studySeconds),
+      'wordsLearned': serializer.toJson<int>(wordsLearned),
+      'grammarsLearned': serializer.toJson<int>(grammarsLearned),
+      'testsTaken': serializer.toJson<int>(testsTaken),
+      'correctAnswers': serializer.toJson<int>(correctAnswers),
+      'totalAnswers': serializer.toJson<int>(totalAnswers),
+    };
+  }
+
+  DailyStatData copyWith({
+    int? date,
+    int? studySeconds,
+    int? wordsLearned,
+    int? grammarsLearned,
+    int? testsTaken,
+    int? correctAnswers,
+    int? totalAnswers,
+  }) => DailyStatData(
+    date: date ?? this.date,
+    studySeconds: studySeconds ?? this.studySeconds,
+    wordsLearned: wordsLearned ?? this.wordsLearned,
+    grammarsLearned: grammarsLearned ?? this.grammarsLearned,
+    testsTaken: testsTaken ?? this.testsTaken,
+    correctAnswers: correctAnswers ?? this.correctAnswers,
+    totalAnswers: totalAnswers ?? this.totalAnswers,
+  );
+  DailyStatData copyWithCompanion(DailyStatsCompanion data) {
+    return DailyStatData(
+      date: data.date.present ? data.date.value : this.date,
+      studySeconds: data.studySeconds.present
+          ? data.studySeconds.value
+          : this.studySeconds,
+      wordsLearned: data.wordsLearned.present
+          ? data.wordsLearned.value
+          : this.wordsLearned,
+      grammarsLearned: data.grammarsLearned.present
+          ? data.grammarsLearned.value
+          : this.grammarsLearned,
+      testsTaken: data.testsTaken.present
+          ? data.testsTaken.value
+          : this.testsTaken,
+      correctAnswers: data.correctAnswers.present
+          ? data.correctAnswers.value
+          : this.correctAnswers,
+      totalAnswers: data.totalAnswers.present
+          ? data.totalAnswers.value
+          : this.totalAnswers,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DailyStatData(')
+          ..write('date: $date, ')
+          ..write('studySeconds: $studySeconds, ')
+          ..write('wordsLearned: $wordsLearned, ')
+          ..write('grammarsLearned: $grammarsLearned, ')
+          ..write('testsTaken: $testsTaken, ')
+          ..write('correctAnswers: $correctAnswers, ')
+          ..write('totalAnswers: $totalAnswers')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    date,
+    studySeconds,
+    wordsLearned,
+    grammarsLearned,
+    testsTaken,
+    correctAnswers,
+    totalAnswers,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is DailyStatData &&
+          other.date == this.date &&
+          other.studySeconds == this.studySeconds &&
+          other.wordsLearned == this.wordsLearned &&
+          other.grammarsLearned == this.grammarsLearned &&
+          other.testsTaken == this.testsTaken &&
+          other.correctAnswers == this.correctAnswers &&
+          other.totalAnswers == this.totalAnswers);
+}
+
+class DailyStatsCompanion extends UpdateCompanion<DailyStatData> {
+  final Value<int> date;
+  final Value<int> studySeconds;
+  final Value<int> wordsLearned;
+  final Value<int> grammarsLearned;
+  final Value<int> testsTaken;
+  final Value<int> correctAnswers;
+  final Value<int> totalAnswers;
+  const DailyStatsCompanion({
+    this.date = const Value.absent(),
+    this.studySeconds = const Value.absent(),
+    this.wordsLearned = const Value.absent(),
+    this.grammarsLearned = const Value.absent(),
+    this.testsTaken = const Value.absent(),
+    this.correctAnswers = const Value.absent(),
+    this.totalAnswers = const Value.absent(),
+  });
+  DailyStatsCompanion.insert({
+    this.date = const Value.absent(),
+    this.studySeconds = const Value.absent(),
+    this.wordsLearned = const Value.absent(),
+    this.grammarsLearned = const Value.absent(),
+    this.testsTaken = const Value.absent(),
+    this.correctAnswers = const Value.absent(),
+    this.totalAnswers = const Value.absent(),
+  });
+  static Insertable<DailyStatData> custom({
+    Expression<int>? date,
+    Expression<int>? studySeconds,
+    Expression<int>? wordsLearned,
+    Expression<int>? grammarsLearned,
+    Expression<int>? testsTaken,
+    Expression<int>? correctAnswers,
+    Expression<int>? totalAnswers,
+  }) {
+    return RawValuesInsertable({
+      if (date != null) 'date': date,
+      if (studySeconds != null) 'study_seconds': studySeconds,
+      if (wordsLearned != null) 'words_learned': wordsLearned,
+      if (grammarsLearned != null) 'grammars_learned': grammarsLearned,
+      if (testsTaken != null) 'tests_taken': testsTaken,
+      if (correctAnswers != null) 'correct_answers': correctAnswers,
+      if (totalAnswers != null) 'total_answers': totalAnswers,
+    });
+  }
+
+  DailyStatsCompanion copyWith({
+    Value<int>? date,
+    Value<int>? studySeconds,
+    Value<int>? wordsLearned,
+    Value<int>? grammarsLearned,
+    Value<int>? testsTaken,
+    Value<int>? correctAnswers,
+    Value<int>? totalAnswers,
+  }) {
+    return DailyStatsCompanion(
+      date: date ?? this.date,
+      studySeconds: studySeconds ?? this.studySeconds,
+      wordsLearned: wordsLearned ?? this.wordsLearned,
+      grammarsLearned: grammarsLearned ?? this.grammarsLearned,
+      testsTaken: testsTaken ?? this.testsTaken,
+      correctAnswers: correctAnswers ?? this.correctAnswers,
+      totalAnswers: totalAnswers ?? this.totalAnswers,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (date.present) {
+      map['date'] = Variable<int>(date.value);
+    }
+    if (studySeconds.present) {
+      map['study_seconds'] = Variable<int>(studySeconds.value);
+    }
+    if (wordsLearned.present) {
+      map['words_learned'] = Variable<int>(wordsLearned.value);
+    }
+    if (grammarsLearned.present) {
+      map['grammars_learned'] = Variable<int>(grammarsLearned.value);
+    }
+    if (testsTaken.present) {
+      map['tests_taken'] = Variable<int>(testsTaken.value);
+    }
+    if (correctAnswers.present) {
+      map['correct_answers'] = Variable<int>(correctAnswers.value);
+    }
+    if (totalAnswers.present) {
+      map['total_answers'] = Variable<int>(totalAnswers.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DailyStatsCompanion(')
+          ..write('date: $date, ')
+          ..write('studySeconds: $studySeconds, ')
+          ..write('wordsLearned: $wordsLearned, ')
+          ..write('grammarsLearned: $grammarsLearned, ')
+          ..write('testsTaken: $testsTaken, ')
+          ..write('correctAnswers: $correctAnswers, ')
+          ..write('totalAnswers: $totalAnswers')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -1861,12 +2330,14 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $TestResultsTable testResults = $TestResultsTable(this);
   late final $TestQuestionsTable testQuestions = $TestQuestionsTable(this);
   late final $AppMetaTable appMeta = $AppMetaTable(this);
+  late final $DailyStatsTable dailyStats = $DailyStatsTable(this);
   late final WordDao wordDao = WordDao(this as AppDatabase);
   late final ChineseCharDao chineseCharDao = ChineseCharDao(
     this as AppDatabase,
   );
   late final TestResultDao testResultDao = TestResultDao(this as AppDatabase);
   late final AppMetaDao appMetaDao = AppMetaDao(this as AppDatabase);
+  late final DailyStatDao dailyStatDao = DailyStatDao(this as AppDatabase);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -1877,6 +2348,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     testResults,
     testQuestions,
     appMeta,
+    dailyStats,
   ];
 }
 
@@ -3110,6 +3582,250 @@ typedef $$AppMetaTableProcessedTableManager =
       AppMetaData,
       PrefetchHooks Function()
     >;
+typedef $$DailyStatsTableCreateCompanionBuilder =
+    DailyStatsCompanion Function({
+      Value<int> date,
+      Value<int> studySeconds,
+      Value<int> wordsLearned,
+      Value<int> grammarsLearned,
+      Value<int> testsTaken,
+      Value<int> correctAnswers,
+      Value<int> totalAnswers,
+    });
+typedef $$DailyStatsTableUpdateCompanionBuilder =
+    DailyStatsCompanion Function({
+      Value<int> date,
+      Value<int> studySeconds,
+      Value<int> wordsLearned,
+      Value<int> grammarsLearned,
+      Value<int> testsTaken,
+      Value<int> correctAnswers,
+      Value<int> totalAnswers,
+    });
+
+class $$DailyStatsTableFilterComposer
+    extends Composer<_$AppDatabase, $DailyStatsTable> {
+  $$DailyStatsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get date => $composableBuilder(
+    column: $table.date,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get studySeconds => $composableBuilder(
+    column: $table.studySeconds,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get wordsLearned => $composableBuilder(
+    column: $table.wordsLearned,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get grammarsLearned => $composableBuilder(
+    column: $table.grammarsLearned,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get testsTaken => $composableBuilder(
+    column: $table.testsTaken,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get correctAnswers => $composableBuilder(
+    column: $table.correctAnswers,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get totalAnswers => $composableBuilder(
+    column: $table.totalAnswers,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$DailyStatsTableOrderingComposer
+    extends Composer<_$AppDatabase, $DailyStatsTable> {
+  $$DailyStatsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get date => $composableBuilder(
+    column: $table.date,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get studySeconds => $composableBuilder(
+    column: $table.studySeconds,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get wordsLearned => $composableBuilder(
+    column: $table.wordsLearned,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get grammarsLearned => $composableBuilder(
+    column: $table.grammarsLearned,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get testsTaken => $composableBuilder(
+    column: $table.testsTaken,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get correctAnswers => $composableBuilder(
+    column: $table.correctAnswers,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get totalAnswers => $composableBuilder(
+    column: $table.totalAnswers,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$DailyStatsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $DailyStatsTable> {
+  $$DailyStatsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get date =>
+      $composableBuilder(column: $table.date, builder: (column) => column);
+
+  GeneratedColumn<int> get studySeconds => $composableBuilder(
+    column: $table.studySeconds,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get wordsLearned => $composableBuilder(
+    column: $table.wordsLearned,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get grammarsLearned => $composableBuilder(
+    column: $table.grammarsLearned,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get testsTaken => $composableBuilder(
+    column: $table.testsTaken,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get correctAnswers => $composableBuilder(
+    column: $table.correctAnswers,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get totalAnswers => $composableBuilder(
+    column: $table.totalAnswers,
+    builder: (column) => column,
+  );
+}
+
+class $$DailyStatsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $DailyStatsTable,
+          DailyStatData,
+          $$DailyStatsTableFilterComposer,
+          $$DailyStatsTableOrderingComposer,
+          $$DailyStatsTableAnnotationComposer,
+          $$DailyStatsTableCreateCompanionBuilder,
+          $$DailyStatsTableUpdateCompanionBuilder,
+          (
+            DailyStatData,
+            BaseReferences<_$AppDatabase, $DailyStatsTable, DailyStatData>,
+          ),
+          DailyStatData,
+          PrefetchHooks Function()
+        > {
+  $$DailyStatsTableTableManager(_$AppDatabase db, $DailyStatsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$DailyStatsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$DailyStatsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$DailyStatsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> date = const Value.absent(),
+                Value<int> studySeconds = const Value.absent(),
+                Value<int> wordsLearned = const Value.absent(),
+                Value<int> grammarsLearned = const Value.absent(),
+                Value<int> testsTaken = const Value.absent(),
+                Value<int> correctAnswers = const Value.absent(),
+                Value<int> totalAnswers = const Value.absent(),
+              }) => DailyStatsCompanion(
+                date: date,
+                studySeconds: studySeconds,
+                wordsLearned: wordsLearned,
+                grammarsLearned: grammarsLearned,
+                testsTaken: testsTaken,
+                correctAnswers: correctAnswers,
+                totalAnswers: totalAnswers,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> date = const Value.absent(),
+                Value<int> studySeconds = const Value.absent(),
+                Value<int> wordsLearned = const Value.absent(),
+                Value<int> grammarsLearned = const Value.absent(),
+                Value<int> testsTaken = const Value.absent(),
+                Value<int> correctAnswers = const Value.absent(),
+                Value<int> totalAnswers = const Value.absent(),
+              }) => DailyStatsCompanion.insert(
+                date: date,
+                studySeconds: studySeconds,
+                wordsLearned: wordsLearned,
+                grammarsLearned: grammarsLearned,
+                testsTaken: testsTaken,
+                correctAnswers: correctAnswers,
+                totalAnswers: totalAnswers,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$DailyStatsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $DailyStatsTable,
+      DailyStatData,
+      $$DailyStatsTableFilterComposer,
+      $$DailyStatsTableOrderingComposer,
+      $$DailyStatsTableAnnotationComposer,
+      $$DailyStatsTableCreateCompanionBuilder,
+      $$DailyStatsTableUpdateCompanionBuilder,
+      (
+        DailyStatData,
+        BaseReferences<_$AppDatabase, $DailyStatsTable, DailyStatData>,
+      ),
+      DailyStatData,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -3124,4 +3840,6 @@ class $AppDatabaseManager {
       $$TestQuestionsTableTableManager(_db, _db.testQuestions);
   $$AppMetaTableTableManager get appMeta =>
       $$AppMetaTableTableManager(_db, _db.appMeta);
+  $$DailyStatsTableTableManager get dailyStats =>
+      $$DailyStatsTableTableManager(_db, _db.dailyStats);
 }

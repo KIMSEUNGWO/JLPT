@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/study_options.dart';
 import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/notifier/entity/today.dart';
 import 'package:jlpt_app/notifier/entity/view.dart';
@@ -134,6 +137,28 @@ class LocalStorage {
   }
 
   String _timerKey(Level level) => '${StorageKey.TIMER.name}_${level.name}';
+
+  // ───────── 학습 옵션 (자동 발음 / 히라가나 / 한국어) ─────────
+
+  StudyOptions getStudyOptions() {
+    final raw = _storage.getString(StorageKey.STUDY_OPTIONS.name);
+    if (raw == null) return const StudyOptions();
+    try {
+      final decoded = jsonDecode(raw);
+      if (decoded is! Map<String, dynamic>) return const StudyOptions();
+      return StudyOptions.fromJson(decoded);
+    } catch (_) {
+      // 손상된 JSON 이면 기본값으로 graceful — 사용자에게 옵션 초기화되도 앱은 동작.
+      return const StudyOptions();
+    }
+  }
+
+  Future<void> saveStudyOptions(StudyOptions options) async {
+    await _storage.setString(
+      StorageKey.STUDY_OPTIONS.name,
+      jsonEncode(options.toJson()),
+    );
+  }
 }
 
 enum StorageKey {
@@ -146,4 +171,5 @@ enum StorageKey {
   RECENTLY_VIEW_INDEX,
   TIMER,
   READ_WORD_ID_LIST,
+  STUDY_OPTIONS,
 }

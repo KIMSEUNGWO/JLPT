@@ -2,25 +2,37 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
-
 import 'package:jlpt_app/widgets/component/speaker.dart';
 import 'package:jlpt_app/widgets/component/speaker_tts.dart';
 
 class AudioWaveAnimation extends StatefulWidget {
   final String? title;
   final String word;
-  const AudioWaveAnimation({super.key, this.title, required this.word});
+
+  /// 외부에서 [Speaker] 를 주입하면 그 인스턴스를 공유 (예: WordCardWidget 의
+  /// 자동 발음용 speaker 와 동일). null 이면 자체 생성하고 lifecycle 도 자체 관리.
+  final Speaker? speaker;
+
+  const AudioWaveAnimation({
+    super.key,
+    this.title,
+    required this.word,
+    this.speaker,
+  });
 
   @override
   State<AudioWaveAnimation> createState() => _AudioWaveAnimationState();
 }
 
-class _AudioWaveAnimationState extends State<AudioWaveAnimation> with SingleTickerProviderStateMixin {
+class _AudioWaveAnimationState extends State<AudioWaveAnimation>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late List<Animation<double>> _animations;
+  late final Speaker _speaker;
 
   bool isPlaying = false;
-  final Speaker _speaker = SpeakerTTS();
+
+  bool get _ownsSpeaker => widget.speaker == null;
 
   Future<void> play() async {
     if (isPlaying) return;
@@ -29,28 +41,35 @@ class _AudioWaveAnimationState extends State<AudioWaveAnimation> with SingleTick
     await _speaker.speak(widget.word);
   }
 
-  void init() async {
-    await _speaker.init(completionHandler: () {
-      Future.delayed(const Duration(milliseconds: 500), () {
-        if (mounted) {
-          setState(() => isPlaying = false);
-          _controller.reset();
-        }
-      },);
-    },);
+  Future<void> _initSpeaker() async {
+    await _speaker.init(
+      completionHandler: () {
+        Future.delayed(const Duration(milliseconds: 500), () {
+          if (mounted) {
+            setState(() => isPlaying = false);
+            _controller.reset();
+          }
+        });
+      },
+    );
   }
+
   @override
   void initState() {
     super.initState();
-    init();
+    _speaker = widget.speaker ?? SpeakerTTS();
+    // init() 은 idempotent (SpeakerTTS 가 `_initFuture ??= ...` 로 가드).
+    // 첫 호출자가 completionHandler 를 등록하므로 AudioWaveAnimation 이 항상
+    // 먼저 init 하면 자체 애니메이션 종료 콜백이 보장된다.
+    unawaited(_initSpeaker());
     _controller = AnimationController(
       duration: const Duration(seconds: 1, milliseconds: 500),
       vsync: this,
     );
 
     _animations = List.generate(4, (index) {
-      double startPoint = index * 0.125; // 0, 0.125, 0.25, 0.375
-      double endPoint = 0.5 + (index * 0.125); // 0.5, 0.625, 0.75, 0.875
+      double startPoint = index * 0.125;
+      double endPoint = 0.5 + (index * 0.125);
 
       return TweenSequence<double>([
         TweenSequenceItem(
@@ -64,12 +83,8 @@ class _AudioWaveAnimationState extends State<AudioWaveAnimation> with SingleTick
       ]).animate(
         CurvedAnimation(
           parent: _controller,
-          curve: Interval(
-            startPoint,
-            endPoint,
-            curve: Curves.easeInOut,
-          ),
-          reverseCurve: Interval(endPoint, startPoint)
+          curve: Interval(startPoint, endPoint, curve: Curves.easeInOut),
+          reverseCurve: Interval(endPoint, startPoint),
         ),
       );
     });
@@ -78,6 +93,9 @@ class _AudioWaveAnimationState extends State<AudioWaveAnimation> with SingleTick
   @override
   void dispose() {
     _controller.dispose();
+    if (_ownsSpeaker) {
+      unawaited(_speaker.stopped());
+    }
     super.dispose();
   }
 
@@ -91,12 +109,14 @@ class _AudioWaveAnimationState extends State<AudioWaveAnimation> with SingleTick
           return CustomContainer(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
             radius: BorderRadius.circular(100),
-            backgroundColor: isPlaying ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.secondary,
+            backgroundColor: isPlaying
+                ? Theme.of(context).colorScheme.primary
+                : Theme.of(context).colorScheme.secondary,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(
-                  height: 25, // 고정 높이 설정
+                  height: 25,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -107,7 +127,9 @@ class _AudioWaveAnimationState extends State<AudioWaveAnimation> with SingleTick
                           width: 3,
                           height: _animations[index].value * 30,
                           decoration: BoxDecoration(
-                            color: isPlaying ? Colors.white : Theme.of(context).colorScheme.primary,
+                            color: isPlaying
+                                ? Colors.white
+                                : Theme.of(context).colorScheme.primary,
                             borderRadius: BorderRadius.circular(1.5),
                           ),
                         ),
@@ -117,9 +139,12 @@ class _AudioWaveAnimationState extends State<AudioWaveAnimation> with SingleTick
                 ),
                 if (widget.title != null) ...[
                   const SizedBox(width: 8),
-                  Text(widget.title!,
+                  Text(
+                    widget.title!,
                     style: TextStyle(
-                      color: isPlaying ? Colors.white : Theme.of(context).colorScheme.primary,
+                      color: isPlaying
+                          ? Colors.white
+                          : Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.w500,
                       fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
                     ),

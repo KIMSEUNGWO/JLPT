@@ -16,8 +16,10 @@ import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
 import 'package:jlpt_app/widgets/component/record_component.dart';
 import 'package:jlpt_app/widgets/component/record_row.dart';
 import 'package:jlpt_app/widgets/component/recently_viewed_badge.dart';
+import 'package:jlpt_app/widgets/component/study_streak_badge.dart';
 import 'package:jlpt_app/widgets/component/test_stat_widget.dart';
 import 'package:jlpt_app/widgets/component/title_and_widget.dart';
+import 'package:jlpt_app/widgets/component/weekly_bars.dart';
 
 class MainPage extends ConsumerWidget {
   const MainPage({super.key});
@@ -58,16 +60,35 @@ class MainPage extends ConsumerWidget {
                     child: Consumer(
                       builder: (context, ref, _) {
                         final today = ref.watch(todayProvider);
-                        return RecordRow(
-                          dataList: [
-                            RecordData(
-                              title: '학습시간',
-                              value:
-                                  TodayData.formatTimeToHours(today.hours),
+                        final streakAsync = ref.watch(studyStreakProvider);
+                        final weeklyAsync = ref.watch(weeklyStatsProvider);
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            RecordRow(
+                              dataList: [
+                                RecordData(
+                                  title: '학습시간',
+                                  value: TodayData.formatTimeToHours(
+                                      today.hours),
+                                ),
+                                RecordData(
+                                  title: '학습단어',
+                                  value: '${today.wordCnt}',
+                                ),
+                              ],
                             ),
-                            RecordData(
-                              title: '학습단어',
-                              value: '${today.wordCnt}',
+                            const SizedBox(height: 12),
+                            streakAsync.when(
+                              data: (s) => StudyStreakBadge(snapshot: s),
+                              loading: () => const SizedBox(height: 18),
+                              error: (_, __) => const SizedBox.shrink(),
+                            ),
+                            const SizedBox(height: 10),
+                            weeklyAsync.when(
+                              data: (data) => WeeklyBars(data: data),
+                              loading: () => const SizedBox(height: 40),
+                              error: (_, __) => const SizedBox.shrink(),
                             ),
                           ],
                         );

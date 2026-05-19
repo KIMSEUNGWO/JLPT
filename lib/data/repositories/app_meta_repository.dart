@@ -11,6 +11,8 @@ class AppMetaRepository {
   static const _kWordsSyncedAt = 'words_synced_at';
   static const _kCharsSyncedAt = 'chars_synced_at';
   static const _kLastSyncError = 'last_sync_error';
+  static const _kBestStreak = 'best_streak';
+  static const _kStatsBackfilledV3 = 'daily_stats_backfilled_v3';
 
   final AppDatabase _db;
   AppMetaRepository(this._db);
@@ -22,6 +24,26 @@ class AppMetaRepository {
   Future<DateTime?> getCharsSyncedAt() => _readDateTime(_kCharsSyncedAt);
 
   Future<String?> getLastSyncError() => _db.appMetaDao.get(_kLastSyncError);
+
+  /// 사용자의 역대 최고 연속 학습일. 없으면 null.
+  Future<int?> getBestStreak() async {
+    final raw = await _db.appMetaDao.get(_kBestStreak);
+    if (raw == null) return null;
+    return int.tryParse(raw);
+  }
+
+  Future<void> setBestStreak(int value) =>
+      _db.appMetaDao.put(_kBestStreak, value.toString());
+
+  /// v3 마이그레이션 시 SharedPreferences 의 오늘치를 DailyStats 로 1회만 백필
+  /// 하기 위한 idempotent marker.
+  Future<bool> isStatsBackfilledV3() async {
+    final raw = await _db.appMetaDao.get(_kStatsBackfilledV3);
+    return raw != null;
+  }
+
+  Future<void> markStatsBackfilledV3() =>
+      _db.appMetaDao.put(_kStatsBackfilledV3, '1');
 
   /// 단어 sync 성공 marker. 데이터 sync 와 같은 transaction 안에서 호출되어야 한다.
   Future<void> markWordsSynced(Version v) async {

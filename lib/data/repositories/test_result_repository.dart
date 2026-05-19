@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:drift/drift.dart';
+import 'package:jlpt_app/component/local_storage.dart';
 import 'package:jlpt_app/data/database/app_database.dart';
 import 'package:jlpt_app/data/repositories/word_repository.dart';
 import 'package:jlpt_app/domain/box/question_entity_box.dart';
@@ -56,6 +57,16 @@ class TestResultRepository {
           ),
         );
       }
+
+      // 같은 transaction 안에서 일별 통계까지 누적 — 테스트 기록과 통계가
+      // atomic 으로 정합. 한 쪽이 실패하면 다른 쪽도 rollback.
+      final correctCount = answered.where((q) => q.isCorrect).length;
+      await _db.dailyStatDao.increment(
+        date: LocalStorage.dateToInt(now),
+        testsTaken: 1,
+        correct: correctCount,
+        total: answered.length,
+      );
 
       return QuestionEntityBox(
         id: resultId,

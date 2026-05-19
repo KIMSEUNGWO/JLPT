@@ -31,6 +31,10 @@ class _StudyPageState extends ConsumerState<StudyPage> {
   int _currentIndex = 0;
   bool _recordedTime = false;
 
+  /// 카드 key 에 포함시켜 라운드 재시작 시에도 [WordCardWidget] 인스턴스가
+  /// 새로 생성되도록 강제 (자동 발음은 initState 시점 트리거).
+  int _round = 0;
+
   @override
   void initState() {
     super.initState();
@@ -49,6 +53,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
   }
 
   List<Word> _pickUnread() {
+    _round++;
     final unread = _allWords.where((w) => !_isRead(w)).toList();
     final pool = unread.isEmpty ? _allWords : unread;
     return [...pool]..shuffle();
@@ -108,6 +113,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
           Navigator.of(ctx).pop();
           setState(() {
             _initiallyCompleted = true;
+            _round++;
             _innerWords = [..._allWords]..shuffle();
             _currentIndex = 0;
           });
@@ -209,7 +215,11 @@ class _StudyPageState extends ConsumerState<StudyPage> {
             child: _innerWords.isEmpty
                 ? const SizedBox.shrink()
                 : WordCardWidget(
-                    key: ValueKey<int>(_currentIndex),
+                    key: ValueKey<String>(
+                      '${widget.args.level.name}-'
+                      '${_innerWords[_currentIndex].id}-'
+                      '$_currentIndex-$_round',
+                    ),
                     word: _innerWords[_currentIndex],
                   ),
           ),

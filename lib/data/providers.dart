@@ -4,6 +4,7 @@ import 'package:jlpt_app/data/database/app_database.dart';
 import 'package:jlpt_app/data/remote/json_data_source.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/data/repositories/chinese_char_repository.dart';
+import 'package:jlpt_app/data/repositories/daily_stats_repository.dart';
 import 'package:jlpt_app/data/repositories/test_result_repository.dart';
 import 'package:jlpt_app/data/repositories/word_repository.dart';
 import 'package:jlpt_app/data/sync/chinese_char_syncer.dart';
@@ -74,6 +75,13 @@ final testResultRepositoryProvider = Provider<TestResultRepository>(
   ),
 );
 
+final dailyStatsRepositoryProvider = Provider<DailyStatsRepository>(
+  (ref) => DailyStatsRepository(
+    ref.read(appDatabaseProvider),
+    ref.read(appMetaRepositoryProvider),
+  ),
+);
+
 // ───────── Syncers (전략 객체) ─────────
 
 final wordSyncerProvider = Provider<WordSyncer>(
@@ -104,6 +112,7 @@ final dataSyncServiceProvider = Provider<DataSyncService>(
     wordSyncer: ref.read(wordSyncerProvider),
     charSyncer: ref.read(chineseCharSyncerProvider),
     metaRepository: ref.read(appMetaRepositoryProvider),
+    dailyStatsRepository: ref.read(dailyStatsRepositoryProvider),
   ),
 );
 
@@ -144,4 +153,21 @@ final testStatsByLevelProvider =
         correctRatePercent(qs.where((q) => q.isCorrect).length, qs.length);
   }
   return (count: count, recentScore: recentScore);
+});
+
+/// 오늘 포함 최근 7일의 일별 통계 (빈 날은 0 row 로 채움).
+///
+/// autoDispose — 홈 화면이 watch 할 때만 살아있음. 학습 중 `_recordStats` 의
+/// 빈번한 `invalidate` 가 listener 없을 때 즉시 재실행되는 것을 막는다.
+final weeklyStatsProvider = FutureProvider.autoDispose<List<DailyStatData>>(
+  (ref) => ref.read(dailyStatsRepositoryProvider).getThisWeek(),
+);
+
+/// 현재 스트릭 + 역대 최고 스트릭.
+typedef StreakSnapshot = ({int current, int best});
+
+final studyStreakProvider =
+    FutureProvider.autoDispose<StreakSnapshot>((ref) async {
+  final repo = ref.read(dailyStatsRepositoryProvider);
+  return (current: await repo.getStreak(), best: await repo.getBestStreak());
 });
