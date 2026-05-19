@@ -2,24 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jlpt_app/app/app_routes.dart';
+import 'package:jlpt_app/app/route_args.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/notifier/entity/today.dart';
 import 'package:jlpt_app/notifier/recently_view_notifier.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 import 'package:jlpt_app/notifier/timer_notifier.dart';
-import 'package:jlpt_app/notifier/today_notifier.dart';
 import 'package:jlpt_app/widgets/component/ads_banner.dart';
+import 'package:jlpt_app/widgets/component/continue_study_card.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
-import 'package:jlpt_app/widgets/component/record_component.dart';
-import 'package:jlpt_app/widgets/component/record_row.dart';
 import 'package:jlpt_app/widgets/component/recently_viewed_badge.dart';
-import 'package:jlpt_app/widgets/component/study_streak_badge.dart';
 import 'package:jlpt_app/widgets/component/test_stat_widget.dart';
 import 'package:jlpt_app/widgets/component/title_and_widget.dart';
-import 'package:jlpt_app/widgets/component/weekly_bars.dart';
 
 class MainPage extends ConsumerWidget {
   const MainPage({super.key});
@@ -48,61 +46,72 @@ class MainPage extends ConsumerWidget {
       ),
       body: SafeArea(
         child: Padding(
-          padding:
-              const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _Greeting(),
                 const SizedBox(height: 36),
-                TitleAndWidget(
-                  title: '오늘의 학습',
-                  child: CustomContainer(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 15,
-                      vertical: 10,
-                    ),
-                    child: Consumer(
-                      builder: (context, ref, _) {
-                        final today = ref.watch(todayProvider);
-                        final streakAsync = ref.watch(studyStreakProvider);
-                        final weeklyAsync = ref.watch(weeklyStatsProvider);
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            RecordRow(
-                              dataList: [
-                                RecordData(
-                                  title: '학습시간',
-                                  value: TodayData.formatTimeToHours(
-                                      today.hours),
+                Consumer(
+                  builder: (context, ref, _) {
+                    final recentView = ref.watch(recentlyViewProvider);
+                    final hasRecent =
+                        recentView.level != null &&
+                        recentView.type == PracticeType.WORD &&
+                        recentView.index != null;
+                    if (!hasRecent) return const SizedBox.shrink();
+
+                    return Column(
+                      children: [
+                        TitleAndWidget(
+                          title: '오늘의 학습',
+                          child: CustomContainer(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 15,
+                              vertical: 10,
+                            ),
+                            child: wordsAsync.when(
+                              loading: () => const SizedBox(
+                                height: 120,
+                                child: Center(
+                                  child: CircularProgressIndicator(),
                                 ),
-                                RecordData(
-                                  title: '학습단어',
-                                  value: '${today.wordCnt}',
-                                ),
-                              ],
+                              ),
+                              error: (_, __) => const SizedBox(
+                                height: 80,
+                                child: Center(child: Text('학습 정보를 불러올 수 없습니다')),
+                              ),
+                              data: (wordsByLevel) => ContinueStudyCard(
+                                wordsByLevel: wordsByLevel,
+                                recentView: recentView,
+                                onContinue: (target) async {
+                                  ref
+                                      .read(recentlyViewProvider.notifier)
+                                      .view(
+                                        level: target.level,
+                                        type: PracticeType.WORD,
+                                        index: target.groupIndex,
+                                      );
+                                  await context.push(
+                                    AppRoutes.studyGroupFull(target.level.name),
+                                    extra: StudyGroupArgs(
+                                      level: target.level,
+                                      startIndex: target.startIndex,
+                                      endIndex: target.endIndex,
+                                    ),
+                                  );
+                                  ref.invalidate(wordsByLevelProvider);
+                                },
+                              ),
                             ),
-                            const SizedBox(height: 12),
-                            streakAsync.when(
-                              data: (s) => StudyStreakBadge(snapshot: s),
-                              loading: () => const SizedBox(height: 18),
-                              error: (_, __) => const SizedBox.shrink(),
-                            ),
-                            const SizedBox(height: 10),
-                            weeklyAsync.when(
-                              data: (data) => WeeklyBars(data: data),
-                              loading: () => const SizedBox(height: 40),
-                              error: (_, __) => const SizedBox.shrink(),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  ),
+                          ),
+                        ),
+                        const SizedBox(height: 28),
+                      ],
+                    );
+                  },
                 ),
-                const SizedBox(height: 28),
                 wordsAsync.when(
                   loading: () => const Padding(
                     padding: EdgeInsets.symmetric(vertical: 32),
@@ -114,12 +123,13 @@ class MainPage extends ConsumerWidget {
                       children: [
                         const Icon(Icons.error_outline, size: 32),
                         const SizedBox(height: 8),
-                        Text('단어 목록을 불러올 수 없습니다\n$e',
-                            textAlign: TextAlign.center),
+                        Text(
+                          '단어 목록을 불러올 수 없습니다\n$e',
+                          textAlign: TextAlign.center,
+                        ),
                         const SizedBox(height: 12),
                         FilledButton.icon(
-                          onPressed: () =>
-                              ref.invalidate(wordsByLevelProvider),
+                          onPressed: () => ref.invalidate(wordsByLevelProvider),
                           icon: const Icon(Icons.refresh),
                           label: const Text('다시 시도'),
                         ),
@@ -163,8 +173,7 @@ class _Greeting extends StatelessWidget {
           style: TextStyle(
             color: Theme.of(context).colorScheme.onPrimary,
             fontWeight: FontWeight.w600,
-            fontSize:
-                Theme.of(context).textTheme.displayMedium!.fontSize,
+            fontSize: Theme.of(context).textTheme.displayMedium!.fontSize,
           ),
         ),
         const SizedBox(height: 4),
@@ -196,13 +205,9 @@ class _LevelTile extends ConsumerWidget {
     return GestureDetector(
       onTap: () => context.push(AppRoutes.study(level.name)),
       child: CustomContainer(
-        padding:
-            const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         border: isRecent
-            ? Border.all(
-                color: Theme.of(context).colorScheme.primary,
-                width: 2,
-              )
+            ? Border.all(color: Theme.of(context).colorScheme.primary, width: 2)
             : null,
         radius: const BorderRadius.only(
           topLeft: Radius.circular(12),
@@ -220,13 +225,11 @@ class _LevelTile extends ConsumerWidget {
                     Text(
                       'JLPT ${level.name}',
                       style: TextStyle(
-                        color:
-                            Theme.of(context).colorScheme.onPrimary,
+                        color: Theme.of(context).colorScheme.onPrimary,
                         fontWeight: FontWeight.w600,
-                        fontSize: Theme.of(context)
-                            .textTheme
-                            .displaySmall!
-                            .fontSize,
+                        fontSize: Theme.of(
+                          context,
+                        ).textTheme.displaySmall!.fontSize,
                       ),
                     ),
                     const SizedBox(width: 6),
@@ -248,8 +251,7 @@ class _LevelTile extends ConsumerWidget {
                 Text(
                   '학습시간 ${TodayData.formatTimeToHours(timer)}',
                   style: TextStyle(
-                    fontSize:
-                        Theme.of(context).textTheme.bodySmall!.fontSize,
+                    fontSize: Theme.of(context).textTheme.bodySmall!.fontSize,
                   ),
                 ),
               ],

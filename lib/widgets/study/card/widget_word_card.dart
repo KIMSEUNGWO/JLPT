@@ -93,6 +93,7 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                           context,
                         ).textTheme.displaySmall!.fontSize,
                         fontWeight: FontWeight.w500,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -103,7 +104,7 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                           context,
                         ).textTheme.displaySmall!.fontSize,
                         fontWeight: FontWeight.w500,
-                        color: Theme.of(context).colorScheme.onPrimary,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     const SizedBox(height: 26),
@@ -235,7 +236,9 @@ class _OptionToggle extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-            color: isOn ? Colors.white : null,
+            color: isOn
+                ? Colors.white
+                : Theme.of(context).colorScheme.onSurface,
           ),
         ),
       ),
