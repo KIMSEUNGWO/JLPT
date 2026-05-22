@@ -4,8 +4,10 @@ import 'package:jlpt_app/app/route_args.dart';
 import 'package:jlpt_app/core/app_utils.dart';
 import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:jlpt_app/data/providers.dart';
+import 'package:jlpt_app/domain/study_options.dart';
 import 'package:jlpt_app/domain/timer.dart';
 import 'package:jlpt_app/domain/word.dart';
+import 'package:jlpt_app/notifier/study_options_notifier.dart';
 import 'package:jlpt_app/notifier/study_session_notifier.dart';
 import 'package:jlpt_app/widgets/component/ads_banner.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
@@ -31,6 +33,10 @@ class _StudyPageState extends ConsumerState<StudyPage> {
   int _currentIndex = 0;
   bool _recordedTime = false;
 
+  /// 학습 화면 진입 시점의 옵션 스냅샷. 카드 화면에서는 설정을 변경할 수
+  /// 없으므로 watch 가 아닌 read 로 1회만 캡처하여 자식 카드에 전달한다.
+  late final StudyOptions _options;
+
   /// 카드 key 에 포함시켜 라운드 재시작 시에도 [WordCardWidget] 인스턴스가
   /// 새로 생성되도록 강제 (자동 발음은 initState 시점 트리거).
   int _round = 0;
@@ -38,6 +44,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
   @override
   void initState() {
     super.initState();
+    _options = ref.read(studyOptionsProvider);
     final all = ref
         .read(wordsByLevelProvider)
         .maybeWhen(
@@ -221,6 +228,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
                       '$_currentIndex-$_round',
                     ),
                     word: _innerWords[_currentIndex],
+                    defaults: _options,
                   ),
           ),
         ),

@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jlpt_app/domain/study_options.dart';
 import 'package:jlpt_app/domain/word.dart';
-import 'package:jlpt_app/notifier/study_options_notifier.dart';
 import 'package:jlpt_app/widgets/component/audio_button.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/speaker.dart';
@@ -14,10 +14,19 @@ import 'package:jlpt_app/widgets/study/card/widget_word_card_detail.dart';
 class WordCardWidget extends ConsumerStatefulWidget {
   final Word word;
 
+  /// 학습 화면 진입 시점에 캡처된 옵션 스냅샷. 카드의 표시/자동발음 default 로
+  /// 사용되며, 카드 내부의 토글은 이 값을 변경하지 않는다 (로컬 state 만 변경).
+  final StudyOptions defaults;
+
   /// 테스트 hook — production 에서는 null (자체 [SpeakerTTS] 생성).
   final Speaker? speaker;
 
-  const WordCardWidget({super.key, required this.word, this.speaker});
+  const WordCardWidget({
+    super.key,
+    required this.word,
+    required this.defaults,
+    this.speaker,
+  });
 
   @override
   ConsumerState<WordCardWidget> createState() => _WordCardWidgetState();
@@ -32,17 +41,20 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
 
   bool _isOpen = false;
 
+  /// 카드별 로컬 표시 state. 진입 시 [WordCardWidget.defaults] 로 초기화되고,
+  /// 카드 토글은 이 값만 바꾼다. 카드를 넘기면 새 State 가 생기며 default 로 리셋.
+  late bool _showKorean;
+  late bool _showHiragana;
+
   @override
   void initState() {
     super.initState();
     _capturedWordId = widget.word.id;
     _speaker = widget.speaker ?? SpeakerTTS();
+    _showKorean = widget.defaults.showKorean;
+    _showHiragana = widget.defaults.showHiragana;
 
-    // autoPlay 는 ref.read 로 initState 시점 1회만 캡처.
-    // 학습 중에 토글을 ON 으로 바꿔도 *현재* 카드는 자동 재생하지 않는다
-    // (예상치 못한 발화 방지). 다음 카드부터 적용.
-    final opts = ref.read(studyOptionsProvider);
-    if (opts.autoPlayPronunciation) {
+    if (widget.defaults.autoPlayPronunciation) {
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         // StudyPage 의 AnimatedSwitcher 전환(400ms)이 끝난 뒤 재생한다.
         // 이전 카드 dispose 의 TTS stop 이 새 카드 자동 발음을 끊는 것을 방지.
@@ -63,9 +75,6 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final opts = ref.watch(studyOptionsProvider);
-    final optsNotifier = ref.read(studyOptionsProvider.notifier);
-
     return Container(
       margin: const EdgeInsets.all(20),
       child: Column(
@@ -87,7 +96,7 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      opts.showHiragana ? widget.word.hiragana : '',
+                      _showHiragana ? widget.word.hiragana : '',
                       style: TextStyle(
                         fontSize: Theme.of(
                           context,
@@ -98,7 +107,7 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      opts.showKorean ? widget.word.korean : '',
+                      _showKorean ? widget.word.korean : '',
                       style: TextStyle(
                         fontSize: Theme.of(
                           context,
@@ -183,24 +192,23 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
             ],
           ),
           const SizedBox(height: 16),
-          // 한국어/히라가나 토글 — 환경설정의 `studyOptionsProvider` 와 같은
-          // state 를 공유한다. 카드에서 누르면 설정 페이지에서도, 다른 카드
-          // 에서도 즉시 반영. 자동 발음 토글은 설정 페이지에만 둔다.
+          // 카드별 로컬 표시 state. 설정값을 default 로 쓰고, 카드를 넘기면
+          // 새 State 가 생성되어 default 로 다시 초기화된다. 설정값은 mutate 하지 않는다.
           Row(
             children: [
               Expanded(
                 child: _OptionToggle(
                   label: '한국어',
-                  isOn: opts.showKorean,
-                  onTap: optsNotifier.toggleKorean,
+                  isOn: _showKorean,
+                  onTap: () => setState(() => _showKorean = !_showKorean),
                 ),
               ),
               const SizedBox(width: 21),
               Expanded(
                 child: _OptionToggle(
                   label: '히라가나',
-                  isOn: opts.showHiragana,
-                  onTap: optsNotifier.toggleHiragana,
+                  isOn: _showHiragana,
+                  onTap: () => setState(() => _showHiragana = !_showHiragana),
                 ),
               ),
             ],
