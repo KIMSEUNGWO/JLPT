@@ -18174,6 +18174,613 @@
         "いぬ"
       ],
       "koreanChar": "犬 (개 견)"
+    },
+    {
+      "char": "六",
+      "soundReading": [
+        "ろく",
+        "りく"
+      ],
+      "meanReading": [
+        "む",
+        "むつ",
+        "むっつ",
+        "むい"
+      ],
+      "koreanChar": "六 (여섯 륙)"
+    },
+    {
+      "char": "五",
+      "soundReading": [
+        "ご"
+      ],
+      "meanReading": [
+        "いつ",
+        "いつつ"
+      ],
+      "koreanChar": "五 (다섯 오)"
+    },
+    {
+      "char": "族",
+      "soundReading": [
+        "ぞく"
+      ],
+      "meanReading": [],
+      "koreanChar": "族 (겨레 족)"
+    },
+    {
+      "char": "疲",
+      "soundReading": [
+        "ひ"
+      ],
+      "meanReading": [
+        "つかれる"
+      ],
+      "koreanChar": "疲 (피곤할 피)"
+    },
+    {
+      "char": "撮",
+      "soundReading": [
+        "さつ"
+      ],
+      "meanReading": [
+        "とる"
+      ],
+      "koreanChar": "撮 (찍을 촬)"
+    },
+    {
+      "char": "二",
+      "soundReading": [
+        "に",
+        "じ"
+      ],
+      "meanReading": [
+        "ふた",
+        "ふたつ"
+      ],
+      "koreanChar": "二 (두 이)"
+    },
+    {
+      "char": "匹",
+      "soundReading": [
+        "ひつ"
+      ],
+      "meanReading": [
+        "ひき"
+      ],
+      "koreanChar": "匹 (짝 필)"
+    },
+    {
+      "char": "歳",
+      "soundReading": [
+        "さい",
+        "せい"
+      ],
+      "meanReading": [
+        "とし"
+      ],
+      "koreanChar": "歳 (해 세)"
+    },
+    {
+      "char": "吹",
+      "soundReading": [
+        "すい"
+      ],
+      "meanReading": [
+        "ふく"
+      ],
+      "koreanChar": "吹 (불 취)"
+    },
+    {
+      "char": "菜",
+      "soundReading": [
+        "さい"
+      ],
+      "meanReading": [
+        "な"
+      ],
+      "koreanChar": "菜 (나물 채)"
+    },
+    {
+      "char": "警",
+      "soundReading": [
+        "けい"
+      ],
+      "meanReading": [
+        "いましめる"
+      ],
+      "koreanChar": "警 (경계할 경)"
+    },
+    {
+      "char": "官",
+      "soundReading": [
+        "かん"
+      ],
+      "meanReading": [],
+      "koreanChar": "官 (벼슬 관)"
+    },
+    {
+      "char": "玄",
+      "soundReading": [
+        "げん"
+      ],
+      "meanReading": [
+        "くろ"
+      ],
+      "koreanChar": "玄 (검을 현)"
+    },
+    {
+      "char": "昨",
+      "soundReading": [
+        "さく"
+      ],
+      "meanReading": [],
+      "koreanChar": "昨 (어제 작)"
+    },
+    {
+      "char": "噛",
+      "soundReading": [
+        "こう"
+      ],
+      "meanReading": [
+        "かむ"
+      ],
+      "koreanChar": "噛 (씹을 교)"
+    },
+    {
+      "char": "怖",
+      "soundReading": [
+        "ふ"
+      ],
+      "meanReading": [
+        "こわい"
+      ],
+      "koreanChar": "怖 (두려워할 포)"
+    },
+    {
+      "char": "坂",
+      "soundReading": [
+        "はん"
+      ],
+      "meanReading": [
+        "さか"
+      ],
+      "koreanChar": "坂 (비탈 판)"
+    },
+    {
+      "char": "輩",
+      "soundReading": [
+        "はい"
+      ],
+      "meanReading": [
+        "やから"
+      ],
+      "koreanChar": "輩 (무리 배)"
+    },
+    {
+      "char": "房",
+      "soundReading": [
+        "ぼう"
+      ],
+      "meanReading": [
+        "ふさ"
+      ],
+      "koreanChar": "房 (방 방)"
+    },
+    {
+      "char": "途",
+      "soundReading": [
+        "と"
+      ],
+      "meanReading": [],
+      "koreanChar": "途 (길 도)"
+    },
+    {
+      "char": "島",
+      "soundReading": [
+        "とう"
+      ],
+      "meanReading": [
+        "しま"
+      ],
+      "koreanChar": "島 (섬 도)"
+    },
+    {
+      "char": "札",
+      "soundReading": [
+        "さつ"
+      ],
+      "meanReading": [
+        "ふだ"
+      ],
+      "koreanChar": "札 (패 찰)"
+    },
+    {
+      "char": "干",
+      "soundReading": [
+        "かん"
+      ],
+      "meanReading": [
+        "ほす",
+        "ひる"
+      ],
+      "koreanChar": "干 (방패 간)"
+    },
+    {
+      "char": "投",
+      "soundReading": [
+        "とう"
+      ],
+      "meanReading": [
+        "なげる"
+      ],
+      "koreanChar": "投 (던질 투)"
+    },
+    {
+      "char": "則",
+      "soundReading": [
+        "そく"
+      ],
+      "meanReading": [
+        "のっとる"
+      ],
+      "koreanChar": "則 (법칙 칙)"
+    },
+    {
+      "char": "鮮",
+      "soundReading": [
+        "せん"
+      ],
+      "meanReading": [
+        "あざやか"
+      ],
+      "koreanChar": "鮮 (고울 선)"
+    },
+    {
+      "char": "騰",
+      "soundReading": [
+        "とう"
+      ],
+      "meanReading": [
+        "あがる"
+      ],
+      "koreanChar": "騰 (오를 등)"
+    },
+    {
+      "char": "慰",
+      "soundReading": [
+        "い"
+      ],
+      "meanReading": [
+        "なぐさめる",
+        "なぐさむ"
+      ],
+      "koreanChar": "慰 (위로할 위)"
+    },
+    {
+      "char": "却",
+      "soundReading": [
+        "きゃく"
+      ],
+      "meanReading": [],
+      "koreanChar": "却 (물리칠 각)"
+    },
+    {
+      "char": "継",
+      "soundReading": [
+        "けい"
+      ],
+      "meanReading": [
+        "つぐ"
+      ],
+      "koreanChar": "継 (이을 계)"
+    },
+    {
+      "char": "批",
+      "soundReading": [
+        "ひ"
+      ],
+      "meanReading": [],
+      "koreanChar": "批 (비평할 비)"
+    },
+    {
+      "char": "絞",
+      "soundReading": [
+        "こう"
+      ],
+      "meanReading": [
+        "しぼる",
+        "しめる",
+        "しまる"
+      ],
+      "koreanChar": "絞 (목맬 교)"
+    },
+    {
+      "char": "旬",
+      "soundReading": [
+        "じゅん",
+        "しゅん"
+      ],
+      "meanReading": [],
+      "koreanChar": "旬 (열흘 순)"
+    },
+    {
+      "char": "践",
+      "soundReading": [
+        "せん"
+      ],
+      "meanReading": [
+        "ふむ"
+      ],
+      "koreanChar": "践 (밟을 천)"
+    },
+    {
+      "char": "衣",
+      "soundReading": [
+        "い"
+      ],
+      "meanReading": [
+        "ころも"
+      ],
+      "koreanChar": "衣 (옷 의)"
+    },
+    {
+      "char": "祉",
+      "soundReading": [
+        "し"
+      ],
+      "meanReading": [],
+      "koreanChar": "祉 (복 지)"
+    },
+    {
+      "char": "距",
+      "soundReading": [
+        "きょ"
+      ],
+      "meanReading": [],
+      "koreanChar": "距 (떨어질 거)"
+    },
+    {
+      "char": "籍",
+      "soundReading": [
+        "せき"
+      ],
+      "meanReading": [],
+      "koreanChar": "籍 (문서 적)"
+    },
+    {
+      "char": "系",
+      "soundReading": [
+        "けい"
+      ],
+      "meanReading": [],
+      "koreanChar": "系 (이을 계)"
+    },
+    {
+      "char": "宛",
+      "soundReading": [
+        "えん"
+      ],
+      "meanReading": [
+        "あてる"
+      ],
+      "koreanChar": "宛 (완연할 완)"
+    },
+    {
+      "char": "訂",
+      "soundReading": [
+        "てい"
+      ],
+      "meanReading": [],
+      "koreanChar": "訂 (바로잡을 정)"
+    },
+    {
+      "char": "敏",
+      "soundReading": [
+        "びん"
+      ],
+      "meanReading": [],
+      "koreanChar": "敏 (민첩할 민)"
+    },
+    {
+      "char": "雇",
+      "soundReading": [
+        "こ"
+      ],
+      "meanReading": [
+        "やとう"
+      ],
+      "koreanChar": "雇 (품팔 고)"
+    },
+    {
+      "char": "奇",
+      "soundReading": [
+        "き"
+      ],
+      "meanReading": [],
+      "koreanChar": "奇 (기이할 기)"
+    },
+    {
+      "char": "卑",
+      "soundReading": [
+        "ひ"
+      ],
+      "meanReading": [
+        "いやしい",
+        "いやしむ",
+        "いやしめる"
+      ],
+      "koreanChar": "卑 (낮을 비)"
+    },
+    {
+      "char": "怯",
+      "soundReading": [
+        "きょう"
+      ],
+      "meanReading": [
+        "おびえる",
+        "ひるむ"
+      ],
+      "koreanChar": "怯 (겁낼 겁)"
+    },
+    {
+      "char": "剰",
+      "soundReading": [
+        "じょう"
+      ],
+      "meanReading": [
+        "あまる"
+      ],
+      "koreanChar": "剰 (남을 잉)"
+    },
+    {
+      "char": "塞",
+      "soundReading": [
+        "そく",
+        "さい"
+      ],
+      "meanReading": [
+        "ふさぐ",
+        "ふさがる"
+      ],
+      "koreanChar": "塞 (막을 색)"
+    },
+    {
+      "char": "巡",
+      "soundReading": [
+        "じゅん"
+      ],
+      "meanReading": [
+        "めぐる"
+      ],
+      "koreanChar": "巡 (돌 순)"
+    },
+    {
+      "char": "措",
+      "soundReading": [
+        "そ"
+      ],
+      "meanReading": [],
+      "koreanChar": "措 (둘 조)"
+    },
+    {
+      "char": "敢",
+      "soundReading": [
+        "かん"
+      ],
+      "meanReading": [
+        "あえて"
+      ],
+      "koreanChar": "敢 (감히 감)"
+    },
+    {
+      "char": "忠",
+      "soundReading": [
+        "ちゅう"
+      ],
+      "meanReading": [],
+      "koreanChar": "忠 (충성 충)"
+    },
+    {
+      "char": "透",
+      "soundReading": [
+        "とう"
+      ],
+      "meanReading": [
+        "すく",
+        "すかす",
+        "すける"
+      ],
+      "koreanChar": "透 (통할 투)"
+    },
+    {
+      "char": "秩",
+      "soundReading": [
+        "ちつ"
+      ],
+      "meanReading": [],
+      "koreanChar": "秩 (차례 질)"
+    },
+    {
+      "char": "奔",
+      "soundReading": [
+        "ほん"
+      ],
+      "meanReading": [
+        "はしる"
+      ],
+      "koreanChar": "奔 (달릴 분)"
+    },
+    {
+      "char": "壮",
+      "soundReading": [
+        "そう"
+      ],
+      "meanReading": [],
+      "koreanChar": "壮 (장할 장)"
+    },
+    {
+      "char": "撤",
+      "soundReading": [
+        "てつ"
+      ],
+      "meanReading": [],
+      "koreanChar": "撤 (거둘 철)"
+    },
+    {
+      "char": "旺",
+      "soundReading": [
+        "おう"
+      ],
+      "meanReading": [],
+      "koreanChar": "旺 (왕성할 왕)"
+    },
+    {
+      "char": "熟",
+      "soundReading": [
+        "じゅく"
+      ],
+      "meanReading": [
+        "うれる"
+      ],
+      "koreanChar": "熟 (익을 숙)"
+    },
+    {
+      "char": "拭",
+      "soundReading": [
+        "しょく"
+      ],
+      "meanReading": [
+        "ふく",
+        "ぬぐう"
+      ],
+      "koreanChar": "拭 (닦을 식)"
+    },
+    {
+      "char": "厄",
+      "soundReading": [
+        "やく"
+      ],
+      "meanReading": [],
+      "koreanChar": "厄 (재앙 액)"
+    },
+    {
+      "char": "審",
+      "soundReading": [
+        "しん"
+      ],
+      "meanReading": [],
+      "koreanChar": "審 (살필 심)"
+    },
+    {
+      "char": "昇",
+      "soundReading": [
+        "しょう"
+      ],
+      "meanReading": [
+        "のぼる"
+      ],
+      "koreanChar": "昇 (오를 승)"
     }
   ]
 }
