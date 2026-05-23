@@ -5,14 +5,17 @@ import 'package:jlpt_app/data/remote/json_data_source.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/data/repositories/chinese_char_repository.dart';
 import 'package:jlpt_app/data/repositories/daily_stats_repository.dart';
+import 'package:jlpt_app/data/repositories/example_sentence_repository.dart';
 import 'package:jlpt_app/data/repositories/test_result_repository.dart';
 import 'package:jlpt_app/data/repositories/word_repository.dart';
 import 'package:jlpt_app/data/sync/chinese_char_syncer.dart';
 import 'package:jlpt_app/data/sync/data_sync_service.dart';
+import 'package:jlpt_app/data/sync/example_sentence_syncer.dart';
 import 'package:jlpt_app/data/sync/update_service.dart';
 import 'package:jlpt_app/data/sync/word_syncer.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
 import 'package:jlpt_app/domain/constant.dart';
+import 'package:jlpt_app/domain/example_sentence.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/word.dart';
 
@@ -41,6 +44,7 @@ final remoteJsonDataSourceProvider = Provider<RemoteJsonDataSource>(
         'dataVersion': Constant.VERSION_LINK,
         'chinese_chars': Constant.CHINESE_CHARS_LINK,
         'japanese_words': Constant.JAPANESE_WORDS_LINK,
+        'example_sentences': Constant.EXAMPLE_SENTENCES_LINK,
       },
     );
     ref.onDispose(source.close);
@@ -63,6 +67,13 @@ final wordRepositoryProvider = Provider<WordRepository>(
 
 final chineseCharRepositoryProvider = Provider<ChineseCharRepository>(
   (ref) => ChineseCharRepository(
+    ref.read(appDatabaseProvider),
+    ref.read(appMetaRepositoryProvider),
+  ),
+);
+
+final exampleSentenceRepositoryProvider = Provider<ExampleSentenceRepository>(
+  (ref) => ExampleSentenceRepository(
     ref.read(appDatabaseProvider),
     ref.read(appMetaRepositoryProvider),
   ),
@@ -102,6 +113,15 @@ final chineseCharSyncerProvider = Provider<ChineseCharSyncer>(
   ),
 );
 
+final exampleSentenceSyncerProvider = Provider<ExampleSentenceSyncer>(
+  (ref) => ExampleSentenceSyncer(
+    exampleRepository: ref.read(exampleSentenceRepositoryProvider),
+    metaRepository: ref.read(appMetaRepositoryProvider),
+    bundle: ref.read(assetJsonDataSourceProvider),
+    cache: ref.read(localJsonCacheProvider),
+  ),
+);
+
 // ───────── 부팅 / 업데이트 서비스 ─────────
 
 final dataSyncServiceProvider = Provider<DataSyncService>(
@@ -111,6 +131,7 @@ final dataSyncServiceProvider = Provider<DataSyncService>(
     remote: ref.read(remoteJsonDataSourceProvider),
     wordSyncer: ref.read(wordSyncerProvider),
     charSyncer: ref.read(chineseCharSyncerProvider),
+    exampleSyncer: ref.read(exampleSentenceSyncerProvider),
     metaRepository: ref.read(appMetaRepositoryProvider),
     dailyStatsRepository: ref.read(dailyStatsRepositoryProvider),
   ),
@@ -122,6 +143,7 @@ final updateServiceProvider = Provider<UpdateService>(
     cache: ref.read(localJsonCacheProvider),
     wordSyncer: ref.read(wordSyncerProvider),
     charSyncer: ref.read(chineseCharSyncerProvider),
+    exampleSyncer: ref.read(exampleSentenceSyncerProvider),
     dataSyncService: ref.read(dataSyncServiceProvider),
   ),
 );
@@ -136,6 +158,13 @@ final chineseCharCacheProvider = FutureProvider<Map<String, ChineseChar>>(
 /// 레벨별 단어 목록 — 홈 화면에서 전역으로 공유
 final wordsByLevelProvider = FutureProvider<Map<Level, List<Word>>>(
   (ref) => ref.read(wordRepositoryProvider).getAllByLevel(),
+);
+
+/// 한 단어에 연결된 예문 본문 목록. 카드 상세에서 lazy 로 watch.
+final exampleSentencesByWordProvider = FutureProvider.autoDispose
+    .family<List<ExampleSentence>, int>(
+  (ref, wordId) =>
+      ref.read(exampleSentenceRepositoryProvider).getByWordId(wordId),
 );
 
 /// 특정 레벨의 테스트 통계 (최근 점수, 총 횟수)

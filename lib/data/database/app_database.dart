@@ -5,13 +5,16 @@ import 'package:drift/native.dart';
 import 'package:jlpt_app/data/database/daos/app_meta_dao.dart';
 import 'package:jlpt_app/data/database/daos/chinese_char_dao.dart';
 import 'package:jlpt_app/data/database/daos/daily_stat_dao.dart';
+import 'package:jlpt_app/data/database/daos/example_sentence_dao.dart';
 import 'package:jlpt_app/data/database/daos/test_result_dao.dart';
 import 'package:jlpt_app/data/database/daos/word_dao.dart';
 import 'package:jlpt_app/data/database/tables/app_meta_table.dart';
 import 'package:jlpt_app/data/database/tables/chinese_chars_table.dart';
 import 'package:jlpt_app/data/database/tables/daily_stats_table.dart';
+import 'package:jlpt_app/data/database/tables/example_sentences_table.dart';
 import 'package:jlpt_app/data/database/tables/test_questions_table.dart';
 import 'package:jlpt_app/data/database/tables/test_results_table.dart';
+import 'package:jlpt_app/data/database/tables/word_example_refs_table.dart';
 import 'package:jlpt_app/data/database/tables/words_table.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
@@ -19,15 +22,31 @@ import 'package:path_provider/path_provider.dart';
 part 'app_database.g.dart';
 
 @DriftDatabase(
-  tables: [Words, ChineseChars, TestResults, TestQuestions, AppMeta, DailyStats],
-  daos: [WordDao, ChineseCharDao, TestResultDao, AppMetaDao, DailyStatDao],
+  tables: [
+    Words,
+    ChineseChars,
+    TestResults,
+    TestQuestions,
+    AppMeta,
+    DailyStats,
+    ExampleSentences,
+    WordExampleRefs,
+  ],
+  daos: [
+    WordDao,
+    ChineseCharDao,
+    TestResultDao,
+    AppMetaDao,
+    DailyStatDao,
+    ExampleSentenceDao,
+  ],
 )
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
   AppDatabase.forTesting(super.executor);
 
   @override
-  int get schemaVersion => 3;
+  int get schemaVersion => 4;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -46,6 +65,14 @@ class AppDatabase extends _$AppDatabase {
             // 기존 사용자의 오늘치 SharedPreferences 수치는
             // DailyStatsRepository.bootstrapFromLocalStorage 가 1회 백필.
             await m.createTable(dailyStats);
+          }
+          if (from < 4) {
+            // v4: ExampleSentences + WordExampleRefs 신설.
+            // 빈 테이블로 시작하고, 다음 부팅에서 ExampleSentenceSyncer 가
+            // 번들 또는 캐시 데이터로 채운다 (메타 examples_version 이 null 이므로
+            // 강제 재동기화 트리거).
+            await m.createTable(exampleSentences);
+            await m.createTable(wordExampleRefs);
           }
         },
         beforeOpen: (details) async {

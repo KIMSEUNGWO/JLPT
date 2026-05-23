@@ -8,8 +8,10 @@ import 'package:pub_semver/pub_semver.dart';
 class AppMetaRepository {
   static const _kWordsVersion = 'words_version';
   static const _kCharsVersion = 'chars_version';
+  static const _kExamplesVersion = 'examples_version';
   static const _kWordsSyncedAt = 'words_synced_at';
   static const _kCharsSyncedAt = 'chars_synced_at';
+  static const _kExamplesSyncedAt = 'examples_synced_at';
   static const _kLastSyncError = 'last_sync_error';
   static const _kBestStreak = 'best_streak';
   static const _kStatsBackfilledV3 = 'daily_stats_backfilled_v3';
@@ -19,9 +21,11 @@ class AppMetaRepository {
 
   Future<Version?> getWordsVersion() => _readVersion(_kWordsVersion);
   Future<Version?> getCharsVersion() => _readVersion(_kCharsVersion);
+  Future<Version?> getExamplesVersion() => _readVersion(_kExamplesVersion);
 
   Future<DateTime?> getWordsSyncedAt() => _readDateTime(_kWordsSyncedAt);
   Future<DateTime?> getCharsSyncedAt() => _readDateTime(_kCharsSyncedAt);
+  Future<DateTime?> getExamplesSyncedAt() => _readDateTime(_kExamplesSyncedAt);
 
   Future<String?> getLastSyncError() => _db.appMetaDao.get(_kLastSyncError);
 
@@ -56,6 +60,14 @@ class AppMetaRepository {
   Future<void> markCharsSynced(Version v) async {
     await _db.appMetaDao.put(_kCharsVersion, v.toString());
     await _db.appMetaDao.put(_kCharsSyncedAt, DateTime.now().toIso8601String());
+    await _db.appMetaDao.remove(_kLastSyncError);
+  }
+
+  /// 예문 sync 성공 marker.
+  Future<void> markExamplesSynced(Version v) async {
+    await _db.appMetaDao.put(_kExamplesVersion, v.toString());
+    await _db.appMetaDao
+        .put(_kExamplesSyncedAt, DateTime.now().toIso8601String());
     await _db.appMetaDao.remove(_kLastSyncError);
   }
 

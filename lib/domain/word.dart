@@ -13,6 +13,7 @@ class Word implements QuestionBox {
     required this.korean,
     required this.isRead,
     required this.wrongCnt,
+    required this.exampleIds,
   });
 
   final int id;
@@ -23,6 +24,10 @@ class Word implements QuestionBox {
   final String korean;
   final bool isRead;
   final int wrongCnt;
+
+  /// 이 단어가 참조하는 예문 id 목록. 데이터 규칙상 항상 1개 이상.
+  /// DB readback 경로에서는 ref 테이블이 비어있을 수 있어 빈 리스트가 올 수 있다.
+  final List<int> exampleIds;
 
   /// 엄격한 JSON 파서. 누락/타입 오류 시 [FormatException] 을 던진다.
   factory Word.fromJson(Map<String, dynamic> json) {
@@ -47,6 +52,7 @@ class Word implements QuestionBox {
       korean: _str(json, 'korean', id),
       isRead: false,
       wrongCnt: 0,
+      exampleIds: _exampleIds(json, id),
     );
   }
 
@@ -58,6 +64,31 @@ class Word implements QuestionBox {
     return v;
   }
 
+  static List<int> _exampleIds(Map<String, dynamic> json, int id) {
+    final raw = json['exampleIds'];
+    if (raw is! List) {
+      throw FormatException(
+        "Word(id=$id): 'exampleIds' must be a List<int> (got ${raw.runtimeType})",
+      );
+    }
+    if (raw.isEmpty) {
+      throw FormatException(
+        "Word(id=$id): 'exampleIds' must contain at least one example id",
+      );
+    }
+    final out = <int>[];
+    for (var i = 0; i < raw.length; i++) {
+      final v = raw[i];
+      if (v is! int) {
+        throw FormatException(
+          "Word(id=$id): exampleIds[$i] must be int (got $v)",
+        );
+      }
+      out.add(v);
+    }
+    return List<int>.unmodifiable(out);
+  }
+
   Word copyWith({
     Level? level,
     Act? act,
@@ -66,6 +97,7 @@ class Word implements QuestionBox {
     String? korean,
     bool? isRead,
     int? wrongCnt,
+    List<int>? exampleIds,
   }) {
     return Word(
       id: id,
@@ -76,6 +108,7 @@ class Word implements QuestionBox {
       korean: korean ?? this.korean,
       isRead: isRead ?? this.isRead,
       wrongCnt: wrongCnt ?? this.wrongCnt,
+      exampleIds: exampleIds ?? this.exampleIds,
     );
   }
 

@@ -30,6 +30,7 @@ Map<String, dynamic> _wordsJson(int count) => {
             'word': '単$i',
             'hiragana': 'たん$i',
             'korean': '단$i',
+            'exampleIds': [100000 + i],
           },
       ],
     };
@@ -115,6 +116,7 @@ void main() {
             'word': '?',
             'hiragana': '?',
             'korean': '?',
+            'exampleIds': [100001],
           },
         ],
       };
@@ -142,6 +144,7 @@ void main() {
             'word': 'same',
             'hiragana': 'same',
             'korean': 'same',
+            'exampleIds': [100001],
           },
           {
             'id': 1,
@@ -150,6 +153,7 @@ void main() {
             'word': 'same',
             'hiragana': 'same',
             'korean': 'same',
+            'exampleIds': [100001],
           },
           {
             'id': 2,
@@ -158,6 +162,7 @@ void main() {
             'word': 'other',
             'hiragana': 'other',
             'korean': 'other',
+            'exampleIds': [100002],
           },
         ],
       };
@@ -180,6 +185,7 @@ void main() {
             'word': 'a',
             'hiragana': 'a',
             'korean': 'a',
+            'exampleIds': [100001],
           },
           {
             'id': 1,
@@ -188,6 +194,7 @@ void main() {
             'word': 'b',
             'hiragana': 'b',
             'korean': 'b',
+            'exampleIds': [100002],
           },
         ],
       };

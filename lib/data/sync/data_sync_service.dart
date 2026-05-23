@@ -3,6 +3,7 @@ import 'package:jlpt_app/data/remote/json_data_source.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/data/repositories/daily_stats_repository.dart';
 import 'package:jlpt_app/data/sync/chinese_char_syncer.dart';
+import 'package:jlpt_app/data/sync/example_sentence_syncer.dart';
 import 'package:jlpt_app/data/sync/word_syncer.dart';
 import 'package:jlpt_app/initdata/update/version_info.dart';
 import 'package:pub_semver/pub_semver.dart';
@@ -21,6 +22,7 @@ class DataSyncService {
     required this.remote,
     required this.wordSyncer,
     required this.charSyncer,
+    required this.exampleSyncer,
     required this.metaRepository,
     required this.dailyStatsRepository,
   });
@@ -30,6 +32,7 @@ class DataSyncService {
   final RemoteJsonDataSource remote;
   final WordSyncer wordSyncer;
   final ChineseCharSyncer charSyncer;
+  final ExampleSentenceSyncer exampleSyncer;
   final AppMetaRepository metaRepository;
   final DailyStatsRepository dailyStatsRepository;
 
@@ -85,8 +88,9 @@ class DataSyncService {
   ) async {
     final wordSyncedBefore = await wordSyncer.isUpToDate(sourceVersion);
     final charSyncedBefore = await charSyncer.isUpToDate(sourceVersion);
+    final exampleSyncedBefore = await exampleSyncer.isUpToDate(sourceVersion);
 
-    if (wordSyncedBefore && charSyncedBefore) {
+    if (wordSyncedBefore && charSyncedBefore && exampleSyncedBefore) {
       appLogger.d('[sync] up-to-date @ $sourceVersion');
       return SyncReport.upToDate(sourceVersion);
     }
@@ -101,6 +105,16 @@ class DataSyncService {
     if (!charSyncedBefore) {
       appLogger.i('[sync] chars → $sourceVersion (source=${source.label})');
       await charSyncer.syncFrom(
+        source: source.delegate,
+        version: sourceVersion,
+      );
+    }
+    if (!exampleSyncedBefore) {
+      appLogger.i(
+          '[sync] examples → $sourceVersion (source=${source.label})');
+      // ExampleSentenceSyncer.syncFrom 은 내부에서 단어 JSON 도 함께 읽어
+      // cross-validate + ref persist 를 한 transaction 으로 처리한다.
+      await exampleSyncer.syncFrom(
         source: source.delegate,
         version: sourceVersion,
       );

@@ -13,11 +13,15 @@ class AudioWaveAnimation extends StatefulWidget {
   /// 자동 발음용 speaker 와 동일). null 이면 자체 생성하고 lifecycle 도 자체 관리.
   final Speaker? speaker;
 
+  /// 카드 메인 발음 버튼 대비 인라인용으로 한 단계 더 작은 사이즈 — 예문 row 옆 등.
+  final bool compact;
+
   const AudioWaveAnimation({
     super.key,
     this.title,
     required this.word,
     this.speaker,
+    this.compact = false,
   });
 
   @override
@@ -101,13 +105,22 @@ class _AudioWaveAnimationState extends State<AudioWaveAnimation>
 
   @override
   Widget build(BuildContext context) {
+    final compact = widget.compact;
+    final padding = compact
+        ? const EdgeInsets.symmetric(horizontal: 6, vertical: 4)
+        : const EdgeInsets.symmetric(horizontal: 10, vertical: 8);
+    final waveHeight = compact ? 16.0 : 25.0;
+    final barWidth = compact ? 2.0 : 3.0;
+    final barMaxHeight = compact ? 18.0 : 30.0;
+    final barHPad = compact ? 1.0 : 1.5;
+
     return GestureDetector(
       onTap: play,
       child: AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {
           return CustomContainer(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+            padding: padding,
             radius: BorderRadius.circular(100),
             backgroundColor: isPlaying
                 ? Theme.of(context).colorScheme.primary
@@ -116,16 +129,17 @@ class _AudioWaveAnimationState extends State<AudioWaveAnimation>
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(
-                  height: 25,
+                  height: waveHeight,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: List.generate(4, (index) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 1.5),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: barHPad),
                         child: Container(
-                          width: 3,
-                          height: _animations[index].value * 30,
+                          width: barWidth,
+                          height: _animations[index].value * barMaxHeight,
                           decoration: BoxDecoration(
                             color: isPlaying
                                 ? Colors.white

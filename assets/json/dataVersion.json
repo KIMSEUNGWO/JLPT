@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
-  "description": "최초 업데이트",
-  "last_updated": "2024-12-05"
+  "version": "0.1.0",
+  "description": "예문 데이터 추가 (모든 단어에 exampleIds + example_sentences.json)",
+  "last_updated": "2026-05-23"
 }

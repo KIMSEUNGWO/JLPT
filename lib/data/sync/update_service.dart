@@ -2,7 +2,10 @@ import 'package:jlpt_app/component/app_logger.dart';
 import 'package:jlpt_app/data/remote/json_data_source.dart';
 import 'package:jlpt_app/data/sync/chinese_char_syncer.dart';
 import 'package:jlpt_app/data/sync/data_sync_service.dart';
+import 'package:jlpt_app/data/sync/example_sentence_syncer.dart';
 import 'package:jlpt_app/data/sync/word_syncer.dart';
+import 'package:jlpt_app/domain/example_sentence.dart';
+import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/initdata/update/version_info.dart';
 import 'package:pub_semver/pub_semver.dart';
 
@@ -22,6 +25,7 @@ class UpdateService {
     required this.cache,
     required this.wordSyncer,
     required this.charSyncer,
+    required this.exampleSyncer,
     required this.dataSyncService,
   });
 
@@ -29,6 +33,7 @@ class UpdateService {
   final LocalJsonCacheSource cache;
   final WordSyncer wordSyncer;
   final ChineseCharSyncer charSyncer;
+  final ExampleSentenceSyncer exampleSyncer;
   final DataSyncService dataSyncService;
 
   /// 업데이트가 가능한 경우 신버전을 반환. 동일/구버전이면 null.
@@ -38,7 +43,9 @@ class UpdateService {
 
     final currentWord = await wordSyncer.currentDbVersion();
     final currentChar = await charSyncer.currentDbVersion();
-    final localMax = _maxVersion(currentWord, currentChar);
+    final currentEx = await exampleSyncer.currentDbVersion();
+    final localMax =
+        _maxVersion(_maxVersion(currentWord, currentChar), currentEx);
     if (localMax != null && remoteVersion <= localMax) return null;
 
     final size = await _estimateSize();
@@ -56,6 +63,7 @@ class UpdateService {
     final rawVersion = await remote.read('dataVersion');
     final rawChars = await remote.read('chinese_chars');
     final rawWords = await remote.read('japanese_words');
+    final rawExamples = await remote.read('example_sentences');
 
     // 버전 cross-check: 다운로드 도중 서버에서 또 올라가지 않았는지.
     final fetchedVersion = VersionInfo.fromJson(rawVersion).version;
@@ -70,8 +78,11 @@ class UpdateService {
     // 전체 파싱 시뮬레이션. 한 row 라도 실패하면 여기서 throw → 디스크 미반영.
     final words = wordSyncer.parse(rawWords);
     final chars = charSyncer.parse(rawChars);
+    final examples = exampleSyncer.parse(rawExamples);
+    final refs = _buildAndValidateRefs(words, examples);
     appLogger.i(
       '[update] validated: words=${words.length}, chars=${chars.length}, '
+      'examples=${examples.length}, refs=${refs.length}, '
       'version=$fetchedVersion',
     );
 
@@ -79,21 +90,50 @@ class UpdateService {
     // 검증 통과 후 atomic write. tmp → rename 으로 동일 디렉터리 내 원자성.
     await cache.writeAtomic('chinese_chars', rawChars);
     await cache.writeAtomic('japanese_words', rawWords);
+    await cache.writeAtomic('example_sentences', rawExamples);
     await cache.writeAtomic('dataVersion', rawVersion);
 
     onStage?.call(UpdateStage.persistingDb);
     // DB transaction 안에서 데이터 + 메타 commit. 부분 실패 없음.
     await charSyncer.persist(chars, fetchedVersion);
     await wordSyncer.persist(words, fetchedVersion);
+    // 예문 본문 + ref 를 한 트랜잭션으로 교체.
+    await exampleSyncer.exampleRepository.syncAll(
+      examples: examples,
+      wordExampleRefs: refs,
+      version: fetchedVersion,
+    );
 
     onStage?.call(UpdateStage.done);
+  }
+
+  /// 단어가 참조하는 모든 예문 id 가 examples 안에 실재하는지 확인하고
+  /// `{wordId: [exampleIds...]}` map 으로 환원.
+  Map<int, List<int>> _buildAndValidateRefs(
+    List<Word> words,
+    List<ExampleSentence> examples,
+  ) {
+    final exampleIdSet = {for (final e in examples) e.id};
+    final refs = <int, List<int>>{};
+    for (final w in words) {
+      for (final eid in w.exampleIds) {
+        if (!exampleIdSet.contains(eid)) {
+          throw FormatException(
+            '[update] word(id=${w.id}) 가 존재하지 않는 예문 id=$eid 를 참조합니다',
+          );
+        }
+      }
+      refs[w.id] = w.exampleIds;
+    }
+    return refs;
   }
 
   Future<int> _estimateSize() async {
     final s1 = await remote.contentLength('dataVersion');
     final s2 = await remote.contentLength('chinese_chars');
     final s3 = await remote.contentLength('japanese_words');
-    return s1 + s2 + s3;
+    final s4 = await remote.contentLength('example_sentences');
+    return s1 + s2 + s3 + s4;
   }
 
   Version? _maxVersion(Version? a, Version? b) {

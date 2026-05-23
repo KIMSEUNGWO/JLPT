@@ -76,6 +76,8 @@ class WordRepository {
 
   Future<int> countWords() => _db.wordDao.countWords();
 
+  /// DB readback. 예문 ID 목록은 ref 테이블에서 별도로 조회하므로 빈 리스트.
+  /// 예문이 필요하면 `exampleSentencesByWordProvider(word.id)` 를 사용한다.
   Word _toWord(WordData row) => Word(
         id: row.id,
         level: Level.valueOf(row.level),
@@ -85,6 +87,7 @@ class WordRepository {
         korean: row.korean,
         isRead: row.isRead,
         wrongCnt: row.wrongCnt,
+        exampleIds: const [],
       );
 
   // JSON 직렬화 헬퍼

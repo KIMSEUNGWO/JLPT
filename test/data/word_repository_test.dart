@@ -22,6 +22,7 @@ Word _makeWord(int id, Level level) => Word(
       korean: '단어$id',
       isRead: false,
       wrongCnt: 0,
+      exampleIds: [100000 + id],
     );
 
 void main() {
@@ -84,6 +85,7 @@ void main() {
         korean: '업데이트',
         isRead: false,
         wrongCnt: 0,
+        exampleIds: [100030],
       );
       await repo.syncAll([updated], version: _v2);
 

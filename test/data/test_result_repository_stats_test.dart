@@ -21,6 +21,7 @@ Word _makeWord(int id) => Word(
       korean: '단어$id',
       isRead: false,
       wrongCnt: 0,
+      exampleIds: [100000 + id],
     );
 
 void main() {

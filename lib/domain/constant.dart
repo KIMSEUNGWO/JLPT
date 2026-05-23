@@ -6,4 +6,5 @@ abstract class Constant {
   static const String VERSION_LINK = 'https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/json/dataVersion.json';
   static const String CHINESE_CHARS_LINK = 'https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/json/chinese_chars.json';
   static const String JAPANESE_WORDS_LINK = 'https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/json/japanese_words.json';
+  static const String EXAMPLE_SENTENCES_LINK = 'https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/json/example_sentences.json';
 }
