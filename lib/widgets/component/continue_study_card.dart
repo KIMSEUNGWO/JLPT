@@ -6,8 +6,8 @@ import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/notifier/entity/view.dart';
+import 'package:jlpt_app/settings/settings.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
-import 'package:jlpt_app/widgets/settings/study_group_size_selector.dart';
 
 class ContinueStudyTarget {
   const ContinueStudyTarget({

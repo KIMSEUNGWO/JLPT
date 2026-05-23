@@ -15,12 +15,12 @@ import 'package:jlpt_app/notifier/recently_view_notifier.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 import 'package:jlpt_app/notifier/study_session_notifier.dart';
 import 'package:jlpt_app/notifier/timer_notifier.dart';
+import 'package:jlpt_app/settings/settings.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
 import 'package:jlpt_app/widgets/component/recently_viewed_badge.dart';
 import 'package:jlpt_app/widgets/component/test_stat_widget.dart';
 import 'package:jlpt_app/widgets/modal/congratulations_modal.dart';
-import 'package:jlpt_app/widgets/settings/study_group_size_selector.dart';
 
 class StudyListPage extends ConsumerWidget {
   final Level level;

@@ -1,14 +1,15 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jlpt_app/component/local_storage.dart';
 import 'package:jlpt_app/domain/study_options.dart';
-import 'package:jlpt_app/notifier/study_options_notifier.dart';
+import 'package:jlpt_app/settings/settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  group('StudyOptionsNotifier', () {
+  group('Settings facade', () {
     setUp(() async {
       SharedPreferences.setMockInitialValues(<String, Object>{});
       await LocalStorage.initInstance();
@@ -20,20 +21,25 @@ void main() {
       return c;
     }
 
-    test('초기 상태는 LocalStorage 기본값 (모두 false)', () {
+    test('초기 상태는 LocalStorage 기본값', () {
       final c = makeContainer();
-      final state = c.read(studyOptionsProvider);
-      expect(state, const StudyOptions());
+
+      expect(c.read(studyOptionsProvider), const StudyOptions());
+      expect(c.read(studyGroupSizeProvider), 50);
+      expect(c.read(settingsProvider).studyOptions, const StudyOptions());
+      expect(c.read(settingsProvider).studyGroupSize, 50);
     });
 
-    test('toggleHiragana 후 state 변경 + LocalStorage 저장', () async {
-      final c = makeContainer();
-      c.read(studyOptionsProvider.notifier).toggleHiragana();
+    testWidgets('SettingsPage 토글로만 StudyOptions 변경 + LocalStorage 저장', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        const ProviderScope(child: MaterialApp(home: SettingsPage())),
+      );
 
-      expect(c.read(studyOptionsProvider).showHiragana, true);
-
-      // fire-and-forget 저장 완료 대기
-      await Future<void>.delayed(Duration.zero);
+      await tester.tap(find.text('히라가나 표시'));
+      await tester.pump();
+      await tester.pump();
 
       final prefs = await SharedPreferences.getInstance();
       final raw = prefs.getString(StorageKey.STUDY_OPTIONS.name);
@@ -44,28 +50,45 @@ void main() {
       expect(decoded['autoPlayPronunciation'], false);
     });
 
-    test('세 토글 모두 독립적으로 동작', () {
-      final c = makeContainer();
-      final notifier = c.read(studyOptionsProvider.notifier);
+    testWidgets('SettingsPage 토글들은 독립적으로 동작', (tester) async {
+      final container = ProviderContainer();
+      addTearDown(container.dispose);
 
-      notifier.toggleAutoPlay();
-      notifier.toggleKorean();
-      // hiragana 는 OFF 유지
+      await tester.pumpWidget(
+        UncontrolledProviderScope(
+          container: container,
+          child: const MaterialApp(home: SettingsPage()),
+        ),
+      );
 
-      final state = c.read(studyOptionsProvider);
+      await tester.tap(find.text('자동 발음'));
+      await tester.tap(find.text('한국어 뜻 표시'));
+      await tester.pump();
+
+      final state = container.read(studyOptionsProvider);
       expect(state.autoPlayPronunciation, true);
       expect(state.showKorean, true);
       expect(state.showHiragana, false);
     });
 
-    test('같은 토글 두 번 호출 시 ON ↔ OFF', () {
-      final c = makeContainer();
-      final notifier = c.read(studyOptionsProvider.notifier);
+    testWidgets('같은 토글 두 번 호출 시 ON ↔ OFF', (tester) async {
+      final container = ProviderContainer();
+      addTearDown(container.dispose);
 
-      notifier.toggleAutoPlay();
-      expect(c.read(studyOptionsProvider).autoPlayPronunciation, true);
-      notifier.toggleAutoPlay();
-      expect(c.read(studyOptionsProvider).autoPlayPronunciation, false);
+      await tester.pumpWidget(
+        UncontrolledProviderScope(
+          container: container,
+          child: const MaterialApp(home: SettingsPage()),
+        ),
+      );
+
+      await tester.tap(find.text('자동 발음'));
+      await tester.pump();
+      expect(container.read(studyOptionsProvider).autoPlayPronunciation, true);
+
+      await tester.tap(find.text('자동 발음'));
+      await tester.pump();
+      expect(container.read(studyOptionsProvider).autoPlayPronunciation, false);
     });
 
     test('저장된 JSON 이 손상되어도 기본값으로 fallback', () async {

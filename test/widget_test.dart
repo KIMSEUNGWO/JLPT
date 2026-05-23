@@ -17,15 +17,6 @@ void main() {
       expect(storage.getStudyGroupSize(), 50);
     });
 
-    test('study group size 저장 후 읽기', () async {
-      SharedPreferences.setMockInitialValues(<String, Object>{});
-      final storage = await LocalStorage.initInstance();
-
-      await storage.saveStudyGroupSize(20);
-
-      expect(storage.getStudyGroupSize(), 20);
-    });
-
     test('study group size 허용되지 않은 저장값은 50으로 fallback', () async {
       SharedPreferences.setMockInitialValues(<String, Object>{
         StorageKey.STUDY_GROUP_SIZE.name: 15,
@@ -33,13 +24,6 @@ void main() {
       final storage = await LocalStorage.initInstance();
 
       expect(storage.getStudyGroupSize(), 50);
-    });
-
-    test('study group size 허용되지 않은 값 저장은 ArgumentError', () async {
-      SharedPreferences.setMockInitialValues(<String, Object>{});
-      final storage = await LocalStorage.initInstance();
-
-      await expectLater(storage.saveStudyGroupSize(15), throwsArgumentError);
     });
   });
 }

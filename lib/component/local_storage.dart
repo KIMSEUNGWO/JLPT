@@ -149,13 +149,6 @@ class LocalStorage {
     }
   }
 
-  Future<void> saveStudyOptions(StudyOptions options) async {
-    await _storage.setString(
-      StorageKey.STUDY_OPTIONS.name,
-      jsonEncode(options.toJson()),
-    );
-  }
-
   // ───────── 학습 묶음 크기 ─────────
 
   int getStudyGroupSize() {
@@ -163,13 +156,6 @@ class LocalStorage {
         _storage.getInt(StorageKey.STUDY_GROUP_SIZE.name) ??
         defaultStudyGroupSize;
     return isAllowedStudyGroupSize(value) ? value : defaultStudyGroupSize;
-  }
-
-  Future<void> saveStudyGroupSize(int value) async {
-    if (!isAllowedStudyGroupSize(value)) {
-      throw ArgumentError.value(value, 'value', 'Unsupported study group size');
-    }
-    await _storage.setInt(StorageKey.STUDY_GROUP_SIZE.name, value);
   }
 }
 
