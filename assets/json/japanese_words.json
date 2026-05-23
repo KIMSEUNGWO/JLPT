@@ -23671,7 +23671,7 @@
     {
       "id": 2803,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "赤",
       "hiragana": "あかい",
       "korean": "빨갛다. 붉다",
@@ -23716,7 +23716,7 @@
     {
       "id": 2808,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "大い",
       "hiragana": "おおきい",
       "korean": "크다",
@@ -23797,7 +23797,7 @@
     {
       "id": 2817,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "白",
       "hiragana": "しろい",
       "korean": "희다. 하얗다",
@@ -23815,7 +23815,7 @@
     {
       "id": 2819,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "高",
       "hiragana": "たかい",
       "korean": "비싸다. 높다. (키가) 크다",
@@ -23851,7 +23851,7 @@
     {
       "id": 2823,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "長",
       "hiragana": "ながい",
       "korean": "길다",
@@ -23887,7 +23887,7 @@
     {
       "id": 2827,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "小い",
       "hiragana": "ちいさい",
       "korean": "(크기가) 작다",
@@ -23914,7 +23914,7 @@
     {
       "id": 2830,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "古",
       "hiragana": "ふるい",
       "korean": "오래되다. 낡다",
@@ -23986,7 +23986,7 @@
     {
       "id": 2838,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "安",
       "hiragana": "やすい",
       "korean": "(값이) 싸다",
@@ -23995,7 +23995,7 @@
     {
       "id": 2839,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "新い",
       "hiragana": "あたらしい",
       "korean": "새롭다",
@@ -24013,7 +24013,7 @@
     {
       "id": 2841,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "多",
       "hiragana": "おおい",
       "korean": "많다",
@@ -24085,7 +24085,7 @@
     {
       "id": 2849,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "暖い",
       "hiragana": "あたたかい",
       "korean": "따뜻하다",
@@ -24103,7 +24103,7 @@
     {
       "id": 2851,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "危い",
       "hiragana": "あぶない",
       "korean": "위험하다",
@@ -24112,7 +24112,7 @@
     {
       "id": 2852,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "甘",
       "hiragana": "あまい",
       "korean": "달다",
@@ -24175,7 +24175,7 @@
     {
       "id": 2859,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "薄",
       "hiragana": "うすい",
       "korean": "얇다",
@@ -24202,7 +24202,7 @@
     {
       "id": 2862,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "おいしい",
       "hiragana": "おいしい",
       "korean": "맛있다",
@@ -24229,7 +24229,7 @@
     {
       "id": 2865,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "忙い",
       "hiragana": "いそがしい",
       "korean": "바쁘다",
@@ -24238,7 +24238,7 @@
     {
       "id": 2866,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "痛",
       "hiragana": "いたい",
       "korean": "아프다",
@@ -24292,7 +24292,7 @@
     {
       "id": 2872,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "辛",
       "hiragana": "からい",
       "korean": "맵다",
@@ -24319,7 +24319,7 @@
     {
       "id": 2875,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "重",
       "hiragana": "おもい",
       "korean": "무겁다",
@@ -24328,7 +24328,7 @@
     {
       "id": 2876,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "おもしろい",
       "hiragana": "おもしろい",
       "korean": "재미있다",
@@ -24346,7 +24346,7 @@
     {
       "id": 2878,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "汚",
       "hiragana": "きたない",
       "korean": "더럽다. 지저분하다",
@@ -24418,7 +24418,7 @@
     {
       "id": 2886,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "暗",
       "hiragana": "くらい",
       "korean": "어둡다",
@@ -24445,7 +24445,7 @@
     {
       "id": 2889,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "けっこう",
       "hiragana": "けっこう",
       "korean": "충분함, 이제 됐음",
@@ -24544,7 +24544,7 @@
     {
       "id": 2900,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "直に",
       "hiragana": "すぐに",
       "korean": "곧 바로",
@@ -24571,7 +24571,7 @@
     {
       "id": 2903,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "静に",
       "hiragana": "しずかに",
       "korean": "조용히",
@@ -24598,7 +24598,7 @@
     {
       "id": 2906,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "大丈夫",
       "hiragana": "だいじょうぶ",
       "korean": "괜찮음",
@@ -24607,7 +24607,7 @@
     {
       "id": 2907,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "大切",
       "hiragana": "たいせつ",
       "korean": "중요함, 소중함",
@@ -24616,7 +24616,7 @@
     {
       "id": 2908,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "たいてい",
       "hiragana": "たいてい",
       "korean": "대체로",
@@ -24625,7 +24625,7 @@
     {
       "id": 2909,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "たいへん",
       "hiragana": "たいへん",
       "korean": "힘듦, 큰일임",
@@ -24634,7 +24634,7 @@
     {
       "id": 2910,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "たくさん",
       "hiragana": "たくさん",
       "korean": "많이",
@@ -24643,7 +24643,7 @@
     {
       "id": 2911,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "楽い",
       "hiragana": "たのしい",
       "korean": "즐겁다",
@@ -24652,7 +24652,7 @@
     {
       "id": 2912,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "たぶん",
       "hiragana": "たぶん",
       "korean": "아마",
@@ -24661,7 +24661,7 @@
     {
       "id": 2913,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "だんだん",
       "hiragana": "だんだん",
       "korean": "점점, 점차",
@@ -24670,7 +24670,7 @@
     {
       "id": 2914,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "近",
       "hiragana": "ちかい",
       "korean": "가깝다",
@@ -24679,7 +24679,7 @@
     {
       "id": 2915,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ちょうど",
       "hiragana": "ちょうど",
       "korean": "정각, 정확히",
@@ -24706,7 +24706,7 @@
     {
       "id": 2918,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "冷い",
       "hiragana": "つめたい",
       "korean": "차갑다",
@@ -24715,7 +24715,7 @@
     {
       "id": 2919,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "強",
       "hiragana": "つよい",
       "korean": "강하다, 세다",
@@ -24733,7 +24733,7 @@
     {
       "id": 2921,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "遠",
       "hiragana": "とおい",
       "korean": "멀다",
@@ -24904,7 +24904,7 @@
     {
       "id": 2940,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "初て",
       "hiragana": "はじめて",
       "korean": "처음으로",
@@ -24994,7 +24994,7 @@
     {
       "id": 2950,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "便利",
       "hiragana": "べんり",
       "korean": "편리함",
@@ -25003,7 +25003,7 @@
     {
       "id": 2951,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "欲い",
       "hiragana": "ほしい",
       "korean": "가지고 싶다",
@@ -25012,7 +25012,7 @@
     {
       "id": 2952,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "細",
       "hiragana": "ほそい",
       "korean": "가늘다",
@@ -25039,7 +25039,7 @@
     {
       "id": 2955,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "また",
       "hiragana": "また",
       "korean": "또",
@@ -25048,7 +25048,7 @@
     {
       "id": 2956,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "まっすぐ",
       "hiragana": "まっすぐ",
       "korean": "똑바로, 곧장",
@@ -25066,7 +25066,7 @@
     {
       "id": 2958,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "もっと",
       "hiragana": "もっと",
       "korean": "좀 더, 더",
@@ -25093,7 +25093,7 @@
     {
       "id": 2961,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ゆっくり",
       "hiragana": "ゆっくり",
       "korean": "천천히",
@@ -25111,7 +25111,7 @@
     {
       "id": 2963,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "立派",
       "hiragana": "りっぱ",
       "korean": "훌륭함",
@@ -25120,7 +25120,7 @@
     {
       "id": 2964,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "若",
       "hiragana": "わかい",
       "korean": "젊다",
@@ -25228,7 +25228,7 @@
     {
       "id": 2976,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "嫌",
       "hiragana": "きらい",
       "korean": "싫음",
@@ -25237,7 +25237,7 @@
     {
       "id": 2977,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "きれい",
       "hiragana": "きれい",
       "korean": "깨끗함, 예쁨",
@@ -25345,7 +25345,7 @@
     {
       "id": 2989,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "つまらない",
       "hiragana": "つまらない",
       "korean": "시시하다",
@@ -25381,7 +25381,7 @@
     {
       "id": 2993,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "なぜ",
       "hiragana": "なぜ",
       "korean": "왜",
@@ -25390,7 +25390,7 @@
     {
       "id": 2994,
       "level": "N5",
-      "act": "Adv",
+      "act": "ADV",
       "word": "どうして",
       "hiragana": "どうして",
       "korean": "왜",
@@ -25399,7 +25399,7 @@
     {
       "id": 2995,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "にぎやか",
       "hiragana": "にぎやか",
       "korean": "떠들썩함",
@@ -25426,7 +25426,7 @@
     {
       "id": 2998,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "まずい",
       "hiragana": "まずい",
       "korean": "맛없다",
@@ -25435,7 +25435,7 @@
     {
       "id": 2999,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "やさしい",
       "hiragana": "やさしい",
       "korean": "쉽다",
@@ -25444,7 +25444,7 @@
     {
       "id": 3000,
       "level": "N5",
-      "act": "A",
+      "act": "ADJ",
       "word": "簡単",
       "hiragana": "かんたん",
       "korean": "간단함",
@@ -25543,7 +25543,7 @@
     {
       "id": 3011,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "暑",
       "hiragana": "あつい",
       "korean": "덥다",
@@ -25669,7 +25669,7 @@
     {
       "id": 3025,
       "level": "N4",
-      "act": "Adv",
+      "act": "ADV",
       "word": "急",
       "hiragana": "きゅうに",
       "korean": "갑자기",
@@ -25696,7 +25696,7 @@
     {
       "id": 3028,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "黒",
       "hiragana": "くろい",
       "korean": "검다",
@@ -25912,7 +25912,7 @@
     {
       "id": 3052,
       "level": "N4",
-      "act": "Adv",
+      "act": "ADV",
       "word": "特",
       "hiragana": "とくに",
       "korean": "특히",
@@ -25939,7 +25939,7 @@
     {
       "id": 3055,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "早",
       "hiragana": "はやい",
       "korean": "이르다, 빠르다",
@@ -25948,7 +25948,7 @@
     {
       "id": 3056,
       "level": "N4",
-      "act": "Adv",
+      "act": "ADV",
       "word": "早",
       "hiragana": "はやく",
       "korean": "일찍, 빨리",
@@ -25957,7 +25957,7 @@
     {
       "id": 3057,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "広",
       "hiragana": "ひろい",
       "korean": "넓다",
@@ -25984,7 +25984,7 @@
     {
       "id": 3060,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "弱",
       "hiragana": "よわい",
       "korean": "약하다",
@@ -26002,7 +26002,7 @@
     {
       "id": 3062,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "悪",
       "hiragana": "わるい",
       "korean": "나쁘다, 안 좋다",
@@ -26011,7 +26011,7 @@
     {
       "id": 3063,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "青",
       "hiragana": "あおい",
       "korean": "파랗다",
@@ -26020,7 +26020,7 @@
     {
       "id": 3064,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "明い",
       "hiragana": "あかるい",
       "korean": "밝다",
@@ -26083,7 +26083,7 @@
     {
       "id": 3071,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "正い",
       "hiragana": "ただしい",
       "korean": "바르다, 옳다",
@@ -26272,7 +26272,7 @@
     {
       "id": 3092,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "固",
       "hiragana": "かたい",
       "korean": "딱딱하다",
@@ -26326,7 +26326,7 @@
     {
       "id": 3098,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "細い",
       "hiragana": "こまかい",
       "korean": "잘다, 세세하다",
@@ -26335,7 +26335,7 @@
     {
       "id": 3099,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "怖",
       "hiragana": "こわい",
       "korean": "무섭다",
@@ -26353,7 +26353,7 @@
     {
       "id": 3101,
       "level": "N4",
-      "act": "Adv",
+      "act": "ADV",
       "word": "さっき",
       "hiragana": "さっき",
       "korean": "아까",
@@ -26407,7 +26407,7 @@
     {
       "id": 3107,
       "level": "N4",
-      "act": "Conj",
+      "act": "CONJ",
       "word": "それで",
       "hiragana": "それで",
       "korean": "그래서",
@@ -26416,7 +26416,7 @@
     {
       "id": 3108,
       "level": "N4",
-      "act": "Conj",
+      "act": "CONJ",
       "word": "それに",
       "hiragana": "それに",
       "korean": "게다가",
@@ -26425,7 +26425,7 @@
     {
       "id": 3109,
       "level": "N4",
-      "act": "Adv",
+      "act": "ADV",
       "word": "確に",
       "hiragana": "たしかに",
       "korean": "분명히, 확실하게",
@@ -26479,7 +26479,7 @@
     {
       "id": 3115,
       "level": "N4",
-      "act": "Adv",
+      "act": "ADV",
       "word": "とうとう",
       "hiragana": "とうとう",
       "korean": "드디어, 마침내",
@@ -26506,7 +26506,7 @@
     {
       "id": 3118,
       "level": "N4",
-      "act": "Adv",
+      "act": "ADV",
       "word": "なるべく",
       "hiragana": "なるべく",
       "korean": "되도록, 가능한 한",
@@ -26515,7 +26515,7 @@
     {
       "id": 3119,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "苦",
       "hiragana": "にがい",
       "korean": "(맛이) 쓰다",
@@ -26542,7 +26542,7 @@
     {
       "id": 3122,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "眠",
       "hiragana": "ねむい",
       "korean": "졸리다",
@@ -26560,7 +26560,7 @@
     {
       "id": 3124,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "恥しい",
       "hiragana": "はずかしい",
       "korean": "부끄럽다",
@@ -26641,7 +26641,7 @@
     {
       "id": 3133,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "珍い",
       "hiragana": "めずらしい",
       "korean": "진귀하다, 드물다",
@@ -26659,7 +26659,7 @@
     {
       "id": 3135,
       "level": "N4",
-      "act": "Adv",
+      "act": "ADV",
       "word": "やっと",
       "hiragana": "やっと",
       "korean": "겨우, 간신히",
@@ -26668,7 +26668,7 @@
     {
       "id": 3136,
       "level": "N4",
-      "act": "Adv",
+      "act": "ADV",
       "word": "やっぱり",
       "hiragana": "やっぱり",
       "korean": "역시",
@@ -26677,7 +26677,7 @@
     {
       "id": 3137,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "やわらかい",
       "hiragana": "やわらかい",
       "korean": "부드럽다",
@@ -26749,7 +26749,7 @@
     {
       "id": 3145,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "うまい",
       "hiragana": "うまい",
       "korean": "맛있다, 능숙하다",
@@ -26785,7 +26785,7 @@
     {
       "id": 3149,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "厳い",
       "hiragana": "きびしい",
       "korean": "엄하다, 엄격하다",
@@ -26803,7 +26803,7 @@
     {
       "id": 3151,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "寂い",
       "hiragana": "さびしい",
       "korean": "쓸쓸하다, 외롭다",
@@ -26812,7 +26812,7 @@
     {
       "id": 3152,
       "level": "N4",
-      "act": "A",
+      "act": "ADJ",
       "word": "寒",
       "hiragana": "さむい",
       "korean": "춥다",
@@ -26884,7 +26884,7 @@
     {
       "id": 3160,
       "level": "N4",
-      "act": "Adv",
+      "act": "ADV",
       "word": "どんどん",
       "hiragana": "どんどん",
       "korean": "쑥쑥",
@@ -26938,7 +26938,7 @@
     {
       "id": 3166,
       "level": "N4",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ゆっくりと",
       "hiragana": "ゆっくりと",
       "korean": "천천히",
@@ -26965,7 +26965,7 @@
     {
       "id": 3169,
       "level": "N4",
-      "act": "Exp",
+      "act": "EXP",
       "word": "おかげさまで",
       "hiragana": "おかげさまで",
       "korean": "덕분에",
@@ -27001,7 +27001,7 @@
     {
       "id": 3173,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "得意",
       "hiragana": "とくいな",
       "korean": "자신 있는, 잘하는",
@@ -27136,7 +27136,7 @@
     {
       "id": 3188,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "深",
       "hiragana": "ふかい",
       "korean": "깊다",
@@ -27190,7 +27190,7 @@
     {
       "id": 3194,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "短",
       "hiragana": "みじかい",
       "korean": "짧다",
@@ -27208,7 +27208,7 @@
     {
       "id": 3196,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "苦い",
       "hiragana": "くるしい",
       "korean": "괴롭다",
@@ -27253,7 +27253,7 @@
     {
       "id": 3201,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "浅",
       "hiragana": "あさい",
       "korean": "얕다",
@@ -27298,7 +27298,7 @@
     {
       "id": 3206,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "一般的",
       "hiragana": "いっぱんてきな",
       "korean": "일반적인",
@@ -27307,7 +27307,7 @@
     {
       "id": 3207,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "厚",
       "hiragana": "あつい",
       "korean": "두껍다",
@@ -27316,7 +27316,7 @@
     {
       "id": 3208,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "美い",
       "hiragana": "うつくしい",
       "korean": "아름답다",
@@ -27406,7 +27406,7 @@
     {
       "id": 3218,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "丸",
       "hiragana": "まるい",
       "korean": "둥글다",
@@ -27649,7 +27649,7 @@
     {
       "id": 3245,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "遅",
       "hiragana": "おそい",
       "korean": "느리다, 늦다",
@@ -27712,7 +27712,7 @@
     {
       "id": 3252,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "恋い",
       "hiragana": "こいしい",
       "korean": "그립다",
@@ -27757,7 +27757,7 @@
     {
       "id": 3257,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "速",
       "hiragana": "はやい",
       "korean": "빠르다",
@@ -27874,7 +27874,7 @@
     {
       "id": 3270,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "うっかり",
       "hiragana": "うっかり",
       "korean": "깜빡, 무심코",
@@ -27883,7 +27883,7 @@
     {
       "id": 3271,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "りっぱな",
       "hiragana": "りっぱな",
       "korean": "훌륭한",
@@ -27892,7 +27892,7 @@
     {
       "id": 3272,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "早に",
       "hiragana": "はやめに",
       "korean": "일찌감치",
@@ -27955,7 +27955,7 @@
     {
       "id": 3279,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "しばらく",
       "hiragana": "しばらく",
       "korean": "잠시",
@@ -27964,7 +27964,7 @@
     {
       "id": 3280,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "どきどき",
       "hiragana": "どきどき",
       "korean": "두근두근",
@@ -27982,7 +27982,7 @@
     {
       "id": 3282,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ぶらぶら",
       "hiragana": "ぶらぶら",
       "korean": "어슬렁어슬렁, 천천히",
@@ -28000,7 +28000,7 @@
     {
       "id": 3284,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "複雑",
       "hiragana": "ふくざつな",
       "korean": "복잡한",
@@ -28027,7 +28027,7 @@
     {
       "id": 3287,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "からから",
       "hiragana": "からから",
       "korean": "바싹바싹(몹시 건조한 모습)",
@@ -28054,7 +28054,7 @@
     {
       "id": 3290,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "清潔",
       "hiragana": "せいけつな",
       "korean": "청결한",
@@ -28072,7 +28072,7 @@
     {
       "id": 3292,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "さっそく",
       "hiragana": "さっそく",
       "korean": "즉시",
@@ -28108,7 +28108,7 @@
     {
       "id": 3296,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "しっかり",
       "hiragana": "しっかり",
       "korean": "단단히, 꽉, 제대로",
@@ -28225,7 +28225,7 @@
     {
       "id": 3309,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "なつかしい",
       "hiragana": "なつかしい",
       "korean": "그립다",
@@ -28234,7 +28234,7 @@
     {
       "id": 3310,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "しつこい",
       "hiragana": "しつこい",
       "korean": "끈질기다",
@@ -28243,7 +28243,7 @@
     {
       "id": 3311,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "自動的",
       "hiragana": "じどうてきな",
       "korean": "자동적인",
@@ -28261,7 +28261,7 @@
     {
       "id": 3313,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "おかしい",
       "hiragana": "おかしい",
       "korean": "이상하다",
@@ -28297,7 +28297,7 @@
     {
       "id": 3317,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "主",
       "hiragana": "おもに",
       "korean": "주로",
@@ -28333,7 +28333,7 @@
     {
       "id": 3321,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "緩",
       "hiragana": "ゆるい",
       "korean": "느슨하다, 완만하다",
@@ -28378,7 +28378,7 @@
     {
       "id": 3326,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "別々に",
       "hiragana": "べつべつに",
       "korean": "따로따로",
@@ -28423,7 +28423,7 @@
     {
       "id": 3331,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "積極的",
       "hiragana": "せっきょくてきな",
       "korean": "적극적인",
@@ -28486,7 +28486,7 @@
     {
       "id": 3338,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "悔い",
       "hiragana": "くやしい",
       "korean": "분하다, 억울하다",
@@ -28513,7 +28513,7 @@
     {
       "id": 3341,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ふらふら",
       "hiragana": "ふらふら",
       "korean": "비틀비틀, 휘청휘청",
@@ -28531,7 +28531,7 @@
     {
       "id": 3343,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "代表的",
       "hiragana": "だいひょうてきな",
       "korean": "대표적인",
@@ -28549,7 +28549,7 @@
     {
       "id": 3345,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "そっくり",
       "hiragana": "そっくり",
       "korean": "똑같이 생김",
@@ -28612,7 +28612,7 @@
     {
       "id": 3352,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ぴったり",
       "hiragana": "ぴったり",
       "korean": "딱(밀착함, 어울림)",
@@ -28621,7 +28621,7 @@
     {
       "id": 3353,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "盛な",
       "hiragana": "さかんな",
       "korean": "왕성한, 활발한",
@@ -28666,7 +28666,7 @@
     {
       "id": 3358,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "惜い",
       "hiragana": "おしい",
       "korean": "아깝다, 아쉽다",
@@ -28711,7 +28711,7 @@
     {
       "id": 3363,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "がらがら",
       "hiragana": "がらがら",
       "korean": "텅텅(텅 빈 모습)",
@@ -28801,7 +28801,7 @@
     {
       "id": 3373,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ずいぶん",
       "hiragana": "ずいぶん",
       "korean": "상당히",
@@ -28828,7 +28828,7 @@
     {
       "id": 3376,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "きつい",
       "hiragana": "きつい",
       "korean": "꼭 끼다, 힘들다",
@@ -28855,7 +28855,7 @@
     {
       "id": 3379,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "わかりやすい",
       "hiragana": "わかりやすい",
       "korean": "알기 쉽다",
@@ -28864,7 +28864,7 @@
     {
       "id": 3380,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "単純",
       "hiragana": "たんじゅんだ",
       "korean": "단순하다",
@@ -28891,7 +28891,7 @@
     {
       "id": 3383,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "短気",
       "hiragana": "たんきだ",
       "korean": "성미가 급하다",
@@ -28909,7 +28909,7 @@
     {
       "id": 3385,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "おそろしい",
       "hiragana": "おそろしい",
       "korean": "무섭다",
@@ -28981,7 +28981,7 @@
     {
       "id": 3393,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "らくな",
       "hiragana": "らくな",
       "korean": "편한",
@@ -28999,7 +28999,7 @@
     {
       "id": 3395,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ぜったいに",
       "hiragana": "ぜったいに",
       "korean": "절대로",
@@ -29008,7 +29008,7 @@
     {
       "id": 3396,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "かならず",
       "hiragana": "かならず",
       "korean": "반드시",
@@ -29017,7 +29017,7 @@
     {
       "id": 3397,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "年中",
       "hiragana": "ねんじゅう",
       "korean": "일 년 내내",
@@ -29026,7 +29026,7 @@
     {
       "id": 3398,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "いつも",
       "hiragana": "いつも",
       "korean": "항상",
@@ -29044,7 +29044,7 @@
     {
       "id": 3400,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "そっと",
       "hiragana": "そっと",
       "korean": "살짝",
@@ -29053,7 +29053,7 @@
     {
       "id": 3401,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "まぶしい",
       "hiragana": "まぶしい",
       "korean": "눈부시다",
@@ -29098,7 +29098,7 @@
     {
       "id": 3406,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "このごろ",
       "hiragana": "このごろ",
       "korean": "요즈음",
@@ -29107,7 +29107,7 @@
     {
       "id": 3407,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "さいきん",
       "hiragana": "さいきん",
       "korean": "최근",
@@ -29161,7 +29161,7 @@
     {
       "id": 3413,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "あわてて",
       "hiragana": "あわてて",
       "korean": "허둥대며, 황급하게",
@@ -29197,7 +29197,7 @@
     {
       "id": 3417,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "だいたい",
       "hiragana": "だいたい",
       "korean": "대략",
@@ -29215,7 +29215,7 @@
     {
       "id": 3419,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "すべて",
       "hiragana": "すべて",
       "korean": "모두",
@@ -29251,7 +29251,7 @@
     {
       "id": 3423,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "次第",
       "hiragana": "しだいに",
       "korean": "점차",
@@ -29278,7 +29278,7 @@
     {
       "id": 3426,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "相変",
       "hiragana": "あいかわらず",
       "korean": "여전히",
@@ -29296,7 +29296,7 @@
     {
       "id": 3428,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "まったく",
       "hiragana": "まったく",
       "korean": "전혀",
@@ -29332,7 +29332,7 @@
     {
       "id": 3432,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "もちろん",
       "hiragana": "もちろん",
       "korean": "물론",
@@ -29350,7 +29350,7 @@
     {
       "id": 3434,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "あらゆる",
       "hiragana": "あらゆる",
       "korean": "모든, 온갖",
@@ -29377,7 +29377,7 @@
     {
       "id": 3437,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "まずしい",
       "hiragana": "まずしい",
       "korean": "가난하다",
@@ -29386,7 +29386,7 @@
     {
       "id": 3438,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "なだらかな",
       "hiragana": "なだらかな",
       "korean": "완만한",
@@ -29422,7 +29422,7 @@
     {
       "id": 3442,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "正直",
       "hiragana": "しょうじきな",
       "korean": "정직한",
@@ -29440,7 +29440,7 @@
     {
       "id": 3444,
       "level": "N3",
-      "act": "Adv",
+      "act": "ADV",
       "word": "そろそろ",
       "hiragana": "そろそろ",
       "korean": "슬슬",
@@ -29512,7 +29512,7 @@
     {
       "id": 3452,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "だるい",
       "hiragana": "だるい",
       "korean": "나른하다",
@@ -29575,7 +29575,7 @@
     {
       "id": 3459,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "新鮮",
       "hiragana": "しんせんな",
       "korean": "신선한",
@@ -29593,7 +29593,7 @@
     {
       "id": 3461,
       "level": "N3",
-      "act": "A",
+      "act": "ADJ",
       "word": "親い",
       "hiragana": "したしい",
       "korean": "친하다",
@@ -29692,7 +29692,7 @@
     {
       "id": 3472,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "密接な",
       "hiragana": "みっせつな",
       "korean": "밀접한",
@@ -29701,7 +29701,7 @@
     {
       "id": 3473,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "豊富な",
       "hiragana": "ほうふな",
       "korean": "풍부한",
@@ -29791,7 +29791,7 @@
     {
       "id": 3483,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "清潔な",
       "hiragana": "せいけつな",
       "korean": "청결한",
@@ -29809,7 +29809,7 @@
     {
       "id": 3485,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "大幅に",
       "hiragana": "おおはばに",
       "korean": "대폭적으로",
@@ -29818,7 +29818,7 @@
     {
       "id": 3486,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "悔やしい",
       "hiragana": "くやしい",
       "korean": "억울하다",
@@ -29917,7 +29917,7 @@
     {
       "id": 3497,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "貴重な",
       "hiragana": "きちょうな",
       "korean": "귀중한",
@@ -29953,7 +29953,7 @@
     {
       "id": 3501,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "密閉い",
       "hiragana": "みっぺい",
       "korean": "밀폐",
@@ -29989,7 +29989,7 @@
     {
       "id": 3505,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "怖い",
       "hiragana": "こわい",
       "korean": "무섭다",
@@ -30025,7 +30025,7 @@
     {
       "id": 3509,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "和かな",
       "hiragana": "なごやかな",
       "korean": "부드럽다, 온화하다",
@@ -30061,7 +30061,7 @@
     {
       "id": 3513,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "等しい",
       "hiragana": "ひとしい",
       "korean": "같다, 다름없다",
@@ -30106,7 +30106,7 @@
     {
       "id": 3518,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "著しい",
       "hiragana": "いちじるしい",
       "korean": "현저하다, 두드러지다",
@@ -30169,7 +30169,7 @@
     {
       "id": 3525,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "途端に",
       "hiragana": "とたんに",
       "korean": "갑자기",
@@ -30205,7 +30205,7 @@
     {
       "id": 3529,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "勇ましい",
       "hiragana": "いさましい",
       "korean": "용감하다, 활발하다",
@@ -30241,7 +30241,7 @@
     {
       "id": 3533,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "絡まる",
       "hiragana": "からまる",
       "korean": "얽히다",
@@ -30259,7 +30259,7 @@
     {
       "id": 3535,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "鮮な",
       "hiragana": "あざやかな",
       "korean": "선명한",
@@ -30376,7 +30376,7 @@
     {
       "id": 3548,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "勢い",
       "hiragana": "いきおい",
       "korean": "기세",
@@ -30412,7 +30412,7 @@
     {
       "id": 3552,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "真剣な",
       "hiragana": "しんけんな",
       "korean": "진지한",
@@ -30448,7 +30448,7 @@
     {
       "id": 3556,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "即座に",
       "hiragana": "そくざに",
       "korean": "즉석에서, 그 자리에서",
@@ -30466,7 +30466,7 @@
     {
       "id": 3558,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "湿っぽい",
       "hiragana": "しめっぽい",
       "korean": "눅눅하다, 습기 차다",
@@ -30502,7 +30502,7 @@
     {
       "id": 3562,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "面倒な",
       "hiragana": "めんどうな",
       "korean": "귀찮은, 성가신",
@@ -30556,7 +30556,7 @@
     {
       "id": 3568,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "簡潔な",
       "hiragana": "かんけつな",
       "korean": "간결한",
@@ -30601,7 +30601,7 @@
     {
       "id": 3573,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "快く",
       "hiragana": "こころよく",
       "korean": "흔쾌히",
@@ -30628,7 +30628,7 @@
     {
       "id": 3576,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "豊な",
       "hiragana": "ゆたかな",
       "korean": "풍부한, 부유한",
@@ -30673,7 +30673,7 @@
     {
       "id": 3581,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "濃い",
       "hiragana": "こい",
       "korean": "짙다, 진하다",
@@ -30718,7 +30718,7 @@
     {
       "id": 3586,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "陽気な",
       "hiragana": "ようきな",
       "korean": "밝고 쾌활한, 명랑한",
@@ -30880,7 +30880,7 @@
     {
       "id": 3604,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "柔い",
       "hiragana": "やわらかい",
       "korean": "부드럽다",
@@ -30916,7 +30916,7 @@
     {
       "id": 3608,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "厚かましい",
       "hiragana": "あつかましい",
       "korean": "뻔뻔하다",
@@ -30943,7 +30943,7 @@
     {
       "id": 3611,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "薄す暗い",
       "hiragana": "うすぐらい",
       "korean": "어둑어둑하다, 침침하다",
@@ -30979,7 +30979,7 @@
     {
       "id": 3615,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "真後",
       "hiragana": "まうしろ",
       "korean": "바로 뒤",
@@ -31033,7 +31033,7 @@
     {
       "id": 3621,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "頼い",
       "hiragana": "たのみづらい",
       "korean": "부탁하기 어렵다",
@@ -31087,7 +31087,7 @@
     {
       "id": 3627,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "のんびり",
       "hiragana": "のんびり",
       "korean": "한가로이",
@@ -31096,7 +31096,7 @@
     {
       "id": 3628,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "じょに",
       "hiragana": "じょに",
       "korean": "서서히",
@@ -31141,7 +31141,7 @@
     {
       "id": 3633,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "温厚な",
       "hiragana": "おんこうな",
       "korean": "온후한, 다정다감한",
@@ -31159,7 +31159,7 @@
     {
       "id": 3635,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "あいまいな",
       "hiragana": "あいまいな",
       "korean": "애매한",
@@ -31177,7 +31177,7 @@
     {
       "id": 3637,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "割りと",
       "hiragana": "わりと",
       "korean": "비교적",
@@ -31195,7 +31195,7 @@
     {
       "id": 3639,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ぼんやり",
       "hiragana": "ぼんやり",
       "korean": "희미하게, 멍하게",
@@ -31258,7 +31258,7 @@
     {
       "id": 3646,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ちゃくと",
       "hiragana": "ちゃくと",
       "korean": "착착, 순조롭게",
@@ -31339,7 +31339,7 @@
     {
       "id": 3655,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "適度な",
       "hiragana": "てきどな",
       "korean": "적당한, 알맞은",
@@ -31366,7 +31366,7 @@
     {
       "id": 3658,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "ぜいたくな",
       "hiragana": "ぜいたくな",
       "korean": "사치스러운",
@@ -31375,7 +31375,7 @@
     {
       "id": 3659,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "スムーズに",
       "hiragana": "すむーずに",
       "korean": "부드럽게",
@@ -31384,7 +31384,7 @@
     {
       "id": 3660,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "つらい",
       "hiragana": "つらい",
       "korean": "괴롭다, 힘들다",
@@ -31393,7 +31393,7 @@
     {
       "id": 3661,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "すっきり",
       "hiragana": "すっきり",
       "korean": "산뜻하게, 후련하게",
@@ -31438,7 +31438,7 @@
     {
       "id": 3666,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "思て",
       "hiragana": "おもいきって",
       "korean": "과감하게",
@@ -31465,7 +31465,7 @@
     {
       "id": 3669,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "やかましい",
       "hiragana": "やかましい",
       "korean": "시끄럽다",
@@ -31483,7 +31483,7 @@
     {
       "id": 3671,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "一気に",
       "hiragana": "いっきに",
       "korean": "단숨에, 단번에",
@@ -31492,7 +31492,7 @@
     {
       "id": 3672,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "あらかじめ",
       "hiragana": "あらかじめ",
       "korean": "미리",
@@ -31519,7 +31519,7 @@
     {
       "id": 3675,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "うとうと",
       "hiragana": "うとうと",
       "korean": "꾸벅꾸벅(조는 모양)",
@@ -31537,7 +31537,7 @@
     {
       "id": 3677,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "びっしょり",
       "hiragana": "びっしょり",
       "korean": "흠뻑(완전히 젖은 모양)",
@@ -31555,7 +31555,7 @@
     {
       "id": 3679,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "輝かしい",
       "hiragana": "かがやかしい",
       "korean": "빛나다, 눈부시다",
@@ -31618,7 +31618,7 @@
     {
       "id": 3686,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "安易な",
       "hiragana": "あんいな",
       "korean": "안이한",
@@ -31681,7 +31681,7 @@
     {
       "id": 3693,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "活発な",
       "hiragana": "かっぱつな",
       "korean": "활발한",
@@ -31690,7 +31690,7 @@
     {
       "id": 3694,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "頼しい",
       "hiragana": "たのもしい",
       "korean": "믿음직하다",
@@ -31699,7 +31699,7 @@
     {
       "id": 3695,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "おだやかな",
       "hiragana": "おだやかな",
       "korean": "온화한",
@@ -31762,7 +31762,7 @@
     {
       "id": 3702,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "有利な",
       "hiragana": "ゆうりな",
       "korean": "유리한",
@@ -31780,7 +31780,7 @@
     {
       "id": 3704,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "そそっかしい",
       "hiragana": "そそっかしい",
       "korean": "경솔하다",
@@ -31816,7 +31816,7 @@
     {
       "id": 3708,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "でたらめに",
       "hiragana": "でたらめに",
       "korean": "아무렇게나",
@@ -31906,7 +31906,7 @@
     {
       "id": 3718,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "ふさわしい",
       "hiragana": "ふさわしい",
       "korean": "어울리다",
@@ -31951,7 +31951,7 @@
     {
       "id": 3723,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "いいかげんな",
       "hiragana": "いいかげんな",
       "korean": "무책임한",
@@ -31969,7 +31969,7 @@
     {
       "id": 3725,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "気軽に",
       "hiragana": "きがるに",
       "korean": "부담 없이",
@@ -31978,7 +31978,7 @@
     {
       "id": 3726,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "じろじろ",
       "hiragana": "じろじろ",
       "korean": "빤히, 뚫어지게",
@@ -31996,7 +31996,7 @@
     {
       "id": 3728,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "固める",
       "hiragana": "かためる",
       "korean": "굳히다",
@@ -32059,7 +32059,7 @@
     {
       "id": 3735,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "劇的に",
       "hiragana": "げきてきに",
       "korean": "극적으로",
@@ -32104,7 +32104,7 @@
     {
       "id": 3740,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "まれな",
       "hiragana": "まれな",
       "korean": "드문, 희귀한",
@@ -32257,7 +32257,7 @@
     {
       "id": 3757,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "多大な",
       "hiragana": "ただいな",
       "korean": "매우 큰",
@@ -32302,7 +32302,7 @@
     {
       "id": 3762,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "ずうずうしい",
       "hiragana": "ずうずうしい",
       "korean": "뻔뻔스럽다",
@@ -32338,7 +32338,7 @@
     {
       "id": 3766,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "賢い",
       "hiragana": "かしこい",
       "korean": "똑똑하다",
@@ -32347,7 +32347,7 @@
     {
       "id": 3767,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "頭がいい",
       "hiragana": "あたまがいい",
       "korean": "머리가 좋다",
@@ -32374,7 +32374,7 @@
     {
       "id": 3770,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "勝手な",
       "hiragana": "かってな",
       "korean": "제멋대로인",
@@ -32383,7 +32383,7 @@
     {
       "id": 3771,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "わがままな",
       "hiragana": "わがままな",
       "korean": "제멋대로인",
@@ -32473,7 +32473,7 @@
     {
       "id": 3781,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "わずかな",
       "hiragana": "わずかな",
       "korean": "얼마 안 되는",
@@ -32509,7 +32509,7 @@
     {
       "id": 3785,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "いきなり",
       "hiragana": "いきなり",
       "korean": "갑자기",
@@ -32518,7 +32518,7 @@
     {
       "id": 3786,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "直に",
       "hiragana": "ただちに",
       "korean": "즉시",
@@ -32527,7 +32527,7 @@
     {
       "id": 3787,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "すぐに",
       "hiragana": "すぐに",
       "korean": "바로",
@@ -32536,7 +32536,7 @@
     {
       "id": 3788,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "奇妙な",
       "hiragana": "きみょうな",
       "korean": "기묘한",
@@ -32545,7 +32545,7 @@
     {
       "id": 3789,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "変な",
       "hiragana": "へんな",
       "korean": "이상한",
@@ -32716,7 +32716,7 @@
     {
       "id": 3808,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "必死な",
       "hiragana": "ひっしな",
       "korean": "필사적인, 열심인",
@@ -32752,7 +32752,7 @@
     {
       "id": 3812,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "たちまち",
       "hiragana": "たちまち",
       "korean": "금세, 순식간에",
@@ -32761,7 +32761,7 @@
     {
       "id": 3813,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "たまたま",
       "hiragana": "たまたま",
       "korean": "우연히",
@@ -32770,7 +32770,7 @@
     {
       "id": 3814,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "明かな",
       "hiragana": "あきらかな",
       "korean": "분명한",
@@ -32797,7 +32797,7 @@
     {
       "id": 3817,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "ぞうしい",
       "hiragana": "ぞうしい",
       "korean": "시끄럽다, 소란스럽다",
@@ -32806,7 +32806,7 @@
     {
       "id": 3818,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "うるさい",
       "hiragana": "うるさい",
       "korean": "시끄럽다",
@@ -32815,7 +32815,7 @@
     {
       "id": 3819,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "おそらく",
       "hiragana": "おそらく",
       "korean": "아마",
@@ -32824,7 +32824,7 @@
     {
       "id": 3820,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "多分",
       "hiragana": "たぶん",
       "korean": "아마",
@@ -32833,7 +32833,7 @@
     {
       "id": 3821,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "小柄だ",
       "hiragana": "こがらだ",
       "korean": "몸집이 작다",
@@ -32842,7 +32842,7 @@
     {
       "id": 3822,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "無口だ",
       "hiragana": "むくちだ",
       "korean": "과묵하다",
@@ -32878,7 +32878,7 @@
     {
       "id": 3826,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "妙な",
       "hiragana": "みょうな",
       "korean": "묘한",
@@ -32914,7 +32914,7 @@
     {
       "id": 3830,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "じかに",
       "hiragana": "じかに",
       "korean": "직접",
@@ -32932,7 +32932,7 @@
     {
       "id": 3832,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "卑怯な",
       "hiragana": "ひきょうな",
       "korean": "비겁한",
@@ -32941,7 +32941,7 @@
     {
       "id": 3833,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "ずるい",
       "hiragana": "ずるい",
       "korean": "교활하다, 약다",
@@ -32950,7 +32950,7 @@
     {
       "id": 3834,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "愉快だ",
       "hiragana": "ゆかいだ",
       "korean": "유쾌하다",
@@ -32959,7 +32959,7 @@
     {
       "id": 3835,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "しかたない",
       "hiragana": "しかたない",
       "korean": "어쩔 수 없다",
@@ -32968,7 +32968,7 @@
     {
       "id": 3836,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "運がいい",
       "hiragana": "うんがいい",
       "korean": "운이 좋다",
@@ -32977,7 +32977,7 @@
     {
       "id": 3837,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "つねに",
       "hiragana": "つねに",
       "korean": "항상",
@@ -32995,7 +32995,7 @@
     {
       "id": 3839,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "多る",
       "hiragana": "おおすぎる",
       "korean": "너무 많다",
@@ -33013,7 +33013,7 @@
     {
       "id": 3841,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "とっくに",
       "hiragana": "とっくに",
       "korean": "진작에",
@@ -33022,7 +33022,7 @@
     {
       "id": 3842,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ずっと前に",
       "hiragana": "ずっとまえに",
       "korean": "훨씬 전에",
@@ -33094,7 +33094,7 @@
     {
       "id": 3850,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "あわれな",
       "hiragana": "あわれな",
       "korean": "불쌍한",
@@ -33103,7 +33103,7 @@
     {
       "id": 3851,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "かわいそうな",
       "hiragana": "かわいそうな",
       "korean": "불쌍한",
@@ -33148,7 +33148,7 @@
     {
       "id": 3856,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "利口な",
       "hiragana": "りこうな",
       "korean": "영리한",
@@ -33166,7 +33166,7 @@
     {
       "id": 3858,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "くどい",
       "hiragana": "くどい",
       "korean": "장황하다, 집요하다",
@@ -33184,7 +33184,7 @@
     {
       "id": 3860,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "精いっぱい",
       "hiragana": "せいいっぱい",
       "korean": "힘껏",
@@ -33211,7 +33211,7 @@
     {
       "id": 3863,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "ハードな",
       "hiragana": "はーどな",
       "korean": "엄격한, 고된",
@@ -33220,7 +33220,7 @@
     {
       "id": 3864,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "大変な",
       "hiragana": "たいへんな",
       "korean": "힘든",
@@ -33283,7 +33283,7 @@
     {
       "id": 3871,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "真剣に",
       "hiragana": "しんけんに",
       "korean": "진지하게",
@@ -33292,7 +33292,7 @@
     {
       "id": 3872,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "まじめに",
       "hiragana": "まじめに",
       "korean": "진지하게, 성실하게",
@@ -33301,7 +33301,7 @@
     {
       "id": 3873,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "あまりいない",
       "hiragana": "あまりいない",
       "korean": "별로 없다",
@@ -33382,7 +33382,7 @@
     {
       "id": 3882,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "欠ない",
       "hiragana": "かかせない",
       "korean": "빠뜨릴 수 없다",
@@ -33400,7 +33400,7 @@
     {
       "id": 3884,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "依然",
       "hiragana": "いぜん",
       "korean": "여전히",
@@ -33445,7 +33445,7 @@
     {
       "id": 3889,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "さわがしい",
       "hiragana": "さわがしい",
       "korean": "시끄럽다",
@@ -33481,7 +33481,7 @@
     {
       "id": 3893,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "くだらない",
       "hiragana": "くだらない",
       "korean": "시시하다",
@@ -33490,7 +33490,7 @@
     {
       "id": 3894,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "価値がない",
       "hiragana": "かちがない",
       "korean": "가치가 없다",
@@ -33517,7 +33517,7 @@
     {
       "id": 3897,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "深刻な",
       "hiragana": "しんこくな",
       "korean": "심각한",
@@ -33571,7 +33571,7 @@
     {
       "id": 3903,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "偉そうな",
       "hiragana": "えらそうな",
       "korean": "잘난 체하는",
@@ -33679,7 +33679,7 @@
     {
       "id": 3915,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "せめて",
       "hiragana": "せめて",
       "korean": "적어도, 하다못해",
@@ -33706,7 +33706,7 @@
     {
       "id": 3918,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "さっさと",
       "hiragana": "さっさと",
       "korean": "빨리, 서둘러서",
@@ -33733,7 +33733,7 @@
     {
       "id": 3921,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "冷静な",
       "hiragana": "れいせいな",
       "korean": "냉정한",
@@ -33760,7 +33760,7 @@
     {
       "id": 3924,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "慌しい",
       "hiragana": "あわただしい",
       "korean": "분주하다, 어수선하다",
@@ -33778,7 +33778,7 @@
     {
       "id": 3926,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "かすかな",
       "hiragana": "かすかな",
       "korean": "희미한",
@@ -33823,7 +33823,7 @@
     {
       "id": 3931,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "妥当な",
       "hiragana": "だとうな",
       "korean": "타당한",
@@ -33832,7 +33832,7 @@
     {
       "id": 3932,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "こつこつと",
       "hiragana": "こつこつと",
       "korean": "꾸준하게",
@@ -33850,7 +33850,7 @@
     {
       "id": 3934,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "手軽な",
       "hiragana": "てがるな",
       "korean": "손쉬운, 간편한",
@@ -33859,7 +33859,7 @@
     {
       "id": 3935,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "温暖な",
       "hiragana": "おんだんな",
       "korean": "온난한",
@@ -33931,7 +33931,7 @@
     {
       "id": 3943,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "たくましい",
       "hiragana": "たくましい",
       "korean": "씩씩하다, 늠름하다",
@@ -34048,7 +34048,7 @@
     {
       "id": 3956,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "きっぱり",
       "hiragana": "きっぱり",
       "korean": "단호히",
@@ -34102,7 +34102,7 @@
     {
       "id": 3962,
       "level": "N2",
-      "act": "A",
+      "act": "ADJ",
       "word": "だらしない",
       "hiragana": "だらしない",
       "korean": "단정하지 못하다",
@@ -34156,7 +34156,7 @@
     {
       "id": 3968,
       "level": "N2",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ほっと",
       "hiragana": "ほっと",
       "korean": "긴장이 풀려 안심하는 모양",
@@ -34408,7 +34408,7 @@
     {
       "id": 3996,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "しい",
       "hiragana": "しい",
       "korean": "화려하다",
@@ -34480,7 +34480,7 @@
     {
       "id": 4004,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "漠ぜん然",
       "hiragana": "ばくぜんと",
       "korean": "막연하게",
@@ -34489,7 +34489,7 @@
     {
       "id": 4005,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "克めい明",
       "hiragana": "こくめいに",
       "korean": "극명하게",
@@ -34498,7 +34498,7 @@
     {
       "id": 4006,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "心地い",
       "hiragana": "ここちよい",
       "korean": "기분 좋다, 상쾌하다",
@@ -34534,7 +34534,7 @@
     {
       "id": 4010,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "おろかな",
       "hiragana": "おろかな",
       "korean": "어리석은",
@@ -34543,7 +34543,7 @@
     {
       "id": 4011,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "否めない",
       "hiragana": "いなめない",
       "korean": "부정할 수 없다",
@@ -34570,7 +34570,7 @@
     {
       "id": 4014,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "健な",
       "hiragana": "すこやかな",
       "korean": "건강한",
@@ -34651,7 +34651,7 @@
     {
       "id": 4023,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "華やかな",
       "hiragana": "はなやかな",
       "korean": "화려한",
@@ -34723,7 +34723,7 @@
     {
       "id": 4031,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "豪快に",
       "hiragana": "ごうかいに",
       "korean": "호쾌하게",
@@ -34741,7 +34741,7 @@
     {
       "id": 4033,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "猛烈に",
       "hiragana": "もうれつに",
       "korean": "맹렬히",
@@ -34822,7 +34822,7 @@
     {
       "id": 4042,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "遺憾に",
       "hiragana": "いかんに",
       "korean": "유감스럽게",
@@ -34858,7 +34858,7 @@
     {
       "id": 4046,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "尊い",
       "hiragana": "とうとい",
       "korean": "소중하다, 존귀하다",
@@ -34876,7 +34876,7 @@
     {
       "id": 4048,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "克明に",
       "hiragana": "こくめいに",
       "korean": "극명하게",
@@ -34885,7 +34885,7 @@
     {
       "id": 4049,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "勇敢に",
       "hiragana": "ゆうかんに",
       "korean": "용감하게",
@@ -34948,7 +34948,7 @@
     {
       "id": 4056,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "如実に",
       "hiragana": "にょじつに",
       "korean": "여실히",
@@ -34993,7 +34993,7 @@
     {
       "id": 4061,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "朗らかな",
       "hiragana": "ほがらかな",
       "korean": "명랑한",
@@ -35020,7 +35020,7 @@
     {
       "id": 4064,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "軽率な",
       "hiragana": "けいそつな",
       "korean": "경솔한",
@@ -35038,7 +35038,7 @@
     {
       "id": 4066,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "粗い",
       "hiragana": "あらい",
       "korean": "거칠다",
@@ -35110,7 +35110,7 @@
     {
       "id": 4074,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "奔放な",
       "hiragana": "ほんぽうな",
       "korean": "분방한",
@@ -35272,7 +35272,7 @@
     {
       "id": 4092,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "紛しい",
       "hiragana": "まぎらわしい",
       "korean": "혼란스럽다",
@@ -35335,7 +35335,7 @@
     {
       "id": 4099,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "とりわけ",
       "hiragana": "とりわけ",
       "korean": "특히",
@@ -35407,7 +35407,7 @@
     {
       "id": 4107,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "おおらかな",
       "hiragana": "おおらかな",
       "korean": "대범한",
@@ -35443,7 +35443,7 @@
     {
       "id": 4111,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "すさまじい",
       "hiragana": "すさまじい",
       "korean": "대단하다, 무시무시하다",
@@ -35497,7 +35497,7 @@
     {
       "id": 4117,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "すんなり",
       "hiragana": "すんなり",
       "korean": "수월하게, 순조롭게",
@@ -35524,7 +35524,7 @@
     {
       "id": 4120,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "頻ぱん繁",
       "hiragana": "ひんぱんに",
       "korean": "빈번하게",
@@ -35533,7 +35533,7 @@
     {
       "id": 4121,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "へとへと",
       "hiragana": "へとへと",
       "korean": "기진맥진",
@@ -35704,7 +35704,7 @@
     {
       "id": 4140,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "盛大に",
       "hiragana": "せいだいに",
       "korean": "성대하게",
@@ -35713,7 +35713,7 @@
     {
       "id": 4141,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "せかせかと",
       "hiragana": "せかせかと",
       "korean": "조급히, 분주히",
@@ -35731,7 +35731,7 @@
     {
       "id": 4143,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "壮大な",
       "hiragana": "そうだいな",
       "korean": "장대한",
@@ -35740,7 +35740,7 @@
     {
       "id": 4144,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ここちよく",
       "hiragana": "ここちよく",
       "korean": "기분좋게, 쾌적하게",
@@ -35749,7 +35749,7 @@
     {
       "id": 4145,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "従事",
       "hiragana": "じゅうじ",
       "korean": "종사하다",
@@ -35776,7 +35776,7 @@
     {
       "id": 4148,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ひしひしと",
       "hiragana": "ひしひしと",
       "korean": "절실히, 절절히(강하게 느끼는 모양)",
@@ -35821,7 +35821,7 @@
     {
       "id": 4153,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ずっしりと",
       "hiragana": "ずっしりと",
       "korean": "묵직한 모습, 무거운 느낌",
@@ -35848,7 +35848,7 @@
     {
       "id": 4156,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "みっちり",
       "hiragana": "みっちり",
       "korean": "착실히, 충분히",
@@ -35875,7 +35875,7 @@
     {
       "id": 4159,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "旺盛だ",
       "hiragana": "おうせいだ",
       "korean": "왕성하다",
@@ -35920,7 +35920,7 @@
     {
       "id": 4164,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "もどかしい",
       "hiragana": "もどかしい",
       "korean": "답답하다, 안타깝다",
@@ -35947,7 +35947,7 @@
     {
       "id": 4167,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "軽快な",
       "hiragana": "けいかいな",
       "korean": "경쾌한",
@@ -36010,7 +36010,7 @@
     {
       "id": 4174,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "てっきり",
       "hiragana": "てっきり",
       "korean": "틀림없이 (~인 줄 알다) 〈잘못된 판단〉",
@@ -36100,7 +36100,7 @@
     {
       "id": 4184,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "つくづく",
       "hiragana": "つくづく",
       "korean": "절실히, 뼈저리게",
@@ -36172,7 +36172,7 @@
     {
       "id": 4192,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "とっさに",
       "hiragana": "とっさに",
       "korean": "순간적으로",
@@ -36190,7 +36190,7 @@
     {
       "id": 4194,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "丹ねん念",
       "hiragana": "たんねんに",
       "korean": "정성껏, 꼼꼼하게",
@@ -36199,7 +36199,7 @@
     {
       "id": 4195,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "じっくりと",
       "hiragana": "じっくりと",
       "korean": "정성껏, 곰곰이",
@@ -36226,7 +36226,7 @@
     {
       "id": 4198,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "まばらだ",
       "hiragana": "まばらだ",
       "korean": "드문드문 있다, 듬성듬성하다",
@@ -36235,7 +36235,7 @@
     {
       "id": 4199,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "やむをえず",
       "hiragana": "やむをえず",
       "korean": "어쩔 수 없이",
@@ -36244,7 +36244,7 @@
     {
       "id": 4200,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "ルーズな",
       "hiragana": "るーずな",
       "korean": "느슨한, 단정치 못한",
@@ -36262,7 +36262,7 @@
     {
       "id": 4202,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "わずらわしい",
       "hiragana": "わずらわしい",
       "korean": "성가시다, 번거롭다",
@@ -36271,7 +36271,7 @@
     {
       "id": 4203,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "面どう倒",
       "hiragana": "めんどうだ",
       "korean": "귀찮다, 성가시다",
@@ -36280,7 +36280,7 @@
     {
       "id": 4204,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "あっけない",
       "hiragana": "あっけない",
       "korean": "어이없다",
@@ -36316,7 +36316,7 @@
     {
       "id": 4208,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "シビアな",
       "hiragana": "しびあな",
       "korean": "엄격한, 어려운",
@@ -36334,7 +36334,7 @@
     {
       "id": 4210,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "にわかには",
       "hiragana": "にわかには",
       "korean": "갑자기는",
@@ -36343,7 +36343,7 @@
     {
       "id": 4211,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "すぐには",
       "hiragana": "すぐには",
       "korean": "바로는, 당장에는",
@@ -36361,7 +36361,7 @@
     {
       "id": 4213,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "おっくうだ",
       "hiragana": "おっくうだ",
       "korean": "귀찮다",
@@ -36370,7 +36370,7 @@
     {
       "id": 4214,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "おのずと",
       "hiragana": "おのずと",
       "korean": "저절로, 자연히",
@@ -36379,7 +36379,7 @@
     {
       "id": 4215,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "自然に",
       "hiragana": "しぜんに",
       "korean": "자연히",
@@ -36388,7 +36388,7 @@
     {
       "id": 4216,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "簡そ素",
       "hiragana": "かんそだ",
       "korean": "간소하다",
@@ -36397,7 +36397,7 @@
     {
       "id": 4217,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "シンプルだ",
       "hiragana": "しんぷるだ",
       "korean": "심플하다",
@@ -36415,7 +36415,7 @@
     {
       "id": 4219,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "しきりに",
       "hiragana": "しきりに",
       "korean": "자꾸, 연달아",
@@ -36424,7 +36424,7 @@
     {
       "id": 4220,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "すがすがしい",
       "hiragana": "すがすがしい",
       "korean": "상쾌하다, 시원하다",
@@ -36433,7 +36433,7 @@
     {
       "id": 4221,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "さわやかだ",
       "hiragana": "さわやかだ",
       "korean": "상쾌하다, 산뜻하다",
@@ -36487,7 +36487,7 @@
     {
       "id": 4227,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "密に",
       "hiragana": "ひそかに",
       "korean": "은밀하게",
@@ -36496,7 +36496,7 @@
     {
       "id": 4228,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "事前に",
       "hiragana": "じぜんに",
       "korean": "사전에",
@@ -36514,7 +36514,7 @@
     {
       "id": 4230,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "おおむね",
       "hiragana": "おおむね",
       "korean": "대체로, 대강",
@@ -36523,7 +36523,7 @@
     {
       "id": 4231,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "大たい体",
       "hiragana": "だいたい",
       "korean": "대체로",
@@ -36631,7 +36631,7 @@
     {
       "id": 4243,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "いたって",
       "hiragana": "いたって",
       "korean": "지극히",
@@ -36640,7 +36640,7 @@
     {
       "id": 4244,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "非常に",
       "hiragana": "ひじょうに",
       "korean": "매우, 몹시",
@@ -36649,7 +36649,7 @@
     {
       "id": 4245,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "格だん段",
       "hiragana": "かくだんに",
       "korean": "현격하게",
@@ -36658,7 +36658,7 @@
     {
       "id": 4246,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "大幅",
       "hiragana": "おおはばに",
       "korean": "대폭적으로",
@@ -36685,7 +36685,7 @@
     {
       "id": 4249,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ストレートに",
       "hiragana": "すとれーとに",
       "korean": "직설적으로",
@@ -36739,7 +36739,7 @@
     {
       "id": 4255,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "平ぼん凡",
       "hiragana": "へいぼんだ",
       "korean": "평범하다",
@@ -36856,7 +36856,7 @@
     {
       "id": 4268,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "かろうじて",
       "hiragana": "かろうじて",
       "korean": "겨우, 간신히",
@@ -36865,7 +36865,7 @@
     {
       "id": 4269,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "故意に",
       "hiragana": "こいに",
       "korean": "고의로",
@@ -36874,7 +36874,7 @@
     {
       "id": 4270,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "わざと",
       "hiragana": "わざと",
       "korean": "일부러",
@@ -36883,7 +36883,7 @@
     {
       "id": 4271,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "ささいな",
       "hiragana": "ささいな",
       "korean": "사소한",
@@ -36892,7 +36892,7 @@
     {
       "id": 4272,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "小さな",
       "hiragana": "ちいさな",
       "korean": "작은",
@@ -36910,7 +36910,7 @@
     {
       "id": 4274,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "端てき的",
       "hiragana": "たんてきに",
       "korean": "단적으로",
@@ -36919,7 +36919,7 @@
     {
       "id": 4275,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "明はく白",
       "hiragana": "めいはくに",
       "korean": "명백하게",
@@ -36928,7 +36928,7 @@
     {
       "id": 4276,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "うすうす",
       "hiragana": "うすうす",
       "korean": "희미하게, 어렴풋이",
@@ -36955,7 +36955,7 @@
     {
       "id": 4279,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "あきらめずに",
       "hiragana": "あきらめずに",
       "korean": "포기하지 않고",
@@ -37000,7 +37000,7 @@
     {
       "id": 4284,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "わずかに",
       "hiragana": "わずかに",
       "korean": "아주 조금",
@@ -37018,7 +37018,7 @@
     {
       "id": 4286,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "かたくなな",
       "hiragana": "かたくなな",
       "korean": "고집이 센",
@@ -37027,7 +37027,7 @@
     {
       "id": 4287,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "すみやかに",
       "hiragana": "すみやかに",
       "korean": "신속히",
@@ -37045,7 +37045,7 @@
     {
       "id": 4289,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "エレガントな",
       "hiragana": "えれがんとな",
       "korean": "우아한, 고상한",
@@ -37090,7 +37090,7 @@
     {
       "id": 4294,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "めいめいに",
       "hiragana": "めいめいに",
       "korean": "각각에게, 각자에게",
@@ -37108,7 +37108,7 @@
     {
       "id": 4296,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "ありありと",
       "hiragana": "ありありと",
       "korean": "똑똑히, 뚜렷이",
@@ -37117,7 +37117,7 @@
     {
       "id": 4297,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "はっきり",
       "hiragana": "はっきり",
       "korean": "확실히, 분명히",
@@ -37126,7 +37126,7 @@
     {
       "id": 4298,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "コンパクトな",
       "hiragana": "こんぱくとな",
       "korean": "콤팩트한",
@@ -37162,7 +37162,7 @@
     {
       "id": 4302,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "不審な",
       "hiragana": "ふしんな",
       "korean": "수상한, 의심스러운, 미심쩍은",
@@ -37261,7 +37261,7 @@
     {
       "id": 4313,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "寡黙な",
       "hiragana": "かもくな",
       "korean": "과묵한",
@@ -37288,7 +37288,7 @@
     {
       "id": 4316,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "くつろぐ",
       "hiragana": "くつろぐ",
       "korean": "느긋이, 편하게 쉬다",
@@ -37306,7 +37306,7 @@
     {
       "id": 4318,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "うやむやに",
       "hiragana": "うやむやに",
       "korean": "흐지부지하게, 애매하게",
@@ -37315,7 +37315,7 @@
     {
       "id": 4319,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "あいまいに",
       "hiragana": "あいまいに",
       "korean": "애매하게",
@@ -37324,7 +37324,7 @@
     {
       "id": 4320,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "お手上げだ",
       "hiragana": "おてあげだ",
       "korean": "어쩔 도리가 없다",
@@ -37333,7 +37333,7 @@
     {
       "id": 4321,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "気ままな",
       "hiragana": "きままな",
       "korean": "제 마음대로인",
@@ -37342,7 +37342,7 @@
     {
       "id": 4322,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "自由な",
       "hiragana": "じゆうな",
       "korean": "자유로운",
@@ -37360,7 +37360,7 @@
     {
       "id": 4324,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "てきぱきと",
       "hiragana": "てきぱきと",
       "korean": "일을 솜씨 좋게 처리하는 모습. 척척",
@@ -37378,7 +37378,7 @@
     {
       "id": 4326,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "温和な",
       "hiragana": "おんわな",
       "korean": "온화한",
@@ -37396,7 +37396,7 @@
     {
       "id": 4328,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "差がない",
       "hiragana": "さがない",
       "korean": "차이가 없다",
@@ -37414,7 +37414,7 @@
     {
       "id": 4330,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "あどけない",
       "hiragana": "あどけない",
       "korean": "천진난만하다",
@@ -37504,7 +37504,7 @@
     {
       "id": 4340,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "爽な",
       "hiragana": "さわやかな",
       "korean": "상쾌한",
@@ -37513,7 +37513,7 @@
     {
       "id": 4341,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "ぞんざいな",
       "hiragana": "ぞんざいな",
       "korean": "거친, 난폭한",
@@ -37522,7 +37522,7 @@
     {
       "id": 4342,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "雑な",
       "hiragana": "ざつな",
       "korean": "거친, 조잡한, 함부로 하는",
@@ -37594,7 +37594,7 @@
     {
       "id": 4350,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "おろそかに",
       "hiragana": "おろそかに",
       "korean": "소홀하게",
@@ -37603,7 +37603,7 @@
     {
       "id": 4351,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "いいかげんに",
       "hiragana": "いいかげんに",
       "korean": "대충",
@@ -37783,7 +37783,7 @@
     {
       "id": 4371,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "円かつ滑",
       "hiragana": "えんかつだ",
       "korean": "원활하다",
@@ -37837,7 +37837,7 @@
     {
       "id": 4377,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "一りつ律",
       "hiragana": "いちりつに",
       "korean": "일률적으로",
@@ -37945,7 +37945,7 @@
     {
       "id": 4389,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "はなはだしい",
       "hiragana": "はなはだしい",
       "korean": "심하다",
@@ -37990,7 +37990,7 @@
     {
       "id": 4394,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "素早い",
       "hiragana": "すばやい",
       "korean": "재빠르다, 민첩하다",
@@ -37999,7 +37999,7 @@
     {
       "id": 4395,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "たやすい",
       "hiragana": "たやすい",
       "korean": "쉽다, 용이하다",
@@ -38080,7 +38080,7 @@
     {
       "id": 4404,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "巧だ",
       "hiragana": "たくみだ",
       "korean": "정교하다, 능숙하다",
@@ -38125,7 +38125,7 @@
     {
       "id": 4409,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "しぶとい",
       "hiragana": "しぶとい",
       "korean": "고집이 세고 주눅들지 않다, 끈질기다, 강인하다",
@@ -38152,7 +38152,7 @@
     {
       "id": 4412,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "ほほえましい",
       "hiragana": "ほほえましい",
       "korean": "흐뭇하다",
@@ -38242,7 +38242,7 @@
     {
       "id": 4422,
       "level": "N1",
-      "act": "Adv",
+      "act": "ADV",
       "word": "露骨に",
       "hiragana": "ろこつに",
       "korean": "노골적으로",
@@ -38260,7 +38260,7 @@
     {
       "id": 4424,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "かたくな",
       "hiragana": "かたくな",
       "korean": "완고함, 고집스러움",
@@ -38296,7 +38296,7 @@
     {
       "id": 4428,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "望しい",
       "hiragana": "のぞましい",
       "korean": "바람직하다",
@@ -38323,7 +38323,7 @@
     {
       "id": 4431,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "ぎこちない",
       "hiragana": "ぎこちない",
       "korean": "어색하다, 부자연스럽다",
@@ -38386,7 +38386,7 @@
     {
       "id": 4438,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "もろい",
       "hiragana": "もろい",
       "korean": "무르다, 약하다, 깨지기 쉽다",
@@ -38422,7 +38422,7 @@
     {
       "id": 4442,
       "level": "N1",
-      "act": "A",
+      "act": "ADJ",
       "word": "手厚い",
       "hiragana": "てあつい",
       "korean": "극진하다, 융숭하다",
