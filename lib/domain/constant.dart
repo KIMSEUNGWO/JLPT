@@ -3,8 +3,9 @@ abstract class Constant {
 
   static const int GROUP_SIZE = 50;
 
-  static const String VERSION_LINK = 'https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/json/dataVersion.json';
-  static const String CHINESE_CHARS_LINK = 'https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/json/chinese_chars.json';
-  static const String JAPANESE_WORDS_LINK = 'https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/json/japanese_words.json';
-  static const String EXAMPLE_SENTENCES_LINK = 'https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/json/example_sentences.json';
+  static const String _BASE_URL = 'https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/assets/json';
+  static const String VERSION_LINK = '$_BASE_URL/dataVersion.json';
+  static const String CHINESE_CHARS_LINK = '$_BASE_URL/chinese_chars.json';
+  static const String JAPANESE_WORDS_LINK = '$_BASE_URL/japanese_words.json';
+  static const String EXAMPLE_SENTENCES_LINK = '$_BASE_URL/example_sentences.json';
 }
