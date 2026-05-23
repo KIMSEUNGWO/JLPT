@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jlpt_app/notifier/study_options_notifier.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
+import 'package:jlpt_app/widgets/settings/study_group_size_selector.dart';
 
 /// 환경설정 화면 — 학습 카드의 노출/재생 정책을 관리한다.
 ///
@@ -40,6 +41,8 @@ class SettingsPage extends ConsumerWidget {
                   value: opts.showHiragana,
                   onChanged: notifier.toggleHiragana,
                 ),
+                const _SettingDivider(),
+                const StudyGroupSizeSelector(),
               ],
             ),
             const SizedBox(height: 16),

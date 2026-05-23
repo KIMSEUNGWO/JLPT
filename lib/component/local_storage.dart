@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/study_group_size.dart';
 import 'package:jlpt_app/domain/study_options.dart';
 import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/notifier/entity/today.dart';
@@ -52,8 +53,7 @@ class LocalStorage {
 
   Map<Level, int> getStudyCycle() {
     return {
-      for (final level in Level.values)
-        level: _storage.getInt(level.name) ?? 0,
+      for (final level in Level.values) level: _storage.getInt(level.name) ?? 0,
     };
   }
 
@@ -111,18 +111,14 @@ class LocalStorage {
       StorageKey.RECENTLY_VIEW_TYPE.name,
       viewData.type!.name,
     );
-    await _storage.setInt(
-      StorageKey.RECENTLY_VIEW_INDEX.name,
-      viewData.index!,
-    );
+    await _storage.setInt(StorageKey.RECENTLY_VIEW_INDEX.name, viewData.index!);
   }
 
   // ───────── 레벨별 학습 타이머 ─────────
 
   Map<Level, int> getTimerNotifier() {
     return {
-      for (final e in Level.values)
-        e: _storage.getInt(_timerKey(e)) ?? 0,
+      for (final e in Level.values) e: _storage.getInt(_timerKey(e)) ?? 0,
     };
   }
 
@@ -159,6 +155,22 @@ class LocalStorage {
       jsonEncode(options.toJson()),
     );
   }
+
+  // ───────── 학습 묶음 크기 ─────────
+
+  int getStudyGroupSize() {
+    final value =
+        _storage.getInt(StorageKey.STUDY_GROUP_SIZE.name) ??
+        defaultStudyGroupSize;
+    return isAllowedStudyGroupSize(value) ? value : defaultStudyGroupSize;
+  }
+
+  Future<void> saveStudyGroupSize(int value) async {
+    if (!isAllowedStudyGroupSize(value)) {
+      throw ArgumentError.value(value, 'value', 'Unsupported study group size');
+    }
+    await _storage.setInt(StorageKey.STUDY_GROUP_SIZE.name, value);
+  }
 }
 
 enum StorageKey {
@@ -172,4 +184,5 @@ enum StorageKey {
   TIMER,
   READ_WORD_ID_LIST,
   STUDY_OPTIONS,
+  STUDY_GROUP_SIZE,
 }

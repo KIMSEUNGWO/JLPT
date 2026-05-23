@@ -8,7 +8,6 @@ import 'package:jlpt_app/app/route_args.dart';
 import 'package:jlpt_app/core/app_utils.dart';
 import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:jlpt_app/data/providers.dart';
-import 'package:jlpt_app/domain/constant.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/domain/word.dart';
@@ -21,6 +20,7 @@ import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
 import 'package:jlpt_app/widgets/component/recently_viewed_badge.dart';
 import 'package:jlpt_app/widgets/component/test_stat_widget.dart';
 import 'package:jlpt_app/widgets/modal/congratulations_modal.dart';
+import 'package:jlpt_app/widgets/settings/study_group_size_selector.dart';
 
 class StudyListPage extends ConsumerWidget {
   final Level level;
@@ -49,8 +49,7 @@ class StudyListPage extends ConsumerWidget {
             builder: (context, ref, _) {
               final cycle = ref.watch(studyCycleProvider);
               return Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primary,
                   borderRadius: BorderRadius.circular(12),
@@ -60,8 +59,7 @@ class StudyListPage extends ConsumerWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,
-                    fontSize:
-                        Theme.of(context).textTheme.bodyMedium!.fontSize,
+                    fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
                   ),
                 ),
               );
@@ -104,8 +102,9 @@ class _StudyList extends ConsumerStatefulWidget {
 class _StudyListState extends ConsumerState<_StudyList> {
   Future<void> _onCardReturned() async {
     ref.invalidate(wordsByLevelProvider);
-    final latestWords =
-        await ref.read(wordRepositoryProvider).getByLevel(widget.level);
+    final latestWords = await ref
+        .read(wordRepositoryProvider)
+        .getByLevel(widget.level);
     if (!mounted) return;
 
     final allRead = latestWords.every((w) => w.isRead);
@@ -116,8 +115,7 @@ class _StudyListState extends ConsumerState<_StudyList> {
       builder: (ctx) => CongratulationsModal(
         level: widget.level,
         wordsLearned: latestWords.length,
-        studyTime:
-            ref.read(timerProvider.notifier).getLevelTime(widget.level),
+        studyTime: ref.read(timerProvider.notifier).getLevelTime(widget.level),
         onNextLevelTap: () async {
           Navigator.of(ctx).pop();
           await session.completeCycle(widget.level);
@@ -133,29 +131,34 @@ class _StudyListState extends ConsumerState<_StudyList> {
   @override
   Widget build(BuildContext context) {
     final words = widget.words;
+    final groupSize = ref.watch(studyGroupSizeProvider);
+    final groupCount = (words.length / groupSize).ceil();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 21),
       child: ListView.separated(
         separatorBuilder: (_, __) => const SizedBox(height: 16),
-        itemCount: (words.length / Constant.GROUP_SIZE).ceil() + 1,
+        itemCount: groupCount + 1,
         itemBuilder: (context, index) {
-          if ((words.length / Constant.GROUP_SIZE).ceil() == index) {
+          if (groupCount == index) {
             return TestStatWidget(level: widget.level);
           }
-          final start = index * Constant.GROUP_SIZE;
-          final end = min((index + 1) * Constant.GROUP_SIZE, words.length);
+          final start = index * groupSize;
+          final end = min((index + 1) * groupSize, words.length);
           final innerWords = words.sublist(start, end);
 
           return Consumer(
             builder: (context, ref, _) {
               final view = ref.watch(recentlyViewProvider);
-              final isRecent = view.level == widget.level &&
+              final isRecent =
+                  view.level == widget.level &&
                   view.type == PracticeType.WORD &&
                   view.index == index;
 
               return GestureDetector(
                 onTap: () async {
-                  ref.read(recentlyViewProvider.notifier).view(
+                  ref
+                      .read(recentlyViewProvider.notifier)
+                      .view(
                         level: widget.level,
                         type: PracticeType.WORD,
                         index: index,
@@ -190,13 +193,11 @@ class _StudyListState extends ConsumerState<_StudyList> {
                           Text(
                             '단어 ${start + 1}-$end',
                             style: TextStyle(
-                              color:
-                                  Theme.of(context).colorScheme.onPrimary,
+                              color: Theme.of(context).colorScheme.onPrimary,
                               fontWeight: FontWeight.w600,
-                              fontSize: Theme.of(context)
-                                  .textTheme
-                                  .displaySmall!
-                                  .fontSize,
+                              fontSize: Theme.of(
+                                context,
+                              ).textTheme.displaySmall!.fontSize,
                             ),
                           ),
                           if (isRecent) const RecentlyViewedBadge(),
@@ -204,8 +205,7 @@ class _StudyListState extends ConsumerState<_StudyList> {
                       ),
                       const SizedBox(height: 12),
                       CustomProgressBar(
-                        current:
-                            innerWords.where((w) => w.isRead).length,
+                        current: innerWords.where((w) => w.isRead).length,
                         total: innerWords.length,
                       ),
                     ],

@@ -1,12 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:jlpt_app/domain/constant.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/notifier/entity/view.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
+import 'package:jlpt_app/widgets/settings/study_group_size_selector.dart';
 
 class ContinueStudyTarget {
   const ContinueStudyTarget({
@@ -28,7 +29,7 @@ class ContinueStudyTarget {
   final bool isRecent;
 }
 
-class ContinueStudyCard extends StatelessWidget {
+class ContinueStudyCard extends ConsumerWidget {
   const ContinueStudyCard({
     super.key,
     required this.wordsByLevel,
@@ -41,9 +42,10 @@ class ContinueStudyCard extends StatelessWidget {
   final Future<void> Function(ContinueStudyTarget target) onContinue;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     if (!_hasRecentView()) return const SizedBox.shrink();
-    final target = _recentTarget();
+    final groupSize = ref.watch(studyGroupSizeProvider);
+    final target = _recentTarget(groupSize);
     if (target == null) return const SizedBox.shrink();
 
     final range = '${target.startIndex + 1}-${target.endIndex}';
@@ -127,21 +129,27 @@ class ContinueStudyCard extends StatelessWidget {
       recentView.type == PracticeType.WORD &&
       recentView.index != null;
 
-  ContinueStudyTarget? _recentTarget() {
+  ContinueStudyTarget? _recentTarget(int groupSize) {
     if (!_hasRecentView()) return null;
-    return _targetFor(recentView.level!, recentView.index!, isRecent: true);
+    return _targetFor(
+      recentView.level!,
+      recentView.index!,
+      groupSize: groupSize,
+      isRecent: true,
+    );
   }
 
   ContinueStudyTarget? _targetFor(
     Level level,
     int groupIndex, {
+    required int groupSize,
     required bool isRecent,
   }) {
     final words = wordsByLevel[level] ?? const <Word>[];
     if (words.isEmpty) return null;
-    final start = groupIndex * Constant.GROUP_SIZE;
+    final start = groupIndex * groupSize;
     if (start >= words.length) return null;
-    final end = min(start + Constant.GROUP_SIZE, words.length);
+    final end = min(start + groupSize, words.length);
     final group = words.sublist(start, end);
     return ContinueStudyTarget(
       level: level,
