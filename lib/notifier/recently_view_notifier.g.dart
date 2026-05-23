@@ -10,11 +10,11 @@ part of 'recently_view_notifier.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(RecentlyViewNotifier)
-const recentlyViewProvider = RecentlyViewNotifierProvider._();
+final recentlyViewProvider = RecentlyViewNotifierProvider._();
 
 final class RecentlyViewNotifierProvider
     extends $NotifierProvider<RecentlyViewNotifier, ViewData> {
-  const RecentlyViewNotifierProvider._()
+  RecentlyViewNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$RecentlyViewNotifier extends $Notifier<ViewData> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<ViewData, ViewData>;
     final element =
         ref.element
@@ -59,6 +58,6 @@ abstract class _$RecentlyViewNotifier extends $Notifier<ViewData> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

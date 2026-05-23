@@ -14,7 +14,7 @@ part of 'study_options_notifier.dart';
 /// 토글 후에는 LocalStorage 에 fire-and-forget 으로 저장한다.
 
 @ProviderFor(StudyOptionsNotifier)
-const studyOptionsProvider = StudyOptionsNotifierProvider._();
+final studyOptionsProvider = StudyOptionsNotifierProvider._();
 
 /// 학습 카드의 노출/재생 옵션 (자동 발음, 히라가나, 한국어).
 ///
@@ -26,7 +26,7 @@ final class StudyOptionsNotifierProvider
   ///
   /// 앱 전역 단일 인스턴스로 공유되어야 하므로 [keepAlive] 사용.
   /// 토글 후에는 LocalStorage 에 fire-and-forget 으로 저장한다.
-  const StudyOptionsNotifierProvider._()
+  StudyOptionsNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -66,7 +66,6 @@ abstract class _$StudyOptionsNotifier extends $Notifier<StudyOptions> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<StudyOptions, StudyOptions>;
     final element =
         ref.element
@@ -76,6 +75,6 @@ abstract class _$StudyOptionsNotifier extends $Notifier<StudyOptions> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

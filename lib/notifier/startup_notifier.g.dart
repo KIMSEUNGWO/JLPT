@@ -16,7 +16,7 @@ part of 'startup_notifier.dart';
 /// - 데이터 sync 실패는 [SyncReportFailed] 로 표현되어 UI 에서 retry 가능
 
 @ProviderFor(Startup)
-const startupProvider = StartupProvider._();
+final startupProvider = StartupProvider._();
 
 /// 앱 부팅 게이트.
 ///
@@ -32,7 +32,7 @@ final class StartupProvider
   /// - 신규 사용자 시나리오에서 `wordsByLevelProvider` 가 빈 결과를 캐싱하는 경로 차단
   /// - 부분 DB / 버전 불일치 시 자동 재동기화
   /// - 데이터 sync 실패는 [SyncReportFailed] 로 표현되어 UI 에서 retry 가능
-  const StartupProvider._()
+  StartupProvider._()
     : super(
         from: null,
         argument: null,
@@ -65,7 +65,6 @@ abstract class _$Startup extends $AsyncNotifier<SyncReport> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<SyncReport>, SyncReport>;
     final element =
         ref.element
@@ -75,6 +74,6 @@ abstract class _$Startup extends $AsyncNotifier<SyncReport> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

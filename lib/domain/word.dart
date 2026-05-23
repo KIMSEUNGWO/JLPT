@@ -73,9 +73,6 @@ class Word implements QuestionBox {
     }
     if (raw.isEmpty) {
       return [];
-      throw FormatException(
-        "Word(id=$id): 'exampleIds' must contain at least one example id",
-      );
     }
     final out = <int>[];
     for (var i = 0; i < raw.length; i++) {

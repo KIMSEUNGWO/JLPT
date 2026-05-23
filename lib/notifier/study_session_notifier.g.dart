@@ -17,7 +17,7 @@ part of 'study_session_notifier.dart';
 /// 호출하지 않도록 `CustomTimer` 와 `StudyPage` 가 책임을 분리한다.
 
 @ProviderFor(StudySession)
-const studySessionProvider = StudySessionProvider._();
+final studySessionProvider = StudySessionProvider._();
 
 /// 학습 세션의 부수효과 (시간 누적, 회독 증가, 읽음 초기화, 통계 기록)
 /// 를 단일 진입점으로 모은다.
@@ -34,7 +34,7 @@ final class StudySessionProvider extends $NotifierProvider<StudySession, void> {
   ///
   /// 화면 생명주기 중 안전한 시점에만 호출한다. dispose 콜백에서 provider 를
   /// 호출하지 않도록 `CustomTimer` 와 `StudyPage` 가 책임을 분리한다.
-  const StudySessionProvider._()
+  StudySessionProvider._()
     : super(
         from: null,
         argument: null,
@@ -76,7 +76,6 @@ abstract class _$StudySession extends $Notifier<void> {
   @$mustCallSuper
   @override
   void runBuild() {
-    build();
     final ref = this.ref as $Ref<void, void>;
     final element =
         ref.element
@@ -86,6 +85,6 @@ abstract class _$StudySession extends $Notifier<void> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, null);
+    element.handleCreate(ref, build);
   }
 }

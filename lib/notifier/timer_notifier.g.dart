@@ -10,11 +10,11 @@ part of 'timer_notifier.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(TimerNotifier)
-const timerProvider = TimerNotifierProvider._();
+final timerProvider = TimerNotifierProvider._();
 
 final class TimerNotifierProvider
     extends $NotifierProvider<TimerNotifier, Map<Level, int>> {
-  const TimerNotifierProvider._()
+  TimerNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -48,7 +48,6 @@ abstract class _$TimerNotifier extends $Notifier<Map<Level, int>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<Map<Level, int>, Map<Level, int>>;
     final element =
         ref.element
@@ -58,6 +57,6 @@ abstract class _$TimerNotifier extends $Notifier<Map<Level, int>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

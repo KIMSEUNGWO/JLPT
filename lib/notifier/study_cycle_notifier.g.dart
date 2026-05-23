@@ -10,11 +10,11 @@ part of 'study_cycle_notifier.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(StudyCycleNotifier)
-const studyCycleProvider = StudyCycleNotifierProvider._();
+final studyCycleProvider = StudyCycleNotifierProvider._();
 
 final class StudyCycleNotifierProvider
     extends $NotifierProvider<StudyCycleNotifier, Map<Level, int>> {
-  const StudyCycleNotifierProvider._()
+  StudyCycleNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$StudyCycleNotifier extends $Notifier<Map<Level, int>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<Map<Level, int>, Map<Level, int>>;
     final element =
         ref.element
@@ -59,6 +58,6 @@ abstract class _$StudyCycleNotifier extends $Notifier<Map<Level, int>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

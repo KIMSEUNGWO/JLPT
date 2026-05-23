@@ -10,11 +10,11 @@ part of 'today_notifier.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(TodayNotifier)
-const todayProvider = TodayNotifierProvider._();
+final todayProvider = TodayNotifierProvider._();
 
 final class TodayNotifierProvider
     extends $NotifierProvider<TodayNotifier, TodayData> {
-  const TodayNotifierProvider._()
+  TodayNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -48,7 +48,6 @@ abstract class _$TodayNotifier extends $Notifier<TodayData> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<TodayData, TodayData>;
     final element =
         ref.element
@@ -58,6 +57,6 @@ abstract class _$TodayNotifier extends $Notifier<TodayData> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
