@@ -6,22 +6,22 @@ import 'package:jlpt_app/domain/question_box.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 
 class TestCardWidget extends StatefulWidget {
-
   final Question data;
   final bool reverse;
   final Function(Question question, QuestionBox answer) selectAnswer;
-  const TestCardWidget({super.key,
+  const TestCardWidget({
+    super.key,
     required this.data,
     required this.reverse,
-    required this.selectAnswer
+    required this.selectAnswer,
   });
 
   @override
   State<TestCardWidget> createState() => _TestCardWidgetState();
 }
 
-class _TestCardWidgetState extends State<TestCardWidget> with TickerProviderStateMixin {
-
+class _TestCardWidgetState extends State<TestCardWidget>
+    with TickerProviderStateMixin {
   QuestionBox? _myAnswer;
 
   _selectAnswer(QuestionBox answer) {
@@ -43,22 +43,19 @@ class _TestCardWidgetState extends State<TestCardWidget> with TickerProviderStat
           CustomContainer(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 32),
-            constraints: const BoxConstraints(
-              minHeight: 200,
-              maxHeight: 240
-            ),
+            constraints: const BoxConstraints(minHeight: 200, maxHeight: 240),
             child: Center(
               child: Text(
-                widget.reverse ? widget.data.question.getKorean() : widget.data.question.getJapanese(),
-                style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.w500,
+                widget.reverse
+                    ? widget.data.question.getKorean()
+                    : widget.data.question.getJapanese(),
+                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),
               ),
             ),
           ),
-          const SizedBox(height: 16,),
+          const SizedBox(height: 16),
           GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(), // 스크롤 비활성화
@@ -76,17 +73,17 @@ class _TestCardWidgetState extends State<TestCardWidget> with TickerProviderStat
                   _selectAnswer(answer);
                 },
                 child: CustomContainer(
-                  backgroundColor: _myAnswer == answer ? AppColors.primaryTint : Colors.white,
-                  border: _myAnswer == answer ? Border.all(
-                    color: Theme.of(context).colorScheme.primary
-                  ) : null,
-                  child: Text(widget.reverse
-                      ? answer.getJapanese()
-                      : answer.getKorean(),
+                  backgroundColor: _myAnswer == answer
+                      ? AppColors.primaryTint
+                      : Colors.white,
+                  border: _myAnswer == answer
+                      ? Border.all(color: Theme.of(context).colorScheme.primary)
+                      : null,
+                  child: Text(
+                    widget.reverse ? answer.getJapanese() : answer.getKorean(),
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.w500,
-                      fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),

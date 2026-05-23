@@ -1,28 +1,15 @@
-import 'package:jlpt_app/core/theme/app_colors.dart';
-
 import 'package:flutter/material.dart';
 
 class CustomSnackBar {
-
   static const CustomSnackBar instance = CustomSnackBar();
   const CustomSnackBar();
 
-  message(BuildContext context, String message) {
+  void message(BuildContext context, String message) {
+    final theme = Theme.of(context);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(message,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 14
-          ),
-        ), // 컨텐츠 표시내용
+        content: Text(message, style: theme.snackBarTheme.contentTextStyle),
         duration: const Duration(seconds: 2), // 지속시간
-        behavior: SnackBarBehavior.floating, // 화면 하단
-        backgroundColor: AppColors.snackBar.withValues(alpha: .85),
-        elevation: 0, // 그림자 없애기
-        shape: RoundedRectangleBorder( // 모서리를 둥글게 변경
-          borderRadius: BorderRadius.circular(10.0),
-        ),
         margin: const EdgeInsets.symmetric(horizontal: 20),
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
       ),

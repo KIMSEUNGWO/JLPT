@@ -24,7 +24,9 @@ class _UpdateModalState extends ConsumerState<UpdateModal> {
     if (_running) return;
     setState(() => _running = true);
     try {
-      await ref.read(updateServiceProvider).applyUpdate(
+      await ref
+          .read(updateServiceProvider)
+          .applyUpdate(
             widget.plan,
             onStage: (s) {
               if (!mounted) return;
@@ -140,7 +142,9 @@ class _StageIndicator extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           current == null ? '대기' : (_labels[current] ?? ''),
-          style: const TextStyle(fontWeight: FontWeight.w500),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500),
         ),
         const SizedBox(height: 8),
         Row(

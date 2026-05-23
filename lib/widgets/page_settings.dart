@@ -80,9 +80,8 @@ class _SettingsSection extends StatelessWidget {
           padding: const EdgeInsets.only(left: 2, bottom: 8),
           child: Text(
             title,
-            style: TextStyle(
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: Theme.of(context).colorScheme.primary,
-              fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -147,18 +146,16 @@ class _SettingToggleRow extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: Theme.of(context).colorScheme.onSurface,
-                      fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   const SizedBox(height: 3),
                   Text(
                     description,
-                    style: TextStyle(
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: Theme.of(context).colorScheme.onSurface,
-                      fontSize: Theme.of(context).textTheme.bodySmall!.fontSize,
                     ),
                   ),
                 ],

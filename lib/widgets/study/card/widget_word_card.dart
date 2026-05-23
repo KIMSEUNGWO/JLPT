@@ -88,19 +88,15 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                   children: [
                     Text(
                       widget.word.word,
-                      style: TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.w500,
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
+                      style: Theme.of(context).textTheme.headlineLarge
+                          ?.copyWith(
+                            color: Theme.of(context).colorScheme.onPrimary,
+                          ),
                     ),
                     const SizedBox(height: 12),
                     Text(
                       _showHiragana ? widget.word.hiragana : '',
-                      style: TextStyle(
-                        fontSize: Theme.of(
-                          context,
-                        ).textTheme.displaySmall!.fontSize,
+                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
                         fontWeight: FontWeight.w500,
                         color: Theme.of(context).colorScheme.onSurface,
                       ),
@@ -108,10 +104,7 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                     const SizedBox(height: 8),
                     Text(
                       _showKorean ? widget.word.korean : '',
-                      style: TextStyle(
-                        fontSize: Theme.of(
-                          context,
-                        ).textTheme.displaySmall!.fontSize,
+                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
                         fontWeight: FontWeight.w500,
                         color: Theme.of(context).colorScheme.onSurface,
                       ),

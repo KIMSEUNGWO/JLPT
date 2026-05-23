@@ -19,8 +19,7 @@ class StartupGate extends ConsumerWidget {
       data: (report) => switch (report) {
         SyncReportFailed() => _StartupErrorView(error: report.error),
         SyncReportUpToDate() ||
-        SyncReportSynced() =>
-          const _MainWithUpdatePrompt(),
+        SyncReportSynced() => const _MainWithUpdatePrompt(),
       },
     );
   }
@@ -47,6 +46,7 @@ class _SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme.primary;
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -55,11 +55,7 @@ class _SplashView extends StatelessWidget {
             children: [
               Text(
                 'JLPT GO',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.w700,
-                  color: color,
-                ),
+                style: textTheme.headlineMedium?.copyWith(color: color),
               ),
               const SizedBox(height: 24),
               CircularProgressIndicator(color: color),
@@ -79,6 +75,7 @@ class _StartupErrorView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -89,21 +86,24 @@ class _StartupErrorView extends ConsumerWidget {
             children: [
               const Icon(Icons.error_outline, size: 48),
               const SizedBox(height: 12),
-              const Text(
+              Text(
                 '데이터를 불러오지 못했습니다',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                style: theme.textTheme.displaySmall?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
               ),
               const SizedBox(height: 8),
               Text(
                 '$error',
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 12, color: Colors.black54),
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurface,
+                ),
               ),
               const SizedBox(height: 24),
               FilledButton.icon(
-                onPressed: () =>
-                    ref.read(startupProvider.notifier).retry(),
+                onPressed: () => ref.read(startupProvider.notifier).retry(),
                 icon: const Icon(Icons.refresh),
                 label: const Text('다시 시도'),
               ),
