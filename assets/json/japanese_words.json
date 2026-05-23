@@ -127,7 +127,7 @@
       "act": "V",
       "word": "悪い",
       "hiragana": "わるい",
-      "korean": "나쁘다",
+      "korean": "나쁘다, 안 좋다",
       "exampleIds": [
         100012
       ]
@@ -135,7 +135,7 @@
     {
       "id": 13,
       "level": "N5",
-      "act": "N",
+      "act": "ADJ",
       "word": "広い",
       "hiragana": "ひろい",
       "korean": "넓다",
@@ -149,7 +149,7 @@
       "act": "V",
       "word": "住む",
       "hiragana": "すむ",
-      "korean": "살다",
+      "korean": "살다, 주거하다",
       "exampleIds": [
         100014
       ]
@@ -160,9 +160,10 @@
       "act": "V",
       "word": "押す",
       "hiragana": "おす",
-      "korean": "밀다",
+      "korean": "누르다, 밀다",
       "exampleIds": [
-        100015
+        100015,
+        100720
       ]
     },
     {
@@ -201,7 +202,7 @@
     {
       "id": 19,
       "level": "N5",
-      "act": "N",
+      "act": "V",
       "word": "答える",
       "hiragana": "こたえる",
       "korean": "대답하다",
@@ -278,7 +279,7 @@
     {
       "id": 26,
       "level": "N5",
-      "act": "V",
+      "act": "ADJ",
       "word": "明るい",
       "hiragana": "あかるい",
       "korean": "밝다",
@@ -578,9 +579,10 @@
       "act": "ADJ",
       "word": "高い",
       "hiragana": "たかい",
-      "korean": "높다",
+      "korean": "높다, 비싸다",
       "exampleIds": [
-        100053
+        100053,
+        102819
       ]
     },
     {
@@ -853,7 +855,7 @@
       "act": "ADJ",
       "word": "黒い",
       "hiragana": "くろい",
-      "korean": "까맣다",
+      "korean": "까맣다, 검다",
       "exampleIds": [
         100078
       ]
@@ -886,7 +888,7 @@
       "act": "ADJ",
       "word": "赤い",
       "hiragana": "あかい",
-      "korean": "빨갛다",
+      "korean": "빨갛다, 붉다",
       "exampleIds": [
         100081
       ]
@@ -897,7 +899,7 @@
       "act": "N",
       "word": "万",
       "hiragana": "まん",
-      "korean": "1만",
+      "korean": "일만",
       "exampleIds": [
         100082
       ]
@@ -985,7 +987,7 @@
       "act": "ADJ",
       "word": "遅い",
       "hiragana": "おそい",
-      "korean": "늦다",
+      "korean": "느리다, 늦다",
       "exampleIds": [
         100090
       ]
@@ -1040,7 +1042,7 @@
       "act": "ADJ",
       "word": "速い",
       "hiragana": "はやい",
-      "korean": "빠르다",
+      "korean": "빠르다 (속도가)",
       "exampleIds": [
         100095
       ]
@@ -1073,7 +1075,7 @@
       "act": "V",
       "word": "入る",
       "hiragana": "はいる",
-      "korean": "들어가다",
+      "korean": "들어가다, 들어가(오)다",
       "exampleIds": [
         100098
       ]
@@ -1150,9 +1152,10 @@
       "act": "ADJ",
       "word": "小さい",
       "hiragana": "ちいさい",
-      "korean": "작다",
+      "korean": "(크기가) 작다",
       "exampleIds": [
-        100105
+        100105,
+        102827
       ]
     },
     {
@@ -1260,7 +1263,7 @@
       "act": "N",
       "word": "一時",
       "hiragana": "いちじ",
-      "korean": "1시",
+      "korean": "한 시",
       "exampleIds": [
         100115
       ]
@@ -1282,7 +1285,7 @@
       "act": "V",
       "word": "返す",
       "hiragana": "かえす",
-      "korean": "돌려주다",
+      "korean": "되돌려주다",
       "exampleIds": [
         100117
       ]
@@ -1315,7 +1318,7 @@
       "act": "V",
       "word": "掛かる",
       "hiragana": "かかる",
-      "korean": "걸리다",
+      "korean": "(시간, 비용이) 들다, 걸리다",
       "exampleIds": [
         100120
       ]
@@ -1359,7 +1362,7 @@
       "act": "V",
       "word": "泳ぐ",
       "hiragana": "およぐ",
-      "korean": "수영하다",
+      "korean": "수영하다, 헤엄치다",
       "exampleIds": [
         100124
       ]
@@ -1392,7 +1395,7 @@
       "act": "V",
       "word": "吸う",
       "hiragana": "すう",
-      "korean": "들이마시다, 피우다",
+      "korean": "들이마시다, 피우다, (담배를) 피우다",
       "exampleIds": [
         100127
       ]
@@ -1414,7 +1417,7 @@
       "act": "V",
       "word": "書く",
       "hiragana": "かく",
-      "korean": "쓰다",
+      "korean": "(글을) 쓰다, 적다",
       "exampleIds": [
         100129
       ]
@@ -1601,9 +1604,10 @@
       "act": "V",
       "word": "聞く",
       "hiragana": "きく",
-      "korean": "듣다",
+      "korean": "듣다, 묻다",
       "exampleIds": [
-        100146
+        100146,
+        102811
       ]
     },
     {
@@ -1612,7 +1616,7 @@
       "act": "ADJ",
       "word": "白い",
       "hiragana": "しろい",
-      "korean": "하얗다",
+      "korean": "희다, 하얗다",
       "exampleIds": [
         100147
       ]
@@ -1711,9 +1715,10 @@
       "act": "ADJ",
       "word": "大変",
       "hiragana": "たいへん",
-      "korean": "굉장히, 몹시",
+      "korean": "굉장히, 몹시, 굉장히 (안 좋은 일에 씀)",
       "exampleIds": [
-        100156
+        100156,
+        100466
       ]
     },
     {
@@ -1920,7 +1925,7 @@
       "act": "N",
       "word": "子供",
       "hiragana": "こども",
-      "korean": "아이",
+      "korean": "아이, 어린이",
       "exampleIds": [
         100175
       ]
@@ -2030,7 +2035,7 @@
       "act": "V",
       "word": "出る",
       "hiragana": "でる",
-      "korean": "나가다",
+      "korean": "나가다, 나가(오)다",
       "exampleIds": [
         100185
       ]
@@ -2160,7 +2165,7 @@
       "id": 197,
       "level": "N5",
       "act": "N",
-      "word": "2位",
+      "word": "二位",
       "hiragana": "にい",
       "korean": "2위",
       "exampleIds": [
@@ -2263,7 +2268,8 @@
       "hiragana": "ながい",
       "korean": "길다",
       "exampleIds": [
-        100206
+        100206,
+        102823
       ]
     },
     {
@@ -2404,7 +2410,7 @@
       "act": "ADJ",
       "word": "嫌い",
       "hiragana": "きらい",
-      "korean": "싫다",
+      "korean": "싫다, 싫음",
       "exampleIds": [
         100219
       ]
@@ -2426,7 +2432,7 @@
       "act": "ADJ",
       "word": "強い",
       "hiragana": "つよい",
-      "korean": "강하다",
+      "korean": "강하다, 세다",
       "exampleIds": [
         100221
       ]
@@ -2448,7 +2454,7 @@
       "act": "V",
       "word": "見せる",
       "hiragana": "みせる",
-      "korean": "보여주다",
+      "korean": "보여주다, 보이다, 보여 주다",
       "exampleIds": [
         100223
       ]
@@ -2635,7 +2641,7 @@
       "act": "V",
       "word": "開ける",
       "hiragana": "あける",
-      "korean": "열다",
+      "korean": "(문을) 열다",
       "exampleIds": [
         100240
       ]
@@ -2657,9 +2663,10 @@
       "act": "V",
       "word": "出す",
       "hiragana": "だす",
-      "korean": "내다 (꺼내다)",
+      "korean": "내다 (꺼내다), 내다. 제출하다",
       "exampleIds": [
-        100242
+        100242,
+        102825
       ]
     },
     {
@@ -2712,7 +2719,7 @@
       "act": "V",
       "word": "乗る",
       "hiragana": "のる",
-      "korean": "타다",
+      "korean": "(차, 비행기를) 타다",
       "exampleIds": [
         100247
       ]
@@ -2789,9 +2796,10 @@
       "act": "V",
       "word": "下げる",
       "hiragana": "さげる",
-      "korean": "내리다",
+      "korean": "(위치, 값 등을) 내리다",
       "exampleIds": [
-        100254
+        100254,
+        101890
       ]
     },
     {
@@ -2847,17 +2855,6 @@
       "korean": "하늘",
       "exampleIds": [
         100259
-      ]
-    },
-    {
-      "id": 260,
-      "level": "N5",
-      "act": "N",
-      "word": "前",
-      "hiragana": "まえ",
-      "korean": "앞",
-      "exampleIds": [
-        100260
       ]
     },
     {
@@ -2921,7 +2918,7 @@
       "act": "V",
       "word": "消す",
       "hiragana": "けす",
-      "korean": "끄다",
+      "korean": "끄다, 지우다, (불을) 끄다",
       "exampleIds": [
         100266
       ]
@@ -2987,7 +2984,7 @@
       "act": "ADJ",
       "word": "汚い",
       "hiragana": "きたない",
-      "korean": "더럽다",
+      "korean": "더럽다, 지저분하다",
       "exampleIds": [
         100272
       ]
@@ -3163,7 +3160,7 @@
       "act": "ADJ",
       "word": "古い",
       "hiragana": "ふるい",
-      "korean": "오래되다",
+      "korean": "오래되다, 낡다",
       "exampleIds": [
         100288
       ]
@@ -3279,17 +3276,6 @@
       ]
     },
     {
-      "id": 299,
-      "level": "N5",
-      "act": "N",
-      "word": "一人",
-      "hiragana": "ひとり",
-      "korean": "1명",
-      "exampleIds": [
-        100299
-      ]
-    },
-    {
       "id": 300,
       "level": "N5",
       "act": "N",
@@ -3317,7 +3303,7 @@
       "act": "V",
       "word": "帰る",
       "hiragana": "かえる",
-      "korean": "돌아가다, 돌아오다",
+      "korean": "돌아가다, 돌아오다, 돌아가(오)다",
       "exampleIds": [
         100302
       ]
@@ -3328,7 +3314,7 @@
       "act": "V",
       "word": "焼く",
       "hiragana": "やく",
-      "korean": "굽다 (불에)",
+      "korean": "굽다 (불에), 굽다, 태우다",
       "exampleIds": [
         100303
       ]
@@ -3489,11 +3475,11 @@
     },
     {
       "id": 318,
-      "level": "N4",
+      "level": "N5",
       "act": "V",
       "word": "飲む",
       "hiragana": "のむ",
-      "korean": "마시다",
+      "korean": "마시다, 삼키다",
       "exampleIds": [
         100318
       ]
@@ -3512,7 +3498,7 @@
     {
       "id": 320,
       "level": "N4",
-      "act": "V",
+      "act": "ADJ",
       "word": "辛い",
       "hiragana": "つらい",
       "korean": "힘들다, 괴롭다",
@@ -3555,7 +3541,7 @@
     },
     {
       "id": 324,
-      "level": "N4",
+      "level": "N5",
       "act": "N",
       "word": "奥さん",
       "hiragana": "おくさん",
@@ -3632,7 +3618,7 @@
     },
     {
       "id": 331,
-      "level": "N4",
+      "level": "N5",
       "act": "V",
       "word": "貼る",
       "hiragana": "はる",
@@ -3713,7 +3699,7 @@
       "act": "V",
       "word": "弾く",
       "hiragana": "ひく",
-      "korean": "치다 (악기)",
+      "korean": "(악기를) 치다",
       "exampleIds": [
         100338
       ]
@@ -3742,11 +3728,11 @@
     },
     {
       "id": 341,
-      "level": "N4",
+      "level": "N5",
       "act": "V",
       "word": "曲がる",
       "hiragana": "まがる",
-      "korean": "(길을) 돌다",
+      "korean": "(길을) 돌다, 돌다, (방향을) 틀다",
       "exampleIds": [
         100341
       ]
@@ -3786,22 +3772,23 @@
     },
     {
       "id": 345,
-      "level": "N4",
+      "level": "N5",
       "act": "V",
       "word": "掛ける",
       "hiragana": "かける",
-      "korean": "걸다",
+      "korean": "(안경을) 쓰다, 걸다",
       "exampleIds": [
-        100345
+        100345,
+        102883
       ]
     },
     {
       "id": 346,
       "level": "N4",
-      "act": "V",
+      "act": "ADJ",
       "word": "苦い",
       "hiragana": "にがい",
-      "korean": "쓰다",
+      "korean": "(맛이) 쓰다",
       "exampleIds": [
         100346
       ]
@@ -3887,7 +3874,7 @@
       "id": 354,
       "level": "N4",
       "act": "V",
-      "word": "乗り換え",
+      "word": "乗り換える",
       "hiragana": "のりかえ",
       "korean": "갈아타다",
       "exampleIds": [
@@ -4032,7 +4019,7 @@
       "act": "N",
       "word": "零",
       "hiragana": "れい",
-      "korean": "0 (숫자)",
+      "korean": "영, 0",
       "exampleIds": [
         100367
       ]
@@ -4061,7 +4048,7 @@
     },
     {
       "id": 370,
-      "level": "N4",
+      "level": "N5",
       "act": "V",
       "word": "冷たい",
       "hiragana": "つめたい",
@@ -4109,7 +4096,7 @@
       "act": "V",
       "word": "沸かす",
       "hiragana": "わかす",
-      "korean": "끓이다",
+      "korean": "(물을) 끓이다",
       "exampleIds": [
         100374
       ]
@@ -4208,7 +4195,7 @@
       "act": "V",
       "word": "逃げる",
       "hiragana": "にげる",
-      "korean": "도망치다",
+      "korean": "달아나다, 도망치다",
       "exampleIds": [
         100383
       ]
@@ -4226,11 +4213,11 @@
     },
     {
       "id": 385,
-      "level": "N4",
+      "level": "N5",
       "act": "V",
       "word": "閉める",
       "hiragana": "しめる",
-      "korean": "닫다",
+      "korean": "(문을) 닫다",
       "exampleIds": [
         100385
       ]
@@ -4285,7 +4272,7 @@
       "act": "V",
       "word": "閉じる",
       "hiragana": "とじる",
-      "korean": "닫다",
+      "korean": "닫다, (눈을) 감다, (책을) 덮다",
       "exampleIds": [
         100390
       ]
@@ -4434,17 +4421,6 @@
       ]
     },
     {
-      "id": 404,
-      "level": "N4",
-      "act": "V",
-      "word": "返す",
-      "hiragana": "かえす",
-      "korean": "돌려주다",
-      "exampleIds": [
-        100404
-      ]
-    },
-    {
       "id": 405,
       "level": "N4",
       "act": "N",
@@ -4560,9 +4536,11 @@
       "act": "V",
       "word": "打つ",
       "hiragana": "うつ",
-      "korean": "치다",
+      "korean": "치다, 때리다, 부딪치다",
       "exampleIds": [
-        100415
+        100415,
+        100713,
+        103083
       ]
     },
     {
@@ -4604,7 +4582,7 @@
       "act": "V",
       "word": "着る",
       "hiragana": "きる",
-      "korean": "옷을 입다",
+      "korean": "(옷을) 입다",
       "exampleIds": [
         100419
       ]
@@ -4622,11 +4600,11 @@
     },
     {
       "id": 421,
-      "level": "N4",
+      "level": "N5",
       "act": "V",
       "word": "渡す",
       "hiragana": "わたす",
-      "korean": "건네주다",
+      "korean": "건네주다, 건네다",
       "exampleIds": [
         100421
       ]
@@ -4637,7 +4615,7 @@
       "act": "V",
       "word": "眠る",
       "hiragana": "ねむる",
-      "korean": "잠자다",
+      "korean": "잠자다, 잠들다, 자다",
       "exampleIds": [
         100422
       ]
@@ -4776,10 +4754,10 @@
     },
     {
       "id": 435,
-      "level": "N4",
+      "level": "N5",
       "word": "覚える",
       "hiragana": "おぼえる",
-      "korean": "기억하다, 외우다",
+      "korean": "기억하다, 외우다, 암기하다",
       "act": "V",
       "exampleIds": [
         100435
@@ -4798,10 +4776,10 @@
     },
     {
       "id": 437,
-      "level": "N4",
+      "level": "N5",
       "word": "若い",
       "hiragana": "わかい",
-      "korean": "젊다",
+      "korean": "젊다, 젋다",
       "act": "ADJ",
       "exampleIds": [
         100437
@@ -4944,7 +4922,7 @@
       "level": "N4",
       "word": "申し込む",
       "hiragana": "もうしこむ",
-      "korean": "신청, 접수하다",
+      "korean": "신청, 접수하다, 신청하다",
       "act": "V",
       "exampleIds": [
         100450
@@ -5010,7 +4988,7 @@
       "level": "N4",
       "word": "確かに",
       "hiragana": "たしかに",
-      "korean": "확실히",
+      "korean": "확실히, 분명히, 확실하게",
       "act": "ADV",
       "exampleIds": [
         100456
@@ -5109,21 +5087,11 @@
       "level": "N4",
       "word": "外す",
       "hiragana": "はずす",
-      "korean": "떼다, 벗다",
+      "korean": "떼다, 벗다, 풀다",
       "act": "V",
       "exampleIds": [
-        100465
-      ]
-    },
-    {
-      "id": 466,
-      "level": "N4",
-      "word": "大変",
-      "hiragana": "たいへん",
-      "korean": "몹시, 굉장히 (안 좋은 일에 씀)",
-      "act": "ADV",
-      "exampleIds": [
-        100466
+        100465,
+        101973
       ]
     },
     {
@@ -5194,13 +5162,14 @@
     },
     {
       "id": 473,
-      "level": "N4",
+      "level": "N5",
       "word": "磨く",
       "hiragana": "みがく",
-      "korean": "닦다",
+      "korean": "닦다, 연마하다, (이를) 닦다",
       "act": "V",
       "exampleIds": [
-        100473
+        100473,
+        102005
       ]
     },
     {
@@ -5212,17 +5181,6 @@
       "act": "N",
       "exampleIds": [
         100474
-      ]
-    },
-    {
-      "id": 475,
-      "level": "N4",
-      "word": "速い",
-      "hiragana": "はやい",
-      "korean": "빠르다 (움직임이)",
-      "act": "ADJ",
-      "exampleIds": [
-        100475
       ]
     },
     {
@@ -5304,10 +5262,10 @@
     },
     {
       "id": 483,
-      "level": "N4",
+      "level": "N5",
       "word": "甘い",
       "hiragana": "あまい",
-      "korean": "달다",
+      "korean": "달다, 엄하지 않다",
       "act": "ADJ",
       "exampleIds": [
         100483
@@ -5318,7 +5276,7 @@
       "level": "N4",
       "word": "願う",
       "hiragana": "ねがう",
-      "korean": "바라다",
+      "korean": "바라다, 원하다, 부탁하다",
       "act": "V",
       "exampleIds": [
         100484
@@ -5351,7 +5309,7 @@
       "level": "N4",
       "word": "並ぶ",
       "hiragana": "ならぶ",
-      "korean": "쭉~ 늘어서다, 줄서다",
+      "korean": "쭉~ 늘어서다, 줄서다, 한 줄로 서다, 늘어서다",
       "act": "V",
       "exampleIds": [
         100487
@@ -5373,7 +5331,7 @@
       "level": "N4",
       "word": "緑",
       "hiragana": "みどり",
-      "korean": "녹(색)",
+      "korean": "녹(색), 녹색, 초록",
       "act": "N",
       "exampleIds": [
         100489
@@ -5535,10 +5493,10 @@
     },
     {
       "id": 504,
-      "level": "N4",
+      "level": "N5",
       "word": "登る",
       "hiragana": "のぼる",
-      "korean": "(높은 장소에) 오르다",
+      "korean": "(높은 장소에) 오르다, (산을) 오르다",
       "act": "V",
       "exampleIds": [
         100504
@@ -5604,7 +5562,7 @@
       "level": "N4",
       "word": "祈る",
       "hiragana": "いのる",
-      "korean": "기도하다",
+      "korean": "기도하다, 빌다, 기원하다",
       "act": "V",
       "exampleIds": [
         100510
@@ -5758,7 +5716,7 @@
       "level": "N4",
       "word": "触る",
       "hiragana": "さわる",
-      "korean": "닿다, 손대다",
+      "korean": "만지다, 손대다",
       "act": "V",
       "exampleIds": [
         100524
@@ -5766,7 +5724,7 @@
     },
     {
       "id": 525,
-      "level": "N4",
+      "level": "N5",
       "word": "忘れる",
       "hiragana": "わすれる",
       "korean": "잊다",
@@ -5934,7 +5892,7 @@
       "level": "N4",
       "word": "昼間",
       "hiragana": "ひるま",
-      "korean": "낮",
+      "korean": "낮, 낮 동안",
       "act": "N",
       "exampleIds": [
         100540
@@ -5978,7 +5936,7 @@
       "level": "N4",
       "word": "謝る",
       "hiragana": "あやまる",
-      "korean": "사과하다",
+      "korean": "사과하다, 사죄하다",
       "act": "V",
       "exampleIds": [
         100544
@@ -6015,17 +5973,6 @@
       "act": "N",
       "exampleIds": [
         100547
-      ]
-    },
-    {
-      "id": 548,
-      "level": "N4",
-      "word": "兄弟",
-      "hiragana": "きょうだい",
-      "korean": "형제",
-      "act": "N",
-      "exampleIds": [
-        100548
       ]
     },
     {
@@ -6187,7 +6134,7 @@
       "level": "N4",
       "word": "写す",
       "hiragana": "うつす",
-      "korean": "베끼다",
+      "korean": "베끼다, 옮겨 적다",
       "act": "V",
       "exampleIds": [
         100563
@@ -6242,7 +6189,7 @@
       "level": "N4",
       "word": "正しい",
       "hiragana": "ただしい",
-      "korean": "옳다",
+      "korean": "바르다, 옳다",
       "act": "ADJ",
       "exampleIds": [
         100568
@@ -6330,7 +6277,7 @@
       "level": "N4",
       "word": "連れる",
       "hiragana": "つれる",
-      "korean": "데리고 오다(가다)",
+      "korean": "데리고 오다(가다), 동반하다",
       "act": "V",
       "exampleIds": [
         100576
@@ -6407,7 +6354,7 @@
       "level": "N4",
       "word": "心配",
       "hiragana": "しんぱい",
-      "korean": "심려, 걱정",
+      "korean": "심려, 걱정, 근심",
       "act": "N",
       "exampleIds": [
         100583
@@ -6506,7 +6453,7 @@
       "level": "N4",
       "word": "細かい",
       "hiragana": "こまかい",
-      "korean": "자잘하다, 세세하다",
+      "korean": "자잘하다, 세세하다, 잘다, 작다",
       "act": "ADJ",
       "exampleIds": [
         100592
@@ -6539,21 +6486,10 @@
       "level": "N4",
       "word": "苦しい",
       "hiragana": "くるしい",
-      "korean": "괴롭다",
+      "korean": "괴롭다, 힘들다",
       "act": "ADJ",
       "exampleIds": [
         100595
-      ]
-    },
-    {
-      "id": 596,
-      "level": "N4",
-      "word": "外国",
-      "hiragana": "がいこく",
-      "korean": "외국",
-      "act": "N",
-      "exampleIds": [
-        100596
       ]
     },
     {
@@ -6561,7 +6497,7 @@
       "level": "N4",
       "word": "進む",
       "hiragana": "すすむ",
-      "korean": "나아가다",
+      "korean": "나아가다, 진보하다",
       "act": "V",
       "exampleIds": [
         100597
@@ -6591,7 +6527,7 @@
     },
     {
       "id": 600,
-      "level": "N4",
+      "level": "N5",
       "word": "止まる",
       "hiragana": "とまる",
       "korean": "멈추다 (자동사)",
@@ -6778,7 +6714,7 @@
     },
     {
       "id": 617,
-      "level": "N4",
+      "level": "N5",
       "word": "木曜日",
       "hiragana": "もくようび",
       "korean": "목요일",
@@ -6855,10 +6791,10 @@
     },
     {
       "id": 624,
-      "level": "N4",
+      "level": "N5",
       "word": "晴れる",
       "hiragana": "はれる",
-      "korean": "개다",
+      "korean": "개다, 맑다",
       "act": "V",
       "exampleIds": [
         100624
@@ -6965,10 +6901,10 @@
     },
     {
       "id": 634,
-      "level": "N4",
+      "level": "N5",
       "word": "飲み物",
       "hiragana": "のみもの",
-      "korean": "마실것",
+      "korean": "마실 것",
       "act": "N",
       "exampleIds": [
         100634
@@ -7042,7 +6978,7 @@
     },
     {
       "id": 641,
-      "level": "N4",
+      "level": "N5",
       "word": "男の子",
       "hiragana": "おとこのこ",
       "korean": "남자아이",
@@ -7218,7 +7154,7 @@
     },
     {
       "id": 657,
-      "level": "N4",
+      "level": "N5",
       "word": "渡る",
       "hiragana": "わたる",
       "korean": "건너다",
@@ -7331,7 +7267,7 @@
       "level": "N4",
       "word": "乾く",
       "hiragana": "かわく",
-      "korean": "마르다, 건조하다",
+      "korean": "마르다, 건조하다, 건조되다, 마르다(건조)",
       "act": "V",
       "exampleIds": [
         100667
@@ -7394,10 +7330,10 @@
     },
     {
       "id": 673,
-      "level": "N4",
+      "level": "N5",
       "word": "置く",
       "hiragana": "おく",
-      "korean": "두다",
+      "korean": "놓다. 두다",
       "act": "V",
       "exampleIds": [
         100673
@@ -7507,7 +7443,7 @@
       "level": "N4",
       "word": "洗濯",
       "hiragana": "せんたく",
-      "korean": "세탁",
+      "korean": "세탁, 빨래",
       "act": "N",
       "exampleIds": [
         100683
@@ -7581,7 +7517,7 @@
     },
     {
       "id": 690,
-      "level": "N4",
+      "level": "N5",
       "word": "女の子",
       "hiragana": "おんなのこ",
       "korean": "여자아이",
@@ -7669,7 +7605,7 @@
     },
     {
       "id": 698,
-      "level": "N4",
+      "level": "N5",
       "word": "薄い",
       "hiragana": "うすい",
       "korean": "얇다, 엷다, 싱겁다",
@@ -7717,7 +7653,7 @@
       "act": "V",
       "word": "預ける",
       "hiragana": "あずける",
-      "korean": "맡기다",
+      "korean": "맡기다, 위임하다",
       "exampleIds": [
         100702
       ]
@@ -7728,7 +7664,7 @@
       "act": "V",
       "word": "当たる",
       "hiragana": "あたる",
-      "korean": "맞다, 적중하다",
+      "korean": "맞다, 적중하다, 해당하다",
       "exampleIds": [
         100703
       ]
@@ -7750,7 +7686,7 @@
       "act": "V",
       "word": "編む",
       "hiragana": "あむ",
-      "korean": "(스웨터를) 짜다",
+      "korean": "(스웨터를) 짜다, 짜다, 뜨게질하다, 뜨개질하다",
       "exampleIds": [
         100705
       ]
@@ -7772,14 +7708,14 @@
       "act": "V",
       "word": "慌てる",
       "hiragana": "あわてる",
-      "korean": "허둥대다",
+      "korean": "허둥대다, 당황하다, 허둥거리다",
       "exampleIds": [
         100707
       ]
     },
     {
       "id": 708,
-      "level": "N3",
+      "level": "N4",
       "act": "V",
       "word": "急ぐ",
       "hiragana": "いそぐ",
@@ -7801,11 +7737,11 @@
     },
     {
       "id": 710,
-      "level": "N3",
+      "level": "N4",
       "act": "V",
       "word": "植える",
       "hiragana": "うえる",
-      "korean": "심다",
+      "korean": "(나무를) 심다",
       "exampleIds": [
         100710
       ]
@@ -7833,23 +7769,12 @@
       ]
     },
     {
-      "id": 713,
-      "level": "N3",
-      "act": "V",
-      "word": "打つ",
-      "hiragana": "うつ",
-      "korean": "치다",
-      "exampleIds": [
-        100713
-      ]
-    },
-    {
       "id": 714,
       "level": "N3",
       "act": "V",
       "word": "移る",
       "hiragana": "うつる",
-      "korean": "옮다, 이동하다",
+      "korean": "옮다, 이동하다, 옮기다",
       "exampleIds": [
         100714
       ]
@@ -7860,7 +7785,7 @@
       "act": "V",
       "word": "奪う",
       "hiragana": "うばう",
-      "korean": "빼앗다",
+      "korean": "빼앗다, 뺏다",
       "exampleIds": [
         100715
       ]
@@ -7882,7 +7807,7 @@
       "act": "V",
       "word": "売り切れる",
       "hiragana": "うりきれる",
-      "korean": "다 팔리다, 매진되다",
+      "korean": "다 팔리다, 매진되다, 품절되다",
       "exampleIds": [
         100717
       ]
@@ -7893,7 +7818,7 @@
       "act": "V",
       "word": "追いつく",
       "hiragana": "おいつく",
-      "korean": "따라잡다",
+      "korean": "따라붙다, 따라잡다",
       "exampleIds": [
         100718
       ]
@@ -7904,20 +7829,9 @@
       "act": "V",
       "word": "抑える",
       "hiragana": "おさえる",
-      "korean": "(감정, 요구를) 억제하다,(소비, 지출을) 줄이다",
+      "korean": "(감정, 요구를) 억제하다, (소비, 지출을) 줄이다, 억누르다",
       "exampleIds": [
         100719
-      ]
-    },
-    {
-      "id": 720,
-      "level": "N3",
-      "act": "V",
-      "word": "押す",
-      "hiragana": "おす",
-      "korean": "누르다, 밀다",
-      "exampleIds": [
-        100720
       ]
     },
     {
@@ -7926,31 +7840,9 @@
       "act": "V",
       "word": "落ち着く",
       "hiragana": "おちつく",
-      "korean": "침착하다, 차분해지다",
+      "korean": "침착하다, 차분해지다, 안정되다, 자리잡다",
       "exampleIds": [
         100721
-      ]
-    },
-    {
-      "id": 722,
-      "level": "N3",
-      "act": "V",
-      "word": "驚く",
-      "hiragana": "おどろく",
-      "korean": "놀라다",
-      "exampleIds": [
-        100722
-      ]
-    },
-    {
-      "id": 723,
-      "level": "N3",
-      "act": "V",
-      "word": "覚える",
-      "hiragana": "おぼえる",
-      "korean": "외우다, 기억하다",
-      "exampleIds": [
-        100723
       ]
     },
     {
@@ -7959,14 +7851,14 @@
       "act": "V",
       "word": "折る",
       "hiragana": "おる",
-      "korean": "꺾다, 접다",
+      "korean": "꺾다, 접다, 굽히다",
       "exampleIds": [
         100724
       ]
     },
     {
       "id": 725,
-      "level": "N3",
+      "level": "N4",
       "act": "V",
       "word": "折れる",
       "hiragana": "おれる",
@@ -7981,7 +7873,7 @@
       "act": "V",
       "word": "替える",
       "hiragana": "かえる",
-      "korean": "바꾸다, 교환하다",
+      "korean": "바꾸다, 교환하다, 교체하다",
       "exampleIds": [
         100726
       ]
@@ -8025,7 +7917,7 @@
       "act": "V",
       "word": "囲む",
       "hiragana": "かこむ",
-      "korean": "둘러싸다",
+      "korean": "둘러싸다, 포위하다",
       "exampleIds": [
         100730
       ]
@@ -8036,42 +7928,9 @@
       "act": "V",
       "word": "重ねる",
       "hiragana": "かさねる",
-      "korean": "겹치다, 포개다, 거듭하다",
+      "korean": "겹치다, 포개다, 거듭하다, 중복되다",
       "exampleIds": [
         100731
-      ]
-    },
-    {
-      "id": 732,
-      "level": "N3",
-      "act": "V",
-      "word": "飾る",
-      "hiragana": "かざる",
-      "korean": "장식하다",
-      "exampleIds": [
-        100732
-      ]
-    },
-    {
-      "id": 733,
-      "level": "N3",
-      "act": "V",
-      "word": "貸す",
-      "hiragana": "かす",
-      "korean": "빌려주다",
-      "exampleIds": [
-        100733
-      ]
-    },
-    {
-      "id": 734,
-      "level": "N3",
-      "act": "V",
-      "word": "借りる",
-      "hiragana": "かりる",
-      "korean": "빌리다",
-      "exampleIds": [
-        100734
       ]
     },
     {
@@ -8083,17 +7942,6 @@
       "korean": "시들다",
       "exampleIds": [
         100735
-      ]
-    },
-    {
-      "id": 736,
-      "level": "N3",
-      "act": "V",
-      "word": "乾く",
-      "hiragana": "かわく",
-      "korean": "마르다, 건조되다",
-      "exampleIds": [
-        100736
       ]
     },
     {
@@ -8124,7 +7972,7 @@
       "act": "V",
       "word": "配る",
       "hiragana": "くばる",
-      "korean": "나눠주다",
+      "korean": "나눠주다, 나누어 주다",
       "exampleIds": [
         100739
       ]
@@ -8146,7 +7994,7 @@
       "act": "V",
       "word": "組む",
       "hiragana": "くむ",
-      "korean": "짜다, (팔짱을) 끼다",
+      "korean": "짜다, (팔짱을) 끼다, 맞추다",
       "exampleIds": [
         100741
       ]
@@ -8171,17 +8019,6 @@
       "korean": "더하다, 추가하다",
       "exampleIds": [
         100743
-      ]
-    },
-    {
-      "id": 744,
-      "level": "N3",
-      "act": "V",
-      "word": "消す",
-      "hiragana": "けす",
-      "korean": "끄다, 지우다",
-      "exampleIds": [
-        100744
       ]
     },
     {
@@ -8245,7 +8082,7 @@
       "act": "V",
       "word": "覚める",
       "hiragana": "さめる",
-      "korean": "(눈이) 떠지다",
+      "korean": "(눈이) 떠지다, (잠) 깨다, 정신 들다",
       "exampleIds": [
         100750
       ]
@@ -8262,17 +8099,6 @@
       ]
     },
     {
-      "id": 752,
-      "level": "N3",
-      "act": "V",
-      "word": "触る",
-      "hiragana": "さわる",
-      "korean": "만지다",
-      "exampleIds": [
-        100752
-      ]
-    },
-    {
       "id": 753,
       "level": "N3",
       "act": "V",
@@ -8281,17 +8107,6 @@
       "korean": "가라앉다",
       "exampleIds": [
         100753
-      ]
-    },
-    {
-      "id": 754,
-      "level": "N3",
-      "act": "V",
-      "word": "従う",
-      "hiragana": "したがう",
-      "korean": "따르다",
-      "exampleIds": [
-        100754
       ]
     },
     {
@@ -8362,24 +8177,13 @@
     },
     {
       "id": 761,
-      "level": "N3",
+      "level": "N4",
       "act": "V",
       "word": "捨てる",
       "hiragana": "すてる",
       "korean": "버리다",
       "exampleIds": [
         100761
-      ]
-    },
-    {
-      "id": 762,
-      "level": "N3",
-      "act": "V",
-      "word": "育てる",
-      "hiragana": "そだてる",
-      "korean": "키우다",
-      "exampleIds": [
-        100762
       ]
     },
     {
@@ -8432,7 +8236,7 @@
       "act": "V",
       "word": "経つ",
       "hiragana": "たつ",
-      "korean": "(시간이) 흐르다, 경과하다",
+      "korean": "(시간이) 흐르다, 경과하다, 지나다",
       "exampleIds": [
         100767
       ]
@@ -8443,7 +8247,7 @@
       "act": "V",
       "word": "黙る",
       "hiragana": "だまる",
-      "korean": "입 다물다",
+      "korean": "입 다물다, 잠자코 있다, 침묵하다",
       "exampleIds": [
         100768
       ]
@@ -8460,23 +8264,12 @@
       ]
     },
     {
-      "id": 770,
-      "level": "N3",
-      "act": "V",
-      "word": "違う",
-      "hiragana": "ちがう",
-      "korean": "다르다",
-      "exampleIds": [
-        100770
-      ]
-    },
-    {
       "id": 771,
-      "level": "N3",
+      "level": "N5",
       "act": "V",
       "word": "疲れる",
       "hiragana": "つかれる",
-      "korean": "피곤하다",
+      "korean": "피곤하다, 지치다",
       "exampleIds": [
         100771
       ]
@@ -8493,19 +8286,8 @@
       ]
     },
     {
-      "id": 773,
-      "level": "N3",
-      "act": "V",
-      "word": "包む",
-      "hiragana": "つつむ",
-      "korean": "싸다, 포장하다",
-      "exampleIds": [
-        100773
-      ]
-    },
-    {
       "id": 774,
-      "level": "N3",
+      "level": "N5",
       "act": "V",
       "word": "勤める",
       "hiragana": "つとめる",
@@ -8516,11 +8298,11 @@
     },
     {
       "id": 775,
-      "level": "N3",
+      "level": "N4",
       "act": "V",
       "word": "通る",
       "hiragana": "とおる",
-      "korean": "통과하다, 지나가다",
+      "korean": "통과하다, 지나가다, 지나다",
       "exampleIds": [
         100775
       ]
@@ -8548,17 +8330,6 @@
       ]
     },
     {
-      "id": 778,
-      "level": "N3",
-      "act": "V",
-      "word": "閉じる",
-      "hiragana": "とじる",
-      "korean": "(눈을) 감다, (책을) 덮다",
-      "exampleIds": [
-        100778
-      ]
-    },
-    {
       "id": 779,
       "level": "N3",
       "act": "V",
@@ -8571,7 +8342,7 @@
     },
     {
       "id": 780,
-      "level": "N3",
+      "level": "N5",
       "act": "V",
       "word": "飛ぶ",
       "hiragana": "とぶ",
@@ -8589,28 +8360,6 @@
       "korean": "취소하다",
       "exampleIds": [
         100781
-      ]
-    },
-    {
-      "id": 782,
-      "level": "N3",
-      "act": "V",
-      "word": "流れる",
-      "hiragana": "ながれる",
-      "korean": "흐르다",
-      "exampleIds": [
-        100782
-      ]
-    },
-    {
-      "id": 783,
-      "level": "N3",
-      "act": "V",
-      "word": "泣く",
-      "hiragana": "なく",
-      "korean": "울다",
-      "exampleIds": [
-        100783
       ]
     },
     {
@@ -8636,17 +8385,6 @@
       ]
     },
     {
-      "id": 786,
-      "level": "N3",
-      "act": "V",
-      "word": "並ぶ",
-      "hiragana": "ならぶ",
-      "korean": "한 줄로 서다, 늘어서다",
-      "exampleIds": [
-        100786
-      ]
-    },
-    {
       "id": 787,
       "level": "N3",
       "act": "V",
@@ -8669,17 +8407,6 @@
       ]
     },
     {
-      "id": 789,
-      "level": "N3",
-      "act": "V",
-      "word": "逃げる",
-      "hiragana": "にげる",
-      "korean": "도망치다",
-      "exampleIds": [
-        100789
-      ]
-    },
-    {
       "id": 790,
       "level": "N3",
       "act": "V",
@@ -8688,39 +8415,6 @@
       "korean": "젖다",
       "exampleIds": [
         100790
-      ]
-    },
-    {
-      "id": 791,
-      "level": "N3",
-      "act": "V",
-      "word": "願う",
-      "hiragana": "ねがう",
-      "korean": "바라다, 원하다",
-      "exampleIds": [
-        100791
-      ]
-    },
-    {
-      "id": 792,
-      "level": "N3",
-      "act": "V",
-      "word": "眠る",
-      "hiragana": "ねむる",
-      "korean": "잠들다, 자다",
-      "exampleIds": [
-        100792
-      ]
-    },
-    {
-      "id": 793,
-      "level": "N3",
-      "act": "V",
-      "word": "残る",
-      "hiragana": "のこる",
-      "korean": "남다",
-      "exampleIds": [
-        100793
       ]
     },
     {
@@ -8740,7 +8434,7 @@
       "act": "V",
       "word": "生える",
       "hiragana": "はえる",
-      "korean": "(수염, 풀 등이) 나다, 자라다",
+      "korean": "(수염, 풀 등이) 나다, 자라다, 나다, 돋아나다",
       "exampleIds": [
         100795
       ]
@@ -8751,7 +8445,7 @@
       "act": "V",
       "word": "測る",
       "hiragana": "はかる",
-      "korean": "(길이, 높이, 속도 등을) 측정하다",
+      "korean": "(길이, 높이, 속도 등을) 측정하다, 측량하다, 재다",
       "exampleIds": [
         100796
       ]
@@ -8769,11 +8463,11 @@
     },
     {
       "id": 798,
-      "level": "N3",
+      "level": "N4",
       "act": "V",
       "word": "運ぶ",
       "hiragana": "はこぶ",
-      "korean": "운반하다",
+      "korean": "운반하다, 옮기다, 운송하다",
       "exampleIds": [
         100798
       ]
@@ -8784,7 +8478,7 @@
       "act": "V",
       "word": "離す",
       "hiragana": "はなす",
-      "korean": "떼다, 놓치다",
+      "korean": "떼다, 놓치다, 떼어내다, 분리하다",
       "exampleIds": [
         100799
       ]
@@ -8795,7 +8489,7 @@
       "act": "V",
       "word": "冷える",
       "hiragana": "ひえる",
-      "korean": "차가워지다",
+      "korean": "차가워지다, 추워지다",
       "exampleIds": [
         100800
       ]
@@ -8817,20 +8511,9 @@
       "act": "V",
       "word": "引き受ける",
       "hiragana": "ひきうける",
-      "korean": "받아들이다",
+      "korean": "받아들이다, 떠맡다, 맡다, 인수하다",
       "exampleIds": [
         100802
-      ]
-    },
-    {
-      "id": 803,
-      "level": "N3",
-      "act": "V",
-      "word": "拾う",
-      "hiragana": "ひろう",
-      "korean": "줍다",
-      "exampleIds": [
-        100803
       ]
     },
     {
@@ -8861,7 +8544,7 @@
       "act": "V",
       "word": "触れる",
       "hiragana": "ふれる",
-      "korean": "닿다",
+      "korean": "<자동사> 닿다 <타동사> 만지다",
       "exampleIds": [
         100806
       ]
@@ -8872,7 +8555,7 @@
       "act": "V",
       "word": "干す",
       "hiragana": "ほす",
-      "korean": "말리다, 건조시키다, 널다",
+      "korean": "말리다, 건조시키다, 널다, (널어) 말리다, (잔) 비우다",
       "exampleIds": [
         100807
       ]
@@ -8894,7 +8577,7 @@
       "act": "V",
       "word": "混ぜる",
       "hiragana": "まぜる",
-      "korean": "섞다",
+      "korean": "섞다, 혼합하다",
       "exampleIds": [
         100809
       ]
@@ -8933,17 +8616,6 @@
       ]
     },
     {
-      "id": 813,
-      "level": "N3",
-      "act": "V",
-      "word": "守る",
-      "hiragana": "まもる",
-      "korean": "지키다",
-      "exampleIds": [
-        100813
-      ]
-    },
-    {
       "id": 814,
       "level": "N3",
       "act": "V",
@@ -8977,36 +8649,14 @@
       ]
     },
     {
-      "id": 817,
-      "level": "N3",
-      "act": "V",
-      "word": "申し込む",
-      "hiragana": "もうしこむ",
-      "korean": "신청하다",
-      "exampleIds": [
-        100817
-      ]
-    },
-    {
       "id": 818,
       "level": "N3",
       "act": "V",
       "word": "燃える",
       "hiragana": "もえる",
-      "korean": "타다",
+      "korean": "타다, 불타다",
       "exampleIds": [
         100818
-      ]
-    },
-    {
-      "id": 819,
-      "level": "N3",
-      "act": "V",
-      "word": "焼く",
-      "hiragana": "やく",
-      "korean": "굽다",
-      "exampleIds": [
-        100819
       ]
     },
     {
@@ -9026,7 +8676,7 @@
       "act": "V",
       "word": "破れる",
       "hiragana": "やぶれる",
-      "korean": "깨지다, 찢어지다",
+      "korean": "깨지다, 찢어지다, 파손되다",
       "exampleIds": [
         100821
       ]
@@ -9054,36 +8704,14 @@
       ]
     },
     {
-      "id": 824,
-      "level": "N3",
-      "act": "V",
-      "word": "汚れる",
-      "hiragana": "よごれる",
-      "korean": "더러워지다",
-      "exampleIds": [
-        100824
-      ]
-    },
-    {
       "id": 825,
       "level": "N3",
       "act": "V",
       "word": "呼びかける",
       "hiragana": "よびかける",
-      "korean": "호소하다, 당부하다",
+      "korean": "호소하다, 당부하다, 부르다",
       "exampleIds": [
         100825
-      ]
-    },
-    {
-      "id": 826,
-      "level": "N3",
-      "act": "V",
-      "word": "渡す",
-      "hiragana": "わたす",
-      "korean": "건네다",
-      "exampleIds": [
-        100826
       ]
     },
     {
@@ -9092,7 +8720,7 @@
       "act": "V",
       "word": "割れる",
       "hiragana": "われる",
-      "korean": "나뉘다, 깨지다",
+      "korean": "나뉘다, 깨지다, 나누어지다",
       "exampleIds": [
         100827
       ]
@@ -9120,47 +8748,14 @@
       ]
     },
     {
-      "id": 830,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "甘い",
-      "hiragana": "あまい",
-      "korean": "달다, 엄하지 않다",
-      "exampleIds": [
-        100830
-      ]
-    },
-    {
       "id": 831,
       "level": "N3",
       "act": "ADJ",
       "word": "怪しい",
       "hiragana": "あやしい",
-      "korean": "수상하다",
+      "korean": "수상하다, 이상하다",
       "exampleIds": [
         100831
-      ]
-    },
-    {
-      "id": 832,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "薄い",
-      "hiragana": "うすい",
-      "korean": "얇다, 엷다",
-      "exampleIds": [
-        100832
-      ]
-    },
-    {
-      "id": 833,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "美しい",
-      "hiragana": "うつくしい",
-      "korean": "아름답다",
-      "exampleIds": [
-        100833
       ]
     },
     {
@@ -9180,7 +8775,7 @@
       "act": "ADJ",
       "word": "惜しい",
       "hiragana": "おしい",
-      "korean": "아깝다, 애석하다",
+      "korean": "아깝다, 애석하다, 아쉽다",
       "exampleIds": [
         100835
       ]
@@ -9197,58 +8792,14 @@
       ]
     },
     {
-      "id": 837,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "辛い",
-      "hiragana": "からい",
-      "korean": "맵다",
-      "exampleIds": [
-        100837
-      ]
-    },
-    {
-      "id": 838,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "汚い",
-      "hiragana": "きたない",
-      "korean": "더럽다, 지저분하다",
-      "exampleIds": [
-        100838
-      ]
-    },
-    {
       "id": 839,
-      "level": "N3",
+      "level": "N4",
       "act": "ADJ",
       "word": "厳しい",
       "hiragana": "きびしい",
-      "korean": "엄격하다",
+      "korean": "엄하다, 엄격하다",
       "exampleIds": [
         100839
-      ]
-    },
-    {
-      "id": 840,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "暗い",
-      "hiragana": "くらい",
-      "korean": "어둡다",
-      "exampleIds": [
-        100840
-      ]
-    },
-    {
-      "id": 841,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "苦しい",
-      "hiragana": "くるしい",
-      "korean": "힘들다",
-      "exampleIds": [
-        100841
       ]
     },
     {
@@ -9274,17 +8825,6 @@
       ]
     },
     {
-      "id": 844,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "細かい",
-      "hiragana": "こまかい",
-      "korean": "잘다, 작다, 세세하다",
-      "exampleIds": [
-        100844
-      ]
-    },
-    {
       "id": 845,
       "level": "N3",
       "act": "ADJ",
@@ -9307,19 +8847,8 @@
       ]
     },
     {
-      "id": 847,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "深い",
-      "hiragana": "ふかい",
-      "korean": "깊다",
-      "exampleIds": [
-        100847
-      ]
-    },
-    {
       "id": 848,
-      "level": "N3",
+      "level": "N5",
       "act": "ADJ",
       "word": "細い",
       "hiragana": "ほそい",
@@ -9351,28 +8880,6 @@
       ]
     },
     {
-      "id": 851,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "短い",
-      "hiragana": "みじかい",
-      "korean": "짧다",
-      "exampleIds": [
-        100851
-      ]
-    },
-    {
-      "id": 852,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "易しい",
-      "hiragana": "やさしい",
-      "korean": "쉽다",
-      "exampleIds": [
-        100852
-      ]
-    },
-    {
       "id": 853,
       "level": "N3",
       "act": "ADJ",
@@ -9389,20 +8896,9 @@
       "act": "ADJ",
       "word": "緩い",
       "hiragana": "ゆるい",
-      "korean": "느슨하다, 엄하지 않다",
+      "korean": "느슨하다, 엄하지 않다, 완만하다",
       "exampleIds": [
         100854
-      ]
-    },
-    {
-      "id": 855,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "若い",
-      "hiragana": "わかい",
-      "korean": "젋다",
-      "exampleIds": [
-        100855
       ]
     },
     {
@@ -9477,7 +8973,7 @@
       "act": "ADJ",
       "word": "盛んだ",
       "hiragana": "さかんだ",
-      "korean": "활발하다, 성행하다",
+      "korean": "활발하다, 성행하다, 번성하다, 왕성하다",
       "exampleIds": [
         100862
       ]
@@ -9576,7 +9072,7 @@
       "act": "ADJ",
       "word": "退屈だ",
       "hiragana": "たいくつだ",
-      "korean": "따분하다",
+      "korean": "따분하다, 지루하다",
       "exampleIds": [
         100871
       ]
@@ -9620,7 +9116,7 @@
       "act": "ADJ",
       "word": "得意だ",
       "hiragana": "とくいだ",
-      "korean": "잘한다, 숙련되다",
+      "korean": "잘한다, 숙련되다, 잘하다, 자신 있다",
       "exampleIds": [
         100875
       ]
@@ -9631,7 +9127,7 @@
       "act": "ADJ",
       "word": "苦手だ",
       "hiragana": "にがてだ",
-      "korean": "서투르다, 질색이다",
+      "korean": "서투르다, 질색이다, 못하다, 싫어하다",
       "exampleIds": [
         100876
       ]
@@ -9747,17 +9243,6 @@
       ]
     },
     {
-      "id": 887,
-      "level": "N3",
-      "act": "N",
-      "word": "以下",
-      "hiragana": "いか",
-      "korean": "이하",
-      "exampleIds": [
-        100887
-      ]
-    },
-    {
       "id": 888,
       "level": "N3",
       "act": "N",
@@ -9846,17 +9331,6 @@
       ]
     },
     {
-      "id": 896,
-      "level": "N3",
-      "act": "N",
-      "word": "移動",
-      "hiragana": "いどう",
-      "korean": "이동",
-      "exampleIds": [
-        100896
-      ]
-    },
-    {
       "id": 897,
       "level": "N3",
       "act": "N",
@@ -9912,17 +9386,6 @@
       ]
     },
     {
-      "id": 902,
-      "level": "N3",
-      "act": "N",
-      "word": "笑顔",
-      "hiragana": "えがお",
-      "korean": "웃는 얼굴",
-      "exampleIds": [
-        100902
-      ]
-    },
-    {
       "id": 903,
       "level": "N3",
       "act": "N",
@@ -9975,17 +9438,6 @@
       "korean": "횡단",
       "exampleIds": [
         100907
-      ]
-    },
-    {
-      "id": 908,
-      "level": "N3",
-      "act": "N",
-      "word": "往復",
-      "hiragana": "おうふく",
-      "korean": "왕복",
-      "exampleIds": [
-        100908
       ]
     },
     {
@@ -10154,17 +9606,6 @@
       ]
     },
     {
-      "id": 924,
-      "level": "N3",
-      "act": "N",
-      "word": "肩",
-      "hiragana": "かた",
-      "korean": "어깨",
-      "exampleIds": [
-        100924
-      ]
-    },
-    {
       "id": 925,
       "level": "N3",
       "act": "N",
@@ -10330,17 +9771,6 @@
       ]
     },
     {
-      "id": 940,
-      "level": "N3",
-      "act": "N",
-      "word": "関係",
-      "hiragana": "かんけい",
-      "korean": "관계",
-      "exampleIds": [
-        100940
-      ]
-    },
-    {
       "id": 941,
       "level": "N3",
       "act": "N",
@@ -10349,17 +9779,6 @@
       "korean": "감격",
       "exampleIds": [
         100941
-      ]
-    },
-    {
-      "id": 942,
-      "level": "N3",
-      "act": "N",
-      "word": "観光",
-      "hiragana": "かんこう",
-      "korean": "관광",
-      "exampleIds": [
-        100942
       ]
     },
     {
@@ -10583,17 +10002,6 @@
       ]
     },
     {
-      "id": 963,
-      "level": "N3",
-      "act": "N",
-      "word": "興味",
-      "hiragana": "きょうみ",
-      "korean": "흥미",
-      "exampleIds": [
-        100963
-      ]
-    },
-    {
       "id": 964,
       "level": "N3",
       "act": "N",
@@ -10646,17 +10054,6 @@
       "korean": "금지",
       "exampleIds": [
         100968
-      ]
-    },
-    {
-      "id": 969,
-      "level": "N3",
-      "act": "N",
-      "word": "首",
-      "hiragana": "くび",
-      "korean": "목",
-      "exampleIds": [
-        100969
       ]
     },
     {
@@ -10715,39 +10112,6 @@
       ]
     },
     {
-      "id": 975,
-      "level": "N3",
-      "act": "N",
-      "word": "計画",
-      "hiragana": "けいかく",
-      "korean": "계획",
-      "exampleIds": [
-        100975
-      ]
-    },
-    {
-      "id": 976,
-      "level": "N3",
-      "act": "N",
-      "word": "経験",
-      "hiragana": "けいけん",
-      "korean": "경험",
-      "exampleIds": [
-        100976
-      ]
-    },
-    {
-      "id": 977,
-      "level": "N3",
-      "act": "N",
-      "word": "経済",
-      "hiragana": "けいざい",
-      "korean": "경제",
-      "exampleIds": [
-        100977
-      ]
-    },
-    {
       "id": 978,
       "level": "N3",
       "act": "N",
@@ -10803,17 +10167,6 @@
       ]
     },
     {
-      "id": 983,
-      "level": "N3",
-      "act": "N",
-      "word": "欠席",
-      "hiragana": "けっせき",
-      "korean": "결석",
-      "exampleIds": [
-        100983
-      ]
-    },
-    {
       "id": 984,
       "level": "N3",
       "act": "N",
@@ -10833,17 +10186,6 @@
       "korean": "연기",
       "exampleIds": [
         100985
-      ]
-    },
-    {
-      "id": 986,
-      "level": "N3",
-      "act": "N",
-      "word": "原因",
-      "hiragana": "げんいん",
-      "korean": "원인",
-      "exampleIds": [
-        100986
       ]
     },
     {
@@ -10957,17 +10299,6 @@
       ]
     },
     {
-      "id": 997,
-      "level": "N3",
-      "act": "N",
-      "word": "効果",
-      "hiragana": "こうか",
-      "korean": "효과",
-      "exampleIds": [
-        100997
-      ]
-    },
-    {
       "id": 998,
       "level": "N3",
       "act": "N",
@@ -11012,17 +10343,6 @@
       ]
     },
     {
-      "id": 1002,
-      "level": "N3",
-      "act": "N",
-      "word": "行動",
-      "hiragana": "こうどう",
-      "korean": "행동",
-      "exampleIds": [
-        101002
-      ]
-    },
-    {
       "id": 1003,
       "level": "N3",
       "act": "N",
@@ -11031,17 +10351,6 @@
       "korean": "교류",
       "exampleIds": [
         101003
-      ]
-    },
-    {
-      "id": 1004,
-      "level": "N3",
-      "act": "N",
-      "word": "氷",
-      "hiragana": "こおり",
-      "korean": "얼음",
-      "exampleIds": [
-        101004
       ]
     },
     {
@@ -11097,17 +10406,6 @@
       "korean": "가루",
       "exampleIds": [
         101009
-      ]
-    },
-    {
-      "id": 1010,
-      "level": "N3",
-      "act": "N",
-      "word": "米",
-      "hiragana": "こめ",
-      "korean": "쌀",
-      "exampleIds": [
-        101010
       ]
     },
     {
@@ -11218,17 +10516,6 @@
       "korean": "찬성",
       "exampleIds": [
         101020
-      ]
-    },
-    {
-      "id": 1021,
-      "level": "N3",
-      "act": "N",
-      "word": "塩",
-      "hiragana": "しお",
-      "korean": "소금",
-      "exampleIds": [
-        101021
       ]
     },
     {
@@ -11380,7 +10667,7 @@
       "act": "N",
       "word": "地元",
       "hiragana": "じもと",
-      "korean": "출신 지역, 고장, 현지",
+      "korean": "출신 지역, 고장, 현지, 그 고장, 그 지방",
       "exampleIds": [
         101035
       ]
@@ -11413,7 +10700,7 @@
       "act": "N",
       "word": "渋滞",
       "hiragana": "じゅうたい",
-      "korean": "정체",
+      "korean": "정체(흐름이 밀림)",
       "exampleIds": [
         101038
       ]
@@ -11529,17 +10816,6 @@
       ]
     },
     {
-      "id": 1049,
-      "level": "N3",
-      "act": "N",
-      "word": "紹介",
-      "hiragana": "しょうかい",
-      "korean": "소개",
-      "exampleIds": [
-        101049
-      ]
-    },
-    {
       "id": 1050,
       "level": "N3",
       "act": "N",
@@ -11570,17 +10846,6 @@
       "korean": "승차",
       "exampleIds": [
         101052
-      ]
-    },
-    {
-      "id": 1053,
-      "level": "N3",
-      "act": "N",
-      "word": "招待",
-      "hiragana": "しょうたい",
-      "korean": "초대",
-      "exampleIds": [
-        101053
       ]
     },
     {
@@ -11738,17 +11003,6 @@
       ]
     },
     {
-      "id": 1068,
-      "level": "N3",
-      "act": "N",
-      "word": "砂",
-      "hiragana": "すな",
-      "korean": "모래",
-      "exampleIds": [
-        101068
-      ]
-    },
-    {
       "id": 1069,
       "level": "N3",
       "act": "N",
@@ -11848,28 +11102,6 @@
       ]
     },
     {
-      "id": 1078,
-      "level": "N3",
-      "act": "N",
-      "word": "選手",
-      "hiragana": "せんしゅ",
-      "korean": "선수",
-      "exampleIds": [
-        101078
-      ]
-    },
-    {
-      "id": 1079,
-      "level": "N3",
-      "act": "N",
-      "word": "洗濯",
-      "hiragana": "せんたく",
-      "korean": "세탁, 빨래",
-      "exampleIds": [
-        101079
-      ]
-    },
-    {
       "id": 1080,
       "level": "N3",
       "act": "N",
@@ -11878,17 +11110,6 @@
       "korean": "선전",
       "exampleIds": [
         101080
-      ]
-    },
-    {
-      "id": 1081,
-      "level": "N3",
-      "act": "N",
-      "word": "専門",
-      "hiragana": "せんもん",
-      "korean": "전문",
-      "exampleIds": [
-        101081
       ]
     },
     {
@@ -11999,17 +11220,6 @@
       "korean": "체재",
       "exampleIds": [
         101091
-      ]
-    },
-    {
-      "id": 1092,
-      "level": "N3",
-      "act": "N",
-      "word": "台所",
-      "hiragana": "だいどころ",
-      "korean": "부엌",
-      "exampleIds": [
-        101092
       ]
     },
     {
@@ -12134,17 +11344,6 @@
       ]
     },
     {
-      "id": 1104,
-      "level": "N3",
-      "act": "N",
-      "word": "直接",
-      "hiragana": "ちょくせつ",
-      "korean": "직접",
-      "exampleIds": [
-        101104
-      ]
-    },
-    {
       "id": 1105,
       "level": "N3",
       "act": "N",
@@ -12266,17 +11465,6 @@
       ]
     },
     {
-      "id": 1166,
-      "level": "N3",
-      "act": "N",
-      "word": "緑",
-      "hiragana": "みどり",
-      "korean": "녹색, 초록",
-      "exampleIds": [
-        101166
-      ]
-    },
-    {
       "id": 1167,
       "level": "N3",
       "act": "N",
@@ -12285,17 +11473,6 @@
       "korean": "미래",
       "exampleIds": [
         101167
-      ]
-    },
-    {
-      "id": 1168,
-      "level": "N3",
-      "act": "N",
-      "word": "命令",
-      "hiragana": "めいれい",
-      "korean": "명령",
-      "exampleIds": [
-        101168
       ]
     },
     {
@@ -12351,17 +11528,6 @@
       "korean": "문자",
       "exampleIds": [
         101173
-      ]
-    },
-    {
-      "id": 1174,
-      "level": "N3",
-      "act": "N",
-      "word": "森",
-      "hiragana": "もり",
-      "korean": "숲",
-      "exampleIds": [
-        101174
       ]
     },
     {
@@ -12428,17 +11594,6 @@
       "korean": "용기",
       "exampleIds": [
         101180
-      ]
-    },
-    {
-      "id": 1181,
-      "level": "N3",
-      "act": "N",
-      "word": "横",
-      "hiragana": "よこ",
-      "korean": "옆",
-      "exampleIds": [
-        101181
       ]
     },
     {
@@ -12557,14 +11712,14 @@
       "act": "ADV",
       "word": "必ず",
       "hiragana": "かならず",
-      "korean": "반드시",
+      "korean": "반드시, 꼭",
       "exampleIds": [
         101192
       ]
     },
     {
       "id": 1193,
-      "level": "N3",
+      "level": "N4",
       "act": "ADV",
       "word": "急に",
       "hiragana": "きゅうに",
@@ -12579,20 +11734,9 @@
       "act": "ADV",
       "word": "次第に",
       "hiragana": "しだいに",
-      "korean": "점점, 서서히",
+      "korean": "점점, 서서히, 순차적으로",
       "exampleIds": [
         101194
-      ]
-    },
-    {
-      "id": 1195,
-      "level": "N3",
-      "act": "ADV",
-      "word": "全て",
-      "hiragana": "すべて",
-      "korean": "모두",
-      "exampleIds": [
-        101195
       ]
     },
     {
@@ -12673,23 +11817,12 @@
       ]
     },
     {
-      "id": 1803,
-      "level": "N2",
-      "act": "V",
-      "word": "預かる",
-      "hiragana": "あずかる",
-      "korean": "맡다",
-      "exampleIds": [
-        101803
-      ]
-    },
-    {
       "id": 1804,
       "level": "N2",
       "act": "V",
       "word": "焦る",
       "hiragana": "あせる",
-      "korean": "초조해하다",
+      "korean": "초조해하다, 안달하다",
       "exampleIds": [
         101804
       ]
@@ -12707,33 +11840,22 @@
     },
     {
       "id": 1806,
-      "level": "N2",
+      "level": "N3",
       "act": "V",
       "word": "温める",
       "hiragana": "あたためる",
-      "korean": "데우다",
+      "korean": "데우다, 따뜻하게 하다",
       "exampleIds": [
         101806
       ]
     },
     {
-      "id": 1807,
-      "level": "N2",
-      "act": "V",
-      "word": "当たる",
-      "hiragana": "あたる",
-      "korean": "맞다, 해당하다",
-      "exampleIds": [
-        101807
-      ]
-    },
-    {
       "id": 1808,
-      "level": "N2",
+      "level": "N3",
       "act": "V",
       "word": "扱う",
       "hiragana": "あつかう",
-      "korean": "취급하다",
+      "korean": "다루다, 취급하다",
       "exampleIds": [
         101808
       ]
@@ -12766,31 +11888,9 @@
       "act": "V",
       "word": "甘やかす",
       "hiragana": "あまやかす",
-      "korean": "응석 부리게 하다",
+      "korean": "응석 부리게 하다, 응석을 받아 주다",
       "exampleIds": [
         101811
-      ]
-    },
-    {
-      "id": 1812,
-      "level": "N2",
-      "act": "V",
-      "word": "編む",
-      "hiragana": "あむ",
-      "korean": "짜다, 뜨게질하다",
-      "exampleIds": [
-        101812
-      ]
-    },
-    {
-      "id": 1813,
-      "level": "N2",
-      "act": "V",
-      "word": "謝る",
-      "hiragana": "あやまる",
-      "korean": "사과하다, 사죄하다",
-      "exampleIds": [
-        101813
       ]
     },
     {
@@ -12802,17 +11902,6 @@
       "korean": "거칠어지다",
       "exampleIds": [
         101814
-      ]
-    },
-    {
-      "id": 1815,
-      "level": "N2",
-      "act": "V",
-      "word": "慌てる",
-      "hiragana": "あわてる",
-      "korean": "당황하다, 허둥거리다",
-      "exampleIds": [
-        101815
       ]
     },
     {
@@ -12860,39 +11949,6 @@
       ]
     },
     {
-      "id": 1820,
-      "level": "N2",
-      "act": "V",
-      "word": "祈る",
-      "hiragana": "いのる",
-      "korean": "빌다, 기원하다",
-      "exampleIds": [
-        101820
-      ]
-    },
-    {
-      "id": 1821,
-      "level": "N2",
-      "act": "V",
-      "word": "祝う",
-      "hiragana": "いわう",
-      "korean": "축하하다",
-      "exampleIds": [
-        101821
-      ]
-    },
-    {
-      "id": 1822,
-      "level": "N2",
-      "act": "V",
-      "word": "植える",
-      "hiragana": "うえる",
-      "korean": "심다",
-      "exampleIds": [
-        101822
-      ]
-    },
-    {
       "id": 1823,
       "level": "N2",
       "act": "V",
@@ -12926,17 +11982,6 @@
       ]
     },
     {
-      "id": 1826,
-      "level": "N2",
-      "act": "V",
-      "word": "疑う",
-      "hiragana": "うたがう",
-      "korean": "의심하다",
-      "exampleIds": [
-        101826
-      ]
-    },
-    {
       "id": 1827,
       "level": "N2",
       "act": "V",
@@ -12964,31 +12009,9 @@
       "act": "V",
       "word": "訴える",
       "hiragana": "うったえる",
-      "korean": "고소하다, 호고하다",
+      "korean": "고소하다, 호고하다, 호소하다",
       "exampleIds": [
         101829
-      ]
-    },
-    {
-      "id": 1830,
-      "level": "N2",
-      "act": "V",
-      "word": "奪う",
-      "hiragana": "うばう",
-      "korean": "뺏다",
-      "exampleIds": [
-        101830
-      ]
-    },
-    {
-      "id": 1831,
-      "level": "N2",
-      "act": "V",
-      "word": "埋める",
-      "hiragana": "うめる",
-      "korean": "묻다, 메우다",
-      "exampleIds": [
-        101831
       ]
     },
     {
@@ -13014,17 +12037,6 @@
       ]
     },
     {
-      "id": 1834,
-      "level": "N2",
-      "act": "V",
-      "word": "売り切れる",
-      "hiragana": "うりきれる",
-      "korean": "품절되다",
-      "exampleIds": [
-        101834
-      ]
-    },
-    {
       "id": 1835,
       "level": "N2",
       "act": "V",
@@ -13036,23 +12048,12 @@
       ]
     },
     {
-      "id": 1836,
-      "level": "N2",
-      "act": "V",
-      "word": "追いつく",
-      "hiragana": "おいつく",
-      "korean": "따라붙다, 따라잡다",
-      "exampleIds": [
-        101836
-      ]
-    },
-    {
       "id": 1837,
-      "level": "N2",
+      "level": "N3",
       "act": "V",
       "word": "追う",
       "hiragana": "おう",
-      "korean": "좇다",
+      "korean": "좇다, 뒤쫓다",
       "exampleIds": [
         101837
       ]
@@ -13102,17 +12103,6 @@
       ]
     },
     {
-      "id": 1842,
-      "level": "N2",
-      "act": "V",
-      "word": "抑える",
-      "hiragana": "おさえる",
-      "korean": "억누르다",
-      "exampleIds": [
-        101842
-      ]
-    },
-    {
       "id": 1843,
       "level": "N2",
       "act": "V",
@@ -13146,17 +12136,6 @@
       ]
     },
     {
-      "id": 1846,
-      "level": "N2",
-      "act": "V",
-      "word": "落ち着く",
-      "hiragana": "おちつく",
-      "korean": "침착하다, 안정되다",
-      "exampleIds": [
-        101846
-      ]
-    },
-    {
       "id": 1847,
       "level": "N2",
       "act": "V",
@@ -13173,20 +12152,9 @@
       "act": "V",
       "word": "劣る",
       "hiragana": "おとる",
-      "korean": "열등하다, 뒤떨어지다",
+      "korean": "열등하다, 뒤떨어지다, 뒤지다",
       "exampleIds": [
         101848
-      ]
-    },
-    {
-      "id": 1849,
-      "level": "N2",
-      "act": "V",
-      "word": "驚く",
-      "hiragana": "おどろく",
-      "korean": "놀라다",
-      "exampleIds": [
-        101849
       ]
     },
     {
@@ -13198,17 +12166,6 @@
       "korean": "안다, 떠맡다",
       "exampleIds": [
         101850
-      ]
-    },
-    {
-      "id": 1851,
-      "level": "N2",
-      "act": "V",
-      "word": "輝く",
-      "hiragana": "かがやく",
-      "korean": "빛나다",
-      "exampleIds": [
-        101851
       ]
     },
     {
@@ -13245,28 +12202,6 @@
       ]
     },
     {
-      "id": 1855,
-      "level": "N2",
-      "act": "V",
-      "word": "隠す",
-      "hiragana": "かくす",
-      "korean": "숨기다",
-      "exampleIds": [
-        101855
-      ]
-    },
-    {
-      "id": 1856,
-      "level": "N2",
-      "act": "V",
-      "word": "重ねる",
-      "hiragana": "かさねる",
-      "korean": "겹치다, 중복되다",
-      "exampleIds": [
-        101856
-      ]
-    },
-    {
       "id": 1857,
       "level": "N2",
       "act": "V",
@@ -13283,7 +12218,7 @@
       "act": "V",
       "word": "稼ぐ",
       "hiragana": "かせぐ",
-      "korean": "(돈, 시간, 점수를) 벌다",
+      "korean": "(돈, 시간, 점수를) 벌다, 돈벌이하다, (시간을) 벌다",
       "exampleIds": [
         101858
       ]
@@ -13305,7 +12240,7 @@
       "act": "V",
       "word": "偏る",
       "hiragana": "かたよる",
-      "korean": "기울다, 치우치다(편중)",
+      "korean": "기울다, 치우치다(편중), 치우치다, 편중되다",
       "exampleIds": [
         101860
       ]
@@ -13345,24 +12280,13 @@
     },
     {
       "id": 1864,
-      "level": "N2",
+      "level": "N3",
       "act": "V",
       "word": "我慢する",
       "hiragana": "がまんする",
       "korean": "참다",
       "exampleIds": [
         101864
-      ]
-    },
-    {
-      "id": 1865,
-      "level": "N2",
-      "act": "V",
-      "word": "乾く",
-      "hiragana": "かわく",
-      "korean": "마르다(건조)",
-      "exampleIds": [
-        101865
       ]
     },
     {
@@ -13465,17 +12389,6 @@
       ]
     },
     {
-      "id": 1875,
-      "level": "N2",
-      "act": "V",
-      "word": "繰り返す",
-      "hiragana": "くりかえす",
-      "korean": "반복하다",
-      "exampleIds": [
-        101875
-      ]
-    },
-    {
       "id": 1876,
       "level": "N2",
       "act": "V",
@@ -13509,17 +12422,6 @@
       ]
     },
     {
-      "id": 1879,
-      "level": "N2",
-      "act": "V",
-      "word": "凍る",
-      "hiragana": "こおる",
-      "korean": "얼다",
-      "exampleIds": [
-        101879
-      ]
-    },
-    {
       "id": 1880,
       "level": "N2",
       "act": "V",
@@ -13528,17 +12430,6 @@
       "korean": "극복하다",
       "exampleIds": [
         101880
-      ]
-    },
-    {
-      "id": 1881,
-      "level": "N2",
-      "act": "V",
-      "word": "焦げる",
-      "hiragana": "こげる",
-      "korean": "타다",
-      "exampleIds": [
-        101881
       ]
     },
     {
@@ -13564,28 +12455,6 @@
       ]
     },
     {
-      "id": 1884,
-      "level": "N2",
-      "act": "V",
-      "word": "断る",
-      "hiragana": "ことわる",
-      "korean": "거절하다",
-      "exampleIds": [
-        101884
-      ]
-    },
-    {
-      "id": 1885,
-      "level": "N2",
-      "act": "V",
-      "word": "転ぶ",
-      "hiragana": "ころぶ",
-      "korean": "구르다, 넘어지다",
-      "exampleIds": [
-        101885
-      ]
-    },
-    {
       "id": 1886,
       "level": "N2",
       "act": "V",
@@ -13602,7 +12471,7 @@
       "act": "V",
       "word": "逆らう",
       "hiragana": "さからう",
-      "korean": "거스르다",
+      "korean": "거스르다, 거역하다",
       "exampleIds": [
         101887
       ]
@@ -13627,17 +12496,6 @@
       "korean": "피하다, 꺼리다",
       "exampleIds": [
         101889
-      ]
-    },
-    {
-      "id": 1890,
-      "level": "N2",
-      "act": "V",
-      "word": "下げる",
-      "hiragana": "さげる",
-      "korean": "(위치, 값 등을) 내리다",
-      "exampleIds": [
-        101890
       ]
     },
     {
@@ -13696,17 +12554,6 @@
       ]
     },
     {
-      "id": 1896,
-      "level": "N2",
-      "act": "V",
-      "word": "騒ぐ",
-      "hiragana": "さわぐ",
-      "korean": "떠들다",
-      "exampleIds": [
-        101896
-      ]
-    },
-    {
       "id": 1897,
       "level": "N2",
       "act": "V",
@@ -13726,17 +12573,6 @@
       "korean": "지참하다",
       "exampleIds": [
         101898
-      ]
-    },
-    {
-      "id": 1899,
-      "level": "N2",
-      "act": "V",
-      "word": "沈む",
-      "hiragana": "しずむ",
-      "korean": "가라앉다",
-      "exampleIds": [
-        101899
       ]
     },
     {
@@ -13795,17 +12631,6 @@
       ]
     },
     {
-      "id": 1905,
-      "level": "N2",
-      "act": "V",
-      "word": "捨てる",
-      "hiragana": "すてる",
-      "korean": "버리다",
-      "exampleIds": [
-        101905
-      ]
-    },
-    {
       "id": 1906,
       "level": "N2",
       "act": "V",
@@ -13833,7 +12658,7 @@
       "act": "V",
       "word": "迫る",
       "hiragana": "せまる",
-      "korean": "육박하다, 다가오다",
+      "korean": "육박하다, 다가오다, <자동사> 다가오다 <타동사> 강요하다",
       "exampleIds": [
         101908
       ]
@@ -13938,39 +12763,6 @@
       ]
     },
     {
-      "id": 1918,
-      "level": "N2",
-      "act": "V",
-      "word": "倒れる",
-      "hiragana": "たおれる",
-      "korean": "쓰러지다",
-      "exampleIds": [
-        101918
-      ]
-    },
-    {
-      "id": 1919,
-      "level": "N2",
-      "act": "V",
-      "word": "確かめる",
-      "hiragana": "たしかめる",
-      "korean": "확인하다",
-      "exampleIds": [
-        101919
-      ]
-    },
-    {
-      "id": 1920,
-      "level": "N2",
-      "act": "V",
-      "word": "経つ",
-      "hiragana": "たつ",
-      "korean": "경과하다, 지나다",
-      "exampleIds": [
-        101920
-      ]
-    },
-    {
       "id": 1921,
       "level": "N2",
       "act": "V",
@@ -13983,24 +12775,13 @@
     },
     {
       "id": 1922,
-      "level": "N2",
+      "level": "N3",
       "act": "V",
       "word": "頼む",
       "hiragana": "たのむ",
-      "korean": "부탁하다",
+      "korean": "부탁하다, 주문하다",
       "exampleIds": [
         101922
-      ]
-    },
-    {
-      "id": 1923,
-      "level": "N2",
-      "act": "V",
-      "word": "黙る",
-      "hiragana": "だまる",
-      "korean": "잠자코 있다, 침묵하다",
-      "exampleIds": [
-        101923
       ]
     },
     {
@@ -14053,7 +12834,7 @@
       "act": "V",
       "word": "費やす",
       "hiragana": "ついやす",
-      "korean": "다 소비하다",
+      "korean": "사용하다, 다 소비하다, 소비하다",
       "exampleIds": [
         101928
       ]
@@ -14177,17 +12958,6 @@
       "korean": "채워 넣다",
       "exampleIds": [
         101939
-      ]
-    },
-    {
-      "id": 1940,
-      "level": "N2",
-      "act": "V",
-      "word": "連れる",
-      "hiragana": "つれる",
-      "korean": "동반하다",
-      "exampleIds": [
-        101940
       ]
     },
     {
@@ -14427,7 +13197,7 @@
       "act": "V",
       "word": "担う",
       "hiragana": "になう",
-      "korean": "짊어지다, 메다",
+      "korean": "짊어지다, 메다, 떠맡다",
       "exampleIds": [
         101962
       ]
@@ -14441,17 +13211,6 @@
       "korean": "뽑다, 빼다",
       "exampleIds": [
         101963
-      ]
-    },
-    {
-      "id": 1964,
-      "level": "N2",
-      "act": "V",
-      "word": "願う",
-      "hiragana": "ねがう",
-      "korean": "원하다, 바라다",
-      "exampleIds": [
-        101964
       ]
     },
     {
@@ -14510,17 +13269,6 @@
       ]
     },
     {
-      "id": 1970,
-      "level": "N2",
-      "act": "V",
-      "word": "測る",
-      "hiragana": "はかる",
-      "korean": "측량하다, 재다",
-      "exampleIds": [
-        101970
-      ]
-    },
-    {
       "id": 1971,
       "level": "N2",
       "act": "V",
@@ -14540,17 +13288,6 @@
       "korean": "힘쓰다",
       "exampleIds": [
         101972
-      ]
-    },
-    {
-      "id": 1973,
-      "level": "N2",
-      "act": "V",
-      "word": "外す",
-      "hiragana": "はずす",
-      "korean": "떼다, 풀다",
-      "exampleIds": [
-        101973
       ]
     },
     {
@@ -14595,28 +13332,6 @@
       "korean": "생략하다",
       "exampleIds": [
         101977
-      ]
-    },
-    {
-      "id": 1978,
-      "level": "N2",
-      "act": "V",
-      "word": "冷える",
-      "hiragana": "ひえる",
-      "korean": "차가워지다, 추워지다",
-      "exampleIds": [
-        101978
-      ]
-    },
-    {
-      "id": 1979,
-      "level": "N2",
-      "act": "V",
-      "word": "引き受ける",
-      "hiragana": "ひきうける",
-      "korean": "떠맡다",
-      "exampleIds": [
-        101979
       ]
     },
     {
@@ -14686,17 +13401,6 @@
       ]
     },
     {
-      "id": 1986,
-      "level": "N2",
-      "act": "V",
-      "word": "防ぐ",
-      "hiragana": "ふせぐ",
-      "korean": "막다, 방지하다",
-      "exampleIds": [
-        101986
-      ]
-    },
-    {
       "id": 1987,
       "level": "N2",
       "act": "V",
@@ -14752,34 +13456,23 @@
       ]
     },
     {
-      "id": 1992,
-      "level": "N2",
-      "act": "V",
-      "word": "触れる",
-      "hiragana": "ふれる",
-      "korean": "<자동사> 닿다 <타동사> 만지다",
-      "exampleIds": [
-        101992
-      ]
-    },
-    {
       "id": 1993,
       "level": "N2",
       "act": "V",
       "word": "隔てる",
       "hiragana": "へだてる",
-      "korean": "사이를 두다, 칸을 두다",
+      "korean": "사이를 두다, 칸을 두다, 멀리하다, 사이에 두다",
       "exampleIds": [
         101993
       ]
     },
     {
       "id": 1994,
-      "level": "N2",
+      "level": "N3",
       "act": "V",
       "word": "減る",
       "hiragana": "へる",
-      "korean": "줄다, 감소하다",
+      "korean": "줄다, 감소하다, 줄어들다",
       "exampleIds": [
         101994
       ]
@@ -14818,28 +13511,6 @@
       ]
     },
     {
-      "id": 1998,
-      "level": "N2",
-      "act": "V",
-      "word": "負ける",
-      "hiragana": "まける",
-      "korean": "지다",
-      "exampleIds": [
-        101998
-      ]
-    },
-    {
-      "id": 1999,
-      "level": "N2",
-      "act": "V",
-      "word": "混ぜる",
-      "hiragana": "まぜる",
-      "korean": "섞다, 혼합하다",
-      "exampleIds": [
-        101999
-      ]
-    },
-    {
       "id": 2000,
       "level": "N2",
       "act": "V",
@@ -14856,7 +13527,7 @@
       "act": "V",
       "word": "惑わす",
       "hiragana": "まどわす",
-      "korean": "현혹시키다, 유혹하다",
+      "korean": "현혹시키다, 유혹하다, 혼란시키다",
       "exampleIds": [
         102001
       ]
@@ -14874,7 +13545,7 @@
     },
     {
       "id": 2003,
-      "level": "N2",
+      "level": "N3",
       "act": "V",
       "word": "迷う",
       "hiragana": "まよう",
@@ -14892,17 +13563,6 @@
       "korean": "찾아내다, 발견하다",
       "exampleIds": [
         102004
-      ]
-    },
-    {
-      "id": 2005,
-      "level": "N2",
-      "act": "V",
-      "word": "磨く",
-      "hiragana": "みがく",
-      "korean": "닦다, 연마하다",
-      "exampleIds": [
-        102005
       ]
     },
     {
@@ -14961,17 +13621,6 @@
       ]
     },
     {
-      "id": 2011,
-      "level": "N2",
-      "act": "V",
-      "word": "結ぶ",
-      "hiragana": "むすぶ",
-      "korean": "맺다, 묶다",
-      "exampleIds": [
-        102011
-      ]
-    },
-    {
       "id": 2012,
       "level": "N2",
       "act": "V",
@@ -15005,17 +13654,6 @@
       ]
     },
     {
-      "id": 2015,
-      "level": "N2",
-      "act": "V",
-      "word": "燃える",
-      "hiragana": "もえる",
-      "korean": "타다",
-      "exampleIds": [
-        102015
-      ]
-    },
-    {
       "id": 2016,
       "level": "N2",
       "act": "V",
@@ -15032,7 +13670,7 @@
       "act": "V",
       "word": "用いる",
       "hiragana": "もちいる",
-      "korean": "쓰다, 이용하다",
+      "korean": "사용하다, 이용하다",
       "exampleIds": [
         102017
       ]
@@ -15098,20 +13736,10 @@
       "act": "V",
       "word": "養う",
       "hiragana": "やしなう",
-      "korean": "기르다, 양육하다",
+      "korean": "기르다, 양육하다, 부양하다",
       "exampleIds": [
-        102023
-      ]
-    },
-    {
-      "id": 2024,
-      "level": "N2",
-      "act": "V",
-      "word": "破れる",
-      "hiragana": "やぶれる",
-      "korean": "찢어지다",
-      "exampleIds": [
-        102024
+        102023,
+        102417
       ]
     },
     {
@@ -15137,17 +13765,6 @@
       ]
     },
     {
-      "id": 2027,
-      "level": "N2",
-      "act": "V",
-      "word": "許す",
-      "hiragana": "ゆるす",
-      "korean": "용서하다, 허락하다",
-      "exampleIds": [
-        102027
-      ]
-    },
-    {
       "id": 2028,
       "level": "N2",
       "act": "V",
@@ -15156,17 +13773,6 @@
       "korean": "느슨해지다",
       "exampleIds": [
         102028
-      ]
-    },
-    {
-      "id": 2029,
-      "level": "N2",
-      "act": "V",
-      "word": "汚れる",
-      "hiragana": "よごれる",
-      "korean": "더러워지다",
-      "exampleIds": [
-        102029
       ]
     },
     {
@@ -15193,7 +13799,7 @@
     },
     {
       "id": 2032,
-      "level": "N2",
+      "level": "N4",
       "act": "V",
       "word": "寄る",
       "hiragana": "よる",
@@ -15225,47 +13831,15 @@
       ]
     },
     {
-      "id": 2035,
-      "level": "N2",
-      "act": "V",
-      "word": "渡る",
-      "hiragana": "わたる",
-      "korean": "건너다",
-      "exampleIds": [
-        102035
-      ]
-    },
-    {
       "id": 2036,
       "level": "N2",
       "act": "V",
       "word": "割り込む",
       "hiragana": "わりこむ",
-      "korean": "끼어들다",
+      "korean": "끼어들다, 새치기하다",
       "exampleIds": [
-        102036
-      ]
-    },
-    {
-      "id": 2037,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "厚い",
-      "hiragana": "あつい",
-      "korean": "두껍다",
-      "exampleIds": [
-        102037
-      ]
-    },
-    {
-      "id": 2038,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "怪しい",
-      "hiragana": "あやしい",
-      "korean": "수상하다, 이상하다",
-      "exampleIds": [
-        102038
+        102036,
+        102425
       ]
     },
     {
@@ -15296,7 +13870,7 @@
       "act": "ADJ",
       "word": "薄暗い",
       "hiragana": "うすぐらい",
-      "korean": "어슴푸레하다",
+      "korean": "어슴푸레하다, 어둑어둑하다, 침침하다",
       "exampleIds": [
         102041
       ]
@@ -15324,36 +13898,14 @@
       ]
     },
     {
-      "id": 2044,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "浅い",
-      "hiragana": "あさい",
-      "korean": "얕다",
-      "exampleIds": [
-        102044
-      ]
-    },
-    {
       "id": 2045,
       "level": "N2",
       "act": "ADJ",
       "word": "慌ただしい",
       "hiragana": "あわただしい",
-      "korean": "분주하다",
+      "korean": "분주하다, 어수선하다",
       "exampleIds": [
         102045
-      ]
-    },
-    {
-      "id": 2046,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "偉い",
-      "hiragana": "えらい",
-      "korean": "훌륭하다, 위대하다",
-      "exampleIds": [
-        102046
       ]
     },
     {
@@ -15390,36 +13942,14 @@
       ]
     },
     {
-      "id": 2050,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "厳しい",
-      "hiragana": "きびしい",
-      "korean": "엄하다, 엄격하다",
-      "exampleIds": [
-        102050
-      ]
-    },
-    {
       "id": 2051,
-      "level": "N2",
+      "level": "N3",
       "act": "ADJ",
       "word": "悔しい",
       "hiragana": "くやしい",
       "korean": "분하다, 억울하다",
       "exampleIds": [
         102051
-      ]
-    },
-    {
-      "id": 2052,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "詳しい",
-      "hiragana": "くわしい",
-      "korean": "상세하다, 자세하다",
-      "exampleIds": [
-        102052
       ]
     },
     {
@@ -15431,28 +13961,6 @@
       "korean": "험하다",
       "exampleIds": [
         102053
-      ]
-    },
-    {
-      "id": 2054,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "細かい",
-      "hiragana": "こまかい",
-      "korean": "세세하다",
-      "exampleIds": [
-        102054
-      ]
-    },
-    {
-      "id": 2055,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "寂しい",
-      "hiragana": "さびしい",
-      "korean": "쓸쓸하다, 외롭다",
-      "exampleIds": [
-        102055
       ]
     },
     {
@@ -15483,7 +13991,7 @@
       "act": "ADJ",
       "word": "騒々しい",
       "hiragana": "そうぞうしい",
-      "korean": "시끄럽다, 떠들썩하다",
+      "korean": "시끄럽다, 떠들썩하다, 소란스럽다",
       "exampleIds": [
         102058
       ]
@@ -15508,17 +14016,6 @@
       "korean": "빈곤하다",
       "exampleIds": [
         102060
-      ]
-    },
-    {
-      "id": 2061,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "辛い",
-      "hiragana": "つらい",
-      "korean": "괴롭다",
-      "exampleIds": [
-        102061
       ]
     },
     {
@@ -15552,17 +14049,6 @@
       "korean": "유명하다",
       "exampleIds": [
         102064
-      ]
-    },
-    {
-      "id": 2065,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "懐かしい",
-      "hiragana": "なつかしい",
-      "korean": "그립다",
-      "exampleIds": [
-        102065
       ]
     },
     {
@@ -15621,17 +14107,6 @@
       ]
     },
     {
-      "id": 2071,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "貧しい",
-      "hiragana": "まずしい",
-      "korean": "가난하다",
-      "exampleIds": [
-        102071
-      ]
-    },
-    {
       "id": 2072,
       "level": "N2",
       "act": "ADJ",
@@ -15643,23 +14118,12 @@
       ]
     },
     {
-      "id": 2073,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "丸い",
-      "hiragana": "まるい",
-      "korean": "둥글다",
-      "exampleIds": [
-        102073
-      ]
-    },
-    {
       "id": 2074,
-      "level": "N2",
+      "level": "N4",
       "act": "ADJ",
       "word": "珍しい",
       "hiragana": "めずらしい",
-      "korean": "흔치않다",
+      "korean": "흔치않다, 진귀하다, 드물다",
       "exampleIds": [
         102074
       ]
@@ -15695,17 +14159,6 @@
       "korean": "부드럽다",
       "exampleIds": [
         102077
-      ]
-    },
-    {
-      "id": 2078,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "緩い",
-      "hiragana": "ゆるい",
-      "korean": "완만하다",
-      "exampleIds": [
-        102078
       ]
     },
     {
@@ -15918,17 +14371,6 @@
       ]
     },
     {
-      "id": 2098,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "盛んだ",
-      "hiragana": "さかんだ",
-      "korean": "번성하다, 왕성하다",
-      "exampleIds": [
-        102098
-      ]
-    },
-    {
       "id": 2099,
       "level": "N2",
       "act": "ADJ",
@@ -15948,28 +14390,6 @@
       "korean": "수수하다",
       "exampleIds": [
         102100
-      ]
-    },
-    {
-      "id": 2101,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "重要だ",
-      "hiragana": "じゅうようだ",
-      "korean": "중요하다",
-      "exampleIds": [
-        102101
-      ]
-    },
-    {
-      "id": 2102,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "正直だ",
-      "hiragana": "しょうじきだ",
-      "korean": "정직하다",
-      "exampleIds": [
-        102102
       ]
     },
     {
@@ -16006,17 +14426,6 @@
       ]
     },
     {
-      "id": 2106,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "清潔だ",
-      "hiragana": "せいけつだ",
-      "korean": "청결하다",
-      "exampleIds": [
-        102106
-      ]
-    },
-    {
       "id": 2107,
       "level": "N2",
       "act": "ADJ",
@@ -16036,17 +14445,6 @@
       "korean": "허술하다",
       "exampleIds": [
         102108
-      ]
-    },
-    {
-      "id": 2109,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "退屈だ",
-      "hiragana": "たいくつだ",
-      "korean": "지루하다",
-      "exampleIds": [
-        102109
       ]
     },
     {
@@ -16138,28 +14536,6 @@
       ]
     },
     {
-      "id": 2118,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "得意だ",
-      "hiragana": "とくいだ",
-      "korean": "잘하다, 자신 있다",
-      "exampleIds": [
-        102118
-      ]
-    },
-    {
-      "id": 2119,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "苦手だ",
-      "hiragana": "にがてだ",
-      "korean": "못하다, 싫어하다",
-      "exampleIds": [
-        102119
-      ]
-    },
-    {
       "id": 2120,
       "level": "N2",
       "act": "ADJ",
@@ -16168,28 +14544,6 @@
       "korean": "번화하다",
       "exampleIds": [
         102120
-      ]
-    },
-    {
-      "id": 2121,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "派手だ",
-      "hiragana": "はでだ",
-      "korean": "화려하다",
-      "exampleIds": [
-        102121
-      ]
-    },
-    {
-      "id": 2122,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "複雑だ",
-      "hiragana": "ふくざつだ",
-      "korean": "복잡하다",
-      "exampleIds": [
-        102122
       ]
     },
     {
@@ -16308,7 +14662,7 @@
       "act": "ADJ",
       "word": "面倒だ",
       "hiragana": "めんどうだ",
-      "korean": "귀찮다",
+      "korean": "귀찮다, 성가시다",
       "exampleIds": [
         102133
       ]
@@ -16347,17 +14701,6 @@
       ]
     },
     {
-      "id": 2137,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "立派だ",
-      "hiragana": "りっぱだ",
-      "korean": "훌륭하다",
-      "exampleIds": [
-        102137
-      ]
-    },
-    {
       "id": 2138,
       "level": "N2",
       "act": "ADJ",
@@ -16377,17 +14720,6 @@
       "korean": "애용",
       "exampleIds": [
         102139
-      ]
-    },
-    {
-      "id": 2140,
-      "level": "N2",
-      "act": "N",
-      "word": "印象",
-      "hiragana": "いんしょう",
-      "korean": "인상",
-      "exampleIds": [
-        102140
       ]
     },
     {
@@ -16435,17 +14767,6 @@
       ]
     },
     {
-      "id": 2145,
-      "level": "N2",
-      "act": "N",
-      "word": "解決",
-      "hiragana": "かいけつ",
-      "korean": "해결",
-      "exampleIds": [
-        102145
-      ]
-    },
-    {
       "id": 2146,
       "level": "N2",
       "act": "N",
@@ -16465,28 +14786,6 @@
       "korean": "확충",
       "exampleIds": [
         102147
-      ]
-    },
-    {
-      "id": 2148,
-      "level": "N2",
-      "act": "N",
-      "word": "確認",
-      "hiragana": "かくにん",
-      "korean": "확인",
-      "exampleIds": [
-        102148
-      ]
-    },
-    {
-      "id": 2149,
-      "level": "N2",
-      "act": "N",
-      "word": "価値",
-      "hiragana": "かち",
-      "korean": "가치",
-      "exampleIds": [
-        102149
       ]
     },
     {
@@ -16553,17 +14852,6 @@
       "korean": "기업",
       "exampleIds": [
         102155
-      ]
-    },
-    {
-      "id": 2156,
-      "level": "N2",
-      "act": "N",
-      "word": "技術",
-      "hiragana": "ぎじゅつ",
-      "korean": "기술",
-      "exampleIds": [
-        102156
       ]
     },
     {
@@ -16655,50 +14943,6 @@
       ]
     },
     {
-      "id": 2165,
-      "level": "N2",
-      "act": "N",
-      "word": "資源",
-      "hiragana": "しげん",
-      "korean": "자원",
-      "exampleIds": [
-        102165
-      ]
-    },
-    {
-      "id": 2166,
-      "level": "N2",
-      "act": "N",
-      "word": "姿勢",
-      "hiragana": "しせい",
-      "korean": "자세",
-      "exampleIds": [
-        102166
-      ]
-    },
-    {
-      "id": 2167,
-      "level": "N2",
-      "act": "N",
-      "word": "指導",
-      "hiragana": "しどう",
-      "korean": "지도",
-      "exampleIds": [
-        102167
-      ]
-    },
-    {
-      "id": 2168,
-      "level": "N2",
-      "act": "N",
-      "word": "地元",
-      "hiragana": "じもと",
-      "korean": "그 고장, 그 지방",
-      "exampleIds": [
-        102168
-      ]
-    },
-    {
       "id": 2169,
       "level": "N2",
       "act": "N",
@@ -16718,17 +14962,6 @@
       "korean": "상황",
       "exampleIds": [
         102170
-      ]
-    },
-    {
-      "id": 2171,
-      "level": "N2",
-      "act": "N",
-      "word": "条件",
-      "hiragana": "じょうけん",
-      "korean": "조건",
-      "exampleIds": [
-        102171
       ]
     },
     {
@@ -16773,17 +15006,6 @@
       "korean": "진단",
       "exampleIds": [
         102175
-      ]
-    },
-    {
-      "id": 2176,
-      "level": "N2",
-      "act": "N",
-      "word": "進歩",
-      "hiragana": "しんぽ",
-      "korean": "진보",
-      "exampleIds": [
-        102176
       ]
     },
     {
@@ -16839,17 +15061,6 @@
       "korean": "설치",
       "exampleIds": [
         102181
-      ]
-    },
-    {
-      "id": 2182,
-      "level": "N2",
-      "act": "N",
-      "word": "宣伝",
-      "hiragana": "せんでん",
-      "korean": "선전",
-      "exampleIds": [
-        102182
       ]
     },
     {
@@ -17414,17 +15625,6 @@
       ]
     },
     {
-      "id": 2234,
-      "level": "N2",
-      "act": "N",
-      "word": "募集",
-      "hiragana": "ぼしゅう",
-      "korean": "모집",
-      "exampleIds": [
-        102234
-      ]
-    },
-    {
       "id": 2235,
       "level": "N2",
       "act": "N",
@@ -17623,17 +15823,6 @@
       ]
     },
     {
-      "id": 2253,
-      "level": "N2",
-      "act": "N",
-      "word": "歴史",
-      "hiragana": "れきし",
-      "korean": "역사",
-      "exampleIds": [
-        102253
-      ]
-    },
-    {
       "id": 2254,
       "level": "N2",
       "act": "N",
@@ -17642,17 +15831,6 @@
       "korean": "할인",
       "exampleIds": [
         102254
-      ]
-    },
-    {
-      "id": 2255,
-      "level": "N2",
-      "act": "ADV",
-      "word": "相変わらず",
-      "hiragana": "あいかわらず",
-      "korean": "변함없이",
-      "exampleIds": [
-        102255
       ]
     },
     {
@@ -17672,7 +15850,7 @@
       "act": "ADV",
       "word": "改めて",
       "hiragana": "あらためて",
-      "korean": "다시, 재차",
+      "korean": "다시, 재차, 새삼스럽게",
       "exampleIds": [
         102257
       ]
@@ -17694,7 +15872,7 @@
       "act": "ADV",
       "word": "生き生き",
       "hiragana": "いきいき",
-      "korean": "생생한 모양, 활기찬 모양",
+      "korean": "생생한 모양, 활기찬 모양, 생기가 넘치는 모양",
       "exampleIds": [
         102259
       ]
@@ -17777,17 +15955,6 @@
       ]
     },
     {
-      "id": 2267,
-      "level": "N2",
-      "act": "ADV",
-      "word": "必ず",
-      "hiragana": "かならず",
-      "korean": "반드시, 꼭",
-      "exampleIds": [
-        102267
-      ]
-    },
-    {
       "id": 2268,
       "level": "N2",
       "act": "ADV",
@@ -17859,7 +16026,7 @@
       "act": "ADV",
       "word": "強いて",
       "hiragana": "しいて",
-      "korean": "굳이, 구태여",
+      "korean": "굳이, 구태여, 억지로, 무리해서",
       "exampleIds": [
         102274
       ]
@@ -17873,17 +16040,6 @@
       "korean": "직접",
       "exampleIds": [
         102275
-      ]
-    },
-    {
-      "id": 2276,
-      "level": "N2",
-      "act": "ADV",
-      "word": "次第に",
-      "hiragana": "しだいに",
-      "korean": "점점, 순차적으로",
-      "exampleIds": [
-        102276
       ]
     },
     {
@@ -17986,17 +16142,6 @@
       ]
     },
     {
-      "id": 2286,
-      "level": "N2",
-      "act": "ADV",
-      "word": "多少",
-      "hiragana": "たしょう",
-      "korean": "다소",
-      "exampleIds": [
-        102286
-      ]
-    },
-    {
       "id": 2287,
       "level": "N2",
       "act": "ADV",
@@ -18038,17 +16183,6 @@
       "korean": "항상, 언제나",
       "exampleIds": [
         102290
-      ]
-    },
-    {
-      "id": 2291,
-      "level": "N2",
-      "act": "ADV",
-      "word": "突然",
-      "hiragana": "とつぜん",
-      "korean": "돌연, 갑자기",
-      "exampleIds": [
-        102291
       ]
     },
     {
@@ -18217,17 +16351,6 @@
       ]
     },
     {
-      "id": 2307,
-      "level": "N1",
-      "act": "V",
-      "word": "挑む",
-      "hiragana": "いどむ",
-      "korean": "도전하다",
-      "exampleIds": [
-        102307
-      ]
-    },
-    {
       "id": 2308,
       "level": "N1",
       "act": "V",
@@ -18291,17 +16414,6 @@
       "korean": "몰두하다, 몰입하다",
       "exampleIds": [
         102313
-      ]
-    },
-    {
-      "id": 2314,
-      "level": "N1",
-      "act": "V",
-      "word": "訴える",
-      "hiragana": "うったえる",
-      "korean": "호소하다",
-      "exampleIds": [
-        102314
       ]
     },
     {
@@ -18393,17 +16505,6 @@
       ]
     },
     {
-      "id": 2323,
-      "level": "N1",
-      "act": "V",
-      "word": "劣る",
-      "hiragana": "おとる",
-      "korean": "뒤떨어지다, 뒤지다",
-      "exampleIds": [
-        102323
-      ]
-    },
-    {
       "id": 2324,
       "level": "N1",
       "act": "V",
@@ -18420,7 +16521,7 @@
       "act": "V",
       "word": "帯びる",
       "hiragana": "おびる",
-      "korean": "(띠)를 띠다, (성질, 경향)을 띠다",
+      "korean": "(띠)를 띠다, (성질, 경향)을 띠다, 띠다, 그러한 성질을 지니다",
       "exampleIds": [
         102325
       ]
@@ -18489,28 +16590,6 @@
       "korean": "내걸다, 내세우다",
       "exampleIds": [
         102331
-      ]
-    },
-    {
-      "id": 2332,
-      "level": "N1",
-      "act": "V",
-      "word": "稼ぐ",
-      "hiragana": "かせぐ",
-      "korean": "돈벌이하다, (시간을) 벌다",
-      "exampleIds": [
-        102332
-      ]
-    },
-    {
-      "id": 2333,
-      "level": "N1",
-      "act": "V",
-      "word": "偏る",
-      "hiragana": "かたよる",
-      "korean": "치우치다, 편중되다",
-      "exampleIds": [
-        102333
       ]
     },
     {
@@ -18624,17 +16703,6 @@
       ]
     },
     {
-      "id": 2344,
-      "level": "N1",
-      "act": "V",
-      "word": "逆らう",
-      "hiragana": "さからう",
-      "korean": "거스르다, 거역하다",
-      "exampleIds": [
-        102344
-      ]
-    },
-    {
       "id": 2345,
       "level": "N1",
       "act": "V",
@@ -18676,17 +16744,6 @@
       "korean": "깨닫다",
       "exampleIds": [
         102348
-      ]
-    },
-    {
-      "id": 2349,
-      "level": "N1",
-      "act": "V",
-      "word": "妨げる",
-      "hiragana": "さまたげる",
-      "korean": "방해하다",
-      "exampleIds": [
-        102349
       ]
     },
     {
@@ -18767,17 +16824,6 @@
       ]
     },
     {
-      "id": 2357,
-      "level": "N1",
-      "act": "V",
-      "word": "迫る",
-      "hiragana": "せまる",
-      "korean": "<자동사> 다가오다 <타동사> 강요하다",
-      "exampleIds": [
-        102357
-      ]
-    },
-    {
       "id": 2358,
       "level": "N1",
       "act": "V",
@@ -18852,17 +16898,6 @@
       "korean": "대신하여 지불하다",
       "exampleIds": [
         102364
-      ]
-    },
-    {
-      "id": 2365,
-      "level": "N1",
-      "act": "V",
-      "word": "費やす",
-      "hiragana": "ついやす",
-      "korean": "사용하다, 다 소비하다",
-      "exampleIds": [
-        102365
       ]
     },
     {
@@ -19042,17 +17077,6 @@
       ]
     },
     {
-      "id": 2382,
-      "level": "N1",
-      "act": "V",
-      "word": "取り組む",
-      "hiragana": "とりくむ",
-      "korean": "몰두하다",
-      "exampleIds": [
-        102382
-      ]
-    },
-    {
       "id": 2383,
       "level": "N1",
       "act": "V",
@@ -19083,17 +17107,6 @@
       "korean": "활기차다, 번화하다",
       "exampleIds": [
         102385
-      ]
-    },
-    {
-      "id": 2386,
-      "level": "N1",
-      "act": "V",
-      "word": "担う",
-      "hiragana": "になう",
-      "korean": "짊어지다, 떠맡다",
-      "exampleIds": [
-        102386
       ]
     },
     {
@@ -19135,7 +17148,7 @@
       "act": "V",
       "word": "乗り出す",
       "hiragana": "のりだす",
-      "korean": "시작하다",
+      "korean": "시작하다, 적극적으로 나서다, 착수하다",
       "exampleIds": [
         102390
       ]
@@ -19160,17 +17173,6 @@
       "korean": "진척되다",
       "exampleIds": [
         102392
-      ]
-    },
-    {
-      "id": 2393,
-      "level": "N1",
-      "act": "V",
-      "word": "励む",
-      "hiragana": "はげむ",
-      "korean": "힘쓰다",
-      "exampleIds": [
-        102393
       ]
     },
     {
@@ -19295,17 +17297,6 @@
       ]
     },
     {
-      "id": 2405,
-      "level": "N1",
-      "act": "V",
-      "word": "隔てる",
-      "hiragana": "へだてる",
-      "korean": "멀리하다, 사이에 두다",
-      "exampleIds": [
-        102405
-      ]
-    },
-    {
       "id": 2406,
       "level": "N1",
       "act": "V",
@@ -19347,17 +17338,6 @@
       "korean": "뒤섞이다",
       "exampleIds": [
         102409
-      ]
-    },
-    {
-      "id": 2410,
-      "level": "N1",
-      "act": "V",
-      "word": "惑わす",
-      "hiragana": "まどわす",
-      "korean": "혼란시키다, 현혹시키다",
-      "exampleIds": [
-        102410
       ]
     },
     {
@@ -19416,28 +17396,6 @@
       ]
     },
     {
-      "id": 2416,
-      "level": "N1",
-      "act": "V",
-      "word": "催す",
-      "hiragana": "もよおす",
-      "korean": "개최하다",
-      "exampleIds": [
-        102416
-      ]
-    },
-    {
-      "id": 2417,
-      "level": "N1",
-      "act": "V",
-      "word": "養う",
-      "hiragana": "やしなう",
-      "korean": "기르다, 부양하다",
-      "exampleIds": [
-        102417
-      ]
-    },
-    {
       "id": 2418,
       "level": "N1",
       "act": "V",
@@ -19467,7 +17425,8 @@
       "hiragana": "ゆらぐ",
       "korean": "흔들리다",
       "exampleIds": [
-        102420
+        102420,
+        104106
       ]
     },
     {
@@ -19515,17 +17474,6 @@
       ]
     },
     {
-      "id": 2425,
-      "level": "N1",
-      "act": "V",
-      "word": "割り込む",
-      "hiragana": "わりこむ",
-      "korean": "끼어들다, 새치기하다",
-      "exampleIds": [
-        102425
-      ]
-    },
-    {
       "id": 2426,
       "level": "N1",
       "act": "ADJ",
@@ -19545,17 +17493,6 @@
       "korean": "깨끗하다, 후련하다",
       "exampleIds": [
         102427
-      ]
-    },
-    {
-      "id": 2428,
-      "level": "N1",
-      "act": "ADJ",
-      "word": "薄暗い",
-      "hiragana": "うすぐらい",
-      "korean": "어둑어둑하다, 침침하다",
-      "exampleIds": [
-        102428
       ]
     },
     {
@@ -19625,17 +17562,6 @@
       ]
     },
     {
-      "id": 2435,
-      "level": "N1",
-      "act": "ADJ",
-      "word": "騒々しい",
-      "hiragana": "そうぞうしい",
-      "korean": "시끄럽다, 소란스럽다",
-      "exampleIds": [
-        102435
-      ]
-    },
-    {
       "id": 2436,
       "level": "N1",
       "act": "ADJ",
@@ -19666,17 +17592,6 @@
       "korean": "끈기 있다",
       "exampleIds": [
         102438
-      ]
-    },
-    {
-      "id": 2439,
-      "level": "N1",
-      "act": "ADJ",
-      "word": "望ましい",
-      "hiragana": "のぞましい",
-      "korean": "바람직하다",
-      "exampleIds": [
-        102439
       ]
     },
     {
@@ -20367,7 +18282,7 @@
       "act": "N",
       "word": "安静",
       "hiragana": "あんせい",
-      "korean": "안정(평온)",
+      "korean": "안정(평온), 안정(환자의 요양)",
       "exampleIds": [
         102502
       ]
@@ -20582,17 +18497,6 @@
       ]
     },
     {
-      "id": 2522,
-      "level": "N1",
-      "act": "N",
-      "word": "影響",
-      "hiragana": "えいきょう",
-      "korean": "영향",
-      "exampleIds": [
-        102522
-      ]
-    },
-    {
       "id": 2523,
       "level": "N1",
       "act": "N",
@@ -20755,17 +18659,6 @@
       "korean": "합병",
       "exampleIds": [
         102537
-      ]
-    },
-    {
-      "id": 2538,
-      "level": "N1",
-      "act": "N",
-      "word": "活躍",
-      "hiragana": "かつやく",
-      "korean": "활약",
-      "exampleIds": [
-        102538
       ]
     },
     {
@@ -21693,17 +19586,6 @@
       ]
     },
     {
-      "id": 2623,
-      "level": "N1",
-      "act": "N",
-      "word": "姿勢",
-      "hiragana": "しせい",
-      "korean": "자세",
-      "exampleIds": [
-        102623
-      ]
-    },
-    {
       "id": 2624,
       "level": "N1",
       "act": "N",
@@ -21858,17 +19740,6 @@
       ]
     },
     {
-      "id": 2638,
-      "level": "N1",
-      "act": "N",
-      "word": "渋滞",
-      "hiragana": "じゅうたい",
-      "korean": "정체(흐름이 밀림)",
-      "exampleIds": [
-        102638
-      ]
-    },
-    {
       "id": 2639,
       "level": "N1",
       "act": "N",
@@ -21940,7 +19811,7 @@
       "act": "N",
       "word": "樹木",
       "hiragana": "じゅもく",
-      "korean": "수목(큰 나무)",
+      "korean": "수목(큰 나무), 수목(커다란 나무)",
       "exampleIds": [
         102645
       ]
@@ -21987,17 +19858,6 @@
       "korean": "충격",
       "exampleIds": [
         102649
-      ]
-    },
-    {
-      "id": 2650,
-      "level": "N1",
-      "act": "N",
-      "word": "証拠",
-      "hiragana": "しょうこ",
-      "korean": "증거",
-      "exampleIds": [
-        102650
       ]
     },
     {
@@ -22589,7 +20449,7 @@
       "act": "N",
       "word": "難点",
       "hiragana": "なんてん",
-      "korean": "곤란한 점",
+      "korean": "곤란한 점, 난점",
       "exampleIds": [
         102704
       ]
@@ -22625,17 +20485,6 @@
       "korean": "염두, 마음속",
       "exampleIds": [
         102707
-      ]
-    },
-    {
-      "id": 2708,
-      "level": "N1",
-      "act": "N",
-      "word": "把握",
-      "hiragana": "はあく",
-      "korean": "파악",
-      "exampleIds": [
-        102708
       ]
     },
     {
@@ -23018,7 +20867,7 @@
       "act": "N",
       "word": "本筋",
       "hiragana": "ほんすじ",
-      "korean": "본론, 본줄거리",
+      "korean": "본론, 본줄거리, 본 줄거리",
       "exampleIds": [
         102743
       ]
@@ -23394,7 +21243,8 @@
       "hiragana": "わく",
       "korean": "틀, 테두리",
       "exampleIds": [
-        102777
+        102777,
+        104009
       ]
     },
     {
@@ -23409,17 +21259,6 @@
       ]
     },
     {
-      "id": 2779,
-      "level": "N1",
-      "act": "ADV",
-      "word": "改めて",
-      "hiragana": "あらためて",
-      "korean": "다시, 새삼스럽게",
-      "exampleIds": [
-        102779
-      ]
-    },
-    {
       "id": 2780,
       "level": "N1",
       "act": "ADV",
@@ -23428,17 +21267,6 @@
       "korean": "역시, 예상대로",
       "exampleIds": [
         102780
-      ]
-    },
-    {
-      "id": 2781,
-      "level": "N1",
-      "act": "ADV",
-      "word": "生き生き",
-      "hiragana": "いきいき",
-      "korean": "생기가 넘치는 모양",
-      "exampleIds": [
-        102781
       ]
     },
     {
@@ -23516,17 +21344,6 @@
       "korean": "조속히",
       "exampleIds": [
         102788
-      ]
-    },
-    {
-      "id": 2789,
-      "level": "N1",
-      "act": "ADV",
-      "word": "強いて",
-      "hiragana": "しいて",
-      "korean": "억지로, 무리해서",
-      "exampleIds": [
-        102789
       ]
     },
     {
@@ -23651,21 +21468,10 @@
       ]
     },
     {
-      "id": 2801,
-      "level": "N5",
-      "act": "V",
-      "word": "会",
-      "hiragana": "あう",
-      "korean": "만나다",
-      "exampleIds": [
-        102801
-      ]
-    },
-    {
       "id": 2802,
       "level": "N5",
       "act": "V",
-      "word": "買",
+      "word": "買う",
       "hiragana": "かう",
       "korean": "사다",
       "exampleIds": [
@@ -23673,36 +21479,14 @@
       ]
     },
     {
-      "id": 2803,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "赤",
-      "hiragana": "あかい",
-      "korean": "빨갛다. 붉다",
-      "exampleIds": [
-        102803
-      ]
-    },
-    {
       "id": 2804,
       "level": "N5",
       "act": "N",
-      "word": "火う日",
+      "word": "火曜日",
       "hiragana": "かようび",
       "korean": "화요일",
       "exampleIds": [
         102804
-      ]
-    },
-    {
-      "id": 2805,
-      "level": "N5",
-      "act": "V",
-      "word": "言",
-      "hiragana": "いう",
-      "korean": "말하다",
-      "exampleIds": [
-        102805
       ]
     },
     {
@@ -23717,65 +21501,10 @@
       ]
     },
     {
-      "id": 2807,
-      "level": "N5",
-      "act": "V",
-      "word": "生れる",
-      "hiragana": "うまれる",
-      "korean": "태어나다",
-      "exampleIds": [
-        102807
-      ]
-    },
-    {
-      "id": 2808,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "大い",
-      "hiragana": "おおきい",
-      "korean": "크다",
-      "exampleIds": [
-        102808
-      ]
-    },
-    {
-      "id": 2809,
-      "level": "N5",
-      "act": "N",
-      "word": "男子",
-      "hiragana": "おとこのこ",
-      "korean": "남자아이",
-      "exampleIds": [
-        102809
-      ]
-    },
-    {
-      "id": 2810,
-      "level": "N5",
-      "act": "N",
-      "word": "女子",
-      "hiragana": "おんなのこ",
-      "korean": "여자아이",
-      "exampleIds": [
-        102810
-      ]
-    },
-    {
-      "id": 2811,
-      "level": "N5",
-      "act": "V",
-      "word": "聞",
-      "hiragana": "きく",
-      "korean": "듣다",
-      "exampleIds": [
-        102811
-      ]
-    },
-    {
       "id": 2812,
       "level": "N5",
       "act": "N",
-      "word": "金う日",
+      "word": "金曜日",
       "hiragana": "きんようび",
       "korean": "금요일",
       "exampleIds": [
@@ -23791,17 +21520,6 @@
       "korean": "4월",
       "exampleIds": [
         102813
-      ]
-    },
-    {
-      "id": 2814,
-      "level": "N5",
-      "act": "V",
-      "word": "出",
-      "hiragana": "でる",
-      "korean": "나가(오)다",
-      "exampleIds": [
-        102814
       ]
     },
     {
@@ -23827,36 +21545,14 @@
       ]
     },
     {
-      "id": 2817,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "白",
-      "hiragana": "しろい",
-      "korean": "희다. 하얗다",
-      "exampleIds": [
-        102817
-      ]
-    },
-    {
       "id": 2818,
       "level": "N5",
       "act": "N",
       "word": "千円",
       "hiragana": "せんえん",
-      "korean": "1000엔",
+      "korean": "천 엔",
       "exampleIds": [
         102818
-      ]
-    },
-    {
-      "id": 2819,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "高",
-      "hiragana": "たかい",
-      "korean": "비싸다. 높다. (키가) 크다",
-      "exampleIds": [
-        102819
       ]
     },
     {
@@ -23871,36 +21567,14 @@
       ]
     },
     {
-      "id": 2821,
-      "level": "N5",
-      "act": "N",
-      "word": "友",
-      "hiragana": "ともだち",
-      "korean": "친구",
-      "exampleIds": [
-        102821
-      ]
-    },
-    {
       "id": 2822,
       "level": "N5",
       "act": "N",
-      "word": "土う日",
+      "word": "土曜日",
       "hiragana": "どようび",
       "korean": "토요일",
       "exampleIds": [
         102822
-      ]
-    },
-    {
-      "id": 2823,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "長",
-      "hiragana": "ながい",
-      "korean": "길다",
-      "exampleIds": [
-        102823
       ]
     },
     {
@@ -23915,72 +21589,6 @@
       ]
     },
     {
-      "id": 2825,
-      "level": "N5",
-      "act": "V",
-      "word": "出",
-      "hiragana": "だす",
-      "korean": "내다. 제출하다",
-      "exampleIds": [
-        102825
-      ]
-    },
-    {
-      "id": 2826,
-      "level": "N5",
-      "act": "V",
-      "word": "食る",
-      "hiragana": "たべる",
-      "korean": "먹다",
-      "exampleIds": [
-        102826
-      ]
-    },
-    {
-      "id": 2827,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "小い",
-      "hiragana": "ちいさい",
-      "korean": "(크기가) 작다",
-      "exampleIds": [
-        102827
-      ]
-    },
-    {
-      "id": 2828,
-      "level": "N5",
-      "act": "V",
-      "word": "飲",
-      "hiragana": "のむ",
-      "korean": "마시다. 삼키다",
-      "exampleIds": [
-        102828
-      ]
-    },
-    {
-      "id": 2829,
-      "level": "N5",
-      "act": "V",
-      "word": "入",
-      "hiragana": "はいる",
-      "korean": "들어가(오)다",
-      "exampleIds": [
-        102829
-      ]
-    },
-    {
-      "id": 2830,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "古",
-      "hiragana": "ふるい",
-      "korean": "오래되다. 낡다",
-      "exampleIds": [
-        102830
-      ]
-    },
-    {
       "id": 2831,
       "level": "N5",
       "act": "N",
@@ -23989,17 +21597,6 @@
       "korean": "유명함",
       "exampleIds": [
         102831
-      ]
-    },
-    {
-      "id": 2832,
-      "level": "N5",
-      "act": "V",
-      "word": "読",
-      "hiragana": "よむ",
-      "korean": "읽다",
-      "exampleIds": [
-        102832
       ]
     },
     {
@@ -24014,17 +21611,6 @@
       ]
     },
     {
-      "id": 2834,
-      "level": "N5",
-      "act": "V",
-      "word": "見る",
-      "hiragana": "みせる",
-      "korean": "보이다. 보여 주다",
-      "exampleIds": [
-        102834
-      ]
-    },
-    {
       "id": 2835,
       "level": "N5",
       "act": "N",
@@ -24033,116 +21619,6 @@
       "korean": "길",
       "exampleIds": [
         102835
-      ]
-    },
-    {
-      "id": 2836,
-      "level": "N5",
-      "act": "V",
-      "word": "見",
-      "hiragana": "みる",
-      "korean": "보다",
-      "exampleIds": [
-        102836
-      ]
-    },
-    {
-      "id": 2837,
-      "level": "N5",
-      "act": "N",
-      "word": "木う日",
-      "hiragana": "もくようび",
-      "korean": "목요일",
-      "exampleIds": [
-        102837
-      ]
-    },
-    {
-      "id": 2838,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "安",
-      "hiragana": "やすい",
-      "korean": "(값이) 싸다",
-      "exampleIds": [
-        102838
-      ]
-    },
-    {
-      "id": 2839,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "新い",
-      "hiragana": "あたらしい",
-      "korean": "새롭다",
-      "exampleIds": [
-        102839
-      ]
-    },
-    {
-      "id": 2840,
-      "level": "N5",
-      "act": "V",
-      "word": "行",
-      "hiragana": "いく",
-      "korean": "가다",
-      "exampleIds": [
-        102840
-      ]
-    },
-    {
-      "id": 2841,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "多",
-      "hiragana": "おおい",
-      "korean": "많다",
-      "exampleIds": [
-        102841
-      ]
-    },
-    {
-      "id": 2842,
-      "level": "N5",
-      "act": "V",
-      "word": "休",
-      "hiragana": "やすむ",
-      "korean": "쉬다",
-      "exampleIds": [
-        102842
-      ]
-    },
-    {
-      "id": 2843,
-      "level": "N5",
-      "act": "V",
-      "word": "書",
-      "hiragana": "かく",
-      "korean": "쓰다. 적다",
-      "exampleIds": [
-        102843
-      ]
-    },
-    {
-      "id": 2844,
-      "level": "N5",
-      "act": "V",
-      "word": "来",
-      "hiragana": "くる",
-      "korean": "오다",
-      "exampleIds": [
-        102844
-      ]
-    },
-    {
-      "id": 2845,
-      "level": "N5",
-      "act": "N",
-      "word": "子",
-      "hiragana": "こども",
-      "korean": "아이, 어린이",
-      "exampleIds": [
-        102845
       ]
     },
     {
@@ -24168,21 +21644,10 @@
       ]
     },
     {
-      "id": 2848,
-      "level": "N5",
-      "act": "V",
-      "word": "遊",
-      "hiragana": "あそぶ",
-      "korean": "놀다",
-      "exampleIds": [
-        102848
-      ]
-    },
-    {
       "id": 2849,
       "level": "N5",
       "act": "ADJ",
-      "word": "暖い",
+      "word": "暖かい",
       "hiragana": "あたたかい",
       "korean": "따뜻하다",
       "exampleIds": [
@@ -24198,50 +21663,6 @@
       "korean": "아파트",
       "exampleIds": [
         102850
-      ]
-    },
-    {
-      "id": 2851,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "危い",
-      "hiragana": "あぶない",
-      "korean": "위험하다",
-      "exampleIds": [
-        102851
-      ]
-    },
-    {
-      "id": 2852,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "甘",
-      "hiragana": "あまい",
-      "korean": "달다",
-      "exampleIds": [
-        102852
-      ]
-    },
-    {
-      "id": 2853,
-      "level": "N5",
-      "act": "V",
-      "word": "洗",
-      "hiragana": "あらう",
-      "korean": "씻다",
-      "exampleIds": [
-        102853
-      ]
-    },
-    {
-      "id": 2854,
-      "level": "N5",
-      "act": "V",
-      "word": "歩",
-      "hiragana": "あるく",
-      "korean": "걷다",
-      "exampleIds": [
-        102854
       ]
     },
     {
@@ -24278,32 +21699,10 @@
       ]
     },
     {
-      "id": 2858,
-      "level": "N5",
-      "act": "V",
-      "word": "入る",
-      "hiragana": "いれる",
-      "korean": "넣다",
-      "exampleIds": [
-        102858
-      ]
-    },
-    {
-      "id": 2859,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "薄",
-      "hiragana": "うすい",
-      "korean": "얇다",
-      "exampleIds": [
-        102859
-      ]
-    },
-    {
       "id": 2860,
       "level": "N5",
       "act": "V",
-      "word": "選",
+      "word": "選ぶ",
       "hiragana": "えらぶ",
       "korean": "고르다. 선택하다",
       "exampleIds": [
@@ -24344,50 +21743,6 @@
       ]
     },
     {
-      "id": 2864,
-      "level": "N5",
-      "act": "V",
-      "word": "起る",
-      "hiragana": "おきる",
-      "korean": "일어나다",
-      "exampleIds": [
-        102864
-      ]
-    },
-    {
-      "id": 2865,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "忙い",
-      "hiragana": "いそがしい",
-      "korean": "바쁘다",
-      "exampleIds": [
-        102865
-      ]
-    },
-    {
-      "id": 2866,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "痛",
-      "hiragana": "いたい",
-      "korean": "아프다",
-      "exampleIds": [
-        102866
-      ]
-    },
-    {
-      "id": 2867,
-      "level": "N5",
-      "act": "V",
-      "word": "置",
-      "hiragana": "おく",
-      "korean": "놓다. 두다",
-      "exampleIds": [
-        102867
-      ]
-    },
-    {
       "id": 2868,
       "level": "N5",
       "act": "N",
@@ -24396,17 +21751,6 @@
       "korean": "아저씨, 삼촌",
       "exampleIds": [
         102868
-      ]
-    },
-    {
-      "id": 2869,
-      "level": "N5",
-      "act": "V",
-      "word": "押",
-      "hiragana": "おす",
-      "korean": "누르다. 밀다",
-      "exampleIds": [
-        102869
       ]
     },
     {
@@ -24424,22 +21768,11 @@
       "id": 2871,
       "level": "N5",
       "act": "V",
-      "word": "被",
+      "word": "被る",
       "hiragana": "かぶる",
       "korean": "(모자를) 쓰다",
       "exampleIds": [
         102871
-      ]
-    },
-    {
-      "id": 2872,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "辛",
-      "hiragana": "からい",
-      "korean": "맵다",
-      "exampleIds": [
-        102872
       ]
     },
     {
@@ -24454,28 +21787,6 @@
       ]
     },
     {
-      "id": 2874,
-      "level": "N5",
-      "act": "V",
-      "word": "覚る",
-      "hiragana": "おぼえる",
-      "korean": "기억하다. 암기하다",
-      "exampleIds": [
-        102874
-      ]
-    },
-    {
-      "id": 2875,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "重",
-      "hiragana": "おもい",
-      "korean": "무겁다",
-      "exampleIds": [
-        102875
-      ]
-    },
-    {
       "id": 2876,
       "level": "N5",
       "act": "ADJ",
@@ -24487,80 +21798,14 @@
       ]
     },
     {
-      "id": 2877,
-      "level": "N5",
-      "act": "V",
-      "word": "泳",
-      "hiragana": "およぐ",
-      "korean": "헤엄치다",
-      "exampleIds": [
-        102877
-      ]
-    },
-    {
-      "id": 2878,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "汚",
-      "hiragana": "きたない",
-      "korean": "더럽다. 지저분하다",
-      "exampleIds": [
-        102878
-      ]
-    },
-    {
       "id": 2879,
       "level": "N5",
       "act": "V",
-      "word": "切",
+      "word": "切る",
       "hiragana": "きる",
       "korean": "자르다",
       "exampleIds": [
         102879
-      ]
-    },
-    {
-      "id": 2880,
-      "level": "N5",
-      "act": "V",
-      "word": "降る",
-      "hiragana": "おりる",
-      "korean": "내리다",
-      "exampleIds": [
-        102880
-      ]
-    },
-    {
-      "id": 2881,
-      "level": "N5",
-      "act": "V",
-      "word": "返",
-      "hiragana": "かえす",
-      "korean": "되돌려주다",
-      "exampleIds": [
-        102881
-      ]
-    },
-    {
-      "id": 2882,
-      "level": "N5",
-      "act": "V",
-      "word": "掛る",
-      "hiragana": "かかる",
-      "korean": "(시간 비용이) 들다. 걸리다",
-      "exampleIds": [
-        102882
-      ]
-    },
-    {
-      "id": 2883,
-      "level": "N5",
-      "act": "V",
-      "word": "掛る",
-      "hiragana": "かける",
-      "korean": "(안경을) 쓰다",
-      "exampleIds": [
-        102883
       ]
     },
     {
@@ -24586,39 +21831,6 @@
       ]
     },
     {
-      "id": 2886,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "暗",
-      "hiragana": "くらい",
-      "korean": "어둡다",
-      "exampleIds": [
-        102886
-      ]
-    },
-    {
-      "id": 2887,
-      "level": "N5",
-      "act": "V",
-      "word": "消",
-      "hiragana": "けす",
-      "korean": "(불을) 끄다",
-      "exampleIds": [
-        102887
-      ]
-    },
-    {
-      "id": 2888,
-      "level": "N5",
-      "act": "V",
-      "word": "閉る",
-      "hiragana": "しめる",
-      "korean": "(문을) 닫다",
-      "exampleIds": [
-        102888
-      ]
-    },
-    {
       "id": 2889,
       "level": "N5",
       "act": "ADJ",
@@ -24633,7 +21845,7 @@
       "id": 2890,
       "level": "N5",
       "act": "V",
-      "word": "結婚る",
+      "word": "結婚する",
       "hiragana": "けっこんする",
       "korean": "결혼하다",
       "exampleIds": [
@@ -24649,17 +21861,6 @@
       "korean": "튼튼함",
       "exampleIds": [
         102891
-      ]
-    },
-    {
-      "id": 2892,
-      "level": "N5",
-      "act": "V",
-      "word": "吸",
-      "hiragana": "すう",
-      "korean": "(담배를) 피우다",
-      "exampleIds": [
-        102892
       ]
     },
     {
@@ -24701,7 +21902,7 @@
       "act": "V",
       "word": "さす",
       "hiragana": "さす",
-      "korean": "(우산을) 쓰다. 받다",
+      "korean": "(우산을) 쓰다",
       "exampleIds": [
         102896
       ]
@@ -24743,9 +21944,9 @@
       "id": 2900,
       "level": "N5",
       "act": "ADV",
-      "word": "直に",
+      "word": "すぐに",
       "hiragana": "すぐに",
-      "korean": "곧 바로",
+      "korean": "곧바로",
       "exampleIds": [
         102900
       ]
@@ -24776,7 +21977,7 @@
       "id": 2903,
       "level": "N5",
       "act": "ADV",
-      "word": "静に",
+      "word": "静かに",
       "hiragana": "しずかに",
       "korean": "조용히",
       "exampleIds": [
@@ -24787,7 +21988,7 @@
       "id": 2904,
       "level": "N5",
       "act": "V",
-      "word": "質問る",
+      "word": "質問する",
       "hiragana": "しつもんする",
       "korean": "질문하다",
       "exampleIds": [
@@ -24861,17 +22062,6 @@
       ]
     },
     {
-      "id": 2911,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "楽い",
-      "hiragana": "たのしい",
-      "korean": "즐겁다",
-      "exampleIds": [
-        102911
-      ]
-    },
-    {
       "id": 2912,
       "level": "N5",
       "act": "ADV",
@@ -24894,17 +22084,6 @@
       ]
     },
     {
-      "id": 2914,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "近",
-      "hiragana": "ちかい",
-      "korean": "가깝다",
-      "exampleIds": [
-        102914
-      ]
-    },
-    {
       "id": 2915,
       "level": "N5",
       "act": "ADV",
@@ -24913,17 +22092,6 @@
       "korean": "정각, 정확히",
       "exampleIds": [
         102915
-      ]
-    },
-    {
-      "id": 2916,
-      "level": "N5",
-      "act": "V",
-      "word": "疲る",
-      "hiragana": "つかれる",
-      "korean": "피곤하다, 지치다",
-      "exampleIds": [
-        102916
       ]
     },
     {
@@ -24938,28 +22106,6 @@
       ]
     },
     {
-      "id": 2918,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "冷い",
-      "hiragana": "つめたい",
-      "korean": "차갑다",
-      "exampleIds": [
-        102918
-      ]
-    },
-    {
-      "id": 2919,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "強",
-      "hiragana": "つよい",
-      "korean": "강하다, 세다",
-      "exampleIds": [
-        102919
-      ]
-    },
-    {
       "id": 2920,
       "level": "N5",
       "act": "N",
@@ -24971,45 +22117,12 @@
       ]
     },
     {
-      "id": 2921,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "遠",
-      "hiragana": "とおい",
-      "korean": "멀다",
-      "exampleIds": [
-        102921
-      ]
-    },
-    {
-      "id": 2922,
-      "level": "N5",
-      "act": "V",
-      "word": "飛",
-      "hiragana": "とぶ",
-      "korean": "날다",
-      "exampleIds": [
-        102922
-      ]
-    },
-    {
-      "id": 2923,
-      "level": "N5",
-      "act": "V",
-      "word": "止る",
-      "hiragana": "とまる",
-      "korean": "멈추다",
-      "exampleIds": [
-        102923
-      ]
-    },
-    {
       "id": 2924,
       "level": "N5",
       "act": "V",
-      "word": "取",
+      "word": "取る",
       "hiragana": "とる",
-      "korean": "집다, 잡다",
+      "korean": "잡다, 집다",
       "exampleIds": [
         102924
       ]
@@ -25018,7 +22131,7 @@
       "id": 2925,
       "level": "N5",
       "act": "V",
-      "word": "撮",
+      "word": "撮る",
       "hiragana": "とる",
       "korean": "(사진·영화를) 찍다",
       "exampleIds": [
@@ -25040,7 +22153,7 @@
       "id": 2927,
       "level": "N5",
       "act": "V",
-      "word": "習",
+      "word": "習う",
       "hiragana": "ならう",
       "korean": "배우다, 익히다",
       "exampleIds": [
@@ -25051,7 +22164,7 @@
       "id": 2928,
       "level": "N5",
       "act": "V",
-      "word": "並る",
+      "word": "並べる",
       "hiragana": "ならべる",
       "korean": "진열하다",
       "exampleIds": [
@@ -25084,7 +22197,7 @@
       "id": 2931,
       "level": "N5",
       "act": "N",
-      "word": "二",
+      "word": "二キロ",
       "hiragana": "にきろ",
       "korean": "2킬로미터",
       "exampleIds": [
@@ -25125,39 +22238,6 @@
       ]
     },
     {
-      "id": 2935,
-      "level": "N5",
-      "act": "V",
-      "word": "登",
-      "hiragana": "のぼる",
-      "korean": "(산을) 오르다",
-      "exampleIds": [
-        102935
-      ]
-    },
-    {
-      "id": 2936,
-      "level": "N5",
-      "act": "N",
-      "word": "飲物",
-      "hiragana": "のみもの",
-      "korean": "마실 것",
-      "exampleIds": [
-        102936
-      ]
-    },
-    {
-      "id": 2937,
-      "level": "N5",
-      "act": "V",
-      "word": "乗",
-      "hiragana": "のる",
-      "korean": "(차, 비행기를) 타다",
-      "exampleIds": [
-        102937
-      ]
-    },
-    {
       "id": 2938,
       "level": "N5",
       "act": "N",
@@ -25183,7 +22263,7 @@
       "id": 2940,
       "level": "N5",
       "act": "ADV",
-      "word": "初て",
+      "word": "初めて",
       "hiragana": "はじめて",
       "korean": "처음으로",
       "exampleIds": [
@@ -25210,17 +22290,6 @@
       "korean": "80엔",
       "exampleIds": [
         102942
-      ]
-    },
-    {
-      "id": 2943,
-      "level": "N5",
-      "act": "V",
-      "word": "貼",
-      "hiragana": "はる",
-      "korean": "붙이다",
-      "exampleIds": [
-        102943
       ]
     },
     {
@@ -25260,7 +22329,7 @@
       "id": 2947,
       "level": "N5",
       "act": "V",
-      "word": "吹",
+      "word": "吹く",
       "hiragana": "ふく",
       "korean": "(바람이) 불다",
       "exampleIds": [
@@ -25304,22 +22373,11 @@
       "id": 2951,
       "level": "N5",
       "act": "ADJ",
-      "word": "欲い",
+      "word": "欲しい",
       "hiragana": "ほしい",
       "korean": "가지고 싶다",
       "exampleIds": [
         102951
-      ]
-    },
-    {
-      "id": 2952,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "細",
-      "hiragana": "ほそい",
-      "korean": "가늘다",
-      "exampleIds": [
-        102952
       ]
     },
     {
@@ -25331,17 +22389,6 @@
       "korean": "책방, 서점",
       "exampleIds": [
         102953
-      ]
-    },
-    {
-      "id": 2954,
-      "level": "N5",
-      "act": "V",
-      "word": "曲る",
-      "hiragana": "まがる",
-      "korean": "돌다, (방향을) 틀다",
-      "exampleIds": [
-        102954
       ]
     },
     {
@@ -25364,17 +22411,6 @@
       "korean": "똑바로, 곧장",
       "exampleIds": [
         102956
-      ]
-    },
-    {
-      "id": 2957,
-      "level": "N5",
-      "act": "V",
-      "word": "磨",
-      "hiragana": "みがく",
-      "korean": "(이를) 닦다",
-      "exampleIds": [
-        102957
       ]
     },
     {
@@ -25444,65 +22480,10 @@
       ]
     },
     {
-      "id": 2964,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "若",
-      "hiragana": "わかい",
-      "korean": "젊다",
-      "exampleIds": [
-        102964
-      ]
-    },
-    {
-      "id": 2965,
-      "level": "N5",
-      "act": "V",
-      "word": "忘る",
-      "hiragana": "わすれる",
-      "korean": "잊다",
-      "exampleIds": [
-        102965
-      ]
-    },
-    {
-      "id": 2966,
-      "level": "N5",
-      "act": "V",
-      "word": "渡",
-      "hiragana": "わたす",
-      "korean": "건네다",
-      "exampleIds": [
-        102966
-      ]
-    },
-    {
-      "id": 2967,
-      "level": "N5",
-      "act": "V",
-      "word": "渡",
-      "hiragana": "わたる",
-      "korean": "건너다",
-      "exampleIds": [
-        102967
-      ]
-    },
-    {
-      "id": 2968,
-      "level": "N5",
-      "act": "V",
-      "word": "晴る",
-      "hiragana": "はれる",
-      "korean": "개다, 맑다",
-      "exampleIds": [
-        102968
-      ]
-    },
-    {
       "id": 2969,
       "level": "N5",
       "act": "V",
-      "word": "出ける",
+      "word": "出かける",
       "hiragana": "でかける",
       "korean": "외출하다, 나가다",
       "exampleIds": [
@@ -25513,7 +22494,7 @@
       "id": 2970,
       "level": "N5",
       "act": "N",
-      "word": "お手洗",
+      "word": "お手洗い",
       "hiragana": "おてあらい",
       "korean": "화장실",
       "exampleIds": [
@@ -25562,28 +22543,6 @@
       "korean": "아내",
       "exampleIds": [
         102974
-      ]
-    },
-    {
-      "id": 2975,
-      "level": "N5",
-      "act": "N",
-      "word": "奥",
-      "hiragana": "おくさん",
-      "korean": "부인",
-      "exampleIds": [
-        102975
-      ]
-    },
-    {
-      "id": 2976,
-      "level": "N5",
-      "act": "ADJ",
-      "word": "嫌",
-      "hiragana": "きらい",
-      "korean": "싫음",
-      "exampleIds": [
-        102976
       ]
     },
     {
@@ -25697,21 +22656,10 @@
       ]
     },
     {
-      "id": 2987,
-      "level": "N5",
-      "act": "V",
-      "word": "勤る",
-      "hiragana": "つとめる",
-      "korean": "근무하다",
-      "exampleIds": [
-        102987
-      ]
-    },
-    {
       "id": 2988,
       "level": "N5",
       "act": "V",
-      "word": "働",
+      "word": "働く",
       "hiragana": "はたらく",
       "korean": "일하다",
       "exampleIds": [
@@ -25862,17 +22810,6 @@
       ]
     },
     {
-      "id": 3002,
-      "level": "N5",
-      "act": "V",
-      "word": "教る",
-      "hiragana": "おしえる",
-      "korean": "가르치다",
-      "exampleIds": [
-        103002
-      ]
-    },
-    {
       "id": 3003,
       "level": "N5",
       "act": "N",
@@ -25887,7 +22824,7 @@
       "id": 3004,
       "level": "N5",
       "act": "V",
-      "word": "送",
+      "word": "送る",
       "hiragana": "おくる",
       "korean": "보내다",
       "exampleIds": [
@@ -25939,17 +22876,6 @@
       ]
     },
     {
-      "id": 3009,
-      "level": "N4",
-      "act": "V",
-      "word": "開る",
-      "hiragana": "あける",
-      "korean": "(문을) 열다",
-      "exampleIds": [
-        103009
-      ]
-    },
-    {
       "id": 3010,
       "level": "N4",
       "act": "N",
@@ -25961,17 +22887,6 @@
       ]
     },
     {
-      "id": 3011,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "暑",
-      "hiragana": "あつい",
-      "korean": "덥다",
-      "exampleIds": [
-        103011
-      ]
-    },
-    {
       "id": 3012,
       "level": "N4",
       "act": "N",
@@ -25980,17 +22895,6 @@
       "korean": "안심",
       "exampleIds": [
         103012
-      ]
-    },
-    {
-      "id": 3013,
-      "level": "N4",
-      "act": "V",
-      "word": "急",
-      "hiragana": "いそぐ",
-      "korean": "서두르다",
-      "exampleIds": [
-        103013
       ]
     },
     {
@@ -26027,39 +22931,6 @@
       ]
     },
     {
-      "id": 3017,
-      "level": "N4",
-      "act": "V",
-      "word": "終る",
-      "hiragana": "おわる",
-      "korean": "끝나다",
-      "exampleIds": [
-        103017
-      ]
-    },
-    {
-      "id": 3018,
-      "level": "N4",
-      "act": "V",
-      "word": "帰",
-      "hiragana": "かえる",
-      "korean": "돌아가(오)다",
-      "exampleIds": [
-        103018
-      ]
-    },
-    {
-      "id": 3019,
-      "level": "N4",
-      "act": "V",
-      "word": "貸",
-      "hiragana": "かす",
-      "korean": "빌려주다",
-      "exampleIds": [
-        103019
-      ]
-    },
-    {
       "id": 3020,
       "level": "N4",
       "act": "N",
@@ -26074,7 +22945,7 @@
       "id": 3021,
       "level": "N4",
       "act": "V",
-      "word": "通",
+      "word": "通う",
       "hiragana": "かよう",
       "korean": "다니다, 통학하다",
       "exampleIds": [
@@ -26082,21 +22953,10 @@
       ]
     },
     {
-      "id": 3022,
-      "level": "N4",
-      "act": "V",
-      "word": "借る",
-      "hiragana": "かりる",
-      "korean": "빌리다",
-      "exampleIds": [
-        103022
-      ]
-    },
-    {
       "id": 3023,
       "level": "N4",
       "act": "V",
-      "word": "考る",
+      "word": "考える",
       "hiragana": "かんがえる",
       "korean": "생각하다",
       "exampleIds": [
@@ -26115,28 +22975,6 @@
       ]
     },
     {
-      "id": 3025,
-      "level": "N4",
-      "act": "ADV",
-      "word": "急",
-      "hiragana": "きゅうに",
-      "korean": "갑자기",
-      "exampleIds": [
-        103025
-      ]
-    },
-    {
-      "id": 3026,
-      "level": "N4",
-      "act": "V",
-      "word": "着",
-      "hiragana": "きる",
-      "korean": "(옷을) 입다",
-      "exampleIds": [
-        103026
-      ]
-    },
-    {
       "id": 3027,
       "level": "N4",
       "act": "N",
@@ -26145,17 +22983,6 @@
       "korean": "근처, 부근",
       "exampleIds": [
         103027
-      ]
-    },
-    {
-      "id": 3028,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "黒",
-      "hiragana": "くろい",
-      "korean": "검다",
-      "exampleIds": [
-        103028
       ]
     },
     {
@@ -26203,17 +23030,6 @@
       ]
     },
     {
-      "id": 3033,
-      "level": "N4",
-      "act": "V",
-      "word": "死",
-      "hiragana": "しぬ",
-      "korean": "죽다",
-      "exampleIds": [
-        103033
-      ]
-    },
-    {
       "id": 3034,
       "level": "N4",
       "act": "N",
@@ -26236,17 +23052,6 @@
       ]
     },
     {
-      "id": 3036,
-      "level": "N4",
-      "act": "V",
-      "word": "知",
-      "hiragana": "しる",
-      "korean": "알다",
-      "exampleIds": [
-        103036
-      ]
-    },
-    {
       "id": 3037,
       "level": "N4",
       "act": "N",
@@ -26266,28 +23071,6 @@
       "korean": "친절함",
       "exampleIds": [
         103038
-      ]
-    },
-    {
-      "id": 3039,
-      "level": "N4",
-      "act": "V",
-      "word": "進",
-      "hiragana": "すすむ",
-      "korean": "나아가다, 진보하다",
-      "exampleIds": [
-        103039
-      ]
-    },
-    {
-      "id": 3040,
-      "level": "N4",
-      "act": "V",
-      "word": "住",
-      "hiragana": "すむ",
-      "korean": "살다, 주거하다",
-      "exampleIds": [
-        103040
       ]
     },
     {
@@ -26338,7 +23121,7 @@
       "id": 3045,
       "level": "N4",
       "act": "V",
-      "word": "足る",
+      "word": "足りる",
       "hiragana": "たりる",
       "korean": "족하다, 충분하다",
       "exampleIds": [
@@ -26382,7 +23165,7 @@
       "id": 3049,
       "level": "N4",
       "act": "V",
-      "word": "使",
+      "word": "使う",
       "hiragana": "つかう",
       "korean": "사용하다",
       "exampleIds": [
@@ -26390,32 +23173,10 @@
       ]
     },
     {
-      "id": 3050,
-      "level": "N4",
-      "act": "V",
-      "word": "着",
-      "hiragana": "つく",
-      "korean": "도착하다",
-      "exampleIds": [
-        103050
-      ]
-    },
-    {
-      "id": 3051,
-      "level": "N4",
-      "act": "V",
-      "word": "通",
-      "hiragana": "とおる",
-      "korean": "통과하다, 지나다",
-      "exampleIds": [
-        103051
-      ]
-    },
-    {
       "id": 3052,
       "level": "N4",
       "act": "ADV",
-      "word": "特",
+      "word": "特に",
       "hiragana": "とくに",
       "korean": "특히",
       "exampleIds": [
@@ -26423,21 +23184,10 @@
       ]
     },
     {
-      "id": 3053,
-      "level": "N4",
-      "act": "V",
-      "word": "運",
-      "hiragana": "はこぶ",
-      "korean": "옮기다, 운송하다",
-      "exampleIds": [
-        103053
-      ]
-    },
-    {
       "id": 3054,
       "level": "N4",
       "act": "V",
-      "word": "走",
+      "word": "走る",
       "hiragana": "はしる",
       "korean": "달리다",
       "exampleIds": [
@@ -26448,7 +23198,7 @@
       "id": 3055,
       "level": "N4",
       "act": "ADJ",
-      "word": "早",
+      "word": "早い",
       "hiragana": "はやい",
       "korean": "이르다, 빠르다",
       "exampleIds": [
@@ -26459,33 +23209,11 @@
       "id": 3056,
       "level": "N4",
       "act": "ADV",
-      "word": "早",
+      "word": "早く",
       "hiragana": "はやく",
       "korean": "일찍, 빨리",
       "exampleIds": [
         103056
-      ]
-    },
-    {
-      "id": 3057,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "広",
-      "hiragana": "ひろい",
-      "korean": "넓다",
-      "exampleIds": [
-        103057
-      ]
-    },
-    {
-      "id": 3058,
-      "level": "N4",
-      "act": "V",
-      "word": "待",
-      "hiragana": "まつ",
-      "korean": "기다리다",
-      "exampleIds": [
-        103058
       ]
     },
     {
@@ -26500,17 +23228,6 @@
       ]
     },
     {
-      "id": 3060,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "弱",
-      "hiragana": "よわい",
-      "korean": "약하다",
-      "exampleIds": [
-        103060
-      ]
-    },
-    {
       "id": 3061,
       "level": "N4",
       "act": "N",
@@ -26522,58 +23239,14 @@
       ]
     },
     {
-      "id": 3062,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "悪",
-      "hiragana": "わるい",
-      "korean": "나쁘다, 안 좋다",
-      "exampleIds": [
-        103062
-      ]
-    },
-    {
-      "id": 3063,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "青",
-      "hiragana": "あおい",
-      "korean": "파랗다",
-      "exampleIds": [
-        103063
-      ]
-    },
-    {
-      "id": 3064,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "明い",
-      "hiragana": "あかるい",
-      "korean": "밝다",
-      "exampleIds": [
-        103064
-      ]
-    },
-    {
       "id": 3065,
       "level": "N4",
       "act": "V",
-      "word": "集る",
+      "word": "集まる",
       "hiragana": "あつまる",
       "korean": "모이다",
       "exampleIds": [
         103065
-      ]
-    },
-    {
-      "id": 3066,
-      "level": "N4",
-      "act": "V",
-      "word": "売",
-      "hiragana": "うる",
-      "korean": "팔다",
-      "exampleIds": [
-        103066
       ]
     },
     {
@@ -26591,22 +23264,11 @@
       "id": 3068,
       "level": "N4",
       "act": "V",
-      "word": "思出",
+      "word": "思い出す",
       "hiragana": "おもいだす",
-      "korean": "생각해내다",
+      "korean": "생각해내다, 떠올리다",
       "exampleIds": [
         103068
-      ]
-    },
-    {
-      "id": 3069,
-      "level": "N4",
-      "act": "V",
-      "word": "答る",
-      "hiragana": "こたえる",
-      "korean": "대답하다",
-      "exampleIds": [
-        103069
       ]
     },
     {
@@ -26621,21 +23283,10 @@
       ]
     },
     {
-      "id": 3071,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "正い",
-      "hiragana": "ただしい",
-      "korean": "바르다, 옳다",
-      "exampleIds": [
-        103071
-      ]
-    },
-    {
       "id": 3072,
       "level": "N4",
       "act": "V",
-      "word": "建る",
+      "word": "建てる",
       "hiragana": "たてる",
       "korean": "(건물을) 세우다, 짓다",
       "exampleIds": [
@@ -26643,21 +23294,10 @@
       ]
     },
     {
-      "id": 3073,
-      "level": "N4",
-      "act": "V",
-      "word": "作",
-      "hiragana": "つくる",
-      "korean": "만들다",
-      "exampleIds": [
-        103073
-      ]
-    },
-    {
       "id": 3074,
       "level": "N4",
       "act": "V",
-      "word": "始る",
+      "word": "始まる",
       "hiragana": "はじまる",
       "korean": "시작되다",
       "exampleIds": [
@@ -26676,28 +23316,6 @@
       ]
     },
     {
-      "id": 3076,
-      "level": "N4",
-      "act": "V",
-      "word": "持",
-      "hiragana": "もつ",
-      "korean": "가지다, 들다",
-      "exampleIds": [
-        103076
-      ]
-    },
-    {
-      "id": 3077,
-      "level": "N4",
-      "act": "V",
-      "word": "別る",
-      "hiragana": "わかれる",
-      "korean": "헤어지다",
-      "exampleIds": [
-        103077
-      ]
-    },
-    {
       "id": 3078,
       "level": "N4",
       "act": "N",
@@ -26706,17 +23324,6 @@
       "korean": "아이디어",
       "exampleIds": [
         103078
-      ]
-    },
-    {
-      "id": 3079,
-      "level": "N4",
-      "act": "V",
-      "word": "謝",
-      "hiragana": "あやまる",
-      "korean": "사과하다",
-      "exampleIds": [
-        103079
       ]
     },
     {
@@ -26739,28 +23346,6 @@
       "korean": "안전함",
       "exampleIds": [
         103081
-      ]
-    },
-    {
-      "id": 3082,
-      "level": "N4",
-      "act": "V",
-      "word": "植る",
-      "hiragana": "うえる",
-      "korean": "(나무를) 심다",
-      "exampleIds": [
-        103082
-      ]
-    },
-    {
-      "id": 3083,
-      "level": "N4",
-      "act": "V",
-      "word": "打",
-      "hiragana": "うつ",
-      "korean": "부딪치다",
-      "exampleIds": [
-        103083
       ]
     },
     {
@@ -26819,17 +23404,6 @@
       ]
     },
     {
-      "id": 3089,
-      "level": "N4",
-      "act": "V",
-      "word": "折る",
-      "hiragana": "おれる",
-      "korean": "꺾이다, 접히다",
-      "exampleIds": [
-        103089
-      ]
-    },
-    {
       "id": 3090,
       "level": "N4",
       "act": "N",
@@ -26852,21 +23426,10 @@
       ]
     },
     {
-      "id": 3092,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "固",
-      "hiragana": "かたい",
-      "korean": "딱딱하다",
-      "exampleIds": [
-        103092
-      ]
-    },
-    {
       "id": 3093,
       "level": "N4",
       "act": "V",
-      "word": "噛",
+      "word": "噛む",
       "hiragana": "かむ",
       "korean": "씹다",
       "exampleIds": [
@@ -26877,7 +23440,7 @@
       "id": 3094,
       "level": "N4",
       "act": "V",
-      "word": "比る",
+      "word": "比べる",
       "hiragana": "くらべる",
       "korean": "비교하다",
       "exampleIds": [
@@ -26918,21 +23481,10 @@
       ]
     },
     {
-      "id": 3098,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "細い",
-      "hiragana": "こまかい",
-      "korean": "잘다, 세세하다",
-      "exampleIds": [
-        103098
-      ]
-    },
-    {
       "id": 3099,
       "level": "N4",
       "act": "ADJ",
-      "word": "怖",
+      "word": "怖い",
       "hiragana": "こわい",
       "korean": "무섭다",
       "exampleIds": [
@@ -26959,17 +23511,6 @@
       "korean": "아까",
       "exampleIds": [
         103101
-      ]
-    },
-    {
-      "id": 3102,
-      "level": "N4",
-      "act": "V",
-      "word": "触",
-      "hiragana": "さわる",
-      "korean": "만지다",
-      "exampleIds": [
-        103102
       ]
     },
     {
@@ -27039,28 +23580,6 @@
       ]
     },
     {
-      "id": 3109,
-      "level": "N4",
-      "act": "ADV",
-      "word": "確に",
-      "hiragana": "たしかに",
-      "korean": "분명히, 확실하게",
-      "exampleIds": [
-        103109
-      ]
-    },
-    {
-      "id": 3110,
-      "level": "N4",
-      "act": "V",
-      "word": "足",
-      "hiragana": "たす",
-      "korean": "더하다",
-      "exampleIds": [
-        103110
-      ]
-    },
-    {
       "id": 3111,
       "level": "N4",
       "act": "N",
@@ -27119,7 +23638,7 @@
       "id": 3116,
       "level": "N4",
       "act": "V",
-      "word": "直",
+      "word": "直す",
       "hiragana": "なおす",
       "korean": "고치다",
       "exampleIds": [
@@ -27130,7 +23649,7 @@
       "id": 3117,
       "level": "N4",
       "act": "V",
-      "word": "治",
+      "word": "治る",
       "hiragana": "なおる",
       "korean": "(병이) 낫다",
       "exampleIds": [
@@ -27146,17 +23665,6 @@
       "korean": "되도록, 가능한 한",
       "exampleIds": [
         103118
-      ]
-    },
-    {
-      "id": 3119,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "苦",
-      "hiragana": "にがい",
-      "korean": "(맛이) 쓰다",
-      "exampleIds": [
-        103119
       ]
     },
     {
@@ -27185,7 +23693,7 @@
       "id": 3122,
       "level": "N4",
       "act": "ADJ",
-      "word": "眠",
+      "word": "眠い",
       "hiragana": "ねむい",
       "korean": "졸리다",
       "exampleIds": [
@@ -27207,7 +23715,7 @@
       "id": 3124,
       "level": "N4",
       "act": "ADJ",
-      "word": "恥しい",
+      "word": "恥ずかしい",
       "hiragana": "はずかしい",
       "korean": "부끄럽다",
       "exampleIds": [
@@ -27251,7 +23759,7 @@
       "id": 3128,
       "level": "N4",
       "act": "V",
-      "word": "太",
+      "word": "太る",
       "hiragana": "ふとる",
       "korean": "뚱뚱해지다",
       "exampleIds": [
@@ -27289,28 +23797,6 @@
       "korean": "번역",
       "exampleIds": [
         103131
-      ]
-    },
-    {
-      "id": 3132,
-      "level": "N4",
-      "act": "V",
-      "word": "見る",
-      "hiragana": "みつかる",
-      "korean": "발견되다",
-      "exampleIds": [
-        103132
-      ]
-    },
-    {
-      "id": 3133,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "珍い",
-      "hiragana": "めずらしい",
-      "korean": "진귀하다, 드물다",
-      "exampleIds": [
-        103133
       ]
     },
     {
@@ -27355,17 +23841,6 @@
       "korean": "부드럽다",
       "exampleIds": [
         103137
-      ]
-    },
-    {
-      "id": 3138,
-      "level": "N4",
-      "act": "V",
-      "word": "寄",
-      "hiragana": "よる",
-      "korean": "들르다",
-      "exampleIds": [
-        103138
       ]
     },
     {
@@ -27446,17 +23921,6 @@
       ]
     },
     {
-      "id": 3146,
-      "level": "N4",
-      "act": "V",
-      "word": "驚",
-      "hiragana": "おどろく",
-      "korean": "놀라다",
-      "exampleIds": [
-        103146
-      ]
-    },
-    {
       "id": 3147,
       "level": "N4",
       "act": "N",
@@ -27471,22 +23935,11 @@
       "id": 3148,
       "level": "N4",
       "act": "V",
-      "word": "片付る",
+      "word": "片付ける",
       "hiragana": "かたづける",
       "korean": "정리하다, 치우다",
       "exampleIds": [
         103148
-      ]
-    },
-    {
-      "id": 3149,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "厳い",
-      "hiragana": "きびしい",
-      "korean": "엄하다, 엄격하다",
-      "exampleIds": [
-        103149
       ]
     },
     {
@@ -27501,58 +23954,14 @@
       ]
     },
     {
-      "id": 3151,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "寂い",
-      "hiragana": "さびしい",
-      "korean": "쓸쓸하다, 외롭다",
-      "exampleIds": [
-        103151
-      ]
-    },
-    {
-      "id": 3152,
-      "level": "N4",
-      "act": "ADJ",
-      "word": "寒",
-      "hiragana": "さむい",
-      "korean": "춥다",
-      "exampleIds": [
-        103152
-      ]
-    },
-    {
       "id": 3153,
       "level": "N4",
       "act": "V",
-      "word": "叱",
+      "word": "叱る",
       "hiragana": "しかる",
       "korean": "꾸짖다",
       "exampleIds": [
         103153
-      ]
-    },
-    {
-      "id": 3154,
-      "level": "N4",
-      "act": "V",
-      "word": "捨る",
-      "hiragana": "すてる",
-      "korean": "버리다",
-      "exampleIds": [
-        103154
-      ]
-    },
-    {
-      "id": 3155,
-      "level": "N4",
-      "act": "V",
-      "word": "育る",
-      "hiragana": "そだてる",
-      "korean": "기르다, 키우다",
-      "exampleIds": [
-        103155
       ]
     },
     {
@@ -27570,7 +23979,7 @@
       "id": 3157,
       "level": "N4",
       "act": "V",
-      "word": "伝る",
+      "word": "伝える",
       "hiragana": "つたえる",
       "korean": "전하다, 전달하다",
       "exampleIds": [
@@ -27658,7 +24067,7 @@
       "id": 3165,
       "level": "N4",
       "act": "V",
-      "word": "迎る",
+      "word": "迎える",
       "hiragana": "むかえる",
       "korean": "맞이하다",
       "exampleIds": [
@@ -27674,28 +24083,6 @@
       "korean": "천천히",
       "exampleIds": [
         103166
-      ]
-    },
-    {
-      "id": 3167,
-      "level": "N4",
-      "act": "V",
-      "word": "喜",
-      "hiragana": "よろこぶ",
-      "korean": "기뻐하다",
-      "exampleIds": [
-        103167
-      ]
-    },
-    {
-      "id": 3168,
-      "level": "N4",
-      "act": "V",
-      "word": "沸す",
-      "hiragana": "わかす",
-      "korean": "(물을) 끓이다",
-      "exampleIds": [
-        103168
       ]
     },
     {
@@ -27754,28 +24141,6 @@
       ]
     },
     {
-      "id": 3174,
-      "level": "N3",
-      "act": "V",
-      "word": "表",
-      "hiragana": "あらわす",
-      "korean": "나타내다",
-      "exampleIds": [
-        103174
-      ]
-    },
-    {
-      "id": 3175,
-      "level": "N3",
-      "act": "V",
-      "word": "包",
-      "hiragana": "つつむ",
-      "korean": "포장하다",
-      "exampleIds": [
-        103175
-      ]
-    },
-    {
       "id": 3176,
       "level": "N3",
       "act": "N",
@@ -27801,22 +24166,11 @@
       "id": 3178,
       "level": "N3",
       "act": "V",
-      "word": "移",
+      "word": "移す",
       "hiragana": "うつす",
       "korean": "옮기다",
       "exampleIds": [
         103178
-      ]
-    },
-    {
-      "id": 3179,
-      "level": "N3",
-      "act": "V",
-      "word": "組",
-      "hiragana": "くむ",
-      "korean": "짜다, 맞추다",
-      "exampleIds": [
-        103179
       ]
     },
     {
@@ -27867,7 +24221,7 @@
       "id": 3184,
       "level": "N3",
       "act": "V",
-      "word": "遅る",
+      "word": "遅れる",
       "hiragana": "おくれる",
       "korean": "늦다",
       "exampleIds": [
@@ -27897,28 +24251,6 @@
       ]
     },
     {
-      "id": 3187,
-      "level": "N3",
-      "act": "V",
-      "word": "折",
-      "hiragana": "おる",
-      "korean": "접다, 굽히다",
-      "exampleIds": [
-        103187
-      ]
-    },
-    {
-      "id": 3188,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "深",
-      "hiragana": "ふかい",
-      "korean": "깊다",
-      "exampleIds": [
-        103188
-      ]
-    },
-    {
       "id": 3189,
       "level": "N3",
       "act": "N",
@@ -27927,17 +24259,6 @@
       "korean": "표면",
       "exampleIds": [
         103189
-      ]
-    },
-    {
-      "id": 3190,
-      "level": "N3",
-      "act": "V",
-      "word": "配",
-      "hiragana": "くばる",
-      "korean": "나누어 주다",
-      "exampleIds": [
-        103190
       ]
     },
     {
@@ -27952,17 +24273,6 @@
       ]
     },
     {
-      "id": 3192,
-      "level": "N3",
-      "act": "V",
-      "word": "困",
-      "hiragana": "こまる",
-      "korean": "곤란하다",
-      "exampleIds": [
-        103192
-      ]
-    },
-    {
       "id": 3193,
       "level": "N3",
       "act": "N",
@@ -27971,39 +24281,6 @@
       "korean": "평일",
       "exampleIds": [
         103193
-      ]
-    },
-    {
-      "id": 3194,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "短",
-      "hiragana": "みじかい",
-      "korean": "짧다",
-      "exampleIds": [
-        103194
-      ]
-    },
-    {
-      "id": 3195,
-      "level": "N3",
-      "act": "V",
-      "word": "示",
-      "hiragana": "しめす",
-      "korean": "나타내다",
-      "exampleIds": [
-        103195
-      ]
-    },
-    {
-      "id": 3196,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "苦い",
-      "hiragana": "くるしい",
-      "korean": "괴롭다",
-      "exampleIds": [
-        103196
       ]
     },
     {
@@ -28040,28 +24317,6 @@
       ]
     },
     {
-      "id": 3200,
-      "level": "N3",
-      "act": "V",
-      "word": "生る",
-      "hiragana": "はえる",
-      "korean": "나다, 돋아나다",
-      "exampleIds": [
-        103200
-      ]
-    },
-    {
-      "id": 3201,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "浅",
-      "hiragana": "あさい",
-      "korean": "얕다",
-      "exampleIds": [
-        103201
-      ]
-    },
-    {
       "id": 3202,
       "level": "N3",
       "act": "N",
@@ -28070,39 +24325,6 @@
       "korean": "문장",
       "exampleIds": [
         103202
-      ]
-    },
-    {
-      "id": 3203,
-      "level": "N3",
-      "act": "V",
-      "word": "笑",
-      "hiragana": "わらう",
-      "korean": "웃다",
-      "exampleIds": [
-        103203
-      ]
-    },
-    {
-      "id": 3204,
-      "level": "N3",
-      "act": "V",
-      "word": "割る",
-      "hiragana": "われる",
-      "korean": "깨지다, 나누어지다",
-      "exampleIds": [
-        103204
-      ]
-    },
-    {
-      "id": 3205,
-      "level": "N3",
-      "act": "V",
-      "word": "替る",
-      "hiragana": "かえる",
-      "korean": "교체하다",
-      "exampleIds": [
-        103205
       ]
     },
     {
@@ -28117,28 +24339,6 @@
       ]
     },
     {
-      "id": 3207,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "厚",
-      "hiragana": "あつい",
-      "korean": "두껍다",
-      "exampleIds": [
-        103207
-      ]
-    },
-    {
-      "id": 3208,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "美い",
-      "hiragana": "うつくしい",
-      "korean": "아름답다",
-      "exampleIds": [
-        103208
-      ]
-    },
-    {
       "id": 3209,
       "level": "N3",
       "act": "N",
@@ -28147,17 +24347,6 @@
       "korean": "창조",
       "exampleIds": [
         103209
-      ]
-    },
-    {
-      "id": 3210,
-      "level": "N3",
-      "act": "V",
-      "word": "汚る",
-      "hiragana": "よごれる",
-      "korean": "더러워지다",
-      "exampleIds": [
-        103210
       ]
     },
     {
@@ -28180,17 +24369,6 @@
       "korean": "분류",
       "exampleIds": [
         103212
-      ]
-    },
-    {
-      "id": 3213,
-      "level": "N3",
-      "act": "V",
-      "word": "干",
-      "hiragana": "ほす",
-      "korean": "(널어) 말리다, (잔) 비우다",
-      "exampleIds": [
-        103213
       ]
     },
     {
@@ -28230,22 +24408,11 @@
       "id": 3217,
       "level": "N3",
       "act": "V",
-      "word": "支給る",
+      "word": "支給する",
       "hiragana": "しきゅうする",
       "korean": "지급하다",
       "exampleIds": [
         103217
-      ]
-    },
-    {
-      "id": 3218,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "丸",
-      "hiragana": "まるい",
-      "korean": "둥글다",
-      "exampleIds": [
-        103218
       ]
     },
     {
@@ -28296,7 +24463,7 @@
       "id": 3223,
       "level": "N3",
       "act": "V",
-      "word": "払",
+      "word": "払う",
       "hiragana": "はらう",
       "korean": "지불하다",
       "exampleIds": [
@@ -28304,36 +24471,14 @@
       ]
     },
     {
-      "id": 3224,
-      "level": "N3",
-      "act": "V",
-      "word": "加る",
-      "hiragana": "くわえる",
-      "korean": "추가하다",
-      "exampleIds": [
-        103224
-      ]
-    },
-    {
       "id": 3225,
       "level": "N3",
       "act": "V",
-      "word": "冷る",
-      "hiragana": "ひえる",
-      "korean": "차가워지다, 식다",
+      "word": "冷やす",
+      "hiragana": "ひやす",
+      "korean": "차갑게 하다, 식히다",
       "exampleIds": [
         103225
-      ]
-    },
-    {
-      "id": 3226,
-      "level": "N3",
-      "act": "V",
-      "word": "転",
-      "hiragana": "ころぶ",
-      "korean": "구르다",
-      "exampleIds": [
-        103226
       ]
     },
     {
@@ -28345,50 +24490,6 @@
       "korean": "주요",
       "exampleIds": [
         103227
-      ]
-    },
-    {
-      "id": 3228,
-      "level": "N3",
-      "act": "V",
-      "word": "燃る",
-      "hiragana": "もえる",
-      "korean": "타다, 불타다",
-      "exampleIds": [
-        103228
-      ]
-    },
-    {
-      "id": 3229,
-      "level": "N3",
-      "act": "V",
-      "word": "回",
-      "hiragana": "まわす",
-      "korean": "돌리다",
-      "exampleIds": [
-        103229
-      ]
-    },
-    {
-      "id": 3230,
-      "level": "N3",
-      "act": "V",
-      "word": "結",
-      "hiragana": "むすぶ",
-      "korean": "잇다, 묶다",
-      "exampleIds": [
-        103230
-      ]
-    },
-    {
-      "id": 3231,
-      "level": "N3",
-      "act": "V",
-      "word": "追",
-      "hiragana": "おう",
-      "korean": "뒤쫓다",
-      "exampleIds": [
-        103231
       ]
     },
     {
@@ -28450,7 +24551,7 @@
       "id": 3237,
       "level": "N3",
       "act": "V",
-      "word": "過す",
+      "word": "過ごす",
       "hiragana": "すごす",
       "korean": "지내다, 보내다",
       "exampleIds": [
@@ -28480,17 +24581,6 @@
       ]
     },
     {
-      "id": 3240,
-      "level": "N3",
-      "act": "V",
-      "word": "守",
-      "hiragana": "まもる",
-      "korean": "지키다",
-      "exampleIds": [
-        103240
-      ]
-    },
-    {
       "id": 3241,
       "level": "N3",
       "act": "N",
@@ -28502,17 +24592,6 @@
       ]
     },
     {
-      "id": 3242,
-      "level": "N3",
-      "act": "V",
-      "word": "温る",
-      "hiragana": "あたためる",
-      "korean": "따뜻하게 하다",
-      "exampleIds": [
-        103242
-      ]
-    },
-    {
       "id": 3243,
       "level": "N3",
       "act": "N",
@@ -28521,39 +24600,6 @@
       "korean": "복습",
       "exampleIds": [
         103243
-      ]
-    },
-    {
-      "id": 3244,
-      "level": "N3",
-      "act": "V",
-      "word": "信る",
-      "hiragana": "しんじる",
-      "korean": "믿다",
-      "exampleIds": [
-        103244
-      ]
-    },
-    {
-      "id": 3245,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "遅",
-      "hiragana": "おそい",
-      "korean": "느리다, 늦다",
-      "exampleIds": [
-        103245
-      ]
-    },
-    {
-      "id": 3246,
-      "level": "N3",
-      "act": "V",
-      "word": "重る",
-      "hiragana": "かさねる",
-      "korean": "거듭하다",
-      "exampleIds": [
-        103246
       ]
     },
     {
@@ -28579,17 +24625,6 @@
       ]
     },
     {
-      "id": 3249,
-      "level": "N3",
-      "act": "V",
-      "word": "逃る",
-      "hiragana": "にげる",
-      "korean": "달아나다, 도망치다",
-      "exampleIds": [
-        103249
-      ]
-    },
-    {
       "id": 3250,
       "level": "N3",
       "act": "N",
@@ -28601,102 +24636,14 @@
       ]
     },
     {
-      "id": 3251,
-      "level": "N3",
-      "act": "V",
-      "word": "移",
-      "hiragana": "うつる",
-      "korean": "옮기다",
-      "exampleIds": [
-        103251
-      ]
-    },
-    {
-      "id": 3252,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "恋い",
-      "hiragana": "こいしい",
-      "korean": "그립다",
-      "exampleIds": [
-        103252
-      ]
-    },
-    {
       "id": 3253,
       "level": "N3",
       "act": "V",
-      "word": "仮定る",
+      "word": "仮定する",
       "hiragana": "かていする",
       "korean": "가정하다",
       "exampleIds": [
         103253
-      ]
-    },
-    {
-      "id": 3254,
-      "level": "N3",
-      "act": "V",
-      "word": "投る",
-      "hiragana": "なげる",
-      "korean": "던지다",
-      "exampleIds": [
-        103254
-      ]
-    },
-    {
-      "id": 3255,
-      "level": "N3",
-      "act": "V",
-      "word": "願",
-      "hiragana": "ねがう",
-      "korean": "바라다, 부탁하다",
-      "exampleIds": [
-        103255
-      ]
-    },
-    {
-      "id": 3256,
-      "level": "N3",
-      "act": "V",
-      "word": "焼",
-      "hiragana": "やく",
-      "korean": "굽다, 태우다",
-      "exampleIds": [
-        103256
-      ]
-    },
-    {
-      "id": 3257,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "速",
-      "hiragana": "はやい",
-      "korean": "빠르다",
-      "exampleIds": [
-        103257
-      ]
-    },
-    {
-      "id": 3258,
-      "level": "N3",
-      "act": "V",
-      "word": "眠",
-      "hiragana": "ねむる",
-      "korean": "자다, 잠들다",
-      "exampleIds": [
-        103258
-      ]
-    },
-    {
-      "id": 3259,
-      "level": "N3",
-      "act": "V",
-      "word": "預る",
-      "hiragana": "あずける",
-      "korean": "맡기다, 위임하다",
-      "exampleIds": [
-        103259
       ]
     },
     {
@@ -28711,17 +24658,6 @@
       ]
     },
     {
-      "id": 3261,
-      "level": "N3",
-      "act": "V",
-      "word": "違",
-      "hiragana": "ちがう",
-      "korean": "다르다, 틀리다",
-      "exampleIds": [
-        103261
-      ]
-    },
-    {
       "id": 3262,
       "level": "N3",
       "act": "N",
@@ -28730,17 +24666,6 @@
       "korean": "카탈로그",
       "exampleIds": [
         103262
-      ]
-    },
-    {
-      "id": 3263,
-      "level": "N3",
-      "act": "V",
-      "word": "感る",
-      "hiragana": "かんじる",
-      "korean": "느끼다",
-      "exampleIds": [
-        103263
       ]
     },
     {
@@ -28835,7 +24760,7 @@
       "id": 3272,
       "level": "N3",
       "act": "ADV",
-      "word": "早に",
+      "word": "早めに",
       "hiragana": "はやめに",
       "korean": "일찌감치",
       "exampleIds": [
@@ -28876,17 +24801,6 @@
       ]
     },
     {
-      "id": 3276,
-      "level": "N3",
-      "act": "V",
-      "word": "扱",
-      "hiragana": "あつかう",
-      "korean": "다루다, 취급하다",
-      "exampleIds": [
-        103276
-      ]
-    },
-    {
       "id": 3277,
       "level": "N3",
       "act": "N",
@@ -28895,17 +24809,6 @@
       "korean": "희망",
       "exampleIds": [
         103277
-      ]
-    },
-    {
-      "id": 3278,
-      "level": "N3",
-      "act": "V",
-      "word": "迷",
-      "hiragana": "まよう",
-      "korean": "헤매다, 망설이다",
-      "exampleIds": [
-        103278
       ]
     },
     {
@@ -28972,17 +24875,6 @@
       "korean": "복잡한",
       "exampleIds": [
         103284
-      ]
-    },
-    {
-      "id": 3285,
-      "level": "N3",
-      "act": "V",
-      "word": "流る",
-      "hiragana": "ながれる",
-      "korean": "흐르다",
-      "exampleIds": [
-        103285
       ]
     },
     {
@@ -29330,7 +25222,7 @@
       "id": 3317,
       "level": "N3",
       "act": "ADV",
-      "word": "主",
+      "word": "主に",
       "hiragana": "おもに",
       "korean": "주로",
       "exampleIds": [
@@ -29371,28 +25263,6 @@
       ]
     },
     {
-      "id": 3321,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "緩",
-      "hiragana": "ゆるい",
-      "korean": "느슨하다, 완만하다",
-      "exampleIds": [
-        103321
-      ]
-    },
-    {
-      "id": 3322,
-      "level": "N3",
-      "act": "V",
-      "word": "経",
-      "hiragana": "たつ",
-      "korean": "지나다, 경과하다",
-      "exampleIds": [
-        103322
-      ]
-    },
-    {
       "id": 3323,
       "level": "N3",
       "act": "N",
@@ -29401,17 +25271,6 @@
       "korean": "물가",
       "exampleIds": [
         103323
-      ]
-    },
-    {
-      "id": 3324,
-      "level": "N3",
-      "act": "V",
-      "word": "追く",
-      "hiragana": "おいつく",
-      "korean": "따라잡다",
-      "exampleIds": [
-        103324
       ]
     },
     {
@@ -29437,21 +25296,10 @@
       ]
     },
     {
-      "id": 3327,
-      "level": "N3",
-      "act": "V",
-      "word": "引受る",
-      "hiragana": "ひきうける",
-      "korean": "받아들이다",
-      "exampleIds": [
-        103327
-      ]
-    },
-    {
       "id": 3328,
       "level": "N3",
       "act": "V",
-      "word": "自慢る",
+      "word": "自慢する",
       "hiragana": "じまんする",
       "korean": "자랑하다",
       "exampleIds": [
@@ -29462,7 +25310,7 @@
       "id": 3329,
       "level": "N3",
       "act": "V",
-      "word": "分る",
+      "word": "分ける",
       "hiragana": "わける",
       "korean": "나누다, 구분하다",
       "exampleIds": [
@@ -29489,17 +25337,6 @@
       "korean": "적극적인",
       "exampleIds": [
         103331
-      ]
-    },
-    {
-      "id": 3332,
-      "level": "N3",
-      "act": "V",
-      "word": "我慢る",
-      "hiragana": "がまんする",
-      "korean": "참다",
-      "exampleIds": [
-        103332
       ]
     },
     {
@@ -29536,17 +25373,6 @@
       ]
     },
     {
-      "id": 3336,
-      "level": "N3",
-      "act": "V",
-      "word": "覚る",
-      "hiragana": "さめる",
-      "korean": "(잠) 깨다, 정신 들다",
-      "exampleIds": [
-        103336
-      ]
-    },
-    {
       "id": 3337,
       "level": "N3",
       "act": "N",
@@ -29555,17 +25381,6 @@
       "korean": "주제, 테마",
       "exampleIds": [
         103337
-      ]
-    },
-    {
-      "id": 3338,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "悔い",
-      "hiragana": "くやしい",
-      "korean": "분하다, 억울하다",
-      "exampleIds": [
-        103338
       ]
     },
     {
@@ -29624,17 +25439,6 @@
       ]
     },
     {
-      "id": 3344,
-      "level": "N3",
-      "act": "V",
-      "word": "隠",
-      "hiragana": "かくす",
-      "korean": "숨기다",
-      "exampleIds": [
-        103344
-      ]
-    },
-    {
       "id": 3345,
       "level": "N3",
       "act": "ADV",
@@ -29643,17 +25447,6 @@
       "korean": "똑같이 생김",
       "exampleIds": [
         103345
-      ]
-    },
-    {
-      "id": 3346,
-      "level": "N3",
-      "act": "V",
-      "word": "破る",
-      "hiragana": "やぶれる",
-      "korean": "찢어지다, 파손되다",
-      "exampleIds": [
-        103346
       ]
     },
     {
@@ -29668,28 +25461,6 @@
       ]
     },
     {
-      "id": 3348,
-      "level": "N3",
-      "act": "V",
-      "word": "編",
-      "hiragana": "あむ",
-      "korean": "짜다, 뜨개질하다",
-      "exampleIds": [
-        103348
-      ]
-    },
-    {
-      "id": 3349,
-      "level": "N3",
-      "act": "V",
-      "word": "戦",
-      "hiragana": "たたかう",
-      "korean": "싸우다",
-      "exampleIds": [
-        103349
-      ]
-    },
-    {
       "id": 3350,
       "level": "N3",
       "act": "N",
@@ -29698,17 +25469,6 @@
       "korean": "향기",
       "exampleIds": [
         103350
-      ]
-    },
-    {
-      "id": 3351,
-      "level": "N3",
-      "act": "V",
-      "word": "防",
-      "hiragana": "ふせぐ",
-      "korean": "막다, 방지하다",
-      "exampleIds": [
-        103351
       ]
     },
     {
@@ -29726,7 +25486,7 @@
       "id": 3353,
       "level": "N3",
       "act": "ADJ",
-      "word": "盛な",
+      "word": "盛んな",
       "hiragana": "さかんな",
       "korean": "왕성한, 활발한",
       "exampleIds": [
@@ -29767,39 +25527,6 @@
       ]
     },
     {
-      "id": 3357,
-      "level": "N3",
-      "act": "V",
-      "word": "断",
-      "hiragana": "ことわる",
-      "korean": "거절하다",
-      "exampleIds": [
-        103357
-      ]
-    },
-    {
-      "id": 3358,
-      "level": "N3",
-      "act": "ADJ",
-      "word": "惜い",
-      "hiragana": "おしい",
-      "korean": "아깝다, 아쉽다",
-      "exampleIds": [
-        103358
-      ]
-    },
-    {
-      "id": 3359,
-      "level": "N3",
-      "act": "V",
-      "word": "頼",
-      "hiragana": "たよる",
-      "korean": "의지하다",
-      "exampleIds": [
-        103359
-      ]
-    },
-    {
       "id": 3360,
       "level": "N3",
       "act": "N",
@@ -29822,17 +25549,6 @@
       ]
     },
     {
-      "id": 3362,
-      "level": "N3",
-      "act": "V",
-      "word": "囲",
-      "hiragana": "かこむ",
-      "korean": "포위하다",
-      "exampleIds": [
-        103362
-      ]
-    },
-    {
       "id": 3363,
       "level": "N3",
       "act": "ADV",
@@ -29844,28 +25560,6 @@
       ]
     },
     {
-      "id": 3364,
-      "level": "N3",
-      "act": "V",
-      "word": "許",
-      "hiragana": "ゆるす",
-      "korean": "용서하다, 허락하다",
-      "exampleIds": [
-        103364
-      ]
-    },
-    {
-      "id": 3365,
-      "level": "N3",
-      "act": "V",
-      "word": "確める",
-      "hiragana": "たしかめる",
-      "korean": "확인하다",
-      "exampleIds": [
-        103365
-      ]
-    },
-    {
       "id": 3366,
       "level": "N3",
       "act": "N",
@@ -29874,17 +25568,6 @@
       "korean": "농업",
       "exampleIds": [
         103366
-      ]
-    },
-    {
-      "id": 3367,
-      "level": "N3",
-      "act": "V",
-      "word": "沈",
-      "hiragana": "しずむ",
-      "korean": "가라앉다",
-      "exampleIds": [
-        103367
       ]
     },
     {
@@ -29921,17 +25604,6 @@
       ]
     },
     {
-      "id": 3371,
-      "level": "N3",
-      "act": "V",
-      "word": "呼ける",
-      "hiragana": "よびかける",
-      "korean": "부르다",
-      "exampleIds": [
-        103371
-      ]
-    },
-    {
       "id": 3372,
       "level": "N3",
       "act": "N",
@@ -29951,17 +25623,6 @@
       "korean": "상당히",
       "exampleIds": [
         103373
-      ]
-    },
-    {
-      "id": 3374,
-      "level": "N3",
-      "act": "V",
-      "word": "落着",
-      "hiragana": "おちつく",
-      "korean": "자리잡다, 안정되다",
-      "exampleIds": [
-        103374
       ]
     },
     {
@@ -30001,7 +25662,7 @@
       "id": 3378,
       "level": "N3",
       "act": "V",
-      "word": "明る",
+      "word": "明ける",
       "hiragana": "あける",
       "korean": "날이 새다, 끝나다",
       "exampleIds": [
@@ -30067,7 +25728,7 @@
       "id": 3384,
       "level": "N3",
       "act": "V",
-      "word": "暗記る",
+      "word": "暗記する",
       "hiragana": "あんきする",
       "korean": "암기하다",
       "exampleIds": [
@@ -30105,17 +25766,6 @@
       "korean": "이유",
       "exampleIds": [
         103387
-      ]
-    },
-    {
-      "id": 3388,
-      "level": "N3",
-      "act": "V",
-      "word": "減",
-      "hiragana": "へる",
-      "korean": "줄어들다",
-      "exampleIds": [
-        103388
       ]
     },
     {
@@ -30276,7 +25926,7 @@
       "id": 3403,
       "level": "N3",
       "act": "N",
-      "word": "大",
+      "word": "大きさ",
       "hiragana": "おおきさ",
       "korean": "크기",
       "exampleIds": [
@@ -30292,17 +25942,6 @@
       "korean": "주문하다",
       "exampleIds": [
         103404
-      ]
-    },
-    {
-      "id": 3405,
-      "level": "N3",
-      "act": "V",
-      "word": "頼",
-      "hiragana": "たのむ",
-      "korean": "부탁하다, 주문하다",
-      "exampleIds": [
-        103405
       ]
     },
     {
@@ -30504,17 +26143,6 @@
       ]
     },
     {
-      "id": 3424,
-      "level": "N3",
-      "act": "V",
-      "word": "疑",
-      "hiragana": "うたがう",
-      "korean": "의심하다",
-      "exampleIds": [
-        103424
-      ]
-    },
-    {
       "id": 3425,
       "level": "N3",
       "act": "N",
@@ -30534,17 +26162,6 @@
       "korean": "여전히",
       "exampleIds": [
         103426
-      ]
-    },
-    {
-      "id": 3427,
-      "level": "N3",
-      "act": "V",
-      "word": "学",
-      "hiragana": "まなぶ",
-      "korean": "배우다",
-      "exampleIds": [
-        103427
       ]
     },
     {
@@ -30578,17 +26195,6 @@
       "korean": "빛나다",
       "exampleIds": [
         103430
-      ]
-    },
-    {
-      "id": 3431,
-      "level": "N3",
-      "act": "V",
-      "word": "光",
-      "hiragana": "ひかる",
-      "korean": "빛나다",
-      "exampleIds": [
-        103431
       ]
     },
     {
@@ -30878,17 +26484,6 @@
       ]
     },
     {
-      "id": 3458,
-      "level": "N3",
-      "act": "V",
-      "word": "離",
-      "hiragana": "はなす",
-      "korean": "떼어내다, 분리하다",
-      "exampleIds": [
-        103458
-      ]
-    },
-    {
       "id": 3459,
       "level": "N3",
       "act": "ADJ",
@@ -30974,17 +26569,6 @@
       "korean": "위로하다",
       "exampleIds": [
         103466
-      ]
-    },
-    {
-      "id": 3467,
-      "level": "N3",
-      "act": "V",
-      "word": "受取",
-      "hiragana": "うけとる",
-      "korean": "받다, 수취하다",
-      "exampleIds": [
-        103467
       ]
     },
     {
@@ -31395,17 +26979,6 @@
       ]
     },
     {
-      "id": 3505,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "怖い",
-      "hiragana": "こわい",
-      "korean": "무섭다",
-      "exampleIds": [
-        103505
-      ]
-    },
-    {
       "id": 3506,
       "level": "N2",
       "act": "N",
@@ -31582,17 +27155,6 @@
       ]
     },
     {
-      "id": 3522,
-      "level": "N2",
-      "act": "V",
-      "word": "焦せる",
-      "hiragana": "あせる",
-      "korean": "초조해하다, 안달하다",
-      "exampleIds": [
-        103522
-      ]
-    },
-    {
       "id": 3523,
       "level": "N2",
       "act": "N",
@@ -31695,7 +27257,7 @@
       "id": 3532,
       "level": "N2",
       "act": "N",
-      "word": "平等う",
+      "word": "平等",
       "hiragana": "びょうどう",
       "korean": "평등",
       "exampleIds": [
@@ -31705,7 +27267,7 @@
     {
       "id": 3533,
       "level": "N2",
-      "act": "ADV",
+      "act": "V",
       "word": "絡まる",
       "hiragana": "からまる",
       "korean": "얽히다",
@@ -31728,7 +27290,7 @@
       "id": 3535,
       "level": "N2",
       "act": "ADJ",
-      "word": "鮮な",
+      "word": "鮮やかな",
       "hiragana": "あざやかな",
       "korean": "선명한",
       "exampleIds": [
@@ -31761,7 +27323,7 @@
       "id": 3538,
       "level": "N2",
       "act": "N",
-      "word": "衣装う",
+      "word": "衣装",
       "hiragana": "いしょう",
       "korean": "의상",
       "exampleIds": [
@@ -31805,7 +27367,7 @@
       "id": 3542,
       "level": "N2",
       "act": "N",
-      "word": "頼",
+      "word": "頼り",
       "hiragana": "たより",
       "korean": "연고, 의지가 되는 것",
       "exampleIds": [
@@ -31826,8 +27388,8 @@
     {
       "id": 3544,
       "level": "N2",
-      "act": "N",
-      "word": "暮す",
+      "act": "V",
+      "word": "暮らす",
       "hiragana": "くらす",
       "korean": "살다",
       "exampleIds": [
@@ -31870,7 +27432,7 @@
     {
       "id": 3548,
       "level": "N2",
-      "act": "ADJ",
+      "act": "N",
       "word": "勢い",
       "hiragana": "いきおい",
       "korean": "기세",
@@ -31942,17 +27504,6 @@
       "korean": "기부",
       "exampleIds": [
         103554
-      ]
-    },
-    {
-      "id": 3555,
-      "level": "N2",
-      "act": "V",
-      "word": "果す",
-      "hiragana": "はたす",
-      "korean": "완수하다",
-      "exampleIds": [
-        103555
       ]
     },
     {
@@ -32124,7 +27675,7 @@
       "id": 3571,
       "level": "N2",
       "act": "N",
-      "word": "催",
+      "word": "催し",
       "hiragana": "もよおし",
       "korean": "행사, 모임",
       "exampleIds": [
@@ -32179,22 +27730,11 @@
       "id": 3576,
       "level": "N2",
       "act": "ADJ",
-      "word": "豊な",
+      "word": "豊かな",
       "hiragana": "ゆたかな",
       "korean": "풍부한, 부유한",
       "exampleIds": [
         103576
-      ]
-    },
-    {
-      "id": 3577,
-      "level": "N2",
-      "act": "V",
-      "word": "迎える",
-      "hiragana": "むかえる",
-      "korean": "맞이하다",
-      "exampleIds": [
-        103577
       ]
     },
     {
@@ -32211,7 +27751,7 @@
     {
       "id": 3579,
       "level": "N2",
-      "act": "N",
+      "act": "V",
       "word": "束ねる",
       "hiragana": "たばねる",
       "korean": "묶다",
@@ -32332,7 +27872,7 @@
     {
       "id": 3590,
       "level": "N2",
-      "act": "N",
+      "act": "V",
       "word": "縮める",
       "hiragana": "ちぢめる",
       "korean": "줄이다",
@@ -32344,8 +27884,8 @@
       "id": 3591,
       "level": "N2",
       "act": "N",
-      "word": "返い品",
-      "hiragana": "へいぴん",
+      "word": "返品",
+      "hiragana": "へんぴん",
       "korean": "반품",
       "exampleIds": [
         103591
@@ -32376,8 +27916,8 @@
     {
       "id": 3594,
       "level": "N2",
-      "act": "N",
-      "word": "積る",
+      "act": "V",
+      "word": "積もる",
       "hiragana": "つもる",
       "korean": "쌓이다",
       "exampleIds": [
@@ -32484,17 +28024,6 @@
       ]
     },
     {
-      "id": 3604,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "柔い",
-      "hiragana": "やわらかい",
-      "korean": "부드럽다",
-      "exampleIds": [
-        103604
-      ]
-    },
-    {
       "id": 3605,
       "level": "N2",
       "act": "N",
@@ -32542,7 +28071,7 @@
       "id": 3609,
       "level": "N2",
       "act": "N",
-      "word": "来しーずん",
+      "word": "来シーズン",
       "hiragana": "らいしーずん",
       "korean": "다음 시즌",
       "exampleIds": [
@@ -32558,17 +28087,6 @@
       "korean": "한밤중",
       "exampleIds": [
         103610
-      ]
-    },
-    {
-      "id": 3611,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "薄す暗い",
-      "hiragana": "うすぐらい",
-      "korean": "어둑어둑하다, 침침하다",
-      "exampleIds": [
-        103611
       ]
     },
     {
@@ -32588,7 +28106,7 @@
       "act": "N",
       "word": "管理下",
       "hiragana": "かんりか",
-      "korean": "관리하",
+      "korean": "관리 아래",
       "exampleIds": [
         103613
       ]
@@ -32608,7 +28126,7 @@
       "id": 3615,
       "level": "N2",
       "act": "ADV",
-      "word": "真後",
+      "word": "真後ろ",
       "hiragana": "まうしろ",
       "korean": "바로 뒤",
       "exampleIds": [
@@ -32619,7 +28137,7 @@
       "id": 3616,
       "level": "N2",
       "act": "N",
-      "word": "低かろりー",
+      "word": "低カロリー",
       "hiragana": "ていかろりー",
       "korean": "저칼로리",
       "exampleIds": [
@@ -32641,9 +28159,9 @@
       "id": 3618,
       "level": "N2",
       "act": "N",
-      "word": "働手",
+      "word": "働き手",
       "hiragana": "はたらきて",
-      "korean": "일 손",
+      "korean": "일손",
       "exampleIds": [
         103618
       ]
@@ -32652,9 +28170,9 @@
       "id": 3619,
       "level": "N2",
       "act": "N",
-      "word": "メリカ流",
-      "hiragana": "めりかりゅう",
-      "korean": "아메리카류, 미국식",
+      "word": "アメリカ流",
+      "hiragana": "あめりかりゅう",
+      "korean": "미국식",
       "exampleIds": [
         103619
       ]
@@ -32663,7 +28181,7 @@
       "id": 3620,
       "level": "N2",
       "act": "N",
-      "word": "別際",
+      "word": "別れ際",
       "hiragana": "わかれぎわ",
       "korean": "헤어질 때",
       "exampleIds": [
@@ -32674,7 +28192,7 @@
       "id": 3621,
       "level": "N2",
       "act": "ADJ",
-      "word": "頼い",
+      "word": "頼みづらい",
       "hiragana": "たのみづらい",
       "korean": "부탁하기 어렵다",
       "exampleIds": [
@@ -32696,7 +28214,7 @@
       "id": 3623,
       "level": "N2",
       "act": "N",
-      "word": "食頃",
+      "word": "食べ頃",
       "hiragana": "たべごろ",
       "korean": "먹기에 적당한 때, 제철",
       "exampleIds": [
@@ -32745,17 +28263,6 @@
       "korean": "한가로이",
       "exampleIds": [
         103627
-      ]
-    },
-    {
-      "id": 3628,
-      "level": "N2",
-      "act": "ADV",
-      "word": "じょに",
-      "hiragana": "じょに",
-      "korean": "서서히",
-      "exampleIds": [
-        103628
       ]
     },
     {
@@ -32817,7 +28324,7 @@
       "id": 3634,
       "level": "N2",
       "act": "V",
-      "word": "相い次ぐ",
+      "word": "相次ぐ",
       "hiragana": "あいつぐ",
       "korean": "잇따르다, 이어지다",
       "exampleIds": [
@@ -32850,7 +28357,7 @@
       "id": 3637,
       "level": "N2",
       "act": "ADV",
-      "word": "割りと",
+      "word": "割と",
       "hiragana": "わりと",
       "korean": "비교적",
       "exampleIds": [
@@ -32894,7 +28401,7 @@
       "id": 3641,
       "level": "N2",
       "act": "N",
-      "word": "強",
+      "word": "強み",
       "hiragana": "つよみ",
       "korean": "강점",
       "exampleIds": [
@@ -32915,8 +28422,8 @@
     {
       "id": 3643,
       "level": "N2",
-      "act": "N",
-      "word": "散る",
+      "act": "V",
+      "word": "散らかる",
       "hiragana": "ちらかる",
       "korean": "흩어지다, 어질러지다",
       "exampleIds": [
@@ -32949,8 +28456,8 @@
       "id": 3646,
       "level": "N2",
       "act": "ADV",
-      "word": "ちゃくと",
-      "hiragana": "ちゃくと",
+      "word": "着々と",
+      "hiragana": "ちゃくちゃくと",
       "korean": "착착, 순조롭게",
       "exampleIds": [
         103646
@@ -32959,7 +28466,7 @@
     {
       "id": 3647,
       "level": "N2",
-      "act": "N",
+      "act": "V",
       "word": "得る",
       "hiragana": "える",
       "korean": "얻다",
@@ -34038,7 +29545,7 @@
       "id": 3745,
       "level": "N2",
       "act": "V",
-      "word": "飛く",
+      "word": "飛びつく",
       "hiragana": "とびつく",
       "korean": "달려들다",
       "exampleIds": [
@@ -34291,7 +29798,7 @@
       "id": 3768,
       "level": "N2",
       "act": "N",
-      "word": "大",
+      "word": "大げさ",
       "hiragana": "おおげさ",
       "korean": "과장",
       "exampleIds": [
@@ -34445,7 +29952,7 @@
       "id": 3782,
       "level": "N2",
       "act": "N",
-      "word": "少",
+      "word": "少し",
       "hiragana": "すこし",
       "korean": "조금",
       "exampleIds": [
@@ -34497,17 +30004,6 @@
       ]
     },
     {
-      "id": 3787,
-      "level": "N2",
-      "act": "ADV",
-      "word": "すぐに",
-      "hiragana": "すぐに",
-      "korean": "바로",
-      "exampleIds": [
-        103787
-      ]
-    },
-    {
       "id": 3788,
       "level": "N2",
       "act": "ADJ",
@@ -34538,17 +30034,6 @@
       "korean": "대낮, 한낮",
       "exampleIds": [
         103790
-      ]
-    },
-    {
-      "id": 3791,
-      "level": "N2",
-      "act": "N",
-      "word": "昼る間",
-      "hiragana": "ひるま",
-      "korean": "대낮, 한낮",
-      "exampleIds": [
-        103791
       ]
     },
     {
@@ -34632,7 +30117,7 @@
       "id": 3799,
       "level": "N2",
       "act": "V",
-      "word": "済す",
+      "word": "済ます",
       "hiragana": "すます",
       "korean": "마치다, 끝내다",
       "exampleIds": [
@@ -34918,7 +30403,7 @@
       "id": 3825,
       "level": "N2",
       "act": "N",
-      "word": "速",
+      "word": "速さ",
       "hiragana": "はやさ",
       "korean": "속도",
       "exampleIds": [
@@ -35742,10 +31227,10 @@
     {
       "id": 3900,
       "level": "N2",
-      "act": "N",
+      "act": "ADV",
       "word": "大体",
       "hiragana": "だいたい",
-      "korean": "대충",
+      "korean": "대충, 대체로",
       "exampleIds": [
         103900
       ]
@@ -35795,21 +31280,10 @@
       ]
     },
     {
-      "id": 3905,
-      "level": "N2",
-      "act": "V",
-      "word": "直す",
-      "hiragana": "なおす",
-      "korean": "고치다",
-      "exampleIds": [
-        103905
-      ]
-    },
-    {
       "id": 3906,
       "level": "N2",
-      "act": "N",
-      "word": "はげる",
+      "act": "V",
+      "word": "剥げる",
       "hiragana": "はげる",
       "korean": "벗겨지다",
       "exampleIds": [
@@ -35918,8 +31392,8 @@
     {
       "id": 3916,
       "level": "N2",
-      "act": "N",
-      "word": "受入れる",
+      "act": "V",
+      "word": "受け入れる",
       "hiragana": "うけいれる",
       "korean": "받아들이다",
       "exampleIds": [
@@ -36001,17 +31475,6 @@
       "korean": "보충, 보완",
       "exampleIds": [
         103923
-      ]
-    },
-    {
-      "id": 3924,
-      "level": "N2",
-      "act": "ADJ",
-      "word": "慌しい",
-      "hiragana": "あわただしい",
-      "korean": "분주하다, 어수선하다",
-      "exampleIds": [
-        103924
       ]
     },
     {
@@ -36172,22 +31635,11 @@
       "id": 3939,
       "level": "N2",
       "act": "V",
-      "word": "思く",
+      "word": "思いつく",
       "hiragana": "おもいつく",
       "korean": "생각이 떠오르다",
       "exampleIds": [
         103939
-      ]
-    },
-    {
-      "id": 3940,
-      "level": "N2",
-      "act": "V",
-      "word": "甘す",
-      "hiragana": "あまやかす",
-      "korean": "응석을 받아 주다",
-      "exampleIds": [
-        103940
       ]
     },
     {
@@ -36205,7 +31657,7 @@
       "id": 3942,
       "level": "N2",
       "act": "N",
-      "word": "行く方",
+      "word": "行方",
       "hiragana": "ゆくえ",
       "korean": "행방",
       "exampleIds": [
@@ -36237,8 +31689,8 @@
     {
       "id": 3945,
       "level": "N2",
-      "act": "N",
-      "word": "さびる",
+      "act": "V",
+      "word": "錆びる",
       "hiragana": "さびる",
       "korean": "녹슬다",
       "exampleIds": [
@@ -36281,7 +31733,7 @@
     {
       "id": 3949,
       "level": "N2",
-      "act": "N",
+      "act": "V",
       "word": "生じる",
       "hiragana": "しょうじる",
       "korean": "생기다",
@@ -36325,8 +31777,8 @@
     {
       "id": 3953,
       "level": "N2",
-      "act": "N",
-      "word": "散す",
+      "act": "V",
+      "word": "散らかす",
       "hiragana": "ちらかす",
       "korean": "어지르다, 흩뜨리다",
       "exampleIds": [
@@ -36348,7 +31800,7 @@
       "id": 3955,
       "level": "N2",
       "act": "N",
-      "word": "演説つ",
+      "word": "演説",
       "hiragana": "えんぜつ",
       "korean": "연설",
       "exampleIds": [
@@ -36403,7 +31855,7 @@
       "id": 3960,
       "level": "N2",
       "act": "V",
-      "word": "乗継ぐ",
+      "word": "乗り継ぐ",
       "hiragana": "のりつぐ",
       "korean": "다른 탈것으로 갈아타다",
       "exampleIds": [
@@ -36468,7 +31920,7 @@
     {
       "id": 3966,
       "level": "N2",
-      "act": "N",
+      "act": "V",
       "word": "めくる",
       "hiragana": "めくる",
       "korean": "넘기다",
@@ -36568,7 +32020,7 @@
       "id": 3975,
       "level": "N2",
       "act": "N",
-      "word": "打ち合",
+      "word": "打ち合わせ",
       "hiragana": "うちあわせ",
       "korean": "협의",
       "exampleIds": [
@@ -36633,7 +32085,7 @@
     {
       "id": 3981,
       "level": "N2",
-      "act": "N",
+      "act": "V",
       "word": "腫れる",
       "hiragana": "はれる",
       "korean": "붓다",
@@ -36708,17 +32160,6 @@
       ]
     },
     {
-      "id": 3988,
-      "level": "N2",
-      "act": "N",
-      "word": "ちゃく",
-      "hiragana": "ちゃく",
-      "korean": "착착, 순조롭게",
-      "exampleIds": [
-        103988
-      ]
-    },
-    {
       "id": 3989,
       "level": "N2",
       "act": "V",
@@ -36765,10 +32206,10 @@
     {
       "id": 3993,
       "level": "N1",
-      "act": "N",
-      "word": ")",
-      "hiragana": ")",
-      "korean": "축축해지다 (2) 윤택해지다",
+      "act": "ADV",
+      "word": "しっとり",
+      "hiragana": "しっとり",
+      "korean": "축축하게, 촉촉하게",
       "exampleIds": [
         103993
       ]
@@ -36796,21 +32237,10 @@
       ]
     },
     {
-      "id": 3996,
-      "level": "N1",
-      "act": "ADJ",
-      "word": "しい",
-      "hiragana": "しい",
-      "korean": "화려하다",
-      "exampleIds": [
-        103996
-      ]
-    },
-    {
       "id": 3997,
       "level": "N1",
       "act": "N",
-      "word": "伴そう奏",
+      "word": "伴奏",
       "hiragana": "ばんそう",
       "korean": "반주",
       "exampleIds": [
@@ -36818,54 +32248,10 @@
       ]
     },
     {
-      "id": 3998,
-      "level": "N1",
-      "act": "N",
-      "word": "本すじ筋",
-      "hiragana": "ほんすじ",
-      "korean": "본론, 본 줄거리",
-      "exampleIds": [
-        103998
-      ]
-    },
-    {
-      "id": 3999,
-      "level": "N1",
-      "act": "N",
-      "word": "閲らん覧",
-      "hiragana": "えつらん",
-      "korean": "열람",
-      "exampleIds": [
-        103999
-      ]
-    },
-    {
-      "id": 4000,
-      "level": "N1",
-      "act": "N",
-      "word": "合ぺい併",
-      "hiragana": "がっぺい",
-      "korean": "합병",
-      "exampleIds": [
-        104000
-      ]
-    },
-    {
-      "id": 4001,
-      "level": "N1",
-      "act": "N",
-      "word": "肝じん心",
-      "hiragana": "かんじんな",
-      "korean": "중요한",
-      "exampleIds": [
-        104001
-      ]
-    },
-    {
       "id": 4002,
       "level": "N1",
       "act": "N",
-      "word": "考りょ慮",
+      "word": "考慮",
       "hiragana": "こうりょ",
       "korean": "고려",
       "exampleIds": [
@@ -36873,80 +32259,14 @@
       ]
     },
     {
-      "id": 4003,
-      "level": "N1",
-      "act": "N",
-      "word": "根きょ拠",
-      "hiragana": "こんきょ",
-      "korean": "근거",
-      "exampleIds": [
-        104003
-      ]
-    },
-    {
-      "id": 4004,
-      "level": "N1",
-      "act": "ADV",
-      "word": "漠ぜん然",
-      "hiragana": "ばくぜんと",
-      "korean": "막연하게",
-      "exampleIds": [
-        104004
-      ]
-    },
-    {
       "id": 4005,
       "level": "N1",
       "act": "ADV",
-      "word": "克めい明",
+      "word": "克明に",
       "hiragana": "こくめいに",
       "korean": "극명하게",
       "exampleIds": [
         104005
-      ]
-    },
-    {
-      "id": 4006,
-      "level": "N1",
-      "act": "ADJ",
-      "word": "心地い",
-      "hiragana": "ここちよい",
-      "korean": "기분 좋다, 상쾌하다",
-      "exampleIds": [
-        104006
-      ]
-    },
-    {
-      "id": 4007,
-      "level": "N1",
-      "act": "V",
-      "word": "費す",
-      "hiragana": "ついやす",
-      "korean": "사용하다, 소비하다",
-      "exampleIds": [
-        104007
-      ]
-    },
-    {
-      "id": 4008,
-      "level": "N1",
-      "act": "N",
-      "word": "由いしょ緒",
-      "hiragana": "ゆいしょ",
-      "korean": "유서, 내력",
-      "exampleIds": [
-        104008
-      ]
-    },
-    {
-      "id": 4009,
-      "level": "N1",
-      "act": "N",
-      "word": "枠く",
-      "hiragana": "わく",
-      "korean": "틀, 테두리",
-      "exampleIds": [
-        104009
       ]
     },
     {
@@ -36972,124 +32292,14 @@
       ]
     },
     {
-      "id": 4012,
-      "level": "N1",
-      "act": "N",
-      "word": "厳せい正",
-      "hiragana": "げんせいな",
-      "korean": "엄정한",
-      "exampleIds": [
-        104012
-      ]
-    },
-    {
-      "id": 4013,
-      "level": "N1",
-      "act": "N",
-      "word": "遂こう行",
-      "hiragana": "すいこう",
-      "korean": "수행",
-      "exampleIds": [
-        104013
-      ]
-    },
-    {
-      "id": 4014,
-      "level": "N1",
-      "act": "ADJ",
-      "word": "健な",
-      "hiragana": "すこやかな",
-      "korean": "건강한",
-      "exampleIds": [
-        104014
-      ]
-    },
-    {
-      "id": 4015,
-      "level": "N1",
-      "act": "N",
-      "word": "督そく促",
-      "hiragana": "とくそく",
-      "korean": "독촉",
-      "exampleIds": [
-        104015
-      ]
-    },
-    {
-      "id": 4016,
-      "level": "N1",
-      "act": "N",
-      "word": "躍しん進",
-      "hiragana": "やくしん",
-      "korean": "약진",
-      "exampleIds": [
-        104016
-      ]
-    },
-    {
-      "id": 4017,
-      "level": "N1",
-      "act": "N",
-      "word": "興ふん奮",
-      "hiragana": "こうふん",
-      "korean": "흥분",
-      "exampleIds": [
-        104017
-      ]
-    },
-    {
       "id": 4018,
       "level": "N1",
       "act": "V",
-      "word": "慕れる",
+      "word": "慕われる",
       "hiragana": "したわれる",
       "korean": "추앙받다, 존경받다",
       "exampleIds": [
         104018
-      ]
-    },
-    {
-      "id": 4019,
-      "level": "N1",
-      "act": "N",
-      "word": "変せん遷",
-      "hiragana": "へんせん",
-      "korean": "변천",
-      "exampleIds": [
-        104019
-      ]
-    },
-    {
-      "id": 4020,
-      "level": "N1",
-      "act": "N",
-      "word": "鑑てい定",
-      "hiragana": "かんてい",
-      "korean": "감정(판정)",
-      "exampleIds": [
-        104020
-      ]
-    },
-    {
-      "id": 4021,
-      "level": "N1",
-      "act": "N",
-      "word": "樹もく木",
-      "hiragana": "じゅもく",
-      "korean": "수목(커다란 나무)",
-      "exampleIds": [
-        104021
-      ]
-    },
-    {
-      "id": 4022,
-      "level": "N1",
-      "act": "N",
-      "word": "陳れつ列",
-      "hiragana": "ちんれつ",
-      "korean": "진열",
-      "exampleIds": [
-        104022
       ]
     },
     {
@@ -37115,32 +32325,10 @@
       ]
     },
     {
-      "id": 4025,
-      "level": "N1",
-      "act": "N",
-      "word": "傾しゃ斜",
-      "hiragana": "けいしゃ",
-      "korean": "경사, 기울기",
-      "exampleIds": [
-        104025
-      ]
-    },
-    {
-      "id": 4026,
-      "level": "N1",
-      "act": "N",
-      "word": "暴く露",
-      "hiragana": "ばくろ",
-      "korean": "폭로",
-      "exampleIds": [
-        104026
-      ]
-    },
-    {
       "id": 4027,
       "level": "N1",
       "act": "V",
-      "word": "阻ばむ",
+      "word": "阻む",
       "hiragana": "そばむ",
       "korean": "저지하다, 가로막다",
       "exampleIds": [
@@ -37162,7 +32350,7 @@
       "id": 4029,
       "level": "N1",
       "act": "N",
-      "word": "巡",
+      "word": "巡り",
       "hiragana": "めぐり",
       "korean": "순회",
       "exampleIds": [
@@ -37239,7 +32427,7 @@
       "id": 4036,
       "level": "N1",
       "act": "V",
-      "word": "披露うする",
+      "word": "披露する",
       "hiragana": "ひろうする",
       "korean": "피로하다, 공개하다",
       "exampleIds": [
@@ -37249,7 +32437,7 @@
     {
       "id": 4037,
       "level": "N1",
-      "act": "N",
+      "act": "V",
       "word": "砕ける",
       "hiragana": "くだける",
       "korean": "부서지다, (기세 등)꺾이다",
@@ -37271,7 +32459,7 @@
     {
       "id": 4039,
       "level": "N1",
-      "act": "N",
+      "act": "V",
       "word": "粘る",
       "hiragana": "ねばる",
       "korean": "끈기 있게 버티다",
@@ -37368,17 +32556,6 @@
       ]
     },
     {
-      "id": 4048,
-      "level": "N1",
-      "act": "ADV",
-      "word": "克明に",
-      "hiragana": "こくめいに",
-      "korean": "극명하게",
-      "exampleIds": [
-        104048
-      ]
-    },
-    {
       "id": 4049,
       "level": "N1",
       "act": "ADV",
@@ -37436,7 +32613,7 @@
     {
       "id": 4054,
       "level": "N1",
-      "act": "N",
+      "act": "V",
       "word": "透ける",
       "hiragana": "すける",
       "korean": "비쳐보이다, 들여다보이다",
@@ -37503,7 +32680,7 @@
       "id": 4060,
       "level": "N1",
       "act": "N",
-      "word": "潜伏く",
+      "word": "潜伏",
       "hiragana": "せんぷく",
       "korean": "잠복",
       "exampleIds": [
@@ -37665,28 +32842,6 @@
       ]
     },
     {
-      "id": 4075,
-      "level": "N1",
-      "act": "N",
-      "word": "円かつ滑",
-      "hiragana": "えんかつな",
-      "korean": "원활한",
-      "exampleIds": [
-        104075
-      ]
-    },
-    {
-      "id": 4076,
-      "level": "N1",
-      "act": "N",
-      "word": "完けつ結",
-      "hiragana": "かんけつ",
-      "korean": "완결",
-      "exampleIds": [
-        104076
-      ]
-    },
-    {
       "id": 4077,
       "level": "N1",
       "act": "N",
@@ -37698,32 +32853,10 @@
       ]
     },
     {
-      "id": 4078,
-      "level": "N1",
-      "act": "N",
-      "word": "結く束",
-      "hiragana": "けっそく",
-      "korean": "결속",
-      "exampleIds": [
-        104078
-      ]
-    },
-    {
-      "id": 4079,
-      "level": "N1",
-      "act": "N",
-      "word": "念がん願",
-      "hiragana": "ねんがん",
-      "korean": "염원",
-      "exampleIds": [
-        104079
-      ]
-    },
-    {
       "id": 4080,
       "level": "N1",
       "act": "N",
-      "word": "背けい景",
+      "word": "背景",
       "hiragana": "はいけい",
       "korean": "배경",
       "exampleIds": [
@@ -37753,17 +32886,6 @@
       ]
     },
     {
-      "id": 4083,
-      "level": "N1",
-      "act": "N",
-      "word": "綿みつ密",
-      "hiragana": "めんみつな",
-      "korean": "면밀한",
-      "exampleIds": [
-        104083
-      ]
-    },
-    {
       "id": 4084,
       "level": "N1",
       "act": "N",
@@ -37772,17 +32894,6 @@
       "korean": "부드럽게, 살며시",
       "exampleIds": [
         104084
-      ]
-    },
-    {
-      "id": 4085,
-      "level": "N1",
-      "act": "N",
-      "word": "逸ざい材",
-      "hiragana": "いつざい",
-      "korean": "일재, 뛰어난 인재",
-      "exampleIds": [
-        104085
       ]
     },
     {
@@ -37808,21 +32919,10 @@
       ]
     },
     {
-      "id": 4088,
-      "level": "N1",
-      "act": "N",
-      "word": "抜い粋",
-      "hiragana": "ばっすい",
-      "korean": "발췌",
-      "exampleIds": [
-        104088
-      ]
-    },
-    {
       "id": 4089,
       "level": "N1",
       "act": "N",
-      "word": "平こう行",
+      "word": "平行",
       "hiragana": "へいこう",
       "korean": "평행",
       "exampleIds": [
@@ -37852,17 +32952,6 @@
       ]
     },
     {
-      "id": 4092,
-      "level": "N1",
-      "act": "ADJ",
-      "word": "紛しい",
-      "hiragana": "まぎらわしい",
-      "korean": "혼란스럽다",
-      "exampleIds": [
-        104092
-      ]
-    },
-    {
       "id": 4093,
       "level": "N1",
       "act": "N",
@@ -37877,7 +32966,7 @@
       "id": 4094,
       "level": "N1",
       "act": "N",
-      "word": "一にん任",
+      "word": "一任",
       "hiragana": "いちにん",
       "korean": "일임(모두 맡김)",
       "exampleIds": [
@@ -37888,7 +32977,7 @@
       "id": 4095,
       "level": "N1",
       "act": "N",
-      "word": "腕まえ前",
+      "word": "腕前",
       "hiragana": "うでまえ",
       "korean": "솜씨, 실력",
       "exampleIds": [
@@ -37937,17 +33026,6 @@
       "korean": "특히",
       "exampleIds": [
         104099
-      ]
-    },
-    {
-      "id": 4100,
-      "level": "N1",
-      "act": "N",
-      "word": "念とう頭",
-      "hiragana": "ねんとう",
-      "korean": "염두",
-      "exampleIds": [
-        104100
       ]
     },
     {
@@ -38006,17 +33084,6 @@
       ]
     },
     {
-      "id": 4106,
-      "level": "N1",
-      "act": "N",
-      "word": "揺ぐ",
-      "hiragana": "ゆらぐ",
-      "korean": "흔들리다",
-      "exampleIds": [
-        104106
-      ]
-    },
-    {
       "id": 4107,
       "level": "N1",
       "act": "ADJ",
@@ -38072,17 +33139,6 @@
       ]
     },
     {
-      "id": 4112,
-      "level": "N1",
-      "act": "N",
-      "word": "幅ひろ広",
-      "hiragana": "はばひろい",
-      "korean": "폭넓다",
-      "exampleIds": [
-        104112
-      ]
-    },
-    {
       "id": 4113,
       "level": "N1",
       "act": "N",
@@ -38105,21 +33161,10 @@
       ]
     },
     {
-      "id": 4115,
-      "level": "N1",
-      "act": "V",
-      "word": "切出す",
-      "hiragana": "きりだす",
-      "korean": "말을 꺼내다",
-      "exampleIds": [
-        104115
-      ]
-    },
-    {
       "id": 4116,
       "level": "N1",
       "act": "V",
-      "word": "染る",
+      "word": "染みる",
       "hiragana": "しみる",
       "korean": "스며들다, 배다",
       "exampleIds": [
@@ -38163,7 +33208,7 @@
       "id": 4120,
       "level": "N1",
       "act": "ADV",
-      "word": "頻ぱん繁",
+      "word": "頻繁に",
       "hiragana": "ひんぱんに",
       "korean": "빈번하게",
       "exampleIds": [
@@ -38185,7 +33230,7 @@
       "id": 4122,
       "level": "N1",
       "act": "V",
-      "word": "見ける",
+      "word": "見かける",
       "hiragana": "みかける",
       "korean": "발견하다",
       "exampleIds": [
@@ -38316,7 +33361,7 @@
     {
       "id": 4134,
       "level": "N1",
-      "act": "N",
+      "act": "V",
       "word": "なだめる",
       "hiragana": "なだめる",
       "korean": "달래다",
@@ -38812,7 +33857,7 @@
       "id": 4179,
       "level": "N1",
       "act": "V",
-      "word": "行届く",
+      "word": "行き届く",
       "hiragana": "ゆきとどく",
       "korean": "구석구석 빈틈없이 미치다",
       "exampleIds": [
@@ -38977,7 +34022,7 @@
       "id": 4194,
       "level": "N1",
       "act": "ADV",
-      "word": "丹ねん念",
+      "word": "丹念に",
       "hiragana": "たんねんに",
       "korean": "정성껏, 꼼꼼하게",
       "exampleIds": [
@@ -39051,17 +34096,6 @@
       ]
     },
     {
-      "id": 4201,
-      "level": "N1",
-      "act": "N",
-      "word": "朗ほう報",
-      "hiragana": "ろうほう",
-      "korean": "낭보, 희소식",
-      "exampleIds": [
-        104201
-      ]
-    },
-    {
       "id": 4202,
       "level": "N1",
       "act": "ADJ",
@@ -39070,17 +34104,6 @@
       "korean": "성가시다, 번거롭다",
       "exampleIds": [
         104202
-      ]
-    },
-    {
-      "id": 4203,
-      "level": "N1",
-      "act": "ADJ",
-      "word": "面どう倒",
-      "hiragana": "めんどうだ",
-      "korean": "귀찮다, 성가시다",
-      "exampleIds": [
-        104203
       ]
     },
     {
@@ -39108,8 +34131,8 @@
     {
       "id": 4206,
       "level": "N1",
-      "act": "N",
-      "word": "平ぼん凡",
+      "act": "ADJ",
+      "word": "平凡な",
       "hiragana": "へいぼんな",
       "korean": "평범한",
       "exampleIds": [
@@ -39219,7 +34242,7 @@
       "id": 4216,
       "level": "N1",
       "act": "ADJ",
-      "word": "簡そ素",
+      "word": "簡素だ",
       "hiragana": "かんそだ",
       "korean": "간소하다",
       "exampleIds": [
@@ -39293,28 +34316,6 @@
       ]
     },
     {
-      "id": 4223,
-      "level": "N1",
-      "act": "N",
-      "word": "先ぽう方",
-      "hiragana": "せんぽう",
-      "korean": "상대",
-      "exampleIds": [
-        104223
-      ]
-    },
-    {
-      "id": 4224,
-      "level": "N1",
-      "act": "N",
-      "word": "相い手",
-      "hiragana": "あいて",
-      "korean": "상대",
-      "exampleIds": [
-        104224
-      ]
-    },
-    {
       "id": 4225,
       "level": "N1",
       "act": "V",
@@ -39326,21 +34327,10 @@
       ]
     },
     {
-      "id": 4226,
-      "level": "N1",
-      "act": "N",
-      "word": "当めん面",
-      "hiragana": "とうめん",
-      "korean": "당면, 당분간",
-      "exampleIds": [
-        104226
-      ]
-    },
-    {
       "id": 4227,
       "level": "N1",
       "act": "ADV",
-      "word": "密に",
+      "word": "密かに",
       "hiragana": "ひそかに",
       "korean": "은밀하게",
       "exampleIds": [
@@ -39381,28 +34371,6 @@
       ]
     },
     {
-      "id": 4231,
-      "level": "N1",
-      "act": "ADV",
-      "word": "大たい体",
-      "hiragana": "だいたい",
-      "korean": "대체로",
-      "exampleIds": [
-        104231
-      ]
-    },
-    {
-      "id": 4232,
-      "level": "N1",
-      "act": "N",
-      "word": "雑う踏",
-      "hiragana": "ざっとう",
-      "korean": "혼잡",
-      "exampleIds": [
-        104232
-      ]
-    },
-    {
       "id": 4233,
       "level": "N1",
       "act": "N",
@@ -39436,17 +34404,6 @@
       ]
     },
     {
-      "id": 4236,
-      "level": "N1",
-      "act": "N",
-      "word": "方ほう法",
-      "hiragana": "ほうほう",
-      "korean": "방법",
-      "exampleIds": [
-        104236
-      ]
-    },
-    {
       "id": 4237,
       "level": "N1",
       "act": "V",
@@ -39461,7 +34418,7 @@
       "id": 4238,
       "level": "N1",
       "act": "V",
-      "word": "急せる",
+      "word": "急がせる",
       "hiragana": "いそがせる",
       "korean": "서두르게 하다",
       "exampleIds": [
@@ -39482,8 +34439,8 @@
     {
       "id": 4240,
       "level": "N1",
-      "act": "N",
-      "word": "抜ぐん群",
+      "act": "ADJ",
+      "word": "抜群だ",
       "hiragana": "ばつぐんだ",
       "korean": "발군이다, 뛰어나다",
       "exampleIds": [
@@ -39538,7 +34495,7 @@
       "id": 4245,
       "level": "N1",
       "act": "ADV",
-      "word": "格だん段",
+      "word": "格段に",
       "hiragana": "かくだんに",
       "korean": "현격하게",
       "exampleIds": [
@@ -39565,17 +34522,6 @@
       "korean": "걱정, 근심",
       "exampleIds": [
         104247
-      ]
-    },
-    {
-      "id": 4248,
-      "level": "N1",
-      "act": "N",
-      "word": "心ぱい配",
-      "hiragana": "しんぱい",
-      "korean": "걱정, 근심",
-      "exampleIds": [
-        104248
       ]
     },
     {
@@ -39614,23 +34560,12 @@
     {
       "id": 4252,
       "level": "N1",
-      "act": "N",
-      "word": "厄い介",
+      "act": "ADJ",
+      "word": "厄介な",
       "hiragana": "やっかいな",
-      "korean": "귀찮은",
+      "korean": "성가신, 까다로운",
       "exampleIds": [
         104252
-      ]
-    },
-    {
-      "id": 4253,
-      "level": "N1",
-      "act": "N",
-      "word": "面どう倒",
-      "hiragana": "めんどうな",
-      "korean": "귀찮은",
-      "exampleIds": [
-        104253
       ]
     },
     {
@@ -39642,28 +34577,6 @@
       "korean": "흔하다",
       "exampleIds": [
         104254
-      ]
-    },
-    {
-      "id": 4255,
-      "level": "N1",
-      "act": "ADJ",
-      "word": "平ぼん凡",
-      "hiragana": "へいぼんだ",
-      "korean": "평범하다",
-      "exampleIds": [
-        104255
-      ]
-    },
-    {
-      "id": 4256,
-      "level": "N1",
-      "act": "N",
-      "word": "糸ぐち口",
-      "hiragana": "いとぐち",
-      "korean": "실마리",
-      "exampleIds": [
-        104256
       ]
     },
     {
@@ -39680,7 +34593,7 @@
     {
       "id": 4258,
       "level": "N1",
-      "act": "N",
+      "act": "ADJ",
       "word": "互角だ",
       "hiragana": "ごかくだ",
       "korean": "호각이다, 백중세다",
@@ -39692,7 +34605,7 @@
       "id": 4259,
       "level": "N1",
       "act": "N",
-      "word": "助げん言",
+      "word": "助言",
       "hiragana": "じょげん",
       "korean": "조언",
       "exampleIds": [
@@ -39700,21 +34613,10 @@
       ]
     },
     {
-      "id": 4260,
-      "level": "N1",
-      "act": "N",
-      "word": "突ぜん然",
-      "hiragana": "とつぜん",
-      "korean": "돌연",
-      "exampleIds": [
-        104260
-      ]
-    },
-    {
       "id": 4261,
       "level": "N1",
       "act": "V",
-      "word": "安堵る",
+      "word": "安堵する",
       "hiragana": "あんどする",
       "korean": "안도하다",
       "exampleIds": [
@@ -39752,17 +34654,6 @@
       "korean": "겁을 내다",
       "exampleIds": [
         104264
-      ]
-    },
-    {
-      "id": 4265,
-      "level": "N1",
-      "act": "V",
-      "word": "怖る",
-      "hiragana": "こわがる",
-      "korean": "무서워하다",
-      "exampleIds": [
-        104265
       ]
     },
     {
@@ -39857,7 +34748,7 @@
       "id": 4274,
       "level": "N1",
       "act": "ADV",
-      "word": "端てき的",
+      "word": "端的に",
       "hiragana": "たんてきに",
       "korean": "단적으로",
       "exampleIds": [
@@ -39868,7 +34759,7 @@
       "id": 4275,
       "level": "N1",
       "act": "ADV",
-      "word": "明はく白",
+      "word": "明白に",
       "hiragana": "めいはくに",
       "korean": "명백하게",
       "exampleIds": [
@@ -39884,28 +34775,6 @@
       "korean": "희미하게, 어렴풋이",
       "exampleIds": [
         104276
-      ]
-    },
-    {
-      "id": 4277,
-      "level": "N1",
-      "act": "V",
-      "word": "問い合せる",
-      "hiragana": "といわせる",
-      "korean": "문의하다",
-      "exampleIds": [
-        104277
-      ]
-    },
-    {
-      "id": 4278,
-      "level": "N1",
-      "act": "N",
-      "word": "難てん点",
-      "hiragana": "なんてん",
-      "korean": "난점",
-      "exampleIds": [
-        104278
       ]
     },
     {
@@ -40307,8 +35176,8 @@
     {
       "id": 4315,
       "level": "N1",
-      "act": "N",
-      "word": "遅る",
+      "act": "V",
+      "word": "遅くなる",
       "hiragana": "おそくなる",
       "korean": "늦어지다",
       "exampleIds": [
@@ -40583,7 +35452,7 @@
       "id": 4340,
       "level": "N1",
       "act": "ADJ",
-      "word": "爽な",
+      "word": "爽やかな",
       "hiragana": "さわやかな",
       "korean": "상쾌한",
       "exampleIds": [
@@ -40673,7 +35542,7 @@
       "act": "V",
       "word": "ロスする",
       "hiragana": "ろすする",
-      "korean": "헛되이 쓰다",
+      "korean": "헛되이 사용하다",
       "exampleIds": [
         104348
       ]
@@ -40737,22 +35606,11 @@
       "id": 4354,
       "level": "N1",
       "act": "V",
-      "word": "請負う",
+      "word": "請け負う",
       "hiragana": "うけおう",
       "korean": "청부 맡다",
       "exampleIds": [
         104354
-      ]
-    },
-    {
-      "id": 4355,
-      "level": "N1",
-      "act": "V",
-      "word": "引受ける",
-      "hiragana": "ひきうける",
-      "korean": "맡다, 인수하다",
-      "exampleIds": [
-        104355
       ]
     },
     {
@@ -40778,28 +35636,6 @@
       ]
     },
     {
-      "id": 4358,
-      "level": "N1",
-      "act": "N",
-      "word": "発く足",
-      "hiragana": "ほっそく",
-      "korean": "발족",
-      "exampleIds": [
-        104358
-      ]
-    },
-    {
-      "id": 4359,
-      "level": "N1",
-      "act": "V",
-      "word": "見落す",
-      "hiragana": "みおとす",
-      "korean": "간과하다",
-      "exampleIds": [
-        104359
-      ]
-    },
-    {
       "id": 4360,
       "level": "N1",
       "act": "N",
@@ -40822,21 +35658,10 @@
       ]
     },
     {
-      "id": 4362,
-      "level": "N1",
-      "act": "N",
-      "word": "赴にん任",
-      "hiragana": "ふにん",
-      "korean": "부임",
-      "exampleIds": [
-        104362
-      ]
-    },
-    {
       "id": 4363,
       "level": "N1",
       "act": "N",
-      "word": "不ふく服",
+      "word": "不服",
       "hiragana": "ふふく",
       "korean": "불복",
       "exampleIds": [
@@ -40844,23 +35669,12 @@
       ]
     },
     {
-      "id": 4364,
-      "level": "N1",
-      "act": "N",
-      "word": "連けい携",
-      "hiragana": "れんけい",
-      "korean": "연계",
-      "exampleIds": [
-        104364
-      ]
-    },
-    {
       "id": 4365,
       "level": "N1",
-      "act": "N",
-      "word": "広だい大",
+      "act": "ADJ",
+      "word": "広大な",
       "hiragana": "こうだいな",
-      "korean": "광대한 500",
+      "korean": "광대한",
       "exampleIds": [
         104365
       ]
@@ -40869,7 +35683,7 @@
       "id": 4366,
       "level": "N1",
       "act": "N",
-      "word": "仕わざ業",
+      "word": "仕業",
       "hiragana": "しわざ",
       "korean": "소행",
       "exampleIds": [
@@ -40899,17 +35713,6 @@
       ]
     },
     {
-      "id": 4369,
-      "level": "N1",
-      "act": "N",
-      "word": "免じょ除",
-      "hiragana": "めんじょ",
-      "korean": "면제",
-      "exampleIds": [
-        104369
-      ]
-    },
-    {
       "id": 4370,
       "level": "N1",
       "act": "V",
@@ -40924,7 +35727,7 @@
       "id": 4371,
       "level": "N1",
       "act": "ADJ",
-      "word": "円かつ滑",
+      "word": "円滑だ",
       "hiragana": "えんかつだ",
       "korean": "원활하다",
       "exampleIds": [
@@ -40946,7 +35749,7 @@
       "id": 4373,
       "level": "N1",
       "act": "N",
-      "word": "口ち出",
+      "word": "口出し",
       "hiragana": "くちだし",
       "korean": "간섭, 참견",
       "exampleIds": [
@@ -40965,21 +35768,10 @@
       ]
     },
     {
-      "id": 4375,
-      "level": "N1",
-      "act": "N",
-      "word": "煩ざつ雑",
-      "hiragana": "はんざつな",
-      "korean": "번잡한",
-      "exampleIds": [
-        104375
-      ]
-    },
-    {
       "id": 4376,
       "level": "N1",
       "act": "N",
-      "word": "拍う子",
+      "word": "拍子",
       "hiragana": "ひょうし",
       "korean": "박자",
       "exampleIds": [
@@ -40987,32 +35779,10 @@
       ]
     },
     {
-      "id": 4377,
-      "level": "N1",
-      "act": "ADV",
-      "word": "一りつ律",
-      "hiragana": "いちりつに",
-      "korean": "일률적으로",
-      "exampleIds": [
-        104377
-      ]
-    },
-    {
-      "id": 4378,
-      "level": "N1",
-      "act": "N",
-      "word": "裏はら腹",
-      "hiragana": "うらはら",
-      "korean": "정반대, 모순",
-      "exampleIds": [
-        104378
-      ]
-    },
-    {
       "id": 4379,
       "level": "N1",
       "act": "V",
-      "word": "抱込む",
+      "word": "抱え込む",
       "hiragana": "かかえこむ",
       "korean": "끌어안다, 떠맡다",
       "exampleIds": [
@@ -41031,20 +35801,9 @@
       ]
     },
     {
-      "id": 4381,
-      "level": "N1",
-      "act": "V",
-      "word": "損う",
-      "hiragana": "そこなう",
-      "korean": "손상시키다",
-      "exampleIds": [
-        104381
-      ]
-    },
-    {
       "id": 4382,
       "level": "N1",
-      "act": "N",
+      "act": "ADJ",
       "word": "耐えがたい",
       "hiragana": "たえがたい",
       "korean": "견디기 힘들다",
@@ -41053,47 +35812,14 @@
       ]
     },
     {
-      "id": 4383,
-      "level": "N1",
-      "act": "N",
-      "word": "剥す",
-      "hiragana": "はがす",
-      "korean": "벗기다, 떼다",
-      "exampleIds": [
-        104383
-      ]
-    },
-    {
-      "id": 4384,
-      "level": "N1",
-      "act": "N",
-      "word": "安せい静",
-      "hiragana": "あんせい",
-      "korean": "안정(환자의 요양)",
-      "exampleIds": [
-        104384
-      ]
-    },
-    {
       "id": 4385,
       "level": "N1",
-      "act": "N",
-      "word": "今さら更",
+      "act": "ADV",
+      "word": "今さら",
       "hiragana": "いまさら",
       "korean": "이제 와서, 새삼스럽게",
       "exampleIds": [
         104385
-      ]
-    },
-    {
-      "id": 4386,
-      "level": "N1",
-      "act": "N",
-      "word": "帯る",
-      "hiragana": "おびる",
-      "korean": "띠다, 그러한 성질을 지니다",
-      "exampleIds": [
-        104386
       ]
     },
     {
@@ -41111,7 +35837,7 @@
       "id": 4388,
       "level": "N1",
       "act": "N",
-      "word": "統ごう合",
+      "word": "統合",
       "hiragana": "とうごう",
       "korean": "통합",
       "exampleIds": [
@@ -41141,17 +35867,6 @@
       ]
     },
     {
-      "id": 4391,
-      "level": "N1",
-      "act": "N",
-      "word": "還げん元",
-      "hiragana": "かんげん",
-      "korean": "환원",
-      "exampleIds": [
-        104391
-      ]
-    },
-    {
       "id": 4392,
       "level": "N1",
       "act": "N",
@@ -41160,17 +35875,6 @@
       "korean": "규제",
       "exampleIds": [
         104392
-      ]
-    },
-    {
-      "id": 4393,
-      "level": "N1",
-      "act": "N",
-      "word": "察る",
-      "hiragana": "さっする",
-      "korean": "헤아리다",
-      "exampleIds": [
-        104393
       ]
     },
     {
@@ -41210,33 +35914,11 @@
       "id": 4397,
       "level": "N1",
       "act": "N",
-      "word": "昇しん進",
+      "word": "昇進",
       "hiragana": "しょうしん",
       "korean": "승진",
       "exampleIds": [
         104397
-      ]
-    },
-    {
-      "id": 4398,
-      "level": "N1",
-      "act": "N",
-      "word": "配ふ布",
-      "hiragana": "はいふ",
-      "korean": "배포",
-      "exampleIds": [
-        104398
-      ]
-    },
-    {
-      "id": 4399,
-      "level": "N1",
-      "act": "V",
-      "word": "滅る",
-      "hiragana": "ほろびる",
-      "korean": "멸망하다",
-      "exampleIds": [
-        104399
       ]
     },
     {
@@ -41265,8 +35947,8 @@
       "id": 4402,
       "level": "N1",
       "act": "N",
-      "word": "真っっ先",
-      "hiragana": "まっっさき",
+      "word": "真っ先",
+      "hiragana": "まっさき",
       "korean": "제일 먼저",
       "exampleIds": [
         104402
@@ -41295,17 +35977,6 @@
       ]
     },
     {
-      "id": 4405,
-      "level": "N1",
-      "act": "V",
-      "word": "乗出す",
-      "hiragana": "のりだす",
-      "korean": "적극적으로 나서다, 착수하다",
-      "exampleIds": [
-        104405
-      ]
-    },
-    {
       "id": 4406,
       "level": "N1",
       "act": "N",
@@ -41319,7 +35990,7 @@
     {
       "id": 4407,
       "level": "N1",
-      "act": "N",
+      "act": "V",
       "word": "かさばる",
       "hiragana": "かさばる",
       "korean": "부피가 커지다",
@@ -41545,17 +36216,6 @@
       "korean": "압수",
       "exampleIds": [
         104427
-      ]
-    },
-    {
-      "id": 4428,
-      "level": "N1",
-      "act": "ADJ",
-      "word": "望しい",
-      "hiragana": "のぞましい",
-      "korean": "바람직하다",
-      "exampleIds": [
-        104428
       ]
     },
     {
