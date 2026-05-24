@@ -5,7 +5,6 @@ import 'package:jlpt_app/component/local_storage.dart';
 import 'package:jlpt_app/data/database/app_database.dart';
 import 'package:jlpt_app/data/repositories/word_repository.dart';
 import 'package:jlpt_app/domain/box/question_entity_box.dart';
-import 'package:jlpt_app/domain/course/course.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/question.dart';
 import 'package:jlpt_app/domain/type.dart';
@@ -14,11 +13,16 @@ import 'package:jlpt_app/domain/word.dart';
 class TestResultRepository {
   final AppDatabase _db;
   final WordRepository _wordRepo;
-  final Course _course;
+  final String _courseId;
+  final LevelResolver _levelOf;
 
-  TestResultRepository(this._db, this._wordRepo, this._course);
-
-  String get _courseId => _course.id;
+  TestResultRepository(
+    this._db,
+    this._wordRepo, {
+    required String courseId,
+    required LevelResolver levelOf,
+  }) : _courseId = courseId,
+       _levelOf = levelOf;
 
   Future<QuestionEntityBox> save({
     Level? level,
@@ -27,6 +31,16 @@ class TestResultRepository {
     required List<bool> reverses,
     required int time,
   }) async {
+    if (type != PracticeType.WORD) {
+      throw UnsupportedError('Only word test results can be persisted');
+    }
+    if (questions.length != reverses.length) {
+      throw ArgumentError(
+        'questions/reverses length mismatch: '
+        '${questions.length} != ${reverses.length}',
+      );
+    }
+
     for (var i = 0; i < questions.length; i++) {
       questions[i].reverse = reverses[i];
       questions[i].checkCorrect();
@@ -46,19 +60,16 @@ class TestResultRepository {
       );
 
       for (final q in answered) {
-        final qWord = q.question as Word;
-        final aWord = q.myAnswer as Word?;
-        final exampleIds =
-            q.examples.whereType<Word>().map((w) => w.id).toList();
+        final snapshot = _WordQuestionSnapshot.from(q);
 
         await _db.testResultDao.insertQuestion(
           TestQuestionsCompanion(
             testResultId: Value(resultId),
-            questionWordId: Value(qWord.id),
-            myAnswerWordId: Value(aWord?.id),
+            questionWordId: Value(snapshot.questionWordId),
+            myAnswerWordId: Value(snapshot.myAnswerWordId),
             isCorrect: Value(q.isCorrect),
             reverse: Value(q.reverse),
-            examplesJson: Value(jsonEncode(exampleIds)),
+            examplesJson: Value(jsonEncode(snapshot.exampleWordIds)),
           ),
         );
       }
@@ -90,7 +101,10 @@ class TestResultRepository {
     if (results.isEmpty) return [];
 
     // 모든 TestQuestion 행을 한 번에 가져옴
-    final allQuestionRows = await _db.testResultDao.getAllQuestions();
+    final resultIds = results.map((r) => r.id).toList(growable: false);
+    final allQuestionRows = await _db.testResultDao.getQuestionsForResults(
+      resultIds,
+    );
 
     // 필요한 단어 ID를 한 번에 수집
     final wordIds = <int>{};
@@ -100,7 +114,7 @@ class TestResultRepository {
       wordIds.addAll(WordRepository.decodeIds(qr.examplesJson));
     }
     final wordMap = {
-      for (final w in await _wordRepo.getByIds(wordIds.toList())) w.id: w
+      for (final w in await _wordRepo.getByIds(wordIds.toList())) w.id: w,
     };
 
     // resultId 기준으로 questions 그룹핑
@@ -109,13 +123,14 @@ class TestResultRepository {
       final qWord = wordMap[qr.questionWordId];
       if (qWord == null) continue;
 
-      final examples = WordRepository.decodeIds(qr.examplesJson)
-          .map((id) => wordMap[id])
-          .whereType<Word>()
-          .toList();
+      final examples = WordRepository.decodeIds(
+        qr.examplesJson,
+      ).map((id) => wordMap[id]).whereType<Word>().toList();
 
       final q = Question.create(question: qWord, examples: examples);
-      q.myAnswer = qr.myAnswerWordId != null ? wordMap[qr.myAnswerWordId!] : null;
+      q.myAnswer = qr.myAnswerWordId != null
+          ? wordMap[qr.myAnswerWordId!]
+          : null;
       q.reverse = qr.reverse;
       q.isCorrect = qr.isCorrect;
 
@@ -123,14 +138,54 @@ class TestResultRepository {
     }
 
     return results
-        .map((r) => QuestionEntityBox(
-              id: r.id,
-              level: r.level != null ? _course.levelOrNull(r.level!) : null,
-              type: PracticeType.valueOf(r.type),
-              dateTime: r.takenAt,
-              question: questionsByResult[r.id] ?? [],
-              time: r.timeSeconds,
-            ))
+        .map(
+          (r) => QuestionEntityBox(
+            id: r.id,
+            level: r.level != null ? _levelOf(r.level!) : null,
+            type: PracticeType.valueOf(r.type),
+            dateTime: r.takenAt,
+            question: questionsByResult[r.id] ?? [],
+            time: r.timeSeconds,
+          ),
+        )
         .toList();
+  }
+}
+
+final class _WordQuestionSnapshot {
+  const _WordQuestionSnapshot({
+    required this.questionWordId,
+    required this.myAnswerWordId,
+    required this.exampleWordIds,
+  });
+
+  final int questionWordId;
+  final int? myAnswerWordId;
+  final List<int> exampleWordIds;
+
+  factory _WordQuestionSnapshot.from(Question question) {
+    final questionWord = question.question;
+    final answer = question.myAnswer;
+    if (questionWord is! Word) {
+      throw StateError(
+        'Word test result contains non-word question: '
+        '${questionWord.runtimeType}',
+      );
+    }
+    if (answer != null && answer is! Word) {
+      throw StateError(
+        'Word test result contains non-word answer: ${answer.runtimeType}',
+      );
+    }
+    final answerWord = answer as Word?;
+
+    return _WordQuestionSnapshot(
+      questionWordId: questionWord.id,
+      myAnswerWordId: answerWord?.id,
+      exampleWordIds: [
+        for (final example in question.examples)
+          if (example is Word) example.id,
+      ],
+    );
   }
 }

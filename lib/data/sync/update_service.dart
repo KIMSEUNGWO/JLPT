@@ -1,12 +1,11 @@
 import 'package:jlpt_app/component/app_logger.dart';
 import 'package:jlpt_app/data/remote/json_data_source.dart';
+import 'package:jlpt_app/data/sync/course_sync_bundle.dart';
 import 'package:jlpt_app/data/sync/chinese_char_syncer.dart';
 import 'package:jlpt_app/data/sync/data_sync_service.dart';
 import 'package:jlpt_app/data/sync/example_sentence_syncer.dart';
 import 'package:jlpt_app/data/sync/word_syncer.dart';
-import 'package:jlpt_app/domain/course/course.dart';
-import 'package:jlpt_app/domain/example_sentence.dart';
-import 'package:jlpt_app/domain/word.dart';
+import 'package:jlpt_app/domain/course/course_data_config.dart';
 import 'package:jlpt_app/initdata/update/version_info.dart';
 import 'package:pub_semver/pub_semver.dart';
 
@@ -21,40 +20,38 @@ import 'package:pub_semver/pub_semver.dart';
 ///
 /// 4단계까지 가지 않으면 디스크/DB는 절대 변경되지 않는다.
 ///
-/// 모든 데이터 키는 활성 [Course] 의 [CourseDataSources] 에서 가져오며, 문자 모듈이
+/// 모든 데이터 키는 활성 course 의 [CourseDataConfig] 에서 가져오며, 문자 모듈이
 /// 없는 코스는 [charSyncer] 가 null 이다.
 class UpdateService {
   UpdateService({
-    required this.course,
+    required this.syncBundle,
     required this.remote,
     required this.cache,
-    required this.wordSyncer,
-    required this.charSyncer,
-    required this.exampleSyncer,
     required this.dataSyncService,
   });
 
-  final Course course;
+  final CourseSyncBundle syncBundle;
   final RemoteJsonDataSource remote;
   final LocalJsonCacheSource cache;
-  final WordSyncer wordSyncer;
-  final ChineseCharSyncer? charSyncer;
-  final ExampleSentenceSyncer exampleSyncer;
   final DataSyncService dataSyncService;
 
-  CourseDataSources get _src => course.data;
+  CourseDataConfig get _src => syncBundle.data;
+  WordSyncer get wordSyncer => syncBundle.wordSyncer;
+  ChineseCharSyncer? get charSyncer => syncBundle.charSyncer;
+  ExampleSentenceSyncer get exampleSyncer => syncBundle.exampleSyncer;
 
   /// 업데이트가 가능한 경우 신버전을 반환. 동일/구버전이면 null.
   Future<UpdatePlan?> checkForUpdate() async {
     final remoteVersion = await dataSyncService.probeRemoteVersion();
     if (remoteVersion == null) return null;
 
-    final currentWord = await wordSyncer.currentDbVersion();
-    final currentChar = await charSyncer?.currentDbVersion();
-    final currentEx = await exampleSyncer.currentDbVersion();
-    final localMax =
-        _maxVersion(_maxVersion(currentWord, currentChar), currentEx);
-    if (localMax != null && remoteVersion <= localMax) return null;
+    final currentVersions = <Version?>[
+      for (final syncer in syncBundle.syncers) await syncer.currentDbVersion(),
+    ];
+    final alreadyApplied = currentVersions.every(
+      (version) => version != null && version >= remoteVersion,
+    );
+    if (alreadyApplied) return null;
 
     final size = await _estimateSize();
     return UpdatePlan(version: remoteVersion, estimatedBytes: size);
@@ -90,7 +87,7 @@ class UpdateService {
     final words = wordSyncer.parse(rawWords);
     final examples = exampleSyncer.parse(rawExamples);
     final chars = hasChars ? charSyncer!.parse(rawChars!) : null;
-    final refs = _buildAndValidateRefs(words, examples);
+    final refs = exampleSyncer.buildAndValidateRefs(words, examples);
     appLogger.i(
       '[update] validated: words=${words.length}, '
       'chars=${chars?.length ?? 0}, examples=${examples.length}, '
@@ -118,27 +115,6 @@ class UpdateService {
     onStage?.call(UpdateStage.done);
   }
 
-  /// 단어가 참조하는 모든 예문 id 가 examples 안에 실재하는지 확인하고
-  /// `{wordId: [exampleIds...]}` map 으로 환원.
-  Map<int, List<int>> _buildAndValidateRefs(
-    List<Word> words,
-    List<ExampleSentence> examples,
-  ) {
-    final exampleIdSet = {for (final e in examples) e.id};
-    final refs = <int, List<int>>{};
-    for (final w in words) {
-      for (final eid in w.exampleIds) {
-        if (!exampleIdSet.contains(eid)) {
-          throw FormatException(
-            '[update] word(id=${w.id}) 가 존재하지 않는 예문 id=$eid 를 참조합니다',
-          );
-        }
-      }
-      refs[w.id] = w.exampleIds;
-    }
-    return refs;
-  }
-
   Future<int> _estimateSize() async {
     final charsKey = _src.charsKey;
     var total = 0;
@@ -150,12 +126,6 @@ class UpdateService {
     }
     return total;
   }
-
-  Version? _maxVersion(Version? a, Version? b) {
-    if (a == null) return b;
-    if (b == null) return a;
-    return a > b ? a : b;
-  }
 }
 
 class UpdatePlan {
@@ -164,10 +134,4 @@ class UpdatePlan {
   final int estimatedBytes;
 }
 
-enum UpdateStage {
-  fetching,
-  validating,
-  persistingFiles,
-  persistingDb,
-  done,
-}
+enum UpdateStage { fetching, validating, persistingFiles, persistingDb, done }

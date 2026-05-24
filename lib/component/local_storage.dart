@@ -57,7 +57,8 @@ class LocalStorage {
   Map<Level, int> getStudyCycle(Course course) {
     return {
       for (final level in course.levels)
-        level: _storage.getInt(_cycleKey(course.id, level.code)) ??
+        level:
+            _storage.getInt(_cycleKey(course.id, level.code)) ??
             _storage.getInt(level.code) ??
             0,
     };
@@ -65,8 +66,7 @@ class LocalStorage {
 
   Future<void> saveStudyCycle(Course course, Map<Level, int> data) async {
     for (final entry in data.entries) {
-      await _storage.setInt(
-          _cycleKey(course.id, entry.key.code), entry.value);
+      await _storage.setInt(_cycleKey(course.id, entry.key.code), entry.value);
     }
   }
 
@@ -75,20 +75,27 @@ class LocalStorage {
 
   // ───────── 학습한 단어 ID ─────────
 
-  List<int> getReadWordIdList() {
+  List<int> getReadWordIdList(Course course) {
     return _storage
+            .getStringList(_readWordIdsKey(course.id))
+            ?.map(int.parse)
+            .toList() ??
+        _storage
             .getStringList(StorageKey.READ_WORD_ID_LIST.name)
             ?.map(int.parse)
             .toList() ??
         const [];
   }
 
-  Future<void> saveReadWordIdList(List<int> idList) async {
+  Future<void> saveReadWordIdList(Course course, List<int> idList) async {
     await _storage.setStringList(
-      StorageKey.READ_WORD_ID_LIST.name,
+      _readWordIdsKey(course.id),
       idList.map((e) => e.toString()).toList(growable: false),
     );
   }
+
+  String _readWordIdsKey(String courseId) =>
+      '${StorageKey.READ_WORD_ID_LIST.name}_$courseId';
 
   // ───────── 최근 학습 ─────────
 
@@ -133,7 +140,8 @@ class LocalStorage {
   Map<Level, int> getTimerNotifier(Course course) {
     return {
       for (final level in course.levels)
-        level: _storage.getInt(_timerKey(course.id, level.code)) ??
+        level:
+            _storage.getInt(_timerKey(course.id, level.code)) ??
             _storage.getInt('${StorageKey.TIMER.name}_${level.code}') ??
             0,
     };
@@ -141,8 +149,7 @@ class LocalStorage {
 
   Future<void> saveTimerNotifier(Course course, Map<Level, int> data) async {
     for (final entry in data.entries) {
-      await _storage.setInt(
-          _timerKey(course.id, entry.key.code), entry.value);
+      await _storage.setInt(_timerKey(course.id, entry.key.code), entry.value);
     }
   }
 

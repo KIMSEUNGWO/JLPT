@@ -15,5 +15,5 @@ class Words extends Table {
   IntColumn get wrongCnt => integer().withDefault(const Constant(0))();
 
   @override
-  Set<Column> get primaryKey => {id};
+  Set<Column> get primaryKey => {course, id};
 }

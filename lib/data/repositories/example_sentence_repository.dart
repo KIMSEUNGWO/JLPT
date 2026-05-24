@@ -1,22 +1,20 @@
 import 'package:drift/drift.dart';
 import 'package:jlpt_app/data/database/app_database.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
-import 'package:jlpt_app/domain/course/course.dart';
 import 'package:jlpt_app/domain/example_sentence.dart';
 import 'package:pub_semver/pub_semver.dart';
 
 /// 예문 + (단어→예문) 참조 테이블을 묶어서 다루는 Repository.
 ///
-/// 활성 [Course] 에 스코프된다. sync 시에는 두 테이블을 같은 transaction 으로
+/// 활성 course id 에 스코프된다. sync 시에는 두 테이블을 같은 transaction 으로
 /// 교체하고 메타 버전을 commit 한다.
 class ExampleSentenceRepository {
   final AppDatabase _db;
   final AppMetaRepository _meta;
-  final Course _course;
+  final String _courseId;
 
-  ExampleSentenceRepository(this._db, this._meta, this._course);
-
-  String get _courseId => _course.id;
+  ExampleSentenceRepository(this._db, this._meta, {required String courseId})
+    : _courseId = courseId;
 
   Future<List<ExampleSentence>> getAll() async {
     final rows = await _db.exampleSentenceDao.getAll(_courseId);
@@ -54,11 +52,13 @@ class ExampleSentenceRepository {
     final refRows = <WordExampleRefsCompanion>[];
     for (final entry in wordExampleRefs.entries) {
       for (final exampleId in entry.value) {
-        refRows.add(WordExampleRefsCompanion(
-          course: Value(_courseId),
-          wordId: Value(entry.key),
-          exampleId: Value(exampleId),
-        ));
+        refRows.add(
+          WordExampleRefsCompanion(
+            course: Value(_courseId),
+            wordId: Value(entry.key),
+            exampleId: Value(exampleId),
+          ),
+        );
       }
     }
 
@@ -69,12 +69,12 @@ class ExampleSentenceRepository {
     });
   }
 
-  Future<int> countExamples() => _db.exampleSentenceDao.countExamples(_courseId);
-  Future<int> countRefs() => _db.exampleSentenceDao.countRefs(_courseId);
+  Future<int> countExamples() =>
+      _db.exampleSentenceDao.countExamples(_courseId);
 
   ExampleSentence _toEntity(ExampleSentenceData row) => ExampleSentence(
-        id: row.id,
-        sentence: row.sentence,
-        translation: row.translation,
-      );
+    id: row.id,
+    sentence: row.sentence,
+    translation: row.translation,
+  );
 }

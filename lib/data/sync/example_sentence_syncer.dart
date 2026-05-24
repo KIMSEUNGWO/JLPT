@@ -39,7 +39,9 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
   List<ExampleSentence> parse(Map<String, dynamic> json) {
     final list = json['examples'];
     if (list is! List) {
-      throw const FormatException("example_sentences: missing 'examples' array");
+      throw const FormatException(
+        "example_sentences: missing 'examples' array",
+      );
     }
     final result = <ExampleSentence>[];
     final byId = <int, ExampleSentence>{};
@@ -50,9 +52,7 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
       }
       final ex = ExampleSentence.fromJson(e);
       if (byId.containsKey(ex.id)) {
-        throw FormatException(
-          'examples[$i] id=${ex.id} 중복 — 같은 id 는 유일해야 한다',
-        );
+        throw FormatException('examples[$i] id=${ex.id} 중복 — 같은 id 는 유일해야 한다');
       }
       byId[ex.id] = ex;
       result.add(ex);
@@ -103,24 +103,17 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
       );
     }
 
-    final exampleIdSet = {for (final e in examples) e.id};
-    final refs = <int, List<int>>{};
+    final words = <Word>[];
     for (var i = 0; i < wordsList.length; i++) {
       final raw = wordsList[i];
       if (raw is! Map<String, dynamic>) {
         throw FormatException('words[$i] is not a JSON object');
       }
       // Word.fromJson 이 exampleIds 의 존재/타입을 이미 검증.
-      final w = Word.fromJson(raw);
-      for (final eid in w.exampleIds) {
-        if (!exampleIdSet.contains(eid)) {
-          throw FormatException(
-            'word(id=${w.id}) 가 존재하지 않는 예문 id=$eid 를 참조합니다',
-          );
-        }
-      }
-      refs[w.id] = w.exampleIds;
+      words.add(Word.fromJson(raw));
     }
+
+    final refs = buildAndValidateRefs(words, examples);
 
     appLogger.i(
       '[example_sentences] cross-validated: examples=${examples.length}, '
@@ -132,5 +125,26 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
       wordExampleRefs: refs,
       version: version,
     );
+  }
+
+  /// 단어가 참조하는 모든 예문 id 가 examples 안에 실재하는지 확인하고
+  /// `{wordId: [exampleIds...]}` map 으로 환원.
+  Map<int, List<int>> buildAndValidateRefs(
+    List<Word> words,
+    List<ExampleSentence> examples,
+  ) {
+    final exampleIdSet = {for (final e in examples) e.id};
+    final refs = <int, List<int>>{};
+    for (final w in words) {
+      for (final eid in w.exampleIds) {
+        if (!exampleIdSet.contains(eid)) {
+          throw FormatException(
+            'word(id=${w.id}) 가 존재하지 않는 예문 id=$eid 를 참조합니다',
+          );
+        }
+      }
+      refs[w.id] = w.exampleIds;
+    }
+    return refs;
   }
 }

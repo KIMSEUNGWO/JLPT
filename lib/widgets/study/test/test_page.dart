@@ -65,14 +65,15 @@ class _TestPageState extends ConsumerState<TestPage> {
           time: _timerController.getTime(),
           onGoToResultPage: () async {
             final router = GoRouter.of(context);
-            final testResult =
-                await ref.read(testResultRepositoryProvider).save(
-                      level: widget.args.level,
-                      type: widget.args.type,
-                      questions: _questionList,
-                      reverses: _reverseIndexList,
-                      time: _timerController.getTime(),
-                    );
+            final testResult = await ref
+                .read(testResultRepositoryProvider)
+                .save(
+                  level: widget.args.level,
+                  type: widget.args.type,
+                  questions: _questionList,
+                  reverses: _reverseIndexList,
+                  time: _timerController.getTime(),
+                );
             if (!mounted) return;
             router.pop(); // 모달 닫기
             router.pop(); // 테스트 페이지 닫기
@@ -105,6 +106,7 @@ class _TestPageState extends ConsumerState<TestPage> {
       _reverseIndexList[i] = true;
     }
     _reverseIndexList.shuffle();
+    if (!mounted) return;
     setState(() {
       _questionList = questions;
       _loading = false;
@@ -120,9 +122,29 @@ class _TestPageState extends ConsumerState<TestPage> {
   @override
   Widget build(BuildContext context) {
     if (_loading) return const CupertinoActivityIndicator();
+    if (_questionList.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            '${widget.args.level?.label ?? '통합'} ${widget.args.type.title} 테스트',
+          ),
+          centerTitle: false,
+          backgroundColor: Colors.white,
+          shape: kAppBarShape,
+        ),
+        body: Center(
+          child: Text(
+            '출제할 단어가 없습니다.',
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+        ),
+      );
+    }
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.args.level?.label ?? '통합'} ${widget.args.type.title} 테스트'),
+        title: Text(
+          '${widget.args.level?.label ?? '통합'} ${widget.args.type.title} 테스트',
+        ),
         centerTitle: false,
         backgroundColor: Colors.white,
         actions: [
@@ -132,12 +154,17 @@ class _TestPageState extends ConsumerState<TestPage> {
               color: AppColors.background,
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Row(children: [
-              Icon(Icons.access_time,
-                  color: Theme.of(context).colorScheme.primary, size: 12),
-              const SizedBox(width: 4),
-              CustomTimer(controller: _timerController, getSeconds: (_) {}),
-            ]),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.access_time,
+                  color: Theme.of(context).colorScheme.primary,
+                  size: 12,
+                ),
+                const SizedBox(width: 4),
+                CustomTimer(controller: _timerController, getSeconds: (_) {}),
+              ],
+            ),
           ),
           const SizedBox(width: 20),
         ],
@@ -151,17 +178,21 @@ class _TestPageState extends ConsumerState<TestPage> {
               topWidget: (current, total, _) => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('진행률',
-                      style: TextStyle(
-                          fontSize:
-                              Theme.of(context).textTheme.bodySmall!.fontSize,
-                          color: Theme.of(context).colorScheme.onTertiary)),
-                  Text('$current/$total',
-                      style: TextStyle(
-                          fontSize:
-                              Theme.of(context).textTheme.bodySmall!.fontSize,
-                          color: Theme.of(context).colorScheme.primary,
-                          fontWeight: FontWeight.w500)),
+                  Text(
+                    '진행률',
+                    style: TextStyle(
+                      fontSize: Theme.of(context).textTheme.bodySmall!.fontSize,
+                      color: Theme.of(context).colorScheme.onTertiary,
+                    ),
+                  ),
+                  Text(
+                    '$current/$total',
+                    style: TextStyle(
+                      fontSize: Theme.of(context).textTheme.bodySmall!.fontSize,
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ],
               ),
               current: _questionList.where((e) => e.myAnswer != null).length,
@@ -174,8 +205,9 @@ class _TestPageState extends ConsumerState<TestPage> {
         duration: const Duration(milliseconds: 400),
         transitionBuilder: (child, animation) => SlideTransition(
           position: Tween<Offset>(
-                  begin: const Offset(0.0, 2.0), end: Offset.zero)
-              .animate(animation),
+            begin: const Offset(0.0, 2.0),
+            end: Offset.zero,
+          ).animate(animation),
           child: child,
         ),
         child: SingleChildScrollView(
@@ -211,8 +243,9 @@ class _TestPageState extends ConsumerState<TestPage> {
                           color: _nextBtnDisabled
                               ? Theme.of(context).colorScheme.primary
                               : Colors.white,
-                          fontSize:
-                              Theme.of(context).textTheme.bodyLarge!.fontSize,
+                          fontSize: Theme.of(
+                            context,
+                          ).textTheme.bodyLarge!.fontSize,
                           fontWeight: FontWeight.w500,
                         ),
                       ),

@@ -4,18 +4,16 @@ import 'package:drift/drift.dart';
 import 'package:jlpt_app/data/database/app_database.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
-import 'package:jlpt_app/domain/course/course.dart';
 import 'package:pub_semver/pub_semver.dart';
 
-/// 문자(한자) 저장소. 활성 [Course] 에 스코프된다.
+/// 문자(한자) 저장소. 활성 course id 에 스코프된다.
 class ChineseCharRepository {
   final AppDatabase _db;
   final AppMetaRepository _meta;
-  final Course _course;
+  final String _courseId;
 
-  ChineseCharRepository(this._db, this._meta, this._course);
-
-  String get _courseId => _course.id;
+  ChineseCharRepository(this._db, this._meta, {required String courseId})
+    : _courseId = courseId;
 
   Future<Map<String, ChineseChar>> getAll() async {
     final rows = await _db.chineseCharDao.getAll(_courseId);
@@ -44,14 +42,12 @@ class ChineseCharRepository {
     });
   }
 
-  Future<bool> hasChars() => _db.chineseCharDao.hasChars(_courseId);
-
   Future<int> countChars() => _db.chineseCharDao.countChars(_courseId);
 
   ChineseChar _toEntity(ChineseCharData row) => ChineseChar(
-        char: row.char,
-        koreanChar: row.koreanChar,
-        soundReading: (jsonDecode(row.soundReading) as List).cast<String>(),
-        meanReading: (jsonDecode(row.meanReading) as List).cast<String>(),
-      );
+    char: row.char,
+    koreanChar: row.koreanChar,
+    soundReading: (jsonDecode(row.soundReading) as List).cast<String>(),
+    meanReading: (jsonDecode(row.meanReading) as List).cast<String>(),
+  );
 }

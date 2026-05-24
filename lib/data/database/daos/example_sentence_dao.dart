@@ -15,14 +15,17 @@ class ExampleSentenceDao extends DatabaseAccessor<AppDatabase>
 
   /// 한 단어가 참조하는 예문들을 join 으로 조회.
   Future<List<ExampleSentenceData>> getByWordId(String course, int wordId) {
-    final q = select(exampleSentences).join([
-      innerJoin(
-        wordExampleRefs,
-        wordExampleRefs.exampleId.equalsExp(exampleSentences.id),
-      ),
-    ])
-      ..where(wordExampleRefs.wordId.equals(wordId) &
-          exampleSentences.course.equals(course));
+    final q =
+        select(exampleSentences).join([
+          innerJoin(
+            wordExampleRefs,
+            wordExampleRefs.exampleId.equalsExp(exampleSentences.id),
+          ),
+        ])..where(
+          wordExampleRefs.wordId.equals(wordId) &
+              wordExampleRefs.course.equals(course) &
+              exampleSentences.course.equals(course),
+        );
     return q.map((row) => row.readTable(exampleSentences)).get();
   }
 
@@ -41,19 +44,11 @@ class ExampleSentenceDao extends DatabaseAccessor<AppDatabase>
 
   Future<int> countExamples(String course) async {
     final c = countAll();
-    final row = await (selectOnly(exampleSentences)
-          ..addColumns([c])
-          ..where(exampleSentences.course.equals(course)))
-        .getSingle();
-    return row.read(c) ?? 0;
-  }
-
-  Future<int> countRefs(String course) async {
-    final c = countAll();
-    final row = await (selectOnly(wordExampleRefs)
-          ..addColumns([c])
-          ..where(wordExampleRefs.course.equals(course)))
-        .getSingle();
+    final row =
+        await (selectOnly(exampleSentences)
+              ..addColumns([c])
+              ..where(exampleSentences.course.equals(course)))
+            .getSingle();
     return row.read(c) ?? 0;
   }
 }

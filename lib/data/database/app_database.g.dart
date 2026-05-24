@@ -15,7 +15,7 @@ class $WordsTable extends Words with TableInfo<$WordsTable, WordData> {
     aliasedName,
     false,
     type: DriftSqlType.int,
-    requiredDuringInsert: false,
+    requiredDuringInsert: true,
   );
   static const VerificationMeta _courseMeta = const VerificationMeta('course');
   @override
@@ -125,6 +125,8 @@ class $WordsTable extends Words with TableInfo<$WordsTable, WordData> {
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
     }
     if (data.containsKey('course')) {
       context.handle(
@@ -188,7 +190,7 @@ class $WordsTable extends Words with TableInfo<$WordsTable, WordData> {
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {id};
+  Set<GeneratedColumn> get $primaryKey => {course, id};
   @override
   WordData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
@@ -411,6 +413,7 @@ class WordsCompanion extends UpdateCompanion<WordData> {
   final Value<String> korean;
   final Value<bool> isRead;
   final Value<int> wrongCnt;
+  final Value<int> rowid;
   const WordsCompanion({
     this.id = const Value.absent(),
     this.course = const Value.absent(),
@@ -421,9 +424,10 @@ class WordsCompanion extends UpdateCompanion<WordData> {
     this.korean = const Value.absent(),
     this.isRead = const Value.absent(),
     this.wrongCnt = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   WordsCompanion.insert({
-    this.id = const Value.absent(),
+    required int id,
     this.course = const Value.absent(),
     required String level,
     required String act,
@@ -432,7 +436,9 @@ class WordsCompanion extends UpdateCompanion<WordData> {
     required String korean,
     this.isRead = const Value.absent(),
     this.wrongCnt = const Value.absent(),
-  }) : level = Value(level),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       level = Value(level),
        act = Value(act),
        word = Value(word),
        hiragana = Value(hiragana),
@@ -447,6 +453,7 @@ class WordsCompanion extends UpdateCompanion<WordData> {
     Expression<String>? korean,
     Expression<bool>? isRead,
     Expression<int>? wrongCnt,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -458,6 +465,7 @@ class WordsCompanion extends UpdateCompanion<WordData> {
       if (korean != null) 'korean': korean,
       if (isRead != null) 'is_read': isRead,
       if (wrongCnt != null) 'wrong_cnt': wrongCnt,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -471,6 +479,7 @@ class WordsCompanion extends UpdateCompanion<WordData> {
     Value<String>? korean,
     Value<bool>? isRead,
     Value<int>? wrongCnt,
+    Value<int>? rowid,
   }) {
     return WordsCompanion(
       id: id ?? this.id,
@@ -482,6 +491,7 @@ class WordsCompanion extends UpdateCompanion<WordData> {
       korean: korean ?? this.korean,
       isRead: isRead ?? this.isRead,
       wrongCnt: wrongCnt ?? this.wrongCnt,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -515,6 +525,9 @@ class WordsCompanion extends UpdateCompanion<WordData> {
     if (wrongCnt.present) {
       map['wrong_cnt'] = Variable<int>(wrongCnt.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -529,7 +542,8 @@ class WordsCompanion extends UpdateCompanion<WordData> {
           ..write('hiragana: $hiragana, ')
           ..write('korean: $korean, ')
           ..write('isRead: $isRead, ')
-          ..write('wrongCnt: $wrongCnt')
+          ..write('wrongCnt: $wrongCnt, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -661,7 +675,7 @@ class $ChineseCharsTable extends ChineseChars
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {char};
+  Set<GeneratedColumn> get $primaryKey => {course, char};
   @override
   ChineseCharData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
@@ -2486,7 +2500,7 @@ class $ExampleSentencesTable extends ExampleSentences
     aliasedName,
     false,
     type: DriftSqlType.int,
-    requiredDuringInsert: false,
+    requiredDuringInsert: true,
   );
   static const VerificationMeta _courseMeta = const VerificationMeta('course');
   @override
@@ -2536,6 +2550,8 @@ class $ExampleSentencesTable extends ExampleSentences
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
     }
     if (data.containsKey('course')) {
       context.handle(
@@ -2566,7 +2582,7 @@ class $ExampleSentencesTable extends ExampleSentences
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {id};
+  Set<GeneratedColumn> get $primaryKey => {course, id};
   @override
   ExampleSentenceData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
@@ -2702,30 +2718,36 @@ class ExampleSentencesCompanion extends UpdateCompanion<ExampleSentenceData> {
   final Value<String> course;
   final Value<String> sentence;
   final Value<String> translation;
+  final Value<int> rowid;
   const ExampleSentencesCompanion({
     this.id = const Value.absent(),
     this.course = const Value.absent(),
     this.sentence = const Value.absent(),
     this.translation = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ExampleSentencesCompanion.insert({
-    this.id = const Value.absent(),
+    required int id,
     this.course = const Value.absent(),
     required String sentence,
     required String translation,
-  }) : sentence = Value(sentence),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       sentence = Value(sentence),
        translation = Value(translation);
   static Insertable<ExampleSentenceData> custom({
     Expression<int>? id,
     Expression<String>? course,
     Expression<String>? sentence,
     Expression<String>? translation,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (course != null) 'course': course,
       if (sentence != null) 'sentence': sentence,
       if (translation != null) 'translation': translation,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -2734,12 +2756,14 @@ class ExampleSentencesCompanion extends UpdateCompanion<ExampleSentenceData> {
     Value<String>? course,
     Value<String>? sentence,
     Value<String>? translation,
+    Value<int>? rowid,
   }) {
     return ExampleSentencesCompanion(
       id: id ?? this.id,
       course: course ?? this.course,
       sentence: sentence ?? this.sentence,
       translation: translation ?? this.translation,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -2758,6 +2782,9 @@ class ExampleSentencesCompanion extends UpdateCompanion<ExampleSentenceData> {
     if (translation.present) {
       map['translation'] = Variable<String>(translation.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -2767,7 +2794,8 @@ class ExampleSentencesCompanion extends UpdateCompanion<ExampleSentenceData> {
           ..write('id: $id, ')
           ..write('course: $course, ')
           ..write('sentence: $sentence, ')
-          ..write('translation: $translation')
+          ..write('translation: $translation, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -2797,9 +2825,6 @@ class $WordExampleRefsTable extends WordExampleRefs
     false,
     type: DriftSqlType.int,
     requiredDuringInsert: true,
-    defaultConstraints: GeneratedColumn.constraintIsAlways(
-      'REFERENCES words (id) ON DELETE CASCADE',
-    ),
   );
   static const VerificationMeta _exampleIdMeta = const VerificationMeta(
     'exampleId',
@@ -2811,9 +2836,6 @@ class $WordExampleRefsTable extends WordExampleRefs
     false,
     type: DriftSqlType.int,
     requiredDuringInsert: true,
-    defaultConstraints: GeneratedColumn.constraintIsAlways(
-      'REFERENCES example_sentences (id) ON DELETE CASCADE',
-    ),
   );
   @override
   List<GeneratedColumn> get $columns => [course, wordId, exampleId];
@@ -2855,7 +2877,7 @@ class $WordExampleRefsTable extends WordExampleRefs
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {wordId, exampleId};
+  Set<GeneratedColumn> get $primaryKey => {course, wordId, exampleId};
   @override
   WordExampleRefData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
@@ -3080,28 +3102,11 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     exampleSentences,
     wordExampleRefs,
   ];
-  @override
-  StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
-    WritePropagation(
-      on: TableUpdateQuery.onTableName(
-        'words',
-        limitUpdateKind: UpdateKind.delete,
-      ),
-      result: [TableUpdate('word_example_refs', kind: UpdateKind.delete)],
-    ),
-    WritePropagation(
-      on: TableUpdateQuery.onTableName(
-        'example_sentences',
-        limitUpdateKind: UpdateKind.delete,
-      ),
-      result: [TableUpdate('word_example_refs', kind: UpdateKind.delete)],
-    ),
-  ]);
 }
 
 typedef $$WordsTableCreateCompanionBuilder =
     WordsCompanion Function({
-      Value<int> id,
+      required int id,
       Value<String> course,
       required String level,
       required String act,
@@ -3110,6 +3115,7 @@ typedef $$WordsTableCreateCompanionBuilder =
       required String korean,
       Value<bool> isRead,
       Value<int> wrongCnt,
+      Value<int> rowid,
     });
 typedef $$WordsTableUpdateCompanionBuilder =
     WordsCompanion Function({
@@ -3122,32 +3128,8 @@ typedef $$WordsTableUpdateCompanionBuilder =
       Value<String> korean,
       Value<bool> isRead,
       Value<int> wrongCnt,
+      Value<int> rowid,
     });
-
-final class $$WordsTableReferences
-    extends BaseReferences<_$AppDatabase, $WordsTable, WordData> {
-  $$WordsTableReferences(super.$_db, super.$_table, super.$_typedResult);
-
-  static MultiTypedResultKey<$WordExampleRefsTable, List<WordExampleRefData>>
-  _wordExampleRefsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
-    db.wordExampleRefs,
-    aliasName: $_aliasNameGenerator(db.words.id, db.wordExampleRefs.wordId),
-  );
-
-  $$WordExampleRefsTableProcessedTableManager get wordExampleRefsRefs {
-    final manager = $$WordExampleRefsTableTableManager(
-      $_db,
-      $_db.wordExampleRefs,
-    ).filter((f) => f.wordId.id.sqlEquals($_itemColumn<int>('id')!));
-
-    final cache = $_typedResult.readTableOrNull(
-      _wordExampleRefsRefsTable($_db),
-    );
-    return ProcessedTableManager(
-      manager.$state.copyWith(prefetchedData: cache),
-    );
-  }
-}
 
 class $$WordsTableFilterComposer extends Composer<_$AppDatabase, $WordsTable> {
   $$WordsTableFilterComposer({
@@ -3201,31 +3183,6 @@ class $$WordsTableFilterComposer extends Composer<_$AppDatabase, $WordsTable> {
     column: $table.wrongCnt,
     builder: (column) => ColumnFilters(column),
   );
-
-  Expression<bool> wordExampleRefsRefs(
-    Expression<bool> Function($$WordExampleRefsTableFilterComposer f) f,
-  ) {
-    final $$WordExampleRefsTableFilterComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.id,
-      referencedTable: $db.wordExampleRefs,
-      getReferencedColumn: (t) => t.wordId,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$WordExampleRefsTableFilterComposer(
-            $db: $db,
-            $table: $db.wordExampleRefs,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return f(composer);
-  }
 }
 
 class $$WordsTableOrderingComposer
@@ -3318,31 +3275,6 @@ class $$WordsTableAnnotationComposer
 
   GeneratedColumn<int> get wrongCnt =>
       $composableBuilder(column: $table.wrongCnt, builder: (column) => column);
-
-  Expression<T> wordExampleRefsRefs<T extends Object>(
-    Expression<T> Function($$WordExampleRefsTableAnnotationComposer a) f,
-  ) {
-    final $$WordExampleRefsTableAnnotationComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.id,
-      referencedTable: $db.wordExampleRefs,
-      getReferencedColumn: (t) => t.wordId,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$WordExampleRefsTableAnnotationComposer(
-            $db: $db,
-            $table: $db.wordExampleRefs,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return f(composer);
-  }
 }
 
 class $$WordsTableTableManager
@@ -3356,9 +3288,9 @@ class $$WordsTableTableManager
           $$WordsTableAnnotationComposer,
           $$WordsTableCreateCompanionBuilder,
           $$WordsTableUpdateCompanionBuilder,
-          (WordData, $$WordsTableReferences),
+          (WordData, BaseReferences<_$AppDatabase, $WordsTable, WordData>),
           WordData,
-          PrefetchHooks Function({bool wordExampleRefsRefs})
+          PrefetchHooks Function()
         > {
   $$WordsTableTableManager(_$AppDatabase db, $WordsTable table)
     : super(
@@ -3382,6 +3314,7 @@ class $$WordsTableTableManager
                 Value<String> korean = const Value.absent(),
                 Value<bool> isRead = const Value.absent(),
                 Value<int> wrongCnt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
               }) => WordsCompanion(
                 id: id,
                 course: course,
@@ -3392,10 +3325,11 @@ class $$WordsTableTableManager
                 korean: korean,
                 isRead: isRead,
                 wrongCnt: wrongCnt,
+                rowid: rowid,
               ),
           createCompanionCallback:
               ({
-                Value<int> id = const Value.absent(),
+                required int id,
                 Value<String> course = const Value.absent(),
                 required String level,
                 required String act,
@@ -3404,6 +3338,7 @@ class $$WordsTableTableManager
                 required String korean,
                 Value<bool> isRead = const Value.absent(),
                 Value<int> wrongCnt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
               }) => WordsCompanion.insert(
                 id: id,
                 course: course,
@@ -3414,44 +3349,12 @@ class $$WordsTableTableManager
                 korean: korean,
                 isRead: isRead,
                 wrongCnt: wrongCnt,
+                rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map(
-                (e) =>
-                    (e.readTable(table), $$WordsTableReferences(db, table, e)),
-              )
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
-          prefetchHooksCallback: ({wordExampleRefsRefs = false}) {
-            return PrefetchHooks(
-              db: db,
-              explicitlyWatchedTables: [
-                if (wordExampleRefsRefs) db.wordExampleRefs,
-              ],
-              addJoins: null,
-              getPrefetchedDataCallback: (items) async {
-                return [
-                  if (wordExampleRefsRefs)
-                    await $_getPrefetchedData<
-                      WordData,
-                      $WordsTable,
-                      WordExampleRefData
-                    >(
-                      currentTable: table,
-                      referencedTable: $$WordsTableReferences
-                          ._wordExampleRefsRefsTable(db),
-                      managerFromTypedResult: (p0) => $$WordsTableReferences(
-                        db,
-                        table,
-                        p0,
-                      ).wordExampleRefsRefs,
-                      referencedItemsForCurrentItem: (item, referencedItems) =>
-                          referencedItems.where((e) => e.wordId == item.id),
-                      typedResults: items,
-                    ),
-                ];
-              },
-            );
-          },
+          prefetchHooksCallback: null,
         ),
       );
 }
@@ -3466,9 +3369,9 @@ typedef $$WordsTableProcessedTableManager =
       $$WordsTableAnnotationComposer,
       $$WordsTableCreateCompanionBuilder,
       $$WordsTableUpdateCompanionBuilder,
-      (WordData, $$WordsTableReferences),
+      (WordData, BaseReferences<_$AppDatabase, $WordsTable, WordData>),
       WordData,
-      PrefetchHooks Function({bool wordExampleRefsRefs})
+      PrefetchHooks Function()
     >;
 typedef $$ChineseCharsTableCreateCompanionBuilder =
     ChineseCharsCompanion Function({
@@ -4740,10 +4643,11 @@ typedef $$DailyStatsTableProcessedTableManager =
     >;
 typedef $$ExampleSentencesTableCreateCompanionBuilder =
     ExampleSentencesCompanion Function({
-      Value<int> id,
+      required int id,
       Value<String> course,
       required String sentence,
       required String translation,
+      Value<int> rowid,
     });
 typedef $$ExampleSentencesTableUpdateCompanionBuilder =
     ExampleSentencesCompanion Function({
@@ -4751,44 +4655,8 @@ typedef $$ExampleSentencesTableUpdateCompanionBuilder =
       Value<String> course,
       Value<String> sentence,
       Value<String> translation,
+      Value<int> rowid,
     });
-
-final class $$ExampleSentencesTableReferences
-    extends
-        BaseReferences<
-          _$AppDatabase,
-          $ExampleSentencesTable,
-          ExampleSentenceData
-        > {
-  $$ExampleSentencesTableReferences(
-    super.$_db,
-    super.$_table,
-    super.$_typedResult,
-  );
-
-  static MultiTypedResultKey<$WordExampleRefsTable, List<WordExampleRefData>>
-  _wordExampleRefsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
-    db.wordExampleRefs,
-    aliasName: $_aliasNameGenerator(
-      db.exampleSentences.id,
-      db.wordExampleRefs.exampleId,
-    ),
-  );
-
-  $$WordExampleRefsTableProcessedTableManager get wordExampleRefsRefs {
-    final manager = $$WordExampleRefsTableTableManager(
-      $_db,
-      $_db.wordExampleRefs,
-    ).filter((f) => f.exampleId.id.sqlEquals($_itemColumn<int>('id')!));
-
-    final cache = $_typedResult.readTableOrNull(
-      _wordExampleRefsRefsTable($_db),
-    );
-    return ProcessedTableManager(
-      manager.$state.copyWith(prefetchedData: cache),
-    );
-  }
-}
 
 class $$ExampleSentencesTableFilterComposer
     extends Composer<_$AppDatabase, $ExampleSentencesTable> {
@@ -4818,31 +4686,6 @@ class $$ExampleSentencesTableFilterComposer
     column: $table.translation,
     builder: (column) => ColumnFilters(column),
   );
-
-  Expression<bool> wordExampleRefsRefs(
-    Expression<bool> Function($$WordExampleRefsTableFilterComposer f) f,
-  ) {
-    final $$WordExampleRefsTableFilterComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.id,
-      referencedTable: $db.wordExampleRefs,
-      getReferencedColumn: (t) => t.exampleId,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$WordExampleRefsTableFilterComposer(
-            $db: $db,
-            $table: $db.wordExampleRefs,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return f(composer);
-  }
 }
 
 class $$ExampleSentencesTableOrderingComposer
@@ -4897,31 +4740,6 @@ class $$ExampleSentencesTableAnnotationComposer
     column: $table.translation,
     builder: (column) => column,
   );
-
-  Expression<T> wordExampleRefsRefs<T extends Object>(
-    Expression<T> Function($$WordExampleRefsTableAnnotationComposer a) f,
-  ) {
-    final $$WordExampleRefsTableAnnotationComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.id,
-      referencedTable: $db.wordExampleRefs,
-      getReferencedColumn: (t) => t.exampleId,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$WordExampleRefsTableAnnotationComposer(
-            $db: $db,
-            $table: $db.wordExampleRefs,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return f(composer);
-  }
 }
 
 class $$ExampleSentencesTableTableManager
@@ -4935,9 +4753,16 @@ class $$ExampleSentencesTableTableManager
           $$ExampleSentencesTableAnnotationComposer,
           $$ExampleSentencesTableCreateCompanionBuilder,
           $$ExampleSentencesTableUpdateCompanionBuilder,
-          (ExampleSentenceData, $$ExampleSentencesTableReferences),
+          (
+            ExampleSentenceData,
+            BaseReferences<
+              _$AppDatabase,
+              $ExampleSentencesTable,
+              ExampleSentenceData
+            >,
+          ),
           ExampleSentenceData,
-          PrefetchHooks Function({bool wordExampleRefsRefs})
+          PrefetchHooks Function()
         > {
   $$ExampleSentencesTableTableManager(
     _$AppDatabase db,
@@ -4958,64 +4783,32 @@ class $$ExampleSentencesTableTableManager
                 Value<String> course = const Value.absent(),
                 Value<String> sentence = const Value.absent(),
                 Value<String> translation = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
               }) => ExampleSentencesCompanion(
                 id: id,
                 course: course,
                 sentence: sentence,
                 translation: translation,
+                rowid: rowid,
               ),
           createCompanionCallback:
               ({
-                Value<int> id = const Value.absent(),
+                required int id,
                 Value<String> course = const Value.absent(),
                 required String sentence,
                 required String translation,
+                Value<int> rowid = const Value.absent(),
               }) => ExampleSentencesCompanion.insert(
                 id: id,
                 course: course,
                 sentence: sentence,
                 translation: translation,
+                rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable(table),
-                  $$ExampleSentencesTableReferences(db, table, e),
-                ),
-              )
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
-          prefetchHooksCallback: ({wordExampleRefsRefs = false}) {
-            return PrefetchHooks(
-              db: db,
-              explicitlyWatchedTables: [
-                if (wordExampleRefsRefs) db.wordExampleRefs,
-              ],
-              addJoins: null,
-              getPrefetchedDataCallback: (items) async {
-                return [
-                  if (wordExampleRefsRefs)
-                    await $_getPrefetchedData<
-                      ExampleSentenceData,
-                      $ExampleSentencesTable,
-                      WordExampleRefData
-                    >(
-                      currentTable: table,
-                      referencedTable: $$ExampleSentencesTableReferences
-                          ._wordExampleRefsRefsTable(db),
-                      managerFromTypedResult: (p0) =>
-                          $$ExampleSentencesTableReferences(
-                            db,
-                            table,
-                            p0,
-                          ).wordExampleRefsRefs,
-                      referencedItemsForCurrentItem: (item, referencedItems) =>
-                          referencedItems.where((e) => e.exampleId == item.id),
-                      typedResults: items,
-                    ),
-                ];
-              },
-            );
-          },
+          prefetchHooksCallback: null,
         ),
       );
 }
@@ -5030,9 +4823,16 @@ typedef $$ExampleSentencesTableProcessedTableManager =
       $$ExampleSentencesTableAnnotationComposer,
       $$ExampleSentencesTableCreateCompanionBuilder,
       $$ExampleSentencesTableUpdateCompanionBuilder,
-      (ExampleSentenceData, $$ExampleSentencesTableReferences),
+      (
+        ExampleSentenceData,
+        BaseReferences<
+          _$AppDatabase,
+          $ExampleSentencesTable,
+          ExampleSentenceData
+        >,
+      ),
       ExampleSentenceData,
-      PrefetchHooks Function({bool wordExampleRefsRefs})
+      PrefetchHooks Function()
     >;
 typedef $$WordExampleRefsTableCreateCompanionBuilder =
     WordExampleRefsCompanion Function({
@@ -5049,60 +4849,6 @@ typedef $$WordExampleRefsTableUpdateCompanionBuilder =
       Value<int> rowid,
     });
 
-final class $$WordExampleRefsTableReferences
-    extends
-        BaseReferences<
-          _$AppDatabase,
-          $WordExampleRefsTable,
-          WordExampleRefData
-        > {
-  $$WordExampleRefsTableReferences(
-    super.$_db,
-    super.$_table,
-    super.$_typedResult,
-  );
-
-  static $WordsTable _wordIdTable(_$AppDatabase db) => db.words.createAlias(
-    $_aliasNameGenerator(db.wordExampleRefs.wordId, db.words.id),
-  );
-
-  $$WordsTableProcessedTableManager get wordId {
-    final $_column = $_itemColumn<int>('word_id')!;
-
-    final manager = $$WordsTableTableManager(
-      $_db,
-      $_db.words,
-    ).filter((f) => f.id.sqlEquals($_column));
-    final item = $_typedResult.readTableOrNull(_wordIdTable($_db));
-    if (item == null) return manager;
-    return ProcessedTableManager(
-      manager.$state.copyWith(prefetchedData: [item]),
-    );
-  }
-
-  static $ExampleSentencesTable _exampleIdTable(_$AppDatabase db) =>
-      db.exampleSentences.createAlias(
-        $_aliasNameGenerator(
-          db.wordExampleRefs.exampleId,
-          db.exampleSentences.id,
-        ),
-      );
-
-  $$ExampleSentencesTableProcessedTableManager get exampleId {
-    final $_column = $_itemColumn<int>('example_id')!;
-
-    final manager = $$ExampleSentencesTableTableManager(
-      $_db,
-      $_db.exampleSentences,
-    ).filter((f) => f.id.sqlEquals($_column));
-    final item = $_typedResult.readTableOrNull(_exampleIdTable($_db));
-    if (item == null) return manager;
-    return ProcessedTableManager(
-      manager.$state.copyWith(prefetchedData: [item]),
-    );
-  }
-}
-
 class $$WordExampleRefsTableFilterComposer
     extends Composer<_$AppDatabase, $WordExampleRefsTable> {
   $$WordExampleRefsTableFilterComposer({
@@ -5117,51 +4863,15 @@ class $$WordExampleRefsTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
-  $$WordsTableFilterComposer get wordId {
-    final $$WordsTableFilterComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.wordId,
-      referencedTable: $db.words,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$WordsTableFilterComposer(
-            $db: $db,
-            $table: $db.words,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
+  ColumnFilters<int> get wordId => $composableBuilder(
+    column: $table.wordId,
+    builder: (column) => ColumnFilters(column),
+  );
 
-  $$ExampleSentencesTableFilterComposer get exampleId {
-    final $$ExampleSentencesTableFilterComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.exampleId,
-      referencedTable: $db.exampleSentences,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$ExampleSentencesTableFilterComposer(
-            $db: $db,
-            $table: $db.exampleSentences,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
+  ColumnFilters<int> get exampleId => $composableBuilder(
+    column: $table.exampleId,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$WordExampleRefsTableOrderingComposer
@@ -5178,51 +4888,15 @@ class $$WordExampleRefsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
-  $$WordsTableOrderingComposer get wordId {
-    final $$WordsTableOrderingComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.wordId,
-      referencedTable: $db.words,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$WordsTableOrderingComposer(
-            $db: $db,
-            $table: $db.words,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
+  ColumnOrderings<int> get wordId => $composableBuilder(
+    column: $table.wordId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
-  $$ExampleSentencesTableOrderingComposer get exampleId {
-    final $$ExampleSentencesTableOrderingComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.exampleId,
-      referencedTable: $db.exampleSentences,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$ExampleSentencesTableOrderingComposer(
-            $db: $db,
-            $table: $db.exampleSentences,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
+  ColumnOrderings<int> get exampleId => $composableBuilder(
+    column: $table.exampleId,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$WordExampleRefsTableAnnotationComposer
@@ -5237,51 +4911,11 @@ class $$WordExampleRefsTableAnnotationComposer
   GeneratedColumn<String> get course =>
       $composableBuilder(column: $table.course, builder: (column) => column);
 
-  $$WordsTableAnnotationComposer get wordId {
-    final $$WordsTableAnnotationComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.wordId,
-      referencedTable: $db.words,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$WordsTableAnnotationComposer(
-            $db: $db,
-            $table: $db.words,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
+  GeneratedColumn<int> get wordId =>
+      $composableBuilder(column: $table.wordId, builder: (column) => column);
 
-  $$ExampleSentencesTableAnnotationComposer get exampleId {
-    final $$ExampleSentencesTableAnnotationComposer composer = $composerBuilder(
-      composer: this,
-      getCurrentColumn: (t) => t.exampleId,
-      referencedTable: $db.exampleSentences,
-      getReferencedColumn: (t) => t.id,
-      builder:
-          (
-            joinBuilder, {
-            $addJoinBuilderToRootComposer,
-            $removeJoinBuilderFromRootComposer,
-          }) => $$ExampleSentencesTableAnnotationComposer(
-            $db: $db,
-            $table: $db.exampleSentences,
-            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
-            joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
-          ),
-    );
-    return composer;
-  }
+  GeneratedColumn<int> get exampleId =>
+      $composableBuilder(column: $table.exampleId, builder: (column) => column);
 }
 
 class $$WordExampleRefsTableTableManager
@@ -5295,9 +4929,16 @@ class $$WordExampleRefsTableTableManager
           $$WordExampleRefsTableAnnotationComposer,
           $$WordExampleRefsTableCreateCompanionBuilder,
           $$WordExampleRefsTableUpdateCompanionBuilder,
-          (WordExampleRefData, $$WordExampleRefsTableReferences),
+          (
+            WordExampleRefData,
+            BaseReferences<
+              _$AppDatabase,
+              $WordExampleRefsTable,
+              WordExampleRefData
+            >,
+          ),
           WordExampleRefData,
-          PrefetchHooks Function({bool wordId, bool exampleId})
+          PrefetchHooks Function()
         > {
   $$WordExampleRefsTableTableManager(
     _$AppDatabase db,
@@ -5337,71 +4978,9 @@ class $$WordExampleRefsTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable(table),
-                  $$WordExampleRefsTableReferences(db, table, e),
-                ),
-              )
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
-          prefetchHooksCallback: ({wordId = false, exampleId = false}) {
-            return PrefetchHooks(
-              db: db,
-              explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (wordId) {
-                      state =
-                          state.withJoin(
-                                currentTable: table,
-                                currentColumn: table.wordId,
-                                referencedTable:
-                                    $$WordExampleRefsTableReferences
-                                        ._wordIdTable(db),
-                                referencedColumn:
-                                    $$WordExampleRefsTableReferences
-                                        ._wordIdTable(db)
-                                        .id,
-                              )
-                              as T;
-                    }
-                    if (exampleId) {
-                      state =
-                          state.withJoin(
-                                currentTable: table,
-                                currentColumn: table.exampleId,
-                                referencedTable:
-                                    $$WordExampleRefsTableReferences
-                                        ._exampleIdTable(db),
-                                referencedColumn:
-                                    $$WordExampleRefsTableReferences
-                                        ._exampleIdTable(db)
-                                        .id,
-                              )
-                              as T;
-                    }
-
-                    return state;
-                  },
-              getPrefetchedDataCallback: (items) async {
-                return [];
-              },
-            );
-          },
+          prefetchHooksCallback: null,
         ),
       );
 }
@@ -5416,9 +4995,16 @@ typedef $$WordExampleRefsTableProcessedTableManager =
       $$WordExampleRefsTableAnnotationComposer,
       $$WordExampleRefsTableCreateCompanionBuilder,
       $$WordExampleRefsTableUpdateCompanionBuilder,
-      (WordExampleRefData, $$WordExampleRefsTableReferences),
+      (
+        WordExampleRefData,
+        BaseReferences<
+          _$AppDatabase,
+          $WordExampleRefsTable,
+          WordExampleRefData
+        >,
+      ),
       WordExampleRefData,
-      PrefetchHooks Function({bool wordId, bool exampleId})
+      PrefetchHooks Function()
     >;
 
 class $AppDatabaseManager {

@@ -1,3 +1,4 @@
+import 'package:jlpt_app/domain/course/course_data_config.dart';
 import 'package:jlpt_app/domain/level.dart';
 
 /// 한 언어 학습 트랙("코스")의 정적 정의. **immutable**.
@@ -8,43 +9,43 @@ import 'package:jlpt_app/domain/level.dart';
 /// (`course_registry.dart` 참고).
 class Course {
   const Course({
-    required this.id,
-    required this.displayName,
-    required this.ttsLocale,
-    required this.termLanguageLabel,
-    required this.readingLabel,
-    required this.hasCharacterModule,
-    required this.characterModuleLabel,
+    required this.identity,
+    required this.presentation,
+    required this.capabilities,
     required this.levels,
     required this.data,
   });
 
+  final CourseIdentity identity;
+  final CoursePresentation presentation;
+  final CourseCapabilities capabilities;
+
   /// DB `course` 컬럼·메타 키·스토리지 키에 쓰는 안정 식별자 (예: `'jlpt_ja'`).
-  final String id;
+  String get id => identity.id;
 
   /// 레벨 앞에 붙는 표시 이름 (예: `'JLPT'` → "JLPT N5").
-  final String displayName;
+  String get displayName => presentation.displayName;
 
   /// TTS 발음 locale (예: `'ja-JP'`).
-  final String ttsLocale;
+  String get ttsLocale => presentation.ttsLocale;
 
   /// 학습 대상 언어의 사람이 읽는 이름 (예: `'일본어'`). 설정 문구 등에 사용.
-  final String termLanguageLabel;
+  String get termLanguageLabel => presentation.termLanguageLabel;
 
   /// 발음 표기(reading) 토글 라벨 (예: `'히라가나'`). `null` 이면 reading 없는 코스.
-  final String? readingLabel;
+  String? get readingLabel => presentation.readingLabel;
 
   /// 한자/문자 분해 부가 모듈을 갖는지 (일본어 한자 = true).
-  final bool hasCharacterModule;
+  bool get hasCharacterModule => capabilities.hasCharacterModule;
 
   /// 문자 모듈 섹션 제목 (예: `'한자'`). 모듈 없으면 `null`.
-  final String? characterModuleLabel;
+  String? get characterModuleLabel => capabilities.characterModuleLabel;
 
   /// 정렬된 레벨 목록 (쉬움 → 어려움).
   final List<Level> levels;
 
   /// 데이터 소스(asset/remote 키 + 검증 임계치).
-  final CourseDataSources data;
+  final CourseDataConfig data;
 
   bool get hasReading => readingLabel != null;
 
@@ -65,36 +66,35 @@ class Course {
   }
 }
 
-/// 코스 데이터의 출처(JSON 키)와 부팅 sync 검증 임계치. **immutable**.
-class CourseDataSources {
-  const CourseDataSources({
-    required this.versionKey,
-    required this.wordsKey,
-    required this.charsKey,
-    required this.examplesKey,
-    required this.remoteUrls,
-    required this.minWordCount,
-    required this.minCharCount,
-    required this.minExampleCount,
+/// DB, sync, storage namespace 에 쓰이는 코스 식별 정보.
+class CourseIdentity {
+  const CourseIdentity({required this.id});
+
+  final String id;
+}
+
+/// 화면 문구와 입력/출력 장치에 필요한 코스 표시 정보.
+class CoursePresentation {
+  const CoursePresentation({
+    required this.displayName,
+    required this.ttsLocale,
+    required this.termLanguageLabel,
+    required this.readingLabel,
   });
 
-  /// 데이터 버전 JSON 키 (보통 `'dataVersion'`).
-  final String versionKey;
+  final String displayName;
+  final String ttsLocale;
+  final String termLanguageLabel;
+  final String? readingLabel;
+}
 
-  /// 단어 JSON 키 (예: `'japanese_words'`).
-  final String wordsKey;
+/// 코스가 제공하는 선택 기능.
+class CourseCapabilities {
+  const CourseCapabilities({
+    required this.hasCharacterModule,
+    required this.characterModuleLabel,
+  });
 
-  /// 문자(한자) JSON 키 (예: `'chinese_chars'`). 문자 모듈 없으면 `null`.
-  final String? charsKey;
-
-  /// 예문 JSON 키 (예: `'example_sentences'`).
-  final String examplesKey;
-
-  /// 위 key → 원격 URL 매핑 ([RemoteJsonDataSource] 에 주입).
-  final Map<String, String> remoteUrls;
-
-  /// 정상으로 간주할 최소 단어/문자/예문 row 수 (부분 DB 감지).
-  final int minWordCount;
-  final int minCharCount;
-  final int minExampleCount;
+  final bool hasCharacterModule;
+  final String? characterModuleLabel;
 }

@@ -22,19 +22,19 @@ class _InMemorySource implements JsonDataSource {
 }
 
 Map<String, dynamic> _wordsJson(int count) => {
-      'words': [
-        for (var i = 1; i <= count; i++)
-          {
-            'id': i,
-            'level': 'N5',
-            'act': 'N',
-            'word': '単$i',
-            'hiragana': 'たん$i',
-            'korean': '단$i',
-            'exampleIds': [100000 + i],
-          },
-      ],
-    };
+  'words': [
+    for (var i = 1; i <= count; i++)
+      {
+        'id': i,
+        'level': 'N5',
+        'act': 'N',
+        'word': '単$i',
+        'hiragana': 'たん$i',
+        'korean': '단$i',
+        'exampleIds': [100000 + i],
+      },
+  ],
+};
 
 void main() {
   late AppDatabase db;
@@ -48,7 +48,12 @@ void main() {
   setUp(() {
     db = AppDatabase.forTesting(NativeDatabase.memory());
     meta = AppMetaRepository(db);
-    repo = WordRepository(db, meta, jlptJapaneseCourse);
+    repo = WordRepository(
+      db,
+      meta,
+      courseId: jlptJapaneseCourse.id,
+      levelOf: jlptJapaneseCourse.levelOrNull,
+    );
     syncer = WordSyncer(
       wordRepository: repo,
       metaRepository: meta,
@@ -99,8 +104,11 @@ void main() {
       // 의도적으로 1개만 남기고 삭제 → 부분 DB 시뮬레이션.
       await db.customStatement('DELETE FROM words WHERE id > 1');
       expect(await repo.countWords(), 1);
-      expect(await syncer.isUpToDate(v1), isFalse,
-          reason: 'expectedMinRowCount 미만이면 재동기화 트리거되어야 한다');
+      expect(
+        await syncer.isUpToDate(v1),
+        isFalse,
+        reason: 'expectedMinRowCount 미만이면 재동기화 트리거되어야 한다',
+      );
     });
 
     test('파싱 실패는 DB 를 건드리지 않는다', () async {
@@ -130,10 +138,16 @@ void main() {
         ),
         throwsA(isA<FormatException>()),
       );
-      expect(await repo.countWords(), before,
-          reason: '파싱 실패 시 DB 가 변경되지 않아야 한다');
-      expect(await meta.getWordsVersion('jlpt_ja'), v1,
-          reason: '메타 버전도 유지되어야 한다');
+      expect(
+        await repo.countWords(),
+        before,
+        reason: '파싱 실패 시 DB 가 변경되지 않아야 한다',
+      );
+      expect(
+        await meta.getWordsVersion('jlpt_ja'),
+        v1,
+        reason: '메타 버전도 유지되어야 한다',
+      );
     });
 
     test('동일 내용 중복 id 는 skip 되고 sync 성공', () async {
@@ -173,8 +187,7 @@ void main() {
         source: _InMemorySource({'japanese_words': payload}),
         version: v1,
       );
-      expect(await repo.countWords(), 2,
-          reason: '동일 내용 중복은 dedupe 되어야 한다');
+      expect(await repo.countWords(), 2, reason: '동일 내용 중복은 dedupe 되어야 한다');
     });
 
     test('내용이 다른 중복 id 는 파싱 실패로 처리된다', () async {

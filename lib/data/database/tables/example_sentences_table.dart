@@ -11,5 +11,5 @@ class ExampleSentences extends Table {
   TextColumn get translation => text()();
 
   @override
-  Set<Column> get primaryKey => {id};
+  Set<Column> get primaryKey => {course, id};
 }

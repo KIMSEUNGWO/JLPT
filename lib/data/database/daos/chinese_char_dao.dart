@@ -16,20 +16,13 @@ class ChineseCharDao extends DatabaseAccessor<AppDatabase>
     await batch((b) => b.insertAllOnConflictUpdate(chineseChars, rows));
   }
 
-  Future<bool> hasChars(String course) async {
-    final result = await (selectOnly(chineseChars)
-          ..addColumns([chineseChars.char])
-          ..where(chineseChars.course.equals(course)))
-        .get();
-    return result.isNotEmpty;
-  }
-
   Future<int> countChars(String course) async {
     final c = countAll();
-    final row = await (selectOnly(chineseChars)
-          ..addColumns([c])
-          ..where(chineseChars.course.equals(course)))
-        .getSingle();
+    final row =
+        await (selectOnly(chineseChars)
+              ..addColumns([c])
+              ..where(chineseChars.course.equals(course)))
+            .getSingle();
     return row.read(c) ?? 0;
   }
 }

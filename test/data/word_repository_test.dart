@@ -19,16 +19,16 @@ final _v1 = Version.parse('1.0.0');
 final _v2 = Version.parse('1.0.1');
 
 Word _makeWord(int id, String levelCode) => Word(
-      id: id,
-      levelCode: levelCode,
-      act: Act.N,
-      word: '単語$id',
-      reading: 'たんご$id',
-      meaning: '단어$id',
-      isRead: false,
-      wrongCnt: 0,
-      exampleIds: [100000 + id],
-    );
+  id: id,
+  levelCode: levelCode,
+  act: Act.N,
+  word: '単語$id',
+  reading: 'たんご$id',
+  meaning: '단어$id',
+  isRead: false,
+  wrongCnt: 0,
+  exampleIds: [100000 + id],
+);
 
 void main() {
   late AppDatabase db;
@@ -38,7 +38,12 @@ void main() {
   setUp(() {
     db = _inMemoryDb();
     meta = AppMetaRepository(db);
-    repo = WordRepository(db, meta, _course);
+    repo = WordRepository(
+      db,
+      meta,
+      courseId: _course.id,
+      levelOf: _course.levelOrNull,
+    );
   });
 
   tearDown(() => db.close());
@@ -66,10 +71,10 @@ void main() {
     });
 
     test('resetReadFor → 모두 isRead = false', () async {
-      await repo.syncAll(
-        [_makeWord(20, 'N2'), _makeWord(21, 'N2')],
-        version: _v1,
-      );
+      await repo.syncAll([
+        _makeWord(20, 'N2'),
+        _makeWord(21, 'N2'),
+      ], version: _v1);
       await repo.markAllRead([20, 21]);
       await repo.resetReadFor(_lv('N2'));
 
@@ -95,10 +100,8 @@ void main() {
       await repo.syncAll([updated], version: _v2);
 
       final words = await repo.getByLevel(_lv('N1'));
-      expect(words.first.isRead, isTrue,
-          reason: 'upsert는 isRead 값을 유지해야 한다');
-      expect(words.first.word, '更新',
-          reason: 'word 내용은 업데이트되어야 한다');
+      expect(words.first.isRead, isTrue, reason: 'upsert는 isRead 값을 유지해야 한다');
+      expect(words.first.word, '更新', reason: 'word 내용은 업데이트되어야 한다');
     });
 
     test('syncAll: 메타 테이블에 버전이 commit 된다', () async {
@@ -107,25 +110,35 @@ void main() {
       expect(await meta.getWordsSyncedAt(_courseId), isNotNull);
     });
 
-    test('hasWords: 데이터 없으면 false', () async {
-      expect(await repo.hasWords(), isFalse);
-    });
-
-    test('hasWords: 데이터 있으면 true', () async {
-      await repo.syncAll([_makeWord(40, 'N5')], version: _v1);
-      expect(await repo.hasWords(), isTrue);
-    });
-
     test('countWords 는 정확한 row 수 반환', () async {
-      await repo.syncAll(
-        [
-          _makeWord(50, 'N5'),
-          _makeWord(51, 'N4'),
-          _makeWord(52, 'N3'),
-        ],
-        version: _v1,
-      );
+      await repo.syncAll([
+        _makeWord(50, 'N5'),
+        _makeWord(51, 'N4'),
+        _makeWord(52, 'N3'),
+      ], version: _v1);
       expect(await repo.countWords(), 3);
+    });
+
+    test('같은 word id 가 다른 course 에 공존하고 진행도는 course 별로 분리된다', () async {
+      final otherRepo = WordRepository(
+        db,
+        meta,
+        courseId: 'other_course',
+        levelOf: (code) => Level(code: code, label: code, order: 0),
+      );
+
+      await repo.syncAll([_makeWord(1, 'N5')], version: _v1);
+      await otherRepo.syncAll([
+        _makeWord(1, 'N5').copyWith(word: 'Other', meaning: '다른 코스'),
+      ], version: _v1);
+
+      await repo.markRead(1);
+
+      final jlptWord = (await repo.getByIds([1])).single;
+      final otherWord = (await otherRepo.getByIds([1])).single;
+      expect(jlptWord.isRead, isTrue);
+      expect(otherWord.isRead, isFalse);
+      expect(otherWord.word, 'Other');
     });
   });
 }

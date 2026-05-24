@@ -3,11 +3,10 @@ import 'package:jlpt_app/data/remote/json_data_source.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/data/repositories/daily_stats_repository.dart';
 import 'package:jlpt_app/data/sync/json_entity_syncer.dart';
-import 'package:jlpt_app/domain/course/course.dart';
 import 'package:jlpt_app/initdata/update/version_info.dart';
 import 'package:pub_semver/pub_semver.dart';
 
-/// 부팅 / 업데이트 시 활성 [Course] 데이터 동기화를 오케스트레이션.
+/// 부팅 / 업데이트 시 활성 course 데이터 동기화를 오케스트레이션.
 ///
 /// 책임:
 /// 1. 번들 + 캐시의 버전을 읽어 "현재 사용 가능한 최신 source 버전" 결정
@@ -19,7 +18,7 @@ import 'package:pub_semver/pub_semver.dart';
 /// 문자 모듈 유무 등이 달라지므로 하드코딩하지 않는다.
 class DataSyncService {
   DataSyncService({
-    required this.course,
+    required this.versionKey,
     required this.bundle,
     required this.cache,
     required this.remote,
@@ -28,15 +27,13 @@ class DataSyncService {
     required this.dailyStatsRepository,
   });
 
-  final Course course;
+  final String versionKey;
   final AssetJsonDataSource bundle;
   final LocalJsonCacheSource cache;
   final RemoteJsonDataSource remote;
-  final List<JsonEntitySyncer> syncers;
+  final List<JsonEntitySyncer<dynamic>> syncers;
   final AppMetaRepository metaRepository;
   final DailyStatsRepository dailyStatsRepository;
-
-  String get _versionKey => course.data.versionKey;
 
   /// 앱 부팅 시 호출되는 메인 엔트리.
   ///
@@ -106,7 +103,8 @@ class DataSyncService {
       if (upToDate[i]) continue;
       final s = syncers[i];
       appLogger.i(
-          '[sync] ${s.dataKey} → $sourceVersion (source=${source.label})');
+        '[sync] ${s.dataKey} → $sourceVersion (source=${source.label})',
+      );
       await s.syncFrom(source: source.delegate, version: sourceVersion);
     }
     return SyncReport.synced(sourceVersion);
@@ -115,7 +113,7 @@ class DataSyncService {
   /// 원격 신버전이 있는지 확인. 네트워크 실패 시 null 반환.
   Future<Version?> probeRemoteVersion() async {
     try {
-      final json = await remote.read(_versionKey);
+      final json = await remote.read(versionKey);
       return VersionInfo.fromJson(json).version;
     } catch (e) {
       appLogger.w('[sync] remote version probe failed: $e');
@@ -128,7 +126,7 @@ class DataSyncService {
     final bundled = await _readVersion(bundle);
     final cached = await _readVersionFromCache();
     if (bundled == null && cached == null) {
-      throw StateError('No bundled dataVersion available');
+      throw StateError('No bundled data version available');
     }
     if (cached == null) return bundled!;
     if (bundled == null) return cached;
@@ -137,7 +135,7 @@ class DataSyncService {
 
   Future<Version?> _readVersion(JsonDataSource source) async {
     try {
-      final json = await source.read(_versionKey);
+      final json = await source.read(versionKey);
       return VersionInfo.fromJson(json).version;
     } catch (e) {
       appLogger.w('[sync] failed to read version from source: $e');
@@ -146,7 +144,7 @@ class DataSyncService {
   }
 
   Future<Version?> _readVersionFromCache() async {
-    if (!await cache.exists(_versionKey)) return null;
+    if (!await cache.exists(versionKey)) return null;
     return _readVersion(cache);
   }
 
@@ -176,9 +174,9 @@ sealed class SyncReport {
   factory SyncReport.failed(Object error) = SyncReportFailed;
 
   bool get isOk => switch (this) {
-        SyncReportUpToDate() || SyncReportSynced() => true,
-        SyncReportFailed() => false,
-      };
+    SyncReportUpToDate() || SyncReportSynced() => true,
+    SyncReportFailed() => false,
+  };
 }
 
 final class SyncReportUpToDate extends SyncReport {

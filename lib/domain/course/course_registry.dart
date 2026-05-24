@@ -1,4 +1,5 @@
 import 'package:jlpt_app/domain/course/course.dart';
+import 'package:jlpt_app/domain/course/course_data_config.dart';
 import 'package:jlpt_app/domain/level.dart';
 
 const String _jlptBaseUrl =
@@ -9,13 +10,17 @@ const String _jlptBaseUrl =
 /// 새 코스(영어 CEFR·중국어 HSK 등)는 이 파일에 [Course] 를 하나 더 정의하고
 /// [CourseRegistry.all] 에 등록 + 데이터 파일을 추가하면 된다.
 const Course jlptJapaneseCourse = Course(
-  id: 'jlpt_ja',
-  displayName: 'JLPT',
-  ttsLocale: 'ja-JP',
-  termLanguageLabel: '일본어',
-  readingLabel: '히라가나',
-  hasCharacterModule: true,
-  characterModuleLabel: '한자',
+  identity: CourseIdentity(id: 'jlpt_ja'),
+  presentation: CoursePresentation(
+    displayName: 'JLPT',
+    ttsLocale: 'ja-JP',
+    termLanguageLabel: '일본어',
+    readingLabel: '히라가나',
+  ),
+  capabilities: CourseCapabilities(
+    hasCharacterModule: true,
+    characterModuleLabel: '한자',
+  ),
   levels: [
     Level(code: 'N5', label: 'N5', order: 0),
     Level(code: 'N4', label: 'N4', order: 1),
@@ -23,7 +28,7 @@ const Course jlptJapaneseCourse = Course(
     Level(code: 'N2', label: 'N2', order: 3),
     Level(code: 'N1', label: 'N1', order: 4),
   ],
-  data: CourseDataSources(
+  data: CourseDataConfig(
     versionKey: 'dataVersion',
     wordsKey: 'japanese_words',
     charsKey: 'chinese_chars',
