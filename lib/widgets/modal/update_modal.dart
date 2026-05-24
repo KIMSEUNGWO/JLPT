@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:jlpt_app/component/snack_bar.dart';
-import 'package:jlpt_app/core/theme/app_colors.dart';
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/data/sync/update_service.dart';
 
@@ -46,27 +48,25 @@ class _UpdateModalState extends ConsumerState<UpdateModal> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
-        padding: const EdgeInsets.all(28),
+        padding: const EdgeInsets.all(AppSpacing.xxxl),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               '업데이트 가능',
-              style: TextStyle(
-                fontSize: Theme.of(context).textTheme.displaySmall!.fontSize,
+              style: context.text.displaySmall?.copyWith(
                 fontWeight: FontWeight.w600,
-                color: Theme.of(context).colorScheme.onSurface,
+                fontSize: context.text.titleMedium!.fontSize,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: AppSpacing.lg),
             Text('새 버전: ${widget.plan.version}'),
-            const SizedBox(height: 4),
+            const SizedBox(height: AppSpacing.xs),
             Text('예상 크기: ${_formatBytes(widget.plan.estimatedBytes)}'),
-            const SizedBox(height: 24),
+            const SizedBox(height: AppSpacing.xxl),
             _StageIndicator(stage: _stage),
-            const SizedBox(height: 24),
+            const SizedBox(height: AppSpacing.xxl),
             Row(
               children: [
                 Expanded(
@@ -75,23 +75,27 @@ class _UpdateModalState extends ConsumerState<UpdateModal> {
                         ? null
                         : () => Navigator.of(context).pop(),
                     style: TextButton.styleFrom(
-                      backgroundColor: AppColors.background,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      backgroundColor: context.colors.surfaceContainerLowest,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: AppSpacing.md,
+                      ),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(AppRadius.md),
                       ),
                     ),
                     child: const Text('다음에'),
                   ),
                 ),
-                const SizedBox(width: 12),
+                const SizedBox(width: AppSpacing.md),
                 Expanded(
                   child: FilledButton(
                     onPressed: _running ? null : _start,
                     style: FilledButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: AppSpacing.md,
+                      ),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(AppRadius.md),
                       ),
                     ),
                     child: Text(_running ? '진행 중…' : '지금 업데이트'),
@@ -134,31 +138,29 @@ class _StageIndicator extends StatelessWidget {
     return Column(
       children: [
         if (current == UpdateStage.done)
-          const Icon(Icons.check_circle, color: Colors.green, size: 48)
+          Icon(Icons.check_circle, color: context.feedback.correctText, size: 48)
         else if (current != null)
           const CircularProgressIndicator()
         else
           const Icon(Icons.cloud_download_outlined, size: 48),
-        const SizedBox(height: 8),
+        const SizedBox(height: AppSpacing.sm),
         Text(
           current == null ? '대기' : (_labels[current] ?? ''),
-          style: Theme.of(
-            context,
-          ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500),
+          style: context.text.bodyLarge?.copyWith(fontWeight: FontWeight.w500),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: AppSpacing.sm),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(stages.length, (i) {
             final active = i <= currentIndex;
             return Container(
-              margin: const EdgeInsets.symmetric(horizontal: 3),
+              margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
               width: 10,
               height: 10,
               decoration: BoxDecoration(
                 color: active
-                    ? Theme.of(context).colorScheme.primary
-                    : Colors.black12,
+                    ? context.colors.primary
+                    : context.colors.outline,
                 shape: BoxShape.circle,
               ),
             );

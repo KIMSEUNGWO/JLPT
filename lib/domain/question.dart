@@ -20,6 +20,6 @@ class Question {
         isCorrect = false;
 
   void checkCorrect() {
-    isCorrect = question.getJapanese() == myAnswer?.getJapanese();
+    isCorrect = question.getTerm() == myAnswer?.getTerm();
   }
 }

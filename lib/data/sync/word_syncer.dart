@@ -9,16 +9,19 @@ final class WordSyncer extends JsonEntitySyncer<Word> {
   WordSyncer({
     required this.wordRepository,
     required this.metaRepository,
+    required this.courseId,
     required super.bundle,
     required super.cache,
-    this.expectedMinRowCount = 1800,
-  }) : super(dataKey: 'japanese_words');
+    required super.dataKey,
+    required this.expectedMinRowCount,
+  });
 
   final WordRepository wordRepository;
   final AppMetaRepository metaRepository;
+  final String courseId;
 
-  /// N1~N5 합산 약 2200개. 안전마진을 두고 80% 까지 허용. 미만이면 부분 DB / 손상으로 간주.
-  /// 테스트에서 fixture 크기에 맞게 낮출 수 있도록 생성자에서 주입 가능.
+  /// 정상으로 간주할 최소 단어 수. 미만이면 부분 DB / 손상으로 간주.
+  /// 코스 데이터 규모에 맞춰 주입된다.
   @override
   final int expectedMinRowCount;
 
@@ -47,8 +50,8 @@ final class WordSyncer extends JsonEntitySyncer<Word> {
         }
         throw FormatException(
           'words[$i] id=${word.id} 충돌: '
-          '기존="${existing.word}/${existing.korean}" '
-          '신규="${word.word}/${word.korean}"',
+          '기존="${existing.word}/${existing.meaning}" '
+          '신규="${word.word}/${word.meaning}"',
         );
       }
       byId[word.id] = word;
@@ -61,11 +64,11 @@ final class WordSyncer extends JsonEntitySyncer<Word> {
   }
 
   bool _sameContent(Word a, Word b) =>
-      a.level == b.level &&
+      a.levelCode == b.levelCode &&
       a.act == b.act &&
       a.word == b.word &&
-      a.hiragana == b.hiragana &&
-      a.korean == b.korean;
+      a.reading == b.reading &&
+      a.meaning == b.meaning;
 
   @override
   Future<void> persist(List<Word> items, Version version) {
@@ -73,7 +76,8 @@ final class WordSyncer extends JsonEntitySyncer<Word> {
   }
 
   @override
-  Future<Version?> currentDbVersion() => metaRepository.getWordsVersion();
+  Future<Version?> currentDbVersion() =>
+      metaRepository.getWordsVersion(courseId);
 
   @override
   Future<int> currentDbRowCount() => wordRepository.countWords();

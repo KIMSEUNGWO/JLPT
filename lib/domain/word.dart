@@ -1,27 +1,35 @@
 import 'package:jlpt_app/domain/act.dart';
-import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/question_box.dart';
 
 /// 학습 단어. **immutable** — 변경이 필요하면 [copyWith] 를 사용.
+///
+/// 코스 중립적 데이터다. 소속 레벨은 [levelCode] 문자열로만 들고 다니며,
+/// 표시용 [Level] 객체로의 해석은 상위 계층(활성 [Course]) 책임이다.
 class Word implements QuestionBox {
   const Word({
     required this.id,
-    required this.level,
+    required this.levelCode,
     required this.act,
     required this.word,
-    required this.hiragana,
-    required this.korean,
+    required this.reading,
+    required this.meaning,
     required this.isRead,
     required this.wrongCnt,
     required this.exampleIds,
   });
 
   final int id;
-  final Level level;
+
+  /// 소속 레벨 코드 (예: `'N5'`). 활성 코스의 [Level] 로 해석된다.
+  final String levelCode;
   final Act act;
   final String word;
-  final String hiragana;
-  final String korean;
+
+  /// 발음 표기 (일본어 히라가나 등). reading 이 없는 코스(예: 영어)는 `null`.
+  final String? reading;
+
+  /// 사용자 언어(한국어 등) 로 된 뜻.
+  final String meaning;
   final bool isRead;
   final int wrongCnt;
 
@@ -30,14 +38,16 @@ class Word implements QuestionBox {
   final List<int> exampleIds;
 
   /// 엄격한 JSON 파서. 누락/타입 오류 시 [FormatException] 을 던진다.
+  ///
+  /// 하위호환: `reading`/`meaning` 키가 없으면 기존 `hiragana`/`korean` 키로 폴백한다.
   factory Word.fromJson(Map<String, dynamic> json) {
     final id = json['id'];
     if (id is! int) {
       throw FormatException("Word: 'id' must be int (got $id)");
     }
     final levelRaw = json['level'];
-    if (levelRaw is! String) {
-      throw FormatException("Word(id=$id): 'level' must be String");
+    if (levelRaw is! String || levelRaw.isEmpty) {
+      throw FormatException("Word(id=$id): 'level' must be non-empty String");
     }
     final actRaw = json['act'];
     if (actRaw is! String) {
@@ -45,11 +55,11 @@ class Word implements QuestionBox {
     }
     return Word(
       id: id,
-      level: Level.valueOf(levelRaw),
+      levelCode: levelRaw,
       act: Act.valueOf(actRaw),
       word: _str(json, 'word', id),
-      hiragana: _str(json, 'hiragana', id),
-      korean: _str(json, 'korean', id),
+      reading: _nullableStr(json, 'reading', 'hiragana', id),
+      meaning: _strFallback(json, 'meaning', 'korean', id),
       isRead: false,
       wrongCnt: 0,
       exampleIds: _exampleIds(json, id),
@@ -60,6 +70,39 @@ class Word implements QuestionBox {
     final v = json[key];
     if (v is! String) {
       throw FormatException("Word(id=$id): '$key' must be String");
+    }
+    return v;
+  }
+
+  /// [key] 우선, 없으면 [legacyKey] 로 폴백하는 required String.
+  static String _strFallback(
+    Map<String, dynamic> json,
+    String key,
+    String legacyKey,
+    int id,
+  ) {
+    final v = json[key] ?? json[legacyKey];
+    if (v is! String) {
+      throw FormatException(
+        "Word(id=$id): '$key' (or '$legacyKey') must be String",
+      );
+    }
+    return v;
+  }
+
+  /// [key] 우선, 없으면 [legacyKey] 로 폴백하는 nullable String.
+  static String? _nullableStr(
+    Map<String, dynamic> json,
+    String key,
+    String legacyKey,
+    int id,
+  ) {
+    final v = json[key] ?? json[legacyKey];
+    if (v == null) return null;
+    if (v is! String) {
+      throw FormatException(
+        "Word(id=$id): '$key' (or '$legacyKey') must be String when present",
+      );
     }
     return v;
   }
@@ -88,22 +131,22 @@ class Word implements QuestionBox {
   }
 
   Word copyWith({
-    Level? level,
+    String? levelCode,
     Act? act,
     String? word,
-    String? hiragana,
-    String? korean,
+    String? reading,
+    String? meaning,
     bool? isRead,
     int? wrongCnt,
     List<int>? exampleIds,
   }) {
     return Word(
       id: id,
-      level: level ?? this.level,
+      levelCode: levelCode ?? this.levelCode,
       act: act ?? this.act,
       word: word ?? this.word,
-      hiragana: hiragana ?? this.hiragana,
-      korean: korean ?? this.korean,
+      reading: reading ?? this.reading,
+      meaning: meaning ?? this.meaning,
       isRead: isRead ?? this.isRead,
       wrongCnt: wrongCnt ?? this.wrongCnt,
       exampleIds: exampleIds ?? this.exampleIds,
@@ -118,11 +161,11 @@ class Word implements QuestionBox {
   int get hashCode => id.hashCode;
 
   @override
-  String toString() => 'Word(id=$id, level=${level.name}, word=$word)';
+  String toString() => 'Word(id=$id, level=$levelCode, word=$word)';
 
   @override
-  String getJapanese() => word;
+  String getTerm() => word;
 
   @override
-  String getKorean() => korean;
+  String getMeaning() => meaning;
 }

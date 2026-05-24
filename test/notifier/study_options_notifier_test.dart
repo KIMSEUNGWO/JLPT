@@ -45,8 +45,8 @@ void main() {
       final raw = prefs.getString(StorageKey.STUDY_OPTIONS.name);
       expect(raw, isNotNull);
       final decoded = jsonDecode(raw!) as Map<String, dynamic>;
-      expect(decoded['showHiragana'], true);
-      expect(decoded['showKorean'], false);
+      expect(decoded['showReading'], true);
+      expect(decoded['showMeaning'], false);
       expect(decoded['autoPlayPronunciation'], false);
     });
 
@@ -67,8 +67,8 @@ void main() {
 
       final state = container.read(studyOptionsProvider);
       expect(state.autoPlayPronunciation, true);
-      expect(state.showKorean, true);
-      expect(state.showHiragana, false);
+      expect(state.showMeaning, true);
+      expect(state.showReading, false);
     });
 
     testWidgets('같은 토글 두 번 호출 시 ON ↔ OFF', (tester) async {

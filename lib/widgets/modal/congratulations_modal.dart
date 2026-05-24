@@ -1,7 +1,10 @@
-import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:jlpt_app/component/svg_icon.dart';
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
+import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/notifier/entity/today.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
@@ -69,10 +72,6 @@ class _CongratulationsModalState extends State<CongratulationsModal> with Single
   @override
   void dispose() {
     _controller.dispose();
-
-    Future(() {
-
-    },);
     super.dispose();
   }
 
@@ -84,11 +83,8 @@ class _CongratulationsModalState extends State<CongratulationsModal> with Single
         return Transform.translate(
           offset: Offset(0, _slideAnimation.value),
           child: Dialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
             child: Container(
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.all(AppSpacing.xxl),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -98,54 +94,51 @@ class _CongratulationsModalState extends State<CongratulationsModal> with Single
                     child: SvgIcon.asset(
                       sIcon: SIcon.circleCheck,
                       style: SvgIconStyle(
-                          width: 100,
-                          height: 100,
-                          color: Theme.of(context).colorScheme.primary
+                        width: 100,
+                        height: 100,
+                        color: context.colors.primary,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: AppSpacing.xxl),
 
-                  Text('축하합니다!',
-                    style: TextStyle(
-                      fontSize: Theme.of(context).textTheme.displayMedium!.fontSize,
+                  Text(
+                    '축하합니다!',
+                    style: context.text.displayMedium?.copyWith(
                       fontWeight: FontWeight.w500,
-                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: AppSpacing.md),
 
                   Consumer(
                     builder: (context, ref, child) {
                       int cycle = ref.read(studyCycleProvider.notifier).getCurrentCycle(widget.level);
+                      final course = ref.watch(activeCourseProvider);
                       return Text(
-                        'JLPT ${widget.level.name} 단어 $cycle회독을\n성공적으로 완료했습니다.',
+                        '${course.displayName} ${widget.level.label} 단어 $cycle회독을\n성공적으로 완료했습니다.',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                          color: Theme.of(context).colorScheme.onPrimary,
-                        ),
+                        style: context.text.bodyLarge,
                       );
                     },
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: AppSpacing.xxl),
 
                   Container(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     decoration: BoxDecoration(
-                      color: AppColors.surface,
-                      borderRadius: BorderRadius.circular(12),
+                      color: context.colors.secondary,
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: RecordRow(
                       dataList: [
                         RecordData(title: '학습단어', value: '${widget.wordsLearned}'),
                         RecordData(title: '총 학습시간', value: TodayData.formatTimeToHours(widget.studyTime)),
                       ],
-                      titleSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                      valueSize: Theme.of(context).textTheme.displayMedium!.fontSize,
+                      titleSize: context.text.bodyLarge!.fontSize,
+                      valueSize: context.text.displayMedium!.fontSize,
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: AppSpacing.xxl),
 
                   SizedBox(
                     width: double.infinity,
@@ -154,26 +147,22 @@ class _CongratulationsModalState extends State<CongratulationsModal> with Single
                         widget.onNextLevelTap();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                       ),
                       child: Consumer(
                         builder: (context, ref, child) {
                           int cycle = ref.read(studyCycleProvider.notifier).getCurrentCycle(widget.level);
-                          return Text('${cycle + 1}회독 시작하기',
-                            style: TextStyle(
-                              fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                              color: Colors.white,
+                          return Text(
+                            '${cycle + 1}회독 시작하기',
+                            style: context.text.bodyLarge?.copyWith(
+                              color: context.colors.onPrimary,
                             ),
                           );
                         },
                       ),
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: AppSpacing.md),
 
                   SizedBox(
                     width: double.infinity,
@@ -182,17 +171,15 @@ class _CongratulationsModalState extends State<CongratulationsModal> with Single
                         widget.onViewTestTap();
                       },
                       style: TextButton.styleFrom(
-                        backgroundColor: AppColors.background,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        backgroundColor: context.colors.surfaceContainerLowest,
+                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(AppRadius.md),
                         ),
                       ),
-                      child: Text('단어 테스트 보기',
-                        style: TextStyle(
-                          fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                          color: Theme.of(context).colorScheme.onPrimary,
-                        ),
+                      child: Text(
+                        '단어 테스트 보기',
+                        style: context.text.bodyLarge,
                       ),
                     ),
                   ),

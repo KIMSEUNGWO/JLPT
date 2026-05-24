@@ -16,16 +16,22 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
   ExampleSentenceSyncer({
     required this.exampleRepository,
     required this.metaRepository,
+    required this.courseId,
+    required this.wordsDataKey,
     required super.bundle,
     required super.cache,
-    this.expectedMinRowCount = 2000,
-  }) : super(dataKey: 'example_sentences');
+    required super.dataKey,
+    required this.expectedMinRowCount,
+  });
 
   final ExampleSentenceRepository exampleRepository;
   final AppMetaRepository metaRepository;
+  final String courseId;
 
-  /// 전체 2150 단어 + default(id=0) = 2151. 안전 마진으로 2000.
-  /// 테스트에서 fixture 크기에 맞게 override.
+  /// 단어 JSON 키 — 예문과 cross-validation 할 단어 데이터를 같은 source 에서 읽는다.
+  final String wordsDataKey;
+
+  /// 정상으로 간주할 최소 예문 수. 코스 데이터 규모에 맞춰 주입된다.
   @override
   final int expectedMinRowCount;
 
@@ -33,7 +39,9 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
   List<ExampleSentence> parse(Map<String, dynamic> json) {
     final list = json['examples'];
     if (list is! List) {
-      throw const FormatException("example_sentences: missing 'examples' array");
+      throw const FormatException(
+        "example_sentences: missing 'examples' array",
+      );
     }
     final result = <ExampleSentence>[];
     final byId = <int, ExampleSentence>{};
@@ -44,9 +52,7 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
       }
       final ex = ExampleSentence.fromJson(e);
       if (byId.containsKey(ex.id)) {
-        throw FormatException(
-          'examples[$i] id=${ex.id} 중복 — 같은 id 는 유일해야 한다',
-        );
+        throw FormatException('examples[$i] id=${ex.id} 중복 — 같은 id 는 유일해야 한다');
       }
       byId[ex.id] = ex;
       result.add(ex);
@@ -66,7 +72,8 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
   }
 
   @override
-  Future<Version?> currentDbVersion() => metaRepository.getExamplesVersion();
+  Future<Version?> currentDbVersion() =>
+      metaRepository.getExamplesVersion(courseId);
 
   @override
   Future<int> currentDbRowCount() => exampleRepository.countExamples();
@@ -88,7 +95,7 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
       );
     }
 
-    final rawWords = await source.read('japanese_words');
+    final rawWords = await source.read(wordsDataKey);
     final wordsList = rawWords['words'];
     if (wordsList is! List) {
       throw const FormatException(
@@ -96,24 +103,17 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
       );
     }
 
-    final exampleIdSet = {for (final e in examples) e.id};
-    final refs = <int, List<int>>{};
+    final words = <Word>[];
     for (var i = 0; i < wordsList.length; i++) {
       final raw = wordsList[i];
       if (raw is! Map<String, dynamic>) {
         throw FormatException('words[$i] is not a JSON object');
       }
       // Word.fromJson 이 exampleIds 의 존재/타입을 이미 검증.
-      final w = Word.fromJson(raw);
-      for (final eid in w.exampleIds) {
-        if (!exampleIdSet.contains(eid)) {
-          throw FormatException(
-            'word(id=${w.id}) 가 존재하지 않는 예문 id=$eid 를 참조합니다',
-          );
-        }
-      }
-      refs[w.id] = w.exampleIds;
+      words.add(Word.fromJson(raw));
     }
+
+    final refs = buildAndValidateRefs(words, examples);
 
     appLogger.i(
       '[example_sentences] cross-validated: examples=${examples.length}, '
@@ -125,5 +125,26 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
       wordExampleRefs: refs,
       version: version,
     );
+  }
+
+  /// 단어가 참조하는 모든 예문 id 가 examples 안에 실재하는지 확인하고
+  /// `{wordId: [exampleIds...]}` map 으로 환원.
+  Map<int, List<int>> buildAndValidateRefs(
+    List<Word> words,
+    List<ExampleSentence> examples,
+  ) {
+    final exampleIdSet = {for (final e in examples) e.id};
+    final refs = <int, List<int>>{};
+    for (final w in words) {
+      for (final eid in w.exampleIds) {
+        if (!exampleIdSet.contains(eid)) {
+          throw FormatException(
+            'word(id=${w.id}) 가 존재하지 않는 예문 id=$eid 를 참조합니다',
+          );
+        }
+      }
+      refs[w.id] = w.exampleIds;
+    }
+    return refs;
   }
 }

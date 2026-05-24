@@ -1,16 +1,15 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jlpt_app/domain/question_creator.dart';
 import 'package:jlpt_app/domain/act.dart';
-import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/word.dart';
 
 Word _makeWord(int id, Act act) => Word(
       id: id,
-      level: Level.N5,
+      levelCode: 'N5',
       act: act,
       word: '単語$id',
-      hiragana: 'たんご$id',
-      korean: '단어$id',
+      reading: 'たんご$id',
+      meaning: '단어$id',
       isRead: false,
       wrongCnt: 0,
       exampleIds: [100000 + id],

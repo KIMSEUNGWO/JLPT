@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## About
 
-JLPT GO는 JLPT N1–N5 수준별 단어·문법 학습 Flutter 앱입니다. 플래시카드 학습, 4지선다 테스트, TTS 발음 기능을 제공합니다. Drift + Riverpod 3 기반.
+JLPT GO는 수준별 단어 학습 Flutter 앱입니다. 플래시카드 학습, 4지선다 테스트, TTS 발음 기능을 제공합니다. Drift + Riverpod 3 기반.
+
+단어 암기 기능 자체는 언어 중립적이며, 언어별 차이는 **"코스(Course)" 추상**으로 외부화돼 있습니다 (`lib/domain/course/`). 현재는 **JLPT 일본어 단일 코스**만 노출하지만, 영어(CEFR)·중국어(HSK) 등은 [Course] config + 데이터 파일만 추가하면 확장됩니다. 코스 선택 UI 는 아직 없습니다 (`activeCourseProvider` 가 단일 진입점).
 
 ## Commands
 
@@ -124,20 +126,34 @@ lib/
 - **데이터 변경은 transaction.** sync = data upsert + 메타 버전 commit 이 하나의 atomic 단위.
 - **라우트 extra 는 sealed `RouteArgs`.** Map 캐스팅·Function 전달 금지.
 - **Notifier 는 `@riverpod` codegen.** provider 이름은 클래스명에서 `Notifier` 접미사 제거.
+- **언어 종속은 Course 로 외부화.** 위젯/도메인/데이터에 일본어·JLPT 를 하드코딩하지 않는다.
+
+### 코스(Course) 추상 (`lib/domain/course/`)
+
+- `Course` — 한 학습 트랙의 정적 정의: `id`(예: `'jlpt_ja'`), `displayName`(예: `'JLPT'`), `ttsLocale`, `readingLabel`(없으면 null), `hasCharacterModule`/`characterModuleLabel`, 정렬된 `levels`, `data`(JSON 키 + 검증 임계치).
+- `Level` — **enum 이 아니라** 코스가 정의하는 immutable 값 객체 (`code`/`label`/`order`). 동등성은 `code` 기준 → `Map<Level,_>` 키로 사용. DB·스토리지·라우트엔 `code` 만 저장.
+- `CourseRegistry` — 코드 레지스트리. `defaultCourse`/`byId`. `activeCourseProvider`(`providers.dart`) 가 활성 코스를 반환 — 지금은 상수, 코스 선택 UI 추가 시 여기만 교체.
+- 도메인 일반화: `Word.reading`(nullable, 옛 `hiragana`)·`Word.meaning`(옛 `korean`)·`Word.levelCode`. `QuestionBox.getTerm()/getMeaning()`. `StudyOptions.showReading/showMeaning`. (`fromJson` 은 옛 키 `hiragana`/`korean`/`showHiragana`/`showKorean` 를 폴백으로 읽어 데이터 호환)
 
 ---
 
-## Drift 스키마 (schemaVersion = 2)
+## Drift 스키마 (schemaVersion = 5)
 
 | 테이블 | 설명 |
 |---|---|
-| `Words` | 단어 (id PK, level, act, word, hiragana, korean, is_read, wrong_cnt) |
-| `ChineseChars` | 한자 (char PK, korean_char, sound_reading JSON, mean_reading JSON) |
-| `TestResults` | 테스트 세션 (id, level?, type, taken_at, time_seconds) |
+| `Words` | 단어 (id PK, **course**, level, act, word, hiragana, korean, is_read, wrong_cnt) |
+| `ChineseChars` | 문자/한자 (char PK, **course**, korean_char, sound_reading JSON, mean_reading JSON) |
+| `ExampleSentences` | 예문 (id PK, **course**, sentence, translation) |
+| `WordExampleRefs` | 단어↔예문 (word_id, example_id FK, **course**) |
+| `TestResults` | 테스트 세션 (id, **course**, level?, type, taken_at, time_seconds) |
 | `TestQuestions` | 세션별 문항 (question_word_id FK, my_answer_word_id?, examples_json, is_correct, reverse) |
-| `AppMeta` | 앱 메타 key-value (`words_version`, `chars_version`, `*_synced_at`, `last_sync_error`) |
+| `DailyStats` | 일별 통계 (date PK) — **코스 횡단 전역** (의도적, course 컬럼 없음) |
+| `AppMeta` | 앱 메타 key-value. 엔티티 버전 키는 코스 네임스페이스: `words_version:<courseId>`, `chars_version:<courseId>`, `*_synced_at:<courseId>`. 전역 키: `last_sync_error`, `best_streak`, `daily_stats_backfilled_v3` |
 
-Migration: `onUpgrade(from < 2) → createTable(appMeta)`. 기존 row 그대로 두고 다음 부팅에서 `DataSyncService` 가 sourceVersion 으로 재동기화.
+- **물리 컬럼명 `hiragana`/`korean` 은 유지**하고 repo(`WordRepository`)가 도메인의 `reading`/`meaning` 으로 매핑한다 (컬럼 rename = 테이블 재생성 비용 회피).
+- **course 컬럼**: 콘텐츠/진행/테스트 테이블의 다국어 차원. 기본값 `'jlpt_ja'`. (단일 코스라 PK 는 아직 단일; 2번째 코스 추가 시 복합 PK 마이그레이션 예정)
+
+Migration `onUpgrade`: `<2` appMeta 신설 / `<3` dailyStats / `<4` exampleSentences+wordExampleRefs / `<5` 각 테이블 `course` 컬럼 추가(`_addCourseColumnIfMissing` — 이미 course 있는/없는 테이블 방어) + 메타 키를 `:jlpt_ja` 네임스페이스로 이전(`_migrateMetaKeysToCourse`). 기존 row 는 `'jlpt_ja'` 로 태깅.
 
 ---
 
@@ -163,7 +179,17 @@ final class GrammarSyncer extends JsonEntitySyncer<Grammar> {
 }
 ```
 
-그 다음 `DataSyncService.ensureSynced()` 와 `UpdateService.applyUpdate()` 에 추가.
+> 실제 syncer 는 `courseId`/`dataKey`/`expectedMinRowCount` 를 활성 코스에서 주입받고
+> (`providers.dart`), 메타 버전 조회/commit 도 `courseId` 를 받는다
+> (예: `meta.getWordsVersion(courseId)`, `meta.markWordsSynced(v, courseId)`).
+> `DataSyncService`·`UpdateService` 는 하드코딩된 3종이 아니라 `courseSyncersProvider`
+> 가 만든 **syncer 리스트를 순회**한다 (문자 모듈 없는 코스는 char syncer 제외).
+
+### 새 코스(언어) 추가
+
+1. `lib/domain/course/course_registry.dart` 에 `Course` 인스턴스 정의 (levels, ttsLocale, readingLabel, hasCharacterModule, data 키/URL/임계치) → `CourseRegistry.all` 에 등록.
+2. 데이터 파일 추가 (`assets/json/<words>.json`, `<examples>.json`, 필요 시 문자 모듈 JSON) + `dataVersion`. 단어 JSON 은 `level`/`act`/`word`/`reading`(또는 `hiragana`)/`meaning`(또는 `korean`)/`exampleIds` 형식.
+3. (다중 코스 동시 노출 시) DB 복합 PK 마이그레이션 + 코스 선택 UI + `activeCourseProvider` 를 설정에서 읽도록 교체.
 
 ---
 

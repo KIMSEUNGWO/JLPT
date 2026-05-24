@@ -1,3 +1,4 @@
+import 'package:drift/drift.dart' show Value;
 import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jlpt_app/component/local_storage.dart';
@@ -6,23 +7,25 @@ import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/data/repositories/test_result_repository.dart';
 import 'package:jlpt_app/data/repositories/word_repository.dart';
 import 'package:jlpt_app/domain/act.dart';
-import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/course/course_registry.dart';
 import 'package:jlpt_app/domain/question.dart';
 import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:pub_semver/pub_semver.dart';
 
+const _course = jlptJapaneseCourse;
+
 Word _makeWord(int id) => Word(
-      id: id,
-      level: Level.N5,
-      act: Act.N,
-      word: 'word$id',
-      hiragana: 'hira$id',
-      korean: '단어$id',
-      isRead: false,
-      wrongCnt: 0,
-      exampleIds: [100000 + id],
-    );
+  id: id,
+  levelCode: 'N5',
+  act: Act.N,
+  word: 'word$id',
+  reading: 'hira$id',
+  meaning: '단어$id',
+  isRead: false,
+  wrongCnt: 0,
+  exampleIds: [100000 + id],
+);
 
 void main() {
   late AppDatabase db;
@@ -31,36 +34,39 @@ void main() {
   setUp(() async {
     db = AppDatabase.forTesting(NativeDatabase.memory());
     final meta = AppMetaRepository(db);
-    final wordRepo = WordRepository(db, meta);
-    repo = TestResultRepository(db, wordRepo);
+    final wordRepo = WordRepository(
+      db,
+      meta,
+      courseId: _course.id,
+      levelOf: _course.levelOrNull,
+    );
+    repo = TestResultRepository(
+      db,
+      wordRepo,
+      courseId: _course.id,
+      levelOf: _course.levelOrNull,
+    );
 
     // Foreign key 참조용으로 단어 row 를 미리 넣어둔다.
-    await wordRepo.syncAll(
-      [
-        for (var i = 1; i <= 4; i++) _makeWord(i),
-      ],
-      version: Version.parse('1.0.0'),
-    );
+    await wordRepo.syncAll([
+      for (var i = 1; i <= 4; i++) _makeWord(i),
+    ], version: Version.parse('1.0.0'));
   });
 
   tearDown(() => db.close());
 
   test('save() 가 같은 transaction 에서 daily_stats 를 누적한다', () async {
-    final q1 = Question.create(question: _makeWord(1), examples: [
-      _makeWord(2),
-      _makeWord(3),
-      _makeWord(4),
-    ])
-      ..myAnswer = _makeWord(1); // 정답
-    final q2 = Question.create(question: _makeWord(2), examples: [
-      _makeWord(1),
-      _makeWord(3),
-      _makeWord(4),
-    ])
-      ..myAnswer = _makeWord(3); // 오답
+    final q1 = Question.create(
+      question: _makeWord(1),
+      examples: [_makeWord(2), _makeWord(3), _makeWord(4)],
+    )..myAnswer = _makeWord(1); // 정답
+    final q2 = Question.create(
+      question: _makeWord(2),
+      examples: [_makeWord(1), _makeWord(3), _makeWord(4)],
+    )..myAnswer = _makeWord(3); // 오답
 
     await repo.save(
-      level: Level.N5,
+      level: _course.levelOf('N5'),
       type: PracticeType.WORD,
       questions: [q1, q2],
       reverses: [false, false],
@@ -77,14 +83,12 @@ void main() {
 
   test('두 번 save → testsTaken 누적', () async {
     Future<void> doSave() async {
-      final q = Question.create(question: _makeWord(1), examples: [
-        _makeWord(2),
-        _makeWord(3),
-        _makeWord(4),
-      ])
-        ..myAnswer = _makeWord(1);
+      final q = Question.create(
+        question: _makeWord(1),
+        examples: [_makeWord(2), _makeWord(3), _makeWord(4)],
+      )..myAnswer = _makeWord(1);
       await repo.save(
-        level: Level.N5,
+        level: _course.levelOf('N5'),
         type: PracticeType.WORD,
         questions: [q],
         reverses: [false],
@@ -100,5 +104,74 @@ void main() {
     expect(row!.testsTaken, 2);
     expect(row.correctAnswers, 2);
     expect(row.totalAnswers, 2);
+  });
+
+  test('getAll 은 다른 course 의 테스트 문항을 섞지 않는다', () async {
+    final q = Question.create(
+      question: _makeWord(1),
+      examples: [_makeWord(2), _makeWord(3), _makeWord(4)],
+    )..myAnswer = _makeWord(1);
+    final saved = await repo.save(
+      level: _course.levelOf('N5'),
+      type: PracticeType.WORD,
+      questions: [q],
+      reverses: [false],
+      time: 10,
+    );
+
+    final otherResultId = await db.testResultDao.insertResult(
+      TestResultsCompanion.insert(
+        course: const Value('other_course'),
+        level: const Value('N5'),
+        type: PracticeType.WORD.name,
+        takenAt: DateTime.now(),
+        timeSeconds: 20,
+      ),
+    );
+    await db.testResultDao.insertQuestion(
+      TestQuestionsCompanion.insert(
+        testResultId: otherResultId,
+        questionWordId: 1,
+        myAnswerWordId: const Value(1),
+        isCorrect: true,
+        reverse: false,
+        examplesJson: '[2,3,4]',
+      ),
+    );
+
+    final results = await repo.getAll();
+    expect(results.map((r) => r.id), [saved.id]);
+    expect(results.single.question.length, 1);
+  });
+
+  test('save 는 questions/reverses 길이가 다르면 명시적으로 거부한다', () async {
+    final q = Question.create(
+      question: _makeWord(1),
+      examples: [_makeWord(2), _makeWord(3), _makeWord(4)],
+    )..myAnswer = _makeWord(1);
+
+    expect(
+      () => repo.save(
+        level: _course.levelOf('N5'),
+        type: PracticeType.WORD,
+        questions: [q],
+        reverses: const [],
+        time: 10,
+      ),
+      throwsArgumentError,
+    );
+  });
+
+  test('save 는 word 기반이 아닌 테스트 타입을 명시적으로 거부한다', () async {
+    expect(
+      () => repo.save(
+        level: _course.levelOf('N5'),
+        type: PracticeType.GRAMMAR,
+        questions: const [],
+        reverses: const [],
+        time: 10,
+      ),
+      throwsUnsupportedError,
+    );
   });
 }

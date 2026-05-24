@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
 import 'package:jlpt_app/domain/word.dart';
@@ -20,7 +23,7 @@ class WordCardDetailWidget extends StatelessWidget {
     return Column(
       children: [
         ExampleSentenceSection(word: word),
-        const SizedBox(height: 12),
+        const SizedBox(height: AppSpacing.md),
         _ChineseCharSection(word: word),
       ],
     );
@@ -40,42 +43,45 @@ class _ChineseCharSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final course = ref.watch(activeCourseProvider);
+    // 문자(한자) 모듈이 없는 코스는 섹션 자체를 그리지 않는다.
+    if (!course.hasCharacterModule) return const SizedBox.shrink();
     final cacheAsync = ref.watch(chineseCharCacheProvider);
+    final moduleLabel = course.characterModuleLabel ?? '';
 
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 21),
-      padding: const EdgeInsets.all(15),
+      margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Theme.of(context).colorScheme.secondary,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        color: context.colors.secondary,
       ),
       child: cacheAsync.when(
         loading: () => const SizedBox.shrink(),
-        error: (_, __) => const Text('한자 정보를 불러올 수 없습니다.'),
+        error: (_, __) => Text('$moduleLabel 정보를 불러올 수 없습니다.'),
         data: (charMap) {
           final chars = _findChars(charMap, word.word);
           if (chars.isEmpty) {
-            return const Text('한자 정보가 없습니다.');
+            return Text('$moduleLabel 정보가 없습니다.');
           }
           final widgets = <Widget>[];
           for (int i = 0; i < chars.length; i++) {
             widgets.add(ChineseCharWidget(char: chars[i]));
             if (i < chars.length - 1) {
-              widgets.add(const SizedBox(height: 10));
+              widgets.add(const SizedBox(height: AppSpacing.md));
             }
           }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '한자 정보',
-                style: TextStyle(
+                '$moduleLabel 정보',
+                style: context.text.bodyMedium?.copyWith(
                   fontWeight: FontWeight.w500,
-                  fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: AppSpacing.md),
               ...widgets,
             ],
           );

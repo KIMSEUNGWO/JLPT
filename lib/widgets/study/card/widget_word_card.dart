@@ -2,6 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
+import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/study_options.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/widgets/component/audio_button.dart';
@@ -43,16 +47,17 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
 
   /// 카드별 로컬 표시 state. 진입 시 [WordCardWidget.defaults] 로 초기화되고,
   /// 카드 토글은 이 값만 바꾼다. 카드를 넘기면 새 State 가 생기며 default 로 리셋.
-  late bool _showKorean;
-  late bool _showHiragana;
+  late bool _showMeaning;
+  late bool _showReading;
 
   @override
   void initState() {
     super.initState();
     _capturedWordId = widget.word.id;
-    _speaker = widget.speaker ?? SpeakerTTS();
-    _showKorean = widget.defaults.showKorean;
-    _showHiragana = widget.defaults.showHiragana;
+    _speaker = widget.speaker ??
+        SpeakerTTS(locale: ref.read(activeCourseProvider).ttsLocale);
+    _showMeaning = widget.defaults.showMeaning;
+    _showReading = widget.defaults.showReading;
 
     if (widget.defaults.autoPlayPronunciation) {
       WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -75,49 +80,40 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final secondaryStyle = context.text.displaySmall?.copyWith(
+      color: context.colors.onSurfaceVariant,
+    );
     return Container(
-      margin: const EdgeInsets.all(20),
+      margin: const EdgeInsets.all(AppSpacing.xl),
       child: Column(
         children: [
           Stack(
             children: [
               CustomContainer(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 32),
+                padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxxl),
                 child: Column(
                   children: [
+                    Text(widget.word.word, style: context.text.headlineLarge),
+                    const SizedBox(height: AppSpacing.md),
                     Text(
-                      widget.word.word,
-                      style: Theme.of(context).textTheme.headlineLarge
-                          ?.copyWith(
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
+                      _showReading ? (widget.word.reading ?? '') : '',
+                      style: secondaryStyle,
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: AppSpacing.sm),
                     Text(
-                      _showHiragana ? widget.word.hiragana : '',
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
+                      _showMeaning ? widget.word.meaning : '',
+                      style: secondaryStyle,
                     ),
-                    const SizedBox(height: 8),
-                    Text(
-                      _showKorean ? widget.word.korean : '',
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
-                    ),
-                    const SizedBox(height: 26),
+                    const SizedBox(height: AppSpacing.xxl),
                     AudioWaveAnimation(
                       word: widget.word.word,
                       title: '발음 듣기',
                       speaker: _speaker,
                     ),
-                    _isOpen
-                        ? const SizedBox(height: 31)
-                        : const SizedBox(height: 10),
+                    SizedBox(
+                      height: _isOpen ? AppSpacing.xxxl : AppSpacing.md,
+                    ),
                     _isOpen
                         ? WordCardDetailWidget(word: widget.word)
                         : const SizedBox(),
@@ -125,8 +121,8 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                 ),
               ),
               Positioned(
-                top: 10,
-                right: 10,
+                top: AppSpacing.md,
+                right: AppSpacing.md,
                 child: GestureDetector(
                   onTap: () {
                     showDialog(
@@ -140,17 +136,14 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                     children: [
                       Icon(
                         Icons.report_problem_outlined,
-                        color: Theme.of(context).colorScheme.onTertiary,
+                        color: context.feedback.textTertiary,
                         size: 14,
                       ),
-                      const SizedBox(width: 4),
+                      const SizedBox(width: AppSpacing.xs),
                       Text(
                         '오류신고',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.onTertiary,
-                          fontSize: Theme.of(
-                            context,
-                          ).textTheme.bodyMedium!.fontSize,
+                        style: context.text.bodyMedium?.copyWith(
+                          color: context.feedback.textTertiary,
                         ),
                       ),
                     ],
@@ -176,7 +169,7 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                         _isOpen
                             ? Icons.keyboard_arrow_up_rounded
                             : Icons.keyboard_arrow_down_outlined,
-                        color: Theme.of(context).colorScheme.onTertiary,
+                        color: context.feedback.textTertiary,
                       ),
                     ),
                   ),
@@ -184,7 +177,7 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: AppSpacing.lg),
           // 카드별 로컬 표시 state. 설정값을 default 로 쓰고, 카드를 넘기면
           // 새 State 가 생성되어 default 로 다시 초기화된다. 설정값은 mutate 하지 않는다.
           Row(
@@ -192,18 +185,21 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
               Expanded(
                 child: _OptionToggle(
                   label: '한국어',
-                  isOn: _showKorean,
-                  onTap: () => setState(() => _showKorean = !_showKorean),
+                  isOn: _showMeaning,
+                  onTap: () => setState(() => _showMeaning = !_showMeaning),
                 ),
               ),
-              const SizedBox(width: 21),
-              Expanded(
-                child: _OptionToggle(
-                  label: '히라가나',
-                  isOn: _showHiragana,
-                  onTap: () => setState(() => _showHiragana = !_showHiragana),
+              // reading 이 있는 코스만 발음 표기 토글을 노출.
+              if (ref.watch(activeCourseProvider).readingLabel != null) ...[
+                const SizedBox(width: AppSpacing.xl),
+                Expanded(
+                  child: _OptionToggle(
+                    label: ref.watch(activeCourseProvider).readingLabel!,
+                    isOn: _showReading,
+                    onTap: () => setState(() => _showReading = !_showReading),
+                  ),
                 ),
-              ),
+              ],
             ],
           ),
         ],
@@ -228,18 +224,15 @@ class _OptionToggle extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: CustomContainer(
-        backgroundColor: isOn
-            ? Theme.of(context).colorScheme.primary
-            : Colors.white,
+        backgroundColor: isOn ? context.colors.primary : context.colors.surface,
         child: Text(
           label,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: context.text.bodyLarge?.copyWith(
             fontWeight: FontWeight.w500,
-            fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
             color: isOn
-                ? Colors.white
-                : Theme.of(context).colorScheme.onSurface,
+                ? context.colors.onPrimary
+                : context.colors.onSurfaceVariant,
           ),
         ),
       ),

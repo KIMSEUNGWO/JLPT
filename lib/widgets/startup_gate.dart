@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/sync/data_sync_service.dart';
 import 'package:jlpt_app/notifier/startup_notifier.dart';
 import 'package:jlpt_app/widgets/page_main.dart';
@@ -45,8 +47,6 @@ class _SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primary;
-    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -55,12 +55,14 @@ class _SplashView extends StatelessWidget {
             children: [
               Text(
                 'JLPT GO',
-                style: textTheme.headlineMedium?.copyWith(color: color),
+                style: context.text.headlineMedium?.copyWith(
+                  color: context.colors.primary,
+                ),
               ),
-              const SizedBox(height: 24),
-              CircularProgressIndicator(color: color),
-              const SizedBox(height: 16),
-              const Text('데이터를 준비하는 중…'),
+              const SizedBox(height: AppSpacing.xxl),
+              CircularProgressIndicator(color: context.colors.primary),
+              const SizedBox(height: AppSpacing.lg),
+              Text('데이터를 준비하는 중…', style: context.text.bodyLarge),
             ],
           ),
         ),
@@ -75,33 +77,32 @@ class _StartupErrorView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(AppSpacing.xxl),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const Icon(Icons.error_outline, size: 48),
-              const SizedBox(height: 12),
+              const SizedBox(height: AppSpacing.md),
               Text(
                 '데이터를 불러오지 못했습니다',
                 textAlign: TextAlign.center,
-                style: theme.textTheme.displaySmall?.copyWith(
+                style: context.text.displaySmall?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: AppSpacing.sm),
               Text(
                 '$error',
                 textAlign: TextAlign.center,
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface,
+                style: context.text.bodyMedium?.copyWith(
+                  color: context.colors.onSurface,
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: AppSpacing.xxl),
               FilledButton.icon(
                 onPressed: () => ref.read(startupProvider.notifier).retry(),
                 icon: const Icon(Icons.refresh),

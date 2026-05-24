@@ -1,6 +1,8 @@
-import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+
 import 'package:jlpt_app/component/svg_icon.dart';
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/widgets/component/record_component.dart';
 import 'package:jlpt_app/widgets/component/record_row.dart';
 
@@ -31,13 +33,11 @@ class _NextModalState extends State<NextModal> with SingleTickerProviderStateMix
   void initState() {
     super.initState();
 
-    // 애니메이션 컨트롤러 초기화 (1초 동안)
     _controller = AnimationController(
       duration: const Duration(milliseconds: 1000),
       vsync: this,
     );
 
-    // 모달 슬라이드 애니메이션 (아래에서 위로)
     _slideAnimation = Tween<double>(
       begin: 50.0,
       end: 0.0,
@@ -46,7 +46,6 @@ class _NextModalState extends State<NextModal> with SingleTickerProviderStateMix
       curve: const Interval(0.0, 0.6, curve: Curves.easeOut),
     ));
 
-    // 아이콘 바운스 애니메이션
     _iconAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
@@ -55,7 +54,6 @@ class _NextModalState extends State<NextModal> with SingleTickerProviderStateMix
       curve: const Interval(0.3, 0.8, curve: Curves.elasticOut),
     ));
 
-    // 애니메이션 시작
     _controller.forward();
   }
 
@@ -73,62 +71,54 @@ class _NextModalState extends State<NextModal> with SingleTickerProviderStateMix
         return Transform.translate(
           offset: Offset(0, _slideAnimation.value),
           child: Dialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
             child: Container(
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.all(AppSpacing.xxl),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // 아이콘 애니메이션
                   Transform.scale(
                     scale: _iconAnimation.value,
                     child: SvgIcon.asset(
                       sIcon: SIcon.circleCheck,
                       style: SvgIconStyle(
-                          width: 100,
-                          height: 100,
-                          color: Theme.of(context).colorScheme.primary
+                        width: 100,
+                        height: 100,
+                        color: context.colors.primary,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: AppSpacing.xxl),
 
-                  Text('고생했어요!',
-                    style: TextStyle(
-                      fontSize: Theme.of(context).textTheme.displayMedium!.fontSize,
+                  Text(
+                    '고생했어요!',
+                    style: context.text.displayMedium?.copyWith(
                       fontWeight: FontWeight.w500,
-                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: AppSpacing.md),
 
                   Text(
                     '이제 다음 챕터로 넘어가볼까요?',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
+                    style: context.text.bodyLarge,
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: AppSpacing.xxl),
 
                   Container(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     decoration: BoxDecoration(
-                      color: AppColors.surface,
-                      borderRadius: BorderRadius.circular(12),
+                      color: context.colors.secondary,
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: RecordRow(
                       dataList: [
                         RecordData(title: '학습단어', value: '${widget.wordsLearned}'),
                       ],
-                      titleSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                      valueSize: Theme.of(context).textTheme.displayMedium!.fontSize,
+                      titleSize: context.text.bodyLarge!.fontSize,
+                      valueSize: context.text.displayMedium!.fontSize,
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: AppSpacing.xxl),
 
                   SizedBox(
                     width: double.infinity,
@@ -137,21 +127,17 @@ class _NextModalState extends State<NextModal> with SingleTickerProviderStateMix
                         widget.onNextLevelTap();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                       ),
-                      child: Text('다음으로 넘어가기',
-                        style: TextStyle(
-                          fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                          color: Colors.white,
+                      child: Text(
+                        '다음으로 넘어가기',
+                        style: context.text.bodyLarge?.copyWith(
+                          color: context.colors.onPrimary,
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: AppSpacing.md),
 
                   SizedBox(
                     width: double.infinity,
@@ -160,17 +146,15 @@ class _NextModalState extends State<NextModal> with SingleTickerProviderStateMix
                         widget.onViewTestTap();
                       },
                       style: TextButton.styleFrom(
-                        backgroundColor: AppColors.background,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        backgroundColor: context.colors.surfaceContainerLowest,
+                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(AppRadius.md),
                         ),
                       ),
-                      child: Text('조금 더 보기',
-                        style: TextStyle(
-                          fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                          color: Theme.of(context).colorScheme.onPrimary,
-                        ),
+                      child: Text(
+                        '조금 더 보기',
+                        style: context.text.bodyLarge,
                       ),
                     ),
                   ),

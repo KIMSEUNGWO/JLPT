@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
+
 class TitleAndWidget extends StatelessWidget {
 
   final String title;
@@ -16,17 +19,11 @@ class TitleAndWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: titlePadding ?? const EdgeInsets.only(left: 5),
-          child: Text(title,
-            style: textStyle ?? TextStyle(
-                fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                fontWeight: FontWeight.w600,
-                color: Theme.of(context).colorScheme.onPrimary
-            ),
-          ),
+          padding: titlePadding ?? const EdgeInsets.only(left: AppSpacing.xs),
+          child: Text(title, style: textStyle ?? context.text.labelLarge),
         ),
 
-        const SizedBox(height: 10,),
+        const SizedBox(height: AppSpacing.md),
 
         child
       ],

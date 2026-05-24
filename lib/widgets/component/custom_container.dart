@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jlpt_app/core/theme/app_colors.dart';
+
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 
 class CustomContainer extends StatelessWidget {
   final Widget? child;
@@ -27,24 +29,17 @@ class CustomContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     return Container(
-      padding: padding ?? const EdgeInsets.all(15),
+      padding: padding ?? const EdgeInsets.all(AppSpacing.lg),
       width: width,
       height: height,
       margin: margin,
       constraints: constraints,
       decoration: BoxDecoration(
-        borderRadius: radius ?? BorderRadius.circular(12),
-        color: backgroundColor ?? colorScheme.surface,
+        borderRadius: radius ?? BorderRadius.circular(AppRadius.md),
+        color: backgroundColor ?? context.colors.surface,
         border: border,
-        boxShadow: const [
-          BoxShadow(
-            color: AppColors.cardShadow,
-            offset: Offset(0, 2),
-            blurRadius: 4,
-          ),
-        ],
+        boxShadow: AppShadow.card(context.feedback),
       ),
       child: child,
     );

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:jlpt_app/component/local_storage.dart';
+import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/notifier/entity/view.dart';
@@ -11,7 +12,8 @@ part 'recently_view_notifier.g.dart';
 @riverpod
 class RecentlyViewNotifier extends _$RecentlyViewNotifier {
   @override
-  ViewData build() => LocalStorage.instance.getRecentlyViewData();
+  ViewData build() => LocalStorage.instance
+      .getRecentlyViewData(ref.read(activeCourseProvider));
 
   void view({
     required Level level,

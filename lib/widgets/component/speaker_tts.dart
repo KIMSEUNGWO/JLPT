@@ -11,6 +11,11 @@ import 'package:jlpt_app/widgets/component/speaker.dart';
 /// 사용자 흐름을 막지 않도록 모든 실패는 내부에서 흡수하고
 /// [speak]/[stopped] 는 no-op 으로 graceful degrade 한다.
 class SpeakerTTS extends Speaker {
+  /// 발음 locale (예: 'ja-JP'). 활성 코스에서 주입된다.
+  SpeakerTTS({required this.locale});
+
+  final String locale;
+
   /// 초기화 성공 시에만 보관 — null 이면 TTS 사용 불가능한 환경.
   FlutterTts? _flutterTts;
   Future<void>? _initFuture;
@@ -44,7 +49,7 @@ class SpeakerTTS extends Speaker {
         );
       }
 
-      await tts.setLanguage('ja-JP');
+      await tts.setLanguage(locale);
       // 발음 속도는 플랫폼/시스템 기본값 사용.
       await tts.setVolume(1.0);
       await tts.setPitch(1.0);

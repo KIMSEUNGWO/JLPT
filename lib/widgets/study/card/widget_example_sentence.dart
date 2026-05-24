@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/example_sentence.dart';
 import 'package:jlpt_app/domain/word.dart';
@@ -18,47 +21,38 @@ class ExampleSentenceSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final async = ref.watch(exampleSentencesByWordProvider(word.id));
+    final emptyStyle = context.text.bodyMedium?.copyWith(
+      color: context.feedback.textTertiary,
+    );
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 21),
-      padding: const EdgeInsets.all(15),
+      margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Theme.of(context).colorScheme.secondary,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        color: context.colors.secondary,
       ),
       child: async.when(
         loading: () => const SizedBox.shrink(),
-        error: (_, __) => Text(
-          '예문을 불러올 수 없습니다.',
-          style: TextStyle(
-            fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
-            color: Theme.of(context).colorScheme.onTertiary,
-          ),
-        ),
+        error: (_, __) => Text('예문을 불러올 수 없습니다.', style: emptyStyle),
         data: (examples) {
           if (examples.isEmpty) {
-            return Text(
-              '예문 정보가 없습니다.',
-              style: TextStyle(
-                fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
-                color: Theme.of(context).colorScheme.onTertiary,
-              ),
-            );
+            return Text('예문 정보가 없습니다.', style: emptyStyle);
           }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 '예문',
-                style: TextStyle(
+                style: context.text.bodyMedium?.copyWith(
                   fontWeight: FontWeight.w500,
-                  fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: AppSpacing.md),
               for (int i = 0; i < examples.length; i++) ...[
                 _ExampleSentenceTile(example: examples[i]),
-                if (i < examples.length - 1) const SizedBox(height: 12),
+                if (i < examples.length - 1)
+                  const SizedBox(height: AppSpacing.md),
               ],
             ],
           );
@@ -75,7 +69,6 @@ class _ExampleSentenceTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -85,16 +78,9 @@ class _ExampleSentenceTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Text(
-                example.sentence,
-                style: TextStyle(
-                  fontSize: theme.textTheme.bodyLarge!.fontSize,
-                  fontWeight: FontWeight.w400,
-                  color: theme.colorScheme.onPrimary,
-                ),
-              ),
+              child: Text(example.sentence, style: context.text.bodyLarge),
             ),
-            const SizedBox(width: 8),
+            const SizedBox(width: AppSpacing.sm),
             // compact + title 미지정 → wave 4-bar 만 남는 한층 작은 pill.
             AudioWaveAnimation(
               word: example.sentence,
@@ -102,14 +88,8 @@ class _ExampleSentenceTile extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 6),
-        Text(
-          example.translation,
-          style: TextStyle(
-            fontSize: theme.textTheme.bodyMedium!.fontSize,
-            color: theme.colorScheme.onSurface,
-          ),
-        ),
+        const SizedBox(height: AppSpacing.sm),
+        Text(example.translation, style: context.text.bodyMedium),
       ],
     );
   }

@@ -1,13 +1,13 @@
-import 'package:jlpt_app/core/app_utils.dart';
-import 'package:jlpt_app/app/app_routes.dart';
-import 'package:jlpt_app/app/route_args.dart';
-import 'package:jlpt_app/core/theme/app_colors.dart';
-import 'package:go_router/go_router.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+import 'package:jlpt_app/app/app_routes.dart';
+import 'package:jlpt_app/app/route_args.dart';
 import 'package:jlpt_app/component/test_examiner.dart';
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/question.dart';
 import 'package:jlpt_app/domain/question_box.dart';
@@ -65,14 +65,15 @@ class _TestPageState extends ConsumerState<TestPage> {
           time: _timerController.getTime(),
           onGoToResultPage: () async {
             final router = GoRouter.of(context);
-            final testResult =
-                await ref.read(testResultRepositoryProvider).save(
-                      level: widget.args.level,
-                      type: widget.args.type,
-                      questions: _questionList,
-                      reverses: _reverseIndexList,
-                      time: _timerController.getTime(),
-                    );
+            final testResult = await ref
+                .read(testResultRepositoryProvider)
+                .save(
+                  level: widget.args.level,
+                  type: widget.args.type,
+                  questions: _questionList,
+                  reverses: _reverseIndexList,
+                  time: _timerController.getTime(),
+                );
             if (!mounted) return;
             router.pop(); // 모달 닫기
             router.pop(); // 테스트 페이지 닫기
@@ -105,6 +106,7 @@ class _TestPageState extends ConsumerState<TestPage> {
       _reverseIndexList[i] = true;
     }
     _reverseIndexList.shuffle();
+    if (!mounted) return;
     setState(() {
       _questionList = questions;
       _loading = false;
@@ -120,48 +122,72 @@ class _TestPageState extends ConsumerState<TestPage> {
   @override
   Widget build(BuildContext context) {
     if (_loading) return const CupertinoActivityIndicator();
+    if (_questionList.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            '${widget.args.level?.label ?? '통합'} ${widget.args.type.title} 테스트',
+          ),
+          centerTitle: false,
+          backgroundColor: context.colors.surface,
+        ),
+        body: Center(
+          child: Text('출제할 단어가 없습니다.', style: context.text.bodyLarge),
+        ),
+      );
+    }
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.args.level?.name ?? '통합'} ${widget.args.type.title} 테스트'),
+        title: Text(
+          '${widget.args.level?.label ?? '통합'} ${widget.args.type.title} 테스트',
+        ),
         centerTitle: false,
-        backgroundColor: Colors.white,
+        backgroundColor: context.colors.surface,
         actions: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            decoration: BoxDecoration(
-              color: AppColors.background,
-              borderRadius: BorderRadius.circular(20),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.md,
+              vertical: AppSpacing.xs,
             ),
-            child: Row(children: [
-              Icon(Icons.access_time,
-                  color: Theme.of(context).colorScheme.primary, size: 12),
-              const SizedBox(width: 4),
-              CustomTimer(controller: _timerController, getSeconds: (_) {}),
-            ]),
+            decoration: BoxDecoration(
+              color: context.colors.surfaceContainerLowest,
+              borderRadius: BorderRadius.circular(AppRadius.lg),
+            ),
+            child: Row(
+              children: [
+                Icon(Icons.access_time, color: context.colors.primary, size: 12),
+                const SizedBox(width: AppSpacing.xs),
+                CustomTimer(controller: _timerController, getSeconds: (_) {}),
+              ],
+            ),
           ),
-          const SizedBox(width: 20),
+          const SizedBox(width: AppSpacing.xl),
         ],
-        shape: kAppBarShape,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(60),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.xl,
+              vertical: AppSpacing.lg,
+            ),
             height: 60,
             child: CustomProgressBar(
               topWidget: (current, total, _) => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('진행률',
-                      style: TextStyle(
-                          fontSize:
-                              Theme.of(context).textTheme.bodySmall!.fontSize,
-                          color: Theme.of(context).colorScheme.onTertiary)),
-                  Text('$current/$total',
-                      style: TextStyle(
-                          fontSize:
-                              Theme.of(context).textTheme.bodySmall!.fontSize,
-                          color: Theme.of(context).colorScheme.primary,
-                          fontWeight: FontWeight.w500)),
+                  Text(
+                    '진행률',
+                    style: context.text.bodySmall?.copyWith(
+                      color: context.feedback.textTertiary,
+                    ),
+                  ),
+                  Text(
+                    '$current/$total',
+                    style: context.text.bodySmall?.copyWith(
+                      color: context.colors.primary,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ],
               ),
               current: _questionList.where((e) => e.myAnswer != null).length,
@@ -174,8 +200,9 @@ class _TestPageState extends ConsumerState<TestPage> {
         duration: const Duration(milliseconds: 400),
         transitionBuilder: (child, animation) => SlideTransition(
           position: Tween<Offset>(
-                  begin: const Offset(0.0, 2.0), end: Offset.zero)
-              .animate(animation),
+            begin: const Offset(0.0, 2.0),
+            end: Offset.zero,
+          ).animate(animation),
           child: child,
         ),
         child: SingleChildScrollView(
@@ -192,27 +219,29 @@ class _TestPageState extends ConsumerState<TestPage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: const EdgeInsets.all(AppSpacing.md),
               child: GestureDetector(
                 onTap: _next,
                 child: CustomContainer(
                   height: 50,
                   backgroundColor: _nextBtnDisabled
-                      ? Colors.white
-                      : Theme.of(context).colorScheme.primary,
+                      ? context.colors.surface
+                      : context.colors.primary,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.check, color: Colors.white, size: 15),
-                      const SizedBox(width: 8),
+                      Icon(
+                        Icons.check,
+                        color: context.colors.onPrimary,
+                        size: 15,
+                      ),
+                      const SizedBox(width: AppSpacing.sm),
                       Text(
                         '다음',
-                        style: TextStyle(
+                        style: context.text.bodyLarge?.copyWith(
                           color: _nextBtnDisabled
-                              ? Theme.of(context).colorScheme.primary
-                              : Colors.white,
-                          fontSize:
-                              Theme.of(context).textTheme.bodyLarge!.fontSize,
+                              ? context.colors.primary
+                              : context.colors.onPrimary,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -221,7 +250,7 @@ class _TestPageState extends ConsumerState<TestPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: AppSpacing.md),
             const SimpleBannerAd(width: double.infinity, height: 100),
           ],
         ),

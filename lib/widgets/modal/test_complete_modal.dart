@@ -1,6 +1,8 @@
-import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+
 import 'package:jlpt_app/component/svg_icon.dart';
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/domain/timer.dart';
 import 'package:jlpt_app/widgets/component/record_component.dart';
 import 'package:jlpt_app/widgets/component/record_row.dart';
@@ -33,13 +35,11 @@ class _TestCompleteModalState extends State<TestCompleteModal> with SingleTicker
   void initState() {
     super.initState();
 
-    // 애니메이션 컨트롤러 초기화 (1초 동안)
     _controller = AnimationController(
       duration: const Duration(milliseconds: 1000),
       vsync: this,
     );
 
-    // 모달 슬라이드 애니메이션 (아래에서 위로)
     _slideAnimation = Tween<double>(
       begin: 50.0,
       end: 0.0,
@@ -48,7 +48,6 @@ class _TestCompleteModalState extends State<TestCompleteModal> with SingleTicker
       curve: const Interval(0.0, 0.6, curve: Curves.easeOut),
     ));
 
-    // 아이콘 바운스 애니메이션
     _iconAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
@@ -57,17 +56,12 @@ class _TestCompleteModalState extends State<TestCompleteModal> with SingleTicker
       curve: const Interval(0.3, 0.8, curve: Curves.elasticOut),
     ));
 
-    // 애니메이션 시작
     _controller.forward();
   }
 
   @override
   void dispose() {
     _controller.dispose();
-
-    Future(() {
-
-    },);
     super.dispose();
   }
 
@@ -79,64 +73,56 @@ class _TestCompleteModalState extends State<TestCompleteModal> with SingleTicker
         return Transform.translate(
           offset: Offset(0, _slideAnimation.value),
           child: Dialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
             child: Container(
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.all(AppSpacing.xxl),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // 아이콘 애니메이션
                   Transform.scale(
                     scale: _iconAnimation.value,
                     child: SvgIcon.asset(
                       sIcon: SIcon.circleCheck,
                       style: SvgIconStyle(
-                          width: 100,
-                          height: 100,
-                          color: Theme.of(context).colorScheme.primary
+                        width: 100,
+                        height: 100,
+                        color: context.colors.primary,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: AppSpacing.xxl),
 
-                  Text('테스트 완료',
-                    style: TextStyle(
-                      fontSize: Theme.of(context).textTheme.displayMedium!.fontSize,
+                  Text(
+                    '테스트 완료',
+                    style: context.text.displayMedium?.copyWith(
                       fontWeight: FontWeight.w500,
-                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: AppSpacing.md),
 
                   Text(
                     '수고하셨어요.\n테스트가 종료되었습니다.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
+                    style: context.text.bodyLarge,
                   ),
 
-                  const SizedBox(height: 24),
+                  const SizedBox(height: AppSpacing.xxl),
 
                   Container(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     decoration: BoxDecoration(
-                      color: AppColors.surface,
-                      borderRadius: BorderRadius.circular(12),
+                      color: context.colors.secondary,
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: RecordRow(
                       dataList: [
                         RecordData(title: '테스트 수', value: '${widget.count}'),
                         RecordData(title: '테스트 시간', value: formatSeconds(widget.time)),
                       ],
-                      titleSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                      valueSize: Theme.of(context).textTheme.displaySmall!.fontSize,
+                      titleSize: context.text.bodyLarge!.fontSize,
+                      valueSize: context.text.displaySmall!.fontSize,
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: AppSpacing.xxl),
 
                   SizedBox(
                     width: double.infinity,
@@ -145,21 +131,17 @@ class _TestCompleteModalState extends State<TestCompleteModal> with SingleTicker
                         await widget.onGoToResultPage();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.lg),
+                      ),
+                      child: Text(
+                        '결과 확인하기',
+                        style: context.text.bodyLarge?.copyWith(
+                          color: context.colors.onPrimary,
                         ),
                       ),
-                      child: Text('결과 확인하기',
-                        style: TextStyle(
-                          fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                          color: Colors.white,
-                        ),
-                      )
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: AppSpacing.md),
 
                   SizedBox(
                     width: double.infinity,
@@ -168,17 +150,15 @@ class _TestCompleteModalState extends State<TestCompleteModal> with SingleTicker
                         widget.onBack();
                       },
                       style: TextButton.styleFrom(
-                        backgroundColor: AppColors.background,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        backgroundColor: context.colors.surfaceContainerLowest,
+                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.lg),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(AppRadius.md),
                         ),
                       ),
-                      child: Text('뒤로가기',
-                        style: TextStyle(
-                          fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                          color: Theme.of(context).colorScheme.onPrimary,
-                        ),
+                      child: Text(
+                        '뒤로가기',
+                        style: context.text.bodyLarge,
                       ),
                     ),
                   ),

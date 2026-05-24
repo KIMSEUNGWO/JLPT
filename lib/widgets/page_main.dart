@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:jlpt_app/app/app_routes.dart';
 import 'package:jlpt_app/app/route_args.dart';
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/type.dart';
@@ -25,6 +28,7 @@ class MainPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final wordsAsync = ref.watch(wordsByLevelProvider);
+    final course = ref.watch(activeCourseProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -32,7 +36,7 @@ class MainPage extends ConsumerWidget {
           GestureDetector(
             onTap: () => context.push(AppRoutes.testResults),
             child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12),
+              padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
               child: Center(child: Text('테스트 기록')),
             ),
           ),
@@ -41,18 +45,21 @@ class MainPage extends ConsumerWidget {
             icon: const Icon(Icons.settings_outlined),
             onPressed: () => context.push(AppRoutes.settings),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: AppSpacing.sm),
         ],
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.xl,
+            vertical: AppSpacing.md,
+          ),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _Greeting(),
-                const SizedBox(height: 36),
+                const SizedBox(height: AppSpacing.xxxl),
                 Consumer(
                   builder: (context, ref, _) {
                     final recentView = ref.watch(recentlyViewProvider);
@@ -68,8 +75,8 @@ class MainPage extends ConsumerWidget {
                           title: '오늘의 학습',
                           child: CustomContainer(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 15,
-                              vertical: 10,
+                              horizontal: AppSpacing.lg,
+                              vertical: AppSpacing.md,
                             ),
                             child: wordsAsync.when(
                               loading: () => const SizedBox(
@@ -94,7 +101,7 @@ class MainPage extends ConsumerWidget {
                                         index: target.groupIndex,
                                       );
                                   await context.push(
-                                    AppRoutes.studyGroupFull(target.level.name),
+                                    AppRoutes.studyGroupFull(target.level.code),
                                     extra: StudyGroupArgs(
                                       level: target.level,
                                       startIndex: target.startIndex,
@@ -107,27 +114,27 @@ class MainPage extends ConsumerWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 28),
+                        const SizedBox(height: AppSpacing.xxxl),
                       ],
                     );
                   },
                 ),
                 wordsAsync.when(
                   loading: () => const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 32),
+                    padding: EdgeInsets.symmetric(vertical: AppSpacing.xxxl),
                     child: Center(child: CircularProgressIndicator()),
                   ),
                   error: (e, _) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 32),
+                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxxl),
                     child: Column(
                       children: [
                         const Icon(Icons.error_outline, size: 32),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: AppSpacing.sm),
                         Text(
                           '단어 목록을 불러올 수 없습니다\n$e',
                           textAlign: TextAlign.center,
                         ),
-                        const SizedBox(height: 12),
+                        const SizedBox(height: AppSpacing.md),
                         FilledButton.icon(
                           onPressed: () => ref.invalidate(wordsByLevelProvider),
                           icon: const Icon(Icons.refresh),
@@ -138,20 +145,20 @@ class MainPage extends ConsumerWidget {
                   ),
                   data: (wordsByLevel) => Column(
                     children: [
-                      for (final level in Level.values) ...[
+                      for (final level in course.levels) ...[
                         _LevelTile(
                           level: level,
                           words: wordsByLevel[level] ?? const [],
                         ),
-                        if (level != Level.values.last)
-                          const SizedBox(height: 16),
+                        if (level != course.levels.last)
+                          const SizedBox(height: AppSpacing.lg),
                       ],
-                      const SizedBox(height: 16),
+                      const SizedBox(height: AppSpacing.lg),
                       const TestStatWidget(level: null),
                     ],
                   ),
                 ),
-                const SizedBox(height: 28),
+                const SizedBox(height: AppSpacing.xxxl),
               ],
             ),
           ),
@@ -170,19 +177,17 @@ class _Greeting extends StatelessWidget {
       children: [
         Text(
           '안녕하세요',
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onPrimary,
+          style: context.text.displayMedium?.copyWith(
+            color: context.colors.onSurface,
             fontWeight: FontWeight.w600,
-            fontSize: Theme.of(context).textTheme.displayMedium!.fontSize,
           ),
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: AppSpacing.xs),
         Text(
           '오늘도 열심히 공부해볼까요?',
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onSurface,
+          style: context.text.bodyLarge?.copyWith(
+            color: context.colors.onSurfaceVariant,
             fontWeight: FontWeight.w500,
-            fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
           ),
         ),
       ],
@@ -201,19 +206,23 @@ class _LevelTile extends ConsumerWidget {
     final isRecent = view.level == level;
     final cycle = ref.watch(studyCycleProvider);
     final timer = ref.watch(timerProvider)[level] ?? 0;
+    final course = ref.watch(activeCourseProvider);
 
     return GestureDetector(
-      onTap: () => context.push(AppRoutes.study(level.name)),
+      onTap: () => context.push(AppRoutes.study(level.code)),
       child: CustomContainer(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.xl,
+          vertical: AppSpacing.lg,
+        ),
         border: isRecent
-            ? Border.all(color: Theme.of(context).colorScheme.primary, width: 2)
+            ? Border.all(color: context.colors.primary, width: 2)
             : null,
         radius: const BorderRadius.only(
-          topLeft: Radius.circular(12),
-          topRight: Radius.circular(28),
-          bottomLeft: Radius.circular(12),
-          bottomRight: Radius.circular(12),
+          topLeft: Radius.circular(AppRadius.md),
+          topRight: Radius.circular(28), // 특수 형태 — 카드 우측 상단만 더 둥글게
+          bottomLeft: Radius.circular(AppRadius.md),
+          bottomRight: Radius.circular(AppRadius.md),
         ),
         child: Column(
           children: [
@@ -223,40 +232,35 @@ class _LevelTile extends ConsumerWidget {
                 Row(
                   children: [
                     Text(
-                      'JLPT ${level.name}',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onPrimary,
+                      '${course.displayName} ${level.label}',
+                      style: context.text.displaySmall?.copyWith(
+                        color: context.colors.onSurface,
                         fontWeight: FontWeight.w600,
-                        fontSize: Theme.of(
-                          context,
-                        ).textTheme.displaySmall!.fontSize,
                       ),
                     ),
-                    const SizedBox(width: 6),
+                    const SizedBox(width: AppSpacing.sm),
                     Text('${cycle[level]}회독'),
                   ],
                 ),
                 if (isRecent) const RecentlyViewedBadge(),
               ],
             ),
-            const SizedBox(height: 6),
+            const SizedBox(height: AppSpacing.sm),
             Row(
               children: [
                 Icon(
                   Icons.access_time,
-                  size: Theme.of(context).textTheme.bodySmall!.fontSize,
-                  color: Theme.of(context).colorScheme.onSurface,
+                  size: context.text.bodySmall!.fontSize,
+                  color: context.colors.onSurfaceVariant,
                 ),
-                const SizedBox(width: 4),
+                const SizedBox(width: AppSpacing.xs),
                 Text(
                   '학습시간 ${TodayData.formatTimeToHours(timer)}',
-                  style: TextStyle(
-                    fontSize: Theme.of(context).textTheme.bodySmall!.fontSize,
-                  ),
+                  style: context.text.bodySmall,
                 ),
               ],
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: AppSpacing.lg),
             CustomProgressBar(
               current: words.where((w) => w.isRead).length,
               total: words.isEmpty ? 100 : words.length,

@@ -4,12 +4,16 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:jlpt_app/component/local_storage.dart';
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
+import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/study_group_size.dart';
 import 'package:jlpt_app/domain/study_options.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 part 'settings.g.dart';
 
@@ -67,17 +71,17 @@ class _SettingsController extends _$SettingsController {
     );
   }
 
-  void toggleHiragana() {
+  void toggleReading() {
     _updateStudyOptions(
       state.studyOptions.copyWith(
-        showHiragana: !state.studyOptions.showHiragana,
+        showReading: !state.studyOptions.showReading,
       ),
     );
   }
 
-  void toggleKorean() {
+  void toggleMeaning() {
     _updateStudyOptions(
-      state.studyOptions.copyWith(showKorean: !state.studyOptions.showKorean),
+      state.studyOptions.copyWith(showMeaning: !state.studyOptions.showMeaning),
     );
   }
 
@@ -115,13 +119,18 @@ class SettingsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(settingsProvider);
     final opts = settings.studyOptions;
+    final course = ref.watch(activeCourseProvider);
     final controller = ref.read(_settingsControllerProvider.notifier);
+    final readingLabel = course.readingLabel;
 
     return Scaffold(
       appBar: AppBar(title: const Text('환경설정'), centerTitle: false),
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 21),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.xl,
+            vertical: AppSpacing.xl,
+          ),
           children: [
             _SettingsSection(
               title: '학습 카드',
@@ -130,29 +139,32 @@ class SettingsPage extends ConsumerWidget {
                   icon: Icons.translate_rounded,
                   title: '한국어 뜻 표시',
                   description: '단어 카드에 한국어 뜻을 먼저 보여줍니다',
-                  value: opts.showKorean,
-                  onChanged: controller.toggleKorean,
+                  value: opts.showMeaning,
+                  onChanged: controller.toggleMeaning,
                 ),
-                const _SettingDivider(),
-                _SettingToggleRow(
-                  icon: Icons.text_fields_rounded,
-                  title: '히라가나 표시',
-                  description: '단어 카드에 히라가나 발음을 먼저 보여줍니다',
-                  value: opts.showHiragana,
-                  onChanged: controller.toggleHiragana,
-                ),
+                // reading 이 없는 코스(예: 영어)는 토글을 숨긴다.
+                if (readingLabel != null) ...[
+                  const _SettingDivider(),
+                  _SettingToggleRow(
+                    icon: Icons.text_fields_rounded,
+                    title: '$readingLabel 표시',
+                    description: '단어 카드에 $readingLabel 발음을 먼저 보여줍니다',
+                    value: opts.showReading,
+                    onChanged: controller.toggleReading,
+                  ),
+                ],
                 const _SettingDivider(),
                 _StudyGroupSizeSelector(value: settings.studyGroupSize),
               ],
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: AppSpacing.lg),
             _SettingsSection(
               title: '발음',
               children: [
                 _SettingToggleRow(
                   icon: Icons.volume_up_outlined,
                   title: '자동 발음',
-                  description: '새 카드로 넘어가면 일본어 발음을 재생합니다',
+                  description: '새 카드로 넘어가면 ${course.termLanguageLabel} 발음을 재생합니다',
                   value: opts.autoPlayPronunciation,
                   onChanged: controller.toggleAutoPlay,
                 ),
@@ -177,18 +189,18 @@ class _SettingsSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 2, bottom: 8),
+          padding: const EdgeInsets.only(left: AppSpacing.xs, bottom: AppSpacing.sm),
           child: Text(
             title,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Theme.of(context).colorScheme.primary,
+            style: context.text.bodyMedium?.copyWith(
+              color: context.colors.primary,
               fontWeight: FontWeight.w600,
             ),
           ),
         ),
         CustomContainer(
           padding: EdgeInsets.zero,
-          radius: BorderRadius.circular(12),
+          radius: BorderRadius.circular(AppRadius.md),
           child: Column(children: children),
         ),
       ],
@@ -214,54 +226,53 @@ class _SettingToggleRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(AppRadius.md),
       onTap: onChanged,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg,
+          vertical: AppSpacing.md,
+        ),
         child: Row(
           children: [
             Container(
-              width: 32,
-              height: 32,
+              width: AppSpacing.xxxl,
+              height: AppSpacing.xxxl,
               decoration: BoxDecoration(
                 color: value
-                    ? Theme.of(
-                        context,
-                      ).colorScheme.primary.withValues(alpha: 0.1)
-                    : Theme.of(context).colorScheme.surfaceContainerHighest,
-                borderRadius: BorderRadius.circular(8),
+                    ? context.colors.primaryContainer
+                    : context.colors.surfaceContainerHighest,
+                borderRadius: BorderRadius.circular(AppRadius.sm),
               ),
               child: Icon(
                 icon,
                 size: 18,
-                color: value
-                    ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.onSurface,
+                color: value ? context.colors.primary : context.colors.onSurface,
               ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: AppSpacing.md),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface,
+                    style: context.text.bodyLarge?.copyWith(
+                      color: context.colors.onSurface,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 3),
+                  const SizedBox(height: AppSpacing.xs),
                   Text(
                     description,
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface,
+                    style: context.text.bodySmall?.copyWith(
+                      color: context.colors.onSurfaceVariant,
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: AppSpacing.md),
             SizedBox(
               width: 46,
               height: 30,
@@ -269,14 +280,11 @@ class _SettingToggleRow extends StatelessWidget {
                 fit: BoxFit.contain,
                 child: Switch.adaptive(
                   value: value,
-                  activeThumbColor: Theme.of(context).colorScheme.primary,
-                  activeTrackColor: Theme.of(
-                    context,
-                  ).colorScheme.primary.withValues(alpha: 0.35),
-                  inactiveThumbColor: Colors.white,
-                  inactiveTrackColor: Theme.of(
-                    context,
-                  ).colorScheme.surfaceContainerHighest,
+                  activeThumbColor: context.colors.primary,
+                  activeTrackColor:
+                      context.colors.primary.withValues(alpha: 0.35),
+                  inactiveThumbColor: context.colors.surface,
+                  inactiveTrackColor: context.colors.surfaceContainerHighest,
                   onChanged: (_) => onChanged(),
                 ),
               ),
@@ -295,21 +303,23 @@ class _StudyGroupSizeSelector extends ConsumerWidget {
 
   Future<void> _showPicker(BuildContext context, WidgetRef ref) async {
     final controller = ref.read(_settingsControllerProvider.notifier);
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = context.text;
+    final colorScheme = context.colors;
     await showCupertinoModalPopup<void>(
       context: context,
       builder: (ctx) => CupertinoActionSheet(
         title: Text(
           '단어 묶음 크기',
           style: textTheme.bodyMedium?.copyWith(
-            color: colorScheme.onPrimary,
+            color: colorScheme.onSurface,
             fontWeight: FontWeight.w600,
           ),
         ),
         message: Text(
           '한 묶음에 담을 단어 수를 선택하세요',
-          style: textTheme.bodyMedium?.copyWith(color: colorScheme.onSurface),
+          style: textTheme.bodyMedium?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
         ),
         actions: [
           for (final size in studyGroupSizeOptions)
@@ -333,7 +343,7 @@ class _StudyGroupSizeSelector extends ConsumerWidget {
           child: Text(
             '취소',
             style: textTheme.bodyLarge?.copyWith(
-              color: colorScheme.onPrimary,
+              color: colorScheme.onSurface,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -344,64 +354,64 @@ class _StudyGroupSizeSelector extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-
     return InkWell(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(AppRadius.md),
       onTap: () => _showPicker(context, ref),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg,
+          vertical: AppSpacing.md,
+        ),
         child: Row(
           children: [
             Container(
-              width: 32,
-              height: 32,
+              width: AppSpacing.xxxl,
+              height: AppSpacing.xxxl,
               decoration: BoxDecoration(
-                color: colorScheme.primary.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(8),
+                color: context.colors.primaryContainer,
+                borderRadius: BorderRadius.circular(AppRadius.sm),
               ),
               child: Icon(
                 Icons.view_module_outlined,
                 size: 18,
-                color: colorScheme.primary,
+                color: context.colors.primary,
               ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: AppSpacing.md),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     '단어 묶음',
-                    style: theme.textTheme.bodyLarge?.copyWith(
-                      color: colorScheme.onSurface,
+                    style: context.text.bodyLarge?.copyWith(
+                      color: context.colors.onSurface,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 3),
+                  const SizedBox(height: AppSpacing.xs),
                   Text(
                     '학습 리스트에서 한 묶음에 담을 단어 수를 정합니다',
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: colorScheme.onSurface,
+                    style: context.text.bodySmall?.copyWith(
+                      color: context.colors.onSurfaceVariant,
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: AppSpacing.md),
             Text(
               '$value개씩',
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: colorScheme.primary,
+              style: context.text.bodyMedium?.copyWith(
+                color: context.colors.primary,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const SizedBox(width: 2),
+            const SizedBox(width: AppSpacing.xs),
             Icon(
               Icons.chevron_right_rounded,
               size: 20,
-              color: colorScheme.onSurface.withValues(alpha: 0.5),
+              color: context.colors.onSurfaceVariant,
             ),
           ],
         ),
@@ -418,7 +428,7 @@ class _SettingDivider extends StatelessWidget {
     return Divider(
       height: 1,
       indent: 64,
-      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+      color: context.colors.outline,
     );
   }
 }

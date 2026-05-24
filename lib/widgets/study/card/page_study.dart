@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:jlpt_app/app/route_args.dart';
-import 'package:jlpt_app/core/app_utils.dart';
-import 'package:jlpt_app/core/theme/app_colors.dart';
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/study_options.dart';
 import 'package:jlpt_app/domain/timer.dart';
@@ -133,6 +134,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
   Widget build(BuildContext context) {
     // Keep the autoDispose notifier alive while this page is mounted.
     ref.watch(studySessionProvider);
+    final course = ref.watch(activeCourseProvider);
     final readCount = _allWords.where(_isRead).length;
     return PopScope(
       canPop: false,
@@ -143,26 +145,25 @@ class _StudyPageState extends ConsumerState<StudyPage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'JLPT ${widget.args.level.name} 단어 '
+            '${course.displayName} ${widget.args.level.label} 단어 '
             '${widget.args.startIndex + 1}-${widget.args.endIndex}',
           ),
           centerTitle: false,
-          backgroundColor: Colors.white,
+          backgroundColor: context.colors.surface,
           actions: [
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.md,
+                vertical: AppSpacing.xs,
+              ),
               decoration: BoxDecoration(
-                color: AppColors.background,
-                borderRadius: BorderRadius.circular(20),
+                color: context.colors.surfaceContainerLowest,
+                borderRadius: BorderRadius.circular(AppRadius.lg),
               ),
               child: Row(
                 children: [
-                  Icon(
-                    Icons.access_time,
-                    color: Theme.of(context).colorScheme.primary,
-                    size: 12,
-                  ),
-                  const SizedBox(width: 4),
+                  Icon(Icons.access_time, color: context.colors.primary, size: 12),
+                  const SizedBox(width: AppSpacing.xs),
                   CustomTimer(
                     controller: _timerController,
                     getSeconds: _recordStudyTime,
@@ -170,13 +171,15 @@ class _StudyPageState extends ConsumerState<StudyPage> {
                 ],
               ),
             ),
-            const SizedBox(width: 20),
+            const SizedBox(width: AppSpacing.xl),
           ],
-          shape: kAppBarShape,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(60),
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.xl,
+                vertical: AppSpacing.lg,
+              ),
               height: 60,
               child: CustomProgressBar(
                 topWidget: (current, total, percent) => Row(
@@ -184,20 +187,14 @@ class _StudyPageState extends ConsumerState<StudyPage> {
                   children: [
                     Text(
                       '진행률',
-                      style: TextStyle(
-                        fontSize: Theme.of(
-                          context,
-                        ).textTheme.bodySmall!.fontSize,
-                        color: Theme.of(context).colorScheme.onTertiary,
+                      style: context.text.bodySmall?.copyWith(
+                        color: context.feedback.textTertiary,
                       ),
                     ),
                     Text(
                       '$current/$total',
-                      style: TextStyle(
-                        fontSize: Theme.of(
-                          context,
-                        ).textTheme.bodySmall!.fontSize,
-                        color: Theme.of(context).colorScheme.primary,
+                      style: context.text.bodySmall?.copyWith(
+                        color: context.colors.primary,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -223,7 +220,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
                 ? const SizedBox.shrink()
                 : WordCardWidget(
                     key: ValueKey<String>(
-                      '${widget.args.level.name}-'
+                      '${widget.args.level.code}-'
                       '${_innerWords[_currentIndex].id}-'
                       '$_currentIndex-$_round',
                     ),
@@ -238,8 +235,8 @@ class _StudyPageState extends ConsumerState<StudyPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
+                  horizontal: AppSpacing.xl,
+                  vertical: AppSpacing.xl,
                 ),
                 child: Row(
                   children: [
@@ -248,23 +245,20 @@ class _StudyPageState extends ConsumerState<StudyPage> {
                         onTap: _showNextCard,
                         child: CustomContainer(
                           height: 50,
-                          backgroundColor: Colors.white,
+                          backgroundColor: context.colors.surface,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
                                 Icons.close,
-                                color: Theme.of(context).colorScheme.primary,
+                                color: context.colors.primary,
                                 size: 15,
                               ),
-                              const SizedBox(width: 8),
+                              const SizedBox(width: AppSpacing.sm),
                               Text(
                                 '잘 모르겠음',
-                                style: TextStyle(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  fontSize: Theme.of(
-                                    context,
-                                  ).textTheme.bodyLarge!.fontSize,
+                                style: context.text.bodyLarge?.copyWith(
+                                  color: context.colors.primary,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -273,7 +267,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 21),
+                    const SizedBox(width: AppSpacing.xl),
                     Expanded(
                       child: GestureDetector(
                         onTap: () => _innerWords.isEmpty
@@ -281,25 +275,20 @@ class _StudyPageState extends ConsumerState<StudyPage> {
                             : _select(_innerWords[_currentIndex]),
                         child: CustomContainer(
                           height: 50,
-                          backgroundColor: Theme.of(
-                            context,
-                          ).colorScheme.primary,
+                          backgroundColor: context.colors.primary,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Icon(
+                              Icon(
                                 Icons.check,
-                                color: Colors.white,
+                                color: context.colors.onPrimary,
                                 size: 15,
                               ),
-                              const SizedBox(width: 8),
+                              const SizedBox(width: AppSpacing.sm),
                               Text(
                                 '이해했음',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: Theme.of(
-                                    context,
-                                  ).textTheme.bodyLarge!.fontSize,
+                                style: context.text.bodyLarge?.copyWith(
+                                  color: context.colors.onPrimary,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),

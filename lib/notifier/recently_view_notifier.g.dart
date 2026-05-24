@@ -42,7 +42,7 @@ final class RecentlyViewNotifierProvider
 }
 
 String _$recentlyViewNotifierHash() =>
-    r'2b4e4af0229ee7f92d1cec0b7ad72586f0ef74f8';
+    r'099cfd7dcc3b9c01bf38a4a658a382f45352920d';
 
 abstract class _$RecentlyViewNotifier extends $Notifier<ViewData> {
   ViewData build();

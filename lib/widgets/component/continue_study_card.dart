@@ -2,6 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
+import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/domain/word.dart';
@@ -50,69 +54,56 @@ class ContinueStudyCard extends ConsumerWidget {
 
     final range = '${target.startIndex + 1}-${target.endIndex}';
     final remaining = target.totalCount - target.readCount;
+    final course = ref.watch(activeCourseProvider);
+    final captionStyle = context.text.bodySmall?.copyWith(
+      color: context.colors.onSurfaceVariant,
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'JLPT ${target.level.name} 단어 $range',
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onPrimary,
-            fontSize: Theme.of(context).textTheme.displaySmall!.fontSize,
-            fontWeight: FontWeight.w600,
-          ),
+          '${course.displayName} ${target.level.label} 단어 $range',
+          style: context.text.titleMedium?.copyWith(fontWeight: FontWeight.w600),
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: AppSpacing.sm),
         Row(
           children: [
             Icon(
               Icons.play_circle_outline_rounded,
-              size: Theme.of(context).textTheme.bodySmall!.fontSize,
-              color: Theme.of(context).colorScheme.onSurface,
+              size: context.text.bodySmall!.fontSize,
+              color: context.colors.onSurfaceVariant,
             ),
-            const SizedBox(width: 4),
-            Text(
-              '최근 학습하던 묶음',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontSize: Theme.of(context).textTheme.bodySmall!.fontSize,
-              ),
-            ),
-            const SizedBox(width: 8),
-            Text(
-              '남은 단어 $remaining개',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontSize: Theme.of(context).textTheme.bodySmall!.fontSize,
-              ),
-            ),
+            const SizedBox(width: AppSpacing.xs),
+            Text('최근 학습하던 묶음', style: captionStyle),
+            const SizedBox(width: AppSpacing.sm),
+            Text('남은 단어 $remaining개', style: captionStyle),
           ],
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: AppSpacing.lg),
         CustomProgressBar(current: target.readCount, total: target.totalCount),
-        const SizedBox(height: 14),
+        const SizedBox(height: AppSpacing.lg),
         GestureDetector(
           onTap: () => onContinue(target),
           child: Container(
             height: 44,
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary,
-              borderRadius: BorderRadius.circular(8),
+              color: context.colors.primary,
+              borderRadius: BorderRadius.circular(AppRadius.sm),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
+                Icon(
                   Icons.play_arrow_rounded,
-                  color: Colors.white,
+                  color: context.colors.onPrimary,
                   size: 17,
                 ),
-                const SizedBox(width: 6),
+                const SizedBox(width: AppSpacing.sm),
                 Text(
                   '이어서 학습하기',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
+                  style: context.text.bodyLarge?.copyWith(
+                    color: context.colors.onPrimary,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
