@@ -16,16 +16,22 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
   ExampleSentenceSyncer({
     required this.exampleRepository,
     required this.metaRepository,
+    required this.courseId,
+    required this.wordsDataKey,
     required super.bundle,
     required super.cache,
-    this.expectedMinRowCount = 2000,
-  }) : super(dataKey: 'example_sentences');
+    required super.dataKey,
+    required this.expectedMinRowCount,
+  });
 
   final ExampleSentenceRepository exampleRepository;
   final AppMetaRepository metaRepository;
+  final String courseId;
 
-  /// 전체 2150 단어 + default(id=0) = 2151. 안전 마진으로 2000.
-  /// 테스트에서 fixture 크기에 맞게 override.
+  /// 단어 JSON 키 — 예문과 cross-validation 할 단어 데이터를 같은 source 에서 읽는다.
+  final String wordsDataKey;
+
+  /// 정상으로 간주할 최소 예문 수. 코스 데이터 규모에 맞춰 주입된다.
   @override
   final int expectedMinRowCount;
 
@@ -66,7 +72,8 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
   }
 
   @override
-  Future<Version?> currentDbVersion() => metaRepository.getExamplesVersion();
+  Future<Version?> currentDbVersion() =>
+      metaRepository.getExamplesVersion(courseId);
 
   @override
   Future<int> currentDbRowCount() => exampleRepository.countExamples();
@@ -88,7 +95,7 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
       );
     }
 
-    final rawWords = await source.read('japanese_words');
+    final rawWords = await source.read(wordsDataKey);
     final wordsList = rawWords['words'];
     if (wordsList is! List) {
       throw const FormatException(

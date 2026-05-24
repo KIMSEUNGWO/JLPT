@@ -17,6 +17,16 @@ class $WordsTable extends Words with TableInfo<$WordsTable, WordData> {
     type: DriftSqlType.int,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _courseMeta = const VerificationMeta('course');
+  @override
+  late final GeneratedColumn<String> course = GeneratedColumn<String>(
+    'course',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('jlpt_ja'),
+  );
   static const VerificationMeta _levelMeta = const VerificationMeta('level');
   @override
   late final GeneratedColumn<String> level = GeneratedColumn<String>(
@@ -92,6 +102,7 @@ class $WordsTable extends Words with TableInfo<$WordsTable, WordData> {
   @override
   List<GeneratedColumn> get $columns => [
     id,
+    course,
     level,
     act,
     word,
@@ -114,6 +125,12 @@ class $WordsTable extends Words with TableInfo<$WordsTable, WordData> {
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('course')) {
+      context.handle(
+        _courseMeta,
+        course.isAcceptableOrUnknown(data['course']!, _courseMeta),
+      );
     }
     if (data.containsKey('level')) {
       context.handle(
@@ -180,6 +197,10 @@ class $WordsTable extends Words with TableInfo<$WordsTable, WordData> {
         DriftSqlType.int,
         data['${effectivePrefix}id'],
       )!,
+      course: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}course'],
+      )!,
       level: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}level'],
@@ -219,6 +240,9 @@ class $WordsTable extends Words with TableInfo<$WordsTable, WordData> {
 
 class WordData extends DataClass implements Insertable<WordData> {
   final int id;
+
+  /// 소속 코스 id (예: 'jlpt_ja'). 다국어 코스 확장을 위한 차원.
+  final String course;
   final String level;
   final String act;
   final String word;
@@ -228,6 +252,7 @@ class WordData extends DataClass implements Insertable<WordData> {
   final int wrongCnt;
   const WordData({
     required this.id,
+    required this.course,
     required this.level,
     required this.act,
     required this.word,
@@ -240,6 +265,7 @@ class WordData extends DataClass implements Insertable<WordData> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
+    map['course'] = Variable<String>(course);
     map['level'] = Variable<String>(level);
     map['act'] = Variable<String>(act);
     map['word'] = Variable<String>(word);
@@ -253,6 +279,7 @@ class WordData extends DataClass implements Insertable<WordData> {
   WordsCompanion toCompanion(bool nullToAbsent) {
     return WordsCompanion(
       id: Value(id),
+      course: Value(course),
       level: Value(level),
       act: Value(act),
       word: Value(word),
@@ -270,6 +297,7 @@ class WordData extends DataClass implements Insertable<WordData> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return WordData(
       id: serializer.fromJson<int>(json['id']),
+      course: serializer.fromJson<String>(json['course']),
       level: serializer.fromJson<String>(json['level']),
       act: serializer.fromJson<String>(json['act']),
       word: serializer.fromJson<String>(json['word']),
@@ -284,6 +312,7 @@ class WordData extends DataClass implements Insertable<WordData> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
+      'course': serializer.toJson<String>(course),
       'level': serializer.toJson<String>(level),
       'act': serializer.toJson<String>(act),
       'word': serializer.toJson<String>(word),
@@ -296,6 +325,7 @@ class WordData extends DataClass implements Insertable<WordData> {
 
   WordData copyWith({
     int? id,
+    String? course,
     String? level,
     String? act,
     String? word,
@@ -305,6 +335,7 @@ class WordData extends DataClass implements Insertable<WordData> {
     int? wrongCnt,
   }) => WordData(
     id: id ?? this.id,
+    course: course ?? this.course,
     level: level ?? this.level,
     act: act ?? this.act,
     word: word ?? this.word,
@@ -316,6 +347,7 @@ class WordData extends DataClass implements Insertable<WordData> {
   WordData copyWithCompanion(WordsCompanion data) {
     return WordData(
       id: data.id.present ? data.id.value : this.id,
+      course: data.course.present ? data.course.value : this.course,
       level: data.level.present ? data.level.value : this.level,
       act: data.act.present ? data.act.value : this.act,
       word: data.word.present ? data.word.value : this.word,
@@ -330,6 +362,7 @@ class WordData extends DataClass implements Insertable<WordData> {
   String toString() {
     return (StringBuffer('WordData(')
           ..write('id: $id, ')
+          ..write('course: $course, ')
           ..write('level: $level, ')
           ..write('act: $act, ')
           ..write('word: $word, ')
@@ -342,13 +375,23 @@ class WordData extends DataClass implements Insertable<WordData> {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, level, act, word, hiragana, korean, isRead, wrongCnt);
+  int get hashCode => Object.hash(
+    id,
+    course,
+    level,
+    act,
+    word,
+    hiragana,
+    korean,
+    isRead,
+    wrongCnt,
+  );
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is WordData &&
           other.id == this.id &&
+          other.course == this.course &&
           other.level == this.level &&
           other.act == this.act &&
           other.word == this.word &&
@@ -360,6 +403,7 @@ class WordData extends DataClass implements Insertable<WordData> {
 
 class WordsCompanion extends UpdateCompanion<WordData> {
   final Value<int> id;
+  final Value<String> course;
   final Value<String> level;
   final Value<String> act;
   final Value<String> word;
@@ -369,6 +413,7 @@ class WordsCompanion extends UpdateCompanion<WordData> {
   final Value<int> wrongCnt;
   const WordsCompanion({
     this.id = const Value.absent(),
+    this.course = const Value.absent(),
     this.level = const Value.absent(),
     this.act = const Value.absent(),
     this.word = const Value.absent(),
@@ -379,6 +424,7 @@ class WordsCompanion extends UpdateCompanion<WordData> {
   });
   WordsCompanion.insert({
     this.id = const Value.absent(),
+    this.course = const Value.absent(),
     required String level,
     required String act,
     required String word,
@@ -393,6 +439,7 @@ class WordsCompanion extends UpdateCompanion<WordData> {
        korean = Value(korean);
   static Insertable<WordData> custom({
     Expression<int>? id,
+    Expression<String>? course,
     Expression<String>? level,
     Expression<String>? act,
     Expression<String>? word,
@@ -403,6 +450,7 @@ class WordsCompanion extends UpdateCompanion<WordData> {
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
+      if (course != null) 'course': course,
       if (level != null) 'level': level,
       if (act != null) 'act': act,
       if (word != null) 'word': word,
@@ -415,6 +463,7 @@ class WordsCompanion extends UpdateCompanion<WordData> {
 
   WordsCompanion copyWith({
     Value<int>? id,
+    Value<String>? course,
     Value<String>? level,
     Value<String>? act,
     Value<String>? word,
@@ -425,6 +474,7 @@ class WordsCompanion extends UpdateCompanion<WordData> {
   }) {
     return WordsCompanion(
       id: id ?? this.id,
+      course: course ?? this.course,
       level: level ?? this.level,
       act: act ?? this.act,
       word: word ?? this.word,
@@ -440,6 +490,9 @@ class WordsCompanion extends UpdateCompanion<WordData> {
     final map = <String, Expression>{};
     if (id.present) {
       map['id'] = Variable<int>(id.value);
+    }
+    if (course.present) {
+      map['course'] = Variable<String>(course.value);
     }
     if (level.present) {
       map['level'] = Variable<String>(level.value);
@@ -469,6 +522,7 @@ class WordsCompanion extends UpdateCompanion<WordData> {
   String toString() {
     return (StringBuffer('WordsCompanion(')
           ..write('id: $id, ')
+          ..write('course: $course, ')
           ..write('level: $level, ')
           ..write('act: $act, ')
           ..write('word: $word, ')
@@ -487,6 +541,16 @@ class $ChineseCharsTable extends ChineseChars
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ChineseCharsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _courseMeta = const VerificationMeta('course');
+  @override
+  late final GeneratedColumn<String> course = GeneratedColumn<String>(
+    'course',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('jlpt_ja'),
+  );
   static const VerificationMeta _charMeta = const VerificationMeta('char');
   @override
   late final GeneratedColumn<String> char = GeneratedColumn<String>(
@@ -531,6 +595,7 @@ class $ChineseCharsTable extends ChineseChars
   );
   @override
   List<GeneratedColumn> get $columns => [
+    course,
     char,
     koreanChar,
     soundReading,
@@ -548,6 +613,12 @@ class $ChineseCharsTable extends ChineseChars
   }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
+    if (data.containsKey('course')) {
+      context.handle(
+        _courseMeta,
+        course.isAcceptableOrUnknown(data['course']!, _courseMeta),
+      );
+    }
     if (data.containsKey('char')) {
       context.handle(
         _charMeta,
@@ -595,6 +666,10 @@ class $ChineseCharsTable extends ChineseChars
   ChineseCharData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ChineseCharData(
+      course: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}course'],
+      )!,
       char: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}char'],
@@ -621,11 +696,14 @@ class $ChineseCharsTable extends ChineseChars
 }
 
 class ChineseCharData extends DataClass implements Insertable<ChineseCharData> {
+  /// 소속 코스 id (예: 'jlpt_ja'). 문자 모듈을 가진 코스만 row 를 채운다.
+  final String course;
   final String char;
   final String koreanChar;
   final String soundReading;
   final String meanReading;
   const ChineseCharData({
+    required this.course,
     required this.char,
     required this.koreanChar,
     required this.soundReading,
@@ -634,6 +712,7 @@ class ChineseCharData extends DataClass implements Insertable<ChineseCharData> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    map['course'] = Variable<String>(course);
     map['char'] = Variable<String>(char);
     map['korean_char'] = Variable<String>(koreanChar);
     map['sound_reading'] = Variable<String>(soundReading);
@@ -643,6 +722,7 @@ class ChineseCharData extends DataClass implements Insertable<ChineseCharData> {
 
   ChineseCharsCompanion toCompanion(bool nullToAbsent) {
     return ChineseCharsCompanion(
+      course: Value(course),
       char: Value(char),
       koreanChar: Value(koreanChar),
       soundReading: Value(soundReading),
@@ -656,6 +736,7 @@ class ChineseCharData extends DataClass implements Insertable<ChineseCharData> {
   }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ChineseCharData(
+      course: serializer.fromJson<String>(json['course']),
       char: serializer.fromJson<String>(json['char']),
       koreanChar: serializer.fromJson<String>(json['koreanChar']),
       soundReading: serializer.fromJson<String>(json['soundReading']),
@@ -666,6 +747,7 @@ class ChineseCharData extends DataClass implements Insertable<ChineseCharData> {
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
+      'course': serializer.toJson<String>(course),
       'char': serializer.toJson<String>(char),
       'koreanChar': serializer.toJson<String>(koreanChar),
       'soundReading': serializer.toJson<String>(soundReading),
@@ -674,11 +756,13 @@ class ChineseCharData extends DataClass implements Insertable<ChineseCharData> {
   }
 
   ChineseCharData copyWith({
+    String? course,
     String? char,
     String? koreanChar,
     String? soundReading,
     String? meanReading,
   }) => ChineseCharData(
+    course: course ?? this.course,
     char: char ?? this.char,
     koreanChar: koreanChar ?? this.koreanChar,
     soundReading: soundReading ?? this.soundReading,
@@ -686,6 +770,7 @@ class ChineseCharData extends DataClass implements Insertable<ChineseCharData> {
   );
   ChineseCharData copyWithCompanion(ChineseCharsCompanion data) {
     return ChineseCharData(
+      course: data.course.present ? data.course.value : this.course,
       char: data.char.present ? data.char.value : this.char,
       koreanChar: data.koreanChar.present
           ? data.koreanChar.value
@@ -702,6 +787,7 @@ class ChineseCharData extends DataClass implements Insertable<ChineseCharData> {
   @override
   String toString() {
     return (StringBuffer('ChineseCharData(')
+          ..write('course: $course, ')
           ..write('char: $char, ')
           ..write('koreanChar: $koreanChar, ')
           ..write('soundReading: $soundReading, ')
@@ -711,11 +797,13 @@ class ChineseCharData extends DataClass implements Insertable<ChineseCharData> {
   }
 
   @override
-  int get hashCode => Object.hash(char, koreanChar, soundReading, meanReading);
+  int get hashCode =>
+      Object.hash(course, char, koreanChar, soundReading, meanReading);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is ChineseCharData &&
+          other.course == this.course &&
           other.char == this.char &&
           other.koreanChar == this.koreanChar &&
           other.soundReading == this.soundReading &&
@@ -723,12 +811,14 @@ class ChineseCharData extends DataClass implements Insertable<ChineseCharData> {
 }
 
 class ChineseCharsCompanion extends UpdateCompanion<ChineseCharData> {
+  final Value<String> course;
   final Value<String> char;
   final Value<String> koreanChar;
   final Value<String> soundReading;
   final Value<String> meanReading;
   final Value<int> rowid;
   const ChineseCharsCompanion({
+    this.course = const Value.absent(),
     this.char = const Value.absent(),
     this.koreanChar = const Value.absent(),
     this.soundReading = const Value.absent(),
@@ -736,6 +826,7 @@ class ChineseCharsCompanion extends UpdateCompanion<ChineseCharData> {
     this.rowid = const Value.absent(),
   });
   ChineseCharsCompanion.insert({
+    this.course = const Value.absent(),
     required String char,
     required String koreanChar,
     required String soundReading,
@@ -746,6 +837,7 @@ class ChineseCharsCompanion extends UpdateCompanion<ChineseCharData> {
        soundReading = Value(soundReading),
        meanReading = Value(meanReading);
   static Insertable<ChineseCharData> custom({
+    Expression<String>? course,
     Expression<String>? char,
     Expression<String>? koreanChar,
     Expression<String>? soundReading,
@@ -753,6 +845,7 @@ class ChineseCharsCompanion extends UpdateCompanion<ChineseCharData> {
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
+      if (course != null) 'course': course,
       if (char != null) 'char': char,
       if (koreanChar != null) 'korean_char': koreanChar,
       if (soundReading != null) 'sound_reading': soundReading,
@@ -762,6 +855,7 @@ class ChineseCharsCompanion extends UpdateCompanion<ChineseCharData> {
   }
 
   ChineseCharsCompanion copyWith({
+    Value<String>? course,
     Value<String>? char,
     Value<String>? koreanChar,
     Value<String>? soundReading,
@@ -769,6 +863,7 @@ class ChineseCharsCompanion extends UpdateCompanion<ChineseCharData> {
     Value<int>? rowid,
   }) {
     return ChineseCharsCompanion(
+      course: course ?? this.course,
       char: char ?? this.char,
       koreanChar: koreanChar ?? this.koreanChar,
       soundReading: soundReading ?? this.soundReading,
@@ -780,6 +875,9 @@ class ChineseCharsCompanion extends UpdateCompanion<ChineseCharData> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    if (course.present) {
+      map['course'] = Variable<String>(course.value);
+    }
     if (char.present) {
       map['char'] = Variable<String>(char.value);
     }
@@ -801,6 +899,7 @@ class ChineseCharsCompanion extends UpdateCompanion<ChineseCharData> {
   @override
   String toString() {
     return (StringBuffer('ChineseCharsCompanion(')
+          ..write('course: $course, ')
           ..write('char: $char, ')
           ..write('koreanChar: $koreanChar, ')
           ..write('soundReading: $soundReading, ')
@@ -829,6 +928,16 @@ class $TestResultsTable extends TestResults
     defaultConstraints: GeneratedColumn.constraintIsAlways(
       'PRIMARY KEY AUTOINCREMENT',
     ),
+  );
+  static const VerificationMeta _courseMeta = const VerificationMeta('course');
+  @override
+  late final GeneratedColumn<String> course = GeneratedColumn<String>(
+    'course',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('jlpt_ja'),
   );
   static const VerificationMeta _levelMeta = const VerificationMeta('level');
   @override
@@ -871,7 +980,14 @@ class $TestResultsTable extends TestResults
     requiredDuringInsert: true,
   );
   @override
-  List<GeneratedColumn> get $columns => [id, level, type, takenAt, timeSeconds];
+  List<GeneratedColumn> get $columns => [
+    id,
+    course,
+    level,
+    type,
+    takenAt,
+    timeSeconds,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -886,6 +1002,12 @@ class $TestResultsTable extends TestResults
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('course')) {
+      context.handle(
+        _courseMeta,
+        course.isAcceptableOrUnknown(data['course']!, _courseMeta),
+      );
     }
     if (data.containsKey('level')) {
       context.handle(
@@ -933,6 +1055,10 @@ class $TestResultsTable extends TestResults
         DriftSqlType.int,
         data['${effectivePrefix}id'],
       )!,
+      course: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}course'],
+      )!,
       level: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}level'],
@@ -960,12 +1086,16 @@ class $TestResultsTable extends TestResults
 
 class TestResultData extends DataClass implements Insertable<TestResultData> {
   final int id;
+
+  /// 소속 코스 id (예: 'jlpt_ja'). 다국어 코스 확장을 위한 차원.
+  final String course;
   final String? level;
   final String type;
   final DateTime takenAt;
   final int timeSeconds;
   const TestResultData({
     required this.id,
+    required this.course,
     this.level,
     required this.type,
     required this.takenAt,
@@ -975,6 +1105,7 @@ class TestResultData extends DataClass implements Insertable<TestResultData> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
+    map['course'] = Variable<String>(course);
     if (!nullToAbsent || level != null) {
       map['level'] = Variable<String>(level);
     }
@@ -987,6 +1118,7 @@ class TestResultData extends DataClass implements Insertable<TestResultData> {
   TestResultsCompanion toCompanion(bool nullToAbsent) {
     return TestResultsCompanion(
       id: Value(id),
+      course: Value(course),
       level: level == null && nullToAbsent
           ? const Value.absent()
           : Value(level),
@@ -1003,6 +1135,7 @@ class TestResultData extends DataClass implements Insertable<TestResultData> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return TestResultData(
       id: serializer.fromJson<int>(json['id']),
+      course: serializer.fromJson<String>(json['course']),
       level: serializer.fromJson<String?>(json['level']),
       type: serializer.fromJson<String>(json['type']),
       takenAt: serializer.fromJson<DateTime>(json['takenAt']),
@@ -1014,6 +1147,7 @@ class TestResultData extends DataClass implements Insertable<TestResultData> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
+      'course': serializer.toJson<String>(course),
       'level': serializer.toJson<String?>(level),
       'type': serializer.toJson<String>(type),
       'takenAt': serializer.toJson<DateTime>(takenAt),
@@ -1023,12 +1157,14 @@ class TestResultData extends DataClass implements Insertable<TestResultData> {
 
   TestResultData copyWith({
     int? id,
+    String? course,
     Value<String?> level = const Value.absent(),
     String? type,
     DateTime? takenAt,
     int? timeSeconds,
   }) => TestResultData(
     id: id ?? this.id,
+    course: course ?? this.course,
     level: level.present ? level.value : this.level,
     type: type ?? this.type,
     takenAt: takenAt ?? this.takenAt,
@@ -1037,6 +1173,7 @@ class TestResultData extends DataClass implements Insertable<TestResultData> {
   TestResultData copyWithCompanion(TestResultsCompanion data) {
     return TestResultData(
       id: data.id.present ? data.id.value : this.id,
+      course: data.course.present ? data.course.value : this.course,
       level: data.level.present ? data.level.value : this.level,
       type: data.type.present ? data.type.value : this.type,
       takenAt: data.takenAt.present ? data.takenAt.value : this.takenAt,
@@ -1050,6 +1187,7 @@ class TestResultData extends DataClass implements Insertable<TestResultData> {
   String toString() {
     return (StringBuffer('TestResultData(')
           ..write('id: $id, ')
+          ..write('course: $course, ')
           ..write('level: $level, ')
           ..write('type: $type, ')
           ..write('takenAt: $takenAt, ')
@@ -1059,12 +1197,14 @@ class TestResultData extends DataClass implements Insertable<TestResultData> {
   }
 
   @override
-  int get hashCode => Object.hash(id, level, type, takenAt, timeSeconds);
+  int get hashCode =>
+      Object.hash(id, course, level, type, takenAt, timeSeconds);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is TestResultData &&
           other.id == this.id &&
+          other.course == this.course &&
           other.level == this.level &&
           other.type == this.type &&
           other.takenAt == this.takenAt &&
@@ -1073,12 +1213,14 @@ class TestResultData extends DataClass implements Insertable<TestResultData> {
 
 class TestResultsCompanion extends UpdateCompanion<TestResultData> {
   final Value<int> id;
+  final Value<String> course;
   final Value<String?> level;
   final Value<String> type;
   final Value<DateTime> takenAt;
   final Value<int> timeSeconds;
   const TestResultsCompanion({
     this.id = const Value.absent(),
+    this.course = const Value.absent(),
     this.level = const Value.absent(),
     this.type = const Value.absent(),
     this.takenAt = const Value.absent(),
@@ -1086,6 +1228,7 @@ class TestResultsCompanion extends UpdateCompanion<TestResultData> {
   });
   TestResultsCompanion.insert({
     this.id = const Value.absent(),
+    this.course = const Value.absent(),
     this.level = const Value.absent(),
     required String type,
     required DateTime takenAt,
@@ -1095,6 +1238,7 @@ class TestResultsCompanion extends UpdateCompanion<TestResultData> {
        timeSeconds = Value(timeSeconds);
   static Insertable<TestResultData> custom({
     Expression<int>? id,
+    Expression<String>? course,
     Expression<String>? level,
     Expression<String>? type,
     Expression<DateTime>? takenAt,
@@ -1102,6 +1246,7 @@ class TestResultsCompanion extends UpdateCompanion<TestResultData> {
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
+      if (course != null) 'course': course,
       if (level != null) 'level': level,
       if (type != null) 'type': type,
       if (takenAt != null) 'taken_at': takenAt,
@@ -1111,6 +1256,7 @@ class TestResultsCompanion extends UpdateCompanion<TestResultData> {
 
   TestResultsCompanion copyWith({
     Value<int>? id,
+    Value<String>? course,
     Value<String?>? level,
     Value<String>? type,
     Value<DateTime>? takenAt,
@@ -1118,6 +1264,7 @@ class TestResultsCompanion extends UpdateCompanion<TestResultData> {
   }) {
     return TestResultsCompanion(
       id: id ?? this.id,
+      course: course ?? this.course,
       level: level ?? this.level,
       type: type ?? this.type,
       takenAt: takenAt ?? this.takenAt,
@@ -1130,6 +1277,9 @@ class TestResultsCompanion extends UpdateCompanion<TestResultData> {
     final map = <String, Expression>{};
     if (id.present) {
       map['id'] = Variable<int>(id.value);
+    }
+    if (course.present) {
+      map['course'] = Variable<String>(course.value);
     }
     if (level.present) {
       map['level'] = Variable<String>(level.value);
@@ -1150,6 +1300,7 @@ class TestResultsCompanion extends UpdateCompanion<TestResultData> {
   String toString() {
     return (StringBuffer('TestResultsCompanion(')
           ..write('id: $id, ')
+          ..write('course: $course, ')
           ..write('level: $level, ')
           ..write('type: $type, ')
           ..write('takenAt: $takenAt, ')
@@ -2337,6 +2488,16 @@ class $ExampleSentencesTable extends ExampleSentences
     type: DriftSqlType.int,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _courseMeta = const VerificationMeta('course');
+  @override
+  late final GeneratedColumn<String> course = GeneratedColumn<String>(
+    'course',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('jlpt_ja'),
+  );
   static const VerificationMeta _sentenceMeta = const VerificationMeta(
     'sentence',
   );
@@ -2360,7 +2521,7 @@ class $ExampleSentencesTable extends ExampleSentences
     requiredDuringInsert: true,
   );
   @override
-  List<GeneratedColumn> get $columns => [id, sentence, translation];
+  List<GeneratedColumn> get $columns => [id, course, sentence, translation];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -2375,6 +2536,12 @@ class $ExampleSentencesTable extends ExampleSentences
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('course')) {
+      context.handle(
+        _courseMeta,
+        course.isAcceptableOrUnknown(data['course']!, _courseMeta),
+      );
     }
     if (data.containsKey('sentence')) {
       context.handle(
@@ -2408,6 +2575,10 @@ class $ExampleSentencesTable extends ExampleSentences
         DriftSqlType.int,
         data['${effectivePrefix}id'],
       )!,
+      course: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}course'],
+      )!,
       sentence: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}sentence'],
@@ -2428,10 +2599,14 @@ class $ExampleSentencesTable extends ExampleSentences
 class ExampleSentenceData extends DataClass
     implements Insertable<ExampleSentenceData> {
   final int id;
+
+  /// 소속 코스 id (예: 'jlpt_ja'). 다국어 코스 확장을 위한 차원.
+  final String course;
   final String sentence;
   final String translation;
   const ExampleSentenceData({
     required this.id,
+    required this.course,
     required this.sentence,
     required this.translation,
   });
@@ -2439,6 +2614,7 @@ class ExampleSentenceData extends DataClass
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
+    map['course'] = Variable<String>(course);
     map['sentence'] = Variable<String>(sentence);
     map['translation'] = Variable<String>(translation);
     return map;
@@ -2447,6 +2623,7 @@ class ExampleSentenceData extends DataClass
   ExampleSentencesCompanion toCompanion(bool nullToAbsent) {
     return ExampleSentencesCompanion(
       id: Value(id),
+      course: Value(course),
       sentence: Value(sentence),
       translation: Value(translation),
     );
@@ -2459,6 +2636,7 @@ class ExampleSentenceData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ExampleSentenceData(
       id: serializer.fromJson<int>(json['id']),
+      course: serializer.fromJson<String>(json['course']),
       sentence: serializer.fromJson<String>(json['sentence']),
       translation: serializer.fromJson<String>(json['translation']),
     );
@@ -2468,6 +2646,7 @@ class ExampleSentenceData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
+      'course': serializer.toJson<String>(course),
       'sentence': serializer.toJson<String>(sentence),
       'translation': serializer.toJson<String>(translation),
     };
@@ -2475,16 +2654,19 @@ class ExampleSentenceData extends DataClass
 
   ExampleSentenceData copyWith({
     int? id,
+    String? course,
     String? sentence,
     String? translation,
   }) => ExampleSentenceData(
     id: id ?? this.id,
+    course: course ?? this.course,
     sentence: sentence ?? this.sentence,
     translation: translation ?? this.translation,
   );
   ExampleSentenceData copyWithCompanion(ExampleSentencesCompanion data) {
     return ExampleSentenceData(
       id: data.id.present ? data.id.value : this.id,
+      course: data.course.present ? data.course.value : this.course,
       sentence: data.sentence.present ? data.sentence.value : this.sentence,
       translation: data.translation.present
           ? data.translation.value
@@ -2496,6 +2678,7 @@ class ExampleSentenceData extends DataClass
   String toString() {
     return (StringBuffer('ExampleSentenceData(')
           ..write('id: $id, ')
+          ..write('course: $course, ')
           ..write('sentence: $sentence, ')
           ..write('translation: $translation')
           ..write(')'))
@@ -2503,38 +2686,44 @@ class ExampleSentenceData extends DataClass
   }
 
   @override
-  int get hashCode => Object.hash(id, sentence, translation);
+  int get hashCode => Object.hash(id, course, sentence, translation);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is ExampleSentenceData &&
           other.id == this.id &&
+          other.course == this.course &&
           other.sentence == this.sentence &&
           other.translation == this.translation);
 }
 
 class ExampleSentencesCompanion extends UpdateCompanion<ExampleSentenceData> {
   final Value<int> id;
+  final Value<String> course;
   final Value<String> sentence;
   final Value<String> translation;
   const ExampleSentencesCompanion({
     this.id = const Value.absent(),
+    this.course = const Value.absent(),
     this.sentence = const Value.absent(),
     this.translation = const Value.absent(),
   });
   ExampleSentencesCompanion.insert({
     this.id = const Value.absent(),
+    this.course = const Value.absent(),
     required String sentence,
     required String translation,
   }) : sentence = Value(sentence),
        translation = Value(translation);
   static Insertable<ExampleSentenceData> custom({
     Expression<int>? id,
+    Expression<String>? course,
     Expression<String>? sentence,
     Expression<String>? translation,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
+      if (course != null) 'course': course,
       if (sentence != null) 'sentence': sentence,
       if (translation != null) 'translation': translation,
     });
@@ -2542,11 +2731,13 @@ class ExampleSentencesCompanion extends UpdateCompanion<ExampleSentenceData> {
 
   ExampleSentencesCompanion copyWith({
     Value<int>? id,
+    Value<String>? course,
     Value<String>? sentence,
     Value<String>? translation,
   }) {
     return ExampleSentencesCompanion(
       id: id ?? this.id,
+      course: course ?? this.course,
       sentence: sentence ?? this.sentence,
       translation: translation ?? this.translation,
     );
@@ -2557,6 +2748,9 @@ class ExampleSentencesCompanion extends UpdateCompanion<ExampleSentenceData> {
     final map = <String, Expression>{};
     if (id.present) {
       map['id'] = Variable<int>(id.value);
+    }
+    if (course.present) {
+      map['course'] = Variable<String>(course.value);
     }
     if (sentence.present) {
       map['sentence'] = Variable<String>(sentence.value);
@@ -2571,6 +2765,7 @@ class ExampleSentencesCompanion extends UpdateCompanion<ExampleSentenceData> {
   String toString() {
     return (StringBuffer('ExampleSentencesCompanion(')
           ..write('id: $id, ')
+          ..write('course: $course, ')
           ..write('sentence: $sentence, ')
           ..write('translation: $translation')
           ..write(')'))
@@ -2584,6 +2779,16 @@ class $WordExampleRefsTable extends WordExampleRefs
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $WordExampleRefsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _courseMeta = const VerificationMeta('course');
+  @override
+  late final GeneratedColumn<String> course = GeneratedColumn<String>(
+    'course',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('jlpt_ja'),
+  );
   static const VerificationMeta _wordIdMeta = const VerificationMeta('wordId');
   @override
   late final GeneratedColumn<int> wordId = GeneratedColumn<int>(
@@ -2611,7 +2816,7 @@ class $WordExampleRefsTable extends WordExampleRefs
     ),
   );
   @override
-  List<GeneratedColumn> get $columns => [wordId, exampleId];
+  List<GeneratedColumn> get $columns => [course, wordId, exampleId];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -2624,6 +2829,12 @@ class $WordExampleRefsTable extends WordExampleRefs
   }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
+    if (data.containsKey('course')) {
+      context.handle(
+        _courseMeta,
+        course.isAcceptableOrUnknown(data['course']!, _courseMeta),
+      );
+    }
     if (data.containsKey('word_id')) {
       context.handle(
         _wordIdMeta,
@@ -2649,6 +2860,10 @@ class $WordExampleRefsTable extends WordExampleRefs
   WordExampleRefData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return WordExampleRefData(
+      course: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}course'],
+      )!,
       wordId: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}word_id'],
@@ -2668,12 +2883,19 @@ class $WordExampleRefsTable extends WordExampleRefs
 
 class WordExampleRefData extends DataClass
     implements Insertable<WordExampleRefData> {
+  /// 소속 코스 id (예: 'jlpt_ja'). 다국어 코스 확장을 위한 차원.
+  final String course;
   final int wordId;
   final int exampleId;
-  const WordExampleRefData({required this.wordId, required this.exampleId});
+  const WordExampleRefData({
+    required this.course,
+    required this.wordId,
+    required this.exampleId,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    map['course'] = Variable<String>(course);
     map['word_id'] = Variable<int>(wordId);
     map['example_id'] = Variable<int>(exampleId);
     return map;
@@ -2681,6 +2903,7 @@ class WordExampleRefData extends DataClass
 
   WordExampleRefsCompanion toCompanion(bool nullToAbsent) {
     return WordExampleRefsCompanion(
+      course: Value(course),
       wordId: Value(wordId),
       exampleId: Value(exampleId),
     );
@@ -2692,6 +2915,7 @@ class WordExampleRefData extends DataClass
   }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return WordExampleRefData(
+      course: serializer.fromJson<String>(json['course']),
       wordId: serializer.fromJson<int>(json['wordId']),
       exampleId: serializer.fromJson<int>(json['exampleId']),
     );
@@ -2700,18 +2924,21 @@ class WordExampleRefData extends DataClass
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
+      'course': serializer.toJson<String>(course),
       'wordId': serializer.toJson<int>(wordId),
       'exampleId': serializer.toJson<int>(exampleId),
     };
   }
 
-  WordExampleRefData copyWith({int? wordId, int? exampleId}) =>
+  WordExampleRefData copyWith({String? course, int? wordId, int? exampleId}) =>
       WordExampleRefData(
+        course: course ?? this.course,
         wordId: wordId ?? this.wordId,
         exampleId: exampleId ?? this.exampleId,
       );
   WordExampleRefData copyWithCompanion(WordExampleRefsCompanion data) {
     return WordExampleRefData(
+      course: data.course.present ? data.course.value : this.course,
       wordId: data.wordId.present ? data.wordId.value : this.wordId,
       exampleId: data.exampleId.present ? data.exampleId.value : this.exampleId,
     );
@@ -2720,6 +2947,7 @@ class WordExampleRefData extends DataClass
   @override
   String toString() {
     return (StringBuffer('WordExampleRefData(')
+          ..write('course: $course, ')
           ..write('wordId: $wordId, ')
           ..write('exampleId: $exampleId')
           ..write(')'))
@@ -2727,36 +2955,42 @@ class WordExampleRefData extends DataClass
   }
 
   @override
-  int get hashCode => Object.hash(wordId, exampleId);
+  int get hashCode => Object.hash(course, wordId, exampleId);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is WordExampleRefData &&
+          other.course == this.course &&
           other.wordId == this.wordId &&
           other.exampleId == this.exampleId);
 }
 
 class WordExampleRefsCompanion extends UpdateCompanion<WordExampleRefData> {
+  final Value<String> course;
   final Value<int> wordId;
   final Value<int> exampleId;
   final Value<int> rowid;
   const WordExampleRefsCompanion({
+    this.course = const Value.absent(),
     this.wordId = const Value.absent(),
     this.exampleId = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   WordExampleRefsCompanion.insert({
+    this.course = const Value.absent(),
     required int wordId,
     required int exampleId,
     this.rowid = const Value.absent(),
   }) : wordId = Value(wordId),
        exampleId = Value(exampleId);
   static Insertable<WordExampleRefData> custom({
+    Expression<String>? course,
     Expression<int>? wordId,
     Expression<int>? exampleId,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
+      if (course != null) 'course': course,
       if (wordId != null) 'word_id': wordId,
       if (exampleId != null) 'example_id': exampleId,
       if (rowid != null) 'rowid': rowid,
@@ -2764,11 +2998,13 @@ class WordExampleRefsCompanion extends UpdateCompanion<WordExampleRefData> {
   }
 
   WordExampleRefsCompanion copyWith({
+    Value<String>? course,
     Value<int>? wordId,
     Value<int>? exampleId,
     Value<int>? rowid,
   }) {
     return WordExampleRefsCompanion(
+      course: course ?? this.course,
       wordId: wordId ?? this.wordId,
       exampleId: exampleId ?? this.exampleId,
       rowid: rowid ?? this.rowid,
@@ -2778,6 +3014,9 @@ class WordExampleRefsCompanion extends UpdateCompanion<WordExampleRefData> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    if (course.present) {
+      map['course'] = Variable<String>(course.value);
+    }
     if (wordId.present) {
       map['word_id'] = Variable<int>(wordId.value);
     }
@@ -2793,6 +3032,7 @@ class WordExampleRefsCompanion extends UpdateCompanion<WordExampleRefData> {
   @override
   String toString() {
     return (StringBuffer('WordExampleRefsCompanion(')
+          ..write('course: $course, ')
           ..write('wordId: $wordId, ')
           ..write('exampleId: $exampleId, ')
           ..write('rowid: $rowid')
@@ -2862,6 +3102,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
 typedef $$WordsTableCreateCompanionBuilder =
     WordsCompanion Function({
       Value<int> id,
+      Value<String> course,
       required String level,
       required String act,
       required String word,
@@ -2873,6 +3114,7 @@ typedef $$WordsTableCreateCompanionBuilder =
 typedef $$WordsTableUpdateCompanionBuilder =
     WordsCompanion Function({
       Value<int> id,
+      Value<String> course,
       Value<String> level,
       Value<String> act,
       Value<String> word,
@@ -2917,6 +3159,11 @@ class $$WordsTableFilterComposer extends Composer<_$AppDatabase, $WordsTable> {
   });
   ColumnFilters<int> get id => $composableBuilder(
     column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get course => $composableBuilder(
+    column: $table.course,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -2995,6 +3242,11 @@ class $$WordsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get course => $composableBuilder(
+    column: $table.course,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get level => $composableBuilder(
     column: $table.level,
     builder: (column) => ColumnOrderings(column),
@@ -3042,6 +3294,9 @@ class $$WordsTableAnnotationComposer
   });
   GeneratedColumn<int> get id =>
       $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get course =>
+      $composableBuilder(column: $table.course, builder: (column) => column);
 
   GeneratedColumn<String> get level =>
       $composableBuilder(column: $table.level, builder: (column) => column);
@@ -3119,6 +3374,7 @@ class $$WordsTableTableManager
           updateCompanionCallback:
               ({
                 Value<int> id = const Value.absent(),
+                Value<String> course = const Value.absent(),
                 Value<String> level = const Value.absent(),
                 Value<String> act = const Value.absent(),
                 Value<String> word = const Value.absent(),
@@ -3128,6 +3384,7 @@ class $$WordsTableTableManager
                 Value<int> wrongCnt = const Value.absent(),
               }) => WordsCompanion(
                 id: id,
+                course: course,
                 level: level,
                 act: act,
                 word: word,
@@ -3139,6 +3396,7 @@ class $$WordsTableTableManager
           createCompanionCallback:
               ({
                 Value<int> id = const Value.absent(),
+                Value<String> course = const Value.absent(),
                 required String level,
                 required String act,
                 required String word,
@@ -3148,6 +3406,7 @@ class $$WordsTableTableManager
                 Value<int> wrongCnt = const Value.absent(),
               }) => WordsCompanion.insert(
                 id: id,
+                course: course,
                 level: level,
                 act: act,
                 word: word,
@@ -3213,6 +3472,7 @@ typedef $$WordsTableProcessedTableManager =
     >;
 typedef $$ChineseCharsTableCreateCompanionBuilder =
     ChineseCharsCompanion Function({
+      Value<String> course,
       required String char,
       required String koreanChar,
       required String soundReading,
@@ -3221,6 +3481,7 @@ typedef $$ChineseCharsTableCreateCompanionBuilder =
     });
 typedef $$ChineseCharsTableUpdateCompanionBuilder =
     ChineseCharsCompanion Function({
+      Value<String> course,
       Value<String> char,
       Value<String> koreanChar,
       Value<String> soundReading,
@@ -3237,6 +3498,11 @@ class $$ChineseCharsTableFilterComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  ColumnFilters<String> get course => $composableBuilder(
+    column: $table.course,
+    builder: (column) => ColumnFilters(column),
+  );
+
   ColumnFilters<String> get char => $composableBuilder(
     column: $table.char,
     builder: (column) => ColumnFilters(column),
@@ -3267,6 +3533,11 @@ class $$ChineseCharsTableOrderingComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  ColumnOrderings<String> get course => $composableBuilder(
+    column: $table.course,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get char => $composableBuilder(
     column: $table.char,
     builder: (column) => ColumnOrderings(column),
@@ -3297,6 +3568,9 @@ class $$ChineseCharsTableAnnotationComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  GeneratedColumn<String> get course =>
+      $composableBuilder(column: $table.course, builder: (column) => column);
+
   GeneratedColumn<String> get char =>
       $composableBuilder(column: $table.char, builder: (column) => column);
 
@@ -3347,12 +3621,14 @@ class $$ChineseCharsTableTableManager
               $$ChineseCharsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
+                Value<String> course = const Value.absent(),
                 Value<String> char = const Value.absent(),
                 Value<String> koreanChar = const Value.absent(),
                 Value<String> soundReading = const Value.absent(),
                 Value<String> meanReading = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => ChineseCharsCompanion(
+                course: course,
                 char: char,
                 koreanChar: koreanChar,
                 soundReading: soundReading,
@@ -3361,12 +3637,14 @@ class $$ChineseCharsTableTableManager
               ),
           createCompanionCallback:
               ({
+                Value<String> course = const Value.absent(),
                 required String char,
                 required String koreanChar,
                 required String soundReading,
                 required String meanReading,
                 Value<int> rowid = const Value.absent(),
               }) => ChineseCharsCompanion.insert(
+                course: course,
                 char: char,
                 koreanChar: koreanChar,
                 soundReading: soundReading,
@@ -3401,6 +3679,7 @@ typedef $$ChineseCharsTableProcessedTableManager =
 typedef $$TestResultsTableCreateCompanionBuilder =
     TestResultsCompanion Function({
       Value<int> id,
+      Value<String> course,
       Value<String?> level,
       required String type,
       required DateTime takenAt,
@@ -3409,6 +3688,7 @@ typedef $$TestResultsTableCreateCompanionBuilder =
 typedef $$TestResultsTableUpdateCompanionBuilder =
     TestResultsCompanion Function({
       Value<int> id,
+      Value<String> course,
       Value<String?> level,
       Value<String> type,
       Value<DateTime> takenAt,
@@ -3452,6 +3732,11 @@ class $$TestResultsTableFilterComposer
   });
   ColumnFilters<int> get id => $composableBuilder(
     column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get course => $composableBuilder(
+    column: $table.course,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -3515,6 +3800,11 @@ class $$TestResultsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get course => $composableBuilder(
+    column: $table.course,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get level => $composableBuilder(
     column: $table.level,
     builder: (column) => ColumnOrderings(column),
@@ -3547,6 +3837,9 @@ class $$TestResultsTableAnnotationComposer
   });
   GeneratedColumn<int> get id =>
       $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get course =>
+      $composableBuilder(column: $table.course, builder: (column) => column);
 
   GeneratedColumn<String> get level =>
       $composableBuilder(column: $table.level, builder: (column) => column);
@@ -3617,12 +3910,14 @@ class $$TestResultsTableTableManager
           updateCompanionCallback:
               ({
                 Value<int> id = const Value.absent(),
+                Value<String> course = const Value.absent(),
                 Value<String?> level = const Value.absent(),
                 Value<String> type = const Value.absent(),
                 Value<DateTime> takenAt = const Value.absent(),
                 Value<int> timeSeconds = const Value.absent(),
               }) => TestResultsCompanion(
                 id: id,
+                course: course,
                 level: level,
                 type: type,
                 takenAt: takenAt,
@@ -3631,12 +3926,14 @@ class $$TestResultsTableTableManager
           createCompanionCallback:
               ({
                 Value<int> id = const Value.absent(),
+                Value<String> course = const Value.absent(),
                 Value<String?> level = const Value.absent(),
                 required String type,
                 required DateTime takenAt,
                 required int timeSeconds,
               }) => TestResultsCompanion.insert(
                 id: id,
+                course: course,
                 level: level,
                 type: type,
                 takenAt: takenAt,
@@ -4444,12 +4741,14 @@ typedef $$DailyStatsTableProcessedTableManager =
 typedef $$ExampleSentencesTableCreateCompanionBuilder =
     ExampleSentencesCompanion Function({
       Value<int> id,
+      Value<String> course,
       required String sentence,
       required String translation,
     });
 typedef $$ExampleSentencesTableUpdateCompanionBuilder =
     ExampleSentencesCompanion Function({
       Value<int> id,
+      Value<String> course,
       Value<String> sentence,
       Value<String> translation,
     });
@@ -4505,6 +4804,11 @@ class $$ExampleSentencesTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
+  ColumnFilters<String> get course => $composableBuilder(
+    column: $table.course,
+    builder: (column) => ColumnFilters(column),
+  );
+
   ColumnFilters<String> get sentence => $composableBuilder(
     column: $table.sentence,
     builder: (column) => ColumnFilters(column),
@@ -4555,6 +4859,11 @@ class $$ExampleSentencesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get course => $composableBuilder(
+    column: $table.course,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get sentence => $composableBuilder(
     column: $table.sentence,
     builder: (column) => ColumnOrderings(column),
@@ -4577,6 +4886,9 @@ class $$ExampleSentencesTableAnnotationComposer
   });
   GeneratedColumn<int> get id =>
       $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get course =>
+      $composableBuilder(column: $table.course, builder: (column) => column);
 
   GeneratedColumn<String> get sentence =>
       $composableBuilder(column: $table.sentence, builder: (column) => column);
@@ -4643,20 +4955,24 @@ class $$ExampleSentencesTableTableManager
           updateCompanionCallback:
               ({
                 Value<int> id = const Value.absent(),
+                Value<String> course = const Value.absent(),
                 Value<String> sentence = const Value.absent(),
                 Value<String> translation = const Value.absent(),
               }) => ExampleSentencesCompanion(
                 id: id,
+                course: course,
                 sentence: sentence,
                 translation: translation,
               ),
           createCompanionCallback:
               ({
                 Value<int> id = const Value.absent(),
+                Value<String> course = const Value.absent(),
                 required String sentence,
                 required String translation,
               }) => ExampleSentencesCompanion.insert(
                 id: id,
+                course: course,
                 sentence: sentence,
                 translation: translation,
               ),
@@ -4720,12 +5036,14 @@ typedef $$ExampleSentencesTableProcessedTableManager =
     >;
 typedef $$WordExampleRefsTableCreateCompanionBuilder =
     WordExampleRefsCompanion Function({
+      Value<String> course,
       required int wordId,
       required int exampleId,
       Value<int> rowid,
     });
 typedef $$WordExampleRefsTableUpdateCompanionBuilder =
     WordExampleRefsCompanion Function({
+      Value<String> course,
       Value<int> wordId,
       Value<int> exampleId,
       Value<int> rowid,
@@ -4794,6 +5112,11 @@ class $$WordExampleRefsTableFilterComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  ColumnFilters<String> get course => $composableBuilder(
+    column: $table.course,
+    builder: (column) => ColumnFilters(column),
+  );
+
   $$WordsTableFilterComposer get wordId {
     final $$WordsTableFilterComposer composer = $composerBuilder(
       composer: this,
@@ -4850,6 +5173,11 @@ class $$WordExampleRefsTableOrderingComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  ColumnOrderings<String> get course => $composableBuilder(
+    column: $table.course,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$WordsTableOrderingComposer get wordId {
     final $$WordsTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -4906,6 +5234,9 @@ class $$WordExampleRefsTableAnnotationComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  GeneratedColumn<String> get course =>
+      $composableBuilder(column: $table.course, builder: (column) => column);
+
   $$WordsTableAnnotationComposer get wordId {
     final $$WordsTableAnnotationComposer composer = $composerBuilder(
       composer: this,
@@ -4983,20 +5314,24 @@ class $$WordExampleRefsTableTableManager
               $$WordExampleRefsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
+                Value<String> course = const Value.absent(),
                 Value<int> wordId = const Value.absent(),
                 Value<int> exampleId = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => WordExampleRefsCompanion(
+                course: course,
                 wordId: wordId,
                 exampleId: exampleId,
                 rowid: rowid,
               ),
           createCompanionCallback:
               ({
+                Value<String> course = const Value.absent(),
                 required int wordId,
                 required int exampleId,
                 Value<int> rowid = const Value.absent(),
               }) => WordExampleRefsCompanion.insert(
+                course: course,
                 wordId: wordId,
                 exampleId: exampleId,
                 rowid: rowid,

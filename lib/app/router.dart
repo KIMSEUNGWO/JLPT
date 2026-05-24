@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:jlpt_app/app/app_routes.dart';
 import 'package:jlpt_app/app/route_args.dart';
-import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/course/course_registry.dart';
 import 'package:jlpt_app/widgets/page_main.dart';
 import 'package:jlpt_app/widgets/page_settings.dart';
 import 'package:jlpt_app/widgets/startup_gate.dart';
@@ -25,7 +25,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.studyLevel,
       builder: (context, state) {
-        final level = Level.valueOf(state.pathParameters['level']!);
+        // UI 는 단일 코스 — 기본 코스로 레벨 코드를 해석한다.
+        // 코스 선택 UI 추가 시 활성 코스로 교체.
+        final level =
+            CourseRegistry.defaultCourse.levelOf(state.pathParameters['level']!);
         return StudyListPage(level: level);
       },
       routes: [

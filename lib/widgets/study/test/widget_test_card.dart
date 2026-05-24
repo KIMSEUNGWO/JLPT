@@ -47,8 +47,8 @@ class _TestCardWidgetState extends State<TestCardWidget>
             child: Center(
               child: Text(
                 widget.reverse
-                    ? widget.data.question.getKorean()
-                    : widget.data.question.getJapanese(),
+                    ? widget.data.question.getMeaning()
+                    : widget.data.question.getTerm(),
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),
@@ -80,7 +80,7 @@ class _TestCardWidgetState extends State<TestCardWidget>
                       ? Border.all(color: Theme.of(context).colorScheme.primary)
                       : null,
                   child: Text(
-                    widget.reverse ? answer.getJapanese() : answer.getKorean(),
+                    widget.reverse ? answer.getMeaning() : answer.getTerm(),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.w500,

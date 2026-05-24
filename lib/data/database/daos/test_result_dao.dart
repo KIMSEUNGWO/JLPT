@@ -10,8 +10,10 @@ class TestResultDao extends DatabaseAccessor<AppDatabase>
     with _$TestResultDaoMixin {
   TestResultDao(super.db);
 
-  Future<List<TestResultData>> getAllResults() =>
-      (select(testResults)..orderBy([(t) => OrderingTerm.desc(t.takenAt)]))
+  Future<List<TestResultData>> getAllResults(String course) =>
+      (select(testResults)
+            ..where((t) => t.course.equals(course))
+            ..orderBy([(t) => OrderingTerm.desc(t.takenAt)]))
           .get();
 
   Future<List<TestQuestionData>> getQuestionsFor(int resultId) =>

@@ -122,7 +122,7 @@ class _TestPageState extends ConsumerState<TestPage> {
     if (_loading) return const CupertinoActivityIndicator();
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.args.level?.name ?? '통합'} ${widget.args.type.title} 테스트'),
+        title: Text('${widget.args.level?.label ?? '통합'} ${widget.args.type.title} 테스트'),
         centerTitle: false,
         backgroundColor: Colors.white,
         actions: [

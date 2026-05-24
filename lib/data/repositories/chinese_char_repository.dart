@@ -4,16 +4,21 @@ import 'package:drift/drift.dart';
 import 'package:jlpt_app/data/database/app_database.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
+import 'package:jlpt_app/domain/course/course.dart';
 import 'package:pub_semver/pub_semver.dart';
 
+/// 문자(한자) 저장소. 활성 [Course] 에 스코프된다.
 class ChineseCharRepository {
   final AppDatabase _db;
   final AppMetaRepository _meta;
+  final Course _course;
 
-  ChineseCharRepository(this._db, this._meta);
+  ChineseCharRepository(this._db, this._meta, this._course);
+
+  String get _courseId => _course.id;
 
   Future<Map<String, ChineseChar>> getAll() async {
-    final rows = await _db.chineseCharDao.getAll();
+    final rows = await _db.chineseCharDao.getAll(_courseId);
     return {for (final r in rows) r.char: _toEntity(r)};
   }
 
@@ -24,6 +29,7 @@ class ChineseCharRepository {
     final companions = chars
         .map(
           (c) => ChineseCharsCompanion(
+            course: Value(_courseId),
             char: Value(c.char),
             koreanChar: Value(c.koreanChar),
             soundReading: Value(jsonEncode(c.soundReading)),
@@ -34,13 +40,13 @@ class ChineseCharRepository {
 
     await _db.transaction(() async {
       await _db.chineseCharDao.upsertAll(companions);
-      await _meta.markCharsSynced(version);
+      await _meta.markCharsSynced(version, _courseId);
     });
   }
 
-  Future<bool> hasChars() => _db.chineseCharDao.hasChars();
+  Future<bool> hasChars() => _db.chineseCharDao.hasChars(_courseId);
 
-  Future<int> countChars() => _db.chineseCharDao.countChars();
+  Future<int> countChars() => _db.chineseCharDao.countChars(_courseId);
 
   ChineseChar _toEntity(ChineseCharData row) => ChineseChar(
         char: row.char,

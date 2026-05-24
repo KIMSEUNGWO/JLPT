@@ -56,7 +56,7 @@ class TestStatWidget extends ConsumerWidget {
                 ),
               ),
               child: Text(
-                '${level == null ? '통합' : level!.name} 단어 테스트 시작',
+                '${level == null ? '통합' : level!.label} 단어 테스트 시작',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w500,

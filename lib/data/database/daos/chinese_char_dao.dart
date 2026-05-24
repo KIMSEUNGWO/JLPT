@@ -9,22 +9,27 @@ class ChineseCharDao extends DatabaseAccessor<AppDatabase>
     with _$ChineseCharDaoMixin {
   ChineseCharDao(super.db);
 
-  Future<List<ChineseCharData>> getAll() => select(chineseChars).get();
+  Future<List<ChineseCharData>> getAll(String course) =>
+      (select(chineseChars)..where((t) => t.course.equals(course))).get();
 
   Future<void> upsertAll(List<ChineseCharsCompanion> rows) async {
     await batch((b) => b.insertAllOnConflictUpdate(chineseChars, rows));
   }
 
-  Future<bool> hasChars() async {
-    final result =
-        await (selectOnly(chineseChars)..addColumns([chineseChars.char])).get();
+  Future<bool> hasChars(String course) async {
+    final result = await (selectOnly(chineseChars)
+          ..addColumns([chineseChars.char])
+          ..where(chineseChars.course.equals(course)))
+        .get();
     return result.isNotEmpty;
   }
 
-  Future<int> countChars() async {
+  Future<int> countChars(String course) async {
     final c = countAll();
-    final row =
-        await (selectOnly(chineseChars)..addColumns([c])).getSingle();
+    final row = await (selectOnly(chineseChars)
+          ..addColumns([c])
+          ..where(chineseChars.course.equals(course)))
+        .getSingle();
     return row.read(c) ?? 0;
   }
 }

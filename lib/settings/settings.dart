@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jlpt_app/component/local_storage.dart';
+import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/study_group_size.dart';
 import 'package:jlpt_app/domain/study_options.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
@@ -67,17 +68,17 @@ class _SettingsController extends _$SettingsController {
     );
   }
 
-  void toggleHiragana() {
+  void toggleReading() {
     _updateStudyOptions(
       state.studyOptions.copyWith(
-        showHiragana: !state.studyOptions.showHiragana,
+        showReading: !state.studyOptions.showReading,
       ),
     );
   }
 
-  void toggleKorean() {
+  void toggleMeaning() {
     _updateStudyOptions(
-      state.studyOptions.copyWith(showKorean: !state.studyOptions.showKorean),
+      state.studyOptions.copyWith(showMeaning: !state.studyOptions.showMeaning),
     );
   }
 
@@ -115,7 +116,9 @@ class SettingsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(settingsProvider);
     final opts = settings.studyOptions;
+    final course = ref.watch(activeCourseProvider);
     final controller = ref.read(_settingsControllerProvider.notifier);
+    final readingLabel = course.readingLabel;
 
     return Scaffold(
       appBar: AppBar(title: const Text('환경설정'), centerTitle: false),
@@ -130,17 +133,20 @@ class SettingsPage extends ConsumerWidget {
                   icon: Icons.translate_rounded,
                   title: '한국어 뜻 표시',
                   description: '단어 카드에 한국어 뜻을 먼저 보여줍니다',
-                  value: opts.showKorean,
-                  onChanged: controller.toggleKorean,
+                  value: opts.showMeaning,
+                  onChanged: controller.toggleMeaning,
                 ),
-                const _SettingDivider(),
-                _SettingToggleRow(
-                  icon: Icons.text_fields_rounded,
-                  title: '히라가나 표시',
-                  description: '단어 카드에 히라가나 발음을 먼저 보여줍니다',
-                  value: opts.showHiragana,
-                  onChanged: controller.toggleHiragana,
-                ),
+                // reading 이 없는 코스(예: 영어)는 토글을 숨긴다.
+                if (readingLabel != null) ...[
+                  const _SettingDivider(),
+                  _SettingToggleRow(
+                    icon: Icons.text_fields_rounded,
+                    title: '$readingLabel 표시',
+                    description: '단어 카드에 $readingLabel 발음을 먼저 보여줍니다',
+                    value: opts.showReading,
+                    onChanged: controller.toggleReading,
+                  ),
+                ],
                 const _SettingDivider(),
                 _StudyGroupSizeSelector(value: settings.studyGroupSize),
               ],
@@ -152,7 +158,7 @@ class SettingsPage extends ConsumerWidget {
                 _SettingToggleRow(
                   icon: Icons.volume_up_outlined,
                   title: '자동 발음',
-                  description: '새 카드로 넘어가면 일본어 발음을 재생합니다',
+                  description: '새 카드로 넘어가면 ${course.termLanguageLabel} 발음을 재생합니다',
                   value: opts.autoPlayPronunciation,
                   onChanged: controller.toggleAutoPlay,
                 ),

@@ -2,6 +2,7 @@ import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jlpt_app/component/svg_icon.dart';
+import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/notifier/entity/today.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
@@ -118,8 +119,9 @@ class _CongratulationsModalState extends State<CongratulationsModal> with Single
                   Consumer(
                     builder: (context, ref, child) {
                       int cycle = ref.read(studyCycleProvider.notifier).getCurrentCycle(widget.level);
+                      final course = ref.watch(activeCourseProvider);
                       return Text(
-                        'JLPT ${widget.level.name} 단어 $cycle회독을\n성공적으로 완료했습니다.',
+                        '${course.displayName} ${widget.level.label} 단어 $cycle회독을\n성공적으로 완료했습니다.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,

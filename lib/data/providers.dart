@@ -11,10 +11,12 @@ import 'package:jlpt_app/data/repositories/word_repository.dart';
 import 'package:jlpt_app/data/sync/chinese_char_syncer.dart';
 import 'package:jlpt_app/data/sync/data_sync_service.dart';
 import 'package:jlpt_app/data/sync/example_sentence_syncer.dart';
+import 'package:jlpt_app/data/sync/json_entity_syncer.dart';
 import 'package:jlpt_app/data/sync/update_service.dart';
 import 'package:jlpt_app/data/sync/word_syncer.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
-import 'package:jlpt_app/domain/constant.dart';
+import 'package:jlpt_app/domain/course/course.dart';
+import 'package:jlpt_app/domain/course/course_registry.dart';
 import 'package:jlpt_app/domain/example_sentence.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/word.dart';
@@ -28,6 +30,14 @@ final appDatabaseProvider = Provider<AppDatabase>(
   ),
 );
 
+/// 활성 코스. 데이터/sync/UI 가 의존하는 단일 진입점.
+///
+/// 지금은 단일 코스라 [CourseRegistry.defaultCourse] 상수다. 코스 선택 UI 가
+/// 생기면 설정에서 읽은 id 로 `CourseRegistry.byId(...)` 를 반환하도록 이 한 곳만 바꾼다.
+final activeCourseProvider = Provider<Course>(
+  (_) => CourseRegistry.defaultCourse,
+);
+
 // JSON 데이터 소스
 final assetJsonDataSourceProvider = Provider<AssetJsonDataSource>(
   (_) => const AssetJsonDataSource(),
@@ -39,14 +49,8 @@ final localJsonCacheProvider = Provider<LocalJsonCacheSource>(
 
 final remoteJsonDataSourceProvider = Provider<RemoteJsonDataSource>(
   (ref) {
-    final source = RemoteJsonDataSource(
-      urlsByName: {
-        'dataVersion': Constant.VERSION_LINK,
-        'chinese_chars': Constant.CHINESE_CHARS_LINK,
-        'japanese_words': Constant.JAPANESE_WORDS_LINK,
-        'example_sentences': Constant.EXAMPLE_SENTENCES_LINK,
-      },
-    );
+    final course = ref.watch(activeCourseProvider);
+    final source = RemoteJsonDataSource(urlsByName: course.data.remoteUrls);
     ref.onDispose(source.close);
     return source;
   },
@@ -62,6 +66,7 @@ final wordRepositoryProvider = Provider<WordRepository>(
   (ref) => WordRepository(
     ref.read(appDatabaseProvider),
     ref.read(appMetaRepositoryProvider),
+    ref.read(activeCourseProvider),
   ),
 );
 
@@ -69,6 +74,7 @@ final chineseCharRepositoryProvider = Provider<ChineseCharRepository>(
   (ref) => ChineseCharRepository(
     ref.read(appDatabaseProvider),
     ref.read(appMetaRepositoryProvider),
+    ref.read(activeCourseProvider),
   ),
 );
 
@@ -76,6 +82,7 @@ final exampleSentenceRepositoryProvider = Provider<ExampleSentenceRepository>(
   (ref) => ExampleSentenceRepository(
     ref.read(appDatabaseProvider),
     ref.read(appMetaRepositoryProvider),
+    ref.read(activeCourseProvider),
   ),
 );
 
@@ -83,6 +90,7 @@ final testResultRepositoryProvider = Provider<TestResultRepository>(
   (ref) => TestResultRepository(
     ref.read(appDatabaseProvider),
     ref.read(wordRepositoryProvider),
+    ref.read(activeCourseProvider),
   ),
 );
 
@@ -96,42 +104,76 @@ final dailyStatsRepositoryProvider = Provider<DailyStatsRepository>(
 // ───────── Syncers (전략 객체) ─────────
 
 final wordSyncerProvider = Provider<WordSyncer>(
-  (ref) => WordSyncer(
-    wordRepository: ref.read(wordRepositoryProvider),
-    metaRepository: ref.read(appMetaRepositoryProvider),
-    bundle: ref.read(assetJsonDataSourceProvider),
-    cache: ref.read(localJsonCacheProvider),
-  ),
+  (ref) {
+    final course = ref.read(activeCourseProvider);
+    return WordSyncer(
+      wordRepository: ref.read(wordRepositoryProvider),
+      metaRepository: ref.read(appMetaRepositoryProvider),
+      courseId: course.id,
+      bundle: ref.read(assetJsonDataSourceProvider),
+      cache: ref.read(localJsonCacheProvider),
+      dataKey: course.data.wordsKey,
+      expectedMinRowCount: course.data.minWordCount,
+    );
+  },
 );
 
-final chineseCharSyncerProvider = Provider<ChineseCharSyncer>(
-  (ref) => ChineseCharSyncer(
-    charRepository: ref.read(chineseCharRepositoryProvider),
-    metaRepository: ref.read(appMetaRepositoryProvider),
-    bundle: ref.read(assetJsonDataSourceProvider),
-    cache: ref.read(localJsonCacheProvider),
-  ),
+/// 문자(한자) syncer — 문자 모듈이 없는 코스는 null.
+final chineseCharSyncerProvider = Provider<ChineseCharSyncer?>(
+  (ref) {
+    final course = ref.read(activeCourseProvider);
+    final charsKey = course.data.charsKey;
+    if (!course.hasCharacterModule || charsKey == null) return null;
+    return ChineseCharSyncer(
+      charRepository: ref.read(chineseCharRepositoryProvider),
+      metaRepository: ref.read(appMetaRepositoryProvider),
+      courseId: course.id,
+      bundle: ref.read(assetJsonDataSourceProvider),
+      cache: ref.read(localJsonCacheProvider),
+      dataKey: charsKey,
+      expectedMinRowCount: course.data.minCharCount,
+    );
+  },
 );
 
 final exampleSentenceSyncerProvider = Provider<ExampleSentenceSyncer>(
-  (ref) => ExampleSentenceSyncer(
-    exampleRepository: ref.read(exampleSentenceRepositoryProvider),
-    metaRepository: ref.read(appMetaRepositoryProvider),
-    bundle: ref.read(assetJsonDataSourceProvider),
-    cache: ref.read(localJsonCacheProvider),
-  ),
+  (ref) {
+    final course = ref.read(activeCourseProvider);
+    return ExampleSentenceSyncer(
+      exampleRepository: ref.read(exampleSentenceRepositoryProvider),
+      metaRepository: ref.read(appMetaRepositoryProvider),
+      courseId: course.id,
+      wordsDataKey: course.data.wordsKey,
+      bundle: ref.read(assetJsonDataSourceProvider),
+      cache: ref.read(localJsonCacheProvider),
+      dataKey: course.data.examplesKey,
+      expectedMinRowCount: course.data.minExampleCount,
+    );
+  },
+);
+
+/// 활성 코스가 동기화해야 할 syncer 목록 (순서: 단어 → 문자 → 예문).
+/// 문자 모듈이 없는 코스는 문자 syncer 가 빠진다.
+final courseSyncersProvider = Provider<List<JsonEntitySyncer>>(
+  (ref) {
+    final char = ref.read(chineseCharSyncerProvider);
+    return [
+      ref.read(wordSyncerProvider),
+      ?char,
+      ref.read(exampleSentenceSyncerProvider),
+    ];
+  },
 );
 
 // ───────── 부팅 / 업데이트 서비스 ─────────
 
 final dataSyncServiceProvider = Provider<DataSyncService>(
   (ref) => DataSyncService(
+    course: ref.read(activeCourseProvider),
     bundle: ref.read(assetJsonDataSourceProvider),
     cache: ref.read(localJsonCacheProvider),
     remote: ref.read(remoteJsonDataSourceProvider),
-    wordSyncer: ref.read(wordSyncerProvider),
-    charSyncer: ref.read(chineseCharSyncerProvider),
-    exampleSyncer: ref.read(exampleSentenceSyncerProvider),
+    syncers: ref.read(courseSyncersProvider),
     metaRepository: ref.read(appMetaRepositoryProvider),
     dailyStatsRepository: ref.read(dailyStatsRepositoryProvider),
   ),
@@ -139,6 +181,7 @@ final dataSyncServiceProvider = Provider<DataSyncService>(
 
 final updateServiceProvider = Provider<UpdateService>(
   (ref) => UpdateService(
+    course: ref.read(activeCourseProvider),
     remote: ref.read(remoteJsonDataSourceProvider),
     cache: ref.read(localJsonCacheProvider),
     wordSyncer: ref.read(wordSyncerProvider),
@@ -150,7 +193,7 @@ final updateServiceProvider = Provider<UpdateService>(
 
 // ───────── 파생 데이터 ─────────
 
-/// 한자 인메모리 캐시
+/// 문자(한자) 인메모리 캐시
 final chineseCharCacheProvider = FutureProvider<Map<String, ChineseChar>>(
   (ref) => ref.read(chineseCharRepositoryProvider).getAll(),
 );

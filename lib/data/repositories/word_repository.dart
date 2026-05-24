@@ -4,26 +4,34 @@ import 'package:drift/drift.dart';
 import 'package:jlpt_app/data/database/app_database.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/domain/act.dart';
+import 'package:jlpt_app/domain/course/course.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:pub_semver/pub_semver.dart';
 
+/// 단어 저장소. 활성 [Course] 에 스코프된다 — 모든 read/write 가 `course` 컬럼으로
+/// 필터/태깅되며, 물리 컬럼 `hiragana`/`korean` 을 도메인의 `reading`/`meaning` 으로
+/// 매핑한다 (컬럼 rename 비용 회피).
 class WordRepository {
   final AppDatabase _db;
   final AppMetaRepository _meta;
+  final Course _course;
 
-  WordRepository(this._db, this._meta);
+  WordRepository(this._db, this._meta, this._course);
+
+  String get _courseId => _course.id;
 
   Future<List<Word>> getByLevel(Level level) async {
-    final rows = await _db.wordDao.getByLevel(level.name);
+    final rows = await _db.wordDao.getByLevel(_courseId, level.code);
     return rows.map(_toWord).toList(growable: false);
   }
 
   Future<Map<Level, List<Word>>> getAllByLevel() async {
-    final rows = await _db.wordDao.getAll();
+    final rows = await _db.wordDao.getAll(_courseId);
     final result = <Level, List<Word>>{};
     for (final row in rows) {
-      final level = Level.valueOf(row.level);
+      final level = _course.levelOrNull(row.level);
+      if (level == null) continue; // 활성 코스에 없는 레벨 코드는 무시.
       result.putIfAbsent(level, () => []).add(_toWord(row));
     }
     return result;
@@ -31,7 +39,7 @@ class WordRepository {
 
   Future<List<Word>> getByIds(List<int> ids) async {
     if (ids.isEmpty) return const [];
-    final rows = await _db.wordDao.getByIds(ids);
+    final rows = await _db.wordDao.getByIds(_courseId, ids);
     return rows.map(_toWord).toList(growable: false);
   }
 
@@ -42,17 +50,18 @@ class WordRepository {
   Future<void> syncAll(List<Word> words, {required Version version}) async {
     await _db.transaction(() async {
       final existing = {
-        for (final r in await _db.wordDao.getAll()) r.id: r,
+        for (final r in await _db.wordDao.getAll(_courseId)) r.id: r,
       };
       final companions = words
           .map(
             (w) => WordsCompanion(
               id: Value(w.id),
-              level: Value(w.level.name),
+              course: Value(_courseId),
+              level: Value(w.levelCode),
               act: Value(w.act.name),
               word: Value(w.word),
-              hiragana: Value(w.hiragana),
-              korean: Value(w.korean),
+              hiragana: Value(w.reading ?? ''),
+              korean: Value(w.meaning),
               isRead: Value(existing[w.id]?.isRead ?? false),
               wrongCnt: Value(existing[w.id]?.wrongCnt ?? 0),
             ),
@@ -60,7 +69,7 @@ class WordRepository {
           .toList(growable: false);
 
       await _db.wordDao.upsertAll(companions);
-      await _meta.markWordsSynced(version);
+      await _meta.markWordsSynced(version, _courseId);
     });
   }
 
@@ -70,21 +79,21 @@ class WordRepository {
       _db.wordDao.markAllRead(wordIds);
 
   Future<void> resetReadFor(Level level) =>
-      _db.wordDao.resetReadForLevel(level.name);
+      _db.wordDao.resetReadForLevel(_courseId, level.code);
 
-  Future<bool> hasWords() => _db.wordDao.hasWords();
+  Future<bool> hasWords() => _db.wordDao.hasWords(_courseId);
 
-  Future<int> countWords() => _db.wordDao.countWords();
+  Future<int> countWords() => _db.wordDao.countWords(_courseId);
 
   /// DB readback. 예문 ID 목록은 ref 테이블에서 별도로 조회하므로 빈 리스트.
   /// 예문이 필요하면 `exampleSentencesByWordProvider(word.id)` 를 사용한다.
   Word _toWord(WordData row) => Word(
         id: row.id,
-        level: Level.valueOf(row.level),
+        levelCode: row.level,
         act: Act.valueOf(row.act),
         word: row.word,
-        hiragana: row.hiragana,
-        korean: row.korean,
+        reading: row.hiragana.isEmpty ? null : row.hiragana,
+        meaning: row.korean,
         isRead: row.isRead,
         wrongCnt: row.wrongCnt,
         exampleIds: const [],

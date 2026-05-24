@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:jlpt_app/domain/course/course.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/study_group_size.dart';
 import 'package:jlpt_app/domain/study_options.dart';
@@ -51,17 +52,26 @@ class LocalStorage {
 
   // ───────── 학습 회독 ─────────
 
-  Map<Level, int> getStudyCycle() {
+  /// 코스 레벨별 회독 수. 키는 코스 네임스페이스(`cycle_<courseId>_<levelCode>`).
+  /// 구버전(레벨 코드 단독) 키는 폴백으로 읽어 진행도를 보존한다.
+  Map<Level, int> getStudyCycle(Course course) {
     return {
-      for (final level in Level.values) level: _storage.getInt(level.name) ?? 0,
+      for (final level in course.levels)
+        level: _storage.getInt(_cycleKey(course.id, level.code)) ??
+            _storage.getInt(level.code) ??
+            0,
     };
   }
 
-  Future<void> saveStudyCycle(Map<Level, int> data) async {
+  Future<void> saveStudyCycle(Course course, Map<Level, int> data) async {
     for (final entry in data.entries) {
-      await _storage.setInt(entry.key.name, entry.value);
+      await _storage.setInt(
+          _cycleKey(course.id, entry.key.code), entry.value);
     }
   }
+
+  String _cycleKey(String courseId, String levelCode) =>
+      'cycle_${courseId}_$levelCode';
 
   // ───────── 학습한 단어 ID ─────────
 
@@ -82,7 +92,7 @@ class LocalStorage {
 
   // ───────── 최근 학습 ─────────
 
-  ViewData getRecentlyViewData() {
+  ViewData getRecentlyViewData(Course course) {
     final levelStr = _storage.getString(StorageKey.RECENTLY_VIEW_LEVEL.name);
     final typeStr = _storage.getString(StorageKey.RECENTLY_VIEW_TYPE.name);
     final indexStr = _storage.getInt(StorageKey.RECENTLY_VIEW_INDEX.name);
@@ -90,8 +100,10 @@ class LocalStorage {
     if (levelStr == null || typeStr == null || indexStr == null) {
       return ViewData();
     }
+    final level = course.levelOrNull(levelStr);
+    if (level == null) return ViewData();
     return ViewData.load(
-      level: Level.valueOf(levelStr),
+      level: level,
       type: PracticeType.valueOf(typeStr),
       index: indexStr,
     );
@@ -105,7 +117,7 @@ class LocalStorage {
     }
     await _storage.setString(
       StorageKey.RECENTLY_VIEW_LEVEL.name,
-      viewData.level!.name,
+      viewData.level!.code,
     );
     await _storage.setString(
       StorageKey.RECENTLY_VIEW_TYPE.name,
@@ -116,23 +128,30 @@ class LocalStorage {
 
   // ───────── 레벨별 학습 타이머 ─────────
 
-  Map<Level, int> getTimerNotifier() {
+  /// 키는 코스 네임스페이스(`TIMER_<courseId>_<levelCode>`).
+  /// 구버전(`TIMER_<levelCode>`) 키는 폴백으로 읽어 진행도를 보존한다.
+  Map<Level, int> getTimerNotifier(Course course) {
     return {
-      for (final e in Level.values) e: _storage.getInt(_timerKey(e)) ?? 0,
+      for (final level in course.levels)
+        level: _storage.getInt(_timerKey(course.id, level.code)) ??
+            _storage.getInt('${StorageKey.TIMER.name}_${level.code}') ??
+            0,
     };
   }
 
-  Future<void> saveTimerNotifier(Map<Level, int> data) async {
+  Future<void> saveTimerNotifier(Course course, Map<Level, int> data) async {
     for (final entry in data.entries) {
-      await _storage.setInt(_timerKey(entry.key), entry.value);
+      await _storage.setInt(
+          _timerKey(course.id, entry.key.code), entry.value);
     }
   }
 
-  Future<void> saveLevelTimer(Level level, int seconds) async {
-    await _storage.setInt(_timerKey(level), seconds);
+  Future<void> saveLevelTimer(Course course, Level level, int seconds) async {
+    await _storage.setInt(_timerKey(course.id, level.code), seconds);
   }
 
-  String _timerKey(Level level) => '${StorageKey.TIMER.name}_${level.name}';
+  String _timerKey(String courseId, String levelCode) =>
+      '${StorageKey.TIMER.name}_${courseId}_$levelCode';
 
   // ───────── 학습 옵션 (자동 발음 / 히라가나 / 한국어) ─────────
 

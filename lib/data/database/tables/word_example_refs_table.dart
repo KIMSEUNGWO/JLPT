@@ -9,6 +9,8 @@ import 'package:jlpt_app/data/database/tables/words_table.dart';
 /// FK 를 명시 (`onDelete: CASCADE`).
 @DataClassName('WordExampleRefData')
 class WordExampleRefs extends Table {
+  /// 소속 코스 id (예: 'jlpt_ja'). 다국어 코스 확장을 위한 차원.
+  TextColumn get course => text().withDefault(const Constant('jlpt_ja'))();
   IntColumn get wordId => integer()
       .references(Words, #id, onDelete: KeyAction.cascade)();
   IntColumn get exampleId => integer()

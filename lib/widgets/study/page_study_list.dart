@@ -30,10 +30,11 @@ class StudyListPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final wordsAsync = ref.watch(wordsByLevelProvider);
+    final course = ref.watch(activeCourseProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('JLPT ${level.name}'),
+        title: Text('${course.displayName} ${level.label}'),
         centerTitle: false,
         backgroundColor: Colors.white,
         actions: [
@@ -164,7 +165,7 @@ class _StudyListState extends ConsumerState<_StudyList> {
                         index: index,
                       );
                   await context.push(
-                    AppRoutes.studyGroupFull(widget.level.name),
+                    AppRoutes.studyGroupFull(widget.level.code),
                     extra: StudyGroupArgs(
                       level: widget.level,
                       startIndex: start,

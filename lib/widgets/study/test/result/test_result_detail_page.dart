@@ -83,7 +83,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
   
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.question.level == null ? '통합' : widget.question.level!.name} 테스트 기록'),
+        title: Text('${widget.question.level == null ? '통합' : widget.question.level!.label} 테스트 기록'),
         centerTitle: false,
       ),
       body: Padding(
@@ -229,7 +229,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(e.reverse ? e.question.getKorean() : e.question.getJapanese(),
+                        Text(e.reverse ? e.question.getMeaning() : e.question.getTerm(),
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.onPrimary,
                             fontSize: Theme.of(context).textTheme.displayMedium!.fontSize,
@@ -241,7 +241,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                     ),
                     const SizedBox(height: 6,),
                     if (!e.reverse && e.question is Word)
-                      Text((e.question as Word).hiragana,
+                      Text((e.question as Word).reading ?? '',
                         style: TextStyle(
                           fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
                         ),
@@ -274,7 +274,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                                   color: isCorrect ? _correctBackgroundColor : _incorrectBackgroundColor,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                child: Text(e.reverse ? e.myAnswer!.getJapanese() : e.myAnswer!.getKorean(),
+                                child: Text(e.reverse ? e.myAnswer!.getTerm() : e.myAnswer!.getMeaning(),
                                   style: TextStyle(
                                     fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
                                     fontWeight: FontWeight.w500,
@@ -309,7 +309,7 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                                     color: _correctBackgroundColor,
                                     borderRadius: BorderRadius.circular(8),
                                   ),
-                                  child: Text(e.reverse ? e.question.getJapanese() : e.question.getKorean(),
+                                  child: Text(e.reverse ? e.question.getTerm() : e.question.getMeaning(),
                                     style: TextStyle(
                                       fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
                                       fontWeight: FontWeight.w500,

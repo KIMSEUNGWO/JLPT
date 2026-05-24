@@ -116,14 +116,14 @@ class _ReportProblemModalState extends State<ReportProblemModal> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(widget.word.hiragana,
+                          Text(widget.word.reading ?? '',
                             style: TextStyle(
                               fontSize: Theme.of(context).textTheme.displaySmall!.fontSize,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
                           const SizedBox(width: 8,),
-                          Text(widget.word.korean,
+                          Text(widget.word.meaning,
                             style: TextStyle(
                                 fontSize: Theme.of(context).textTheme.displaySmall!.fontSize,
                                 fontWeight: FontWeight.w500,

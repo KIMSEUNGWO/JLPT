@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/domain/word.dart';
@@ -50,12 +51,13 @@ class ContinueStudyCard extends ConsumerWidget {
 
     final range = '${target.startIndex + 1}-${target.endIndex}';
     final remaining = target.totalCount - target.readCount;
+    final course = ref.watch(activeCourseProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'JLPT ${target.level.name} 단어 $range',
+          '${course.displayName} ${target.level.label} 단어 $range',
           style: TextStyle(
             color: Theme.of(context).colorScheme.onPrimary,
             fontSize: Theme.of(context).textTheme.displaySmall!.fontSize,

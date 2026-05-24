@@ -5,6 +5,7 @@ import 'package:jlpt_app/component/local_storage.dart';
 import 'package:jlpt_app/data/database/app_database.dart';
 import 'package:jlpt_app/data/repositories/word_repository.dart';
 import 'package:jlpt_app/domain/box/question_entity_box.dart';
+import 'package:jlpt_app/domain/course/course.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/question.dart';
 import 'package:jlpt_app/domain/type.dart';
@@ -13,8 +14,11 @@ import 'package:jlpt_app/domain/word.dart';
 class TestResultRepository {
   final AppDatabase _db;
   final WordRepository _wordRepo;
+  final Course _course;
 
-  TestResultRepository(this._db, this._wordRepo);
+  TestResultRepository(this._db, this._wordRepo, this._course);
+
+  String get _courseId => _course.id;
 
   Future<QuestionEntityBox> save({
     Level? level,
@@ -33,7 +37,8 @@ class TestResultRepository {
       final now = DateTime.now();
       final resultId = await _db.testResultDao.insertResult(
         TestResultsCompanion(
-          level: Value(level?.name),
+          course: Value(_courseId),
+          level: Value(level?.code),
           type: Value(type.name),
           takenAt: Value(now),
           timeSeconds: Value(time),
@@ -81,7 +86,7 @@ class TestResultRepository {
 
   /// 배치 조회로 N+1 쿼리 방지: results + 모든 questions를 각 2번 쿼리로 해결.
   Future<List<QuestionEntityBox>> getAll() async {
-    final results = await _db.testResultDao.getAllResults();
+    final results = await _db.testResultDao.getAllResults(_courseId);
     if (results.isEmpty) return [];
 
     // 모든 TestQuestion 행을 한 번에 가져옴
@@ -120,7 +125,7 @@ class TestResultRepository {
     return results
         .map((r) => QuestionEntityBox(
               id: r.id,
-              level: r.level != null ? Level.valueOf(r.level!) : null,
+              level: r.level != null ? _course.levelOrNull(r.level!) : null,
               type: PracticeType.valueOf(r.type),
               dateTime: r.takenAt,
               question: questionsByResult[r.id] ?? [],

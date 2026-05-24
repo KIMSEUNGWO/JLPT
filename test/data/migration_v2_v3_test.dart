@@ -22,7 +22,7 @@ void main() {
     }
   });
 
-  test('v2 schema → v3 으로 open 시 daily_stats 테이블이 생성되고 기존 데이터 보존', () async {
+  test('v2 schema → 현재(v5) open 시 daily_stats 생성 + course 태깅 + 메타 키 이전', () async {
     // ────────────────────────────────────────────────────────────────────
     // 1) v2 시뮬레이션: schemaVersion 만 2 로 표시된 빈 DB 생성 후, AppMeta /
     //    Words 두 테이블에 row 를 직접 insert.
@@ -82,13 +82,29 @@ void main() {
         await db.customSelect('SELECT COUNT(*) AS c FROM words').get();
     expect(wordsRows.first.read<int>('c'), 1);
 
-    final metaRows = await db
+    // v5: 기존 words row 가 'jlpt_ja' 로 태깅됐는지
+    final courseRows = await db
+        .customSelect("SELECT course FROM words WHERE id = 1")
+        .get();
+    expect(courseRows.first.read<String>('course'), 'jlpt_ja',
+        reason: '기존 단어는 jlpt_ja 코스로 태깅돼야 한다');
+
+    // v5: 메타 키가 코스 네임스페이스로 이전됐는지 (옛 키는 사라짐)
+    final newMeta = await db
+        .customSelect(
+          "SELECT value FROM app_meta WHERE key='words_version:jlpt_ja'",
+          variables: const <drift.Variable<Object>>[],
+        )
+        .get();
+    expect(newMeta.first.read<String>('value'), '1.2.3');
+
+    final oldMeta = await db
         .customSelect(
           "SELECT value FROM app_meta WHERE key='words_version'",
           variables: const <drift.Variable<Object>>[],
         )
         .get();
-    expect(metaRows.first.read<String>('value'), '1.2.3');
+    expect(oldMeta, isEmpty, reason: '옛 메타 키는 이전 후 남아있지 않아야 한다');
 
     await db.close();
   });

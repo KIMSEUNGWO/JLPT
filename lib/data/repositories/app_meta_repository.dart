@@ -6,12 +6,15 @@ import 'package:pub_semver/pub_semver.dart';
 /// 데이터 sync 완료 상태 (버전 + 시각 + 마지막 오류) 를 일관된 키로 다루기 위해
 /// 모든 키 문자열은 이 클래스 내부에만 노출된다.
 class AppMetaRepository {
+  // 엔티티 버전/시각 키는 코스별로 네임스페이스된다: `<base>:<courseId>`.
+  // (예: `words_version:jlpt_ja`) — v5 마이그레이션이 legacy 키를 이전한다.
   static const _kWordsVersion = 'words_version';
   static const _kCharsVersion = 'chars_version';
   static const _kExamplesVersion = 'examples_version';
   static const _kWordsSyncedAt = 'words_synced_at';
   static const _kCharsSyncedAt = 'chars_synced_at';
   static const _kExamplesSyncedAt = 'examples_synced_at';
+  // 아래는 코스 횡단 전역 키.
   static const _kLastSyncError = 'last_sync_error';
   static const _kBestStreak = 'best_streak';
   static const _kStatsBackfilledV3 = 'daily_stats_backfilled_v3';
@@ -19,13 +22,21 @@ class AppMetaRepository {
   final AppDatabase _db;
   AppMetaRepository(this._db);
 
-  Future<Version?> getWordsVersion() => _readVersion(_kWordsVersion);
-  Future<Version?> getCharsVersion() => _readVersion(_kCharsVersion);
-  Future<Version?> getExamplesVersion() => _readVersion(_kExamplesVersion);
+  static String _scoped(String base, String courseId) => '$base:$courseId';
 
-  Future<DateTime?> getWordsSyncedAt() => _readDateTime(_kWordsSyncedAt);
-  Future<DateTime?> getCharsSyncedAt() => _readDateTime(_kCharsSyncedAt);
-  Future<DateTime?> getExamplesSyncedAt() => _readDateTime(_kExamplesSyncedAt);
+  Future<Version?> getWordsVersion(String courseId) =>
+      _readVersion(_scoped(_kWordsVersion, courseId));
+  Future<Version?> getCharsVersion(String courseId) =>
+      _readVersion(_scoped(_kCharsVersion, courseId));
+  Future<Version?> getExamplesVersion(String courseId) =>
+      _readVersion(_scoped(_kExamplesVersion, courseId));
+
+  Future<DateTime?> getWordsSyncedAt(String courseId) =>
+      _readDateTime(_scoped(_kWordsSyncedAt, courseId));
+  Future<DateTime?> getCharsSyncedAt(String courseId) =>
+      _readDateTime(_scoped(_kCharsSyncedAt, courseId));
+  Future<DateTime?> getExamplesSyncedAt(String courseId) =>
+      _readDateTime(_scoped(_kExamplesSyncedAt, courseId));
 
   Future<String?> getLastSyncError() => _db.appMetaDao.get(_kLastSyncError);
 
@@ -50,24 +61,27 @@ class AppMetaRepository {
       _db.appMetaDao.put(_kStatsBackfilledV3, '1');
 
   /// 단어 sync 성공 marker. 데이터 sync 와 같은 transaction 안에서 호출되어야 한다.
-  Future<void> markWordsSynced(Version v) async {
-    await _db.appMetaDao.put(_kWordsVersion, v.toString());
-    await _db.appMetaDao.put(_kWordsSyncedAt, DateTime.now().toIso8601String());
+  Future<void> markWordsSynced(Version v, String courseId) async {
+    await _db.appMetaDao.put(_scoped(_kWordsVersion, courseId), v.toString());
+    await _db.appMetaDao.put(
+        _scoped(_kWordsSyncedAt, courseId), DateTime.now().toIso8601String());
     await _db.appMetaDao.remove(_kLastSyncError);
   }
 
   /// 한자 sync 성공 marker.
-  Future<void> markCharsSynced(Version v) async {
-    await _db.appMetaDao.put(_kCharsVersion, v.toString());
-    await _db.appMetaDao.put(_kCharsSyncedAt, DateTime.now().toIso8601String());
+  Future<void> markCharsSynced(Version v, String courseId) async {
+    await _db.appMetaDao.put(_scoped(_kCharsVersion, courseId), v.toString());
+    await _db.appMetaDao.put(
+        _scoped(_kCharsSyncedAt, courseId), DateTime.now().toIso8601String());
     await _db.appMetaDao.remove(_kLastSyncError);
   }
 
   /// 예문 sync 성공 marker.
-  Future<void> markExamplesSynced(Version v) async {
-    await _db.appMetaDao.put(_kExamplesVersion, v.toString());
+  Future<void> markExamplesSynced(Version v, String courseId) async {
     await _db.appMetaDao
-        .put(_kExamplesSyncedAt, DateTime.now().toIso8601String());
+        .put(_scoped(_kExamplesVersion, courseId), v.toString());
+    await _db.appMetaDao.put(_scoped(_kExamplesSyncedAt, courseId),
+        DateTime.now().toIso8601String());
     await _db.appMetaDao.remove(_kLastSyncError);
   }
 

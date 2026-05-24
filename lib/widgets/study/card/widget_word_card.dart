@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/study_options.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/widgets/component/audio_button.dart';
@@ -43,16 +44,17 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
 
   /// 카드별 로컬 표시 state. 진입 시 [WordCardWidget.defaults] 로 초기화되고,
   /// 카드 토글은 이 값만 바꾼다. 카드를 넘기면 새 State 가 생기며 default 로 리셋.
-  late bool _showKorean;
-  late bool _showHiragana;
+  late bool _showMeaning;
+  late bool _showReading;
 
   @override
   void initState() {
     super.initState();
     _capturedWordId = widget.word.id;
-    _speaker = widget.speaker ?? SpeakerTTS();
-    _showKorean = widget.defaults.showKorean;
-    _showHiragana = widget.defaults.showHiragana;
+    _speaker = widget.speaker ??
+        SpeakerTTS(locale: ref.read(activeCourseProvider).ttsLocale);
+    _showMeaning = widget.defaults.showMeaning;
+    _showReading = widget.defaults.showReading;
 
     if (widget.defaults.autoPlayPronunciation) {
       WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -95,7 +97,7 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      _showHiragana ? widget.word.hiragana : '',
+                      _showReading ? (widget.word.reading ?? '') : '',
                       style: Theme.of(context).textTheme.displaySmall?.copyWith(
                         fontWeight: FontWeight.w500,
                         color: Theme.of(context).colorScheme.onSurface,
@@ -103,7 +105,7 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      _showKorean ? widget.word.korean : '',
+                      _showMeaning ? widget.word.meaning : '',
                       style: Theme.of(context).textTheme.displaySmall?.copyWith(
                         fontWeight: FontWeight.w500,
                         color: Theme.of(context).colorScheme.onSurface,
@@ -192,18 +194,21 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
               Expanded(
                 child: _OptionToggle(
                   label: '한국어',
-                  isOn: _showKorean,
-                  onTap: () => setState(() => _showKorean = !_showKorean),
+                  isOn: _showMeaning,
+                  onTap: () => setState(() => _showMeaning = !_showMeaning),
                 ),
               ),
-              const SizedBox(width: 21),
-              Expanded(
-                child: _OptionToggle(
-                  label: '히라가나',
-                  isOn: _showHiragana,
-                  onTap: () => setState(() => _showHiragana = !_showHiragana),
+              // reading 이 있는 코스만 발음 표기 토글을 노출.
+              if (ref.watch(activeCourseProvider).readingLabel != null) ...[
+                const SizedBox(width: 21),
+                Expanded(
+                  child: _OptionToggle(
+                    label: ref.watch(activeCourseProvider).readingLabel!,
+                    isOn: _showReading,
+                    onTap: () => setState(() => _showReading = !_showReading),
+                  ),
                 ),
-              ),
+              ],
             ],
           ),
         ],

@@ -25,6 +25,7 @@ class MainPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final wordsAsync = ref.watch(wordsByLevelProvider);
+    final course = ref.watch(activeCourseProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -94,7 +95,7 @@ class MainPage extends ConsumerWidget {
                                         index: target.groupIndex,
                                       );
                                   await context.push(
-                                    AppRoutes.studyGroupFull(target.level.name),
+                                    AppRoutes.studyGroupFull(target.level.code),
                                     extra: StudyGroupArgs(
                                       level: target.level,
                                       startIndex: target.startIndex,
@@ -138,12 +139,12 @@ class MainPage extends ConsumerWidget {
                   ),
                   data: (wordsByLevel) => Column(
                     children: [
-                      for (final level in Level.values) ...[
+                      for (final level in course.levels) ...[
                         _LevelTile(
                           level: level,
                           words: wordsByLevel[level] ?? const [],
                         ),
-                        if (level != Level.values.last)
+                        if (level != course.levels.last)
                           const SizedBox(height: 16),
                       ],
                       const SizedBox(height: 16),
@@ -201,9 +202,10 @@ class _LevelTile extends ConsumerWidget {
     final isRecent = view.level == level;
     final cycle = ref.watch(studyCycleProvider);
     final timer = ref.watch(timerProvider)[level] ?? 0;
+    final course = ref.watch(activeCourseProvider);
 
     return GestureDetector(
-      onTap: () => context.push(AppRoutes.study(level.name)),
+      onTap: () => context.push(AppRoutes.study(level.code)),
       child: CustomContainer(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         border: isRecent
@@ -223,7 +225,7 @@ class _LevelTile extends ConsumerWidget {
                 Row(
                   children: [
                     Text(
-                      'JLPT ${level.name}',
+                      '${course.displayName} ${level.label}',
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onPrimary,
                         fontWeight: FontWeight.w600,

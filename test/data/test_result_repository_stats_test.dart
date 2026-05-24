@@ -6,19 +6,21 @@ import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/data/repositories/test_result_repository.dart';
 import 'package:jlpt_app/data/repositories/word_repository.dart';
 import 'package:jlpt_app/domain/act.dart';
-import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/course/course_registry.dart';
 import 'package:jlpt_app/domain/question.dart';
 import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:pub_semver/pub_semver.dart';
 
+const _course = jlptJapaneseCourse;
+
 Word _makeWord(int id) => Word(
       id: id,
-      level: Level.N5,
+      levelCode: 'N5',
       act: Act.N,
       word: 'word$id',
-      hiragana: 'hira$id',
-      korean: '단어$id',
+      reading: 'hira$id',
+      meaning: '단어$id',
       isRead: false,
       wrongCnt: 0,
       exampleIds: [100000 + id],
@@ -31,8 +33,8 @@ void main() {
   setUp(() async {
     db = AppDatabase.forTesting(NativeDatabase.memory());
     final meta = AppMetaRepository(db);
-    final wordRepo = WordRepository(db, meta);
-    repo = TestResultRepository(db, wordRepo);
+    final wordRepo = WordRepository(db, meta, _course);
+    repo = TestResultRepository(db, wordRepo, _course);
 
     // Foreign key 참조용으로 단어 row 를 미리 넣어둔다.
     await wordRepo.syncAll(
@@ -60,7 +62,7 @@ void main() {
       ..myAnswer = _makeWord(3); // 오답
 
     await repo.save(
-      level: Level.N5,
+      level: _course.levelOf('N5'),
       type: PracticeType.WORD,
       questions: [q1, q2],
       reverses: [false, false],
@@ -84,7 +86,7 @@ void main() {
       ])
         ..myAnswer = _makeWord(1);
       await repo.save(
-        level: Level.N5,
+        level: _course.levelOf('N5'),
         type: PracticeType.WORD,
         questions: [q],
         reverses: [false],

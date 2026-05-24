@@ -30,7 +30,8 @@ class _TestResultPageState extends ConsumerState<TestResultPage> {
   int _currentPage = 0;
   bool _openedInitialResult = false;
 
-  final List<Level?> levels = [null, ...Level.values];
+  List<Level?> get levels =>
+      [null, ...ref.read(activeCourseProvider).levels];
 
   void _onChangePage(int page) {
     if (page == _currentPage) return;
@@ -96,7 +97,7 @@ class _TestResultPageState extends ConsumerState<TestResultPage> {
                       borderRadius: BorderRadius.circular(14),
                     ),
                     child: Text(
-                      level == null ? '통합' : level.name,
+                      level == null ? '통합' : level.label,
                       style: TextStyle(
                         color: _currentPage == index ? Colors.white : null,
                         fontWeight: FontWeight.w500,

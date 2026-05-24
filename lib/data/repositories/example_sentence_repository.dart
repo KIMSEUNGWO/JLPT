@@ -1,26 +1,31 @@
 import 'package:drift/drift.dart';
 import 'package:jlpt_app/data/database/app_database.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
+import 'package:jlpt_app/domain/course/course.dart';
 import 'package:jlpt_app/domain/example_sentence.dart';
 import 'package:pub_semver/pub_semver.dart';
 
 /// 예문 + (단어→예문) 참조 테이블을 묶어서 다루는 Repository.
 ///
-/// sync 시에는 두 테이블을 같은 transaction 으로 교체하고 메타 버전을 commit 한다.
+/// 활성 [Course] 에 스코프된다. sync 시에는 두 테이블을 같은 transaction 으로
+/// 교체하고 메타 버전을 commit 한다.
 class ExampleSentenceRepository {
   final AppDatabase _db;
   final AppMetaRepository _meta;
+  final Course _course;
 
-  ExampleSentenceRepository(this._db, this._meta);
+  ExampleSentenceRepository(this._db, this._meta, this._course);
+
+  String get _courseId => _course.id;
 
   Future<List<ExampleSentence>> getAll() async {
-    final rows = await _db.exampleSentenceDao.getAll();
+    final rows = await _db.exampleSentenceDao.getAll(_courseId);
     return rows.map(_toEntity).toList(growable: false);
   }
 
   /// 한 단어가 참조하는 예문 본문 목록.
   Future<List<ExampleSentence>> getByWordId(int wordId) async {
-    final rows = await _db.exampleSentenceDao.getByWordId(wordId);
+    final rows = await _db.exampleSentenceDao.getByWordId(_courseId, wordId);
     return rows.map(_toEntity).toList(growable: false);
   }
 
@@ -39,6 +44,7 @@ class ExampleSentenceRepository {
         .map(
           (e) => ExampleSentencesCompanion(
             id: Value(e.id),
+            course: Value(_courseId),
             sentence: Value(e.sentence),
             translation: Value(e.translation),
           ),
@@ -49,6 +55,7 @@ class ExampleSentenceRepository {
     for (final entry in wordExampleRefs.entries) {
       for (final exampleId in entry.value) {
         refRows.add(WordExampleRefsCompanion(
+          course: Value(_courseId),
           wordId: Value(entry.key),
           exampleId: Value(exampleId),
         ));
@@ -57,13 +64,13 @@ class ExampleSentenceRepository {
 
     await _db.transaction(() async {
       await _db.exampleSentenceDao.upsertExamples(exampleRows);
-      await _db.exampleSentenceDao.replaceAllRefs(refRows);
-      await _meta.markExamplesSynced(version);
+      await _db.exampleSentenceDao.replaceAllRefs(_courseId, refRows);
+      await _meta.markExamplesSynced(version, _courseId);
     });
   }
 
-  Future<int> countExamples() => _db.exampleSentenceDao.countExamples();
-  Future<int> countRefs() => _db.exampleSentenceDao.countRefs();
+  Future<int> countExamples() => _db.exampleSentenceDao.countExamples(_courseId);
+  Future<int> countRefs() => _db.exampleSentenceDao.countRefs(_courseId);
 
   ExampleSentence _toEntity(ExampleSentenceData row) => ExampleSentence(
         id: row.id,

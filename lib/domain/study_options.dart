@@ -4,45 +4,51 @@
 class StudyOptions {
   const StudyOptions({
     this.autoPlayPronunciation = false,
-    this.showHiragana = false,
-    this.showKorean = false,
+    this.showReading = false,
+    this.showMeaning = false,
   });
 
   final bool autoPlayPronunciation;
-  final bool showHiragana;
-  final bool showKorean;
+
+  /// 발음 표기(reading, 예: 히라가나) 를 카드에 먼저 보여줄지.
+  final bool showReading;
+
+  /// 사용자 언어 뜻을 카드에 먼저 보여줄지.
+  final bool showMeaning;
 
   StudyOptions copyWith({
     bool? autoPlayPronunciation,
-    bool? showHiragana,
-    bool? showKorean,
+    bool? showReading,
+    bool? showMeaning,
   }) {
     return StudyOptions(
       autoPlayPronunciation:
           autoPlayPronunciation ?? this.autoPlayPronunciation,
-      showHiragana: showHiragana ?? this.showHiragana,
-      showKorean: showKorean ?? this.showKorean,
+      showReading: showReading ?? this.showReading,
+      showMeaning: showMeaning ?? this.showMeaning,
     );
   }
 
   Map<String, dynamic> toJson() => {
         'autoPlayPronunciation': autoPlayPronunciation,
-        'showHiragana': showHiragana,
-        'showKorean': showKorean,
+        'showReading': showReading,
+        'showMeaning': showMeaning,
       };
 
   /// 손상된 JSON 일 때 호출 측이 기본값으로 fallback 하기 쉽도록
   /// 누락 필드는 기본값(false) 으로 채운다. 타입 불일치는 throw.
+  ///
+  /// 하위호환: 구버전 키 `showHiragana`/`showKorean` 도 폴백으로 읽는다.
   factory StudyOptions.fromJson(Map<String, dynamic> json) {
     return StudyOptions(
       autoPlayPronunciation: _bool(json, 'autoPlayPronunciation'),
-      showHiragana: _bool(json, 'showHiragana'),
-      showKorean: _bool(json, 'showKorean'),
+      showReading: _bool(json, 'showReading', legacyKey: 'showHiragana'),
+      showMeaning: _bool(json, 'showMeaning', legacyKey: 'showKorean'),
     );
   }
 
-  static bool _bool(Map<String, dynamic> json, String key) {
-    final v = json[key];
+  static bool _bool(Map<String, dynamic> json, String key, {String? legacyKey}) {
+    final v = json[key] ?? (legacyKey != null ? json[legacyKey] : null);
     if (v == null) return false;
     if (v is bool) return v;
     throw FormatException("StudyOptions: '$key' must be bool (got $v)");
@@ -53,14 +59,14 @@ class StudyOptions {
       identical(this, other) ||
       (other is StudyOptions &&
           other.autoPlayPronunciation == autoPlayPronunciation &&
-          other.showHiragana == showHiragana &&
-          other.showKorean == showKorean);
+          other.showReading == showReading &&
+          other.showMeaning == showMeaning);
 
   @override
   int get hashCode =>
-      Object.hash(autoPlayPronunciation, showHiragana, showKorean);
+      Object.hash(autoPlayPronunciation, showReading, showMeaning);
 
   @override
   String toString() =>
-      'StudyOptions(autoPlay=$autoPlayPronunciation, hira=$showHiragana, kor=$showKorean)';
+      'StudyOptions(autoPlay=$autoPlayPronunciation, reading=$showReading, meaning=$showMeaning)';
 }

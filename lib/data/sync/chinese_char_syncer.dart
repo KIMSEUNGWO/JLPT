@@ -9,15 +9,18 @@ final class ChineseCharSyncer extends JsonEntitySyncer<ChineseChar> {
   ChineseCharSyncer({
     required this.charRepository,
     required this.metaRepository,
+    required this.courseId,
     required super.bundle,
     required super.cache,
-    this.expectedMinRowCount = 1500,
-  }) : super(dataKey: 'chinese_chars');
+    required super.dataKey,
+    required this.expectedMinRowCount,
+  });
 
   final ChineseCharRepository charRepository;
   final AppMetaRepository metaRepository;
+  final String courseId;
 
-  /// 번들 한자 약 1892개. 안전마진 80%. 테스트는 작은 값으로 override.
+  /// 정상으로 간주할 최소 문자 수. 코스 데이터 규모에 맞춰 주입된다.
   @override
   final int expectedMinRowCount;
 
@@ -74,7 +77,8 @@ final class ChineseCharSyncer extends JsonEntitySyncer<ChineseChar> {
   }
 
   @override
-  Future<Version?> currentDbVersion() => metaRepository.getCharsVersion();
+  Future<Version?> currentDbVersion() =>
+      metaRepository.getCharsVersion(courseId);
 
   @override
   Future<int> currentDbRowCount() => charRepository.countChars();

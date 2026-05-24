@@ -40,7 +40,11 @@ class _ChineseCharSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final course = ref.watch(activeCourseProvider);
+    // 문자(한자) 모듈이 없는 코스는 섹션 자체를 그리지 않는다.
+    if (!course.hasCharacterModule) return const SizedBox.shrink();
     final cacheAsync = ref.watch(chineseCharCacheProvider);
+    final moduleLabel = course.characterModuleLabel ?? '';
 
     return Container(
       width: double.infinity,
@@ -52,11 +56,11 @@ class _ChineseCharSection extends ConsumerWidget {
       ),
       child: cacheAsync.when(
         loading: () => const SizedBox.shrink(),
-        error: (_, __) => const Text('한자 정보를 불러올 수 없습니다.'),
+        error: (_, __) => Text('$moduleLabel 정보를 불러올 수 없습니다.'),
         data: (charMap) {
           final chars = _findChars(charMap, word.word);
           if (chars.isEmpty) {
-            return const Text('한자 정보가 없습니다.');
+            return Text('$moduleLabel 정보가 없습니다.');
           }
           final widgets = <Widget>[];
           for (int i = 0; i < chars.length; i++) {
@@ -69,7 +73,7 @@ class _ChineseCharSection extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '한자 정보',
+                '$moduleLabel 정보',
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,

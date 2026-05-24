@@ -133,6 +133,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
   Widget build(BuildContext context) {
     // Keep the autoDispose notifier alive while this page is mounted.
     ref.watch(studySessionProvider);
+    final course = ref.watch(activeCourseProvider);
     final readCount = _allWords.where(_isRead).length;
     return PopScope(
       canPop: false,
@@ -143,7 +144,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'JLPT ${widget.args.level.name} 단어 '
+            '${course.displayName} ${widget.args.level.label} 단어 '
             '${widget.args.startIndex + 1}-${widget.args.endIndex}',
           ),
           centerTitle: false,
@@ -223,7 +224,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
                 ? const SizedBox.shrink()
                 : WordCardWidget(
                     key: ValueKey<String>(
-                      '${widget.args.level.name}-'
+                      '${widget.args.level.code}-'
                       '${_innerWords[_currentIndex].id}-'
                       '$_currentIndex-$_round',
                     ),

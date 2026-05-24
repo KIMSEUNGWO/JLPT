@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/speaker.dart';
 import 'package:jlpt_app/widgets/component/speaker_tts.dart';
 
-class AudioWaveAnimation extends StatefulWidget {
+class AudioWaveAnimation extends ConsumerStatefulWidget {
   final String? title;
   final String word;
 
@@ -25,10 +27,10 @@ class AudioWaveAnimation extends StatefulWidget {
   });
 
   @override
-  State<AudioWaveAnimation> createState() => _AudioWaveAnimationState();
+  ConsumerState<AudioWaveAnimation> createState() => _AudioWaveAnimationState();
 }
 
-class _AudioWaveAnimationState extends State<AudioWaveAnimation>
+class _AudioWaveAnimationState extends ConsumerState<AudioWaveAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late List<Animation<double>> _animations;
@@ -61,7 +63,8 @@ class _AudioWaveAnimationState extends State<AudioWaveAnimation>
   @override
   void initState() {
     super.initState();
-    _speaker = widget.speaker ?? SpeakerTTS();
+    _speaker = widget.speaker ??
+        SpeakerTTS(locale: ref.read(activeCourseProvider).ttsLocale);
     // init() 은 idempotent (SpeakerTTS 가 `_initFuture ??= ...` 로 가드).
     // 첫 호출자가 completionHandler 를 등록하므로 AudioWaveAnimation 이 항상
     // 먼저 init 하면 자체 애니메이션 종료 콜백이 보장된다.

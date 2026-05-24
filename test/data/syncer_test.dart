@@ -5,6 +5,7 @@ import 'package:jlpt_app/data/remote/json_data_source.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/data/repositories/word_repository.dart';
 import 'package:jlpt_app/data/sync/word_syncer.dart';
+import 'package:jlpt_app/domain/course/course_registry.dart';
 import 'package:pub_semver/pub_semver.dart';
 
 /// JsonDataSource 의 in-memory 구현 — 외부 의존 없이 syncer 테스트.
@@ -47,12 +48,14 @@ void main() {
   setUp(() {
     db = AppDatabase.forTesting(NativeDatabase.memory());
     meta = AppMetaRepository(db);
-    repo = WordRepository(db, meta);
+    repo = WordRepository(db, meta, jlptJapaneseCourse);
     syncer = WordSyncer(
       wordRepository: repo,
       metaRepository: meta,
+      courseId: jlptJapaneseCourse.id,
       bundle: const AssetJsonDataSource(),
       cache: LocalJsonCacheSource(),
+      dataKey: jlptJapaneseCourse.data.wordsKey,
       // fixture 크기에 맞춰 lower bound 낮춤
       expectedMinRowCount: 2,
     );
@@ -69,7 +72,7 @@ void main() {
       );
       expect(await syncer.isUpToDate(v1), isTrue);
       expect(await repo.countWords(), 10);
-      expect(await meta.getWordsVersion(), v1);
+      expect(await meta.getWordsVersion('jlpt_ja'), v1);
     });
 
     test('정상 sync 후 같은 버전이면 isUpToDate=true', () async {
@@ -129,7 +132,7 @@ void main() {
       );
       expect(await repo.countWords(), before,
           reason: '파싱 실패 시 DB 가 변경되지 않아야 한다');
-      expect(await meta.getWordsVersion(), v1,
+      expect(await meta.getWordsVersion('jlpt_ja'), v1,
           reason: '메타 버전도 유지되어야 한다');
     });
 
