@@ -1,7 +1,7 @@
-import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-
 import 'package:vector_math/vector_math.dart' as math;
+
+import 'package:jlpt_app/core/theme/theme_x.dart';
 
 class PieChart extends StatefulWidget {
   final double radius;
@@ -133,13 +133,13 @@ class _ProgressBar extends CustomPainter {
     Offset center = Offset(size.width / 2, size.height / 2);
 
     Paint defaultPaint = Paint()
-      ..color = AppColors.inactiveChart
+      ..color = context.feedback.inactiveChart
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth;
 
     Paint currentPaint = Paint()
-        ..color = Theme.of(context).colorScheme.primary
+        ..color = context.colors.primary
         ..strokeCap = StrokeCap.round
         ..style = PaintingStyle.stroke
         ..strokeWidth = strokeWidth;

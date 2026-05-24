@@ -3,10 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:jlpt_app/app/app_routes.dart';
 import 'package:jlpt_app/app/route_args.dart';
-import 'package:jlpt_app/core/app_utils.dart';
-import 'package:jlpt_app/core/theme/app_colors.dart';
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/type.dart';
@@ -36,7 +37,7 @@ class StudyListPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text('${course.displayName} ${level.label}'),
         centerTitle: false,
-        backgroundColor: Colors.white,
+        backgroundColor: context.colors.surface,
         actions: [
           wordsAsync.maybeWhen(
             data: (map) {
@@ -45,30 +46,31 @@ class StudyListPage extends ConsumerWidget {
             },
             orElse: () => const SizedBox.shrink(),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: AppSpacing.sm),
           Consumer(
             builder: (context, ref, _) {
               final cycle = ref.watch(studyCycleProvider);
               return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.sm,
+                  vertical: AppSpacing.xs,
+                ),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
-                  borderRadius: BorderRadius.circular(12),
+                  color: context.colors.primary,
+                  borderRadius: BorderRadius.circular(AppRadius.md),
                 ),
                 child: Text(
                   '${cycle[level]}회독',
-                  style: TextStyle(
-                    color: Colors.white,
+                  style: context.text.bodyMedium?.copyWith(
+                    color: context.colors.onPrimary,
                     fontWeight: FontWeight.w500,
-                    fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
                   ),
                 ),
               );
             },
           ),
-          const SizedBox(width: 20),
+          const SizedBox(width: AppSpacing.xl),
         ],
-        shape: kAppBarShape,
       ),
       body: wordsAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
@@ -135,9 +137,12 @@ class _StudyListState extends ConsumerState<_StudyList> {
     final groupSize = ref.watch(studyGroupSizeProvider);
     final groupCount = (words.length / groupSize).ceil();
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 21),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.xl,
+        vertical: AppSpacing.xl,
+      ),
       child: ListView.separated(
-        separatorBuilder: (_, __) => const SizedBox(height: 16),
+        separatorBuilder: (_, __) => const SizedBox(height: AppSpacing.lg),
         itemCount: groupCount + 1,
         itemBuilder: (context, index) {
           if (groupCount == index) {
@@ -176,15 +181,12 @@ class _StudyListState extends ConsumerState<_StudyList> {
                 },
                 child: CustomContainer(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 15,
+                    horizontal: AppSpacing.xl,
+                    vertical: AppSpacing.lg,
                   ),
-                  radius: BorderRadius.circular(12),
+                  radius: BorderRadius.circular(AppRadius.md),
                   border: isRecent
-                      ? Border.all(
-                          color: Theme.of(context).colorScheme.primary,
-                          width: 2,
-                        )
+                      ? Border.all(color: context.colors.primary, width: 2)
                       : null,
                   child: Column(
                     children: [
@@ -193,18 +195,15 @@ class _StudyListState extends ConsumerState<_StudyList> {
                         children: [
                           Text(
                             '단어 ${start + 1}-$end',
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.onPrimary,
+                            style: context.text.displaySmall?.copyWith(
+                              color: context.colors.onSurface,
                               fontWeight: FontWeight.w600,
-                              fontSize: Theme.of(
-                                context,
-                              ).textTheme.displaySmall!.fontSize,
                             ),
                           ),
                           if (isRecent) const RecentlyViewedBadge(),
                         ],
                       ),
-                      const SizedBox(height: 12),
+                      const SizedBox(height: AppSpacing.md),
                       CustomProgressBar(
                         current: innerWords.where((w) => w.isRead).length,
                         total: innerWords.length,
@@ -228,17 +227,19 @@ class _ProgressBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs,
+      ),
       decoration: BoxDecoration(
-        color: AppColors.background,
-        borderRadius: BorderRadius.circular(12),
+        color: context.colors.surfaceContainerLowest,
+        borderRadius: BorderRadius.circular(AppRadius.md),
       ),
       child: Text(
         '전체진도 $percent%',
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.primary,
+        style: context.text.bodyMedium?.copyWith(
+          color: context.colors.primary,
           fontWeight: FontWeight.w500,
-          fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
         ),
       ),
     );

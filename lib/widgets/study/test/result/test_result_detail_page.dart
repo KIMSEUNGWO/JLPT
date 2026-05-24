@@ -1,9 +1,9 @@
-import 'package:jlpt_app/core/theme/app_colors.dart';
-
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'package:jlpt_app/component/chart/pie_chart.dart';
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/domain/box/question_entity_box.dart';
 import 'package:jlpt_app/domain/question.dart';
 import 'package:jlpt_app/domain/timer.dart';
@@ -51,12 +51,6 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
   late List<Question> _question;
   bool _onlyIncorrect = false;
 
-  final Color _correctColor = AppColors.correctText;
-  final Color _correctBackgroundColor = AppColors.correctBackground;
-  final Color _incorrectColor = AppColors.incorrectText;
-  final Color _incorrectBackgroundColor = AppColors.incorrectBackground;
-
-
   _toggleOnlyIncorrect() {
     _onlyIncorrect = !_onlyIncorrect;
 
@@ -78,28 +72,33 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-  int correctCnt = widget.question.question.where((e) => e.isCorrect).length;
-  int totalCnt = widget.question.question.length;
-  
+    final feedback = context.feedback;
+    final correctColor = feedback.correctText;
+    final correctBg = feedback.correctBackground;
+    final incorrectColor = feedback.incorrectText;
+    final incorrectBg = feedback.incorrectBackground;
+    int correctCnt = widget.question.question.where((e) => e.isCorrect).length;
+    int totalCnt = widget.question.question.length;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('${widget.question.level == null ? '통합' : widget.question.level!.label} 테스트 기록'),
         centerTitle: false,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(AppSpacing.xl),
         child: ListView(
           children: [
             CustomContainer(
               width: double.infinity,
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(AppSpacing.xl),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(DateFormat('yyyy.MM.dd HH:mm').format(widget.question.dateTime),
                     textAlign: TextAlign.start,
                   ),
-                  const SizedBox(height: 21,),
+                  const SizedBox(height: AppSpacing.xl),
                   Row(
                     children: [
                       PieChart(
@@ -111,59 +110,59 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text('$correctCnt',
-                                style: TextStyle(
-                                  fontFamily: 'Tmoney',
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: Theme.of(context).textTheme.displayMedium!.fontSize,
-                                  color: Theme.of(context).colorScheme.onPrimary,
+                              Text(
+                                '$correctCnt',
+                                style: context.scoreText.copyWith(
+                                  fontSize: context.text.displayMedium!.fontSize,
                                 ),
                               ),
-                              Text('/$totalCnt',
-                                style: TextStyle(
-                                  fontFamily: 'Tmoney',
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                                  color: Theme.of(context).colorScheme.onSurface,
+                              Text(
+                                '/$totalCnt',
+                                style: context.scoreText.copyWith(
+                                  fontSize: context.text.bodyLarge!.fontSize,
+                                  color: context.colors.onSurfaceVariant,
                                 ),
                               ),
                             ],
                           ),
                         ),
                       ),
-                      const SizedBox(width: 16,),
+                      const SizedBox(width: AppSpacing.lg),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('당신의 점수는',
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.onPrimary,
-                              fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+                          Text(
+                            '당신의 점수는',
+                            style: context.text.bodyMedium?.copyWith(
+                              color: context.colors.onSurface,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          Text(PrintTestResult.getText(totalCnt, correctCnt),
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.primary,
-                              fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
+                          Text(
+                            PrintTestResult.getText(totalCnt, correctCnt),
+                            style: context.text.bodyLarge?.copyWith(
+                              color: context.colors.primary,
                               fontWeight: FontWeight.w600,
                             ),
-                          )
+                          ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                   Container(
                     width: double.infinity,
                     height: 1,
-                    margin: const EdgeInsets.symmetric(vertical: 21),
-                    color: AppColors.divider,
+                    margin: const EdgeInsets.symmetric(vertical: AppSpacing.xl),
+                    color: context.colors.outline,
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.xl,
+                      vertical: AppSpacing.md,
+                    ),
                     decoration: BoxDecoration(
-                      color: AppColors.surface,
-                      borderRadius: BorderRadius.circular(12),
+                      color: context.colors.secondary,
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: RecordRow(dataList: [
                       RecordData(title: '소요시간', value: formatSeconds(widget.question.time)),
@@ -174,36 +173,46 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                 ],
               ),
             ),
-            const SizedBox(height: 26,),
+            const SizedBox(height: AppSpacing.xxl),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('문제 리뷰',
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onPrimary,
+                  Text(
+                    '문제 리뷰',
+                    style: context.text.bodyLarge?.copyWith(
+                      color: context.colors.onSurface,
                       fontWeight: FontWeight.w500,
-                      fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize
                     ),
                   ),
                   GestureDetector(
                     onTap: _toggleOnlyIncorrect,
                     child: CustomContainer(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                      backgroundColor: _onlyIncorrect ? Theme.of(context).colorScheme.primary : Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.sm,
+                        vertical: AppSpacing.xs,
+                      ),
+                      backgroundColor: _onlyIncorrect
+                          ? context.colors.primary
+                          : context.colors.surface,
                       child: Row(
                         children: [
-                          Icon(Icons.filter_alt_rounded,
-                            size: Theme.of(context).textTheme.bodySmall!.fontSize,
-                            color: _onlyIncorrect ? Colors.white : null,
+                          Icon(
+                            Icons.filter_alt_rounded,
+                            size: context.text.bodySmall!.fontSize,
+                            color: _onlyIncorrect
+                                ? context.colors.onPrimary
+                                : context.colors.onSurface,
                           ),
-                          const SizedBox(width: 4,),
-                          Text('틀린문제만',
-                            style: TextStyle(
-                              fontSize: Theme.of(context).textTheme.bodySmall!.fontSize,
-                              color: _onlyIncorrect ? Colors.white : null
+                          const SizedBox(width: AppSpacing.xs),
+                          Text(
+                            '틀린문제만',
+                            style: context.text.bodySmall?.copyWith(
+                              color: _onlyIncorrect
+                                  ? context.colors.onPrimary
+                                  : context.colors.onSurface,
                             ),
                           ),
                         ],
@@ -213,15 +222,18 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                 ],
               ),
             ),
-            const SizedBox(height: 12,),
+            const SizedBox(height: AppSpacing.md),
 
             ..._question.map((e) {
 
               bool isCorrect = e.isCorrect;
 
               return CustomContainer(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                margin: const EdgeInsets.only(bottom: 16),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.xl,
+                  vertical: AppSpacing.lg,
+                ),
+                margin: const EdgeInsets.only(bottom: AppSpacing.lg),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -229,25 +241,24 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(e.reverse ? e.question.getMeaning() : e.question.getTerm(),
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.onPrimary,
-                            fontSize: Theme.of(context).textTheme.displayMedium!.fontSize,
-                          ),
+                        Text(
+                          e.reverse ? e.question.getMeaning() : e.question.getTerm(),
+                          style: context.text.displayMedium,
                         ),
 
-                        isCorrect ? _correct(context) : _incorrect(context),
+                        isCorrect
+                            ? _correct(context, correctColor, correctBg)
+                            : _incorrect(context, incorrectColor, incorrectBg),
                       ],
                     ),
-                    const SizedBox(height: 6,),
+                    const SizedBox(height: AppSpacing.sm),
                     if (!e.reverse && e.question is Word)
-                      Text((e.question as Word).reading ?? '',
-                        style: TextStyle(
-                          fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                        ),
+                      Text(
+                        (e.question as Word).reading ?? '',
+                        style: context.text.bodyLarge,
                       ),
 
-                    const SizedBox(height: 21,),
+                    const SizedBox(height: AppSpacing.xl),
 
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -257,63 +268,69 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 4),
-                                child: Text('선택한 답',
-                                  style: TextStyle(
-                                    fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+                                padding: const EdgeInsets.only(left: AppSpacing.xs),
+                                child: Text(
+                                  '선택한 답',
+                                  style: context.text.bodyMedium?.copyWith(
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 8,),
+                              const SizedBox(height: AppSpacing.sm),
                               Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: AppSpacing.md,
+                                  vertical: AppSpacing.sm,
+                                ),
                                 width: double.infinity,
                                 alignment: Alignment.centerLeft,
                                 decoration: BoxDecoration(
-                                  color: isCorrect ? _correctBackgroundColor : _incorrectBackgroundColor,
-                                  borderRadius: BorderRadius.circular(8),
+                                  color: isCorrect ? correctBg : incorrectBg,
+                                  borderRadius: BorderRadius.circular(AppRadius.sm),
                                 ),
-                                child: Text(e.reverse ? e.myAnswer!.getTerm() : e.myAnswer!.getMeaning(),
-                                  style: TextStyle(
-                                    fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
+                                child: Text(
+                                  e.reverse ? e.myAnswer!.getTerm() : e.myAnswer!.getMeaning(),
+                                  style: context.text.bodyLarge?.copyWith(
                                     fontWeight: FontWeight.w500,
-                                    color: isCorrect ? _correctColor : _incorrectColor
+                                    color: isCorrect ? correctColor : incorrectColor,
                                   ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        const SizedBox(width: 12,),
+                        const SizedBox(width: AppSpacing.md),
                         if (!isCorrect)
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 4),
-                                  child: Text('정답',
-                                    style: TextStyle(
-                                      fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+                                  padding: const EdgeInsets.only(left: AppSpacing.xs),
+                                  child: Text(
+                                    '정답',
+                                    style: context.text.bodyMedium?.copyWith(
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 8,),
+                                const SizedBox(height: AppSpacing.sm),
                                 Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: AppSpacing.md,
+                                    vertical: AppSpacing.sm,
+                                  ),
                                   width: double.infinity,
                                   alignment: Alignment.centerLeft,
                                   decoration: BoxDecoration(
-                                    color: _correctBackgroundColor,
-                                    borderRadius: BorderRadius.circular(8),
+                                    color: correctBg,
+                                    borderRadius: BorderRadius.circular(AppRadius.sm),
                                   ),
-                                  child: Text(e.reverse ? e.question.getTerm() : e.question.getMeaning(),
-                                    style: TextStyle(
-                                      fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
+                                  child: Text(
+                                    e.reverse ? e.question.getTerm() : e.question.getMeaning(),
+                                    style: context.text.bodyLarge?.copyWith(
                                       fontWeight: FontWeight.w500,
-                                      color: _correctColor,
+                                      color: correctColor,
                                     ),
                                   ),
                                 ),
@@ -325,65 +342,70 @@ class _TestResultDetailPageState extends State<TestResultDetailPage> {
                   ],
                 ),
               );
-            })
+            }),
           ],
         ),
-      )
+      ),
     );
   }
 
-  Widget _correct(BuildContext context) {
+  Widget _correct(BuildContext context, Color color, Color background) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs,
+      ),
       decoration: BoxDecoration(
-        color: _correctBackgroundColor,
-        borderRadius: BorderRadius.circular(12),
+        color: background,
+        borderRadius: BorderRadius.circular(AppRadius.md),
       ),
       child: Row(
         children: [
-          Icon(Icons.check_circle_outline_rounded,
-            color: _correctColor,
-            size: Theme.of(context).textTheme.bodyMedium!.fontSize,
+          Icon(
+            Icons.check_circle_outline_rounded,
+            color: color,
+            size: context.text.bodyMedium!.fontSize,
           ),
-          const SizedBox(width: 4,),
-          Text('정답',
-            style: TextStyle(
-              color: _correctColor,
+          const SizedBox(width: AppSpacing.xs),
+          Text(
+            '정답',
+            style: context.text.bodyMedium?.copyWith(
+              color: color,
               fontWeight: FontWeight.w500,
-              fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
             ),
-          )
+          ),
         ],
       ),
     );
   }
 
-  Widget _incorrect(BuildContext context) {
+  Widget _incorrect(BuildContext context, Color color, Color background) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs,
+      ),
       decoration: BoxDecoration(
-        color: _incorrectBackgroundColor,
-        borderRadius: BorderRadius.circular(12),
+        color: background,
+        borderRadius: BorderRadius.circular(AppRadius.md),
       ),
       child: Row(
         children: [
-          Icon(Icons.cancel_outlined,
-            color: _incorrectColor,
-            size: Theme.of(context).textTheme.bodyMedium!.fontSize,
+          Icon(
+            Icons.cancel_outlined,
+            color: color,
+            size: context.text.bodyMedium!.fontSize,
           ),
-          const SizedBox(width: 4,),
-          Text('오답',
-            style: TextStyle(
-              color: _incorrectColor,
+          const SizedBox(width: AppSpacing.xs),
+          Text(
+            '오답',
+            style: context.text.bodyMedium?.copyWith(
+              color: color,
               fontWeight: FontWeight.w500,
-              fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
             ),
-          )
+          ),
         ],
       ),
     );
   }
-
 }
-
-

@@ -1,11 +1,14 @@
-import 'package:jlpt_app/app/app_routes.dart';
-import 'package:jlpt_app/app/route_args.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+
+import 'package:jlpt_app/app/app_routes.dart';
+import 'package:jlpt_app/app/route_args.dart';
 import 'package:jlpt_app/core/app_utils.dart';
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/box/question_entity_box.dart';
 import 'package:jlpt_app/domain/level.dart';
@@ -73,36 +76,37 @@ class _TestResultPageState extends ConsumerState<TestResultPage> {
       appBar: AppBar(
         title: const Text('테스트 기록'),
         centerTitle: false,
-        shape: kAppBarShape,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.xl,
+              vertical: AppSpacing.lg,
+            ),
             height: 65,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              separatorBuilder: (_, _s) => const SizedBox(width: 8),
+              separatorBuilder: (_, _s) => const SizedBox(width: AppSpacing.sm),
               itemCount: levels.length,
               itemBuilder: (context, index) {
                 final level = levels[index];
+                final selected = _currentPage == index;
                 return GestureDetector(
                   onTap: () => _onChangePage(index),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 6),
+                      horizontal: AppSpacing.md,
+                      vertical: AppSpacing.sm,
+                    ),
                     decoration: BoxDecoration(
-                      color: _currentPage == index
-                          ? Theme.of(context).colorScheme.primary
-                          : null,
-                      borderRadius: BorderRadius.circular(14),
+                      color: selected ? context.colors.primary : null,
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: Text(
                       level == null ? '통합' : level.label,
-                      style: TextStyle(
-                        color: _currentPage == index ? Colors.white : null,
+                      style: context.text.bodyLarge?.copyWith(
+                        color: selected ? context.colors.onPrimary : null,
                         fontWeight: FontWeight.w500,
-                        fontSize:
-                            Theme.of(context).textTheme.bodyLarge!.fontSize,
                       ),
                     ),
                   ),
@@ -118,7 +122,7 @@ class _TestResultPageState extends ConsumerState<TestResultPage> {
         data: (results) {
           _fastMove();
           return Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(AppSpacing.xl),
             child: PageView.builder(
               controller: _pageController,
               physics: const NeverScrollableScrollPhysics(),
@@ -129,7 +133,8 @@ class _TestResultPageState extends ConsumerState<TestResultPage> {
                     .where((e) => e.level == levels[index])
                     .toList();
                 return ListView.separated(
-                  separatorBuilder: (_, _s) => const SizedBox(height: 16),
+                  separatorBuilder: (_, _s) =>
+                      const SizedBox(height: AppSpacing.lg),
                   itemCount: list.length,
                   itemBuilder: (context, i) {
                     final r = list[i];
@@ -143,7 +148,9 @@ class _TestResultPageState extends ConsumerState<TestResultPage> {
                       ),
                       child: CustomContainer(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 15),
+                          horizontal: AppSpacing.xl,
+                          vertical: AppSpacing.lg,
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -153,66 +160,45 @@ class _TestResultPageState extends ConsumerState<TestResultPage> {
                                 Text(
                                   DateFormat('yyyy.MM.dd HH:mm')
                                       .format(r.dateTime),
-                                  style: TextStyle(
+                                  style: context.text.bodyMedium?.copyWith(
+                                    color: context.colors.onSurface,
                                     fontWeight: FontWeight.w600,
-                                    fontSize: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .fontSize,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onPrimary,
                                   ),
                                 ),
-                                const SizedBox(height: 6),
+                                const SizedBox(height: AppSpacing.sm),
                                 Row(children: [
                                   Row(children: [
-                                    Icon(Icons.check_circle,
-                                        size: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall!
-                                            .fontSize,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary),
-                                    const SizedBox(width: 4),
+                                    Icon(
+                                      Icons.check_circle,
+                                      size: context.text.bodySmall!.fontSize,
+                                      color: context.colors.primary,
+                                    ),
+                                    const SizedBox(width: AppSpacing.xs),
                                     Text(
-                                        '정답률 ${correctRatePercent(correct, total)}',
-                                        style: TextStyle(
-                                            fontSize: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall!
-                                                .fontSize)),
+                                      '정답률 ${correctRatePercent(correct, total)}',
+                                      style: context.text.bodySmall,
+                                    ),
                                   ]),
-                                  const SizedBox(width: 8),
+                                  const SizedBox(width: AppSpacing.sm),
                                   Row(children: [
-                                    Icon(Icons.access_time_rounded,
-                                        size: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall!
-                                            .fontSize,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary),
-                                    const SizedBox(width: 4),
-                                    Text(formatSeconds(r.time),
-                                        style: TextStyle(
-                                            fontSize: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall!
-                                                .fontSize)),
+                                    Icon(
+                                      Icons.access_time_rounded,
+                                      size: context.text.bodySmall!.fontSize,
+                                      color: context.colors.primary,
+                                    ),
+                                    const SizedBox(width: AppSpacing.xs),
+                                    Text(
+                                      formatSeconds(r.time),
+                                      style: context.text.bodySmall,
+                                    ),
                                   ]),
                                 ]),
                               ],
                             ),
                             Text(
                               '$correct/$total',
-                              style: TextStyle(
-                                color: Theme.of(context).colorScheme.primary,
-                                fontSize: Theme.of(context)
-                                    .textTheme
-                                    .displaySmall!
-                                    .fontSize,
+                              style: context.text.displaySmall?.copyWith(
+                                color: context.colors.primary,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),

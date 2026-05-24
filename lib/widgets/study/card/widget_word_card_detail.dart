@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/chinese_char.dart';
 import 'package:jlpt_app/domain/word.dart';
@@ -20,7 +23,7 @@ class WordCardDetailWidget extends StatelessWidget {
     return Column(
       children: [
         ExampleSentenceSection(word: word),
-        const SizedBox(height: 12),
+        const SizedBox(height: AppSpacing.md),
         _ChineseCharSection(word: word),
       ],
     );
@@ -48,11 +51,11 @@ class _ChineseCharSection extends ConsumerWidget {
 
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 21),
-      padding: const EdgeInsets.all(15),
+      margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Theme.of(context).colorScheme.secondary,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        color: context.colors.secondary,
       ),
       child: cacheAsync.when(
         loading: () => const SizedBox.shrink(),
@@ -66,7 +69,7 @@ class _ChineseCharSection extends ConsumerWidget {
           for (int i = 0; i < chars.length; i++) {
             widgets.add(ChineseCharWidget(char: chars[i]));
             if (i < chars.length - 1) {
-              widgets.add(const SizedBox(height: 10));
+              widgets.add(const SizedBox(height: AppSpacing.md));
             }
           }
           return Column(
@@ -74,12 +77,11 @@ class _ChineseCharSection extends ConsumerWidget {
             children: [
               Text(
                 '$moduleLabel 정보',
-                style: TextStyle(
+                style: context.text.bodyMedium?.copyWith(
                   fontWeight: FontWeight.w500,
-                  fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: AppSpacing.md),
               ...widgets,
             ],
           );

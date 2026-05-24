@@ -1,6 +1,7 @@
-import 'package:jlpt_app/core/theme/app_colors.dart';
-
 import 'package:flutter/material.dart';
+
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/domain/question.dart';
 import 'package:jlpt_app/domain/question_box.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
@@ -36,55 +37,53 @@ class _TestCardWidgetState extends State<TestCardWidget>
   Widget build(BuildContext context) {
     return Container(
       key: widget.key,
-      margin: const EdgeInsets.all(20),
+      margin: const EdgeInsets.all(AppSpacing.xl),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomContainer(
             width: double.infinity,
-            padding: const EdgeInsets.symmetric(vertical: 32),
+            padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxxl),
             constraints: const BoxConstraints(minHeight: 200, maxHeight: 240),
             child: Center(
               child: Text(
                 widget.reverse
                     ? widget.data.question.getMeaning()
                     : widget.data.question.getTerm(),
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
+                style: context.text.headlineLarge,
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: AppSpacing.lg),
           GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(), // 스크롤 비활성화
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, // 2열
-              crossAxisSpacing: 16, // 가로 간격
-              mainAxisSpacing: 16, // 세로 간격
+              crossAxisSpacing: AppSpacing.lg, // 가로 간격
+              mainAxisSpacing: AppSpacing.lg, // 세로 간격
               mainAxisExtent: 50, // 각 항목의 높이
             ),
             itemCount: widget.data.examples.length,
             itemBuilder: (context, index) {
               final answer = widget.data.examples[index];
+              final selected = _myAnswer == answer;
               return GestureDetector(
                 onTap: () {
                   _selectAnswer(answer);
                 },
                 child: CustomContainer(
-                  backgroundColor: _myAnswer == answer
-                      ? AppColors.primaryTint
-                      : Colors.white,
-                  border: _myAnswer == answer
-                      ? Border.all(color: Theme.of(context).colorScheme.primary)
+                  backgroundColor: selected
+                      ? context.colors.primaryContainer
+                      : context.colors.surface,
+                  border: selected
+                      ? Border.all(color: context.colors.primary)
                       : null,
                   child: Text(
                     widget.reverse ? answer.getMeaning() : answer.getTerm(),
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    style: context.text.bodyLarge?.copyWith(
                       fontWeight: FontWeight.w500,
-                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
                 ),

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:jlpt_app/core/theme/theme_x.dart';
+
 class CustomTimer extends StatefulWidget {
   final TimerController? controller;
   final Function(int seconds) getSeconds;
@@ -63,9 +65,8 @@ class _CustomTimerState extends State<CustomTimer> {
   Widget build(BuildContext context) {
     return Text(
       formatTime(_seconds),
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.primary,
-        fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+      style: context.text.bodyMedium?.copyWith(
+        color: context.colors.primary,
         fontWeight: FontWeight.w500,
       ),
     );

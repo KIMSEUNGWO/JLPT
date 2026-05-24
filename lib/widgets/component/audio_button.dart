@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/speaker.dart';
@@ -110,12 +113,20 @@ class _AudioWaveAnimationState extends ConsumerState<AudioWaveAnimation>
   Widget build(BuildContext context) {
     final compact = widget.compact;
     final padding = compact
-        ? const EdgeInsets.symmetric(horizontal: 6, vertical: 4)
-        : const EdgeInsets.symmetric(horizontal: 10, vertical: 8);
+        ? const EdgeInsets.symmetric(
+            horizontal: AppSpacing.sm,
+            vertical: AppSpacing.xs,
+          )
+        : const EdgeInsets.symmetric(
+            horizontal: AppSpacing.md,
+            vertical: AppSpacing.sm,
+          );
     final waveHeight = compact ? 16.0 : 25.0;
     final barWidth = compact ? 2.0 : 3.0;
     final barMaxHeight = compact ? 18.0 : 30.0;
     final barHPad = compact ? 1.0 : 1.5;
+    final activeBarColor = context.colors.onPrimary;
+    final idleBarColor = context.colors.primary;
 
     return GestureDetector(
       onTap: play,
@@ -126,8 +137,8 @@ class _AudioWaveAnimationState extends ConsumerState<AudioWaveAnimation>
             padding: padding,
             radius: BorderRadius.circular(100),
             backgroundColor: isPlaying
-                ? Theme.of(context).colorScheme.primary
-                : Theme.of(context).colorScheme.secondary,
+                ? context.colors.primary
+                : context.colors.secondary,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -144,9 +155,7 @@ class _AudioWaveAnimationState extends ConsumerState<AudioWaveAnimation>
                           width: barWidth,
                           height: _animations[index].value * barMaxHeight,
                           decoration: BoxDecoration(
-                            color: isPlaying
-                                ? Colors.white
-                                : Theme.of(context).colorScheme.primary,
+                            color: isPlaying ? activeBarColor : idleBarColor,
                             borderRadius: BorderRadius.circular(1.5),
                           ),
                         ),
@@ -155,15 +164,12 @@ class _AudioWaveAnimationState extends ConsumerState<AudioWaveAnimation>
                   ),
                 ),
                 if (widget.title != null) ...[
-                  const SizedBox(width: 8),
+                  const SizedBox(width: AppSpacing.sm),
                   Text(
                     widget.title!,
-                    style: TextStyle(
-                      color: isPlaying
-                          ? Colors.white
-                          : Theme.of(context).colorScheme.primary,
+                    style: context.text.bodyMedium?.copyWith(
+                      color: isPlaying ? activeBarColor : idleBarColor,
                       fontWeight: FontWeight.w500,
-                      fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
                     ),
                   ),
                 ],

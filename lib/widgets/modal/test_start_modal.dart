@@ -1,8 +1,10 @@
-import 'package:jlpt_app/app/app_routes.dart';
-import 'package:jlpt_app/app/route_args.dart';
-import 'package:jlpt_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import 'package:jlpt_app/app/app_routes.dart';
+import 'package:jlpt_app/app/route_args.dart';
+import 'package:jlpt_app/core/theme/app_spacing.dart';
+import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/type.dart';
 
@@ -40,74 +42,67 @@ class _TestStartModalState extends State<TestStartModal> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(AppSpacing.xl),
         child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text('단어 테스트를 시작하시겠습니까?'),
-              const SizedBox(height: 12),
-              ..._mounts.map((mount) {
-                return SizedBox(
-                  width: double.infinity,
-                  child: TextButton(
-                    onPressed: () {
-                      _select(mount);
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: _currentMount == mount
-                          ? AppColors.primaryTint
-                          : AppColors.surfaceAlt,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    child: Text('$mount 문제',
-                      style: TextStyle(
-                          fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                          color: Theme.of(context).colorScheme.onPrimary,
-                          fontWeight: FontWeight.w500
-                      ),
-                    ),
-                  ),
-                );
-              }),
-              const SizedBox(height: 16,),
-              SizedBox(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('단어 테스트를 시작하시겠습니까?'),
+            const SizedBox(height: AppSpacing.md),
+            ..._mounts.map((mount) {
+              final selected = _currentMount == mount;
+              return SizedBox(
                 width: double.infinity,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pop(context); // 모달 닫기
-                    context.push(
-                      AppRoutes.test,
-                      extra: TestArgs(
-                        type: widget.type,
-                        level: widget.level,
-                        mount: _currentMount,
-                      ),
-                    );
+                    _select(mount);
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor: Theme.of(context).colorScheme.primary,
-                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    backgroundColor: selected
+                        ? context.colors.primaryContainer
+                        : context.colors.surfaceContainerHigh,
+                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                   ),
-                  child: Text('테스트 시작',
-                    style: TextStyle(
-                      fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
-                      color: Colors.white,
+                  child: Text(
+                    '$mount 문제',
+                    style: context.text.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
+              );
+            }),
+            const SizedBox(height: AppSpacing.lg),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context); // 모달 닫기
+                  context.push(
+                    AppRoutes.test,
+                    extra: TestArgs(
+                      type: widget.type,
+                      level: widget.level,
+                      mount: _currentMount,
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                ),
+                child: Text(
+                  '테스트 시작',
+                  style: context.text.bodyLarge?.copyWith(
+                    color: context.colors.onPrimary,
+                  ),
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
+        ),
       ),
     );
   }
