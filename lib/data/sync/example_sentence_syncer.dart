@@ -3,6 +3,7 @@ import 'package:jlpt_app/data/remote/json_data_source.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/data/repositories/example_sentence_repository.dart';
 import 'package:jlpt_app/data/sync/json_entity_syncer.dart';
+import 'package:jlpt_app/data/sync/word_json_parser.dart';
 import 'package:jlpt_app/domain/example_sentence.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:pub_semver/pub_semver.dart';
@@ -96,22 +97,7 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
     }
 
     final rawWords = await source.read(wordsDataKey);
-    final wordsList = rawWords['words'];
-    if (wordsList is! List) {
-      throw const FormatException(
-        "example_sentences cross-validation: 'words' array missing",
-      );
-    }
-
-    final words = <Word>[];
-    for (var i = 0; i < wordsList.length; i++) {
-      final raw = wordsList[i];
-      if (raw is! Map<String, dynamic>) {
-        throw FormatException('words[$i] is not a JSON object');
-      }
-      // Word.fromJson 이 exampleIds 의 존재/타입을 이미 검증.
-      words.add(Word.fromJson(raw));
-    }
+    final words = parseWordsJson(rawWords);
 
     final refs = buildAndValidateRefs(words, examples);
 

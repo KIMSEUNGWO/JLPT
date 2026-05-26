@@ -2,6 +2,7 @@ import 'package:jlpt_app/component/app_logger.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/data/repositories/word_repository.dart';
 import 'package:jlpt_app/data/sync/json_entity_syncer.dart';
+import 'package:jlpt_app/data/sync/word_json_parser.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:pub_semver/pub_semver.dart';
 
@@ -27,19 +28,12 @@ final class WordSyncer extends JsonEntitySyncer<Word> {
 
   @override
   List<Word> parse(Map<String, dynamic> json) {
-    final list = json['words'];
-    if (list is! List) {
-      throw const FormatException("words: missing 'words' array");
-    }
+    final list = parseWordsJson(json);
     final result = <Word>[];
     final byId = <int, Word>{};
     var sameContentDups = 0;
     for (var i = 0; i < list.length; i++) {
-      final e = list[i];
-      if (e is! Map<String, dynamic>) {
-        throw FormatException('words[$i] is not a JSON object');
-      }
-      final word = Word.fromJson(e);
+      final word = list[i];
       final existing = byId[word.id];
       if (existing != null) {
         // 같은 id + 같은 내용 = 입력 데이터의 무해한 중복. 첫 번째만 채택.
