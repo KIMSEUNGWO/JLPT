@@ -19178,6 +19178,105 @@
         "こ"
       ],
       "koreanChar": "黄 (누를 황)"
+    },
+    {
+      "char": "些",
+      "soundReading": [
+        "さ",
+        "しゃ"
+      ],
+      "meanReading": [
+        "すこし"
+      ],
+      "koreanChar": "些 (조금 사)"
+    },
+    {
+      "char": "彫",
+      "soundReading": [
+        "ちょう"
+      ],
+      "meanReading": [
+        "ほる"
+      ],
+      "koreanChar": "彫 (새길 조)"
+    },
+    {
+      "char": "訣",
+      "soundReading": [
+        "けつ"
+      ],
+      "meanReading": [
+        "わかれる"
+      ],
+      "koreanChar": "訣 (이별할 결)"
+    },
+    {
+      "char": "兼",
+      "soundReading": [
+        "けん"
+      ],
+      "meanReading": [
+        "かねる"
+      ],
+      "koreanChar": "兼 (겸할 겸)"
+    },
+    {
+      "char": "捉",
+      "soundReading": [
+        "そく"
+      ],
+      "meanReading": [
+        "とらえる"
+      ],
+      "koreanChar": "捉 (잡을 착)"
+    },
+    {
+      "char": "儲",
+      "soundReading": [],
+      "meanReading": [
+        "もうける"
+      ],
+      "koreanChar": "儲 (저축할 저)"
+    },
+    {
+      "char": "啓",
+      "soundReading": [
+        "けい"
+      ],
+      "meanReading": [
+        "ひらく"
+      ],
+      "koreanChar": "啓 (열 계)"
+    },
+    {
+      "char": "宗",
+      "soundReading": [
+        "しゅう",
+        "そう"
+      ],
+      "meanReading": [],
+      "koreanChar": "宗 (마루 종)"
+    },
+    {
+      "char": "縁",
+      "soundReading": [
+        "えん"
+      ],
+      "meanReading": [
+        "ふち"
+      ],
+      "koreanChar": "縁 (인연 연)"
+    },
+    {
+      "char": "須",
+      "soundReading": [
+        "す",
+        "しゅ"
+      ],
+      "meanReading": [
+        "ひげ"
+      ],
+      "koreanChar": "須 (모름지기 수)"
     }
   ]
 }

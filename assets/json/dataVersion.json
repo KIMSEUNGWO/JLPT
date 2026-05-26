@@ -1,5 +1,5 @@
 {
-  "version": "0.1.4",
-  "description": "누락 한자 데이터 보강",
-  "last_updated": "2026-05-24"
+  "version": "0.1.7",
+  "description": "N4/N3/N2 단어 215개 예문 추가 (예문 430개, 한자 10개 보강)",
+  "last_updated": "2026-05-26"
 }
