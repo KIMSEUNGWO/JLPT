@@ -1,0 +1,30 @@
+{
+  "words": {
+    "KATAKANA": [
+      {
+        "id": 901001,
+        "act": "N",
+        "word": "アイスクリーム",
+        "reading": "",
+        "meaning": "아이스크림",
+        "exampleIds": []
+      },
+      {
+        "id": 901002,
+        "act": "N",
+        "word": "マクドナルド",
+        "reading": "",
+        "meaning": "맥도날드",
+        "exampleIds": []
+      },
+      {
+        "id": 901003,
+        "act": "N",
+        "word": "コーヒー",
+        "reading": "",
+        "meaning": "커피",
+        "exampleIds": []
+      }
+    ]
+  }
+}

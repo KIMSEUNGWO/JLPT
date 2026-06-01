@@ -1,0 +1,30 @@
+{
+  "words": {
+    "HIRAGANA": [
+      {
+        "id": 900001,
+        "act": "N",
+        "word": "ありがとう",
+        "reading": "",
+        "meaning": "고맙습니다",
+        "exampleIds": []
+      },
+      {
+        "id": 900002,
+        "act": "N",
+        "word": "さくら",
+        "reading": "",
+        "meaning": "벚꽃",
+        "exampleIds": []
+      },
+      {
+        "id": 900003,
+        "act": "N",
+        "word": "ともだち",
+        "reading": "",
+        "meaning": "친구",
+        "exampleIds": []
+      }
+    ]
+  }
+}
