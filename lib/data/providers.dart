@@ -124,6 +124,7 @@ final wordSyncerProvider = Provider<WordSyncer>((ref) {
     bundle: ref.read(assetJsonDataSourceProvider),
     cache: ref.read(localJsonCacheProvider),
     dataKey: data.wordsKey,
+    dataKeys: data.wordKeys,
     expectedMinRowCount: data.minWordCount,
   );
 });

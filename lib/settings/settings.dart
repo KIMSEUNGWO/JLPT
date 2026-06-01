@@ -8,11 +8,13 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:jlpt_app/component/local_storage.dart';
+import 'package:jlpt_app/component/snack_bar.dart';
 import 'package:jlpt_app/core/theme/app_spacing.dart';
 import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/study_group_size.dart';
 import 'package:jlpt_app/domain/study_options.dart';
+import 'package:jlpt_app/notifier/study_session_notifier.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 
 part 'settings.g.dart';
@@ -169,6 +171,106 @@ class SettingsPage extends ConsumerWidget {
                   onChanged: controller.toggleAutoPlay,
                 ),
               ],
+            ),
+            const SizedBox(height: AppSpacing.lg),
+            const _SettingsSection(
+              title: '데이터',
+              children: [_ResetLearningDataRow()],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// 학습 진도 초기화 (단어 진도·회독·학습 시간·오늘/최근 기록).
+/// 되돌릴 수 없으므로 탭 시 경고 다이얼로그로 한 번 더 확인한다.
+class _ResetLearningDataRow extends ConsumerWidget {
+  const _ResetLearningDataRow();
+
+  Future<void> _confirmAndReset(BuildContext context, WidgetRef ref) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('학습 데이터 초기화'),
+        content: const Text(
+          '단어 학습 진도, 회독, 학습 시간, 오늘의 학습·최근 학습 기록이 모두 사라집니다.\n'
+          '테스트 기록은 유지됩니다. 이 작업은 되돌릴 수 없습니다.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: const Text('취소'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            style: TextButton.styleFrom(
+              foregroundColor: context.colors.error,
+            ),
+            child: const Text('초기화'),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !context.mounted) return;
+    await ref.read(studySessionProvider.notifier).resetLearningData();
+    if (!context.mounted) return;
+    CustomSnackBar.instance.message(context, '학습 데이터를 초기화했습니다');
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(AppRadius.md),
+      onTap: () => _confirmAndReset(context, ref),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg,
+          vertical: AppSpacing.md,
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: AppSpacing.xxxl,
+              height: AppSpacing.xxxl,
+              decoration: BoxDecoration(
+                color: context.colors.surfaceContainerHighest,
+                borderRadius: BorderRadius.circular(AppRadius.sm),
+              ),
+              child: Icon(
+                Icons.delete_outline_rounded,
+                size: 18,
+                color: context.colors.error,
+              ),
+            ),
+            const SizedBox(width: AppSpacing.md),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '학습 데이터 초기화',
+                    style: context.text.bodyLarge?.copyWith(
+                      color: context.colors.error,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: AppSpacing.xs),
+                  Text(
+                    '단어 진도·회독·학습 시간을 모두 초기화합니다',
+                    style: context.text.bodySmall?.copyWith(
+                      color: context.colors.onSurfaceVariant,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: AppSpacing.md),
+            Icon(
+              Icons.chevron_right_rounded,
+              size: 20,
+              color: context.colors.onSurfaceVariant,
             ),
           ],
         ),

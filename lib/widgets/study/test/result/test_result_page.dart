@@ -12,6 +12,7 @@ import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/box/question_entity_box.dart';
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/study_level_kind.dart';
 import 'package:jlpt_app/domain/timer.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 
@@ -33,8 +34,11 @@ class _TestResultPageState extends ConsumerState<TestResultPage> {
   int _currentPage = 0;
   bool _openedInitialResult = false;
 
-  List<Level?> get levels =>
-      [null, ...ref.read(activeCourseProvider).levels];
+  // 카나(문자/단어)는 테스트가 없으므로 테스트 기록에서는 JLPT 레벨만 노출.
+  List<Level?> get levels => [
+    null,
+    ...ref.read(activeCourseProvider).levels.where((l) => l.isJlpt),
+  ];
 
   void _onChangePage(int page) {
     if (page == _currentPage) return;

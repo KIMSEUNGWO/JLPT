@@ -1,4 +1,5 @@
 import 'package:jlpt_app/component/app_logger.dart';
+import 'package:jlpt_app/data/remote/json_data_source.dart';
 import 'package:jlpt_app/data/repositories/app_meta_repository.dart';
 import 'package:jlpt_app/data/repositories/word_repository.dart';
 import 'package:jlpt_app/data/sync/json_entity_syncer.dart';
@@ -14,12 +15,14 @@ final class WordSyncer extends JsonEntitySyncer<Word> {
     required super.bundle,
     required super.cache,
     required super.dataKey,
+    List<String>? dataKeys,
     required this.expectedMinRowCount,
-  });
+  }) : dataKeys = dataKeys ?? [dataKey];
 
   final WordRepository wordRepository;
   final AppMetaRepository metaRepository;
   final String courseId;
+  final List<String> dataKeys;
 
   /// 정상으로 간주할 최소 단어 수. 미만이면 부분 DB / 손상으로 간주.
   /// 코스 데이터 규모에 맞춰 주입된다.
@@ -28,7 +31,21 @@ final class WordSyncer extends JsonEntitySyncer<Word> {
 
   @override
   List<Word> parse(Map<String, dynamic> json) {
-    final list = parseWordsJson(json);
+    return _dedupe(parseWordsJson(json));
+  }
+
+  /// 키별로 알맞은 파서 적용: 메인 단어 키([dataKey])는 엄격 파서,
+  /// 그 외(카나 등 부가 데이터셋)는 간이 파서([parseKanaWordsJson]).
+  List<Word> _parseForKey(String key, Map<String, dynamic> json) =>
+      key == dataKey ? parseWordsJson(json) : parseKanaWordsJson(json);
+
+  List<Word> parseAll(Map<String, Map<String, dynamic>> rawByKey) {
+    final list = <Word>[];
+    rawByKey.forEach((key, json) => list.addAll(_parseForKey(key, json)));
+    return _dedupe(list);
+  }
+
+  List<Word> _dedupe(List<Word> list) {
     final result = <Word>[];
     final byId = <int, Word>{};
     var sameContentDups = 0;
@@ -67,6 +84,25 @@ final class WordSyncer extends JsonEntitySyncer<Word> {
   @override
   Future<void> persist(List<Word> items, Version version) {
     return wordRepository.syncAll(items, version: version);
+  }
+
+  @override
+  Future<void> syncFrom({
+    required JsonDataSource source,
+    required Version version,
+  }) async {
+    final rawByKey = <String, Map<String, dynamic>>{};
+    for (final key in dataKeys) {
+      rawByKey[key] = await source.read(key);
+    }
+    final items = parseAll(rawByKey);
+    if (items.length < expectedMinRowCount) {
+      throw StateError(
+        '[$dataKey] sync aborted: parsed ${items.length} rows '
+        '< expectedMinRowCount=$expectedMinRowCount',
+      );
+    }
+    await persist(items, version);
   }
 
   @override

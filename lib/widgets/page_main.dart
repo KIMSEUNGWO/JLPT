@@ -5,22 +5,15 @@ import 'package:go_router/go_router.dart';
 import 'package:jlpt_app/app/app_routes.dart';
 import 'package:jlpt_app/app/route_args.dart';
 import 'package:jlpt_app/core/theme/app_spacing.dart';
-import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/study_level_kind.dart';
 import 'package:jlpt_app/domain/type.dart';
-import 'package:jlpt_app/domain/word.dart';
-import 'package:jlpt_app/notifier/entity/today.dart';
 import 'package:jlpt_app/notifier/recently_view_notifier.dart';
-import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
-import 'package:jlpt_app/notifier/timer_notifier.dart';
 import 'package:jlpt_app/widgets/component/ads_banner.dart';
 import 'package:jlpt_app/widgets/component/continue_study_card.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
-import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
-import 'package:jlpt_app/widgets/component/recently_viewed_badge.dart';
-import 'package:jlpt_app/widgets/component/test_stat_widget.dart';
-import 'package:jlpt_app/widgets/component/title_and_widget.dart';
+import 'package:jlpt_app/widgets/component/learning_area_tile.dart';
 
 class MainPage extends ConsumerWidget {
   const MainPage({super.key});
@@ -58,8 +51,6 @@ class MainPage extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _Greeting(),
-                const SizedBox(height: AppSpacing.xxxl),
                 Consumer(
                   builder: (context, ref, _) {
                     final recentView = ref.watch(recentlyViewProvider);
@@ -71,46 +62,41 @@ class MainPage extends ConsumerWidget {
 
                     return Column(
                       children: [
-                        TitleAndWidget(
-                          title: '오늘의 학습',
-                          child: CustomContainer(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: AppSpacing.lg,
-                              vertical: AppSpacing.md,
+                        CustomContainer(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: AppSpacing.lg,
+                            vertical: AppSpacing.md,
+                          ),
+                          child: wordsAsync.when(
+                            loading: () => const SizedBox(
+                              height: 120,
+                              child: Center(child: CircularProgressIndicator()),
                             ),
-                            child: wordsAsync.when(
-                              loading: () => const SizedBox(
-                                height: 120,
-                                child: Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                              ),
-                              error: (_, __) => const SizedBox(
-                                height: 80,
-                                child: Center(child: Text('학습 정보를 불러올 수 없습니다')),
-                              ),
-                              data: (wordsByLevel) => ContinueStudyCard(
-                                wordsByLevel: wordsByLevel,
-                                recentView: recentView,
-                                onContinue: (target) async {
-                                  ref
-                                      .read(recentlyViewProvider.notifier)
-                                      .view(
-                                        level: target.level,
-                                        type: PracticeType.WORD,
-                                        index: target.groupIndex,
-                                      );
-                                  await context.push(
-                                    AppRoutes.studyGroupFull(target.level.code),
-                                    extra: StudyGroupArgs(
+                            error: (_, __) => const SizedBox(
+                              height: 80,
+                              child: Center(child: Text('학습 정보를 불러올 수 없습니다')),
+                            ),
+                            data: (wordsByLevel) => ContinueStudyCard(
+                              wordsByLevel: wordsByLevel,
+                              recentView: recentView,
+                              onContinue: (target) async {
+                                ref
+                                    .read(recentlyViewProvider.notifier)
+                                    .view(
                                       level: target.level,
-                                      startIndex: target.startIndex,
-                                      endIndex: target.endIndex,
-                                    ),
-                                  );
-                                  ref.invalidate(wordsByLevelProvider);
-                                },
-                              ),
+                                      type: PracticeType.WORD,
+                                      index: target.groupIndex,
+                                    );
+                                await context.push(
+                                  AppRoutes.studyGroupFull(target.level.code),
+                                  extra: StudyGroupArgs(
+                                    level: target.level,
+                                    startIndex: target.startIndex,
+                                    endIndex: target.endIndex,
+                                  ),
+                                );
+                                ref.invalidate(wordsByLevelProvider);
+                              },
                             ),
                           ),
                         ),
@@ -125,7 +111,9 @@ class MainPage extends ConsumerWidget {
                     child: Center(child: CircularProgressIndicator()),
                   ),
                   error: (e, _) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxxl),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: AppSpacing.xxxl,
+                    ),
                     child: Column(
                       children: [
                         const Icon(Icons.error_outline, size: 32),
@@ -143,19 +131,9 @@ class MainPage extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  data: (wordsByLevel) => Column(
-                    children: [
-                      for (final level in course.levels) ...[
-                        _LevelTile(
-                          level: level,
-                          words: wordsByLevel[level] ?? const [],
-                        ),
-                        if (level != course.levels.last)
-                          const SizedBox(height: AppSpacing.lg),
-                      ],
-                      const SizedBox(height: AppSpacing.lg),
-                      const TestStatWidget(level: null),
-                    ],
+                  data: (_) => _LearningMenu(
+                    levels: course.levels,
+                    courseName: course.displayName,
                   ),
                 ),
                 const SizedBox(height: AppSpacing.xxxl),
@@ -169,105 +147,57 @@ class MainPage extends ConsumerWidget {
   }
 }
 
-class _Greeting extends StatelessWidget {
+/// 메인 학습 메뉴. 코스가 정의한 레벨을 스크립트(히라가나/가타카나)·JLPT 로 묶어
+/// 타일을 만든다. 카나 타일은 허브 페이지(`/kana/:script`)로 진입해 그 안에서
+/// 문자·단어가 분리된다. 카나가 없는 코스에서는 카나 타일이 자연히 생략된다.
+class _LearningMenu extends StatelessWidget {
+  const _LearningMenu({required this.levels, required this.courseName});
+
+  final List<Level> levels;
+  final String courseName;
+
   @override
   Widget build(BuildContext context) {
+    final hiragana = levels.where((l) => l.isHiragana).toList();
+    final katakana = levels.where((l) => l.isKatakana).toList();
+    final jlpt = levels.where((l) => l.isJlpt).toList();
+
+    final tiles = <Widget>[
+      if (hiragana.isNotEmpty)
+        LearningAreaTile(
+          title: '히라가나 익히기',
+          subtitle: '문자(오십음도)와 단어를 학습합니다',
+          icon: Icons.text_fields_rounded,
+          showProgress: false,
+          onTap: () => context.push(AppRoutes.kana('hiragana')),
+        ),
+      if (katakana.isNotEmpty)
+        LearningAreaTile(
+          title: '가타카나 익히기',
+          subtitle: '문자(오십음도)와 단어를 학습합니다',
+          icon: Icons.translate_rounded,
+          showProgress: false,
+          onTap: () => context.push(AppRoutes.kana('katakana')),
+        ),
+      if (jlpt.isNotEmpty)
+        LearningAreaTile(
+          title: '$courseName 학습',
+          subtitle:
+              '${jlpt.first.label}부터 ${jlpt.last.label}까지 '
+              '단어와 테스트를 학습합니다',
+          icon: Icons.school_outlined,
+          showProgress: false,
+          onTap: () => context.push(AppRoutes.jlpt),
+        ),
+    ];
+
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          '안녕하세요',
-          style: context.text.displayMedium?.copyWith(
-            color: context.colors.onSurface,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        const SizedBox(height: AppSpacing.xs),
-        Text(
-          '오늘도 열심히 공부해볼까요?',
-          style: context.text.bodyLarge?.copyWith(
-            color: context.colors.onSurfaceVariant,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
+        for (var i = 0; i < tiles.length; i++) ...[
+          if (i > 0) const SizedBox(height: AppSpacing.lg),
+          tiles[i],
+        ],
       ],
-    );
-  }
-}
-
-class _LevelTile extends ConsumerWidget {
-  const _LevelTile({required this.level, required this.words});
-  final Level level;
-  final List<Word> words;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final view = ref.watch(recentlyViewProvider);
-    final isRecent = view.level == level;
-    final cycle = ref.watch(studyCycleProvider);
-    final timer = ref.watch(timerProvider)[level] ?? 0;
-    final course = ref.watch(activeCourseProvider);
-
-    return GestureDetector(
-      onTap: () => context.push(AppRoutes.study(level.code)),
-      child: CustomContainer(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.xl,
-          vertical: AppSpacing.lg,
-        ),
-        border: isRecent
-            ? Border.all(color: context.colors.primary, width: 2)
-            : null,
-        radius: const BorderRadius.only(
-          topLeft: Radius.circular(AppRadius.md),
-          topRight: Radius.circular(28), // 특수 형태 — 카드 우측 상단만 더 둥글게
-          bottomLeft: Radius.circular(AppRadius.md),
-          bottomRight: Radius.circular(AppRadius.md),
-        ),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      '${course.displayName} ${level.label}',
-                      style: context.text.displaySmall?.copyWith(
-                        color: context.colors.onSurface,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(width: AppSpacing.sm),
-                    Text('${cycle[level]}회독'),
-                  ],
-                ),
-                if (isRecent) const RecentlyViewedBadge(),
-              ],
-            ),
-            const SizedBox(height: AppSpacing.sm),
-            Row(
-              children: [
-                Icon(
-                  Icons.access_time,
-                  size: context.text.bodySmall!.fontSize,
-                  color: context.colors.onSurfaceVariant,
-                ),
-                const SizedBox(width: AppSpacing.xs),
-                Text(
-                  '학습시간 ${TodayData.formatTimeToHours(timer)}',
-                  style: context.text.bodySmall,
-                ),
-              ],
-            ),
-            const SizedBox(height: AppSpacing.lg),
-            CustomProgressBar(
-              current: words.where((w) => w.isRead).length,
-              total: words.isEmpty ? 100 : words.length,
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:jlpt_app/domain/question_creator.dart';
 import 'package:jlpt_app/domain/level.dart';
 import 'package:jlpt_app/domain/question.dart';
 import 'package:jlpt_app/domain/question/question_generator.dart';
+import 'package:jlpt_app/domain/study_level_kind.dart';
 import 'package:jlpt_app/domain/word.dart';
 
 class WordQuestionGenerator extends QuestionGenerator<Word> {
@@ -11,8 +12,15 @@ class WordQuestionGenerator extends QuestionGenerator<Word> {
 
   @override
   List<Question> generateQuestions(Level? level, int count) {
-    final allWords = _wordsByLevel.values.expand((e) => e).toList();
-    final pool = level == null ? allWords : (_wordsByLevel[level] ?? []);
+    final testableWordsByLevel = Map<Level, List<Word>>.fromEntries(
+      _wordsByLevel.entries.where((entry) => entry.key.isJlpt),
+    );
+    final allWords = testableWordsByLevel.values.expand((e) => e).toList();
+    final pool = level == null
+        ? allWords
+        : (level.isJlpt
+              ? _wordsByLevel[level] ?? const <Word>[]
+              : const <Word>[]);
     final shuffled = shuffleAndCutCount(pool, count);
     return QuestionCreator.instance.createWordQuestions(
       totalWords: allWords,

@@ -183,6 +183,30 @@ class LocalStorage {
         defaultStudyGroupSize;
     return isAllowedStudyGroupSize(value) ? value : defaultStudyGroupSize;
   }
+
+  // ───────── 학습 진도 초기화 ─────────
+
+  /// [course] 의 학습 진도(회독·레벨 타이머·오늘의 학습·최근 학습·읽은 단어 목록)
+  /// 를 모두 지운다. 구버전(레벨 코드 단독) 키도 함께 제거한다.
+  /// 학습 옵션·묶음 크기 등 *설정* 은 보존한다. DB 의 단어 읽음 상태는
+  /// `WordRepository.resetAllRead` 가 별도로 초기화한다.
+  Future<void> clearLearningProgress(Course course) async {
+    for (final level in course.levels) {
+      await _storage.remove(_cycleKey(course.id, level.code));
+      await _storage.remove(level.code); // 구버전 회독 키
+      await _storage.remove(_timerKey(course.id, level.code));
+      await _storage.remove('${StorageKey.TIMER.name}_${level.code}'); // 구버전
+    }
+    await _storage.remove(_readWordIdsKey(course.id));
+    await _storage.remove(StorageKey.READ_WORD_ID_LIST.name); // 구버전
+    await _storage.remove(StorageKey.TODAY.name);
+    await _storage.remove(StorageKey.TODAY_HOURS.name);
+    await _storage.remove(StorageKey.TODAY_WORDS.name);
+    await _storage.remove(StorageKey.TODAY_GRAMMARS.name);
+    await _storage.remove(StorageKey.RECENTLY_VIEW_LEVEL.name);
+    await _storage.remove(StorageKey.RECENTLY_VIEW_TYPE.name);
+    await _storage.remove(StorageKey.RECENTLY_VIEW_INDEX.name);
+  }
 }
 
 enum StorageKey {

@@ -36,6 +36,12 @@ class WordDao extends DatabaseAccessor<AppDatabase> with _$WordDaoMixin {
             ..where((t) => t.course.equals(course) & t.level.equals(level)))
           .write(const WordsCompanion(isRead: Value(false)));
 
+  /// 코스 전체 단어의 학습 진도(읽음/오답 수)를 초기화한다.
+  Future<void> resetAllRead(String course) =>
+      (update(words)..where((t) => t.course.equals(course))).write(
+        const WordsCompanion(isRead: Value(false), wrongCnt: Value(0)),
+      );
+
   /// row count. 부분 DB 감지에 사용.
   Future<int> countWords(String course) async {
     final c = countAll();

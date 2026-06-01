@@ -3,6 +3,7 @@ class CourseDataConfig {
   const CourseDataConfig({
     required this.versionKey,
     required this.wordsKey,
+    this.extraWordKeys = const [],
     required this.charsKey,
     required this.examplesKey,
     required this.remoteUrls,
@@ -16,6 +17,12 @@ class CourseDataConfig {
 
   /// 단어 JSON 키 (예: `'japanese_words'`).
   final String wordsKey;
+
+  /// 같은 course 안에 함께 sync 할 추가 단어 JSON 키.
+  final List<String> extraWordKeys;
+
+  /// [wordsKey] 와 [extraWordKeys] 를 합친 전체 단어 데이터셋 키.
+  List<String> get wordKeys => [wordsKey, ...extraWordKeys];
 
   /// 문자(한자) JSON 키 (예: `'chinese_chars'`). 문자 모듈 없으면 `null`.
   final String? charsKey;

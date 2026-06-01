@@ -6,14 +6,19 @@ import 'package:jlpt_app/core/theme/app_spacing.dart';
 import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/study_options.dart';
+import 'package:jlpt_app/domain/study_level_kind.dart';
 import 'package:jlpt_app/domain/timer.dart';
 import 'package:jlpt_app/domain/word.dart';
+import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 import 'package:jlpt_app/notifier/study_session_notifier.dart';
+import 'package:jlpt_app/notifier/timer_notifier.dart';
 import 'package:jlpt_app/settings/settings.dart';
 import 'package:jlpt_app/widgets/component/ads_banner.dart';
 import 'package:jlpt_app/widgets/component/custom_container.dart';
 import 'package:jlpt_app/widgets/component/custom_progressbar.dart';
+import 'package:jlpt_app/widgets/modal/congratulations_modal.dart';
 import 'package:jlpt_app/widgets/modal/next_modal.dart';
+import 'package:jlpt_app/widgets/study/card/widget_kana_card.dart';
 import 'package:jlpt_app/widgets/study/card/widget_word_card.dart';
 
 class StudyPage extends ConsumerStatefulWidget {
@@ -106,12 +111,19 @@ class _StudyPageState extends ConsumerState<StudyPage> {
     }
     _recordStudyTime();
     _timerController.stop();
+    // 단일 세트(카나 문자)는 묶음 개념이 없어 "다음 묶음" 모달 없이
+    // 곧장 회독 완료 모달 하나만 띄운다.
+    if (widget.args.level.isKanaChar) {
+      _showCycleComplete();
+      return;
+    }
     showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (ctx) => NextModal(
         wordsLearned: _allWords.length,
         studyHours: 2.5,
+        itemLabel: widget.args.level.itemLabel,
         onNextLevelTap: () {
           Navigator.of(ctx).pop();
           _popAfterRecording();
@@ -130,10 +142,32 @@ class _StudyPageState extends ConsumerState<StudyPage> {
     );
   }
 
+  /// 단일 세트 학습 완료 — 회독 완료 모달 한 개만 띄우고,
+  /// "다음 회독" 선택 시 회독++ 후 허브로 복귀한다.
+  void _showCycleComplete() {
+    final session = ref.read(studySessionProvider.notifier);
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => CongratulationsModal(
+        level: widget.args.level,
+        wordsLearned: _allWords.length,
+        studyTime: ref
+            .read(timerProvider.notifier)
+            .getLevelTime(widget.args.level),
+        showTestAction: false,
+        onNextLevelTap: () async {
+          Navigator.of(ctx).pop();
+          await session.completeCycle(widget.args.level);
+          if (mounted) Navigator.of(context).pop();
+        },
+        onViewTestTap: () {},
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    // Keep the autoDispose notifier alive while this page is mounted.
-    ref.watch(studySessionProvider);
     final course = ref.watch(activeCourseProvider);
     final readCount = _allWords.where(_isRead).length;
     return PopScope(
@@ -144,10 +178,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            '${course.displayName} ${widget.args.level.label} 단어 '
-            '${widget.args.startIndex + 1}-${widget.args.endIndex}',
-          ),
+          title: Text(_pageTitle(course.displayName)),
           centerTitle: false,
           backgroundColor: context.colors.surface,
           actions: [
@@ -162,7 +193,11 @@ class _StudyPageState extends ConsumerState<StudyPage> {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.access_time, color: context.colors.primary, size: 12),
+                  Icon(
+                    Icons.access_time,
+                    color: context.colors.primary,
+                    size: 12,
+                  ),
                   const SizedBox(width: AppSpacing.xs),
                   CustomTimer(
                     controller: _timerController,
@@ -171,6 +206,28 @@ class _StudyPageState extends ConsumerState<StudyPage> {
                 ],
               ),
             ),
+            // 단일 세트(카나 문자)는 묶음 목록 화면이 없으므로 회독 배지를
+            // 학습 화면 상단(타이머 오른쪽)에 직접 보여준다.
+            if (widget.args.level.isKanaChar) ...[
+              const SizedBox(width: AppSpacing.sm),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.sm,
+                  vertical: AppSpacing.xs,
+                ),
+                decoration: BoxDecoration(
+                  color: context.colors.primary,
+                  borderRadius: BorderRadius.circular(AppRadius.md),
+                ),
+                child: Text(
+                  '${ref.watch(studyCycleProvider)[widget.args.level] ?? 0}회독',
+                  style: context.text.bodyMedium?.copyWith(
+                    color: context.colors.onPrimary,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ],
             const SizedBox(width: AppSpacing.xl),
           ],
           bottom: PreferredSize(
@@ -218,6 +275,16 @@ class _StudyPageState extends ConsumerState<StudyPage> {
             ),
             child: _innerWords.isEmpty
                 ? const SizedBox.shrink()
+                : widget.args.level.isKana
+                ? KanaCardWidget(
+                    key: ValueKey<String>(
+                      '${widget.args.level.code}-'
+                      '${_innerWords[_currentIndex].id}-'
+                      '$_currentIndex-$_round',
+                    ),
+                    word: _innerWords[_currentIndex],
+                    defaults: _options,
+                  )
                 : WordCardWidget(
                     key: ValueKey<String>(
                       '${widget.args.level.code}-'
@@ -306,5 +373,13 @@ class _StudyPageState extends ConsumerState<StudyPage> {
         ),
       ),
     );
+  }
+
+  String _pageTitle(String courseDisplayName) {
+    final range = '${widget.args.startIndex + 1}-${widget.args.endIndex}';
+    if (widget.args.level.isKana) {
+      return '${widget.args.level.studyTitle} $range';
+    }
+    return '$courseDisplayName ${widget.args.level.label} 단어 $range';
   }
 }

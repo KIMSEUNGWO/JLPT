@@ -40,7 +40,7 @@ final class StudySessionProvider extends $NotifierProvider<StudySession, void> {
         argument: null,
         retry: null,
         name: r'studySessionProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -61,7 +61,7 @@ final class StudySessionProvider extends $NotifierProvider<StudySession, void> {
   }
 }
 
-String _$studySessionHash() => r'3b5caf60dbb65455c69e4e3d9b930eac90431a6d';
+String _$studySessionHash() => r'85b37ce50a7bda26d174e723820c484d50d74a2d';
 
 /// 학습 세션의 부수효과 (시간 누적, 회독 증가, 읽음 초기화, 통계 기록)
 /// 를 단일 진입점으로 모은다.

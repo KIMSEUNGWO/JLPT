@@ -1,6 +1,7 @@
 import 'package:jlpt_app/domain/course/course.dart';
 import 'package:jlpt_app/domain/course/course_data_config.dart';
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/study_level_kind.dart';
 
 const String _jlptBaseUrl =
     'https://raw.githubusercontent.com/KIMSEUNGWO/JLPT/refs/heads/main/assets/json';
@@ -22,6 +23,10 @@ const Course jlptJapaneseCourse = Course(
     characterModuleLabel: '한자',
   ),
   levels: [
+    Level(code: StudyLevelCodes.hiraganaChar, label: '문자', order: -4),
+    Level(code: StudyLevelCodes.hiraganaWord, label: '단어', order: -3),
+    Level(code: StudyLevelCodes.katakanaChar, label: '문자', order: -2),
+    Level(code: StudyLevelCodes.katakanaWord, label: '단어', order: -1),
     Level(code: 'N5', label: 'N5', order: 0),
     Level(code: 'N4', label: 'N4', order: 1),
     Level(code: 'N3', label: 'N3', order: 2),
@@ -31,12 +36,15 @@ const Course jlptJapaneseCourse = Course(
   data: CourseDataConfig(
     versionKey: 'dataVersion',
     wordsKey: 'japanese_words',
+    extraWordKeys: ['hiragana', 'katakana'],
     charsKey: 'chinese_chars',
     examplesKey: 'example_sentences',
     remoteUrls: {
       'dataVersion': '$_jlptBaseUrl/dataVersion.json',
       'chinese_chars': '$_jlptBaseUrl/chinese_chars.json',
       'japanese_words': '$_jlptBaseUrl/japanese_words.json',
+      'hiragana': '$_jlptBaseUrl/hiragana.json',
+      'katakana': '$_jlptBaseUrl/katakana.json',
       'example_sentences': '$_jlptBaseUrl/example_sentences.json',
     },
     // N1~N5 합산 약 2200개. 안전마진 80%.

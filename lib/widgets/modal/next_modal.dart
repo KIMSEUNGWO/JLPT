@@ -11,6 +11,7 @@ class NextModal extends StatefulWidget {
   final double studyHours;
   final VoidCallback onNextLevelTap;
   final VoidCallback onViewTestTap;
+  final String itemLabel;
 
   const NextModal({
     super.key,
@@ -18,13 +19,15 @@ class NextModal extends StatefulWidget {
     required this.studyHours,
     required this.onNextLevelTap,
     required this.onViewTestTap,
+    this.itemLabel = '단어',
   });
 
   @override
   State<NextModal> createState() => _NextModalState();
 }
 
-class _NextModalState extends State<NextModal> with SingleTickerProviderStateMixin {
+class _NextModalState extends State<NextModal>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _slideAnimation;
   late Animation<double> _iconAnimation;
@@ -38,21 +41,19 @@ class _NextModalState extends State<NextModal> with SingleTickerProviderStateMix
       vsync: this,
     );
 
-    _slideAnimation = Tween<double>(
-      begin: 50.0,
-      end: 0.0,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: const Interval(0.0, 0.6, curve: Curves.easeOut),
-    ));
+    _slideAnimation = Tween<double>(begin: 50.0, end: 0.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.6, curve: Curves.easeOut),
+      ),
+    );
 
-    _iconAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: const Interval(0.3, 0.8, curve: Curves.elasticOut),
-    ));
+    _iconAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.3, 0.8, curve: Curves.elasticOut),
+      ),
+    );
 
     _controller.forward();
   }
@@ -105,14 +106,19 @@ class _NextModalState extends State<NextModal> with SingleTickerProviderStateMix
                   const SizedBox(height: AppSpacing.xxl),
 
                   Container(
-                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: AppSpacing.md,
+                    ),
                     decoration: BoxDecoration(
                       color: context.colors.secondary,
                       borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: RecordRow(
                       dataList: [
-                        RecordData(title: '학습단어', value: '${widget.wordsLearned}'),
+                        RecordData(
+                          title: '학습${widget.itemLabel}',
+                          value: '${widget.wordsLearned}',
+                        ),
                       ],
                       titleSize: context.text.bodyLarge!.fontSize,
                       valueSize: context.text.displayMedium!.fontSize,
@@ -127,7 +133,9 @@ class _NextModalState extends State<NextModal> with SingleTickerProviderStateMix
                         widget.onNextLevelTap();
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: AppSpacing.md,
+                        ),
                       ),
                       child: Text(
                         '다음으로 넘어가기',
@@ -147,15 +155,14 @@ class _NextModalState extends State<NextModal> with SingleTickerProviderStateMix
                       },
                       style: TextButton.styleFrom(
                         backgroundColor: context.colors.surfaceContainerLowest,
-                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: AppSpacing.md,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(AppRadius.md),
                         ),
                       ),
-                      child: Text(
-                        '조금 더 보기',
-                        style: context.text.bodyLarge,
-                      ),
+                      child: Text('조금 더 보기', style: context.text.bodyLarge),
                     ),
                   ),
                 ],

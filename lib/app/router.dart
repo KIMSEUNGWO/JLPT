@@ -6,6 +6,8 @@ import 'package:jlpt_app/widgets/page_main.dart';
 import 'package:jlpt_app/widgets/page_settings.dart';
 import 'package:jlpt_app/widgets/startup_gate.dart';
 import 'package:jlpt_app/widgets/study/card/page_study.dart';
+import 'package:jlpt_app/widgets/study/page_jlpt_levels.dart';
+import 'package:jlpt_app/widgets/study/page_kana_hub.dart';
 import 'package:jlpt_app/widgets/study/page_study_list.dart';
 import 'package:jlpt_app/widgets/study/test/result/test_result_detail_page.dart';
 import 'package:jlpt_app/widgets/study/test/result/test_result_page.dart';
@@ -23,12 +25,22 @@ final appRouter = GoRouter(
       builder: (context, state) => const MainPage(),
     ),
     GoRoute(
+      path: AppRoutes.jlpt,
+      builder: (context, state) => const JlptLevelsPage(),
+    ),
+    GoRoute(
+      path: AppRoutes.kanaHub,
+      builder: (context, state) =>
+          KanaHubPage(script: state.pathParameters['script']!),
+    ),
+    GoRoute(
       path: AppRoutes.studyLevel,
       builder: (context, state) {
         // UI 는 단일 코스 — 기본 코스로 레벨 코드를 해석한다.
         // 코스 선택 UI 추가 시 활성 코스로 교체.
-        final level =
-            CourseRegistry.defaultCourse.levelOf(state.pathParameters['level']!);
+        final level = CourseRegistry.defaultCourse.levelOf(
+          state.pathParameters['level']!,
+        );
         return StudyListPage(level: level);
       },
       routes: [
@@ -56,9 +68,7 @@ final appRouter = GoRouter(
       path: AppRoutes.testResults,
       builder: (context, state) {
         final extra = state.extra;
-        final args = extra is TestResultsArgs
-            ? extra
-            : const TestResultsArgs();
+        final args = extra is TestResultsArgs ? extra : const TestResultsArgs();
         return TestResultPage(result: args.result);
       },
       routes: [

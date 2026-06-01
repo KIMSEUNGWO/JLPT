@@ -30,6 +30,7 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
   final String courseId;
 
   /// 단어 JSON 키 — 예문과 cross-validation 할 단어 데이터를 같은 source 에서 읽는다.
+  /// 예문은 메인 단어에만 연결되므로(카나 단어는 예문이 없음) 이 키 하나만 본다.
   final String wordsDataKey;
 
   /// 정상으로 간주할 최소 예문 수. 코스 데이터 규모에 맞춰 주입된다.
@@ -96,8 +97,7 @@ final class ExampleSentenceSyncer extends JsonEntitySyncer<ExampleSentence> {
       );
     }
 
-    final rawWords = await source.read(wordsDataKey);
-    final words = parseWordsJson(rawWords);
+    final words = parseWordsJson(await source.read(wordsDataKey));
 
     final refs = buildAndValidateRefs(words, examples);
 

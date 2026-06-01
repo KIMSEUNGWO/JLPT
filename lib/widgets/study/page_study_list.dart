@@ -10,6 +10,7 @@ import 'package:jlpt_app/core/theme/app_spacing.dart';
 import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/study_level_kind.dart';
 import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/notifier/recently_view_notifier.dart';
@@ -35,7 +36,11 @@ class StudyListPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('${course.displayName} ${level.label}'),
+        title: Text(
+          level.isKana
+              ? level.studyTitle
+              : '${course.displayName} ${level.label}',
+        ),
         centerTitle: false,
         backgroundColor: context.colors.surface,
         actions: [
@@ -119,6 +124,7 @@ class _StudyListState extends ConsumerState<_StudyList> {
         level: widget.level,
         wordsLearned: latestWords.length,
         studyTime: ref.read(timerProvider.notifier).getLevelTime(widget.level),
+        showTestAction: !widget.level.isKana,
         onNextLevelTap: () async {
           Navigator.of(ctx).pop();
           await session.completeCycle(widget.level);
@@ -146,6 +152,7 @@ class _StudyListState extends ConsumerState<_StudyList> {
         itemCount: groupCount + 1,
         itemBuilder: (context, index) {
           if (groupCount == index) {
+            if (widget.level.isKana) return const SizedBox.shrink();
             return TestStatWidget(level: widget.level);
           }
           final start = index * groupSize;
@@ -194,7 +201,7 @@ class _StudyListState extends ConsumerState<_StudyList> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '단어 ${start + 1}-$end',
+                            '${widget.level.itemLabel} ${start + 1}-$end',
                             style: context.text.displaySmall?.copyWith(
                               color: context.colors.onSurface,
                               fontWeight: FontWeight.w600,

@@ -36,6 +36,21 @@ Map<String, dynamic> _wordsJson(int count) => {
   },
 };
 
+Map<String, dynamic> _kanaJson(String level, int idStart, String first) => {
+  'words': {
+    level: [
+      {
+        'id': idStart,
+        'act': 'N',
+        'word': first,
+        'reading': '',
+        'meaning': '아',
+        'exampleIds': <int>[],
+      },
+    ],
+  },
+};
+
 void main() {
   late AppDatabase db;
   late AppMetaRepository meta;
@@ -87,10 +102,47 @@ void main() {
         version: v1,
       );
 
-      final words = await repo.getByLevel(jlptJapaneseCourse.levelOrNull('N5')!);
+      final words = await repo.getByLevel(
+        jlptJapaneseCourse.levelOrNull('N5')!,
+      );
       expect(words, hasLength(10));
       expect(words.every((word) => word.levelCode == 'N5'), isTrue);
     });
+
+    test(
+      'syncs additional kana word datasets with the primary words',
+      () async {
+        final multiSyncer = WordSyncer(
+          wordRepository: repo,
+          metaRepository: meta,
+          courseId: jlptJapaneseCourse.id,
+          bundle: const AssetJsonDataSource(),
+          cache: LocalJsonCacheSource(),
+          dataKey: jlptJapaneseCourse.data.wordsKey,
+          dataKeys: const ['japanese_words', 'hiragana', 'katakana'],
+          expectedMinRowCount: 2,
+        );
+
+        await multiSyncer.syncFrom(
+          source: _InMemorySource({
+            'japanese_words': _wordsJson(2),
+            'hiragana': _kanaJson('HIRAGANA_CHAR', 900001, 'あ'),
+            'katakana': _kanaJson('KATAKANA_CHAR', 901001, 'ア'),
+          }),
+          version: v1,
+        );
+
+        expect(await repo.countWords(), 4);
+        expect(
+          await repo.getByLevel(jlptJapaneseCourse.levelOf('HIRAGANA_CHAR')),
+          hasLength(1),
+        );
+        expect(
+          await repo.getByLevel(jlptJapaneseCourse.levelOf('KATAKANA_CHAR')),
+          hasLength(1),
+        );
+      },
+    );
 
     test('isUpToDate is true after sync with same version', () async {
       await syncer.syncFrom(
@@ -110,16 +162,19 @@ void main() {
       expect(await syncer.isUpToDate(v2), isFalse);
     });
 
-    test('isUpToDate is false when row count is below expected minimum', () async {
-      await syncer.syncFrom(
-        source: _InMemorySource({'japanese_words': _wordsJson(10)}),
-        version: v1,
-      );
-      await db.customStatement('DELETE FROM words WHERE id > 1');
+    test(
+      'isUpToDate is false when row count is below expected minimum',
+      () async {
+        await syncer.syncFrom(
+          source: _InMemorySource({'japanese_words': _wordsJson(10)}),
+          version: v1,
+        );
+        await db.customStatement('DELETE FROM words WHERE id > 1');
 
-      expect(await repo.countWords(), 1);
-      expect(await syncer.isUpToDate(v1), isFalse);
-    });
+        expect(await repo.countWords(), 1);
+        expect(await syncer.isUpToDate(v1), isFalse);
+      },
+    );
 
     test('parse failure leaves existing db and version unchanged', () async {
       await syncer.syncFrom(

@@ -7,6 +7,7 @@ import 'package:jlpt_app/core/theme/app_spacing.dart';
 import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/study_level_kind.dart';
 import 'package:jlpt_app/domain/type.dart';
 import 'package:jlpt_app/domain/word.dart';
 import 'package:jlpt_app/notifier/entity/view.dart';
@@ -55,6 +56,9 @@ class ContinueStudyCard extends ConsumerWidget {
     final range = '${target.startIndex + 1}-${target.endIndex}';
     final remaining = target.totalCount - target.readCount;
     final course = ref.watch(activeCourseProvider);
+    final title = target.level.isKana
+        ? '${target.level.studyTitle} $range'
+        : '${course.displayName} ${target.level.label} ${target.level.itemLabel} $range';
     final captionStyle = context.text.bodySmall?.copyWith(
       color: context.colors.onSurfaceVariant,
     );
@@ -63,8 +67,10 @@ class ContinueStudyCard extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '${course.displayName} ${target.level.label} 단어 $range',
-          style: context.text.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+          title,
+          style: context.text.titleMedium?.copyWith(
+            fontWeight: FontWeight.w600,
+          ),
         ),
         const SizedBox(height: AppSpacing.sm),
         Row(
@@ -77,7 +83,10 @@ class ContinueStudyCard extends ConsumerWidget {
             const SizedBox(width: AppSpacing.xs),
             Text('최근 학습하던 묶음', style: captionStyle),
             const SizedBox(width: AppSpacing.sm),
-            Text('남은 단어 $remaining개', style: captionStyle),
+            Text(
+              '남은 ${target.level.itemLabel} $remaining개',
+              style: captionStyle,
+            ),
           ],
         ),
         const SizedBox(height: AppSpacing.lg),

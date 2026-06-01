@@ -12,7 +12,13 @@ class CustomSnackBar {
       SnackBar(
         content: Text(message, style: theme.snackBarTheme.contentTextStyle),
         duration: const Duration(seconds: 2), // 지속시간
-        margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
+        // floating 이어야 margin 이 적용된다. 하단에서 20px 띄운다.
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.only(
+          left: AppSpacing.xl,
+          right: AppSpacing.xl,
+          bottom: 20,
+        ),
         padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.lg,
           vertical: AppSpacing.md,

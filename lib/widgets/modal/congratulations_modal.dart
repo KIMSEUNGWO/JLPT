@@ -6,18 +6,19 @@ import 'package:jlpt_app/core/theme/app_spacing.dart';
 import 'package:jlpt_app/core/theme/theme_x.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/domain/study_level_kind.dart';
 import 'package:jlpt_app/notifier/entity/today.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 import 'package:jlpt_app/widgets/component/record_component.dart';
 import 'package:jlpt_app/widgets/component/record_row.dart';
 
 class CongratulationsModal extends StatefulWidget {
-
   final Level level;
   final int wordsLearned;
   final int studyTime;
   final VoidCallback onNextLevelTap;
   final VoidCallback onViewTestTap;
+  final bool showTestAction;
 
   const CongratulationsModal({
     super.key,
@@ -26,13 +27,15 @@ class CongratulationsModal extends StatefulWidget {
     required this.onNextLevelTap,
     required this.onViewTestTap,
     required this.level,
+    this.showTestAction = true,
   });
 
   @override
   State<CongratulationsModal> createState() => _CongratulationsModalState();
 }
 
-class _CongratulationsModalState extends State<CongratulationsModal> with SingleTickerProviderStateMixin {
+class _CongratulationsModalState extends State<CongratulationsModal>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _slideAnimation;
   late Animation<double> _iconAnimation;
@@ -48,22 +51,20 @@ class _CongratulationsModalState extends State<CongratulationsModal> with Single
     );
 
     // 모달 슬라이드 애니메이션 (아래에서 위로)
-    _slideAnimation = Tween<double>(
-      begin: 50.0,
-      end: 0.0,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: const Interval(0.0, 0.6, curve: Curves.easeOut),
-    ));
+    _slideAnimation = Tween<double>(begin: 50.0, end: 0.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.6, curve: Curves.easeOut),
+      ),
+    );
 
     // 아이콘 바운스 애니메이션
-    _iconAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: const Interval(0.3, 0.8, curve: Curves.elasticOut),
-    ));
+    _iconAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.3, 0.8, curve: Curves.elasticOut),
+      ),
+    );
 
     // 애니메이션 시작
     _controller.forward();
@@ -112,10 +113,15 @@ class _CongratulationsModalState extends State<CongratulationsModal> with Single
 
                   Consumer(
                     builder: (context, ref, child) {
-                      int cycle = ref.read(studyCycleProvider.notifier).getCurrentCycle(widget.level);
+                      final cycle = ref
+                          .read(studyCycleProvider.notifier)
+                          .getCurrentCycle(widget.level);
                       final course = ref.watch(activeCourseProvider);
+                      final title = widget.level.isKana
+                          ? widget.level.studyTitle
+                          : '${course.displayName} ${widget.level.label}';
                       return Text(
-                        '${course.displayName} ${widget.level.label} 단어 $cycle회독을\n성공적으로 완료했습니다.',
+                        '$title ${widget.level.itemLabel} ${cycle + 1}회독을\n성공적으로 완료했습니다.',
                         textAlign: TextAlign.center,
                         style: context.text.bodyLarge,
                       );
@@ -124,15 +130,23 @@ class _CongratulationsModalState extends State<CongratulationsModal> with Single
                   const SizedBox(height: AppSpacing.xxl),
 
                   Container(
-                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: AppSpacing.md,
+                    ),
                     decoration: BoxDecoration(
                       color: context.colors.secondary,
                       borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: RecordRow(
                       dataList: [
-                        RecordData(title: '학습단어', value: '${widget.wordsLearned}'),
-                        RecordData(title: '총 학습시간', value: TodayData.formatTimeToHours(widget.studyTime)),
+                        RecordData(
+                          title: '학습${widget.level.itemLabel}',
+                          value: '${widget.wordsLearned}',
+                        ),
+                        RecordData(
+                          title: '총 학습시간',
+                          value: TodayData.formatTimeToHours(widget.studyTime),
+                        ),
                       ],
                       titleSize: context.text.bodyLarge!.fontSize,
                       valueSize: context.text.displayMedium!.fontSize,
@@ -147,11 +161,15 @@ class _CongratulationsModalState extends State<CongratulationsModal> with Single
                         widget.onNextLevelTap();
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: AppSpacing.md,
+                        ),
                       ),
                       child: Consumer(
                         builder: (context, ref, child) {
-                          int cycle = ref.read(studyCycleProvider.notifier).getCurrentCycle(widget.level);
+                          final cycle = ref
+                              .read(studyCycleProvider.notifier)
+                              .getCurrentCycle(widget.level);
                           return Text(
                             '${cycle + 1}회독 시작하기',
                             style: context.text.bodyLarge?.copyWith(
@@ -162,27 +180,32 @@ class _CongratulationsModalState extends State<CongratulationsModal> with Single
                       ),
                     ),
                   ),
-                  const SizedBox(height: AppSpacing.md),
+                  if (widget.showTestAction) ...[
+                    const SizedBox(height: AppSpacing.md),
 
-                  SizedBox(
-                    width: double.infinity,
-                    child: TextButton(
-                      onPressed: () async {
-                        widget.onViewTestTap();
-                      },
-                      style: TextButton.styleFrom(
-                        backgroundColor: context.colors.surfaceContainerLowest,
-                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppRadius.md),
+                    SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
+                        onPressed: () async {
+                          widget.onViewTestTap();
+                        },
+                        style: TextButton.styleFrom(
+                          backgroundColor:
+                              context.colors.surfaceContainerLowest,
+                          padding: const EdgeInsets.symmetric(
+                            vertical: AppSpacing.md,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(AppRadius.md),
+                          ),
+                        ),
+                        child: Text(
+                          '${widget.level.itemLabel} 테스트 보기',
+                          style: context.text.bodyLarge,
                         ),
                       ),
-                      child: Text(
-                        '단어 테스트 보기',
-                        style: context.text.bodyLarge,
-                      ),
                     ),
-                  ),
+                  ],
                 ],
               ),
             ),

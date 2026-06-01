@@ -91,6 +91,9 @@ class WordRepository {
   Future<void> resetReadFor(Level level) =>
       _db.wordDao.resetReadForLevel(_courseId, level.code);
 
+  /// 코스 전체 단어의 학습 진도(읽음/오답 수)를 초기화한다.
+  Future<void> resetAllRead() => _db.wordDao.resetAllRead(_courseId);
+
   Future<int> countWords() => _db.wordDao.countWords(_courseId);
 
   /// DB readback. 예문 ID 목록은 ref 테이블에서 별도로 조회하므로 빈 리스트.

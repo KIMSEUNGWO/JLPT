@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:jlpt_app/component/app_logger.dart';
+import 'package:jlpt_app/component/local_storage.dart';
 import 'package:jlpt_app/data/providers.dart';
 import 'package:jlpt_app/domain/level.dart';
+import 'package:jlpt_app/notifier/recently_view_notifier.dart';
 import 'package:jlpt_app/notifier/study_cycle_notifier.dart';
 import 'package:jlpt_app/notifier/timer_notifier.dart';
 import 'package:jlpt_app/notifier/today_notifier.dart';
@@ -17,7 +19,7 @@ part 'study_session_notifier.g.dart';
 ///
 /// 화면 생명주기 중 안전한 시점에만 호출한다. dispose 콜백에서 provider 를
 /// 호출하지 않도록 `CustomTimer` 와 `StudyPage` 가 책임을 분리한다.
-@riverpod
+@Riverpod(keepAlive: true)
 class StudySession extends _$StudySession {
   @override
   void build() {}
@@ -41,6 +43,20 @@ class StudySession extends _$StudySession {
     await ref.read(wordRepositoryProvider).resetReadFor(level);
     ref.read(studyCycleProvider.notifier).cyclePlus(level);
     ref.invalidate(wordsByLevelProvider);
+  }
+
+  /// 학습 진도 전체 초기화 — 단어 읽음/오답, 회독, 레벨 학습시간, 오늘의 학습,
+  /// 최근 학습 기록을 모두 0/빈 값으로 되돌린다.
+  /// 테스트 기록·일별 통계(연속 기록)·학습 설정은 보존한다.
+  Future<void> resetLearningData() async {
+    final course = ref.read(activeCourseProvider);
+    await ref.read(wordRepositoryProvider).resetAllRead();
+    await LocalStorage.instance.clearLearningProgress(course);
+    ref.invalidate(wordsByLevelProvider);
+    ref.invalidate(studyCycleProvider);
+    ref.invalidate(timerProvider);
+    ref.invalidate(todayProvider);
+    ref.invalidate(recentlyViewProvider);
   }
 
   /// `DailyStats` 갱신 + 파생 provider invalidate.

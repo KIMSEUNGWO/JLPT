@@ -69,7 +69,9 @@ class UpdateService {
 
     onStage?.call(UpdateStage.fetching);
     final rawVersion = await remote.read(_src.versionKey);
-    final rawWords = await remote.read(_src.wordsKey);
+    final rawWordsByKey = <String, Map<String, dynamic>>{
+      for (final key in _src.wordKeys) key: await remote.read(key),
+    };
     final rawExamples = await remote.read(_src.examplesKey);
     final rawChars = hasChars ? await remote.read(charsKey) : null;
 
@@ -84,7 +86,7 @@ class UpdateService {
 
     onStage?.call(UpdateStage.validating);
     // 전체 파싱 시뮬레이션. 한 row 라도 실패하면 여기서 throw → 디스크 미반영.
-    final words = wordSyncer.parse(rawWords);
+    final words = wordSyncer.parseAll(rawWordsByKey);
     final examples = exampleSyncer.parse(rawExamples);
     final chars = hasChars ? charSyncer!.parse(rawChars!) : null;
     final refs = exampleSyncer.buildAndValidateRefs(words, examples);
@@ -97,7 +99,9 @@ class UpdateService {
     onStage?.call(UpdateStage.persistingFiles);
     // 검증 통과 후 atomic write. tmp → rename 으로 동일 디렉터리 내 원자성.
     if (hasChars) await cache.writeAtomic(charsKey, rawChars!);
-    await cache.writeAtomic(_src.wordsKey, rawWords);
+    for (final entry in rawWordsByKey.entries) {
+      await cache.writeAtomic(entry.key, entry.value);
+    }
     await cache.writeAtomic(_src.examplesKey, rawExamples);
     await cache.writeAtomic(_src.versionKey, rawVersion);
 
@@ -119,7 +123,9 @@ class UpdateService {
     final charsKey = _src.charsKey;
     var total = 0;
     total += await remote.contentLength(_src.versionKey);
-    total += await remote.contentLength(_src.wordsKey);
+    for (final key in _src.wordKeys) {
+      total += await remote.contentLength(key);
+    }
     total += await remote.contentLength(_src.examplesKey);
     if (charSyncer != null && charsKey != null) {
       total += await remote.contentLength(charsKey);
