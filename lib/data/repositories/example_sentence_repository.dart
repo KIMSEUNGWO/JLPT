@@ -32,7 +32,8 @@ class ExampleSentenceRepository {
   /// 트랜잭션 순서:
   /// 1. ExampleSentences upsert
   /// 2. WordExampleRefs 전체 교체 (source 기준)
-  /// 3. examples_version 메타 commit
+  /// 3. source 에 없는 예문 삭제 (고아 정리)
+  /// 4. examples_version 메타 commit
   Future<void> syncAll({
     required List<ExampleSentence> examples,
     required Map<int, List<int>> wordExampleRefs,
@@ -65,6 +66,12 @@ class ExampleSentenceRepository {
     await _db.transaction(() async {
       await _db.exampleSentenceDao.upsertExamples(exampleRows);
       await _db.exampleSentenceDao.replaceAllRefs(_courseId, refRows);
+      // 원격에서 빠진 예문은 DB 에서도 삭제 — upsert-only 고아 누적 방지.
+      // (refs 는 위에서 이미 source 기준으로 교체됨)
+      await _db.exampleSentenceDao.deleteExamplesNotIn(
+        _courseId,
+        examples.map((e) => e.id).toList(growable: false),
+      );
       await _meta.markExamplesSynced(version, _courseId);
     });
   }

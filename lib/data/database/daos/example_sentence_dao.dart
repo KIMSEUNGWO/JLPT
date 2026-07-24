@@ -33,6 +33,14 @@ class ExampleSentenceDao extends DatabaseAccessor<AppDatabase>
     await batch((b) => b.insertAllOnConflictUpdate(exampleSentences, rows));
   }
 
+  /// [keepIds] 에 없는 코스 예문을 삭제한다 — 원격에서 빠진 예문을
+  /// DB 에서도 제거해 upsert-only 로 인한 고아 row 누적을 막는다.
+  /// (참조하는 WordExampleRefs 는 이미 replaceAllRefs 로 정리된 상태다.)
+  Future<int> deleteExamplesNotIn(String course, List<int> keepIds) =>
+      (delete(exampleSentences)
+            ..where((t) => t.course.equals(course) & t.id.isNotIn(keepIds)))
+          .go();
+
   /// 한 코스의 ref 를 source 기준으로 교체 — 부분 단어 sync 가 없으므로 atomic 교체로 안전.
   Future<void> replaceAllRefs(
     String course,

@@ -1,5 +1,5 @@
 {
-  "version": "0.2.2",
-  "description": "sync 시 원격에서 빠진 단어를 DB에서도 삭제 (upsert-only 고아 정리)",
+  "version": "0.2.3",
+  "description": "한자/예문도 sync 시 원격에서 빠진 행 삭제 (upsert-only 고아 정리)",
   "last_updated": "2026-07-24"
 }

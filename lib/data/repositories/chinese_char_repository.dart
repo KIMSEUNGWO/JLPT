@@ -38,6 +38,11 @@ class ChineseCharRepository {
 
     await _db.transaction(() async {
       await _db.chineseCharDao.upsertAll(companions);
+      // 원격에서 빠진 문자는 DB 에서도 삭제 — upsert-only 고아 누적 방지.
+      await _db.chineseCharDao.deleteNotIn(
+        _courseId,
+        chars.map((c) => c.char).toList(growable: false),
+      );
       await _meta.markCharsSynced(version, _courseId);
     });
   }
