@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
-  "description": "히라가나/가타카나 단어 추가",
-  "last_updated": "2026-06-02"
+  "version": "0.2.1",
+  "description": "N5 부적절/중복 단어 정리, 오독 읽기 중복 제거 (20개)",
+  "last_updated": "2026-07-24"
 }

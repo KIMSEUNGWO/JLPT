@@ -65,7 +65,7 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
         // 이전 카드 dispose 의 TTS stop 이 새 카드 자동 발음을 끊는 것을 방지.
         await Future.delayed(const Duration(milliseconds: 500));
         if (!mounted || widget.word.id != _capturedWordId) return;
-        await _speaker.speak(widget.word.word);
+        await _speaker.speak(widget.word.pronunciation);
       });
     }
   }
@@ -107,7 +107,7 @@ class _WordCardWidgetState extends ConsumerState<WordCardWidget> {
                     ),
                     const SizedBox(height: AppSpacing.xxl),
                     AudioWaveAnimation(
-                      word: widget.word.word,
+                      word: widget.word.pronunciation,
                       title: '발음 듣기',
                       speaker: _speaker,
                     ),

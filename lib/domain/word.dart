@@ -168,4 +168,9 @@ class Word implements QuestionBox {
 
   @override
   String getMeaning() => meaning;
+
+  /// TTS 로 읽을 문자열. 표기([word]) 대신 발음 표기([reading])를 넘겨야
+  /// 다의 한자(예: 上手 → じょうず/うわて/かみて)를 엔진이 오독하지 않는다.
+  /// [reading] 이 없는 코스(영어 등)는 표기 그대로 발음한다.
+  String get pronunciation => reading ?? word;
 }
