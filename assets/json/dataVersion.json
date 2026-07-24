@@ -1,5 +1,5 @@
 {
-  "version": "0.2.1",
-  "description": "N5 부적절/중복 단어 정리, 오독 읽기 중복 제거 (20개)",
+  "version": "0.2.2",
+  "description": "sync 시 원격에서 빠진 단어를 DB에서도 삭제 (upsert-only 고아 정리)",
   "last_updated": "2026-07-24"
 }

@@ -23,6 +23,14 @@ class WordDao extends DatabaseAccessor<AppDatabase> with _$WordDaoMixin {
     await batch((b) => b.insertAllOnConflictUpdate(words, rows));
   }
 
+  /// [keepIds] 에 없는 코스 단어를 삭제한다 — 원격 데이터에서 빠진 단어를
+  /// DB 에서도 제거해 upsert-only 로 인한 고아 row 누적을 막는다.
+  /// (WordExampleRefs 는 (course,id) FK ON DELETE CASCADE 로 함께 정리된다.)
+  Future<int> deleteNotIn(String course, List<int> keepIds) =>
+      (delete(words)
+            ..where((t) => t.course.equals(course) & t.id.isNotIn(keepIds)))
+          .go();
+
   Future<void> markRead(String course, int id) =>
       (update(words)..where((t) => t.course.equals(course) & t.id.equals(id)))
           .write(const WordsCompanion(isRead: Value(true)));

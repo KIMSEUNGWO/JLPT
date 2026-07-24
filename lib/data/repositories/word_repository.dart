@@ -53,9 +53,10 @@ class WordRepository {
     return rows.map(_toWord).toList(growable: false);
   }
 
-  /// 콘텐츠는 upsert, 사용자 진행도(`isRead`/`wrongCnt`)는 보존.
+  /// 원격 데이터셋으로 DB를 **완전 정합**시킨다: 콘텐츠는 upsert,
+  /// 원격에서 빠진 단어는 삭제, 사용자 진행도(`isRead`/`wrongCnt`)는 보존.
   ///
-  /// 단일 transaction 안에서 모든 row를 batch upsert + 메타 버전 commit.
+  /// 단일 transaction 안에서 batch upsert + 삭제 + 메타 버전 commit.
   /// 실패 시 자동 rollback 되어 부분 commit이 발생하지 않는다.
   Future<void> syncAll(List<Word> words, {required Version version}) async {
     await _db.transaction(() async {
@@ -79,6 +80,11 @@ class WordRepository {
           .toList(growable: false);
 
       await _db.wordDao.upsertAll(companions);
+      // 원격에서 빠진 단어는 DB 에서도 삭제 — upsert-only 로 인한 고아 누적 방지.
+      await _db.wordDao.deleteNotIn(
+        _courseId,
+        words.map((w) => w.id).toList(growable: false),
+      );
       await _meta.markWordsSynced(version, _courseId);
     });
   }

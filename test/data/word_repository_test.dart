@@ -104,6 +104,25 @@ void main() {
       expect(words.first.word, '更新', reason: 'word 내용은 업데이트되어야 한다');
     });
 
+    test('syncAll: 원격에서 빠진 단어는 DB 에서도 삭제된다', () async {
+      await repo.syncAll([
+        _makeWord(60, 'N5'),
+        _makeWord(61, 'N5'),
+        _makeWord(62, 'N4'),
+      ], version: _v1);
+      expect(await repo.countWords(), 3);
+
+      // 61 이 빠진 새 데이터셋으로 재sync → 61 은 삭제되어야 한다.
+      await repo.syncAll([
+        _makeWord(60, 'N5'),
+        _makeWord(62, 'N4'),
+      ], version: _v2);
+
+      expect(await repo.countWords(), 2);
+      final n5 = await repo.getByLevel(_lv('N5'));
+      expect(n5.map((w) => w.id), [60]);
+    });
+
     test('syncAll: 메타 테이블에 버전이 commit 된다', () async {
       await repo.syncAll([_makeWord(99, 'N5')], version: _v2);
       expect(await meta.getWordsVersion(_courseId), _v2);
